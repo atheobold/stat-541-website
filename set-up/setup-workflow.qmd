@@ -1,0 +1,110 @@
+---
+title: "Stat 541 Set-up & Workflow"
+format: 
+  html: 
+    fontsize: 1em
+    mainfont: sans-serif
+    number-sections: true
+    number-depth: 2
+    section-divs: true
+    code-block-bg: "#76b5c5"
+    highlight-style: monochrome
+embed-resources: true
+editor: visual
+execute: 
+  echo: true
+  warning: false
+  message: false
+---
+
+Your **workflow** refers to the series of good habits you get into in your coding process, that help save you time and headache down the road.
+
+This document outlines our suggestions for getting going with your workflow. None of these items is required for the course; they will simply make your life easier down the road.
+
+## Updating R
+
+Check your version of R. (This shows up in the console when you first open R or RStudio.) Ideally, it should be 4.3.3 (Angel Food Cake). If this is the case, you are golden.
+
+The easiest way to update R is to simply [redownload it](https://www.r-project.org/) and then close and re-open RStudio.
+
+::: callout-warning
+# Multiple Versions of R
+
+If you are working on a PC, your program files will keep multiple versions of R. Even worse, you will sometimes install the latest version of R and your RStudio will still say that you didn't update R. Be sure when you update R to delete previous versions that you don't want RStudio to mistakenly use!
+:::
+
+#### Troubleshooting
+
+If your computer cannot install the most recent version of R, please contact Dr. Theobold!
+
+<!-- First, identify which version of OSx you are running.  [How-to](https://support.apple.com/en-us/HT201260) -->
+
+<!-- Next, find out which version of R your computer can run.  [Link](https://cran.r-project.org/bin/macosx/) -->
+
+<!-- If this version is 3.7 or later, download the latest version that your computer can handle. -->
+
+<!-- If this version is 3.6 or earlier, you're going to run in to some trouble.  I recommend updating your version of OSx, if you are willing.  If you can't, then you can use [rstudio.cloud](rstudio.cloud) to run R and RStudio on a free server.  However, I recommend strongly against this option; your files will not be saved indefinitely, your computing power will be limited, and you will need an internet connection at all times to do your work. -->
+
+## Updating RStudio
+
+RStudio can be downloaded [here](https://rstudio.com/products/rstudio/download/)
+
+The most recent version of RStudio is 2023.12.1+402. You can check if you are using the most recent version of RStudio by:
+
+-   Opening RStudio
+-   Clicking on "Help"
+-   Selecting "Check for Updates"
+-   Choosing "Quit and Download" if there is an update available
+
+## Installing / Updating the `tidyverse`
+
+In this class, we will make heavy use of the `tidyverse` packages.
+
+If you **have not** used the `tidyverse` before, type the following into your console:
+
+```{r}
+#| eval: false
+#| label: tidyverse-install
+
+install.packages("tidyverse")
+```
+
+If you **have** used the `tidyverse` before, you only need to update packages. Type the following into your console:
+
+```{r}
+#| eval: false
+#| label: tidyverse-update
+
+library(tidyverse)
+tidyverse_update()
+```
+
+Then follow the instructions that print out to update a few of your tidyverse packages.
+
+## Configure your options
+
+There are a few settings we recommend that you change right away in RStudio.
+
+### R Workspace
+
+First, you should not save your environment when you close RStudio:
+
+![](https://rstats.wtf/img/rstudio-workspace.png)
+
+### Code Chunk Output
+
+Second, make a deliberate choice about where your chunks will evaluate when you run that. That is, if you reference files, are you referencing them relative to your *Project*, or relative to your *Quarto Document* (which might live in a subfolder or even outside the project).
+
+![](../images/directory_option.png)
+
+## Project-based workflow
+
+We **strongly** recommend that you adopt a project-oriented approach to your R work. That is, you should never open R or RStudio directly; you should only open the project you intend to work on.
+
+[This resource](https://rstats.wtf/project-oriented-workflow.html) provides an excellent explanation of why and how to use projects.
+
+## Using GitHub
+
+This course will require some basic use of GitHub. You may find that you want to incorporate it more deeply into your R experience.
+
+[This resource](https://happygitwithr.com/) can help you integrate R and GitHub more fully, if you so choose.
