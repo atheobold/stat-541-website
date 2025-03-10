@@ -1,0 +1,18 @@
+---
+title: "Welcome"
+---
+
+![](images/cat-monsters-horst.png){style="float: right;" fig-alt="A orange longhaired cat curled up in a ball which three round green monsters give it pets." fig-align="right" width="250"}
+
+INSERT INFORMATION ABOUT THE CLASS!
+
+## License {.unnumbered}
+
+<a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/"><img src="https://licensebuttons.net/l/by-sa/4.0/88x31.png" alt="Creative Commons License" style="border-width:0"/></a><br />This online work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International</a>.
+Visit [here](https://github.com/rstudio-education/datascience-box/blob/master/LICENSE.md) for more information about the license.
+
+## Acknowledements {.unnumbered}
+
+Huge thanks to the #rstats education community who have made numerous suggestions for this resource, to Lee Suddaby and Zeno Kujawa for converting the homework assignments to learnr tutorials, and to [Müge Çetinkaya](http://muge.fr/) for the hex logo!
+
+This website is built with [Quarto](https://quarto.org), the lovely icons are all by [Allison Horst](https://allisonhorst.com/), and none of this would be possible without the [tidyverse](https://tidyverse.org).
