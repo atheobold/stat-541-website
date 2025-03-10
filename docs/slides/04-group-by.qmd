@@ -1,0 +1,1248 @@
+---
+title: "Multivariate Summaries"
+format:  
+  revealjs: 
+    theme: [default, style.scss]
+editor: source
+execute:
+  echo: true
+---
+
+```{r}
+#| include: false
+library(reticulate)
+use_python("/usr/local/bin/python3")
+```
+
+```{python}
+#| include: false
+import numpy as np
+import pandas as pd
+from plotnine import *
+```
+
+# Lab 1A Debrief
+
+## The Importance of Axis Labels
+
+::: columns
+::: {.column width="48%"}
+![](images/04-lab1-plot-good.png){fig-alt="A plot of the proportion of the times the first digit of the volume of stocks sold by a stock market company started with each digit (1-9). The plot has an x-axis label describing the context of the digits ('First Digit of Volume') and the y-axis label describes the context of the proportions ('Proportion of Occurrances'). The plot title states 'Distribution of First Digit of Volume'."}
+:::
+
+::: {.column width="3%"}
+:::
+
+::: {.column width="49%"}
+![](images/04-lab1-plot-bad.png){fig-alt="A plot of the proportion of the times the first digit of the volume of stocks sold by a stock market company started with each digit (1-9). This is the same plot as above, but the axis labels do not have the contextual information included in the previous plot. The x-axis says 'digit' which leaves the reader wondering what the context of this 'digit' is. The y-axis says 'proportion' which also makes the reader wonder what these are a proportion of."}
+:::
+:::
+
+::: {.centered}
+**Does your plot communicate the context of the data you are plotting?** 
+:::
+
+# The story so far...
+
+## Last Week
+
+-   Reading in data and cleaning / prepping it.
+
+-   Summarizing **one categorical variable** with a distribution.
+
+-   Summarizing **two categorical variables** with joint and conditional
+distributions.
+
+-   Using `plotnine` and the **grammar of graphics** to make **bar plots** and
+**column plots**.
+
+## Quantitative Variables So Far
+
+-   Visualizing by **converting to categorical**.
+
+-   Visualizing with **histograms** or **densities**.
+
+-   Estimating **probabilities** from histograms and densities.
+
+-   Describing the **skew**.
+
+-   Calculating and explaining the **mean** and the **median**.
+
+-   Calculating and explaining the **standard deviation** and **variance**.
+
+# Comparing Quantities Across Categories
+
+## New dataset: Airplane Flights
+
+> Which airline carriers are most likely to be delayed?
+
+. . .
+
+Let's look at a data set of all domestic flights that departed from one of New
+York City's airports (JFK, LaGuardia, and Newark) on November 16, 2013.
+
+::: {.small}
+```{python}
+#| code-line-numbers: false
+#| label: flight-data
+
+data_dir = "https://datasci112.stanford.edu/data/"
+df = pd.read_csv(data_dir + "flights_nyc_20131116.csv")
+df
+```
+:::
+
+## Delays
+
+We already know how to **summarize** the flight delays:
+
+::: {.callout-tip}
+# Check-in 2.2: Interpret these numbers!
+:::
+
+```{python}
+#| code-line-numbers: false
+#| label: summary-statistics-of-dep-delay
+
+df['dep_delay'].median()
+df['dep_delay'].mean()
+df['dep_delay'].std()
+```
+
+## Delays
+
+We already know how to **visualize** the flight delays:
+
+::: {.callout-tip}
+# Check-in 2.2: How would you describe this distribution?
+:::
+
+```{python}
+#| echo: false
+#| label: dep-delay-histogram
+#| fig-align: center
+
+plot = (
+  ggplot(df, mapping = aes(x = 'dep_delay')) + 
+  geom_histogram(binwidth = 5) + 
+  theme_bw()
+  )
+  
+plot.draw(plot)
+```
+
+
+## Delays by Origin
+
+> Do the three origin airports (JFK, LGA, EWR) have different delay patterns?
+
+. . .
+
+::: {.callout-tip}
+# Check-in 2.2: What could you change in this code to include the `origin` variable?
+:::
+
+```{python}
+#| eval: false
+#| code-line-numbers: false
+
+(
+  ggplot(df, aes(x = 'dep_delay')) + 
+  geom_histogram() + 
+  theme_bw()
+)
+```
+
+## Delays by Origin
+
+Overlapping **histograms** can be really hard to read...
+
+::: {.small}
+```{python}
+#| code-fold: true
+#| eval: false
+#| code-line-numbers: false
+#| label: overlapping-histograms-code
+
+(
+  ggplot(df, aes(x = 'dep_delay', fill = 'origin')) + 
+  geom_histogram() + 
+  theme_bw()
+)
+```
+:::
+
+```{python}
+#| code-fold: true
+#| code-line-numbers: false
+#| label: overlapping-histograms
+#| echo: false
+#| fig-align: center
+
+plot = (
+  ggplot(df, aes(x = 'dep_delay', fill = 'origin')) + 
+  geom_histogram(binwidth = 5) + 
+  theme_bw()
+)
+
+plot.draw(plot)
+```
+
+## Delays by Origin
+
+... but overlapping **densities** often look nicer...
+
+::: {.small}
+```{python}
+#| code-fold: true
+#| eval: false
+#| code-line-numbers: false
+#| label: overlapping-densities-code
+
+(
+  ggplot(df, aes(x = 'dep_delay', fill = 'origin')) + 
+  geom_density() + 
+  theme_bw()
+)
+```
+:::
+
+```{python}
+#| code-fold: true
+#| code-line-numbers: false
+#| label: overlapping-densities
+#| echo: false
+#| fig-align: center
+
+plot = (
+  ggplot(df, aes(x = 'dep_delay', fill = 'origin')) + 
+  geom_density() + 
+  theme_bw()
+)
+
+plot.draw(plot)
+```
+
+## Delays by Origin
+
+... especially if we make them a little see-through!
+
+::: {.small}
+```{python}
+#| code-fold: true
+#| eval: false
+#| code-line-numbers: false
+#| label: overlapping-densities-alpha-code
+
+(
+  ggplot(df, aes(x = 'dep_delay', fill = 'origin')) + 
+  geom_density(alpha = 0.5) + 
+  theme_bw()
+)
+```
+:::
+
+```{python}
+#| code-fold: true
+#| code-line-numbers: false
+#| label: overlapping-densities-alpha
+#| echo: false
+#| fig-align: center
+
+plot = (
+  ggplot(df, aes(x = 'dep_delay', fill = 'origin')) + 
+  geom_density(alpha = 0.5) + 
+  theme_bw()
+)
+
+plot.draw(plot)
+```
+
+## Variable Transformations
+
+-   That last plot was okay, but it was hard to see the details, because the
+distribution is so **skewed right**.
+
+-   Sometimes, for easier visualization, it is worth **transforming** a variable.
+
+-   For skewed data, we often use a **log** transformation.
+
+## Log Transformation {.smaller}
+
+Example: Salaries of $10,000, and $100,000, and $10,000,000:
+
+::: {.small}
+```{python}
+#| code-line-numbers: false
+#| label: fake-salary-data
+
+dat = pd.DataFrame({"salary": [10000, 100000, 10000000]})
+dat["log_salary"] = np.log(dat["salary"])
+```
+:::
+
+::::: columns
+::: {.column width="50%"}
+::: {.small}
+```{python}
+#| code-fold: true
+#| code-line-numbers: false
+#| eval: false
+#| label: histogram-of-salary-code
+
+(
+  ggplot(data = dat, mapping = aes(x = "salary")) + 
+  geom_histogram(bins = 100) + 
+  theme_bw()
+)
+
+```
+:::
+
+```{python}
+#| code-fold: true
+#| code-line-numbers: false
+#| label: histogram-of-salary
+#| echo: false
+
+plot = (
+  ggplot(data = dat, mapping = aes(x = "salary")) + 
+  geom_histogram(bins = 100) + 
+  theme_bw()
+)
+
+plot.draw(plot)
+```
+:::
+
+::: {.column width="50%"}
+::: {.small}
+```{python}
+#| code-fold: true
+#| code-line-numbers: false
+#| eval: false
+#| label: histogram-of-salary-log-code
+
+(
+  ggplot(data = dat, mapping = aes(x = "log_salary")) + 
+  geom_histogram(bins = 100) + 
+  theme_bw()
+)
+
+```
+:::
+
+```{python}
+#| code-fold: true
+#| code-line-numbers: false
+#| label: histogram-of-salary-log
+#| echo: false
+
+plot = (
+  ggplot(data = dat, mapping = aes(x = "log_salary")) + 
+  geom_histogram(bins = 100) + 
+  theme_bw()
+)
+
+plot.draw(plot)
+```
+:::
+:::::
+
+## Log transformations
+
+-   Usually, we use the **natural log**, just for convenience.
+
+::: columns
+::: {.column width="45%"}
+**Pros:**
+
+Skewed data looks **less skewed**, so it is easier to see **patterns**.
+:::
+
+::: {.column width="10%"}
+:::
+
+::: {.column width="45%"}
+**Cons:**
+
+The variable is now on a **different scale** so it is not as **interpretable**.
+
+:::
+:::
+
+. . .
+
+::: {.callout-warning}
+## Remember, log transformations need *positive numbers*!
+:::
+
+## Delays by Origin - Transformed
+
+::: {.small}
+```{python}
+#| code-fold: true
+#| code-line-numbers: false
+#| label: dep-delay-log-code
+#| eval: false
+
+# Shift delays to be above zero
+df['delay_shifted'] = df['dep_delay'] - df['dep_delay'].min() + 1
+
+# Log transform
+df['log_delay'] = np.log(df['delay_shifted'])
+
+(
+  ggplot(df, aes(x = 'log_delay', fill = 'origin')) + 
+  geom_density(alpha = 0.5) + 
+  theme_bw()
+)
+```
+:::
+
+```{python}
+#| code-fold: true
+#| code-line-numbers: false
+#| label: dep-delay-log
+#| fig-align: center
+#| echo: false
+
+# Shift delays to be above zero
+df['delay_shifted'] = df['dep_delay'] - df['dep_delay'].min() + 1
+
+# Log transform
+df['log_delay'] = np.log(df['delay_shifted'])
+
+plot = (
+  ggplot(df, aes(x = 'log_delay', fill = 'origin')) + 
+  geom_density(alpha = 0.5) + 
+  theme_bw()
+)
+
+plot.draw(plot)
+```
+
+# Boxplots
+## Another option: Boxplots
+
+::: columns
+::: {.column width="48%"}
+::: {.small}
+```{python}
+#| code-fold: true
+#| code-line-numbers: false
+#| label: vertical-boxplot-code
+#| eval: false
+
+(
+  ggplot(df, mapping = aes(y = 'log_delay', x = 'origin')) + 
+  geom_boxplot() + 
+  labs(x = "", 
+       y = "Log Delay (minutes)", 
+       title = "Comparing Departure Delays for NYC Airports") +
+  theme_bw()
+)
+```
+:::
+
+```{python}
+#| label: vertical-boxplots
+#| echo: false
+
+plot = (
+  ggplot(df, mapping = aes(y = 'log_delay', x = 'origin')) + 
+  geom_boxplot() + 
+  labs(x = "", 
+       y = "Log Delay (minutes)", 
+       title = "Comparing Departure Delays for NYC Airports") +
+  theme_bw()
+)
+
+plot.draw(plot)
+```
+
+:::
+
+::: {.column width="2%"}
+:::
+
+::: {.column width="50%"}
+::: {.small}
+```{python}
+#| code-fold: true
+#| code-line-numbers: false
+#| label: horizontal-boxplot-code
+#| eval: false
+
+(
+  ggplot(df, mapping = aes(y = 'log_delay', x = 'origin')) + 
+  geom_boxplot() +
+  labs(x = "", 
+       y = "Log Delay (minutes)", 
+       title = "Comparing Departure Delays for NYC Airports") +
+  coord_flip() +
+  theme_bw()
+)
+```
+:::
+
+```{python}
+#| label: horizontal-boxplots
+#| echo: false
+
+plot = (
+  ggplot(df, mapping = aes(y = 'log_delay', x = 'origin')) + 
+  geom_boxplot() + 
+  labs(x = "", 
+       y = "Log Delay (minutes)", 
+       title = "Comparing Departure Delays for NYC Airports") +
+  coord_flip() +
+  theme_bw()
+)
+
+plot.draw(plot)
+```
+:::
+:::
+
+
+# Facetting
+## Facetting
+
+```{python}
+#| fig-align: center
+#| echo: false
+
+plot = (
+  ggplot(df, aes(x = 'log_delay', fill = 'origin')) + 
+  geom_density(alpha = 0.5) + 
+  labs(x = "Log Departure Delay (minutes)", 
+       fill = "Airport Origin") +
+  theme_bw()
+)
+
+plot.draw(plot)
+```
+
+This plot still was a *little* hard to read.
+
+What if we just made **separate plots** for each origin?
+
+## Separate Plots for Each Origin 
+
+One option would be to create separate data frames for each origin. 
+
+::: {.small}
+```{python}
+#| code-line-numbers: false
+#| label: jfk-data-frame
+
+is_jfk = (df['origin'] == "JFK")
+df_jfk = df[is_jfk]
+df_jfk
+```
+:::
+
+. . .
+
+This seems kind of annoying...
+
+## FYI: Boolean Masking
+
+How did we filter the previous `df` to only include `"JFK"` origins?
+
+::: columns
+::: {.column width="40%"}
+::: {.fragment}
+**Step 1**
+
+:::{.small}
+```{python}
+#| code-line-numbers: false
+#| label: boolean-jfk
+
+is_jfk = (df['origin'] == "JFK")
+is_jfk
+
+```
+:::
+:::
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="55%"}
+::: {.fragment}
+**Step 2**
+
+::: {.small}
+```{python}
+#| code-line-numbers: false
+#| label: boolean-filter
+
+df_jfk = df[is_jfk]
+df_jfk["origin"]
+```
+:::
+:::
+:::
+:::
+
+## Facetting
+
+Fortunately, `plotnine` (and other plotting packages) has a trick for you!
+
+::: {.small}
+```{python}
+#| code-line-numbers: false
+#| label: faceting-code
+#| eval: false
+
+(
+  ggplot(df, aes(x = 'dep_delay')) + 
+  geom_density() + 
+  facet_wrap('origin')
+)
+```
+:::
+
+```{python}
+#| code-line-numbers: false
+#| label: faceting-plot
+#| echo: false
+#| fig-align: center
+
+plot = (
+  ggplot(df, aes(x = 'dep_delay')) + 
+  geom_density() + 
+  facet_wrap('origin') +
+  labs(x = "Departure Delay (minutes)")
+)
+
+plot.draw(plot)
+```
+
+## Freeing the Scales
+
+```{python}
+#| code-line-numbers: false
+#| code-fold: true
+#| label: faceting-free-y-code
+#| fig-align: center
+#| eval: false
+
+(
+  ggplot(df, aes(x = 'dep_delay')) + 
+  geom_density() + 
+  facet_wrap('origin', scales = "free_y") +
+  labs(x = "Departure Delay (minutes)")
+)
+```
+
+```{python}
+#| label: faceting-free-y
+#| fig-align: center
+#| echo: false
+
+plot = (
+  ggplot(df, aes(x = 'dep_delay')) + 
+  geom_density() + 
+  facet_wrap('origin', scales = "free_y") +
+  labs(x = "Departure Delay (minutes)")
+)
+
+plot.draw(plot)
+```
+
+# Summaries by Group
+## Split-apply-combine 
+
+::: {.midi}
+::: {.incremental}
+-   Our visualizations told us some of the story, but can we use 
+**numeric summaries** as well?
+
+-   To do this, we want to calculate the **mean** or **median** delay time for
+**each** origin airport.
+
+-   We call this **split-apply-combine**:
+
+    -   **split** the dataset up by a categorical variable `origin`
+    -   **apply** a calculation like `mean`
+    -   **combine** the results back into one dataset
+
+-   In `pandas`, we use the `groupby()` function to take care of the *split* and
+*combine* steps!
+:::
+:::
+
+## Group-by
+
+::: columns
+::: {.column width="45%"}
+::: {.small}
+```{python}
+#| code-line-numbers: false
+#| label: group-by-mean
+
+(
+  df
+  .groupby(by = "origin")["dep_delay"]
+  .mean()
+)
+```
+:::
+:::
+
+::: {.column width="10%"}
+:::
+
+::: {.column width="45%"}
+::: {.small}
+```{python}
+#| code-line-numbers: false
+#| label: group-by-median
+
+(
+  df
+  .groupby(by = "origin")["dep_delay"]
+  .median()
+)
+```
+:::
+:::
+:::
+
+## Group-by Check-in
+
+::: {.callout-tip}
+# Check-in 2.2
+
+-   Which code is causing "split by origin"?
+
+-   Which code is causing "calculate the mean of delays"?
+
+-   Which code is causing the re-combining of the data?
+:::
+
+```{python}
+#| eval: false
+#| code-line-numbers: false
+
+(
+  df
+  .groupby(by = "origin")["dep_delay"]
+  .mean()
+)
+```
+
+# Standardized Values
+
+## Simple Example: Exam Scores
+
+Hermione's exam scores are is:
+
+-   Potions class: 77/100
+
+-   Charms class: 95/100
+
+-   Herbology class: 90/100
+
+In which class did she do best?
+
+## But wait!
+
+The class **means** are:
+
+-   Potions class: 75/100
+
+-   Charms class: 85/100
+
+-   Herbology class: 85/100
+
+In which class did she do best?
+
+## But wait!
+
+The class **standard deviations** are:
+
+-   Potions class: 2 points
+
+-   Charms class: 5 points
+
+-   Herbology class: 1 point
+
+In which class did she do best?
+
+## Different variabilities by origin
+
+::: {.midi}
+In addition to having different **centers**, the three origins also have
+different **spreads**.
+
+```{python}
+#| code-line-numbers: false
+#| label: group-by-std
+(
+  df
+  .groupby("origin")["dep_delay"]
+  .std()
+)
+```
+:::
+
+. . .
+
+</br>
+
+::: {.midi}
+In general flights from `"LGA"` have departure delays that are the 
+**furthest from** the mean.
+:::
+
+## Standardized values
+
+-   We ***standardize*** values by subtracting the mean and dividing by the
+standard deviation.
+
+-   This tells us how much better/worse *than typical values* our target value is.
+
+-   This is also called the **z-score**. $$z_i = \frac{x_i - \bar{x}}{s_x}$$
+
+
+## Standardized values
+
+::: {.midi}
+Suppose you fly from `LGA` and your flight is 40 minutes late. Your friend flies
+from `JFK` and their flight is 30 minutes late.
+
+Who got "unluckier"?
+:::
+
+</br>
+
+::: columns
+::: {.column width="45%"}
+**You?** 
+
+```{python}
+#| code-line-numbers: false
+#| label: distance-from-mean-lga
+
+(40 - -0.48) / 26.12
+```
+
+:::
+
+::: {.column width="10%"}
+:::
+
+::: {.column width="45%"}
+**Your friend?**
+
+```{python}
+#| code-line-numbers: false
+#| label: distance-from-mean-jfk
+
+(30 - 1.46) / 18.71
+```
+
+:::
+:::
+
+
+## Activity 2.2
+
+> Do the different airlines have different patterns of flight delays?
+
+-   Make a **plot** to answer the question.
+
+-   Calculate values to answer the question.
+
+-   The first row is a flight from EWR to CLT on US Airways. The second row is a
+flight from LGA to IAH on United Airlines. Which one was a "more extreme" delay?
+
+# Relationships Between Quantitative Variables
+
+```{python}
+#| echo: false
+#| label: titanic-data
+df_titanic = pd.read_csv(data_dir + "titanic.csv")
+
+```
+
+## [Did *older* passengers pay a *higher* fare on the Titanic?]{.midi}
+
+::: {.small}
+To **visualize** two quantitative variables, we make a **scatterplot** (or
+*point* geometry).
+:::
+
+. . .
+
+::: {.small}
+```{python}
+#| code-line-numbers: false
+#| label: age-fare-scatterplot-code
+#| code-fold: true
+#| eval: false
+
+(
+  ggplot(data = df_titanic, mapping = aes(x = 'age', y = 'fare')) + 
+  geom_point() +
+  labs(x = "Age of Passenger", 
+       y = "Fare Paid on Titanic")
+)
+```
+:::
+
+```{python}
+#| label: age-fare-scatterplot
+#| echo: false
+#| fig-align: center
+#| fig-width: 3
+
+plot = (
+  ggplot(data = df_titanic, mapping = aes(x = 'age', y = 'fare')) + 
+  geom_point() +
+  labs(x = "Age of Passenger", 
+       y = "Fare Paid on Titanic")
+)
+
+plot.draw(plot)
+```
+
+## Scatterplots
+
+::: {.midi}
+::: {.callout-warning}
+
+# Notice
+
+-   The **explanatory variable** was on the **x-axis**.
+
+-   The **response variable** was on the **y-axis**.
+
+-   "If you are older, you pay more" not "If you pay more, you get older".
+:::
+
+```{python}
+#| eval: false
+#| code-line-numbers: false
+
+(
+  ggplot(data = df_titanic, 
+         mapping = aes(x = 'age', y = 'fare')
+         ) + 
+  geom_point() +
+  labs(x = "Age of Passenger", 
+       y = "Fare Paid on Titanic")
+)
+```
+:::
+
+## Making a Clearer Plot 
+
+Did you notice how difficult it was to pick out each point?
+
+::: columns
+::: {.column width="48%"}
+::: {.fragment}
+**Point Size**
+
+::: {.small}
+```{python}
+#| code-line-numbers: false
+#| label: scatterplot-point-size-code
+#| code-fold: true
+#| eval: false
+
+(
+  ggplot(data = df_titanic, 
+         mapping = aes(x = 'age', y = 'fare')
+         ) + 
+  geom_jitter(size = 0.5) +
+  labs(x = "Age of Passenger", 
+       y = "Fare Paid on Titanic")
+)
+
+```
+:::
+
+```{python}
+#| label: scatterplot-jitter
+#| echo: false
+
+plot = (
+  ggplot(data = df_titanic, 
+         mapping = aes(x = 'age', y = 'fare')
+         ) + 
+  geom_jitter(size = 0.5) +
+  labs(x = "Age of Passenger", 
+       y = "Fare Paid on Titanic")
+)
+
+plot.draw(plot)
+```
+:::
+:::
+
+::: {.column width="3%"}
+:::
+
+::: {.column width="49%"}
+::: {.fragment}
+**Transparency**
+
+::: {.small}
+```{python}
+#| code-line-numbers: false
+#| label: scatterplot-alpha-code
+#| code-fold: true
+#| eval: false
+
+(
+  ggplot(data = df_titanic, 
+         mapping = aes(x = 'age', y = 'fare')
+         ) + 
+  geom_point(alpha = 0.5) +
+  labs(x = "Age of Passenger", 
+       y = "Fare Paid on Titanic")
+)
+
+```
+:::
+
+```{python}
+#| label: scatterplot-alpha
+#| echo: false
+
+plot = (
+  ggplot(data = df_titanic, 
+         mapping = aes(x = 'age', y = 'fare')
+         ) + 
+  geom_point(alpha = 0.5) +
+  labs(x = "Age of Passenger", 
+       y = "Fare Paid on Titanic")
+)
+
+plot.draw(plot)
+```
+:::
+:::
+:::
+
+## Spicing Things Up
+
+How could we make this more interesting?
+
+- Use a log-transformation for `fare` because it is very skewed.
+
+- Add in a third variable, `pclass`. How might you do this?
+
+## Challenge
+
+Can you re-create this plot?
+
+```{python}
+#| echo: false
+#| label: scatterplot-recreate
+#| fig-align: center
+
+df_titanic['log_fare'] = np.where(
+  df_titanic['fare'] > 0, 
+  np.log(df_titanic['fare']), 
+  np.nan
+)
+
+df_titanic['pclass'] = df_titanic['pclass'].astype('category')
+
+plot = (
+  ggplot(df_titanic, mapping = aes(x = 'age', y = 'log_fare', color = 'pclass')) + 
+  geom_point() + 
+  theme_bw() +
+  labs(x = "Age of Passenger", 
+       y = "Log Fare ($)", 
+       color = "Passenger Class") +
+  ylim(0, 7)
+)
+
+plot.draw(plot)
+```
+
+
+
+## Describing a Scatterplot 
+
+Let's look at just third class:
+
+::: {.small}
+```{python}
+#| code-fold: true
+#| code-line-numbers: false
+#| label: third-class-scatterplot-code
+#| eval: false
+
+is_third= df_titanic['pclass'] == 3
+df_third = df_titanic[is_third]
+
+(
+  ggplot(df_third, aes(x = 'age', y = 'fare')) + 
+  geom_jitter(alpha = 0.8) + 
+  theme_bw()
+)
+```
+:::
+
+```{python}
+#| label: third-class-scatterplot
+#| echo: false
+#| fig-align: center
+
+is_third= df_titanic['pclass'] == 3
+df_third = df_titanic[is_third]
+
+plot = (
+  ggplot(df_third, aes(x = 'age', y = 'fare')) + 
+  geom_jitter(alpha = 0.8) + 
+  theme_bw()
+)
+
+plot.draw(plot)
+```
+
+## Describing the Relationship
+
+::: columns
+::: {.column width="30%"}
+**Strength**
+
+Not very **strong**: the points don't follow a clear pattern.
+:::
+
+::: {.column width="3%"}
+:::
+
+::: {.column width="30%"}
+::: {.fragment}
+**Direction**
+
+Slightly **negative**: When age was higher, fare was a little lower.
+:::
+:::
+
+::: {.column width="3%"}
+:::
+
+::: {.column width="30%"}
+::: {.fragment}
+**Shape**
+
+Not very **linear**: the points don't form a straight line.
+:::
+:::
+:::
+
+## Correlation
+
+What if we want a **numerical summary** of the relationship between variables?
+
+-   Do "older than average" people pay "higher than average" fares?
+
+    * In other words, when the **z-score** of age was high, was the **z-score**
+    of fare also high?
+
+## Age & Fare Correlation
+
+::: {.small}
+```{python}
+#| code-fold: true
+#| code-line-numbers: false
+#| label: age-fare-scatterplot-with-means-code
+#| eval: false
+
+mean_age = df_third['age'].mean()
+mean_fare = df_third['fare'].mean()
+
+(
+  ggplot(data = df_third, mapping = aes(x = 'age', y = 'fare')) + 
+  geom_jitter(alpha = 0.8) + 
+  geom_vline(xintercept = mean_age, color = "red", linetype = "dashed") + 
+  geom_hline(yintercept = mean_fare, color = "red", linetype = "dashed") + 
+  labs(x = "Age of Passenger", 
+       y = "Titanic Fare Paid")
+  theme_bw()
+)
+```
+:::
+
+```{python}
+#| label: age-fare-scatterplot-with-means
+#| echo: false
+#| fig-align: center
+
+mean_age = df_third['age'].mean()
+mean_fare = df_third['fare'].mean()
+
+plot = (
+  ggplot(df_third, aes(x = 'age', y = 'fare')) + 
+  geom_jitter(alpha = 0.8) +   
+  geom_vline(xintercept = mean_age, color = "red", linetype = "dashed") + 
+  geom_hline(yintercept = mean_fare, color = "red", linetype = "dashed") + 
+  labs(x = "Age of Passenger", 
+       y = "Titanic Fare Paid") + 
+  theme_bw()
+)
+
+plot.draw(plot)
+```
+
+## Correlation
+
+Interpret this result:
+
+```{python}
+#| code-line-numbers: false
+#| label: correlation-age-fare
+
+df_third[['age', 'fare']].corr()
+
+```
+
+. . .
+
+</br> 
+
+Age and fare are **slightly negatively correlated**.
+
+*Can you think of an explanation for this?*
+
+## Correlation ***is not*** the Relationship
+
+![](./images/04-correlation.png){fig-alt="The image contains a 3x7 grid of scatterplots illustrating varying correlation patterns. Each scatterplot is labeled with its respective correlation coefficient. The first row demonstrates linear correlations ranging from a perfect positive correlation (1.0) to a perfect negative correlation (-1.0) in decrements of 0.2. The scatterplots show the corresponding transition from a tight upward-sloping line (1.0) to a tight downward-sloping line (-1.0), with increasing dispersion at intermediate values. The second row depicts perfect positive and negative correlations (1.0 and -1.0) represented by straight lines, while the others in the row maintain similar relationships. The third row shows scatterplots with non-linear or no correlation, all labeled as 0. These include distinct shapes like a sine wave, diamond, parabola, hourglass, circle, and clustered points. These shapes demonstrate the absence of linear relationships despite structured patterns."}
+
+Just for fun: [Guess the Correlation Game](https://www.guessthecorrelation.com/)
+
+# Takeaways
+
+## Takeaways
+
+::: {.midi}
+-   Plot **quantitative variables** across **groups** with
+**overlapping density** plots, **boxplots**, or by **facetting**.
+
+-   Summarize **quantitative variables** across **groups** by using `groupby()`
+and then calculating summary statistics.
+
+-   Know what **split-apply-combine** means.
+
+-   Plot **relationships between quantitative variables** with a
+**scatterplot**.
+
+-   Describe the **strength**, **direction**, and **shape** of the relationship 
+displayed in a scatterplot.
+
+-   Summarize **relationships between quantitative variables** with the
+**correlation**
+:::

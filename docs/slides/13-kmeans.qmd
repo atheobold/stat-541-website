@@ -1,0 +1,669 @@
+---
+title: "Unsupervised Learning with K-Means"
+format:  
+  revealjs: 
+    theme: [default, style.scss]
+editor: source
+execute:
+  echo: true
+---
+
+```{r}
+#| include: false
+library(reticulate)
+use_python("/usr/local/bin/python3")
+```
+
+```{python}
+#| include: false
+#| label: packages
+
+import numpy as np
+import pandas as pd
+from plotnine import *
+```
+
+# Plan for the rest of the quarter
+
+## Weeks 8, 9, & 10
+
+::::::::: columns
+:::: {.column width="30%"}
+::: fragment
+**Week 8**
+
+- Last week of models!
+  + Statistical Learning Model: K-Means  
+  + Data Model: Joins
+:::
+::::
+
+:::: {.column width="30%"}
+::: fragment
+**Week 9**
+
+-   Data Ethics
+    + Data Context
+    + Model Ethics
+-   Project Work Sessions
+:::
+::::
+
+:::: {.column width="30%"}
+::: fragment
+**Week 10**
+
+-   Final Posters
+-   Practice Final
+-   Exam 2
+:::
+::::
+:::::::::
+
+# The story so far...
+
+## Predictive Modeling
+
+::: {.incremental}
+::: {.midi}
+-   In **predictive modeling**, a.k.a. **supervised machine learning**, we have
+a **target variable** we want to predict.
+
+-   We expect to have observations where we know the *predictors* but not the
+*target*.
+
+-   Our goal is to choose a **modeling procedure** to guess the value of the 
+target variable based on the predictors.
+
+-   We use **cross-validation** to estimate the **test error** of various
+procedure options.
+
+-   We might compare different:
+:::
+:::
+
+::: {.fragment}
+::: columns
+::: {.column width="47%"}
+::: {.small}
+1. feature sets
+2. preprocessing choices
+:::
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="47%"}
+::: {.small}
+3. model specifications / algorithms
+4. tuning parameters
+:::
+:::
+:::
+:::
+
+# Unsupervised Learning
+
+## Unsupervised Learning
+
+::: {.incremental}
+-   In **unsupervised** situations, we ***do not*** have a target variable $y$.
+
+-   We *do* still have **features** that we observe.
+
+-   Our goal: Find an *interesting structure* in the features we have.
+:::
+
+. . .
+
+::: {.callout-tip}
+# Supervised vs Unsupervised
+
+Think of children playing with Legos. They might be *supervised* by parents who
+help them follow instructions, or they might be left alone to build whatever
+they want!
+:::
+
+## Clustering
+
+::: {.midi}
+::: {.incremental}
+-   Nearly all unsupervised learning algorithms can be called ***clustering***.
+
+-   The goal is to use the **observed features** (columns) to sort the
+**observations** (rows) into similar **clusters** (groups).
+
+-   For example: Suppose I take all of your grades in the gradebook as
+*features* and then use these to find *clusters* of students. These clusters
+might represent...
+
+    -   people who studied together
+    -   people who are in the same section
+    -   people who have the same major or background
+    -   ... or none of the above!
+:::
+:::
+
+## Applications for Clustering
+
+::: {.midi}
+::: {.incremental}
+-   **Ecology:** An ecologist wants to group organisms into types to define
+different species. *(rows = organisms; features = habitat, size, etc.)*
+
+-   **Biology:** A geneticist wants to know which groups of genes tend to be
+activated at the same time. *(rows = genes; features = activation at certain times)*
+
+-   **Market Segmentation:** A business wants to group their customers into
+types. *(rows = customers, features = age, location, etc.)*
+
+-   **Language:** A linguist might want to identify different uses of ambiguous
+words like "set" or "run". *(rows = words; features = other words they are used with)*
+
+-   **Documents:** A historian might want to find groups of articles that are on
+similar topics. *(rows = articles; features = tf-idf transformed n-grams)*
+:::
+:::
+
+# K-Means
+
+## The K-Means Algorithm
+
+> **Idea:** Two observations are *similar* if they are *close* in distance.
+
+::: {.centered}
+Does this sound familiar?!
+:::
+
+. . .
+
+</br> 
+
+**Q: How do we find "groups" of observations?**
+
+A: We should look for groups of observations that are close to the same
+**centroid**.
+
+## The K-Means Algorithm
+
+**Procedure (3-means):**
+
+::: {.incremental}
+
+1.  Choose 3 random observations to be the **initial centroids**.
+
+2.  For each observation, determine which is the **closest centroid**.
+
+3.  Create 3 **clusters** based on the closest centroid.
+
+4.  Find the **new centroid** of each cluster.
+
+5.  Repeat until the clusters don't change.
+:::
+
+. . .
+
+<https://www.naftaliharris.com/blog/visualizing-k-means-clustering/>
+
+## Example: Penguin Data
+
+::: {.small}
+```{python}
+#| code-line-numbers: false
+#| label: load-penguins-data
+#| code-fold: true
+
+df_penguins = pd.read_csv("https://dlsun.github.io/stats112/data/penguins.csv")
+df_penguins
+```
+:::
+
+## Penguin Data: Investigating Missing Values
+
+It looks like there are missing values in these data...
+
+::: {.midi}
+```{python}
+#| code-line-numbers: false
+#| label: missing-values
+
+df_penguins.info()
+
+```
+:::
+
+## Penguin Data: Removing Missing Values
+
+For this analysis, we are interested in a penguin's bill length and flipper 
+length, so I will remove the missing values from those columns. 
+
+::: {.midi}
+```{python}
+#| code-line-numbers: false
+#| label: removing-missing-values
+df_penguins = (
+  df_penguins
+  .dropna(subset = ["bill_length_mm", "flipper_length_mm"])
+  )
+```
+:::
+
+## Penguin Data: Plot
+
+```{python}
+#| code-fold: true
+#| code-line-numbers: false
+#| eval: false
+#| label: bill-length-flipper-length-code
+
+(
+  ggplot(data = df_penguins, 
+         mapping = aes(x = "bill_length_mm", y = "flipper_length_mm")) + 
+         geom_point() + 
+         theme_bw() +
+         labs(x = "Bill Length (mm)", 
+              y = "Flipper Length (mm)"
+              )
+  )
+```
+
+```{python}
+#| label: bill-length-flipper-length-plot
+#| echo: false
+#| fig-align: center
+  
+plot = (
+  ggplot(data = df_penguins, 
+         mapping = aes(x = "bill_length_mm", y = "flipper_length_mm")) + 
+         geom_point() + 
+         theme_bw() +
+         labs(x = "Bill Length (mm)", 
+              y = "Flipper Length (mm)"
+              )
+  )
+
+plot.draw(plot)
+```
+
+
+## Step 0: Standardize the data
+
+. . .
+
+</br>
+</br>
+
+::: {.centered}
+::: {.large}
+Why is this important?
+:::
+:::
+
+## Step 0: Standardize the data
+
+**Specify** 
+
+::: {.midi}
+```{python}
+#| code-line-numbers: false
+#| label: specify-standard
+
+from sklearn.preprocessing import StandardScaler
+
+scaler = StandardScaler().set_output(transform = "pandas")
+```
+:::
+
+**Fit & Transform** 
+
+::: {.midi}
+```{python}
+#| code-line-numbers: false
+#| label: fit-transform-standard
+
+df_scaled = (
+  scaler
+  .fit_transform(df_penguins[["bill_length_mm", "flipper_length_mm"]])
+  )
+
+df_scaled.head()
+```
+:::
+
+## Step 1: Choose 3 random points to be centroids
+
+::: {.midi}
+```{python}
+#| code-line-numbers: false
+#| label: choose-initial-centroids
+
+centroids = df_scaled.sample(n = 3, random_state = 1234)
+centroids.index = ["orange", "purple", "green"]
+
+centroids
+```
+:::
+
+## Step 1: Choose 3 random points to be centroids
+
+::: {.midi}
+```{python}
+#| code-fold: true
+#| code-line-numbers: false
+#| eval: false
+#| label: add-centroids-to-plot-code
+
+(
+  ggplot(data = df_scaled, 
+         mapping = aes(x = "bill_length_mm", y = "flipper_length_mm")) + 
+         geom_point() + 
+         geom_point(data = centroids, color = centroids.index, size = 4) +
+         theme_bw() +
+         labs(x = "Bill Length (mm)", 
+              y = "Flipper Length (mm)"
+              )
+  )
+```
+:::
+
+```{python}
+#| echo: false
+#| label: add-centroids-to-plot
+#| fig-align: center
+
+plot = (
+  ggplot(data = df_scaled, 
+         mapping = aes(x = "bill_length_mm", y = "flipper_length_mm")) + 
+         geom_point() + 
+         geom_point(centroids, color = centroids.index, size = 4) +
+         theme_bw() +
+         labs(x = "Bill Length (mm)", 
+              y = "Flipper Length (mm)"
+              )
+  )
+
+plot.draw(plot)
+```
+
+## Step 2: Assign each point to nearest centroid
+
+::: {.midi}
+```{python}
+#| code-line-numbers: false
+#| label: calculate-distances-to-centroids
+
+from sklearn.metrics import pairwise_distances
+
+dists = pairwise_distances(df_scaled, centroids)
+dists[1:5]
+```
+:::
+
+## Step 2: Assign each point to nearest centroid
+
+::: {.midi}
+```{python}
+#| code-line-numbers: false
+#| label: find-closest-centroid
+
+closest_centroid = dists.argmin(axis = 1)
+closest_centroid
+```
+:::
+
+::: {.callout-caution}
+# `axis = 1` operates on each row
+:::
+
+## Step 2: Assign each point to nearest centroid
+
+```{python}
+#| code-line-numbers: false
+#| label: points-assigned-to-centroids
+
+df_scaled.index = centroids.index[closest_centroid]
+df_scaled.head(n = 10)
+```
+
+## Step 2: Assign each point to nearest centroid
+
+::: {.midi}
+```{python}
+#| code-fold: true
+#| code-line-numbers: false
+#| eval: false
+#| label: assign-points-to-centroids-code
+
+(
+  ggplot(data = df_scaled, 
+         mapping = aes(x = "bill_length_mm", y = "flipper_length_mm")) + 
+         geom_point(color = df_scaled.index) + 
+         geom_point(data = centroids, color = centroids.index, size = 3) +
+         theme_bw() +
+         labs(x = "Bill Length (mm)", 
+              y = "Flipper Length (mm)"
+              )
+  )
+```
+:::
+
+```{python}
+#| echo: false
+#| fig-align: center
+#| label: assign-points-to-centroids-plot
+
+plot = (
+  ggplot(data = df_scaled, 
+         mapping = aes(x = "bill_length_mm", y = "flipper_length_mm")) + 
+         geom_point(color = df_scaled.index) + 
+         geom_point(data = centroids, color = centroids.index, size = 3) +
+         theme_bw() +
+         labs(x = "Bill Length (mm)", 
+              y = "Flipper Length (mm)"
+              )
+  )
+  
+plot.draw(plot)
+```
+
+## Step 3: Find new centroids
+
+```{python}
+#| code-line-numbers: false
+
+centroids = df_scaled.groupby(df_scaled.index).mean()
+centroids
+```
+
+. . .
+
+</br>
+
+::: {.callout-warning}
+Are these centroids observations in `df_scaled`?
+:::
+
+## Step 3: Find new centroids
+
+::: {.midi}
+```{python}
+#| code-fold: true
+#| code-line-numbers: false
+#| eval: false
+#| label: assign-points-to-new-centroids-code
+
+(
+  ggplot(data = df_scaled, 
+         mapping = aes(x = "bill_length_mm", y = "flipper_length_mm")) + 
+         geom_point(color = df_scaled.index) + 
+         geom_point(data = centroids, color = centroids.index, size = 3) +
+         theme_bw() +
+         labs(x = "Bill Length (mm)", 
+              y = "Flipper Length (mm)"
+              )
+  )
+```
+:::
+
+```{python}
+#| echo: false
+#| fig-align: center
+#| label: assign-points-to-new-centroids-plot
+
+plot = (
+  ggplot(data = df_scaled, 
+         mapping = aes(x = "bill_length_mm", y = "flipper_length_mm")) + 
+         geom_point(color = df_scaled.index) + 
+         geom_point(data = centroids, color = centroids.index, size = 3) +
+         theme_bw() +
+         labs(x = "Bill Length (mm)", 
+              y = "Flipper Length (mm)"
+              )
+  )
+  
+plot.draw(plot)
+```
+
+## Step 4: Repeat over and over!
+
+::: {.small}
+```{python}
+#| code-line-numbers: false
+#| label: looping-over-centroids
+
+for i in range(1, 6):
+  dists = pairwise_distances(df_scaled, centroids)
+  closest_centroid = dists.argmin(axis = 1)
+  df_scaled.index = centroids.index[closest_centroid]
+  centroids = df_scaled.groupby(df_scaled.index).mean()
+  print(centroids)
+```
+:::
+
+. . .
+
+::: {.small}
+::: {.callout-tip}
+# At what point do we stop finding new centroids / reassigning points?
+:::
+:::
+
+## K-means in sklearn
+
+**Specify**
+
+::: {.midi}
+```{python}
+#| code-line-numbers: false
+#| label: sklearn-kmeans-specify
+
+from sklearn.cluster import KMeans
+from sklearn.pipeline import make_pipeline
+
+features = ["bill_length_mm", "flipper_length_mm"]
+
+model = KMeans(n_clusters = 3, random_state = 1234)
+
+pipeline = make_pipeline(
+    StandardScaler(),
+    model
+)
+```
+:::
+
+**Fit**
+
+:::{.midi}
+```{python}
+#| code-line-numbers: false
+#| label: sklearn-kmeans-fit
+
+pipeline.fit(df_penguins[features]);
+```
+:::
+
+## K-means in sklearn
+
+```{python}
+#| code-line-numbers: false
+#| label: sklearn-grab-clusters
+
+clusters = model.labels_
+clusters
+```
+
+## Interpreting K-Means
+
+The key takeaway here is the **cluster centers**:
+
+```{python}
+#| code-line-numbers: false
+#| label: sklearn-grab-centroids
+
+centroids = model.cluster_centers_
+centroids
+```
+
+<!-- "bill_length_mm", "flipper_length_mm" -->
+
+::: {.incremental}
+-   Cluster 1 has a short bill and short flippers
+
+-   Cluster 2 has medium bill and long flipper
+
+-   Cluster 3 has long bill, and fairly average flipper
+:::
+
+## Interpreting K-Means
+
+We also might check if these clusters match any labels that we already know:
+
+```{python}
+#| code-line-numbers: false
+#| code-fold: true
+#| label: check-clusters-against-species
+
+results = pd.DataFrame({
+  "cluster": clusters,
+  "species": df_penguins['species']
+})
+
+(
+  results
+  .groupby("species")["cluster"]
+  .value_counts()
+  .unstack()
+  .fillna(0)
+  )
+```
+ 
+# Your Turn
+
+## Activity
+
+1. Fit a 3-means model using *all* the numeric predictors in the penguins data.
+
+-   Describe what each cluster represents. 
+
+-   Do these clusters match up to the species?
+
+2. Next, fit a 5-means model.
+
+-   Do those clusters match up to species and island?
+
+# Takeaways
+
+## Takeaways
+
+-   **Unsupervised learning** is a way to find *structure* in data.
+
+-   **K-means** is the most common **clustering method**.
+
+-   We **have to choose K ahead of time**.
+
+::: {.callout-warning}
+# This is a big problem! 
+
+Why can't we tune????
+:::

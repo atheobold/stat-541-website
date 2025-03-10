@@ -1,0 +1,819 @@
+---
+title: "Logistic Regression"
+format:  
+  revealjs: 
+    theme: [default, style.scss]
+editor: source
+execute:
+  echo: true
+---
+
+```{r}
+#| include: false
+#| label: load-python
+library(reticulate)
+use_python("/usr/local/bin/python3")
+```
+
+```{python}
+#| include: false
+#| label: load-packages
+import numpy as np
+import pandas as pd
+from plotnine import *
+```
+
+# The story this week...
+
+## Classification
+
+::: {.midi}
+::: {.incremental
+}
+-   We can do **KNN for Classification** by letting the nearest neighbors "vote".
+
+-   The number of votes is a "probability".
+
+-   A **classification model** must be evaluated differently than a **regression model**.
+
+-   One possible metric is **accuracy**, but this is a bad choice in situations with **imbalanced data**.
+
+-   **Precision** measures "if we say it's in Class A, is it really?"
+
+-   **Recall** measures "if it's really in Class A, did we find it?"
+
+-   **F1 Score** is a balance of precision and recall.
+
+-   **Macro F1 Score** averages the F1 scores of all classes.
+
+:::
+:::
+
+# Revisiting the Breast Cancer Data
+
+## Breast Tissue Classification
+
+Electrical signals can be used to detect whether tissue is cancerous.
+
+::: {.centered}
+![](images/11-breast-diagram.jpeg){width=".4\\textwidth" fig-alt="A medical illustration showing a breast cancer detection procedure using electrical impedance scanning. A patient is lying down while a scan probe is placed on the breast. An inset diagram highlights how the probe detects differences in impedance between normal breast adipose tissue (high impedance) and malignant lesions (low impedance). The probe is connected to a computer displaying a grid with white dots, likely representing detected areas of concern."}
+:::
+
+## Analysis Goal
+
+The goal is to determine whether a sample of breast tissue is:
+
+::: columns
+::: {.column width="45%"}
+**Not Cancerous** 
+
+1. connective tissue 
+2. adipose tissue 
+3. glandular tissue
+
+:::
+
+::: {.column width="10%"}
+:::
+
+::: {.column width="45%"}
+**Cancerous** 
+
+4. carcinoma 
+5. fibro-adenoma 
+6. mastopathy
+:::
+:::
+
+## Binary response: Cancer or Not
+
+Let's read the data, and also make a new variable called "Cancerous".
+
+::: {.midi}
+```{python}
+#| code-line-numbers: false
+#| label: load-cancer
+
+import pandas as pd
+
+df = pd.read_csv("https://datasci112.stanford.edu/data/BreastTissue.csv")
+
+cancer_levels = ["car", "fad", "mas"]
+df['Cancerous'] = df['Class'].isin(cancer_levels)
+```
+
+```{python}
+#| echo: false
+#| label: head-of-cancer-data
+
+df.head()
+```
+:::
+
+# Why not use "regular" regression?
+
+. . .
+
+**You should NOT use ordinary regression for a classification problem! This slide section is to show you why it does NOT work.**
+
+## Counter-Example: Linear Regression
+
+We know that in computers, `True` = `1` and `False` = `0`. So, why not convert our response variable, `Cancerous`, to numbers and fit a regression?
+
+::: {.midi}
+```{python}
+#| code-line-numbers: false
+#| label: convert-cancer-to-integer
+
+df['Cancerous'] = df['Cancerous'].astype('int')
+```
+
+```{python}
+#| label: head-of-mutated-cancer-data
+
+df.head()
+```
+:::
+
+## Counter-Example: Linear Regression
+
+```{python}
+#| code-line-numbers: false
+#| label: linear-regression-sklearn
+
+from sklearn.linear_model import LinearRegression
+from sklearn.pipeline import make_pipeline
+
+pipeline = make_pipeline(
+  LinearRegression()
+  )
+
+pipeline = pipeline.fit(X = df[["I0", "PA500"]],
+                        y = df['Cancerous'])
+```
+
+## Counter-Example: Linear Regression
+
+**Problem 1:** Did we get "reasonable" predictions?
+
+```{python}
+#| code-line-numbers: false
+#| label: linear-regression-predictions
+
+pred_cancer = pipeline.predict(df[["I0", "PA500"]])
+```
+
+</br> 
+
+::: columns
+::: {.column width="45%"}
+```{python}
+#| code-line-numbers: false
+#| label: min-prediction
+
+pred_cancer.min()
+```
+:::
+
+::: {.column width="10%"}
+:::
+
+::: {.column width="45%"}
+```{python}
+#| code-line-numbers: false
+#| label: max-prediction
+
+pred_cancer.max()
+```
+:::
+:::
+
+## Counter-Example: Linear Regression
+
+**Problem 2:** How do we translate these predictions into  *categories*???
+
+```{python}
+#| code-line-numbers: false
+#| label: display-all-linear-regression-predictions
+
+pred_cancer = pipeline.predict(df[["I0", "PA500"]])
+pred_cancer
+```
+
+## Counter-Example: Linear Regression
+
+**Problem 3:** Was the relationship really *linear*???
+
+::: {.small}
+```{python}
+#| code-fold: true
+#| code-line-numbers: false
+#| eval: false
+#| label: not-linear-regression-code
+
+from plotnine import *
+
+(
+  ggplot(data = df, 
+         mapping = aes(x = "I0", y = "Cancerous")) + 
+  geom_point() + 
+  geom_smooth(method = "lm", se = False) + 
+  theme_bw()
+)
+```
+:::
+
+```{python}
+#| echo: false
+#| fig-align: center
+#| label: not-linear-regression-viz
+
+from plotnine import *
+
+plot = (
+  ggplot(data = df, 
+         mapping = aes(x = "I0", y = "Cancerous")) + 
+  geom_point() + 
+  geom_smooth(method = "lm", se = False) + 
+  theme_bw()
+)
+
+plot.draw(plot)
+```
+
+## Counter-Example: Linear Regression
+
+**Problem 4:** Are the errors really *random*???
+
+::: {.small}
+```{python}
+#| code-fold: true
+#| code-line-numbers: false
+#| label: non-random-errors-code
+#| eval: false
+
+residuals = df['Cancerous'] - pred_cancer
+
+(
+  ggplot(data = df, 
+         mapping = aes(x = "I0", y = residuals)) + 
+  geom_point() +
+  theme_bw() +
+  labs(y = "Linear Regression Residuals")
+  ) 
+```
+:::
+
+```{python}
+#| echo: false
+#| fig-align: center
+#| label: non-random-errors-viz
+
+residuals = df['Cancerous'] - pred_cancer
+
+plot = (
+  ggplot(data = df, 
+         mapping = aes(x = "I0", y = residuals)) + 
+  geom_point() + 
+  theme_bw() +
+  labs(y = "Linear Regression Residuals")
+  )
+  
+plot.draw(plot)
+```
+
+## Counter-Example: Linear Regression
+
+**Problem 5:** Are the errors *normally distributed*???
+
+::: {.small}
+```{python}
+#| code-fold: true
+#| code-line-numbers: false
+#| label: non-normal-errors-code
+#| eval: false
+
+(
+  ggplot(data = df, 
+         mapping = aes(x = residuals)) + 
+  geom_density() +
+  theme_bw() +
+  labs(x = "Residual from Linear Regression Model")
+  )
+```
+:::
+
+```{python}
+#| echo: false
+#| fig-align: center
+#| label: non-normal-errors-viz
+
+plot = (
+  ggplot(data = df, 
+         mapping = aes(x = residuals)) + 
+  geom_density() +
+  theme_bw() +
+  labs(x = "Residual from Linear Regression Model")
+  )
+  
+plot.draw(plot)
+```
+
+# Logistic Regression
+
+## Logistic Regression
+
+**Idea:** Instead of predicting 0 or 1, try to predict the *probability* of cancer.
+
+::: {.incremental}
+-   **Problem:** We don't observe probabilities before diagnosis; we only know if that person ended up with cancer or not.
+
+-   **Solution:** (Fancy statistics and math.)
+
+-   Why is it called **Logistic Regression**?
+
+-   Because the "fancy math" uses a *logistic function* in it.
+:::
+
+## Logistic Regression 
+
+::: {.midi}
+What you need to know:
+
+-   It's used for **binary classification** problems.
+
+-   The predicted **values** are the "log-odds" of having cancer, i.e.
+
+$$\text{log-odds} = \log \left(\frac{p}{1-p}\right)$$
+:::
+
+. . .
+
+::: {.midi}
+-   We are more interested in the **predicted probabilities**.
+
+-   As with KNN, we predict **categories** by choosing a **threshold**.
+
+-   By default if $p > 0.5$ -\> we predict cancer
+:::
+
+## Logistic Regression in `sklearn`
+
+```{python}
+#| code-line-numbers: false
+#| label: logistic-regression-sklearn
+
+from sklearn.linear_model import LogisticRegression
+
+pipeline = make_pipeline(
+  LogisticRegression(penalty = None)
+  )
+
+pipeline.fit(X = df[["I0", "PA500"]], 
+             y = df['Cancerous']
+             );
+```
+
+## Logistic Regression in `sklearn`
+
+```{python}
+#| code-line-numbers: false
+#| label: logisitic-regression-predictions
+
+pred_cancer = pipeline.predict(df[["I0", "PA500"]])
+pred_cancer
+```
+
+# Precison and Recall Revisited
+
+## Confusion Matrix
+
+::: {.midi}
+```{python}
+#| code-line-numbers: false
+#| code-fold: true
+#| label: cancer-confusion-matrix-default-threshold
+
+from sklearn.metrics import confusion_matrix
+
+pd.DataFrame(
+  confusion_matrix(df['Cancerous'], pred_cancer), 
+  columns = pipeline.classes_, 
+  index = pipeline.classes_)
+```
+
+-   Calculate the *precision* for predicting cancer.
+
+-   Calculate the *recall* for predicting cancer.
+:::
+
+. . .
+
+::: {.midi}
+-   Calculate the *precision* for predicting non-cancer.
+
+-   Calculate the *recall* for predicting non-cancer.
+:::
+
+## Threshold
+
+What if we had used different cutoffs besides $p > 0.5$?
+
+```{python}
+#| code-line-numbers: false
+#| label: cancer-probabilities
+
+prob_cancer = pipeline.predict_proba(df[["I0", "PA500"]])
+prob_cancer.round(2)[1:10]
+```
+
+## Higher Threshold
+
+What we used $p > 0.7$?
+
+```{python}
+#| code-line-numbers: false
+#| label: tring-70-percent-threshold
+
+prob_cancer = pipeline.predict_proba(df[["I0", "PA500"]])
+
+pred_cancer_70 = prob_cancer[:, 1] > .7
+pred_cancer_70[1:10]
+```
+
+## Higher Threshold
+
+What we used $p > 0.7$?
+
+```{python}
+#| code-line-numbers: false
+#| code-fold: true
+#| label: 70-percent-threshold-confusion-matrix
+
+conf_mat = confusion_matrix(df['Cancerous'], pred_cancer_70)
+pd.DataFrame(conf_mat, 
+             columns = pipeline.classes_, 
+             index = pipeline.classes_)
+```
+
+. . .
+
+```{python}
+#| code-line-numbers: false
+#| label: 70-percent-threshold-precision-recall
+
+precision_1 = conf_mat[1,1] / conf_mat[:,1].sum()
+precision_1
+
+recall_1 = conf_mat[1,1] / conf_mat[1, :].sum()
+recall_1
+```
+
+## Lower Threshold
+
+What we used $p > 0.2$?
+
+```{python}
+#| code-line-numbers: false
+#| label: 20-percent-threshold-confusion-matrix
+
+prob_cancer = pipeline.predict_proba(df[["I0", "PA500"]])
+pred_cancer_20 = prob_cancer[:,1] > .2
+pred_cancer_20[1:10]
+```
+
+## Lower Threshold
+
+```{python}
+#| code-line-numbers: false
+#| code-fold: true
+#| label: 20-percent-threshold-precision-recall
+
+conf_mat = confusion_matrix(df['Cancerous'], pred_cancer_20)
+pd.DataFrame(conf_mat, 
+             columns = pipeline.classes_, 
+             index = pipeline.classes_)
+```
+
+. . .
+
+```{python}
+#| code-line-numbers: false
+#| label: code-for-precision-recall
+
+precision_1 = conf_mat[1,1] / conf_mat[:,1].sum()
+precision_1
+
+recall_1 = conf_mat[1,1] / conf_mat[1, :].sum()
+recall_1
+```
+
+## Precision-Recall Curve
+
+```{python}
+#| code-line-numbers: false
+#| label: precision-recall-curve
+
+from sklearn.metrics import precision_recall_curve
+
+precision, recall, thresholds = precision_recall_curve(
+    df['Cancerous'], prob_cancer[:, 1])
+
+df_pr = pd.DataFrame({
+  "precision": precision,
+  "recall": recall
+})
+```
+
+## Precision-Recall Curve
+
+```{python}
+#| code-line-numbers: false
+#| code-fold: true
+#| label: precision-recall-curve-plot-code
+#| eval: false
+
+(
+  ggplot(data = df_pr, 
+         mapping = aes(x = "recall", y = "precision")) +
+  geom_line() + 
+  theme_bw() + 
+  labs(x = "Recall", 
+       y = "Precision")
+)
+```
+
+```{python}
+#| label: precision-recall-curve-plot
+#| echo: false
+#| fig-align: center
+
+plot = (
+  ggplot(data = df_pr, 
+         mapping = aes(x = "recall", y = "precision")) +
+  geom_line() +
+  theme_bw() + 
+  labs(x = "Recall", 
+       y = "Precision")
+)
+
+plot.draw(plot)
+```
+
+# Your turn
+
+## Activity 
+
+::: {.midi}
+Suppose you want to predict Cancer vs. No Cancer from breast tissue using a Logistic Regression. Should you use...
+
+-   Just `I0` and `PA500`?
+
+-   Just `DA` and `P`?
+
+-   `I0`, `PA500`, `DA`, and `P`?
+
+-   or all predictors?
+
+Use **cross-validation** (`cross_val_score()`) with 10 folds using the **F1 Score** (`scoring = "f1_macro"`) to decide!
+
+Then, fit your **final model** and report the **confusion matrix**.
+:::
+
+# Interpreting Logistic Regression
+
+## Looking at Coefficients
+
+::: {.midi}
+```{python}
+#| code-line-numbers: false
+#| label: logistic-regression-coefficients
+
+pd.DataFrame({
+  "Coefficients": pipeline['logisticregression'].coef_[0],
+  "Column": ["I0", "PA500"]
+  })
+```
+:::
+
+::: {.incremental}
+-   "For every unit of I0 higher, we predict 0.003 **lower** log-odds of cancer."
+
+-   "For every unit of PA500 higher, we predict 11.73 **higher** log-odds of cancer."
+:::
+
+## Feature Importance
+
+-   Does this mean that `PA500` is *more important* than `I0`?
+
+::::: columns
+::: {.column width="50%"}
+::: {.small}
+```{python}
+#| code-fold: true
+#| code-line-numbers: false
+#| label: pa500-cancer-density-code
+#| eval: false
+
+(
+  ggplot(data = df, 
+         mapping = aes(x = "PA500", 
+                       group = "Cancerous", 
+                       fill = "Cancerous")) + 
+  geom_density(alpha = 0.5, show_legend = False) +
+  theme_bw()
+) 
+```
+:::
+
+```{python}
+#| label: pa500-cancer-density-viz
+#| echo: false
+
+plot = (
+  ggplot(data = df, 
+         mapping = aes(x = "PA500", 
+                       group = "Cancerous", 
+                       fill = "Cancerous")) + 
+  geom_density(alpha = 0.5, show_legend = False) +
+  theme_bw()
+) 
+
+plot.draw(plot)
+```
+:::
+
+::: {.column width="50%"}
+::: {.small}
+```{python}
+#| code-fold: true
+#| code-line-numbers: false
+#| label: I0-cancer-density-code
+#| eval: false
+
+(
+  ggplot(data = df, 
+         mapping = aes(x = "I0", 
+                       group = "Cancerous", 
+                       fill = "Cancerous")) + 
+  geom_density(alpha = 0.5, show_legend = False) + 
+  theme_bw()
+)
+```
+:::
+
+```{python}
+#| label: I0-cancer-density-viz
+#| echo: false
+
+plot = (
+  ggplot(data = df, 
+         mapping = aes(x = "I0", 
+                       group = "Cancerous", 
+                       fill = "Cancerous")) + 
+  geom_density(alpha = 0.5, show_legend = False) + 
+  theme_bw()
+)
+
+plot.draw(plot)
+```
+:::
+:::::
+
+## Standardization
+
+::: {.incremental}
+-   Does this mean that `PA500` is *more important* than `I0`?
+
+-   **Not necessarily.** They have different *units* and so the coefficients mean different things.
+
+-   "For every **1000** units of I0 higher, we predict **3.0 lower** log-odds of cancer"
+
+-   "For every **0.1** unit of PA500 higher, we predict **1.1 higher** log-odds of cancer."
+
+-   What if we had *standardized* `I0` and `PA500`?
+:::
+
+## Standardization
+
+::: {.midi}
+```{python}
+#| code-line-numbers: false
+#| label: standardize-features-logistic-regression
+
+from sklearn.preprocessing import StandardScaler
+
+pipeline2 = make_pipeline(
+  StandardScaler(),
+  LogisticRegression(penalty = None)
+  )
+
+pipeline2 = pipeline2.fit(df[["I0", "PA500"]], df['Cancerous'])
+
+pd.DataFrame({
+  "Coefficients": pipeline2['logisticregression'].coef_[0],
+  "Column": ["I0", "PA500"]
+  })
+
+```
+:::
+
+## Standardization
+
+```{python}
+#| echo: false
+#| label: standardize-features-logistic-regression-preview
+
+pd.DataFrame({
+  "Coefficients": pipeline2['logisticregression'].coef_[0],
+  "Column": ["I0", "PA500"]
+  })
+```
+
+-   "For every **standard deviation above the mean** someone's `I0` is, we predict **2.3 lower** log-odds of cancer"
+
+. . .
+
+-   "For every **standard deviation above the mean** someone's `PA500` is, we predict **0.80 higher** log-odds of cancer."
+
+## Standardization: Do you need it?
+
+::: {.midi}
+But - does this approach change our predictions?
+
+```{python}
+#| code-line-numbers: false
+#| label: compare-probability-predictions-standardize-not
+
+old_probs = pipeline.predict_proba(df[["I0", "PA500"]])
+new_probs = pipeline2.predict_proba(df[["I0", "PA500"]])
+
+pd.DataFrame({
+  "without_stdize": old_probs[:,1], 
+  "with_stdize": new_probs[:,1]
+  }).head(10)
+```
+:::
+
+## Standardization: Do you need it?
+
+::: {.midi}
+::: {.incremental}
+-   Standardizing will **not change the predictions** for Linear or Logistic Regression!
+
+    + This is because the **coefficients** are chosen relative to the **units** of the predictors. (Unlike in KNN!)
+
+-   Advantage of *not* standardizing: More interpretable coefficients
+
+    + "For each unit of... " instead of "For each sd above the mean..."
+
+-   Advantage of *standardizing*: Compare relative importance of predictors
+
+-   **It's up to you!**
+
+    + *Don't use cross-validation to decide - you'll get the same 
+    metrics for both!*
+:::
+:::
+
+# Your turn
+
+## Activity
+
+For your Logistic Regression using **all** predictors, which variable was the most important?
+
+How would you interpret the coefficient?
+
+::: {.midi}
+```{python}
+#| include: false
+#| eval: false
+#| label: activity-solution
+
+pipeline3 = make_pipeline(
+  StandardScaler(),
+  LogisticRegression(penalty = None)
+  )
+
+features = ["I0", "PA500", 'HFS', 'DA', 'Area', 'A/DA', 'Max IP', 'DR', 'P']
+
+pipeline3 = pipeline3.fit(X = df[features], y = df['Cancerous'])
+
+pd.DataFrame({
+  "Coefficients": pipeline3['logisticregression'].coef_[0],
+  "Column": features
+  })
+```
+:::
+
+# Takeaways
+
+## Takeaways
+
+-   To fit a **regression model** (i.e., coefficients times predictors) to a **categorical response**, we use **Logistic Regression**.
+
+-   Coefficients are interpreted as "One unit increase in predictor is associated with a \[something\] increase in the log-odds of Category 1."
+
+-   We still use **cross-validated metrics** to decide between KNN and Logistic regression, and between different feature sets.
+
+-   We still report **confusion matrices** and sometimes **precision-recall curves** of our final model.

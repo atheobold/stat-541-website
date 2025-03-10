@@ -1,0 +1,432 @@
+---
+title: "Tabular Data and Variable Summaries"
+format:  
+  revealjs: 
+    theme: [default, style.scss]
+    incremental: true 
+execute:
+  echo: true
+editor: source
+---
+
+```{r}
+#| include: false
+#| label: load-packages-declare-python-directory
+
+library(reticulate)
+use_python("/usr/local/bin/python3")
+
+```
+
+```{r}
+#| include: false
+#| eval: false
+#| label: how-to-install-packages
+
+## How to install packages through reticulate
+reticulate::py_install("numpy", pip = TRUE)
+reticulate::py_install("pandas", pip = TRUE)
+
+## How to check if the packages were successfully installed
+reticulate::import("numpy")
+reticulate::import("pandas")
+
+```
+
+```{python}
+#| include: false
+#| label: importing-python-packages
+
+import numpy as np
+import pandas as pd
+
+```
+
+# Data "on disk"
+
+## Data are stored in plain text files
+
+::: small
+```         
+name,pclass,survived,sex,age,sibsp,parch,ticket,fare,cabin,embarked,boat,body,home.dest
+"Allen, Miss. Elisabeth Walton",1,1,female,29,0,0,24160,211.3375,B5,S,2,,"St Louis, MO"
+"Allison, Master. Hudson Trevor",1,1,male,0.9167,1,2,113781,151.5500,C22 C26,S,11,,"Montreal, PQ / Chesterville, ON"
+"Allison, Miss. Helen Loraine",1,0,female,2,1,2,113781,151.5500,C22 C26,S,,,"Montreal, PQ / Chesterville, ON"
+"Allison, Mr. Hudson Joshua Creighton",1,0,male,30,1,2,113781,151.5500,C22 C26,S,,135,"Montreal, PQ / Chesterville, ON"
+"Allison, Mrs. Hudson J C (Bessie Waldo Daniels)",1,0,female,25,1,2,113781,151.5500,C22 C26,S,,,"Montreal, PQ / Chesterville, ON"
+"Anderson, Mr. Harry",1,1,male,48,0,0,19952,26.5500,E12,S,3,,"New York, NY"
+"Andrews, Miss. Kornelia Theodosia",1,1,female,63,1,0,13502,77.9583,D7,S,10,,"Hudson, NY"
+"Andrews, Mr. Thomas Jr",1,0,male,39,0,0,112050,0.0000,A36,S,,,"Belfast, NI"
+"Appleton, Mrs. Edward Dale (Charlotte Lamson)",1,1,female,53,2,0,11769,51.4792,C101,S,D,,"Bayside, Queens, NY"
+"Artagaveytia, Mr. Ramon",1,0,male,71,0,0,PC 17609,49.5042,,C,,22,"Montevideo, Uruguay"
+"Astor, Col. John Jacob",1,0,male,47,1,0,PC 17757,227.5250,C62 C64,C,,124,"New York, NY"
+```
+:::
+
+::: small
+-   This is called a **csv** (*comma-separated*) file.
+
+-   You might see it stored as `something.csv` or `something.txt`
+
+-   `.txt` files might have different delimiters (separators)
+:::
+
+## Reading data
+
+We *read the data* into a program like `Python` by specifying:
+
+-   what **type** of file it is (e.g., `.csv`, `.txt`, `.xlsx`)
+
+-   **where** the csv file is located (the **"path"**)
+
+-   if the file has a **header**
+
+-   ... and other information in special cases!
+
+## Example using `pandas` data frame:
+
+```{python}
+#| code-line-numbers: false
+#| label: read-in-data-from-online
+
+df = pd.read_csv("https://datasci112.stanford.edu/data/titanic.csv")
+```
+
+::: callout-tip
+# `read_csv()` lives in `pandas`
+:::
+
+. . .
+
+```{python}
+#| code-line-numbers: false
+#| label: inspect-data-code
+#| eval: false
+
+df.head()
+```
+
+::: small
+```{python}
+#| code-line-numbers: false
+#| label: inspect-data-preview
+#| echo: false
+
+df.head()
+```
+:::
+
+## Lecture 1.1 Check in
+
+::: small
+```{python}
+#| code-line-numbers: false
+#| label: check-in-part-1
+
+df = pd.read_csv("https://datasci112.stanford.edu/data/titanic.csv")
+```
+:::
+
+::: callout
+**Question 1:** What if this file lived on a computer instead of online?
+
+**Question 2:** Why didn't we have to specify that this dataset has a header?
+:::
+
+## Looking at the rows
+
+:::::::: columns
+:::: {.column width="48%"}
+::: small
+```{python}
+#| code-line-numbers: false
+#| label: inspecting-rows-loc
+
+df.loc[1, :]
+```
+:::
+::::
+
+::: {.column width="3%"}
+:::
+
+:::: {.column width="47%"}
+::: small
+```{python}
+#| code-line-numbers: false
+#| label: inspecting-rows-iloc
+
+df.iloc[1, :]
+```
+:::
+::::
+::::::::
+
+. . .
+
+-   What is the difference between `.loc` and `.iloc`?
+
+-   What **type** of object is returned?
+
+## loc, iloc, and index
+
+```{python}
+#| code-line-numbers: false
+#| label: moving-name-to-row-ID
+
+df2 = df.set_index('name')
+```
+
+::: small
+```{python}
+#| echo: false
+#| label: preview-data-with-rownames
+
+df2.head()
+```
+:::
+
+</br>
+
+::: callout-warning
+# Why are there 13 columns now? (There were 14 before!)
+:::
+
+## loc, iloc, and index
+
+:::::: columns
+::: {.column width="48%"}
+```{python}
+#| error: true
+#| code-line-numbers: false
+#| label: loc-without-row-label
+
+
+df2.loc[1, :]
+```
+:::
+
+::: {.column width="3%"}
+:::
+
+::: {.column width="47%"}
+```{python}
+#| code-line-numbers: false
+#| label: iloc-with-row-label
+
+df2.iloc[1, :]
+```
+:::
+::::::
+
+:::::::: columns
+:::: {.column width="48%"}
+::: fragment
+Why is `.loc` returning an error?
+:::
+::::
+
+::: {.column width="3%"}
+:::
+
+:::: {.column width="47%"}
+::: fragment
+Why is `.iloc` not returning an error?
+:::
+::::
+::::::::
+
+## loc, iloc, and index
+
+::::::::::: columns
+::::: {.column width="48%"}
+**`.loc`** -- label-based location
+
+:::: small
+-   Uses labels from rows (rownames) to select data
+
+::: fragment
+```{python}
+#| code-line-numbers: false
+#| label: loc-with-row-label
+
+df2.loc["Allison, Master. Hudson Trevor", :]
+```
+:::
+::::
+:::::
+
+::: {.column width="3%"}
+:::
+
+:::::: {.column width="47%"}
+::::: fragment
+**`.iloc`** -- integer location
+
+:::: small
+-   Uses indices (positions) from rows to select data
+
+::: fragment
+```{python}
+#| code-line-numbers: false
+#| label: iloc-with-row-label-2
+
+df2.iloc[1, :]
+```
+:::
+::::
+:::::
+::::::
+:::::::::::
+
+## Looking at columns
+
+::::::: columns
+::: {.column width="50%"}
+```{python}
+#| label: column-names
+#| code-line-numbers: false
+
+df.columns
+```
+:::
+
+::: {.column width="5%"}
+:::
+
+:::: {.column width="45%"}
+::: fragment
+```{python}
+#| code-line-numbers: false
+#| label: extract-column
+
+df['home.dest']
+```
+:::
+::::
+:::::::
+
+. . .
+
+::: callout-tip
+# `NaN` (Not a Number) represents missing or null data
+:::
+
+## Caution: Object types
+
+```{python}
+#| code-line-numbers: false
+#| label: object-types-df
+
+type(df)
+```
+
+</br>
+
+. . .
+
+```{python}
+#| code-line-numbers: false
+#| label: object-types-loc
+
+type(df.iloc[1, :])
+```
+
+. . .
+
+</br>
+
+```{python}
+#| code-line-numbers: false
+#| label: object-types-column-extract
+
+type(df['name'])
+```
+
+. . .
+
+::: callout-tip
+# A `Series` is a one-dimensional labeled array (a vector with labels)
+:::
+
+# Summarizing a Data Frame
+
+## Questions to ask
+
+-   Which variables (columns) are **categorical**?
+
+-   Which variables are **quantitative**?
+
+-   Which variables are **labels** (e.g. names or ID numbers)?
+
+-   Which variables are **text**?
+
+## A quick look at the data
+
+::: small
+```{python}
+#| code-line-numbers: false
+#| label: data-summary
+
+df.describe()
+```
+:::
+
+</br>
+
+#### Lecture 1.1 Check in
+
+::: callout
+**Question 3:** What percent of *Titanic* passengers survived?
+
+**Question 4:** What was the average (mean) fare paid for a ticket?
+:::
+
+## Changing Variable Types
+
+-   The variable `pclass` was **categorical**, but Python assumed it was *quantitative*.
+
+-   It's our job to check and fix data!
+
+. . .
+
+```{python}
+#| code-line-numbers: false
+#| label: changing-data-types
+
+df["pclass"] = df["pclass"].astype("category")
+```
+
+</br>
+
+. . .
+
+::: callout-note
+# Why choose to store `pclass` as a `"category"` instead of a `"string"`?
+:::
+
+## Summary of categorical variable
+
+```{python}
+#| code-line-numbers: false
+#| label: counts-of-class-variable
+
+df["pclass"].value_counts()
+```
+
+. . .
+
+</br>
+
+```{python}
+#| code-line-numbers: false
+#| label: proportions-of-class-variable
+
+df["pclass"].value_counts(normalize = True)
+```
+
+## Lecture 1.1 Check in
+
+**Question 5:** What percent of *Titanic* passengers were in First Class?
+
+**Question 6:** Which is the correct way to change a numeric column to a categorical variable?

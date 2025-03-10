@@ -1,0 +1,603 @@
+---
+title: "Dummy Variables and Column Transformers"
+format:  
+  revealjs: 
+    theme: [default, style.scss]
+editor: source
+execute:
+  echo: true
+---
+
+
+```{r}
+#| include: false
+library(reticulate)
+use_python("/usr/local/bin/python3")
+```
+
+```{python}
+#| include: false
+import numpy as np
+import pandas as pd
+from plotnine import *
+```
+
+# The story last week...
+
+## Distances
+
+> We measure similarity between **observations** by calculating **distances**.
+
+. . .
+
+-   **Euclidean distance**: sum of squared differences, then square root
+
+-   **Manhattan distance**: sum of absolute differences
+
+. . .
+
+::: {.callout-tip}
+## `scikit-learn`
+
+Use the `pairwise_distances()` function to get back a *2D numpy array* of distances.
+:::
+
+## Scaling
+
+> It is important that all our **features** be on the same **scale** for
+distances to be meaningful.
+
+. . .
+
+-   **Standardize:** Subtract the *mean* (of the column) and divide by the *standard deviation* (of the column).
+
+-   **MinMax:** Subtract the *minimum* value, divide by the *range*.
+
+. . .
+
+::: {.callout-tip}
+# `scikit-learn`
+
+Follow the **specify** - **fit** - **transform** code structure. In the specify 
+step, you should use the `StandardScaler()` or `MinMaxScaler()` functions.
+:::
+
+## Recall: AMES Housing data
+
+::: {.small}
+```{python}
+#| code-line-numbers: false
+#| label: ames-data
+df = pd.read_table("https://datasci112.stanford.edu/data/housing.tsv")
+df.head()
+```
+:::
+
+# Distances and Categorical Variables
+
+## What about categorical variables?
+
+Suppose we want to include the variable `Bldg Type` in our distance calculation...
+
+```{python}
+#| code-line-numbers: false
+#| label: building-type-preview
+df["Bldg Type"].value_counts()
+```
+
+. . .
+
+</br>
+
+Then we need a way to calculate $(\texttt{1Fam} - \texttt{Twnhs} )^ 2$. 
+
+## Converting to Binary
+
+Let's instead think about a variable that summarizes whether an observation is a
+single family home or not. 
+
+```{python}
+#| code-line-numbers: false
+#| label: create-binary-1fam
+
+df["is_single_fam"] = df["Bldg Type"] == "1Fam"
+df["is_single_fam"].value_counts()
+```
+
+. . .
+
+::: {.callout-tip}
+# What does a value of `True` represent? `False`?
+:::
+
+## Dummy Variables
+
+::: {.midi}
+When we transform a variable into binary (`True` / `False`), we call this 
+variable a **dummy variable** or we say the variable has been **one-hot-encoded**.
+:::
+
+. . .
+
+Remember that that computers interpret logical values (`True` / `False`) the 
+same as `1` / `0`: 
+
+```{python}
+#| code-line-numbers: false
+#| label: convert-logical-to-int
+
+df["is_single_fam"] = df["is_single_fam"].astype("int")
+df["is_single_fam"].value_counts()
+```
+
+## Now we can do math!
+
+**Specify** 
+
+::: {.midi}
+```{python}
+#| code-line-numbers: false
+#| label: specify-1fam
+
+from sklearn.preprocessing import StandardScaler
+from sklearn.metrics import pairwise_distances
+
+scaler = StandardScaler()
+```
+:::
+
+. . .
+
+**Fit**
+
+::: {.midi}
+```{python}
+#| code-line-numbers: false
+#| label: fit-1fam
+#| output-location: column
+
+df_orig = df[['Gr Liv Area', 'Bedroom AbvGr', 'is_single_fam']]
+scaler.fit(df_orig)
+```
+:::
+
+. . .
+
+**Transform**
+
+::: {.midi}
+```{python}
+#| code-line-numbers: false
+#| label: transform-1fam
+
+df_scaled = scaler.transform(df_orig)
+
+```
+:::
+
+## Calculating Distances
+
+::: {.midi}
+```{python}
+#| code-line-numbers: false
+#| label: distances-1fam
+
+dists = pairwise_distances(df_scaled[[1707]], df_scaled)
+best = (
+  dists
+  .argsort()
+  .flatten()
+  [1:10]
+  )
+df_orig.iloc[best]
+```
+:::
+
+# Looking back...
+
+. . .
+
+Where have you seen one-hot-encoded variables already?
+
+# Let's reset the dataset now...
+
+```{python}
+#| code-line-numbers: false
+#| label: data-reset
+df = pd.read_table("https://datasci112.stanford.edu/data/housing.tsv")
+```
+
+# Dummifying Variables
+
+## Dummifying Variables
+
+::: {.incremental}
+::: {.midi}
+-   What if we don't just want to study `is_single_fam`, but rather, *all* 
+categories of the `Bldg Type` variable?
+
+-   In principle, we just make **dummy variables** for **each category**: `is_single_fam`, `is_twnhse`, etc.
+
+-   Each **category** becomes one **column**, with 0's and 1's to show if the *observation in that row* matches that *category*.
+
+-   That sounds pretty tedious, especially if you have a lot of categories...
+
+-   Luckily, we have shortcuts in both `pandas` *and* `sklearn`!
+:::
+:::
+
+## Dummifying in Pandas
+
+::: {.small}
+```{python}
+#| code-line-numbers: false
+#| label: pandas-dummies-building
+
+pd.get_dummies(df[["Bldg Type"]])
+```
+:::
+
+## Dummifying in Pandas
+
+::: {.small}
+```{python}
+#| code-line-numbers: false
+#| label: pandas-dummies-building-output-only
+#| echo: false
+
+pd.get_dummies(df[["Bldg Type"]])
+```
+:::
+
+::: {.midi}
+Some things to notice here...
+:::
+
+::: {.small}
+::: {.incremental}
+1.  What is the **naming convention** for the new columns?
+
+2.  Does this change the original dataframe `df`? If not, what would you need to
+do to add this information back in?
+
+3.  What happens if you put the whole dataframe into the `get_dummies` function? 
+What problems might arise from this?
+:::
+:::
+
+## Dummifying in sklearn
+
+**Specify** 
+
+::: {.midi}
+```{python}
+#| code-line-numbers: false
+#| label: sklearn-dummy-building-specify
+
+from sklearn.preprocessing import OneHotEncoder
+
+encoder = OneHotEncoder()
+```
+:::
+
+. . .
+
+**Fit** 
+
+::: {.midi}
+```{python}
+#| code-line-numbers: false
+#| label: sklearn-dummy-building-fit
+#| output-location: column
+
+encoder.fit(df[["Bldg Type"]])
+```
+:::
+
+. . .
+
+**Transform**
+
+::: {.midi}
+```{python}
+#| code-line-numbers: false
+#| label: sklearn-dummy-building-transform
+
+df_bldg = encoder.transform(df[["Bldg Type"]])
+df_bldg
+```
+:::
+
+## Dummifying in sklearn
+
+::: columns
+::: {.column width="40%"}
+::: {.small}
+```{python}
+#| code-line-numbers: false
+#| label: dense-matrix-code
+#| eval: false
+
+df_bldg.todense()
+```
+:::
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="55%"}
+::: {.small}
+```{python}
+#| echo: false
+#| label: show-dense-matrix
+
+df_bldg.todense()
+```
+:::
+:::
+:::
+
+. . .
+
+Things to notice:
+
+::: {.midi}
+::: {.incremental}
+1.  What **object type** was the result?
+
+2.  Does this change the original dataframe `df`? If not, what would you need to
+do to add this information back in?
+
+3.  What pros and cons do you see for the `pandas` approach vs the `sklearn`
+approach?
+:::
+:::
+
+# Column Transformers
+
+## Preprocessing
+
+::: {.midi}
+So far, we have now seen two **preprocessing** steps that might need to happen to do
+an analysis of distances:
+
+  1. **Scaling** the quantitative variables
+  2. **Dummifying** the categorical variables
+:::
+
+. . .
+
+::: {.midi}
+**Preprocessing** steps are things you do *only to make the following analysis/visualization better*.
+    
+  -   This is not the same as **data cleaning**, where you make changes to 
+  *fix* the data (e.g., changing data types).
+  -   This is not the same as **data wrangling**, where you change the 
+  *structure* of the data (e.g., adding or deleting rows or columns). 
+:::
+
+## Lecture 4.1 Quiz
+
+Identify the following as *cleaning*, *wrangling*, or *preprocessing*:
+
+::: {.midi}
+1.  Removing the `$` symbol from a column and converting it to numeric.
+
+2.  Narrowing your data down to only first class Titanic passengers, because you are not studying the others.
+
+3.  Converting a `Zip Code` variable from numeric to categorical using `.astype()`.
+
+4.  Creating a new column called `n_investment` that counts the number of people who invested in a project.
+
+5.  Log-transforming a column because it is very skewed.
+:::
+
+## Preprocessing in `sklearn`
+
+::: {.midi}
+-   Unlike **cleaning** and **wrangling**, the **preprocessing** steps are
+"temporary" changes to the dataframe.
+:::
+
+. . .
+
+::: {.midi}
+-   It would be nice if we could trigger these changes as part of our analysis,
+instead of doing them "by hand".
+
+    -   This is why the **specify** - **fit** - **transform** process is useful!
+
+    -   We will first specify **all** our preprocessing steps.
+
+    -   Then we will **fit** the whole preprocess
+
+    -   Then we will save the **transform** step for only when we need it.
+:::
+
+## Column Transformers -- Specify
+
+```{python}
+#| code-line-numbers: false
+#| label: sklearn-column-transform
+
+from sklearn.compose import make_column_transformer
+```
+
+. . .
+
+</br> 
+
+```{python}
+#| label: sklearn-column-transform-specify
+#| code-line-numbers: false
+
+features = ["Gr Liv Area", "Bedroom AbvGr", "Full Bath", "Half Bath", "Bldg Type", "Neighborhood"]
+
+preproc = make_column_transformer(
+  (OneHotEncoder(), ["Bldg Type", "Neighborhood"]),
+    remainder = "passthrough")
+```
+
+## Column Transformers -- Fit 
+
+```{python}
+#| label: sklearn-column-transform-fit
+#| code-line-numbers: false
+
+preproc.fit(df[features])
+```
+
+## Column Transformers -- Transform
+
+```{python}
+#| label: sklearn-column-transform-transform
+#| code-line-numbers: false
+
+preproc.transform(df[features])
+```
+
+## Things to notice...
+
+1.  What submodule did we import `make_column_transformer` from?
+
+2.  What are the **two** arguments to the `make_column_transformer()` function?
+What **object structures** are they?
+
+3.  What happens if you **fit** and **transform** on the whole dataset, not just `df[features]`? Why might this be useful?
+
+## Lecture Activity 4.2
+
+Try the following:
+
+1.  What happens if you change `remainder = "passthrough"` to
+`remainder = "drop"`?
+
+2.  What happens if you add the argument `sparse_output = False` to the
+`OneHotEncoder()` function?
+
+3.  What happens if you add this line before the *transform* step: `preproc.set_output(transform = "pandas")` *(keep the `sparse_output = False` when you try this)*
+
+<!-- 4.  Look at the `preproc` object. What does it show you? -->
+
+## Multiple Preprocessing Steps
+
+Why are **column transformers** so useful? We can do **multiple preprocessing steps** at once!
+
+::: {.midi}
+```{python}
+#| code-line-numbers: false
+#| label: multiple-column-transformations-specify
+
+from sklearn.preprocessing import StandardScaler
+
+preproc = make_column_transformer(
+        (StandardScaler(), 
+        ["Gr Liv Area", "Bedroom AbvGr", "Full Bath", "Half Bath"]),
+        (OneHotEncoder(sparse_output = False), 
+        ["Bldg Type", "Neighborhood"]),
+        remainder = "drop")
+```
+:::
+
+## Fit!
+
+```{python}
+#| code-line-numbers: false
+#| label: multiple-column-transformations-fit
+
+preproc.fit(df)
+```
+
+```{python}
+#| code-line-numbers: false
+#| label: pandas-output
+
+preproc.set_output(transform = "pandas")
+```
+
+## Transform!
+
+::: {.small}
+```{python}
+#| code-line-numbers: false
+#| label: multiple-column-transformations-transform
+
+df_transformed = preproc.transform(df)
+df_transformed
+```
+:::
+
+## Finding All Categorical Variables
+
+::: {.midi}
+What if we want to tell `sklearn`, "Please dummify **every** categorical
+variable."? Use a `selector` instead of exact column names!
+:::
+
+. . .
+
+::: {.small}
+```{python}
+#| code-line-numbers: false
+#| label: selector-for-variables-specify
+
+from sklearn.compose import make_column_selector
+
+preproc = make_column_transformer(
+    (StandardScaler(),  
+     make_column_selector(dtype_include = np.number)
+     ),
+    (OneHotEncoder(sparse_output = False), 
+     make_column_selector(dtype_include = object)
+     ),
+    remainder = "passthrough")
+
+```
+:::
+
+. . .
+
+::: {.small}
+```{python}
+#| code-line-numbers: false
+#| label: pandas-output-2
+
+preproc.set_output(transform = "pandas")
+```
+:::
+
+## Fit **AND** Transform!
+
+::: {.small}
+```{python}
+#| code-line-numbers: false
+#| label: selector-for-variables-fit-transform
+
+preproc.fit_transform(df[features])
+```
+:::
+
+## Think about it
+
+-   What are the *advantages* of using a selector?
+
+-   What are the possible *disadvantages* of using a selector?
+
+-   Does the *order* matter when using selectors? Try switching the steps and
+see what happens!
+
+# Takeaways
+
+## Takeaways
+
+-   We **dummify** or **one-hot-encode** categorical variables to make them numbers.
+
+-   We can do this with `pd.get_dummies()` or with `OneHotEncoder()` from `sklearn`. 
+
+-   **Column Transformers** let us apply multiple preprocessing steps at the
+same time.
+
+    -   Think about *which variables* you want to apply the steps to
+    -   Think about *options* for the steps, like sparseness
+    -   Think about `passthrough` in your transformer

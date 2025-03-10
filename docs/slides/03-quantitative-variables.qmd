@@ -1,0 +1,958 @@
+---
+title: "Visualizing and Summarizing Quantitative Variables"
+format:  
+  revealjs: 
+    theme: [default, style.scss]
+editor: source
+execute:
+  echo: true
+---
+
+```{r}
+#| include: false
+#| label: load-python
+
+library(reticulate)
+use_python("/usr/local/bin/python3")
+```
+
+```{python}
+#| include: false
+#| label: import-packages
+
+import numpy as np
+import pandas as pd
+from plotnine import *
+```
+
+# Some Class Updates!
+
+## Changes from Week 1
+
+::: {.midi}
+Week 1 taught me that I need to make some adjustments! 
+:::
+
+::: columns
+::: {.column width="30%"}
+::: {.fragment}
+::: {.midi}
+**Lab Attendance**
+:::
+
+::: {.small}
+Is not required. However, if you do not attend lab and come to student hours or
+post questions on Discord about the lab, I will be displeased. 
+:::
+:::
+:::
+
+::: {.column width="3%"}
+:::
+
+::: {.column width="30%"}
+::: {.fragment}
+::: {.midi}
+**Deadlines**
+:::
+
+::: {.small}
+::: {.incremental}
+- Labs are due the day after lab (like lecture quizzes / activities). 
+    * Tuesday's lab is due on Wednesday at 11:59pm.
+    * Thursday's lab is due on Friday at 11:59pm.
+    
+- End of week assignments are due on Sundays at 11:59pm (not Saturdays). 
+:::
+:::
+:::
+:::
+
+::: {.column width="3%"}
+:::
+
+::: {.column width="30%"}
+::: {.fragment}
+::: {.midi}
+**Lab Submissions**
+:::
+
+::: {.small}
+- PDFs will be required for [every]{.underline} Collab submission. 
+  * Your code cannot be more than 80 characters---where the grey line appears in
+  Collab. 
+  * Use returns! 
+:::
+:::
+:::
+:::
+
+
+# The story so far...
+
+## Getting, prepping, and summarizing data
+
+```{python}
+#| code-line-numbers: false
+#| label: titanic-data-cleaning
+
+df = pd.read_csv("https://datasci112.stanford.edu/data/titanic.csv")
+
+df["pclass"] = df["pclass"].astype("category")
+df["survived"] = df["survived"].astype("category")
+```
+
+## Marginal Distributions
+
+If I choose a passenger **at random**, what is the **probability** they rode in
+1st class?
+
+```{python}
+#| code-line-numbers: false
+#| label: marginal-first-class
+
+marginal_class = (
+  df['pclass']
+  .value_counts(normalize = True)
+  )
+marginal_class
+```
+
+## Joint Distributions
+
+If I choose a passenger **at random**, what is the **probability** they are a 
+woman who rode in first class?
+
+```{python}
+#| code-line-numbers: false
+#| label: joint-woman-first-class
+
+joint_class_sex = (
+  df[["pclass", "sex"]]
+  .value_counts(normalize=True)
+  .unstack()
+  )
+  
+joint_class_sex
+```
+
+## Conditional Distributions
+
+If I choose a **woman** at random, what is the probability they rode in first
+class?
+
+```{python}
+#| code-line-numbers: false
+#| label: marginal-woman-first-class
+
+marginal_sex = (
+  df['sex']
+  .value_counts(normalize = True)
+  )
+  
+joint_class_sex.divide(marginal_sex)
+
+```
+
+## Visualizing with `plotnine`
+
+::: {.small}
+```{python}
+#| code-line-numbers: false
+#| label: barplot-sex-classes-code
+#| eval: false
+
+(
+  ggplot(df, aes(x = "sex", fill = "pclass")) + 
+  geom_bar(position = "fill") + 
+  theme_bw()
+)
+```
+:::
+
+```{python}
+#| code-line-numbers: false
+#| label: barplot-sex-classes
+#| echo: false
+#| fig-align: center
+
+plot = (
+  ggplot(df, aes(x = "pclass", fill = "sex")) + 
+  geom_bar(position = "fill") + 
+  theme_bw()
+)
+
+plot.draw(plot)
+```
+
+# Quantitative Variables
+
+## Quantitative Variables
+
+We have analyzed a quantitative variable already. Where?
+
+In the Colombia COVID data!
+
+::: {.small}
+```{python}
+#| code-line-numbers: false
+#| label: read-in-covid-data
+
+df_CO = pd.read_csv("http://dlsun.github.io/pods/data/covid/colombia_2020-05-28.csv")
+df_CO
+```
+:::
+
+# Visualizing One Quantitative Variable
+
+## Option 1: Convert it to categorical 
+
+To visualize the age variable, we did the following:
+
+```{python}
+#| code-line-numbers: false
+#| label: change-age-to-categorical
+
+df_CO["age"] = pd.cut(
+    df_CO["Edad"],
+    bins = [0, 10, 20, 30, 40, 50, 60, 70, 80, 120],
+    labels = ["0-9", "10-19", "20-29", "30-39", "40-49", "50-59", "60-69", "70-79", "80+"],
+    right = False, 
+    ordered = True)
+    
+```
+
+## Option 1: Then make a barplot 
+
+Then, we could treat `age` as categorical and make a **barplot**:
+
+::: {.small}
+```{python}
+#| code-fold: true
+#| code-line-numbers: false
+#| label: barplot-of-ages-code
+#| eval: false
+
+(
+  ggplot(df_CO, aes(x = "age")) + 
+  geom_bar() + 
+  theme_bw()
+)
+```
+:::
+
+```{python}
+#| code-fold: true
+#| code-line-numbers: false
+#| label: barplot-of-ages
+#| echo: false
+#| fig-align: center
+
+plot = (
+  ggplot(df_CO, aes(x = "age")) + 
+  geom_bar() + 
+  labs(x = "", 
+       y = "", 
+       title = "Age Demographics of Columbia's Population (2020)"
+       ) +
+  theme_bw() 
+)
+
+plot.draw(plot)
+```
+
+## Option 2: Treat it as a quantitative variable! 
+
+A **histogram** uses *equal sized bins* to summarize a *quantitative variable*.
+
+::: {.small}
+```{python}
+#| code-line-numbers: false
+#| label: histogram-code
+#| eval: false
+#| code-fold: true
+
+(
+  ggplot(df_CO, aes(x = "Edad")) + 
+  geom_histogram() + 
+  labs(x = "", 
+       y = "", 
+       title = "Age Demographics of Columbia's Population (2020)"
+       ) +
+  theme_bw()
+)
+```
+:::
+
+```{python}
+#| code-line-numbers: false
+#| label: histogram
+#| echo: false
+#| fig-align: center
+
+plot = (
+  ggplot(df_CO, aes(x = "Edad")) + 
+  geom_histogram() + 
+  labs(x = "", 
+       y = "", 
+       title = "Age Demographics of Columbia's Population (2020)"
+       ) +
+  theme_bw()
+)
+
+plot.draw(plot)
+```
+
+# Adding Style to Your Histogram
+
+## Changing Binwidth 
+
+To tweak your histogram, you can change the **binwith**:
+
+::::: columns
+::: {.column width="50%"}
+::: {.fragment}
+::: {.small}
+```{python}
+#| code-line-numbers: false
+#| label: histogram-binwidth-1-year-code
+#| eval: false
+
+(
+  ggplot(df_CO, aes(x = "Edad")) + 
+  geom_histogram(binwidth = 1) + 
+  labs(x = "", 
+       y = "", 
+       title = "Age Demographics of Columbia's Population (2020)"
+       ) +
+  theme_bw()
+)
+
+```
+:::
+
+```{python}
+#| code-line-numbers: false
+#| label: histogram-binwidth-1-year
+#| echo: false
+
+plot = (
+  ggplot(df_CO, aes(x = "Edad")) + 
+  geom_histogram(binwidth = 1) + 
+  labs(x = "", 
+       y = "", 
+       title = "Age Demographics of Columbia's Population (2020)"
+       ) +
+  theme_bw()
+)
+
+plot.draw(plot)
+```
+:::
+:::
+
+::: {.column width="50%"}
+::: {.fragment}
+::: {.small}
+```{python}
+#| code-line-numbers: false
+#| label: histogram-binwidth-10-years-code
+#| eval: false
+
+(
+  ggplot(df_CO, aes(x = "Edad")) + 
+  geom_histogram(binwidth = 10) + 
+  labs(x = "", 
+       y = "", 
+       title = "Age Demographics of Columbia's Population (2020)"
+       ) +
+  theme_bw()
+)
+
+```
+:::
+
+```{python}
+#| code-line-numbers: false
+#| label: histogram-binwidth-10-years
+#| echo: false
+
+plot = (
+  ggplot(df_CO, aes(x = "Edad")) + 
+  geom_histogram(binwidth = 10) + 
+  labs(x = "", 
+       y = "", 
+       title = "Age Demographics of Columbia's Population (2020)"
+       ) +
+  theme_bw()
+)
+
+plot.draw(plot)
+```
+:::
+:::
+:::::
+
+## Adding Color & Outline
+
+::: {.small}
+```{python}
+#| code-line-numbers: false
+#| label: histogram-color-outline-code
+#| code-fold: true
+#| eval: false
+
+(
+  ggplot(df_CO, aes(x = "Edad")) + 
+  geom_histogram(binwidth = 10, 
+                 color = "white", 
+                 fill = "gray") + 
+  labs(x = "", 
+       y = "", 
+       title = "Age Demographics of Columbia's Population (2020)"
+       ) +
+  theme_bw()
+)
+
+```
+:::
+
+```{python}
+#| code-line-numbers: false
+#| label: histogram-color-outline
+#| echo: false
+#| fig-align: center
+
+plot = (
+  ggplot(df_CO, aes(x = "Edad")) + 
+  geom_histogram(binwidth = 10, 
+                 color = "white", 
+                 fill = "gray") + 
+  labs(x = "", 
+       y = "", 
+       title = "Age Demographics of Columbia's Population (2020)"
+       ) +
+  theme_bw()
+)
+
+plot.draw(plot)
+```
+
+
+## Using Percents Instead of Counts
+
+::: {.small}
+```{python}
+#| code-line-numbers: "3"
+#| label: histogram-percents-code
+#| code-fold: true
+#| eval: false
+#| echo: true
+
+(
+  ggplot(df_CO, mapping = aes(x = "Edad")) + 
+  geom_histogram(mapping = aes(y = '..density..'), 
+                 binwidth = 10, 
+                 color = "white", 
+                 fill = "gray") + 
+  labs(x = "", 
+       y = "", 
+       title = "Age Demographics of Columbia's Population (2020)"
+       ) +
+  theme_bw()
+)
+```
+:::
+
+```{python}
+#| code-line-numbers: false
+#| label: histogram-percents
+#| fig-align: center
+#| echo: false
+#| eval: true
+
+plot = (
+  ggplot(df_CO, mapping = aes(x = "Edad")) + 
+  geom_histogram(mapping = aes(y = '..density..'), 
+                 binwidth = 10, 
+                 color = "white", 
+                 fill = "gray") + 
+  labs(x = "", 
+       y = "", 
+       title = "Age Demographics of Columbia's Population (2020)"
+       ) +
+  theme_bw()
+)
+
+plot.draw(plot)
+```
+
+## Distributions
+
+-   Recall the distribution of a categorical variable: 
+
+    * What are the **possible values** and **how common** is each?
+
+-   The **distribution** of a quantitative variable is similar: 
+
+    * The total *area* in the histogram is 1.0 (or 100%).
+
+## Densities
+
+::: {.small}
+-   In this example, we have a limited set of possible values for `age`: 0, 1, 
+2, ...., 100. 
+
+    * We call this a ***discrete*** variable.
+  
+:::
+
+. . .
+
+::: {.small}
+-   What if had a **quantitative variable** with **infinite values**?
+
+    * For example: Price of a ticket on Titanic.
+    * We call this a ***continuous*** variable. 
+:::
+
+. . .
+
+::: {.small}
+- In this case, it is not possible to list all **possible values** and
+**how likely each one is**.
+    * One person paid \$2.35
+    * Two people paid \$12.50
+    * One person paid \$34.98
+    * $\vdots$
+:::
+
+. . .
+
+::: {.small}
+-   Instead, we talk about **ranges** of values.
+:::
+
+## Densities
+
+About what percent of people in this dataset are below 18?
+
+::: {.small}
+```{python}
+#| code-fold: true
+#| code-line-numbers: false
+#| label: age-density-again-code
+#| eval: false
+
+(
+  ggplot(data = df_CO, mapping = aes(x = "Edad")) + 
+  geom_histogram(mapping = aes(y = '..density..'), 
+                 bins = 10) + 
+  geom_vline(xintercept = 18, 
+             color = "red", 
+             size = 2, 
+             linetype = "dashed") +
+  theme_bw()
+)
+```
+:::
+
+```{python}
+#| code-fold: true
+#| label: age-density-again
+#| echo: false
+#| fig-align: center
+
+plot = (
+  ggplot(data = df_CO, mapping = aes(x = "Edad")) + 
+  geom_histogram(mapping = aes(y = '..density..'), 
+                 bins = 10) + 
+  geom_vline(xintercept = 18, 
+             color = "red", 
+             size = 2, 
+             linetype = "dashed") +
+  theme_bw()
+)
+
+plot.draw(plot)
+```
+
+. . .
+
+::: {.callout-tip}
+# How would you code it?
+:::
+
+# [Summarizing One Quantitative Variable]{.midi}
+
+. . .
+
+::: columns
+::: {.column width="40%"}
+::: {.small}
+```{python}
+#| code-line-numbers: false
+df_CO['Edad']
+```
+:::
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="55%"}
+If you had to summarize this variable with **one single number**, what would
+you pick?
+:::
+:::
+
+# Summaries of Center: Mean
+
+## Mean
+
+::: {.incremental}
+-   One summary of the center of a quantitative variable is the **mean**.
+
+-   When you hear "The average age is..." or the "The average income is...", 
+this probably refers to the mean.
+
+-   Suppose we have five people, ages: `4, 84, 12, 27, 7`
+
+-   The **mean age** is: $$(4 + 84 + 12 + 27 + 7) / 5 = 134 / 5 = 26.8$$
+::: 
+
+## Notation Interlude 
+
+::: {.incremental}
+::: {.midi}
+
+-   To refer to our data without having to list all the numbers, we use $x_1, x_2, ..., x_n$
+
+-   In the previous example, $x_1 = 4, x_2 = 84, x_3 = 12, x_4 = 27, x_5 = 7$. So, $n = 5$.
+
+-   To add up all the numbers, we use the **summation notation**: $$ \sum_{i = 1}^5 x_i = 134$$
+
+-   Therefore, the **mean** is: $$\bar{x} = \frac{1}{n} \sum_{i = 1}^n x_i$$
+:::
+:::
+
+## Means in Python
+
+Long version: find the **sum** and the **number of observations**
+
+```{python}
+#| code-line-numbers: false
+#| label: mean-with-length-sum
+
+sum_age = df_CO["Edad"].sum()
+n = len(df_CO)
+
+sum_age / n
+```
+
+. . .
+
+Short version: use the built-in `.mean()` function!
+
+```{python}
+#| code-line-numbers: false
+#| label: mean-built-in-function
+
+df_CO["Edad"].mean()
+```
+
+## Activity 2.1
+
+The mean is only **one option** for summarizing the center of a quantitative
+variable. It isn't perfect!
+
+Let's investigate this.
+
+-   Open the Activity 2.1 Collab notebook
+
+-   Read in the Titanic data
+
+-   Plot the density of ticket prices on titanic
+
+-   Calculate the *mean* price
+
+-   See how many people paid *more than mean price*
+
+## What happened
+
+-   Our `fare` data was **skewed right**: Most values were small, but a few values were very large.
+
+-   These large values "pull" the mean up; just how the value `84` pulled the average age up in our previous example.
+
+-   So, why do we *like* the mean?
+
+## Squared Error 
+
+::: {.midi}
+-   Recall: Ages 4, 84, 12, 27, 7.
+
+```{python}
+#| code-line-numbers: false
+#| label: ages-array
+
+ages = np.array([4, 84, 12, 27, 7])
+```
+
+
+-   Imagine that we had to "guess" the age of the next person.
+:::
+
+::: columns
+::: {.column width="47%"}
+::: {.small}
+::: {.fragment}
+-   If we guess 26.8, then our "squared error" for these five people is:
+
+```{python}
+#| code-line-numbers: false
+#| label: squared-error-ex-1
+
+sq_error = (ages - 26.8) ** 2
+
+(
+  sq_error
+  .round(decimals = 1)
+  .sum()
+  )
+```
+:::
+:::
+:::
+
+::: {.column width="3%"}
+:::
+
+::: {.column width="48%"}
+::: {.small}
+::: {.fragment}
+-   If we guess 20, then our "squared error" for these five people is:
+
+```{python}
+#| code-line-numbers: false
+#| label: squared-error-ex-2
+
+sq_error = (ages - 20) ** 2
+(
+  sq_error
+  .round(decimals = 1)
+  .sum()
+  )
+```
+:::
+:::
+:::
+:::
+
+
+## Minimizing squared error
+
+::: {.small}
+```{python}
+#| code-fold: true
+#| code-line-numbers: false
+#| label: plot-of-squared-error-code
+#| eval: false
+
+cs = range(1, 60)
+sum_squared_distances = []
+
+for c in cs:
+  (
+    sum_squared_distances
+    .append(
+      (
+        (df_CO["Edad"] - c) ** 2
+      )
+      .sum()
+      )
+
+res_df = pd.DataFrame({"center": cs, "sq_error": sum_squared_distances})
+
+(
+  ggplot(res_df, aes(x = 'center', y = 'sq_error')) + 
+  geom_line() +
+  labs(x = "Mean", 
+       y = "", 
+       title = "Changes in Sum of Squared Error Based on Choice of Center")
+  )
+```
+:::
+
+```{python}
+#| code-fold: true
+#| code-line-numbers: false
+#| label: plot-of-squared-error
+#| echo: false
+#| fig-align: center
+
+cs = range(1, 60)
+sum_squared_distances = []
+
+for c in cs:
+  sum_squared_distances.append(((df_CO["Edad"] - c) ** 2).sum())
+
+res_df = pd.DataFrame({"center": cs, "sq_error":sum_squared_distances})
+
+plot = (
+  ggplot(res_df, aes(x = 'center', y = 'sq_error')) + 
+  geom_line() +
+  labs(x = "Mean", 
+       y = "", 
+       title = "Changes in Sum of Squared Error Based on Choice of Center")
+  )
+  
+plot.draw(plot)
+```
+
+
+# Summaries of Center: Median
+
+## Median 
+
+::: {.small}
+Another summary of center is the **median**, which is the "middle" of the
+*sorted* values.
+
+To calculate the median of a quantitative variable with values 
+$x_1, x_2, x_3, ..., x_n$, we do the following steps:
+:::
+
+::: {.incremental}
+::: {.small}
+1.  Sort the values from smallest to largest: $$x_{(1)}, x_{(2)}, x_{(3)}, ..., x_{(n)}.$$
+
+2.  The "middle" value depends on whether we have an odd or an even number of
+observations.
+
+    -   If $n$ is odd, then the middle value is $x_{(\frac{n + 1}{2})}$.
+
+    -   If $n$ is even, then there are two middle values, $x_{(\frac{n}{2})}$ 
+    and $x_{(\frac{n}{2} + 1)}$. 
+:::
+:::
+
+. . .
+
+::: {.callout-note}
+::: {.small}
+It is conventional to report the mean of the two values (but you can actually 
+pick any value between them)!
+:::
+:::
+
+## Median in Python
+
+Ages: 4, 84, 12, 7, 27. What is the **median**?
+
+Median age in the Columbia data:
+
+```{python}
+#| code-line-numbers: false
+#| label: median-function
+
+df_CO["Edad"].median()
+```
+
+# Summaries of Spread: Variance
+
+## Variance
+
+::: {.midi}
+::: {.incremental}
+-   One measure of spread is the **variance**.
+
+-   The variance of a variable whose values are $x_1, x_2, x_3, ..., x_n$ is
+calculated using the formula $$\textrm{var(X)} = \frac{\sum_{i=1}^n (x_i - \bar{x})^2}{n - 1}$$
+:::
+:::
+
+. . .
+
+::: {.callout-note}
+# Does this look familiar? 
+It's the **sum of squared error**! Well, divided by $n-1$, the "degrees of
+freedom". 
+:::
+
+## Variance in Python
+
+Similar to calculating the mean, we could find the variance manually:
+
+```{python}
+#| code-line-numbers: false
+#| label: manual-variance
+
+(
+  ((df_CO["Edad"] - df_CO["Edad"].mean()) ** 2)
+  .sum() / (len(df_CO) - 1)
+  )
+```
+
+. . .
+
+...or using a built-in Python function.
+
+```{python}
+#| code-line-numbers: false
+#| label: variance-function
+
+df_CO["Edad"].var()
+```
+
+## Standard Deviation
+
+::: {.midi}
+-   Notice that the variance isn't very *intuitive*. What do we mean by "The
+spread is 348"?
+
+-   This is because it is the **squared** error!
+:::
+
+. . .
+
+::: {.midi}
+-   To get it in more interpretable language, we can take the square root:
+
+```{python}
+#| code-line-numbers: false
+#| label: long-square-root
+
+np.sqrt(df_CO["Edad"].var())
+```
+:::
+
+. . .
+
+::: {.midi}
+Or, we use the built-in function!
+
+```{python}
+#| code-line-numbers: false
+#| label: std-function
+
+df_CO["Edad"].std()
+```
+:::
+
+# Takeaways
+
+## Takeaway Messages
+
+::: {.midi}
+::: {.incremental}
+-   Visualize quantitative variables with **histograms** or **densities**.
+
+-   Summarize the **center** of a quantitative variable with **mean** or
+**median**.
+
+-   Describe the **shape** of a quantitative variable with **skew**.
+
+-   Summarize the **spread** of a quantitative variable with the **variance** or
+the **standard deviation**.
+:::
+:::

@@ -1,0 +1,753 @@
+---
+title: "Classification"
+format:  
+  revealjs: 
+    theme: [default, style.scss]
+editor: source
+execute:
+  echo: true
+---
+
+```{r}
+#| include: false
+library(reticulate)
+use_python("/usr/local/bin/python3")
+```
+
+```{python}
+#| include: false
+import numpy as np
+import pandas as pd
+from plotnine import *
+```
+
+# Final Projects
+
+## Project Proposal - Due Sunday, February 23
+
+::: {.midi}
+1.  Your group member names.
+
+2.  Information about the dataset(s) you intend to analyze:
+
+    -   Where are the data located?
+    -   Who collected the data and why?
+    -   What information (variables) are in the dataset?
+
+3.  Research Questions: You should have one primary research question and a few
+secondary questions
+
+4.  Preliminary exploration of your dataset(s): A few simple plots or summary
+statistics that relate to the variables you plan to study.
+:::
+
+## Who are you working with?
+
+Please take 3-minutes and fill out this form: 
+
+<https://forms.gle/QMsNkkY1P7KQbzJq9>
+
+# The story so far...
+
+## Choosing a Best Model
+
+-   We select a **best model** - aka best *prediction procedure* - by
+**cross-validation**.
+
+-   **Feature selection:** Which *predictors* should we include, and how should
+we preprocess them?
+
+-   **Model selection:** Should we use *Linear Regression* or *KNN* or
+*Decision Trees* or something else?
+
+-   **Hyperparameter tuning:** Choosing model-specific settings, like $k$ for
+KNN.
+
+-   Each candidate is a **pipeline**; use `GridSearchCV()` or `cross_val_score()`
+to score the options
+
+# Case Study: Breast Tissue Classification
+
+## Breast Tissue Classification
+
+Electrical signals can be used to detect whether tissue is cancerous.
+
+::: {.centered}
+![](images/11-breast-diagram.jpeg){width=".4\\textwidth" fig-alt="A medical illustration showing a breast cancer detection procedure using electrical impedance scanning. A patient is lying down while a scan probe is placed on the breast. An inset diagram highlights how the probe detects differences in impedance between normal breast adipose tissue (high impedance) and malignant lesions (low impedance). The probe is connected to a computer displaying a grid with white dots, likely representing detected areas of concern."}
+:::
+
+## Analysis Goal 
+
+The goal is to determine whether a sample of breast tissue is:
+
+::: columns
+::: {.column width="45%"}
+**Not Cancerous** 
+
+1. connective tissue 
+2. adipose tissue 
+3. glandular tissue
+
+:::
+
+::: {.column width="10%"}
+:::
+
+::: {.column width="45%"}
+**Cancerous** 
+
+4. carcinoma 
+5. fibro-adenoma 
+6. mastopathy
+:::
+:::
+
+## Reading in the Data
+
+```{python}
+#| code-line-numbers: false
+#| label: breast-data-read
+
+import pandas as pd
+breast_df = pd.read_csv("https://datasci112.stanford.edu/data/BreastTissue.csv")
+```
+
+::: {.small}
+```{python}
+#| echo: false
+#| label: breast-data-preview
+
+breast_df
+```
+:::
+
+## Variables of Interest
+
+We will focus on two features:
+
+-   $I_0$: impedivity at 0 kHz,
+-   $PA_{500}$: phase angle at 500 kHz.
+
+## Visualizing the Data
+
+```{python}
+#| code-fold: true
+#| code-line-numbers: false
+#| label: viz-breast-variables-code
+#| eval: false
+
+from plotnine import *
+
+(
+  ggplot(data = breast_df, 
+         mapping = aes(x = "I0", y = "PA500", color = "Class")) +
+  geom_point(size = 2) +
+  theme_bw() +
+  theme(legend_position = "top")
+    )
+```
+
+```{python}
+#| echo: false
+#| label: viz-breast-variables
+#| fig-align: center
+
+from plotnine import *
+
+
+plot = (
+  ggplot(data = breast_df, 
+         mapping = aes(x = "I0", y = "PA500", color = "Class")) +
+  geom_point(size = 2) +
+  theme_bw() +
+  theme(legend_position = "top")
+    )
+
+plot.draw(plot)
+```
+
+# K-Nearest Neighbors Classification
+
+## K-Nearest Neighbors
+
+What would we predict for someone with an $I_0$ of 400 and a $PA_{500}$ of 0.18?
+
+```{python}
+#| code-line-numbers: false
+#| label: test-train-breast
+
+X_train = breast_df[["I0", "PA500"]]
+y_train = breast_df["Class"]
+
+X_unknown = pd.DataFrame({"I0": [400], "PA500": [.18]})
+X_unknown
+```
+
+## K-Nearest Neighbors
+
+::: {.small}
+```{python}
+#| code-fold: true
+#| label: knn-for-new-data-code
+#| eval: false
+
+from plotnine import *
+
+(
+  ggplot() + 
+  geom_point(data = breast_df, 
+             mapping = aes(x = "I0", y = "PA500", color = "Class")) +
+  geom_point(data = X_unknown, 
+             mapping = aes(x = "I0", y = "PA500"), size = 3) +
+  theme_bw() +
+  theme(legend_position = "top")
+)
+```
+:::
+
+```{python}
+#| label: knn-for-new-data-viz
+#| echo: false
+#| fig-align: center
+
+from plotnine import *
+
+plot = (
+  ggplot() + 
+  geom_point(data = breast_df, 
+             mapping = aes(x = "I0", y = "PA500", color = "Class")) +
+  geom_point(data = X_unknown, 
+             mapping = aes(x = "I0", y = "PA500"), size = 3) +
+  theme_bw() +
+  theme(legend_position = "top")
+)
+
+plot.draw(plot)
+```
+
+## K-Nearest Neighbors
+
+This process is *almost* identical to KNN *Regression*:
+
+**Specify** 
+
+::: {.small}
+```{python}
+#| code-line-numbers: false
+#| label: knn-classifier-specify
+
+from sklearn.preprocessing import StandardScaler
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.pipeline import make_pipeline
+
+pipeline = make_pipeline(
+    StandardScaler(),
+    KNeighborsClassifier(n_neighbors = 5, 
+                         metric = "euclidean")
+    )
+```
+:::
+
+**Fit**
+
+::: {.small}
+```{python}
+#| code-line-numbers: false
+#| label: knn-classifier-fit
+
+pipeline = pipeline.fit(X_train, y_train)
+```
+:::
+
+**Predict**
+
+::: {.small}
+```{python}
+#| code-line-numbers: false
+#| label: knn-classifier-predict
+#| output-location: column-fragment
+
+pipeline.predict(X_unknown)
+```
+:::
+
+## Probabilities
+
+Which of these two unknown points would we be **more sure** about in our guess?
+
+::: {.small}
+```{python}
+#| code-fold: true
+#| label: two-different-observations-knn-code
+#| eval: false
+
+X_unknown = pd.DataFrame({"I0": [400, 2200], "PA500": [.18, 0.05]})
+
+(
+  ggplot() + 
+  geom_point(data = breast_df, 
+             mapping = aes(x = "I0", y = "PA500", color = "Class"), 
+             size = 2) +
+  geom_point(data = X_unknown, 
+             mapping = aes(x = "I0", y = "PA500"), size = 3) +
+  theme_bw() +
+  theme(legend_position = "top")
+)
+```
+:::
+
+```{python}
+#| label: two-different-observations-knn-viz
+#| echo: false
+#| fig-align: center
+
+X_unknown = pd.DataFrame({"I0": [400, 2200], "PA500": [.18, 0.05]})
+
+plot = (
+  ggplot() + 
+  geom_point(data = breast_df, 
+             mapping = aes(x = "I0", y = "PA500", color = "Class"), 
+             size = 2) +
+  geom_point(data = X_unknown, 
+             mapping = aes(x = "I0", y = "PA500"), size = 3) +
+  theme_bw() +
+  theme(legend_position = "top")
+)
+
+plot.draw(plot)
+```
+
+## Probabilities
+
+Instead of returning a single predicted class, we can ask `sklearn` to return the predicted probabilities for each class.
+
+```{python}
+#| code-line-numbers: false
+#| label: return-probabilities
+
+pipeline.predict_proba(X_unknown)
+```
+
+```{python}
+#| code-line-numbers: false
+#| label: breast-classes
+
+pipeline.classes_
+```
+
+. . .
+
+::: {.callout-tip}
+How did Scikit-Learn calculate these predicted probabilities?
+:::
+
+## Cross-Validation for Classification
+
+We need a different **scoring method** for classification. 
+
+A simple scoring method is **accuracy**:
+
+$$\text{accuracy} = \frac{\text{# correct predictions}}{\text{# predictions}}$$
+
+## Cross-Validation for Classification
+
+```{python}
+#| code-line-numbers: false
+#| label: cross-val-breast
+
+from sklearn.model_selection import cross_val_score
+
+scores = cross_val_score(
+    pipeline, X_train, y_train,
+    scoring = "accuracy",
+    cv = 10)
+    
+scores
+```
+
+## Cross-Validation for Classification
+
+As before, we can get an overall estimate of test accuracy by averaging the cross-validation accuracies:
+
+``` {python}
+#| code-line-numbers: false
+#| label: average-accuracies
+
+scores.mean()
+```
+
+. . .
+
+</br>
+
+But! Accuracy is not always the best measure of a classification model!
+
+## Confusion Matrix
+
+```{python}
+#| code-line-numbers: false
+#| label: confusion-matrix-breast
+
+from sklearn.metrics import confusion_matrix
+
+y_train_predicted = pipeline.predict(X_train)
+
+confusion_matrix(y_train, y_train_predicted)
+```
+
+::: {.callout-tip}
+# Remember we made the `pipeline` previously!
+
+```{python}
+#| eval: false
+#| code-line-numbers: false
+
+pipeline = pipeline.fit(X_train, y_train)
+```
+:::
+
+## Confusion Matrix with Classes
+
+```{python}
+#| code-line-numbers: false
+#| label: nicer-formatted-confusion-matrix
+
+pd.DataFrame(confusion_matrix(y_train, y_train_predicted), 
+             columns = pipeline.classes_, 
+             index = pipeline.classes_)
+```
+
+::: {.callout-tip}
+# What group(s) were the hardest to predict?
+:::
+
+# Activity
+
+## Activity
+
+Use a **grid search** and the **accuracy** score to find the *best* k-value for this modeling problem.
+
+<!-- TO ADD IN THE FUTURE -->
+<!-- In the GridSearchCV function, the argument refit='f1_score' specifies that after performing cross-validation with the provided scoring metrics (my_scores), the model should be retrained (refit) using the best hyperparameters based on the 'f1_score' metric. -->
+
+# Classification Metrics
+
+## Case Study: Credit Card Fraud
+
+::: {.midi}
+We have a data set of credit card transactions from Vesta.
+
+```{python}
+#| code-line-numbers: false
+#| label: credit-card-data
+
+df_fraud = pd.read_csv("https://datasci112.stanford.edu/data/fraud.csv")
+```
+:::
+
+::: {.small}
+```{python}
+#| echo: false
+#| label: fraud-data-preview
+
+df_fraud
+```
+:::
+
+. . .
+
+::: {.midi}
+> Goal: Predict `isFraud`, where 1 indicates a fraudulent transaction.
+:::
+
+## Classification Model
+
+::: {.midi}
+We can use $k$-nearest neighbors for classification:
+
+```{python}
+#| code-line-numbers: false
+#| label: classification-pipeline
+
+from sklearn.preprocessing import OneHotEncoder
+from sklearn.compose import make_column_transformer
+
+ct = make_column_transformer(
+        (OneHotEncoder(handle_unknown = "ignore", sparse_output = False), 
+        ["card4", "card6", "P_emaildomain"]),
+        remainder = "passthrough")
+        
+pipeline = make_pipeline(
+  ct,
+  StandardScaler(),
+  KNeighborsClassifier(n_neighbors = 5)
+  )
+```
+
+::: {.callout-caution}
+# What is this transformer doing? What about the pipeline?
+:::
+:::
+
+## Training a Classifier
+
+**Isolating `X` and `y` for training data**
+
+```{python}
+#| code-line-numbers: false
+#| label: train-data-credit-card
+
+X_train = df_fraud.drop("isFraud", axis = "columns")
+y_train = df_fraud["isFraud"]
+```
+
+. . .
+
+```{python}
+#| code-line-numbers: false
+#| label: cross-val-credit-card
+
+cross_val_score(
+    pipeline,
+    X = X_train, 
+    y = y_train,
+    scoring = "accuracy",
+    cv = 10
+    ).mean()
+```
+
+. . .
+
+::: {.centered}
+How is the accuracy so high????
+:::
+
+## A Closer Look
+
+Let's take a closer look at the labels.
+
+```{python}
+#| code-line-numbers: false
+#| label: count-fraud
+
+y_train.value_counts()
+```
+
+</br>
+
+The vast majority of transactions aren't fraudulent!
+
+## Imbalanced Data
+
+If we just predicted that every transaction is normal, the accuracy would be 
+$1 - \frac{2119}{59054} = 0.964$ or 96.4%.
+
+. . .
+
+</br>
+
+Even though such predictions would be accurate *overall*, it is inaccurate for
+fraudulent transactions. 
+
+> A good model is "accurate for every class."
+
+# Precision and Recall
+
+We need a score that measures "accuracy for class $c$"!
+
+There are at least two reasonable definitions:
+
+> ***Precision***: $P(\text{correct } | \text{ predicted class } c)$
+
+Among the observations that were predicted to be in class $c$, what proportion actually were?
+
+<!-- It is the accuracy of positive predictions. -->
+
+. . .
+
+>  ***Recall***: $P(\text{correct } | \text{ actual class } c)$.
+
+Among the observations that were actually in class $c$, what proportion were predicted to be?
+
+<!-- It is the ratio of positive instance that are correctly detected.  -->
+
+## Precision and Recall by Hand
+
+::: columns
+::: {.column width="60%"}
+![](images/11-confusion-matrix-explained.png){fig-alt="A confusion matrix diagram with a 2x2 grid representing the performance of a classification model. The x-axis is labeled 'Actual Values' with categories 'Positive (1)' and 'Negative (0)'. The y-axis is labeled 'Predicted Values' with categories 'Positive (1)' and 'Negative (0)'. The four quadrants are labeled: 'TN' (True Negatives) in the top-left, 'FP' (False Positives) in the top-right, 'FN' (False Negatives) in the bottom-left, and 'TP' (True Positives) in the bottom-right." fig-width=4}
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="35%"}
+::: {.fragment}
+</br>
+
+Precision is calculated as $\frac{\text{TP}}{\text{TP} + \text{FP}}$. 
+
+</br>
+</br>
+
+Recall is calculated as $\frac{\text{TP}}{\text{TP} + \text{FN}}$. 
+:::
+:::
+:::
+
+## Precision and Recall by Hand
+
+::: {.midi}
+To check our understanding of these definitions, let's calculate a few
+precisions and recalls by hand.
+
+But first we need to get the **confusion matrix**!
+:::
+
+. . .
+
+</br>
+
+```{python}
+#| code-fold: true
+#| code-line-numbers: false
+#| label: credit-card-fit
+
+pipeline.fit(X_train, y_train);
+y_train_ = pipeline.predict(X_train)
+confusion_matrix(y_train, y_train_)
+```
+
+## Now Let's Calculate! 
+
+::: {.midi}
+```{python}
+#| code-line-numbers: false
+#| code-fold: true
+#| label: nicer-confusion-matrix-credit-card
+
+conf_mat = pd.DataFrame(confusion_matrix(y_train, y_train_), 
+             columns = pipeline.classes_, 
+             index = pipeline.classes_)
+             
+conf_mat["Total"] = conf_mat.sum(axis=1)
+conf_mat.loc["Total"] = conf_mat.sum()
+
+conf_mat
+```
+:::
+
+::: {.small}
+-   What is the (training) accuracy?
+
+-   What's the precision for fraudulent transactions?
+
+-   What's the recall for fraudulent transactions?
+:::
+
+## Trade Off Between Precision and Recall
+
+Can you imagine a classifier that always has 100% recall for class $c$, no
+matter the data?
+
+. . .
+
+In general, if the model classifies more observations as $c$,
+
+-   recall (for class $c$) $\uparrow$
+
+-   precision (for class $c$) $\downarrow$
+
+. . .
+
+How do we compare two classifiers, if one has higher precision and the other has
+higher recall?
+
+## F1 Score
+
+The **F1 score** combines precision and recall into a single score:
+
+$$\text{F1 score} = \text{harmonic mean of precision and recall}$$ $$= \frac{2} {\left( \frac{1}{\text{precision}} + \frac{1}{\text{recall}}\right)}$$
+
+-   To achieve a high F1 score, both precision and recall have to be high.
+
+-   If either is low, then the harmonic mean will be low.
+
+## Estimating Test Precision, Recall, and F1
+
+-   Remember that each class has its own precision, recall, and F1.
+
+-   But Scikit-Learn requires that the `scoring` parameter be a single metric.
+
+-   For this, we can average the score over the metrics:
+
+    -   `"precision_macro"`
+    -   `"recall_macro"`
+    -   `"f1_macro"`
+
+## F1 Score
+
+```{python}
+#| code-line-numbers: false
+#| label: f1-credit-card
+
+cross_val_score(
+    pipeline,
+    X = X_train,
+    y = y_train,
+    scoring = "f1_macro",
+    cv = 10
+    ).mean()
+```
+
+## Precision-Recall Curve
+
+Another way to illustrate the trade off between precision and recall is to graph the **precision-recall curve**.
+
+First, we need the predicted probabilities.
+
+```{python}
+#| code-line-numbers: false
+#| label: probabilities-for-credit-card
+
+y_train_probs_ = pipeline.predict_proba(X_train)
+y_train_probs_
+```
+
+## Precision-Recall Curve
+
+-   By default, Scikit-Learn classifies a transaction as fraud if this probability is $> 0.5$.
+
+-   What if we instead used a threshold `t` other than $0.5$?
+
+-   Depending on which `t` we pick, we'll get a different precision and recall.
+
+We can graph this trade off!
+
+## Precision-Recall Curve
+
+Let's graph the precision-recall curve together in a Colab.
+
+<https://colab.research.google.com/drive/1T-0iQOQZFldHNmOXdZf4GU0b8j3kWMc_?usp=sharing>
+
+# Takeaways
+
+## Takeaways
+
+::: {.midi}
+-   We can do **KNN for Classification** by letting the nearest neighbors "vote"
+
+-   The number of votes is a "probability"
+
+-   A **classification model** must be evaluated differently than a **regression model**.
+
+-   One possible metric is **accuracy**, but this is a bad choice in situations with **imbalanced data**.
+
+-   **Precision** measures "if we say it's in Class A, is it really?"
+
+-   **Recall** measures "if it's really in Class A, did we find it?"
+
+-   **F1 Score** is a balance of precision and recall
+
+-   **Macro F1 Score** averages the F1 scores of all classes
+:::

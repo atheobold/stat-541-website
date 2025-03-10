@@ -1,0 +1,508 @@
+---
+title: "Introduction to Modeling"
+format:  
+  revealjs: 
+    theme: [default, style.scss]
+editor: source
+execute:
+  echo: true
+---
+
+```{r}
+#| include: false
+library(reticulate)
+use_python("/usr/local/bin/python3")
+```
+
+```{python}
+#| include: false
+import numpy as np
+import pandas as pd
+from plotnine import *
+```
+
+# Starting Your Final Projects 
+
+## Upcoming Tasks / Deadlines
+
+1. Form a group of ***up to*** 3 students
+2. Find a dataset
+3. Form some research questions
+4. Do some preliminary explorations of the data
+5. Write up your project proposal
+
+::: {.callout-tip}
+The [Final Project instructions page](../project/project-description.qmd) has
+suggestions for where to find datasets. 
+:::
+
+## Project Proposal - Due Sunday, February 23
+
+::: {.midi}
+1.  Your group member names.
+
+2.  Information about the dataset(s) you intend to analyze:
+
+    -   Where are the data located?
+    -   Who collected the data and why?
+    -   What information (variables) are in the dataset?
+
+3.  Research Questions: You should have one primary research question and a few
+secondary questions
+
+4.  Preliminary exploration of your dataset(s): A few simple plots or summary
+statistics that relate to the variables you plan to study.
+:::
+
+# The story so far...
+
+## Steps for Data Analysis
+
+-   **Read** and then **clean** the data
+    -   Are there missing values? Will we drop those rows, or replace the missing values with something?
+    -   Are there *quantitative* variables that Python thinks are *categorical*?
+    -   Are there *categorical* variables that Python thinks are *quantitative*?
+    -   Are there any *anomalies* in the data that concern you?
+
+## Steps for Data Analysis (cont'd)
+
+-   **Explore** the data by **visualizing** and **summarizing**.
+    -   Different approaches for different combos of *quantitative* and *categorical* variables
+    -   Think about *conditional* calculations (split-apply-combine)
+
+## Steps for Data Analysis (cont'd)
+
+-   Identify a **research question** of interest.
+
+-   Perform **preprocessing** steps
+
+    -   Should we *scale* the quantitative variables?
+    -   Should we *one-hot-encode* the categorical variables?
+    -   Should we *log-transform* any variables?
+
+-   Measure similarity between **observations** by calculating **distances**.
+
+    -   Which *features* should be included?
+    -   Which *distance metric* should we use?
+
+# Machine Learning and Statistical Modeling
+
+## Modeling
+
+Every analysis we will do assumes a structure like:
+
+</br> 
+
+::: {style="font-size: 125%;"}
+(**output**) = f(**input**) + (noise)
+:::
+
+</br> 
+
+... or, if you prefer...
+
+::: {style="font-size: 125%;"}
+**target** = f(**predictors**) + noise
+:::
+
+## Generative Process
+
+In either case: we are trying to reconstruct information in **data**, and we are hindered by **random noise**.
+
+The function $f$ might be very simple...
+
+. . .
+
+$$y_i = \mu + \epsilon_i$$
+
+"A person's height is the true average height of people in the world, plus some randomness."
+
+## Generative Process
+
+... or more complex...
+
+$$y_i = 0.5*x_{1i} + 0.5*x_{2i} + \epsilon_i$$
+
+"A person's height is equal to the average of their biological mother's height and biological father's height, plus some randomness"
+
+::: {.callout-tip}
+Do you think there is "more randomness" in the first function or this one?
+:::
+
+## Generative Process
+
+... or extremely, ridiculously complex...
+
+![](images/09-complex-function.png)
+
+## Generative Process
+
+... and it doesn't have to be a *mathematical* function at all!
+
+</br> 
+
+The process can just a procedure:
+
+::: {.midi}
+$$y_i = \text{(average of heights of 5 people with most similar weights)} + \epsilon_i$$
+:::
+
+## Modeling
+
+::: {.incremental}
+-   Our goal is to **reconstruct** or **estimate** or **approximate** the function / process $f$ based on **training data**.
+
+    + For example: Instead of the 5 most similar weights *in the whole world*, we can estimate with the 5 most similar weights *in our training set*.
+
+-   Instead of committing to one $f$ to estimate, we might propose **many** options and see which one "leaves behind" the least randomness (has the smallest errors).
+:::
+
+# Data: Wine Price Prediction
+
+## Setup
+
+```{python}
+#| code-line-numbers: false
+#| label: packages-data-load
+
+import pandas as pd
+from sklearn.compose import make_column_transformer
+from sklearn.preprocessing import OneHotEncoder
+from sklearn.preprocessing import StandardScaler
+
+df = pd.read_csv("https://dlsun.github.io/pods/data/bordeaux.csv")
+```
+
+</br>
+
+::: columns
+::: {.column width="45%"}
+**Training Data**
+
+```{python}
+#| code-line-numbers: false
+#| label: train-data
+
+known = df["year"] < 1981
+df_train = df[known]
+```
+:::
+
+::: {.column width="10%"}
+:::
+
+::: {.column width="45%"}
+**Testing Data**
+
+```{python}
+#| code-line-numbers: false
+#| label: test-data
+
+unknown = df["year"] > 1980
+df_test = df[unknown]
+```
+
+:::
+:::
+
+## KNN Revisited
+
+::: {.midi}
+**Column Transformer**
+
+```{python}
+#| code-line-numbers: false
+#| label: knn-column-transformer
+
+from sklearn.pipeline import make_pipeline
+from sklearn.neighbors import KNeighborsRegressor
+
+features = ['summer', 'har', 'sep', 'win', 'age']
+
+ct = make_column_transformer(
+  (StandardScaler(), features),
+  remainder = "drop"
+)
+```
+
+**Pipeline**
+
+```{python}
+#| code-line-numbers: false
+#| label: knn-pipeline
+
+pipeline = make_pipeline(
+  ct,
+  KNeighborsRegressor(n_neighbors = 5)
+  )
+```
+:::
+
+## KNN Revisited
+
+::: {.midi}
+**Fit**
+
+```{python}
+#| code-line-numbers: false
+#| label: knn-fit
+#| output-location: column
+
+pipeline.fit(X = df_train,
+             y = df_train['price'])
+```
+:::
+
+## KNN Revisited
+
+::: {.midi}
+**Predict**
+
+```{python}
+#| code-line-numbers: false
+#| label: knn-predict
+
+pred_y_train = pipeline.predict(X = df_test)
+```
+:::
+
+## Measuring Error
+
+::: {.midi}
+The most common way to measure "leftover noise" is the **sum of squared error**
+or equivalently, the **mean squared error**. 
+:::
+
+. . .
+
+::: {.midi}
+```{python}
+#| code-line-numbers: false
+#| label: sse
+#| output-location: fragment
+
+pred_y_train = pipeline.predict(X = df_train)
+
+results = pd.DataFrame({
+  "real_prices": df_train['price'],
+  "predicted_prices": pred_y_train,
+})
+results["squared error"] = (results["predicted_prices"] - results["real_prices"])**2
+results
+```
+:::
+
+## Measuring Error
+
+The most common way to measure "leftover noise" is the **sum of squared error**
+or equivalently, the **mean squared error**.
+
+```{python}
+#| code-line-numbers: false
+#| label: mse
+
+results["squared error"].mean()
+```
+
+## Best K
+
+Now let's try it for some different values of $k$
+
+```{python}
+#| code-line-numbers: false
+#| label: different-ks
+
+for k in [1, 3, 5, 10, 25]:
+  pipeline = make_pipeline(
+    ct,
+    KNeighborsRegressor(n_neighbors = k)
+    )
+  pipeline = pipeline.fit(X = df_train, y = df_train['price'])
+  pred_y_train = pipeline.predict(X = df_train)
+  ((df_train['price'] - pred_y_train)**2).mean()
+
+```
+
+## Training Error Versus Test Error
+
+::: {.incremental}
+-   Oh no! Why did we get an error of 0 for $k = 1$?
+
+-   Because the closest wine in the training set is... itself.
+
+-   So, our problem is:
+
+    -   If we predict on the **new data**, we don't know the **true prices**
+    and we can't **evaluate** our models.
+    -   If we predict on the **training data**, we are "cheating," because we
+    are using the data to both **train** and **test**.
+
+-   Solution: Let's make a pretend **test data** set!
+:::
+
+## Another Test / Training Split
+
+```{python}
+#| code-line-numbers: false
+#| label: new-test-train
+
+test = (df["year"] > 1970) & (df["year"] < 1981)
+train = df["year"] < 1971
+
+df_train_new = df[train].copy()
+df_test_new = df[test].copy()
+```
+
+</br>
+
+-   We will **train** on the years up to 1970
+
+-   We will **test** on the years 1971 to 1980
+
+-   We will **evaluate** based on model performance on the **test data**.
+
+## Try Again: Best K
+
+::: {.small}
+```{python}
+#| code-line-numbers: false
+#| label: new-test-train-different-ks
+
+for k in range(1,15):
+  pipeline = make_pipeline(
+    ct,
+    KNeighborsRegressor(n_neighbors = k))
+ 
+  pipeline = pipeline.fit(X = df_train_new, 
+                          y = df_train_new['price'])
+  
+  pred_y_test = pipeline.predict(X = df_test_new)
+  
+  print(str(k) + ":" + str(((df_test_new['price'] - pred_y_test)**2).mean()))
+```
+:::
+
+## Tuning
+
+-   Here we tried the same ***type*** of model (KNN) each time.
+
+-   But we tried different ***models*** because we used different values of $k$.
+
+-   This is called model ***tuning***!
+
+## Activity
+
+Perform tuning for a KNN model, but with ***all possible values of k***.
+
+Do this for three *column transformers*:
+
+1.  Using all predictors.
+
+2.  Using just winter rainfall and summer temperature.
+
+3.  Using only age.
+
+Which of the many model options performed best?
+
+```{python}
+#| echo: false
+#| eval: false
+#| label: activity-solutions
+
+ct2 = make_column_transformer(
+  (StandardScaler(), ['summer', 'win']),
+  remainder = "drop"
+)
+ct3 = make_column_transformer(
+  (StandardScaler(), ['age']),
+  remainder = "drop"
+)
+
+for k in range(1,17):
+  pipeline = make_pipeline(
+    ct,
+    KNeighborsRegressor(n_neighbors=k))
+  pipeline = pipeline.fit(X=df_train, y=df_train['price'])
+  pred_y_test = pipeline.predict(X=df_test)
+  print(str(k) + ":" + str(((df_test['price'] - pred_y_test)**2).mean()))
+  
+for k in range(1,17):
+  pipeline = make_pipeline(
+    ct2,
+    KNeighborsRegressor(n_neighbors=k))
+  pipeline = pipeline.fit(X=df_train, y=df_train['price'])
+  pred_y_test = pipeline.predict(X=df_test)
+  print(str(k) + ":" + str(((df_test['price'] - pred_y_test)**2).mean()))
+  
+for k in range(1,17):
+  pipeline = make_pipeline(
+    ct3,
+    KNeighborsRegressor(n_neighbors=k))
+  pipeline = pipeline.fit(X=df_train, y=df_train['price'])
+  pred_y_test = pipeline.predict(X=df_test)
+  print(str(k) + ":" + str(((df_test['price'] - pred_y_test)**2).mean()))
+```
+
+## Things to think about
+
+::: {.midi}
+::: {.incremental}
+-   What other **types of models** could we have tried?
+
+    + *Linear regression*, *decision tree*, *neural network*, ...
+
+-   What other **column transformers** could we have tried?
+
+    + *Different combinations of variables, different standardizing, log transforming...*
+
+-   What other **measures of error** could we have tried?
+
+    + *Mean absolute error*, *log-error*, *percent error*, ...
+
+-   What if we had used a **different test set**?
+
+    + *Coming soon: Cross-validation*
+
+-   What if our target variable was **categorical**?
+
+    + *Logistic regression, multinomial regression, decision trees,...*
+:::
+:::
+
+# Modeling: General Procedure
+
+## Modeling
+
+[For each model proposed:]{.underline}
+
+::: {.midi}
+1.   Establish a **pipeline** with **transformers** and a **model**.
+
+2.  **Fit** the pipeline on the **training data** (with known outcome).
+
+3.   **Predict** with the fitted pipeline on **test data** (with known outcome).
+
+4.   **Evaluate** our success (i.e., measure noise "left over").
+:::
+
+. . .
+
+[Then:]{.underline}
+
+::: {.midi}
+5.   **Select** the best model.
+
+6.  **Fit** on *all* the data.
+
+7.  **Predict** on any future data (with unknown outcome).
+:::
+
+## Big decisions
+
+-   Which models to try
+
+-   Which column transformers to try
+
+-   How much to tune
+
+-   How to measure the "success" of a model
