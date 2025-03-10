@@ -1,0 +1,708 @@
+---
+title: "Stat 541 Final Portfolio"
+format: pdf
+editor: visual
+self-contained: true
+toc: true
+---
+
+```{r}
+#| include: false
+#| label: packages-portfolio-objectives
+
+library(tidyverse)
+
+portfolio_levels <- tibble(
+  Objective = character(), 
+  Level = numeric() 
+  )
+```
+
+# Independent Learning (IL):
+
+*These objectives show your ability to seek out new information and adapt to new tools to solve data analysis problems.*
+
+------------------------------------------------------------------------
+
+## \[IL-1\] Adding new skills:
+
+-   I can find and adopt new packages to accomplish tasks.
+-   I can adapt to different syntax styles (tidy, base, formula style, data.table).
+-   I can use tutorials, etc. to enhance my understanding of new concepts
+
+```{r}
+#| include: false
+#| label: IL-1
+
+## Fill in the line below with your self-assigned level for this objective.
+## Remember, you have the following levels to choose from:
+
+# 1 = novice
+# 2 = proficiency
+# 3 = mastery 
+# 4 = expert
+
+my_level <- 1
+
+portfolio_levels <- portfolio_levels %>%
+  bind_rows(
+    tibble(Objective = "IL-1",
+           Level = my_level)
+    )
+```
+
+### Level: `r my_level`
+
+### Justification:
+
+------------------------------------------------------------------------
+
+## \[IL-2\] Online resources:
+
+-   I can use online resources (Google, ChatGPT, StackOverflow) to solve problems, debug, or find new tools.
+-   I can find source code for similar projects to use as starting points for my own
+-   I can read the documentation of an API to figure out how to access data.
+
+```{r}
+#| include: false
+#| label: IL-2
+
+## Fill in the line below with your self-assigned level for this objective.
+my_level <- 1
+
+portfolio_levels <- portfolio_levels %>%
+  bind_rows(
+    tibble(Objective = "IL-2", 
+           Level = my_level)
+    )
+```
+
+### Level: `r my_level`
+
+### Justification:
+
+------------------------------------------------------------------------
+
+# Reproducible Workflow (RW):
+
+*These objectives show your ability to produce artifacts and deliverables that are organized, documented, version tracked, and responsibly designed.* \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+## \[RW-1\] File, code, and data management:
+
+-   I can use Git and GitHub to track my progress and collaborate (creating repos, cloning, forking, pull requesting).
+-   I always use R Projects and the {here} package to organize my scripts, notebooks, data, and applications.
+
+```{r}
+#| include: false
+#| label: RW-1
+
+my_level <- 1
+
+portfolio_levels <- portfolio_levels %>%
+  bind_rows(
+    tibble(Objective = "RW-1",
+           Level = my_level)
+    )
+```
+
+### Level: `r my_level`
+
+### Justification:
+
+------------------------------------------------------------------------
+
+## \[RW-2\] Notebooks:
+
+-   I can use Quarto and/or R Markdown to produce a reproducible notebook and polished rendered document.
+-   I can use appropriate chunk options (echo, error, cache, etc.) to render my qmd/Rmd quickly and cleanly.
+
+```{r, include = FALSE}
+#| include: false
+#| label: RW-2
+
+my_level <- 1
+
+portfolio_levels <- portfolio_levels %>%
+  bind_rows(
+    tibble(Objective = "RW-2",
+           Level = my_level)
+    )
+```
+
+### Level: `r my_level`
+
+### Justification:
+
+------------------------------------------------------------------------
+
+## \[RW-3\] Code style
+
+-   My code is clear, readable, well-organized, and well-commented.
+-   I can use a package-based workflow to organize my analyses
+
+```{r}
+#| include: false
+#| label: RW-3
+
+my_level <- 1
+
+portfolio_levels <- portfolio_levels %>%
+  bind_rows(
+    tibble(Objective = "RW-3",
+           Level = my_level)
+    )
+```
+
+### Level: `r my_level`
+
+### Justification
+
+------------------------------------------------------------------------
+
+# Technical Communication (TC):
+
+*These objectives show your ability to communicate the processes you have implemented in your code, as well as the data conclusions and results.*
+
+------------------------------------------------------------------------
+
+## \[TC-1\] Project summaries:
+
+-   I can clearly and succinctly summarize the contributions of my project.
+-   I accurately interpret statistical or modeling results.
+-   I consider the appropriate scope and impact of my project results.
+
+```{r}
+#| include: false
+#| label: TC-1
+
+my_level <- 1
+
+portfolio_levels <- portfolio_levels %>%
+  bind_rows(
+    tibble(Objective = "TC-1", 
+           Level = my_level)
+    )
+```
+
+### Level: `r my_level`
+
+### Justification:
+
+------------------------------------------------------------------------
+
+## \[TC-2\] Documentation:
+
+-   I provide ample documentation and tutorials for my custom functions.
+-   I provide user-friendly guides for my tools and software
+
+```{r}
+#| include: false
+#| label: TC-2
+
+my_level <- 1
+
+portfolio_levels <- portfolio_levels %>%
+  bind_rows(
+    tibble(Objective = "TC-2", 
+           Level = my_level)
+    )
+```
+
+### Level: `r my_level`
+
+### Justification:
+
+------------------------------------------------------------------------
+
+# Data Manipulation (DM):
+
+*These objectives relate to the collection, cleaning, processing, and preparing of datasets for analysis.*
+
+------------------------------------------------------------------------
+
+## \[DM-1\] Data preparation:
+
+-   I can read in datasets to R, including untidy ones.
+-   I can clean datasets to deal with missing data, typos, poor formatting, etc.
+
+```{r, include = FALSE}
+#| include: false
+#| label: DM-1
+
+my_level <- 1
+
+portfolio_levels <- portfolio_levels %>%
+  bind_rows(
+    tibble(Objective = "DM-1", 
+           Level = my_level)
+    )
+```
+
+### Level: `r my_level`
+
+### Justification:
+
+------------------------------------------------------------------------
+
+## \[DM-2\] Data wrangling
+
+-   I can cleverly use pivoting, grouping, and joining to wrangle data.
+-   I can use mapping ({purrr}), applying (tapply, lapply, ...), and/or iteration (for loops) to perform repeated tasks.
+
+```{r, include = FALSE}
+#| include: false
+#| label: DM-2
+
+my_level <- 1
+
+portfolio_levels <- portfolio_levels %>%
+  bind_rows(
+    tibble(Objective = "DM-2",
+           Level = my_level)
+    )
+```
+
+### Level: `r my_level`
+
+### Justification:
+
+------------------------------------------------------------------------
+
+## \[DM-3\] Data formats
+
+-   I can use API urls to access JSON data and convert it to a data frame
+
+```{r, include = FALSE}
+## Fill in the line below with your self-assigned level for this objective.
+my_level <- 0
+
+portfolio_levels <- portfolio_levels %>%
+  bind_rows(tibble(Objective = "DM-3", 
+                   Level = my_level))
+```
+
+### Level: `r my_level`
+
+### Justification
+
+------------------------------------------------------------------------
+
+## \[DM-4\] Data collection
+
+-   I can webscrape simple tables and information
+
+```{r}
+#| include: false
+#| label: DM-4
+
+my_level <- 1
+
+portfolio_levels <- portfolio_levels %>%
+  bind_rows(
+    tibble(Objective = "DM-3", 
+           Level = my_level)
+    )
+```
+
+### Level: `r my_level`
+
+### Justification
+
+------------------------------------------------------------------------
+
+# Professional Visualization (PV):
+
+------------------------------------------------------------------------
+
+## \[PV-1\] ggplot: grammar of graphics
+
+-   I can use less common geometries, including those from ggplot extension packages.
+-   I can use the correct aesthetics to map variables
+-   I understand how geometries inherit aesthetics I can add annotations to my plot
+
+```{r}
+#| include: false
+#| label: PV-1
+
+my_level <- 1
+
+portfolio_levels <- portfolio_levels %>%
+  bind_rows(
+    tibble(Objective = "PV-1", 
+           Level = my_level)
+    )
+```
+
+### Level: `r my_level`
+
+### Justification:
+
+------------------------------------------------------------------------
+
+## \[PV-2\] ggplot: theme
+
+-   I can edit the titles, subtitles, captions, axis labels, etc. to create a clearly labelled plot
+-   I can choose colors ("scales") and themes to make a visually pleasing and accessible plot
+
+```{r}
+#| include: false
+#| label: PV-2
+
+my_level <- 1
+
+portfolio_levels <- portfolio_levels %>%
+  bind_rows(
+    tibble(Objective = "PV-2", 
+           Level = my_level)
+    )
+```
+
+### Level: `r my_level`
+
+### Justification:
+
+------------------------------------------------------------------------
+
+## \[PV-3\] Dynamic visualizations
+
+-   I can use a package like {gganimate} to create self-contained gifs
+-   I can use a package like {plotly}, {ggplotly}, {leaflet}, {ggirafe}, etc. to make interactive html widgets
+
+```{r}
+#| include: false
+#| label: PV-3
+
+my_level <- 1
+
+portfolio_levels <- portfolio_levels %>%
+  bind_rows(
+    tibble(Objective = "PV-3", 
+           Level = my_level)
+    )
+```
+
+### Level: `r my_level`
+
+### Justification:
+
+------------------------------------------------------------------------
+
+## \[PV-4\] Shiny
+
+-   I can create a functional Shiny app.
+-   I understand the principle of reactivity, and how to use it.
+
+```{r}
+#| include: false
+#| label: PV-4
+
+my_level <- 1
+
+portfolio_levels <- portfolio_levels %>%
+  bind_rows(
+    tibble(Objective = "PV-4", 
+           Level = my_level)
+    )
+```
+
+### Level: `r my_level`
+
+### Justification:
+
+------------------------------------------------------------------------
+
+# Software Development (SD):
+
+*These objectives relate to your ability to develop correct, usable, well-designed, and sophisticated software in the R language.*
+
+------------------------------------------------------------------------
+
+## \[SD-1\] R programming language details
+
+-   I understand non-standard evaluation (aka "Tidy Eval" or "unquoted objects"), and I can use tunneling in my functions.
+-   I understand functional programming, and I can use functions as objects in my code design
+-   I understand object-oriented programming, and I can define my own classes and methods.
+
+```{r}
+#| include: false
+#| label: SD-1
+
+my_level <- 1
+
+portfolio_levels <- portfolio_levels %>%
+  bind_rows(
+    tibble(Objective = "SD-1", 
+           Level = my_level)
+    )
+```
+
+### Level: `r my_level`
+
+### Justification:
+
+------------------------------------------------------------------------
+
+## \[SD-2\] Package creation:
+
+-   I can create a folder that is installable as an R package, possibly using {usethis} helper functions
+-   I can document my functions using {roxygen2} style commenting
+-   I can write and run unit tests using {testthat}
+-   I can design a package that is user-friendly and has well-designed functions.
+
+```{r}
+#| include: false
+#| label: SD-2
+
+my_level <- 1
+
+portfolio_levels <- portfolio_levels %>%
+  bind_rows(
+    tibble(Objective = "SD-2", 
+           Level = my_level)
+    )
+```
+
+### Level: `r my_level`
+
+### Justification
+
+------------------------------------------------------------------------
+
+# Matrix Operations (MO):
+
+*These objectives show your ability to manipulate data-related information in the form of vectors and matrices, rather than in high-level data structures.*
+
+------------------------------------------------------------------------
+
+## \[MO-1\] Theory:
+
+-   I understand the difference between ordinary multiplication and matrix multiplication, and how to implement each in R
+-   I can implement and briefly explain the matrix equations for multiple linear regression
+
+```{r}
+#| include: false
+#| label: MO-1
+
+my_level <- 1
+
+portfolio_levels <- portfolio_levels %>%
+  bind_rows(
+    tibble(Objective = "MO-1", 
+           Level = my_level)
+    )
+```
+
+### Level: `r my_level`
+
+### Justification:
+
+------------------------------------------------------------------------
+
+## \[MO-2\] Object structures:
+
+-   I can convert data objects into the necessary matrix structures to perform operations on them.
+-   I can convert results of matrix operations to convenient data analysis formats
+
+```{r}
+#| include: false
+#| label: MO-2
+
+my_level <- 1
+
+portfolio_levels <- portfolio_levels %>%
+  bind_rows(
+    tibble(Objective = "MO-2", 
+           Level = my_level)
+    )
+```
+
+### Level: `r my_level`
+
+### Justification:
+
+------------------------------------------------------------------------
+
+# Algorithms and Iteration (AI):
+
+*These objectives ask you to design code-based approaches to statistical computing problems, usually involving iteration to a stopping condition.*
+
+------------------------------------------------------------------------
+
+## \[AI-1\] Creating an algorithm:
+
+-   I can invent and implement my own iterative algorithm.
+
+```{r}
+#| include: false
+#| label: AI-1
+
+my_level <- 1
+
+portfolio_levels <- portfolio_levels %>%
+  bind_rows(
+    tibble(Objective = "AI-1", 
+           Level = my_level)
+    )
+```
+
+### Level: `r my_level`
+
+### Justification:
+
+------------------------------------------------------------------------
+
+## \[AI-2\] Generative art:
+
+-   I can apply a variety of generative art functions to make a visually pleasing piece.
+-   I can explain why particular changes to the code result in particular differences in the visualization.
+
+```{r}
+#| include: false
+#| label: AI-2
+
+my_level <- 1
+
+portfolio_levels <- portfolio_levels %>%
+  bind_rows(
+    tibble(Objective = "AI-2", 
+           Level = my_level)
+    )
+```
+
+### Level: `r my_level`
+
+### Justification:
+
+------------------------------------------------------------------------
+
+# Code Design (CD):
+
+*These objectives relate to making wise or clever choices in how you implement a procedure in code; including creating functions and objects, or thinking about the clarity and efficiency of processes.*
+
+------------------------------------------------------------------------
+
+## \[CD-1\] Speed and Efficiency:
+
+-   I can recognize moments of possible slowdown in my code, and use built-in functions or parallelizing to speed them up.
+-   I always use and design vectorized functions whenever possible.
+
+```{r}
+#| include: false
+#| label: CD-1
+
+my_level <- 1
+
+portfolio_levels <- portfolio_levels %>%
+  bind_rows(
+    tibble(Objective = "CD-1", 
+           Level = my_level)
+    )
+```
+
+### Level: `r my_level`
+
+### Justification:
+
+------------------------------------------------------------------------
+
+## \[CD-2\] Object handling:
+
+-   I can make reasonable choices in my code design about when to save intermediate objects.
+-   I can convert objects between types and structures as needed.
+
+```{r}
+#| include: false
+#| label: CD-2
+
+my_level <- 1
+
+portfolio_levels <- portfolio_levels %>%
+  bind_rows(
+    tibble(Objective = "CD-2", 
+           Level = my_level)
+    )
+```
+
+### Level: `r my_level`
+
+### Justification:
+
+------------------------------------------------------------------------
+
+## \[CD-3\] Supporting functions:
+
+-   I write helper/shortcut functions to streamline repeated tasks and make my code easier to read.
+-   I use intermediate functions to streamline repeated or looping processes.
+
+```{r}
+#| include: false
+#| label: CD-3
+
+my_level <- 1
+
+portfolio_levels <- portfolio_levels %>%
+  bind_rows(
+    tibble(Objective = "CD-3", 
+           Level = my_level)
+    )
+```
+
+### Level: `r my_level`
+
+### Justification:
+
+------------------------------------------------------------------------
+
+## \[CD-4\] Algorithmic process:
+
+-   My loops are clean and efficient
+-   Proper values are calculated to update objects and/or determine stopping conditions
+-   I have built in checks for possible problems or extreme cases in the algorithm
+
+```{r}
+#| include: false
+#| label: CD-4
+
+my_level <- 1
+
+portfolio_levels <- portfolio_levels %>%
+  bind_rows(
+    tibble(Objective = "CD-4", 
+           Level = my_level)
+    )
+```
+
+### Level: `r my_level`
+
+### Justification:
+
+------------------------------------------------------------------------
+
+# Summary
+
+```{r}
+#| echo: false
+#| label: summary-graph
+
+portfolio_levels %>%
+  mutate(
+    Category = str_extract(Objective, "[A-Z]{2}"),
+    Level = factor(Level)
+  ) %>%
+  ggplot(
+    aes(x = Level, 
+        y = (..count..)/sum(..count..)
+        )
+    ) +
+  geom_bar() +
+  labs(x = "Level",
+       y = "Percent") +
+  theme_bw() +
+  scale_y_continuous(labels = scales::percent)
+```
+
+## Grade
+
+Based on the summary plot above, I believe I have earned a \_\_\_ in STAT 541.
+
+### Justification
