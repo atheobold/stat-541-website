@@ -1,0 +1,354 @@
+---
+title: 'STAT 541: Advanced Statistical Computing'
+subtitle: "Spring 2024"
+format: 
+  html: 
+    self-contained: true
+    fontsize: 1em
+    mainfont: sans-serif
+    number-depth: 2
+    number-sections: true
+    table-of-contents: true
+    section-divs: true
+    code-block-bg: "#76b5c5"
+    highlight-style: monochrome
+editor: source
+execute: 
+  echo: false
+  warning: false
+  message: false
+---
+
+::: {.panel-tabset}
+
+# Instructor Info 
+
+**Instructor: Dr. Allison Theobold** -- call me [**Dr. Theobold**](https://docs.google.com/document/d/1m4e-2l76luAd9WrxiwCVf8-yf-co82dDSe1jHYf-NBo/edit?usp=sharing) or Dr. T! I use **they / she** pronouns (that is my order of preference).
+
+**Email**: atheobol\@calpoly.edu[^1]
+
+[^1]: See @sec-help for information on what you can expect when you email me.
+
+# Class meetings
+
+**Room:** Baker Science (Building 180), Room 272
+
+**Times:** 10:10am - 12:00pm (MW)
+
+# Student Hours {#sec-OH}
+
+This quarter I will be holding student hours on Mondays and Wednesdays at the following times:
+
++-----------------+--------------------------------------------------+
+| Day             | Time                                             |
++=================+==================================================+
+| Mondays         | 3:10pm -- 4:00pm (in-person)                     |
++-----------------+--------------------------------------------------+
+| Wednesdays      | 2:10 pm - 3:00 pm (individual meetings via Zoom) |
+|                 |                                                  |
+|                 | 3:10 - 4:00 (in-person)                          |
++-----------------+--------------------------------------------------+
+
+I will typically hold student hours in my office (25-105), but may choose to move to the outside vestibule between wings of the building (where all the whiteboards are) or the Statistics department conference room. If we're meeting somewhere other than my office, I will leave a sign on the door indicating where we're meeting!
+
+# Personal Meetings 
+
+If you would like to talk with me one-on-one about anything (e.g., grades, research), I've reserved time on Wednesdays from 2:10pm to 3:00pm for individual appointments. You can make 10-minute appointments through the following link: <https://calendly.com/allisontheobold/office-hour-appointment>
+
+I do request that you make appointments at least 2-hours ahead of time, so I don't accidentally miss our meeting!
+
+If you need to meet, but none of the student hours work for you please let me know! It is possible we can communicate asynchronously through Discord or email, but I am happy to schedule a meeting during another time if necessary.
+
+:::
+
+# Course Resources 
+
+::: {.panel-tabset}
+
+# Textbooks
+
+This course has no specific textbook; we will make use of many online books and resources. Some suggested resources are below.
+
+In Unit 1:
+
+- [R for Data Science](https://r4ds.hadley.nz/)
+- [Happy Git with R](https://happygitwithr.com/)
+- [Quarto tutorials](https://quarto.org/docs/get-started/authoring/rstudio.html)
+- [R Markdown Cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/)
+- [Mastering Shiny](https://mastering-shiny.org/)
+
+In Unit 2:
+
+- [Advanced R](https://adv-r.hadley.nz/)
+- [R Packages](https://r-pkgs.org/)
+- [usethis](https://usethis.r-lib.org/)
+
+In Unit 3:
+
+- [StatQuest!](https://statquest.org/)
+
+# Required Technology
+
+You will need either
+
+a. Access to a laptop that can run R 4.0+, or
+b. An account at [posit.cloud](https://posit.cloud/). You may need to subscribe at the non-free level ($5 / month) for sufficient computing power for this class.
+
+# Canvas 
+
+Canvas will be your resource for the course materials necessary for each week. Each module will walk you through what you are expected to do each week, including:
+
+- tutorial pages ("Coursework") to go over before class
+- check-ins, that are ideally done before class
+- practice activities, that we will work on during class
+- lab assignments, that will be started in class time and completed by Monday each week
+- projects, one for each of the three units
+
+:::{.callout-tip}
+Make sure you are receiving email notifications for, at least, announcements and emails. In Canvas, click on your name, then Notifications. Check that Canvas is using an email address that you regularly check; you have the option of registering a mobile number. Check the boxes to get notifications for announcements, and optionally other Canvas activity.
+:::
+
+# Discord
+
+This quarter, we will make use of a class wide Discord Server. The link on Canvas will help you join this server. Refer to the Using Discord guide on Canvas for more information on how to effectively use this server.
+
+Joining the Discord is not optional. Important information and discussion will happen here, and sometimes I will share hints and code snippets for activities or assignments.
+
+:::{.callout-tip}
+Discord is also the best way to possibly get your questions answered outside of ordinary class and office hours.
+:::
+:::
+
+
+# What is this class?
+
+Stat 541 (old STAT 431) is an grad / upper level course focused on statistical computing with R. This quarter, you will learn to take R to the next level - as a data scientist, as a software developer, and as a statistician.
+
+## Course Objectives
+
+After taking this course, you will be able to:
+
+- Create complex and reproducible data reports, that include interactive and/or dynamic elements.
+
+- Construct your own R packages to streamline analyses.
+
+- Implement by hand the underlying mathematical computations for common statistical and machine learning methods.
+
+## Prerequisites
+
+I expect you to enter this class with:
+
+- Comfort in intermediate level R skills.
+
+- Statistical knowledge at the Year 2 level; i.e., comfort with the concepts and basic math of multiple linear regression.
+
+- Familiarity with computers and technology (e.g., Internet browsing, word processing, opening/saving files, converting files to PDF format, sending and receiving e-mail, etc.).
+
+- A positive attitude, a curious mind, and a respect for ethical use of data science tools.
+
+
+# Assessment {#sec-grades}
+
+
+
+# Coursework Details
+
+## Practice Activities and Check-ins (Due Wednesdays by 9am)
+
+These small "quizzes" or activities are posted each week, to give you a way to check your milestones on the main topics of the week.
+
+You get full credit for any reasonable effort on these; I will not be grading them carefully or giving feedback.
+
+Check-ins are designed so that they can be done on your own, using the Coursework guides, in advance of class. Practice activities are meant to be done in class during or after lecture.
+
+## Lab Assignments (Due Mondays by 5pm)
+
+Each week, you will have a "lab" assignment, bringing together the week's skills.
+
+These assignments are considered to be due every Monday by 5pm, so you have time to ask questions during hours on Monday. 
+
+### Success / Growing Grading
+
+I expect that you will approach each lab assignment seriously, investing the necessary time and energy to prepare your responses. Different from what you may have experienced, lab assignments are graded for "proficiency" of specific learning targets, which describe what you should be able to do after taking this course. You'll receive a score for each problem on an assignment according to the **Success** / **Growing** rubric below, as well as feedback to help you improve.
+
++---------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Score   | Justification                                                                                                                                                                      |
++=========+====================================================================================================================================================================================+
+| Success | The solution to the problem is correct, legible, and easy to follow, with all reasoning provided. Any error does not bring into question your understanding of the topic.          |
++---------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Growing | The solution shows growth toward mastering the topic; however, elements of the solution bring into question your understanding of the topic, and thus further attention is needed. |
++---------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+## Projects (Due Mondays at 5pm)
+
+Each of the three units will culminate in a larger project, asking you to use the skills you have learned, and possibly some new skills, to create a polished deliverable.
+
+## Final Portfolio (Due Sunday, June 9)
+
+In lieu of exams, you will assemble a portfolio demonstrating your level of proficiency in each of the learning goals for this course. Examples of your code can only be taken from the lab assignments or the projects; i.e., not from check-ins or practice activities. On Canvas you can find a detailed description of the major and minor learning goals, how you can demonstrate your proficiency, and what is required for particular course grades.
+
+Note that the portfolio is not simply a list of links to your code; it also requires a brief discussion of how that code demonstrates the skill. There are also general reflection and summary questions involved. That is to say, although you will not necessarily need to write code, the portfolio will take a good amount of time and effort to assemble; plan accordingly.
+
+::: columns
+::: {.column width="60%"}
+:::{.callout-tip}
+# Finess a GitHub Workflow Early On
+
+Since portfolio items consist of links to specific pull requests on GitHub, it is critically important that you get into a good GitHub workflow early in the class.
+
+You should be committing changes regularly, with informative commit messages. Think of this as a "save" action; you want to commit every time you make a small but substantive change to your code.
+
+You should be pull requesting changes whenever you finish a major step in a project; for example, if you complete a specific data analysis or add a function to a package.
+:::
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="35%"}
+:::{.callout-caution}
+# Incremental Progress
+
+You can do your future self a big favor by working on your portfolio progressively throughout the quarter, instead of leaving it all for Finals Week. My suggestion is that each week, you add everything you can to your portfolio that you demonstrated in that week.
+:::
+:::
+:::
+
+# Classroom community and policies
+
+### Weekly expectations
+
+The module for each week will be released no later than 5pm on Friday, so you can look over the content and see what the plan is for the week.
+
+### Getting help {#sec-help}
+
+This quarter, I am instating a policy that **I do not respond to emails with questions of general interest**, such as deadline clarifications or conceptual questions. If you have one of these questions, please ask your question on our course Discord server. 
+
+**Discord:** We will use Discord to manage questions and responses regarding course content. There are channels for the different components of each week (e.g., Week 1 Lab Assignment). Please **do not** send an email about homework questions or questions about the course material. It is incredibly helpful for others in the course to see the questions you have and the responses to those questions. I will try to answer any questions posted to Discord within 3-4 hours (unless it is posted at midnight). If you think you can answer another student's question, please respond!
+
+:::{callout-note}
+# Responding to Private Messages
+
+If you use private email or messaging to ask a question that should be public, I may simply answer it in Discord instead. Please don't take this personally! It just means that you asked a good question, and I think the rest of the class could benefit from seeing the answer.
+:::
+
+Of course, if your question is truly private, such as a grade inquiry or a personal concern, you may send me a private email. To help both you and me, here are some specific expectations about emails:
+
+-   Please tell me what course and section (by time or number) you are in!
+-   If you email me between 9am and 4pm on Monday through Friday, I'll try my best to reply to you on the *same* day.
+-   If you email me outside of those hours, I will do my best to respond to you by the *next working* day. For my own mental health, I **do not** respond to email on the weekend. Thus, if you send an email after 4pm on Friday or during the weekend, you will not receive a response until Monday morning.
+-   If your question is much easier to discuss face-to-face, I may ask you to meet with me in my office or on Discord (at a time that works for both of us) rather than answering directly in an email.
+-   Include any relevant photos / screenshots / error messages / PDFs / links with your email.
+
+# Well-being, Access, and Accommodations
+
+## What if I have accommodations or feel that accommodations would be beneficial to my learning?
+
+I enthusiastically support the mission of Disability Resource Center to make education accessible to all. I design all my courses with accessibility at the forefront of my thinking, but if you have any suggestions for ways I can make things more accessible, please let me know. Come talk to me if you need accommodation for your disabilities. I honor self-diagnosis: let's talk to each other about how we can make the course as accessible as possible. See also the standard syllabus statements, which include more information about formal processes.
+
+## I'm having difficulty paying for food and rent, what can I do?
+
+If you have difficulty affording groceries or accessing sufficient food to eat every day, or if you lack a safe and stable place to live, and you believe this may affect your performance in the course, I urge you to contact the Dean of Students for support. Furthermore, please notify me if you are comfortable in doing so. This will enable me to advocate for you and to connect you with other campus resources.
+
+## My mental health is impairing my ability to engage in my classes, what should I do?
+
+National surveys of college students have consistently found that stress, sleep problems, anxiety, depression, interpersonal concerns, death of a significant other and alcohol use are among the top ten health impediments to academic performance. If you are experiencing any mental health issues, I and Cal Poly are here to help you. Cal Poly's Counseling Services (805-756-2511) is a free and confidential resource for assistance, support and advocacy.
+
+## Someone is threatening me, what can I do?
+
+I will listen and believe you if someone is threatening you. I will help you get the help you need. I commit to changing campus culture that responds poorly to dating violence and stalking.
+
+## What if I can't arrange for childcare?
+
+If you are responsible for childcare on short notice, you are welcome to bring children to class with you. If you are a lactating parent, you many take breaks to feed your infant or express milk as needed. If I can support yo in navigating parenting, coursework, and other obligations in any way, please let me know.
+
+# Attendance, Extensions, and Technology
+
+## What if I need to miss class?
+
+I encourage you to attend every class session, but policies are for narcs. I put a great deal of time into making each class session engaging and worth your time. Attendance in this course is not explicitly required, but it degrades your classmates' trust in you when they don't see you in class.
+
+Please do not email me letting me know when you are missing class - you will not lose points for this, but it is your responsibility to catch up on the materials and complete the in-class activities. Here's what you should do if you do miss a class:
+
+-   Talk to a classmate to figure out what information you missed
+-   Check Canvas for any necessary handouts or changes to assignments
+-   Stop by student hours with any questions you have after reviewing notes and handouts
+
+If you miss a bunch of classes, please come talk to me. I'm working from the assumption that you care and are trying, but something is getting in your way (health issues? depression / anxiety? college stress?); let's figure out what that is and how I can help.
+
+## What if I need to turn something in late?
+
+Assignments are expected to be submitted on time. However, every student will be permitted to submit up to **three** individual assignments up to 3-days late, by completing a deadline extension form. Similar to the "real world," deadline extensions must be requested **before** an assignment is due.
+
+When you complete the deadline extension form you will be required to state (1) what assignment you need an extension for, and (2) your proposed new deadline. **Your new deadline must be within 3-days of the original deadline.**
+
+**All** deadline extensions must be done through the form, so I can keep track of who has used their allotment of extensions. If you are registered with DRC to have deadline extensions, you are required to complete a deadline extension request and make a note if your extension is related to a need related to DRC accommodations.
+
+Any late work is required to have a deadline extension request, meaning if you do not complete a deadline extension request for an assignment you **are not** permitted to turn it in late.
+
+The link to the deadline extension form can be found in Canvas in the Course Information module (at the top of the page).
+
+::: callout-warning
+# Deadline extensions are not permitted for the "final version" of the Midterm Project and Final Project
+:::
+
+## Do I need to bring a computer to class?
+
+You are allowed to use technology in the classroom! In fact, we will often do so as part of in-class activities. However, our class is held in a computer laboratory, so bringing a laptop is not required. You are permitted to use the lab computers, but if you would like to take notes on your computer / surface you are welcome to bring it to class.
+
+# Expectations, Respect, and Integrity
+
+## How can I expect to be treated in this course?
+
+Following Ihab Hassan, I strive to teach statistics so that people will stop killing each other. In my classroom, diversity and individual differences are a sources of strength. One of the greatest failures of Statistics, historically and in the present, has been the exclusion of voices from the field. **Everyone here can learn from each other, and doing so is vital to the structure of the course.** Significant portions of this course involve group work and discussion in class. Some discussions will touch on sensitive topics. **So that everyone feels comfortable participating in these activities, we must listen to each other and treat each other with respect.** Any attitude or belief that espouses the superiority of one group of people over another is not welcome in my classroom. Such beliefs are directly destructive to the sense of community that we strive to create, and will sabotage our ability to learn from each other (and thus sabotage the entire structure of the course).
+
+In this classroom, I expect you to be polite, respectful, inclusive, and open-minded.
+
+Some examples of how to be a good classmate include:
+
+- Doing your best to avoid language that is ableist, racist, sexist, or classist; or that perpetuates harmful stereotypes.
+- Addressing your classmates by their preferred name and pronouns.
+- Doing your best to be aware of your own biases, privileges, and areas of ignorance.
+- Listening to others’ opinions, and making an effort to understand their perspective.
+- Taking the time to help your classmates grasp concepts or solve problems, even when you are ready to move on.
+
+In summary: Be good to each other.
+
+## What constitutes plagiarism in a statistics class?
+
+You are encouraged to work with other classmates on all but the exam portions of this class. You are also encouraged (realistically, required!) to make use of online resources to accomplish tasks.
+
+When dealing with code, follow these guidelines:
+
+- Never copy-paste more than small snippets of code. That is, you might borrow a little three-line function from StackOverflow, but you should not copy over a full analysis you find on Kaggle.
+
+- Attribute all code that is not completely your own. If you do borrow that StackOverflow snippet, provide a link to the source. If you reference a similar analysis for ideas, mention that in your description.
+
+:::{.callout-warning}
+# Explain Your Code
+
+A good rule for deciding if the code you are borrowing is plagiarism is: If I sat you down by yourself in a room with no internet, could you explain to me roughly what each line of code is doing?
+
+(In fact, this is exactly what I will do if I need to investigate possible cheating.)
+::: 
+
+## Learning to Code with ChatGPT
+
+New AI models like Chat GPT offer a whole new world of online coding resources. This is exciting! In this class, you are allowed to use these tools like you would any other online coding support tool. (Note that this is not a typical policy; most of your other classes likely do not allow AI tools to be used.)
+
+If you do use an AI tool to help you write or debug code, it is important that you document and cite this process. That is, you should save the “conversation” with the chatbot, to show how you used your knowledge of R coding to construct queries that lead to useful results.
+
+When you submit your portfolio, if you use AI-generated code in your examples, you will need to make an argument for how you are demonstrating mastery of the requisite skills, and the AI is only being used as support.
+
+## Integrity Violations
+
+If you accidentally forget a small citation, or go a little overboard in how much you “borrow” from StackOverflow, you'll get a warning. Any instance of willful and deliberate cheating will result in a failing grade in this class, full stop.
+
+:::{.callout-warning}
+# The door swings both ways
+
+Be careful about being on the giving end as well as the taking end. For example: If you send your finished assignment to a friend, and that friend copies it, you have both just failed the course.
+:::
+
+# Course Organization {#sec-schedule}
+
