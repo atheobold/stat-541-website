@@ -1,0 +1,107 @@
+project:
+  type: website
+  output-dir: docs
+  render:
+    - "*.qmd"
+    - "!/labs"
+    - "!/slides"
+
+website:
+  page-navigation: true
+  title: "Advanced R"
+  description: "Homepage for STAT 541 at Cal Poly"
+  site-url: "https://github.com/atheobold/stat-541-website"
+  repo-url: https://github.com/atheobold/stat-541-website
+  repo-actions: [issue, edit]
+
+  page-footer:
+    left: "This page is built with ❤️ and [Quarto](https://quarto.org/)."
+    background: "#5D737E"
+    right:
+    - text: "License"
+      href: LICENSE.md
+
+  navbar:
+    background: "#5D737E"
+    logo: "images/cat-monsters-horst.png"
+    align: center
+    title: false
+    collapse-below: lg
+
+    right:
+      - icon: github
+        href: https://github.com/atheobold/stat-541-website
+        aria-label: GitHub
+        
+    left:
+      - text: "Overview"
+        href: index.qmd
+      - text: "Schedule"
+        href: course-materials/calendar.qmd
+      - text: "Syllabus"
+        href: course-materials/syllabus.qmd
+      - text: "Infrastructure"
+        href: set-up/setup-workflow.qmd
+      - text: "Unit 1 - Communication"
+        href: communication.qmd
+      - text: "Unit 2 - Iteration"
+        href: iteration.qmd
+      - text: "Portfolio"
+        href: portfolio.qmd
+        
+  # sidebar:
+  #   - id: hello-dsbox
+  #     title: "Hello #dsbox!"
+  #     style: "floating"
+  #     collapse-level: 2
+  #     align: left
+  #     contents:
+  #       - href: hello.qmd
+  #       - href: 01-overview.qmd
+  #       - href: 01-design-principles.qmd
+  #       - href: 01-topics.qmd
+  #       - href: 01-tech-stack.qmd
+  #       - href: 01-community.qmd
+
+    # - id: content
+    #   title: "Content"
+    #   contents:
+    #     - href: content.qmd
+    #     - href: 02-hello-world.qmd
+    #     - href: 02-exploring-data.qmd
+    #     - href: 02-ethics.qmd
+    #     - href: 02-making-rigorous-conclusions.qmd
+    #     - href: 02-looking-further.qmd
+    #     - href: 02-interactive-tutorials.qmd
+    #     - href: 02-project.qmd
+    #     - href: 02-exams.qmd
+
+    # - id: infrastructure
+    #   title: "Infrastructure"
+    #   contents:
+    #     - href: infrastructure.qmd
+    #     - href: 03-access-r.qmd
+    #     - href: 03-version-control.qmd
+    #     - href: 03-discussion.qmd
+    #     - href: 03-sharing.qmd
+    #     - href: 03-alternative-setups.qmd
+    # 
+    # - id: design
+    #   align: left
+    #   contents:
+    #     - href: design.qmd
+    #     - href: 04-pedagogy.qmd
+    #     - href: 04-schedule.qmd
+
+format:
+  html:
+    theme:
+      light: [cosmo, style/stat331.scss]
+      dark: [cosmo, style/stat331.scss, style/dark.scss]
+    mainfont: "Atkinson Hyperlegible"
+    code-copy: true
+    code-overflow: wrap
+    toc: true
+    linkcolor: "#5D737E"
+
+editor: visual
