@@ -1,18 +1,28 @@
 ---
 title: "Welcome"
+editor: source
 ---
 
 ![](images/cat-monsters-horst.png){style="float: right;" fig-alt="A orange longhaired cat curled up in a ball which three round green monsters give it pets." fig-align="right" width="250"}
 
-INSERT INFORMATION ABOUT THE CLASS!
-
-## License {.unnumbered}
-
-<a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/"><img src="https://licensebuttons.net/l/by-sa/4.0/88x31.png" alt="Creative Commons License" style="border-width:0"/></a><br />This online work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International</a>.
-Visit [here](https://github.com/rstudio-education/datascience-box/blob/master/LICENSE.md) for more information about the license.
+Stat 541 takes a deeper dive into statistical computing in R, building your 
+*communication* and *iteration* skills. We will explore different modalities for
+communicating statistical ideas---dynamic visualizations and dashboards, 
+while also exploring ways to integrate R code into these environments. We will 
+also continue to expand your skills as a developer---writing functions and
+iterating over those functions to query data from APIs and scrape the web. We're
+going to have a lot of fun!
 
 ## Acknowledements {.unnumbered}
 
-Huge thanks to the #rstats education community who have made numerous suggestions for this resource, to Lee Suddaby and Zeno Kujawa for converting the homework assignments to learnr tutorials, and to [Müge Çetinkaya](http://muge.fr/) for the hex logo!
+A huge shout out to Dr. Bodwin for creating this class and adding it to the 
+amazing number of computing courses the Statistics Department teaches. Another
+shout out goes the the amazing women at Macalester College---Leslie Myint,
+Brianna Heggeseth, Alicia Johnson---for making their *Intermediate Data Science*
+course materials public. 
 
 This website is built with [Quarto](https://quarto.org), the lovely icons are all by [Allison Horst](https://allisonhorst.com/), and none of this would be possible without the [tidyverse](https://tidyverse.org).
+
+## License {.unnumbered}
+
+<a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/"><img src="https://licensebuttons.net/l/by-sa/4.0/88x31.png" alt="Creative Commons License" style="border-width:0"/></a><br />This online work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International</a>. Visit [here](https://github.com/rstudio-education/datascience-box/blob/master/LICENSE.md) for more information about the license.

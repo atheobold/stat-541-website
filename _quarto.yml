@@ -41,7 +41,7 @@ website:
       - text: "Syllabus"
         href: course-materials/syllabus.qmd
       - text: "Infrastructure"
-        href: set-up/setup-workflow.qmd
+        href: infrastructure.qmd
       - text: "Unit 1 - Communication"
         href: communication.qmd
       - text: "Unit 2 - Iteration"
@@ -50,14 +50,15 @@ website:
         href: portfolio.qmd
         
   sidebar:
-    - id: Infrastructure
+    - id: infrastructure
       title: "Infrastructure"
       style: "floating"
       collapse-level: 2
       align: left
       contents:
-        - href: setup-workflow.qmd
-        - href: setup-version-control.qmd
+        - href: infrastructure.qmd
+        - href: set-up/setup-workflow.qmd
+        - href: set-up/setup-version-control.qmd
 
     # - id: content
     #   title: "Content"
