@@ -1,5 +1,5 @@
 ---
-title: "Week 1, Part 3: Version Control with Git and GitHub"
+title: "Version Control with Git and GitHub"
 execute:
   warning: false
   message: false

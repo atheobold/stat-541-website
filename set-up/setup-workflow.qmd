@@ -1,5 +1,5 @@
 ---
-title: "Stat 541 Set-up & Workflow"
+title: "Set-up & Workflow"
 format: 
   html: 
     mainfont: sans-serif
