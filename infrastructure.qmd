@@ -1,0 +1,13 @@
+---
+title: "Computational Infrastructure"
+editor: source
+---
+
+Welcome to STAT 541! We're excited to have you! This page is dedicated to 
+getting you set-up with the infrastructure will will make use of throughout the
+course. 
+
+
+
+
+

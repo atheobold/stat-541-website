@@ -2,22 +2,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://github.com/atheobold/stat-541-website/set-up/setup-workflow.html</loc>
-    <lastmod>2025-03-12T18:22:05.584Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/atheobold/stat-541-website/course-materials/syllabus.html</loc>
-    <lastmod>2025-03-12T17:10:06.621Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/atheobold/stat-541-website/course-materials/calendar.html</loc>
-    <lastmod>2025-03-12T17:10:06.621Z</lastmod>
+    <lastmod>2025-03-12T20:50:14.260Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/atheobold/stat-541-website/index.html</loc>
-    <lastmod>2025-03-12T17:10:06.678Z</lastmod>
+    <lastmod>2025-03-12T22:33:05.131Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/atheobold/stat-541-website/course-materials/calendar.html</loc>
+    <lastmod>2025-03-12T22:35:44.149Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/atheobold/stat-541-website/course-materials/syllabus.html</loc>
+    <lastmod>2025-03-12T22:55:05.037Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/atheobold/stat-541-website/infrastructure.html</loc>
+    <lastmod>2025-03-12T21:29:02.860Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/atheobold/stat-541-website/set-up/setup-version-control.html</loc>
-    <lastmod>2025-03-12T18:24:52.202Z</lastmod>
+    <lastmod>2025-03-12T20:50:26.862Z</lastmod>
   </url>
 </urlset>
