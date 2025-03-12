@@ -1,0 +1,293 @@
+---
+title: "Week 1, Part 3: Version Control with Git and GitHub"
+execute:
+  warning: false
+  message: false
+bibliography: references.bib
+number-sections: true
+number-depth: 2
+editor: source
+---
+
+```{r}
+#| include: false
+#| label: set-up
+
+library(knitr)
+library(kableExtra)
+library(tidyverse)
+```
+
+#### 📖 Reading: 60-75 minutes
+
+#### 📽️  Videos: 0 minute(s)
+
+#### ✅ Check-ins: 4
+
+
+## Objectives
+
+Most of this section is either heavily inspired by Happy Git and Github for the
+UseR [@bryanHappyGitGitHub2021] or directly links to that book. 
+
++ Recognize the benefits of using version control to improve your coding
+practices and workflow.
++ Identify git / GitHub as a version control platform (and helper).
++ Install git onto your computer and register for a GitHub account
++ Start applying version control practices to your workflow.
+
+# What is Version Control?
+
+Version control is a system that (1) allows you to store your files in the
+cloud, (2) track change in those files over time, and (3) share your files with
+others.
+
+### 📖 Required Reading: [Big Picture](https://happygitwithr.com/big-picture)
+
+# Git
+
+::: columns
+::: {.column width="40%"}
+Git is a **version control system** - a structured way for tracking changes to
+files over the course of a project that may also make it easy to have multiple
+people working on the same files at the same time. Git manages a collection of
+files in a structured way---like "track changes" in Microsoft Word or version
+history in Google Docs, but much more powerful.
+
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="55%"}
+![](https://www.phdcomics.com/comics/archive/phd101212s.gif){width="50%" fig-alt=""}
+
+:::
+:::
+
+If you are working alone, you will benefit from adopting version control because
+it removes the need to add `_final.qmd` or `_final_finalforreal.qmd` to the end
+of your file names. However, most of us work in collaboration with other people
+(or will have to work with others eventually), so one of the goals of this
+program is to teach you how to use git because it is a useful tool that will
+make you a better collaborator. 
+
+In data science programming, we use git for a similar, but slightly different
+purpose. We use it to keep track of changes not only to code files, but to data
+files, figures, reports, and other essential bits of information. 
+
+### Git Basics
+
+::: columns
+::: {.column width="50%"}
+Git tracks changes to each file that it is told to monitor, and as the files
+change, you provide short labels describing what the changes were and why they
+exist (called "**commits**"). The log of these changes (along with the file
+history) is called your **commit history**. 
+
+When writing papers, this means you can cut material out freely, so long as the
+paper is being tracked by git---you can always go back and get that paragraph
+you cut out if you need to. You also don't have to rename files---you can
+confidently save over your old files, so long as you remember to commit
+frequently. 
+
+### 📖 Required Reading: [Install Git](https://happygitwithr.com/install-git)
+
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="45%"}
+![](images/week-1/git.png){fig-alt="Person 1: 'This is GIT. It tracks collaborative work on projects through a beautiful distributed graph theory tree model'. Person 2: 'Cool, How do we use it?' Person 1: 'No Idea. Just memorize these shell commands and type them to sync up. If you get errors, save your work elsewhere, delete the project, and download a fresh copy.'"}
+:::
+:::
+
+
+### ✅ Check-in 1.6:  Install Git
+
+We will be working with Git/GitHub every week for the next 10 weeks, starting 
+this week! To be prepared for class, follow the instructions in the above
+reading to install Git onto your computer. 
+
+<!-- Change to a screenshot they need to submit -->
+Once you have installed Git, tell me "yes" in the Canvas Quiz.
+
+# GitHub
+
+Git by itself is nice enough, but where git really becomes amazing is when you
+combine it with GitHub---an online service that makes it easy to use git across
+many computers, share information with collaborators, publish to the web, and
+more. Git is great, but GitHub is ... essential.
+
+Similar to the differences between R and RStudio, git is a program that runs on
+your machine which includes a language for monitoring changes to specific 
+files (similar to a programming language like R). GitHub is a website that hosts
+people's git repositories (similar to a IDE like RStudio). You can use git
+without GitHub (like using R without RStudio), but you can't use GitHub without
+git. 
+
+If you want, you can hook git up to GitHub, and make a copy of your local git
+repository that lives in the cloud. Then, if you configure things correctly,
+your local repository will talk to GitHub without too much trouble. Using
+Github with git allows you to **easily make a cloud backup of your important
+code**, so that even if your computer suddenly catches on fire, all your
+important code files exist somewhere else. Any data you don't have in three
+different places is data you don't care about.^[Yes, I'm aware that this sounds
+paranoid. It's been a very rare occasion that I've needed to restore something
+from another backup. You don't want to take chances.]
+
+### 📖 Required Reading: [Register for a GitHub Account](https://happygitwithr.com/github-acct)
+
+### ✅ Check-in 1.7 Register for a GitHub Account
+
+Follow the instructions in [Registering a GitHub Account](https://happygitwithr.com/github-acct.html) to create a **free**
+GitHub account.
+
+Copy and paste the link to your GitHub profile into the Canvas quiz. 
+
++ Your GitHub profile link should look like -- https://github.com/USERNAME
++ Here is mine! [https://github.com/atheobold](https://github.com/atheobold)
+
+::: {.callout-tip}
+# (Optional) Register for the Student Developer Pack 
+
+I would highly recommend checking out 
+[GitHub Education](https://education.github.com/) and signing up for the
+[GitHub Student Developer Pack](https://education.github.com/pack). Signing 
+up gets you unlimited private repositories among other perks. 
+:::
+
+::: {.callout-caution}
+### Save your login information!
+
+Make sure you remember your username and password so you don't have to try to
+hack into your own account during class this week.
+
+Write your information down somewhere safe.
+:::
+
+# Introducing Yourself to Git
+
+Now that you have git downloaded and have a GitHub account, it is time to 
+introduce yourself to git! 
+
+### 📖 Required Reading: [Introduce Yourself to Git](https://happygitwithr.com/hello-git)
+
+Rather than using the terminal on your computer (like they do in the chapter
+above), let's get familiar with the **usethis** package in R. 
+
+1. Open RStudio.
+2. Run the following code **in your console** (bottom left), substituting your 
+name for `"Jane Doe"` and the email associated with your GitHub account with 
+`"jane@example.org"`. 
+
+```{r}
+#| label: introducing-yourself-to-git
+#| eval: false
+
+install.packages("usethis")
+
+library(usethis)
+
+# Change this to use your name and your GitHub email address! 
+use_git_config(user.name = "Jane Doe", 
+               user.email = "jane@example.org")
+```
+
+### ✅ Check-in  1.8: Introduce Yourself to git
+
+Follow the instructions for introducing yourself to git by running the code 
+in your console. Once you've run the code, take a screenshot of the output in 
+your console. 
+
+# Connecting Git, GitHub, and RStudio
+
+In order to interact with a remote Git server (e.g., GitHub), we need to include
+our credentials. The credentials proves to GitHub who we are and that we are
+allowed to do what we are trying to do. There are a few ways to setup your 
+credential, but we will specifically be using **P**ersonal **A**ccess **T**okens
+or PATs. 
+
+::: {.callout-warning}
+# No support for username & password credentials 
+
+Let it be known that the password that you use to login to GitHub’s website is
+NOT an acceptable credential when talking to GitHub as a Git server. 
+:::
+
+### 📖 Required Reading: [Personal Access Tokens for HTTPS](https://happygitwithr.com/hello-git)
+
+::: {.callout-note}
+# Skip Section 9.2
+
+We're not using SSH, so feel free to skip that section!
+:::
+
+### ✅ Check-in 1.9: PAT
+
+Follow the instructions for setting up your own personal access token. When
+selecting an expiration either choose one of the options that will allow your
+PAT to last the entire quarter (90 days, No expiration, or use Custom and input
+a date after the end of the quarter). 
+
+```{r}
+#| label: PAT
+#| eval: false
+
+usethis::create_github_token()
+gitcreds::gitcreds_set()
+```
+
+Once you've completed this process, run the following code **in your console** 
+and take a screenshot of the output you get. I've included the output I get 
+when I run this, so you have an idea of how your output should look. 
+
+```{r}
+#| label: git-sit-rep
+#| eval: false
+
+usethis::git_sitrep()
+```
+
+```
+── Git global (user) 
+• Name: 'Allison Theobold'
+• Email: 'atheobol@calpoly.edu'
+• Global (user-level) gitignore file: '~/.gitignore'
+• Vaccinated: FALSE
+ℹ See `?git_vaccinate` to learn more
+• Default Git protocol: 'https'
+• Default initial branch name: 'main'
+
+── GitHub user 
+• Default GitHub host: 'https://github.com'
+• Personal access token for 'https://github.com': '<discovered>'
+• GitHub user: 'atheobold'
+• Token scopes: 'admin:org, admin:public_key, delete:packages, delete_repo, gist, notifications, repo, user, workflow, write:packages'
+• Email(s): 'atheobol@calpoly.edu (primary)', 'theobold.allison970@gmail.com', '12439090+atheobold@users.noreply.github.com'
+ℹ No active usethis project
+```
+
+# Getting Started with GitHub
+
+Now you are setup and ready to get started working with GitHub and RStudio for 
+this week's lab! 
+
+# Learn More
+
+::: {.callout-note}
+### Extra Resources
+
+- [Git "Hello World" Tutorial on GitHub](https://guides.github.com/activities/hello-world/)
+
+- [Crash course on git](https://www.youtube.com/watch?v=SWYqp7iY_Tc) (30 minute YouTube video) [@traversymediaGitGitHubCrash2017]
+
+- [Git and GitHub for poets](https://www.youtube.com/watch?v=BCQHnlnPusY&list=PLRqwX-V7Uu6ZF9C0YMKuns9sLDzK6zoiV) YouTube playlist (this is supposed to be the best introduction to Git out there...) [@thecodingtrainIntroductionGitGitHub2016]
+
+- [More advanced git concepts, in comic form](https://dev.to/erikaheidi/stage-commit-push-a-git-story-comic-a37), by Erika Heidi [@ericaheidiStageCommitPush2020]
+
+- [A quick guide to the command line (Terminal)](https://towardsdatascience.com/a-quick-guide-to-using-command-line-terminal-96815b97b955) [@weiQuickGuideUsing2019]
+:::
+
+### References {-}

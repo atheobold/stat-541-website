@@ -1,31 +1,52 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Welcome",
+    "objectID": "set-up/setup-workflow.html",
+    "href": "set-up/setup-workflow.html",
+    "title": "Stat 541 Set-up & Workflow",
     "section": "",
-    "text": "INSERT INFORMATION ABOUT THE CLASS!"
+    "text": "Your workflow refers to the series of good habits you get into in your coding process, that help save you time and headache down the road.\nThis document outlines our suggestions for getting going with your workflow. None of these items is required for the course; they will simply make your life easier down the road."
   },
   {
-    "objectID": "index.html#license",
-    "href": "index.html#license",
-    "title": "Welcome",
-    "section": "License",
-    "text": "License\nThis online work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International. Visit here for more information about the license."
+    "objectID": "set-up/setup-workflow.html#updating-r",
+    "href": "set-up/setup-workflow.html#updating-r",
+    "title": "Stat 541 Set-up & Workflow",
+    "section": "1 Updating R",
+    "text": "1 Updating R\nEach of you should have R already installed on your computer, but you might not have the most up to date version of R! Do not ignore these instructions. If you neglect to update your version of R, you may find that updating a package will make it so your code will not run.\n\nStep 1: Open RStudio\nStep 2: At the top of the the Console it will say what version of R you are using\n\n\nIf the version is not 4.4.3 (like the image above), you need to update your version of R! The simplest way to do this is to follow the instructions below to install R."
   },
   {
-    "objectID": "index.html#acknowledements",
-    "href": "index.html#acknowledements",
-    "title": "Welcome",
-    "section": "Acknowledements",
-    "text": "Acknowledements\nHuge thanks to the #rstats education community who have made numerous suggestions for this resource, to Lee Suddaby and Zeno Kujawa for converting the homework assignments to learnr tutorials, and to Müge Çetinkaya for the hex logo!\nThis website is built with Quarto, the lovely icons are all by Allison Horst, and none of this would be possible without the tidyverse."
+    "objectID": "set-up/setup-workflow.html#installing-r",
+    "href": "set-up/setup-workflow.html#installing-r",
+    "title": "Stat 541 Set-up & Workflow",
+    "section": "2 Installing R",
+    "text": "2 Installing R\nDownload and install R by going to https://cloud.r-project.org/. Here, you will find three options for installing R—click on the option for your computer’s operating system.\n\n\n\n\nIf you are a Windows user:\n\nClick on “Download R for Windows”\nClick on “base”\nClick on the Download link.\nWhen you open the execution file (.exe) you will be prompted with a variety of questions about installing R. Feel free to use the default features / settings that come with R (continue to click “Ok” until the download starts).\n\n\n\n\n\n\n\nMultiple Versions of R\n\n\n\nBeware that if you had a previous version of R downloaded on your PC, that old version will not be deleted when you download the most recent version of R. We do not want to have two versions of R installed, as your computer can get confused what version of R to use. So, you need to remove the old version of R.\nTo do this you need to:\n\nNavigate to your computer’s settings\nClick on the “Apps” option on the left-hand panel\nSearch for or scroll down to R\nFind the older version of R\n\n\n\nClick on the ... on the right side\nSelect “Uninstall”\n\n\n\n\n\n\nIf you are macOS user:\n\nClick on “Download R for (Mac) OS X”\nUnder “Latest release:” click on R-X.X.X.pkg, where R-X.X.X is the version number. For example, the latest version of R as of July 1, 2024 was R-4.4.1 (Race for Your Life).\nWhen installing, use the default features / settings that come with R (click Ok until the download starts)."
   },
   {
-    "objectID": "course-materials/calendar.html",
-    "href": "course-materials/calendar.html",
-    "title": "Introduction to Data Science (in Python)",
-    "section": "",
-    "text": "This page contains an outline of the topics, content, and assignments for the quarter. Note that this schedule will be updated as the quarter progresses, with all changes documented here.\n\n\n\n\n\n\n\n\n\n\n\n\nWeek\nDate\nRequired Reading\nLecture Slides\nLab Activity\nWeekly Assignment\nExams & Project\n\n\n\n\n0\nSunday, January 5\n\nWelcome to DATA 301!\n\n\n\n\n\n1 Summarizing Tabular Data\nTuesday, January 7\n\nTabular Data & Variable Summaries\nGenAI Activity (Link to Collab)\nActivity 1.1 (Link to Collab)\n\n\n\n\n\nThursday, January 9\n\nVisualizing and Comparing Categorical Variables\nActivity 1.2 (Link to Collab)\nLab 1A\nLab 1B\n\n\n\n\nSunday, January 12\n\n\n\nLab 1A, 1B Due by Midnight\n\n\n\n2 Summarizing & Visualizing Quantitative Data\nTuesday, January 14\n(Dr. T’s b-day)\n\nVisualizing and Summarizing Quantitative Variables\nLecture 2.1 Activity\nActivity 2.1 (Link to Collab)\n\n\n\n\n\nThursday, January 16\n\nMultivariate Summaries\nLecture 2.2 Activity\nActivity 2.2\nLab 2A\nLab 2B\n\n\n\n\nSunday, January 19\n\n\n\nLab 2A, 2B Due by Midnight\n\n\n\n3\nMeasuring Similarity with Distances\nTuesday, January 21\nNo Class (Classes Follow Monday Schedule)\n\n\n\n\n\n\n\nThursday, January 23\n\nDistances Between Observations\n\nLecture Activity 3.1\nActivity 3.1\nLab 3\n\n\n\n\nSunday, January 26\n\n\n\nLab 3 Due by Midnight\n\n\n\n4\nDummy Variables & TF-IDF\nTuesday, January 28\n\nDummy Variables and Column Transformers\nActivity 4.1\n\n\n\n\n\nThursday, January 30\n\nBag-of-Words and TF-IDF\nActivity 4.2\nLab 4A\nLab 4B\n\n\n\n\nSunday, February 2\n\n\n\nLab 4A, 4B Due by Midnight\n\n\n\n5\nK-Nearest Neighbors & Midterm Exam\nTuesday, February 4\n\nK-Nearest-Neighbors\nLecture 5.1 Activity\nActivity 5.1\n\n\n\n\n\nThursday, February 6\n\nSpicing up Your Visualizations\nActivity 5.2\n\nExam 1 (in-class)\n\n\n\nFriday, February 7\n\n\n\nNo lab this week!\n\n\n\n6\nClassification & Model Selection\nTuesday, February 11\n\nIntroduction to Modeling\nLecture 6.1 Activity\nActivity 6.1\n\n\n\n\n\nThursday, February 13\n\nCross-Validation and Grid Search\nLecture 6.2 Activity\nActivity 6.2\nLab 6\n\n\n\n\nSunday, February 16\n\n\n\nLab 6 Due by Midnight\n\n\n\n7\nLogistic Regression & Unsupervised Learning\nTuesday, February 18\n\nClassification\nLecture 7.1 Activity\nActivity 7.1\n\n\n\n\n\nThursday, February 20\n\nLogistic Regression\nLecture 7.2 Activity\nActivity 7.2\nLab 7\n\n\n\n\nSunday, February 23\n\n\n\nLab 7 Due by Midnight\nProject Proposal Due\n\n\n8\nClustering & Joining Data\nTuesday, February 25\n\nUnsupervised Learning with K-Means\nLecture 8.1 Activity\nActivity 8.1\n\n\n\n\n\nThursday, February 27\n\nCombining Datasets\nLecture 8.2 Activity\nActivity 8.2\nLab 8\n\n\n\n\nSunday, March 2\n\n\n\nLab 8 Due by Midnight\n\n\n\n9\nData Ethics\nTuesday, March 4\nReading Guide: Data Context\nData Ethics Part 1\nNo Lab, Project Work Session\n\n\n\n\n\nThursday, March 6\nReading Guide: Model Ethics\nData Ethics Part 2\nNo Lab, Project Work Session\n\nProject Guidelines\n\n\n\nSunday, March 9\n\n\n\nNo lab this week!\nPractice Exam Review\n\n\n10\nFinal Posters & Final Exam\nTuesday, March 11\n\nFirst Half: Practice Exam Review\nSecond Half: Poster Work Session\n\n\n\n\n\n\nThursday, March 13\n\nExam 2 (at beginning of class)\n\n\nExam 2 (in-class)\n\n\nFinals Week\nSaturday, March 15 1:10pm - 2:30pm\n\n\n\n\nPoster Presentations"
+    "objectID": "set-up/setup-workflow.html#updating-rstudio",
+    "href": "set-up/setup-workflow.html#updating-rstudio",
+    "title": "Stat 541 Set-up & Workflow",
+    "section": "3 Updating RStudio",
+    "text": "3 Updating RStudio\nRStudio can be downloaded here\nThe most recent version of RStudio is 2024.12.1+563. You can check if you are using the most recent version of RStudio by:\n\nOpening RStudio\nClicking on “Help”\nSelecting “Check for Updates”\nChoosing “Quit and Download” if there is an update available"
+  },
+  {
+    "objectID": "set-up/setup-workflow.html#installing-updating-the-tidyverse",
+    "href": "set-up/setup-workflow.html#installing-updating-the-tidyverse",
+    "title": "Stat 541 Set-up & Workflow",
+    "section": "4 Installing / Updating the tidyverse",
+    "text": "4 Installing / Updating the tidyverse\nIn this class, we will make heavy use of the tidyverse packages.\nIf you have not used the tidyverse before, type the following into your console:\n\ninstall.packages(\"tidyverse\")\n\nIf you have used the tidyverse before, you only need to update packages. Type the following into your console:\n\nlibrary(tidyverse)\ntidyverse_update()\n\nThen follow the instructions that print out to update a few of your tidyverse packages."
+  },
+  {
+    "objectID": "set-up/setup-workflow.html#configure-your-options",
+    "href": "set-up/setup-workflow.html#configure-your-options",
+    "title": "Stat 541 Set-up & Workflow",
+    "section": "5 Configure your options",
+    "text": "5 Configure your options\nThere are a few settings we recommend that you change right away in RStudio.\n\nR Workspace\nFirst, you should not save your environment when you close RStudio:\n\n\n\nCode Chunk Output\nSecond, make a deliberate choice about where your chunks will evaluate when you run that. That is, if you reference files, are you referencing them relative to your Project, or relative to your Quarto Document (which might live in a subfolder or even outside the project)."
+  },
+  {
+    "objectID": "set-up/setup-workflow.html#project-based-workflow",
+    "href": "set-up/setup-workflow.html#project-based-workflow",
+    "title": "Stat 541 Set-up & Workflow",
+    "section": "6 Project-based workflow",
+    "text": "6 Project-based workflow\nWe strongly recommend that you adopt a project-oriented approach to your R work. That is, you should never open R or RStudio directly; you should only open the project you intend to work on.\nThis resource provides an excellent explanation of why and how to use projects."
   },
   {
     "objectID": "course-materials/syllabus.html",
@@ -168,52 +189,45 @@
     "text": "Footnotes\n\n\nSee Section 5.0.2 for information on what you can expect when you email me.↩︎"
   },
   {
-    "objectID": "set-up/setup-workflow.html",
-    "href": "set-up/setup-workflow.html",
-    "title": "Stat 541 Set-up & Workflow",
+    "objectID": "course-materials/calendar.html",
+    "href": "course-materials/calendar.html",
+    "title": "Introduction to Data Science (in Python)",
     "section": "",
-    "text": "Your workflow refers to the series of good habits you get into in your coding process, that help save you time and headache down the road.\nThis document outlines our suggestions for getting going with your workflow. None of these items is required for the course; they will simply make your life easier down the road."
+    "text": "This page contains an outline of the topics, content, and assignments for the quarter. Note that this schedule will be updated as the quarter progresses, with all changes documented here.\n\n\n\n\n\n\n\n\n\n\n\n\nWeek\nDate\nRequired Reading\nLecture Slides\nLab Activity\nWeekly Assignment\nExams & Project\n\n\n\n\n0\nSunday, January 5\n\nWelcome to DATA 301!\n\n\n\n\n\n1 Summarizing Tabular Data\nTuesday, January 7\n\nTabular Data & Variable Summaries\nGenAI Activity (Link to Collab)\nActivity 1.1 (Link to Collab)\n\n\n\n\n\nThursday, January 9\n\nVisualizing and Comparing Categorical Variables\nActivity 1.2 (Link to Collab)\nLab 1A\nLab 1B\n\n\n\n\nSunday, January 12\n\n\n\nLab 1A, 1B Due by Midnight\n\n\n\n2 Summarizing & Visualizing Quantitative Data\nTuesday, January 14\n(Dr. T’s b-day)\n\nVisualizing and Summarizing Quantitative Variables\nLecture 2.1 Activity\nActivity 2.1 (Link to Collab)\n\n\n\n\n\nThursday, January 16\n\nMultivariate Summaries\nLecture 2.2 Activity\nActivity 2.2\nLab 2A\nLab 2B\n\n\n\n\nSunday, January 19\n\n\n\nLab 2A, 2B Due by Midnight\n\n\n\n3\nMeasuring Similarity with Distances\nTuesday, January 21\nNo Class (Classes Follow Monday Schedule)\n\n\n\n\n\n\n\nThursday, January 23\n\nDistances Between Observations\n\nLecture Activity 3.1\nActivity 3.1\nLab 3\n\n\n\n\nSunday, January 26\n\n\n\nLab 3 Due by Midnight\n\n\n\n4\nDummy Variables & TF-IDF\nTuesday, January 28\n\nDummy Variables and Column Transformers\nActivity 4.1\n\n\n\n\n\nThursday, January 30\n\nBag-of-Words and TF-IDF\nActivity 4.2\nLab 4A\nLab 4B\n\n\n\n\nSunday, February 2\n\n\n\nLab 4A, 4B Due by Midnight\n\n\n\n5\nK-Nearest Neighbors & Midterm Exam\nTuesday, February 4\n\nK-Nearest-Neighbors\nLecture 5.1 Activity\nActivity 5.1\n\n\n\n\n\nThursday, February 6\n\nSpicing up Your Visualizations\nActivity 5.2\n\nExam 1 (in-class)\n\n\n\nFriday, February 7\n\n\n\nNo lab this week!\n\n\n\n6\nClassification & Model Selection\nTuesday, February 11\n\nIntroduction to Modeling\nLecture 6.1 Activity\nActivity 6.1\n\n\n\n\n\nThursday, February 13\n\nCross-Validation and Grid Search\nLecture 6.2 Activity\nActivity 6.2\nLab 6\n\n\n\n\nSunday, February 16\n\n\n\nLab 6 Due by Midnight\n\n\n\n7\nLogistic Regression & Unsupervised Learning\nTuesday, February 18\n\nClassification\nLecture 7.1 Activity\nActivity 7.1\n\n\n\n\n\nThursday, February 20\n\nLogistic Regression\nLecture 7.2 Activity\nActivity 7.2\nLab 7\n\n\n\n\nSunday, February 23\n\n\n\nLab 7 Due by Midnight\nProject Proposal Due\n\n\n8\nClustering & Joining Data\nTuesday, February 25\n\nUnsupervised Learning with K-Means\nLecture 8.1 Activity\nActivity 8.1\n\n\n\n\n\nThursday, February 27\n\nCombining Datasets\nLecture 8.2 Activity\nActivity 8.2\nLab 8\n\n\n\n\nSunday, March 2\n\n\n\nLab 8 Due by Midnight\n\n\n\n9\nData Ethics\nTuesday, March 4\nReading Guide: Data Context\nData Ethics Part 1\nNo Lab, Project Work Session\n\n\n\n\n\nThursday, March 6\nReading Guide: Model Ethics\nData Ethics Part 2\nNo Lab, Project Work Session\n\nProject Guidelines\n\n\n\nSunday, March 9\n\n\n\nNo lab this week!\nPractice Exam Review\n\n\n10\nFinal Posters & Final Exam\nTuesday, March 11\n\nFirst Half: Practice Exam Review\nSecond Half: Poster Work Session\n\n\n\n\n\n\nThursday, March 13\n\nExam 2 (at beginning of class)\n\n\nExam 2 (in-class)\n\n\nFinals Week\nSaturday, March 15 1:10pm - 2:30pm\n\n\n\n\nPoster Presentations"
   },
   {
-    "objectID": "set-up/setup-workflow.html#updating-r",
-    "href": "set-up/setup-workflow.html#updating-r",
-    "title": "Stat 541 Set-up & Workflow",
-    "section": "1 Updating R",
-    "text": "1 Updating R\nCheck your version of R. (This shows up in the console when you first open R or RStudio.) Ideally, it should be 4.3.3 (Angel Food Cake). If this is the case, you are golden.\nThe easiest way to update R is to simply redownload it and then close and re-open RStudio.\n\n\n\n\n\n\nMultiple Versions of R\n\n\n\nIf you are working on a PC, your program files will keep multiple versions of R. Even worse, you will sometimes install the latest version of R and your RStudio will still say that you didn’t update R. Be sure when you update R to delete previous versions that you don’t want RStudio to mistakenly use!\n\n\n\nTroubleshooting\nIf your computer cannot install the most recent version of R, please contact Dr. Theobold!"
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Welcome",
+    "section": "",
+    "text": "INSERT INFORMATION ABOUT THE CLASS!"
   },
   {
-    "objectID": "set-up/setup-workflow.html#updating-rstudio",
-    "href": "set-up/setup-workflow.html#updating-rstudio",
-    "title": "Stat 541 Set-up & Workflow",
-    "section": "2 Updating RStudio",
-    "text": "2 Updating RStudio\nRStudio can be downloaded here\nThe most recent version of RStudio is 2023.12.1+402. You can check if you are using the most recent version of RStudio by:\n\nOpening RStudio\nClicking on “Help”\nSelecting “Check for Updates”\nChoosing “Quit and Download” if there is an update available"
+    "objectID": "index.html#license",
+    "href": "index.html#license",
+    "title": "Welcome",
+    "section": "License",
+    "text": "License\nThis online work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International. Visit here for more information about the license."
   },
   {
-    "objectID": "set-up/setup-workflow.html#installing-updating-the-tidyverse",
-    "href": "set-up/setup-workflow.html#installing-updating-the-tidyverse",
-    "title": "Stat 541 Set-up & Workflow",
-    "section": "3 Installing / Updating the tidyverse",
-    "text": "3 Installing / Updating the tidyverse\nIn this class, we will make heavy use of the tidyverse packages.\nIf you have not used the tidyverse before, type the following into your console:\n\ninstall.packages(\"tidyverse\")\n\nIf you have used the tidyverse before, you only need to update packages. Type the following into your console:\n\nlibrary(tidyverse)\ntidyverse_update()\n\nThen follow the instructions that print out to update a few of your tidyverse packages."
+    "objectID": "index.html#acknowledements",
+    "href": "index.html#acknowledements",
+    "title": "Welcome",
+    "section": "Acknowledements",
+    "text": "Acknowledements\nHuge thanks to the #rstats education community who have made numerous suggestions for this resource, to Lee Suddaby and Zeno Kujawa for converting the homework assignments to learnr tutorials, and to Müge Çetinkaya for the hex logo!\nThis website is built with Quarto, the lovely icons are all by Allison Horst, and none of this would be possible without the tidyverse."
   },
   {
-    "objectID": "set-up/setup-workflow.html#configure-your-options",
-    "href": "set-up/setup-workflow.html#configure-your-options",
-    "title": "Stat 541 Set-up & Workflow",
-    "section": "4 Configure your options",
-    "text": "4 Configure your options\nThere are a few settings we recommend that you change right away in RStudio.\n\nR Workspace\nFirst, you should not save your environment when you close RStudio:\n\n\n\nCode Chunk Output\nSecond, make a deliberate choice about where your chunks will evaluate when you run that. That is, if you reference files, are you referencing them relative to your Project, or relative to your Quarto Document (which might live in a subfolder or even outside the project)."
+    "objectID": "set-up/setup-version-control.html#objectives",
+    "href": "set-up/setup-version-control.html#objectives",
+    "title": "Week 1, Part 3: Version Control with Git and GitHub",
+    "section": "0.1 Objectives",
+    "text": "0.1 Objectives\nMost of this section is either heavily inspired by Happy Git and Github for the UseR (Bryan, Hester, and The Stat 545 TAs 2021) or directly links to that book.\n\nRecognize the benefits of using version control to improve your coding practices and workflow.\nIdentify git / GitHub as a version control platform (and helper).\nInstall git onto your computer and register for a GitHub account\nStart applying version control practices to your workflow."
   },
   {
-    "objectID": "set-up/setup-workflow.html#project-based-workflow",
-    "href": "set-up/setup-workflow.html#project-based-workflow",
-    "title": "Stat 541 Set-up & Workflow",
-    "section": "5 Project-based workflow",
-    "text": "5 Project-based workflow\nWe strongly recommend that you adopt a project-oriented approach to your R work. That is, you should never open R or RStudio directly; you should only open the project you intend to work on.\nThis resource provides an excellent explanation of why and how to use projects."
-  },
-  {
-    "objectID": "set-up/setup-workflow.html#using-github",
-    "href": "set-up/setup-workflow.html#using-github",
-    "title": "Stat 541 Set-up & Workflow",
-    "section": "6 Using GitHub",
-    "text": "6 Using GitHub\nThis course will require some basic use of GitHub. You may find that you want to incorporate it more deeply into your R experience.\nThis resource can help you integrate R and GitHub more fully, if you so choose."
+    "objectID": "set-up/setup-version-control.html#footnotes",
+    "href": "set-up/setup-version-control.html#footnotes",
+    "title": "Week 1, Part 3: Version Control with Git and GitHub",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nYes, I’m aware that this sounds paranoid. It’s been a very rare occasion that I’ve needed to restore something from another backup. You don’t want to take chances.↩︎"
   }
 ]

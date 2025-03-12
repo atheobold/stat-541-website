@@ -49,19 +49,15 @@ website:
       - text: "Portfolio"
         href: portfolio.qmd
         
-  # sidebar:
-  #   - id: hello-dsbox
-  #     title: "Hello #dsbox!"
-  #     style: "floating"
-  #     collapse-level: 2
-  #     align: left
-  #     contents:
-  #       - href: hello.qmd
-  #       - href: 01-overview.qmd
-  #       - href: 01-design-principles.qmd
-  #       - href: 01-topics.qmd
-  #       - href: 01-tech-stack.qmd
-  #       - href: 01-community.qmd
+  sidebar:
+    - id: Infrastructure
+      title: "Infrastructure"
+      style: "floating"
+      collapse-level: 2
+      align: left
+      contents:
+        - href: setup-workflow.qmd
+        - href: setup-version-control.qmd
 
     # - id: content
     #   title: "Content"

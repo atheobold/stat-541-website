@@ -2,54 +2,102 @@
 title: "Stat 541 Set-up & Workflow"
 format: 
   html: 
-    fontsize: 1em
     mainfont: sans-serif
     number-sections: true
     number-depth: 2
-    section-divs: true
-    code-block-bg: "#76b5c5"
-    highlight-style: monochrome
-embed-resources: true
-editor: visual
+editor: source
 execute: 
   echo: true
   warning: false
   message: false
 ---
 
-Your **workflow** refers to the series of good habits you get into in your coding process, that help save you time and headache down the road.
+Your **workflow** refers to the series of good habits you get into in your
+coding process, that help save you time and headache down the road.
 
-This document outlines our suggestions for getting going with your workflow. None of these items is required for the course; they will simply make your life easier down the road.
+This document outlines our suggestions for getting going with your workflow. 
+None of these items is required for the course; they will simply make your life
+easier down the road.
 
 ## Updating R
 
-Check your version of R. (This shows up in the console when you first open R or RStudio.) Ideally, it should be 4.3.3 (Angel Food Cake). If this is the case, you are golden.
+Each of you should have R already installed on your computer, but you might not
+have the most up to date version of R! **Do not ignore these instructions.** If
+you neglect to update your version of R, you may find that updating a package
+will make it so your code will not run.
 
-The easiest way to update R is to simply [redownload it](https://www.r-project.org/) and then close and re-open RStudio.
+-   Step 1: Open RStudio
+-   Step 2: At the top of the the Console it will say what version of R you are
+using
+
+![](images/r-version.png){fig-alt="A screenshot of what version of R should appear when you open RStudio. The version reads 'R version 4.4.1 (2024-06-14) -- 'Race for Your Life'."}
+
+If the version **is not** 4.4.3 (like the image above), you need to update your
+version of R! The simplest way to do this is to follow the instructions below to
+install R.
+
+## Installing R
+
+Download and install R by going to <https://cloud.r-project.org/>. Here, you
+will find three options for installing R---click on the option for your
+computer's operating system.
+
+::: {.column-margin}
+{{< video https://www.youtube.com/watch?v=YrEe2TLr3MI >}}
+:::
+
+### If you are a *Windows* user:
+
+-   Click on “Download R for Windows”
+
+-   Click on “base”
+
+-   Click on the Download link.
+
+-   When you open the execution file (`.exe`) you will be prompted with a
+variety of questions about installing R. Feel free to use the default features /
+settings that come with R (continue to click "Ok" until the download starts).
 
 ::: callout-warning
 # Multiple Versions of R
 
-If you are working on a PC, your program files will keep multiple versions of R. Even worse, you will sometimes install the latest version of R and your RStudio will still say that you didn't update R. Be sure when you update R to delete previous versions that you don't want RStudio to mistakenly use!
+Beware that if you had a previous version of R downloaded on your PC, that old
+version will not be deleted when you download the most recent version of R. We
+do not want to have two versions of R installed, as your computer can get
+confused what version of R to use. So, you need to remove the old version of R.
+
+To do this you need to:
+
+-   Navigate to your computer's settings
+-   Click on the "Apps" option on the left-hand panel
+-   Search for or scroll down to R
+-   Find the older version of R
+
+![](images/multiple-versions-of-r.png){fig-alt="A screenshot of a PC with two different versions of R installed---version 4.3.1 and version 4.4.1."}
+
+-   Click on the `...` on the right side
+-   Select "Uninstall"
+
+![](images/uninstall-old-r-version.png){fig-alt="A screenshot of selecting the (...) option to uninstall the older version of R."}
 :::
 
-#### Troubleshooting
+### If you are *macOS* user:
 
-If your computer cannot install the most recent version of R, please contact Dr. Theobold!
+-   Click on “Download R for (Mac) OS X”
 
-<!-- First, identify which version of OSx you are running.  [How-to](https://support.apple.com/en-us/HT201260) -->
+-   Under “Latest release:” click on R-X.X.X.pkg, where R-X.X.X is the version
+number. For example, the latest version of R as of July 1, 2024 was R-4.4.1
+(Race for Your Life).
 
-<!-- Next, find out which version of R your computer can run.  [Link](https://cran.r-project.org/bin/macosx/) -->
-
-<!-- If this version is 3.7 or later, download the latest version that your computer can handle. -->
-
-<!-- If this version is 3.6 or earlier, you're going to run in to some trouble.  I recommend updating your version of OSx, if you are willing.  If you can't, then you can use [rstudio.cloud](rstudio.cloud) to run R and RStudio on a free server.  However, I recommend strongly against this option; your files will not be saved indefinitely, your computing power will be limited, and you will need an internet connection at all times to do your work. -->
+-   When installing, use the default features / settings that come with R (click
+Ok until the download starts).
 
 ## Updating RStudio
 
 RStudio can be downloaded [here](https://rstudio.com/products/rstudio/download/)
 
-The most recent version of RStudio is 2023.12.1+402. You can check if you are using the most recent version of RStudio by:
+The most recent version of RStudio is 2024.12.1+563. You can check if you are
+using the most recent version of RStudio by:
 
 -   Opening RStudio
 -   Clicking on "Help"
@@ -60,7 +108,8 @@ The most recent version of RStudio is 2023.12.1+402. You can check if you are us
 
 In this class, we will make heavy use of the `tidyverse` packages.
 
-If you **have not** used the `tidyverse` before, type the following into your console:
+If you **have not** used the `tidyverse` before, type the following into your
+console:
 
 ```{r}
 #| eval: false
@@ -69,7 +118,8 @@ If you **have not** used the `tidyverse` before, type the following into your co
 install.packages("tidyverse")
 ```
 
-If you **have** used the `tidyverse` before, you only need to update packages. Type the following into your console:
+If you **have** used the `tidyverse` before, you only need to update packages.
+Type the following into your console:
 
 ```{r}
 #| eval: false
@@ -79,7 +129,8 @@ library(tidyverse)
 tidyverse_update()
 ```
 
-Then follow the instructions that print out to update a few of your tidyverse packages.
+Then follow the instructions that print out to update a few of your tidyverse
+packages.
 
 ## Configure your options
 
@@ -89,22 +140,22 @@ There are a few settings we recommend that you change right away in RStudio.
 
 First, you should not save your environment when you close RStudio:
 
-![](https://rstats.wtf/img/rstudio-workspace.png)
+![](https://rstats.wtf/img/rstudio-workspace.png){fig-alt="A screenshot of the Global options screen, specifically focusing on the 'General' section of the options. There is a red arrow pointing to the box that says 'Restore .RData into workspace at startup', indicating that this box should not be checked (this option should be turned off). There is another red arrow pointing at the dropdown menu next to 'Save workspace to .RData on exit', indicating that the option should be 'Never'."}
 
 ### Code Chunk Output
 
-Second, make a deliberate choice about where your chunks will evaluate when you run that. That is, if you reference files, are you referencing them relative to your *Project*, or relative to your *Quarto Document* (which might live in a subfolder or even outside the project).
+Second, make a deliberate choice about where your chunks will evaluate when you
+run that. That is, if you reference files, are you referencing them relative to
+your *Project*, or relative to your *Quarto Document* (which might live in a
+subfolder or even outside the project).
 
-![](../images/directory_option.png)
+![](images/directory_option.png){fig-alt="A screenshot of the Global options screen, specifically focusing on the 'R Markdown' section of the options. There is a red box around the option for 'Evaluate chunks in directory:' where there is a drop down menu for where the output of the code chunks will be displayed. The option selected is 'Document' which means that the output of the code chunks will be shown in the document (not in a separate tab) beneath the code chunk."}
 
 ## Project-based workflow
 
-We **strongly** recommend that you adopt a project-oriented approach to your R work. That is, you should never open R or RStudio directly; you should only open the project you intend to work on.
+We **strongly** recommend that you adopt a project-oriented approach to your R
+work. That is, you should never open R or RStudio directly; you should only open
+the project you intend to work on.
 
-[This resource](https://rstats.wtf/project-oriented-workflow.html) provides an excellent explanation of why and how to use projects.
-
-## Using GitHub
-
-This course will require some basic use of GitHub. You may find that you want to incorporate it more deeply into your R experience.
-
-[This resource](https://happygitwithr.com/) can help you integrate R and GitHub more fully, if you so choose.
+[This resource](https://rstats.wtf/project-oriented-workflow.html) provides an
+excellent explanation of why and how to use projects.
