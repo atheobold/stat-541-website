@@ -3,7 +3,7 @@ title: "Welcome"
 editor: source
 ---
 
-![](images/cat-monsters-horst.png){style="float: right;" fig-alt="A orange longhaired cat curled up in a ball which three round green monsters give it pets." fig-align="right" width="250"}
+![](images/cat-monsters-horst.png){style="float: right;" fig-alt="A orange long haired cat curled up in a ball which three round green monsters give it pets." fig-align="right" width="250"}
 
 Stat 541 takes a deeper dive into statistical computing in R, building your 
 *communication* and *iteration* skills. We will explore different modalities for
@@ -15,13 +15,17 @@ going to have a lot of fun!
 
 ## Acknowledements {.unnumbered}
 
-A huge shout out to Dr. Bodwin for creating this class and adding it to the 
-amazing number of computing courses the Statistics Department teaches. Another
-shout out goes the the amazing women at Macalester College---Leslie Myint,
-Brianna Heggeseth, Alicia Johnson---for making their *Intermediate Data Science*
-course materials public. 
+A huge shout out to [Dr. Kelly Bodwin](http://kelly-bodwin.com/) for creating 
+this class and adding it to the amazing number of computing courses the
+Statistics Department teaches. Another shout out goes the the amazing women at
+Macalester College---[Leslie Myint](https://www.lesliemyint.org/), [Brianna Heggeseth](https://bcheggeseth.github.io/), and [Alicia Johnson](https://ajohns24.github.io/)---for making their
+*Intermediate Data Science* course materials public. And finally, a massive 
+thank you to [Sam Shanny-Csik](https://samanthacsik.github.io/) for their
+**incredible** resources for making and styling Quarto websites!
 
-This website is built with [Quarto](https://quarto.org), the lovely icons are all by [Allison Horst](https://allisonhorst.com/), and none of this would be possible without the [tidyverse](https://tidyverse.org).
+This website is built with [Quarto](https://quarto.org), the lovely icons are
+all by [Allison Horst](https://allisonhorst.com/), and none of this would be
+possible without the [tidyverse](https://tidyverse.org).
 
 ## License {.unnumbered}
 

@@ -77,32 +77,15 @@
     ]
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Welcome",
+    "objectID": "infrastructure.html",
+    "href": "infrastructure.html",
+    "title": "Computational Infrastructure",
     "section": "",
-    "text": "Stat 541 takes a deeper dive into statistical computing in R, building your communication and iteration skills. We will explore different modalities for communicating statistical ideas—dynamic visualizations and dashboards, while also exploring ways to integrate R code into these environments. We will also continue to expand your skills as a developer—writing functions and iterating over those functions to query data from APIs and scrape the web. We’re going to have a lot of fun!"
-  },
-  {
-    "objectID": "index.html#acknowledements",
-    "href": "index.html#acknowledements",
-    "title": "Welcome",
-    "section": "Acknowledements",
-    "text": "Acknowledements\nA huge shout out to Dr. Bodwin for creating this class and adding it to the amazing number of computing courses the Statistics Department teaches. Another shout out goes the the amazing women at Macalester College—Leslie Myint, Brianna Heggeseth, Alicia Johnson—for making their Intermediate Data Science course materials public.\nThis website is built with Quarto, the lovely icons are all by Allison Horst, and none of this would be possible without the tidyverse."
-  },
-  {
-    "objectID": "index.html#license",
-    "href": "index.html#license",
-    "title": "Welcome",
-    "section": "License",
-    "text": "License\nThis online work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International. Visit here for more information about the license."
-  },
-  {
-    "objectID": "course-materials/calendar.html",
-    "href": "course-materials/calendar.html",
-    "title": "STAT 541: Advanced R",
-    "section": "",
-    "text": "This page contains an outline of the topics, content, and assignments for the quarter. Note that this schedule will be updated as the quarter progresses, with all changes documented here.\n\n\n\n\n\n\n\n\n\n\n\n\nWeek\nDate\nRequired Reading\nLecture Slides\nLab Activity\nWeekly Assignment\nPortfolio\n\n\n\n\n0\n\n\n\n\n\n\n\n\n1 Summarizing Tabular Data\n\n\n\n\n\n\n\n\n2 Summarizing & Visualizing Quantitative Data\n\n\n\n\n\n\n\n\n3\nMeasuring Similarity with Distances\n\n\n\n\n\n\n\n\n4\nDummy Variables & TF-IDF\n\n\n\n\n\n\n\n\n5\nK-Nearest Neighbors & Midterm Exam\n\n\n\n\n\n\n\n\n6\nClassification & Model Selection\n\n\n\n\n\n\n\n\n7\nLogistic Regression & Unsupervised Learning\nTuesday, February 18\n\n\n\n\n\n\n\n\nThursday, February 20\n\n\n\n\n\n\n\n\nSunday, February 23\n\n\n\n\n\n\n\n8\nClustering & Joining Data\nTuesday, February 25\n\n\n\n\n\n\n\n\nThursday, February 27\n\n\n\n\n\n\n\n\nSunday, March 2\n\n\n\n\n\n\n\n9\nData Ethics\nTuesday, March 4\n\n\n\n\n\n\n\n\nThursday, March 6\n\n\n\n\n\n\n\n\nSunday, March 9\n\n\n\n\n\n\n\n10\nFinal Posters & Final Exam\nTuesday, March 11\n\n\n\n\n\n\n\n\nThursday, March 13\n\n\n\n\n\n\n\nFinals Week\nSaturday, March 15 1:10pm - 2:30pm"
+    "text": "Welcome to STAT 541! We’re excited to have you! This page is dedicated to getting you set-up with the infrastructure will will make use of throughout the course.",
+    "crumbs": [
+      "Infrastructure",
+      "Computational Infrastructure"
+    ]
   },
   {
     "objectID": "course-materials/syllabus.html",
@@ -238,15 +221,60 @@
     "text": "Footnotes\n\n\nSee Section 3.0.2 for information on what you can expect when you email me.↩︎"
   },
   {
-    "objectID": "infrastructure.html",
-    "href": "infrastructure.html",
-    "title": "Computational Infrastructure",
+    "objectID": "course-materials/calendar.html",
+    "href": "course-materials/calendar.html",
+    "title": "STAT 541: Advanced R",
     "section": "",
-    "text": "Welcome to STAT 541! We’re excited to have you! This page is dedicated to getting you set-up with the infrastructure will will make use of throughout the course.",
-    "crumbs": [
-      "Infrastructure",
-      "Computational Infrastructure"
-    ]
+    "text": "This page contains an outline of the topics, content, and assignments for the quarter. Note that this schedule will be updated as the quarter progresses, with all changes documented here.\n\n\n\n\n\n\n\n\n\n\n\n\nWeek\nDate\nRequired Reading\nLecture Slides\nLab Activity\nWeekly Assignment\nPortfolio\n\n\n\n\n1\nStat 331 Review & Version Control\nMarch 31 (note no class on Monday)\n\n\n\n\n\n\n\n2\nAdvanced Visualizations\nApril 7\n\n\n\n\n\n\n\n3\nQuarto Dashboards (Static)\nApril 14\n\n\n\n\n\n\n\n4\nQuarto Dashboards (Dynamic)\nApril 21\n\n\n\n\n\n\n\n5\nQuarto & WebR\nApril 28\n\n\n\n\n\n\n\n6\nPortfolio Week\nMay 5\n\n\n\n\nPortfolio Instructions\n\n\n7\nJSON Data & APIs\nMay 12\n\n\n\n\n\n\n\n8\nWebscraping\nMay 19\n\n\n\n\n\n\n\n9\nGenerative Art\nMay 26 (note Tuesday follows a Monday schedule)\n\n\n\n\n\n\n\n10\nPortfolio Week\nJune 2\n\n\n\n\n\n\n\nFinals Week (Portfolio Meetings)\nJune 9"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Welcome",
+    "section": "",
+    "text": "Stat 541 takes a deeper dive into statistical computing in R, building your communication and iteration skills. We will explore different modalities for communicating statistical ideas—dynamic visualizations and dashboards, while also exploring ways to integrate R code into these environments. We will also continue to expand your skills as a developer—writing functions and iterating over those functions to query data from APIs and scrape the web. We’re going to have a lot of fun!"
+  },
+  {
+    "objectID": "index.html#acknowledements",
+    "href": "index.html#acknowledements",
+    "title": "Welcome",
+    "section": "Acknowledements",
+    "text": "Acknowledements\nA huge shout out to Dr. Kelly Bodwin for creating this class and adding it to the amazing number of computing courses the Statistics Department teaches. Another shout out goes the the amazing women at Macalester College—Leslie Myint, Brianna Heggeseth, and Alicia Johnson—for making their Intermediate Data Science course materials public. And finally, a massive thank you to Sam Shanny-Csik for their incredible resources for making and styling Quarto websites!\nThis website is built with Quarto, the lovely icons are all by Allison Horst, and none of this would be possible without the tidyverse."
+  },
+  {
+    "objectID": "index.html#license",
+    "href": "index.html#license",
+    "title": "Welcome",
+    "section": "License",
+    "text": "License\nThis online work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International. Visit here for more information about the license."
+  },
+  {
+    "objectID": "portfolio/portfolio-instructions.html",
+    "href": "portfolio/portfolio-instructions.html",
+    "title": "Final Portfolio Instructions",
+    "section": "",
+    "text": "GitHub is an incredibly useful tool for project management and collaboration. It also has several useful features for professional promotion: you can host your own site on github using GitHub pages, describe yourself using a GitHub developer profile, and even use resume.github.io to generate a resume summary of your activity on GitHub (you must opt-in by starring the project page).\nThe development of Quarto has made it incredibly simple to generate websites, which can be easily hosted by GitHub Pages."
+  },
+  {
+    "objectID": "portfolio/portfolio-instructions.html#instructions-for-creating-a-personal-website",
+    "href": "portfolio/portfolio-instructions.html#instructions-for-creating-a-personal-website",
+    "title": "Final Portfolio Instructions",
+    "section": "Instructions for Creating a Personal Website",
+    "text": "Instructions for Creating a Personal Website\nIf you’ve never made a personal website, you will need to create one! There are so many resources for creating Quarto websites, but my absolute favorite one’s are from Sam Csik\n&lt;https://ucsb-meds.github.io/creating-quarto-websites/\n\nCreate a new GitHub repository named &lt;your-username&gt;.github.io (replacing “” with your GitHub username). Initialize this repo with a readme.md file (one of the options when making the repo).\nCreate a new folder where you will store your personal website.\n\n\n\n\n\n\n\nTip\n\n\n\nI would strongly recommend this folder living inside your broader “STAT 541” folder, at least for now!\n\n\n\n\nUse RStudio to create a new project inside the folder you created in Step 1. Select “Quarto Website” as the project type.\nFollow the Quick Start instructions on https://quarto.org/docs/websites/website-blog.html to create your website (or a generic site at https://quarto.org/docs/websites/).\nFor publishing your website, follow the steps described under Github Pages.\n\n\n\n\n\n\n\n.nojekyll\n\n\n\nBe sure to follow the instructions for adding a text file named .nojekyll to your project. This tells GitHub not to build the pages with Jekyll (another rendering engine) and instead render pages built with Quarto."
+  },
+  {
+    "objectID": "portfolio/portfolio-instructions.html#making-changes-to-an-existing-website",
+    "href": "portfolio/portfolio-instructions.html#making-changes-to-an-existing-website",
+    "title": "Final Portfolio Instructions",
+    "section": "Making Changes to an Existing Website",
+    "text": "Making Changes to an Existing Website"
+  },
+  {
+    "objectID": "portfolio/portfolio-instructions.html#additional-styling-options",
+    "href": "portfolio/portfolio-instructions.html#additional-styling-options",
+    "title": "Final Portfolio Instructions",
+    "section": "Additional Styling Options",
+    "text": "Additional Styling Options\nSee an additional resource at this blog post"
   },
   {
     "objectID": "set-up/setup-version-control.html#objectives",
