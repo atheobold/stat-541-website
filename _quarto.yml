@@ -8,6 +8,7 @@ project:
 
 website:
   page-navigation: true
+  favicon: images/cat-monsters-horst.png
   title: "Advanced R"
   description: "Homepage for STAT 541 at Cal Poly"
   site-url: "https://github.com/atheobold/stat-541-website"
@@ -24,6 +25,7 @@ website:
   navbar:
     background: "#5D737E"
     logo: "images/cat-monsters-horst.png"
+    alt: "A orange long haired cat curled up in a ball which three round green monsters give it pets."
     align: center
     title: false
     collapse-below: lg
