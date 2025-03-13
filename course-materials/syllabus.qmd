@@ -17,15 +17,27 @@ execute:
 
 # Instructor Info 
 
-**Instructor: Dr. Allison Theobold** -- call me [**Dr. Theobold**](https://docs.google.com/document/d/1m4e-2l76luAd9WrxiwCVf8-yf-co82dDSe1jHYf-NBo/edit?usp=sharing) or Dr. T! I use **they / she** pronouns (that is my order of preference).
+:::::: columns
+::: {.column width="50%"}
+**Instructor: Dr. Allison Theobold** -- you can call me [**Dr. Theobold**](https://docs.google.com/document/d/1m4e-2l76luAd9WrxiwCVf8-yf-co82dDSe1jHYf-NBo/edit?usp=sharing) or [**Dr. T**](https://docs.google.com/document/d/1m4e-2l76luAd9WrxiwCVf8-yf-co82dDSe1jHYf-NBo/edit?usp=sharing)! I use **they / she** pronouns (that is my order of preference). 😊
 
-**Email**: atheobol\@calpoly.edu[^1]
+**Email**: atheobol\@calpoly.edu[^1]  
+**Office**: Building 25, Office 105
 
 [^1]: See @sec-help for information on what you can expect when you email me.
+:::
+
+::: {.column width="10%"}
+:::
+
+::: {.column width="40%"}
+![](../images/headshot.jpg){fig-alt="A headshot of Dr. Theobold, in a pink blazer at the top floor of Building 25, overlooking Bishop Peak" width="60%"}
+:::
+::::::
 
 # Class meetings
 
-**Room:** Baker Science (Building 180), Room 272
+**Room:** Math Science (Building 38), Room 122 
 
 **Times:** 10:10am - 12:00pm (MW)
 
@@ -76,17 +88,43 @@ but I am happy to schedule a meeting during another time if necessary.
 This course has no specific textbook; we will make use of many online books and
 resources. Some suggested resources are below.
 
-In Unit 1:
+**Unit 1:**
 
-- [R for Data Science](https://r4ds.hadley.nz/) -- For 331 review
-- [Happy Git with R](https://happygitwithr.com/) -- For getting set-up with
-version control
-- [Quarto tutorials](https://quarto.org/docs/get-started/authoring/rstudio.html) -- 
-To get familiar with Quarto
-- Quarto Dashboards
-- WebR
+- Review of Content from STAT 331
+  + [R for Data Science](https://r4ds.hadley.nz/)
 
-In Unit 2:
+- Version Control:
+  + [Happy Git with R](https://happygitwithr.com/) 
+
+- Refresher on Quarto Documents
+  + [Quarto Tutorial on Making Documents](https://quarto.org/docs/get-started/authoring/rstudio.html) -- 
+To get familiar with Quarto documents (what we will typically use)
+  + [Quarto Documentation](https://quarto.org/docs/reference/) -- Extensive
+documentation on each type of Quarto document 
+
+- Creating Quarto Dashboards
+  + [Guide for Creating Quarto Dashboards](https://quarto.org/docs/dashboards/)
+  + [Dashboard Documentation](https://quarto.org/docs/reference/formats/dashboard.html)
+  + [Gallery of Cool Dashboards](https://quarto.org/docs/gallery/#dashboards)
+
+- Integrating WebR into Quarto
+  + [Guide for Using WebR](https://quarto-webr.thecoatlessprofessor.com/)
+  + [Repository for WebR to Quarto Extension](https://github.com/coatless/quarto-webr)
+  + [Slides from Presentation on WebR by George Stagg](https://gws.quarto.pub/introduction-to-webr-2023/#/title-slide)
+  
+**Portfolio:**
+
+- [Quarto ]
+
+- Templates for Personal Websites
+  + [Dr. T's Personal Website](https://atheobold.github.io/)
+  + [Sam Shanny-Csik's Personal Website](https://samanthacsik.github.io/)
+  + [Gallery of Fun Quarto Websites](https://quarto.org/docs/gallery/#websites)
+
+- Guides on Styling Your Website
+  + [Guide on Using Sass & CSS for Website (also by Sam Shanny-Csik!)](https://samanthacsik.github.io/talks_workshops/2022-10-10-customizing-quarto-websites/)
+
+**Unit 2:**
 
 - [Advanced R](https://adv-r.hadley.nz/)
 - [usethis](https://usethis.r-lib.org/) -- For pull requests
