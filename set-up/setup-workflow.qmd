@@ -1,5 +1,5 @@
 ---
-title: "Set-up & Workflow"
+title: "Installing / Updating R & RStudio"
 format: 
   html: 
     mainfont: sans-serif

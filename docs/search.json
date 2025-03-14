@@ -2,78 +2,78 @@
   {
     "objectID": "set-up/setup-workflow.html",
     "href": "set-up/setup-workflow.html",
-    "title": "Set-up & Workflow",
+    "title": "Installing / Updating R & RStudio",
     "section": "",
     "text": "Your workflow refers to the series of good habits you get into in your coding process, that help save you time and headache down the road.\nThis document outlines our suggestions for getting going with your workflow. None of these items is required for the course; they will simply make your life easier down the road.",
     "crumbs": [
       "Infrastructure",
-      "Set-up & Workflow"
+      "Installing / Updating R & RStudio"
     ]
   },
   {
     "objectID": "set-up/setup-workflow.html#updating-r",
     "href": "set-up/setup-workflow.html#updating-r",
-    "title": "Set-up & Workflow",
+    "title": "Installing / Updating R & RStudio",
     "section": "1 Updating R",
     "text": "1 Updating R\nEach of you should have R already installed on your computer, but you might not have the most up to date version of R! Do not ignore these instructions. If you neglect to update your version of R, you may find that updating a package will make it so your code will not run.\n\nStep 1: Open RStudio\nStep 2: At the top of the the Console it will say what version of R you are using\n\n\nIf the version is not 4.4.3 (like the image above), you need to update your version of R! The simplest way to do this is to follow the instructions below to install R.",
     "crumbs": [
       "Infrastructure",
-      "Set-up & Workflow"
+      "Installing / Updating R & RStudio"
     ]
   },
   {
     "objectID": "set-up/setup-workflow.html#installing-r",
     "href": "set-up/setup-workflow.html#installing-r",
-    "title": "Set-up & Workflow",
+    "title": "Installing / Updating R & RStudio",
     "section": "2 Installing R",
     "text": "2 Installing R\nDownload and install R by going to https://cloud.r-project.org/. Here, you will find three options for installing R—click on the option for your computer’s operating system.\n\n\n\n\nIf you are a Windows user:\n\nClick on “Download R for Windows”\nClick on “base”\nClick on the Download link.\nWhen you open the execution file (.exe) you will be prompted with a variety of questions about installing R. Feel free to use the default features / settings that come with R (continue to click “Ok” until the download starts).\n\n\n\n\n\n\n\nMultiple Versions of R\n\n\n\nBeware that if you had a previous version of R downloaded on your PC, that old version will not be deleted when you download the most recent version of R. We do not want to have two versions of R installed, as your computer can get confused what version of R to use. So, you need to remove the old version of R.\nTo do this you need to:\n\nNavigate to your computer’s settings\nClick on the “Apps” option on the left-hand panel\nSearch for or scroll down to R\nFind the older version of R\n\n\n\nClick on the ... on the right side\nSelect “Uninstall”\n\n\n\n\n\n\nIf you are macOS user:\n\nClick on “Download R for (Mac) OS X”\nUnder “Latest release:” click on R-X.X.X.pkg, where R-X.X.X is the version number. For example, the latest version of R as of July 1, 2024 was R-4.4.1 (Race for Your Life).\nWhen installing, use the default features / settings that come with R (click Ok until the download starts).",
     "crumbs": [
       "Infrastructure",
-      "Set-up & Workflow"
+      "Installing / Updating R & RStudio"
     ]
   },
   {
     "objectID": "set-up/setup-workflow.html#updating-rstudio",
     "href": "set-up/setup-workflow.html#updating-rstudio",
-    "title": "Set-up & Workflow",
+    "title": "Installing / Updating R & RStudio",
     "section": "3 Updating RStudio",
     "text": "3 Updating RStudio\nRStudio can be downloaded here\nThe most recent version of RStudio is 2024.12.1+563. You can check if you are using the most recent version of RStudio by:\n\nOpening RStudio\nClicking on “Help”\nSelecting “Check for Updates”\nChoosing “Quit and Download” if there is an update available",
     "crumbs": [
       "Infrastructure",
-      "Set-up & Workflow"
+      "Installing / Updating R & RStudio"
     ]
   },
   {
     "objectID": "set-up/setup-workflow.html#installing-updating-the-tidyverse",
     "href": "set-up/setup-workflow.html#installing-updating-the-tidyverse",
-    "title": "Set-up & Workflow",
+    "title": "Installing / Updating R & RStudio",
     "section": "4 Installing / Updating the tidyverse",
     "text": "4 Installing / Updating the tidyverse\nIn this class, we will make heavy use of the tidyverse packages.\nIf you have not used the tidyverse before, type the following into your console:\n\ninstall.packages(\"tidyverse\")\n\nIf you have used the tidyverse before, you only need to update packages. Type the following into your console:\n\nlibrary(tidyverse)\ntidyverse_update()\n\nThen follow the instructions that print out to update a few of your tidyverse packages.",
     "crumbs": [
       "Infrastructure",
-      "Set-up & Workflow"
+      "Installing / Updating R & RStudio"
     ]
   },
   {
     "objectID": "set-up/setup-workflow.html#configure-your-options",
     "href": "set-up/setup-workflow.html#configure-your-options",
-    "title": "Set-up & Workflow",
+    "title": "Installing / Updating R & RStudio",
     "section": "5 Configure your options",
     "text": "5 Configure your options\nThere are a few settings we recommend that you change right away in RStudio.\n\nR Workspace\nFirst, you should not save your environment when you close RStudio:\n\n\n\nCode Chunk Output\nSecond, make a deliberate choice about where your chunks will evaluate when you run that. That is, if you reference files, are you referencing them relative to your Project, or relative to your Quarto Document (which might live in a subfolder or even outside the project).",
     "crumbs": [
       "Infrastructure",
-      "Set-up & Workflow"
+      "Installing / Updating R & RStudio"
     ]
   },
   {
     "objectID": "set-up/setup-workflow.html#project-based-workflow",
     "href": "set-up/setup-workflow.html#project-based-workflow",
-    "title": "Set-up & Workflow",
+    "title": "Installing / Updating R & RStudio",
     "section": "6 Project-based workflow",
     "text": "6 Project-based workflow\nWe strongly recommend that you adopt a project-oriented approach to your R work. That is, you should never open R or RStudio directly; you should only open the project you intend to work on.\nThis resource provides an excellent explanation of why and how to use projects.",
     "crumbs": [
       "Infrastructure",
-      "Set-up & Workflow"
+      "Installing / Updating R & RStudio"
     ]
   },
   {
@@ -225,7 +225,7 @@
     "href": "course-materials/calendar.html",
     "title": "STAT 541: Advanced R",
     "section": "",
-    "text": "This page contains an outline of the topics, content, and assignments for the quarter. Note that this schedule will be updated as the quarter progresses, with all changes documented here.\n\n\n\n\n\n\n\n\n\n\n\n\nWeek\nDate\nRequired Reading\nLecture Slides\nLecture Activities\nLab Assignment\nPortfolio\n\n\n\n\n1\nStat 331 Review & Version Control\nMarch 31 (note no class on Monday)\n\n\n\n\n\n\n\n2\nAdvanced Visualizations\nApril 7\n\n\n\n\n\n\n\n3\nQuarto Dashboards (Static)\nApril 14\n\n\n\n\n\n\n\n4\nQuarto Dashboards (Dynamic)\nApril 21\n\n\n\n\n\n\n\n5\nQuarto & WebR\nApril 28\n\n\n\n\n\n\n\n6\nPortfolio Week\nMay 5\n\n\n\n\nPortfolio Instructions\n\n\n7\nJSON Data & APIs\nMay 12\n\n\n\n\n\n\n\n8\nWebscraping\nMay 19\n\n\n\n\n\n\n\n9\nGenerative Art\nMay 26 (note Tuesday follows a Monday schedule)\n\n\n\n\n\n\n\n10\nPortfolio Week\nJune 2\n\n\n\n\n\n\n\nFinals Week (Portfolio Meetings)\nJune 9"
+    "text": "This page contains an outline of the topics, content, and assignments for the quarter. Note that this schedule will be updated as the quarter progresses, with all changes documented here.\n\n\n\n\n\n\n\n\n\n\n\n\nWeek\nDate\nRequired Reading\nLecture Slides\nLecture Activities\nLab Assignment\nPortfolio\n\n\n\n\n1\nStat 331 Review & Version Control\nMarch 31 (note no class on Monday)\nInstalling / Updating R & RStudio\nVersion Control\n\n\nLab 0 (link to GitHub repository)\n\n\n\n2\nAdvanced Visualizations\nApril 7\n\n\n\n\n\n\n\n3\nQuarto Dashboards (Static)\nApril 14\n\n\n\n\n\n\n\n4\nQuarto Dashboards (Dynamic)\nApril 21\n\n\n\n\n\n\n\n5\nQuarto & WebR\nApril 28\n\n\n\n\n\n\n\n6\nPortfolio Week\nMay 5\n\n\n\n\nPortfolio Instructions\n\n\n7\nJSON Data & APIs\nMay 12\n\n\n\n\n\n\n\n8\nWebscraping\nMay 19\n\n\n\n\n\n\n\n9\nGenerative Art\nMay 26 (note Tuesday follows a Monday schedule)\n\n\n\n\n\n\n\n10\nPortfolio Week\nJune 2\n\n\n\n\n\n\n\nFinals Week (Portfolio Meetings)\nJune 9"
   },
   {
     "objectID": "index.html",
