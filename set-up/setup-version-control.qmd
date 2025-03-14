@@ -18,17 +18,9 @@ library(kableExtra)
 library(tidyverse)
 ```
 
-#### 📖 Reading: 60-75 minutes
-
-#### 📽️  Videos: 0 minute(s)
-
-#### ✅ Check-ins: 4
-
-
-## Objectives
-
-Most of this section is either heavily inspired by Happy Git and Github for the
-UseR [@bryanHappyGitGitHub2021] or directly links to that book. 
+Most of this reading is either heavily inspired by *Happy Git and Github for the
+UseR* [@bryanHappyGitGitHub2021] or directly links to that book. After
+completing this pre-reading, you should:
 
 + Recognize the benefits of using version control to improve your coding
 practices and workflow.
@@ -60,7 +52,7 @@ history in Google Docs, but much more powerful.
 :::
 
 ::: {.column width="55%"}
-![](https://www.phdcomics.com/comics/archive/phd101212s.gif){width="50%" fig-alt=""}
+![](https://www.phdcomics.com/comics/archive/phd101212s.gif){width="60%" fig-alt=""}
 
 :::
 :::
@@ -90,19 +82,17 @@ paper is being tracked by git---you can always go back and get that paragraph
 you cut out if you need to. You also don't have to rename files---you can
 confidently save over your old files, so long as you remember to commit
 frequently. 
-
-### 📖 Required Reading: [Install Git](https://happygitwithr.com/install-git)
-
 :::
 
 ::: {.column width="5%"}
 :::
 
 ::: {.column width="45%"}
-![](images/week-1/git.png){fig-alt="Person 1: 'This is GIT. It tracks collaborative work on projects through a beautiful distributed graph theory tree model'. Person 2: 'Cool, How do we use it?' Person 1: 'No Idea. Just memorize these shell commands and type them to sync up. If you get errors, save your work elsewhere, delete the project, and download a fresh copy.'"}
+![](images/git.png){fig-alt="Person 1: 'This is GIT. It tracks collaborative work on projects through a beautiful distributed graph theory tree model'. Person 2: 'Cool, How do we use it?' Person 1: 'No Idea. Just memorize these shell commands and type them to sync up. If you get errors, save your work elsewhere, delete the project, and download a fresh copy.'"}
 :::
 :::
 
+### 📖 Required Reading: [Install Git](https://happygitwithr.com/install-git)
 
 ### ✅ Check-in 1.6:  Install Git
 

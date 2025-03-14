@@ -280,8 +280,8 @@
     "objectID": "set-up/setup-version-control.html#objectives",
     "href": "set-up/setup-version-control.html#objectives",
     "title": "Version Control with Git and GitHub",
-    "section": "0.1 Objectives",
-    "text": "0.1 Objectives\nMost of this section is either heavily inspired by Happy Git and Github for the UseR (Bryan, Hester, and The Stat 545 TAs 2021) or directly links to that book.\n\nRecognize the benefits of using version control to improve your coding practices and workflow.\nIdentify git / GitHub as a version control platform (and helper).\nInstall git onto your computer and register for a GitHub account\nStart applying version control practices to your workflow.",
+    "section": "",
+    "text": "Most of this section is either heavily inspired by Happy Git and Github for the UseR (Bryan, Hester, and The Stat 545 TAs 2021) or directly links to that book.\n\nRecognize the benefits of using version control to improve your coding practices and workflow.\nIdentify git / GitHub as a version control platform (and helper).\nInstall git onto your computer and register for a GitHub account\nStart applying version control practices to your workflow.",
     "crumbs": [
       "Infrastructure",
       "Version Control with Git and GitHub"
@@ -293,6 +293,17 @@
     "title": "Version Control with Git and GitHub",
     "section": "Footnotes",
     "text": "Footnotes\n\n\nYes, I’m aware that this sounds paranoid. It’s been a very rare occasion that I’ve needed to restore something from another backup. You don’t want to take chances.↩︎",
+    "crumbs": [
+      "Infrastructure",
+      "Version Control with Git and GitHub"
+    ]
+  },
+  {
+    "objectID": "set-up/setup-version-control.html",
+    "href": "set-up/setup-version-control.html",
+    "title": "Version Control with Git and GitHub",
+    "section": "",
+    "text": "Most of this reading is either heavily inspired by Happy Git and Github for the UseR (Bryan, Hester, and The Stat 545 TAs 2021) or directly links to that book. After completing this pre-reading, you should:",
     "crumbs": [
       "Infrastructure",
       "Version Control with Git and GitHub"
