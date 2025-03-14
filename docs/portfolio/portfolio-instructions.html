@@ -175,12 +175,26 @@ ul.task-list li input[type="checkbox"] {
 <p>The development of Quarto has made it incredibly simple to <a href="https://quarto.org/docs/websites/">generate websites</a>, which can be easily hosted by GitHub Pages.</p>
 <section id="instructions-for-creating-a-personal-website" class="level2">
 <h2 class="anchored" data-anchor-id="instructions-for-creating-a-personal-website">Instructions for Creating a Personal Website</h2>
-<p>If you’ve never made a personal website, you will need to create one! There are <strong>so</strong> many resources for creating Quarto websites, but my absolute favorite one’s are from Sam Csik</p>
-<p>&lt;https://ucsb-meds.github.io/creating-quarto-websites/</p>
-<ol type="1">
-<li><p>Create a new GitHub repository named <code>&lt;your-username&gt;.github.io</code> (replacing “<your-username>” with your GitHub username). Initialize this repo with a <code>readme.md</code> file (one of the options when making the repo).</your-username></p></li>
-<li><p>Create a new folder where you will store your personal website.</p></li>
-</ol>
+<p>If you’ve never made a personal website, you will need to create one! There are <strong>so</strong> many resources for creating Quarto websites, but my absolute favorite one’s are from Sam Shanny-Csik.</p>
+<p>Follow this step-by-step guide for creating a new Quarto website: &lt;https://ucsb-meds.github.io/creating-quarto-websites/</p>
+<div class="columns">
+<div class="column" style="width:47%;">
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Name your project <code>&lt;YourGitHubUsername&gt;.github.io</code>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>We’re going to deploy websites using GitHub pages, and it would be nice if your website had a professional name! I would recommend using your username, unless you chose a username that isn’t very descriptive or unique (e.g., <code>brandonk04</code>). If this is the case, I would recommend you use a more descriptive name for your project (e.g., <code>brandon-kim-04</code>).</p>
+</div>
+</div>
+</div><div class="column" style="width:5%;">
+
+</div><div class="column" style="width:47%;">
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -194,32 +208,41 @@ Tip
 <p>I would strongly recommend this folder living <em>inside</em> your broader “STAT 541” folder, at least for now!</p>
 </div>
 </div>
-<ol start="3" type="1">
-<li></li>
-<li><p>Use RStudio to create a new project inside the folder you created in Step 1. Select “Quarto Website” as the project type.</p></li>
-<li><p>Follow the Quick Start instructions on <a href="https://quarto.org/docs/websites/website-blog.html" class="uri">https://quarto.org/docs/websites/website-blog.html</a> to create your website (or a generic site at <a href="https://quarto.org/docs/websites/" class="uri">https://quarto.org/docs/websites/</a>).</p></li>
-<li><p>For publishing your website, follow the steps described under <a href="https://quarto.org/docs/publishing/github-pages.html">Github Pages</a>.</p></li>
-</ol>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-.nojekyll
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Be sure to follow the instructions for adding a text file named <code>.nojekyll</code> to your project. This tells GitHub not to build the pages with Jekyll (another rendering engine) and instead render pages built with Quarto.</p>
 </div>
 </div>
 </section>
 <section id="making-changes-to-an-existing-website" class="level2">
 <h2 class="anchored" data-anchor-id="making-changes-to-an-existing-website">Making Changes to an Existing Website</h2>
+<p>So you already have a personal website? Great! Let’s get started making blog posts for your website!</p>
+<p>We’re going to follow another one of Sam Shanny-Csik’s guides for integrating blog posts into your existing website:</p>
+<p><a href="https://samanthacsik.github.io/posts/2022-10-24-quarto-blogs/" class="uri">https://samanthacsik.github.io/posts/2022-10-24-quarto-blogs/</a></p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>I’m expecting that your posts are contained in a <code>portfolio</code> folder, so they are easy for me to find.</p>
+</div>
+</div>
+<p>By the end of the quarter, you should have blog posts for the following projects you’ve completed:</p>
+<ul>
+<li>Advanced Visualizations</li>
+<li>Quarto Dashboards (Static)</li>
+<li>Quarto Dashboards (Dynamic)</li>
+<li>Quarto with WebR</li>
+<li>JSON Data &amp; APIs</li>
+<li>Webscraping</li>
+<li>Generative Art</li>
+</ul>
 </section>
 <section id="additional-styling-options" class="level2">
 <h2 class="anchored" data-anchor-id="additional-styling-options">Additional Styling Options</h2>
-<p>See an additional resource at this <a href="https://ucsb-meds.github.io/creating-quarto-websites/">blog post</a></p>
+<p>In case you are interested in styling your website further, I would recommend looking over <a href="https://samanthacsik.github.io/talks_workshops/2022-10-10-customizing-quarto-websites/">this presentation</a> on using <code>.scss</code> and <code>.sass</code> files.</p>
 
 
 </section>

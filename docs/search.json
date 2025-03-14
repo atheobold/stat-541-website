@@ -260,21 +260,21 @@
     "href": "portfolio/portfolio-instructions.html#instructions-for-creating-a-personal-website",
     "title": "Final Portfolio Instructions",
     "section": "Instructions for Creating a Personal Website",
-    "text": "Instructions for Creating a Personal Website\nIf you’ve never made a personal website, you will need to create one! There are so many resources for creating Quarto websites, but my absolute favorite one’s are from Sam Csik\n&lt;https://ucsb-meds.github.io/creating-quarto-websites/\n\nCreate a new GitHub repository named &lt;your-username&gt;.github.io (replacing “” with your GitHub username). Initialize this repo with a readme.md file (one of the options when making the repo).\nCreate a new folder where you will store your personal website.\n\n\n\n\n\n\n\nTip\n\n\n\nI would strongly recommend this folder living inside your broader “STAT 541” folder, at least for now!\n\n\n\n\nUse RStudio to create a new project inside the folder you created in Step 1. Select “Quarto Website” as the project type.\nFollow the Quick Start instructions on https://quarto.org/docs/websites/website-blog.html to create your website (or a generic site at https://quarto.org/docs/websites/).\nFor publishing your website, follow the steps described under Github Pages.\n\n\n\n\n\n\n\n.nojekyll\n\n\n\nBe sure to follow the instructions for adding a text file named .nojekyll to your project. This tells GitHub not to build the pages with Jekyll (another rendering engine) and instead render pages built with Quarto."
+    "text": "Instructions for Creating a Personal Website\nIf you’ve never made a personal website, you will need to create one! There are so many resources for creating Quarto websites, but my absolute favorite one’s are from Sam Shanny-Csik.\nFollow this step-by-step guide for creating a new Quarto website: &lt;https://ucsb-meds.github.io/creating-quarto-websites/\n\n\n\n\n\n\n\n\nName your project &lt;YourGitHubUsername&gt;.github.io\n\n\n\nWe’re going to deploy websites using GitHub pages, and it would be nice if your website had a professional name! I would recommend using your username, unless you chose a username that isn’t very descriptive or unique (e.g., brandonk04). If this is the case, I would recommend you use a more descriptive name for your project (e.g., brandon-kim-04).\n\n\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nI would strongly recommend this folder living inside your broader “STAT 541” folder, at least for now!"
   },
   {
     "objectID": "portfolio/portfolio-instructions.html#making-changes-to-an-existing-website",
     "href": "portfolio/portfolio-instructions.html#making-changes-to-an-existing-website",
     "title": "Final Portfolio Instructions",
     "section": "Making Changes to an Existing Website",
-    "text": "Making Changes to an Existing Website"
+    "text": "Making Changes to an Existing Website\nSo you already have a personal website? Great! Let’s get started making blog posts for your website!\nWe’re going to follow another one of Sam Shanny-Csik’s guides for integrating blog posts into your existing website:\nhttps://samanthacsik.github.io/posts/2022-10-24-quarto-blogs/\n\n\n\n\n\n\nImportant\n\n\n\nI’m expecting that your posts are contained in a portfolio folder, so they are easy for me to find.\n\n\nBy the end of the quarter, you should have blog posts for the following projects you’ve completed:\n\nAdvanced Visualizations\nQuarto Dashboards (Static)\nQuarto Dashboards (Dynamic)\nQuarto with WebR\nJSON Data & APIs\nWebscraping\nGenerative Art"
   },
   {
     "objectID": "portfolio/portfolio-instructions.html#additional-styling-options",
     "href": "portfolio/portfolio-instructions.html#additional-styling-options",
     "title": "Final Portfolio Instructions",
     "section": "Additional Styling Options",
-    "text": "Additional Styling Options\nSee an additional resource at this blog post"
+    "text": "Additional Styling Options\nIn case you are interested in styling your website further, I would recommend looking over this presentation on using .scss and .sass files."
   },
   {
     "objectID": "set-up/setup-version-control.html#objectives",

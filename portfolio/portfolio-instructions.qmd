@@ -20,46 +20,60 @@ hosted by GitHub Pages.
 
 If you've never made a personal website, you will need to create one! There are
 **so** many resources for creating Quarto websites, but my absolute favorite 
-one's are from Sam Csik
+one's are from Sam Shanny-Csik.
 
+Follow this step-by-step guide for creating a new Quarto website: 
 <https://ucsb-meds.github.io/creating-quarto-websites/
 
+::: columns
+::: {.column width="47%"}
+::: {.callout-important}
+# Name your project `<YourGitHubUsername>.github.io`
 
+We're going to deploy websites using GitHub pages, and it would be nice if your
+website had a professional name! I would recommend using your username, unless
+you chose a username that isn't very descriptive or unique (e.g., `brandonk04`). If this is the case, I would recommend you use a more descriptive name for your project (e.g., `brandon-kim-04`). 
+:::
+:::
 
-1. Create a new GitHub repository named `<your-username>.github.io` (replacing
-"<your-username>" with your GitHub username). Initialize this repo with a 
-`readme.md` file (one of the options when making the repo).
+::: {.column width="5%"}
+:::
 
-2. Create a new folder where you will store your personal website. 
-
+::: {.column width="47%"}
 ::: {.callout-tip}
 I would strongly recommend this folder living *inside* your broader "STAT 541"
 folder, at least for now!
 :::
-
-3. 
-
-3. Use RStudio to create a new project inside the folder you created in Step 1.
-Select "Quarto Website" as the project type.
-
-4. Follow the Quick Start instructions on <https://quarto.org/docs/websites/website-blog.html> to create your website (or a generic site at <https://quarto.org/docs/websites/>).
-
-5. For publishing your website, follow the steps described under [Github Pages](https://quarto.org/docs/publishing/github-pages.html).  
-
-::: {.callout-warning}
-# .nojekyll
-
-Be sure to follow the instructions for adding a text file named `.nojekyll` to
-your project. This tells GitHub not to build the pages with Jekyll (another
-rendering engine) and instead render pages built with Quarto.
+:::
 :::
 
 ## Making Changes to an Existing Website
 
+So you already have a personal website? Great! Let's get started making blog
+posts for your website!
 
+We're going to follow another one of Sam Shanny-Csik's guides for integrating
+blog posts into your existing website:
+
+<https://samanthacsik.github.io/posts/2022-10-24-quarto-blogs/>
+
+::: {.callout-important}
+I'm expecting that your posts are contained in a `portfolio` folder, so they 
+are easy for me to find. 
+:::
+
+By the end of the quarter, you should have blog posts for the following 
+projects you've completed:
+
+- Advanced Visualizations
+- Quarto Dashboards (Static)
+- Quarto Dashboards (Dynamic)
+- Quarto with WebR
+- JSON Data & APIs
+- Webscraping
+- Generative Art
 
 ## Additional Styling Options
 
-See an additional resource at this [blog post](https://ucsb-meds.github.io/creating-quarto-websites/)
-
-
+In case you are interested in styling your website further, I would recommend
+looking over [this presentation](https://samanthacsik.github.io/talks_workshops/2022-10-10-customizing-quarto-websites/) on using `.scss` and `.sass` files. 
