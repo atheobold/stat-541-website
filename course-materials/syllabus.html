@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>STAT 541: Advanced Statistical Computing – Advanced R</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../images/cat-monsters-horst.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../images/cat-monsters-horst.png" alt="" class="navbar-logo">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Overview</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../course-materials/calendar.html"> 
+<span class="menu-text">Schedule</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="../course-materials/syllabus.html" aria-current="page"> 
+<span class="menu-text">Syllabus</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../infrastructure.html"> 
+<span class="menu-text">Infrastructure</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../communication.qmd"> 
+<span class="menu-text">Unit 1 - Communication</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../iteration.qmd"> 
+<span class="menu-text">Unit 2 - Iteration</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../portfolio.qmd"> 
+<span class="menu-text">Portfolio</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/atheobold/stat-541-website"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#course-resources" id="toc-course-resources" class="nav-link active" data-scroll-target="#course-resources"><span class="header-section-number">1</span> Course Resources</a>
+  <ul class="collapse">
+  <li><a href="#course-objectives" id="toc-course-objectives" class="nav-link" data-scroll-target="#course-objectives"><span class="header-section-number">1.1</span> Course Objectives</a></li>
+  <li><a href="#prerequisites" id="toc-prerequisites" class="nav-link" data-scroll-target="#prerequisites"><span class="header-section-number">1.2</span> Prerequisites</a></li>
+  </ul></li>
+  <li><a href="#sec-grades" id="toc-sec-grades" class="nav-link" data-scroll-target="#sec-grades"><span class="header-section-number">2</span> Assessment</a>
+  <ul class="collapse">
+  <li><a href="#practice-activities-and-check-ins-due-tuesdays-by-midnight" id="toc-practice-activities-and-check-ins-due-tuesdays-by-midnight" class="nav-link" data-scroll-target="#practice-activities-and-check-ins-due-tuesdays-by-midnight"><span class="header-section-number">2.1</span> Practice Activities and Check-ins (Due Tuesdays by midnight)</a></li>
+  <li><a href="#lab-assignments-due-mondays-by-5pm" id="toc-lab-assignments-due-mondays-by-5pm" class="nav-link" data-scroll-target="#lab-assignments-due-mondays-by-5pm"><span class="header-section-number">2.2</span> Lab Assignments (Due Mondays by 5pm)</a>
+  <ul class="collapse">
+  <li><a href="#success-growing-grading" id="toc-success-growing-grading" class="nav-link" data-scroll-target="#success-growing-grading">Success / Growing Grading</a></li>
+  </ul></li>
+  <li><a href="#final-portfolio-due-sunday-june-7" id="toc-final-portfolio-due-sunday-june-7" class="nav-link" data-scroll-target="#final-portfolio-due-sunday-june-7"><span class="header-section-number">2.3</span> Final Portfolio (Due Sunday, June 7)</a></li>
+  </ul></li>
+  <li><a href="#classroom-community-and-policies" id="toc-classroom-community-and-policies" class="nav-link" data-scroll-target="#classroom-community-and-policies"><span class="header-section-number">3</span> Classroom community and policies</a>
+  <ul class="collapse">
+  <li><a href="#weekly-expectations" id="toc-weekly-expectations" class="nav-link" data-scroll-target="#weekly-expectations">Weekly expectations</a></li>
+  <li><a href="#sec-help" id="toc-sec-help" class="nav-link" data-scroll-target="#sec-help">Getting help</a></li>
+  </ul></li>
+  <li><a href="#responding-to-private-messages" id="toc-responding-to-private-messages" class="nav-link" data-scroll-target="#responding-to-private-messages"><span class="header-section-number">4</span> Responding to Private Messages</a></li>
+  <li><a href="#well-being-access-and-accommodations" id="toc-well-being-access-and-accommodations" class="nav-link" data-scroll-target="#well-being-access-and-accommodations"><span class="header-section-number">5</span> Well-being, Access, and Accommodations</a>
+  <ul class="collapse">
+  <li><a href="#what-if-i-have-accommodations-or-feel-that-accommodations-would-be-beneficial-to-my-learning" id="toc-what-if-i-have-accommodations-or-feel-that-accommodations-would-be-beneficial-to-my-learning" class="nav-link" data-scroll-target="#what-if-i-have-accommodations-or-feel-that-accommodations-would-be-beneficial-to-my-learning"><span class="header-section-number">5.1</span> What if I have accommodations or feel that accommodations would be beneficial to my learning?</a></li>
+  <li><a href="#im-having-difficulty-paying-for-food-and-rent-what-can-i-do" id="toc-im-having-difficulty-paying-for-food-and-rent-what-can-i-do" class="nav-link" data-scroll-target="#im-having-difficulty-paying-for-food-and-rent-what-can-i-do"><span class="header-section-number">5.2</span> I’m having difficulty paying for food and rent, what can I do?</a></li>
+  <li><a href="#my-mental-health-is-impairing-my-ability-to-engage-in-my-classes-what-should-i-do" id="toc-my-mental-health-is-impairing-my-ability-to-engage-in-my-classes-what-should-i-do" class="nav-link" data-scroll-target="#my-mental-health-is-impairing-my-ability-to-engage-in-my-classes-what-should-i-do"><span class="header-section-number">5.3</span> My mental health is impairing my ability to engage in my classes, what should I do?</a></li>
+  <li><a href="#someone-is-threatening-me-what-can-i-do" id="toc-someone-is-threatening-me-what-can-i-do" class="nav-link" data-scroll-target="#someone-is-threatening-me-what-can-i-do"><span class="header-section-number">5.4</span> Someone is threatening me, what can I do?</a></li>
+  <li><a href="#what-if-i-cant-arrange-for-childcare" id="toc-what-if-i-cant-arrange-for-childcare" class="nav-link" data-scroll-target="#what-if-i-cant-arrange-for-childcare"><span class="header-section-number">5.5</span> What if I can’t arrange for childcare?</a></li>
+  </ul></li>
+  <li><a href="#attendance-extensions-and-technology" id="toc-attendance-extensions-and-technology" class="nav-link" data-scroll-target="#attendance-extensions-and-technology"><span class="header-section-number">6</span> Attendance, Extensions, and Technology</a>
+  <ul class="collapse">
+  <li><a href="#what-if-i-need-to-miss-class" id="toc-what-if-i-need-to-miss-class" class="nav-link" data-scroll-target="#what-if-i-need-to-miss-class"><span class="header-section-number">6.1</span> What if I need to miss class?</a></li>
+  <li><a href="#what-if-i-need-to-turn-something-in-late" id="toc-what-if-i-need-to-turn-something-in-late" class="nav-link" data-scroll-target="#what-if-i-need-to-turn-something-in-late"><span class="header-section-number">6.2</span> What if I need to turn something in late?</a></li>
+  <li><a href="#do-i-need-to-bring-a-computer-to-class" id="toc-do-i-need-to-bring-a-computer-to-class" class="nav-link" data-scroll-target="#do-i-need-to-bring-a-computer-to-class"><span class="header-section-number">6.3</span> Do I need to bring a computer to class?</a></li>
+  </ul></li>
+  <li><a href="#expectations-respect-and-integrity" id="toc-expectations-respect-and-integrity" class="nav-link" data-scroll-target="#expectations-respect-and-integrity"><span class="header-section-number">7</span> Expectations, Respect, and Integrity</a>
+  <ul class="collapse">
+  <li><a href="#how-can-i-expect-to-be-treated-in-this-course" id="toc-how-can-i-expect-to-be-treated-in-this-course" class="nav-link" data-scroll-target="#how-can-i-expect-to-be-treated-in-this-course"><span class="header-section-number">7.1</span> How can I expect to be treated in this course?</a></li>
+  <li><a href="#what-constitutes-plagiarism-in-a-statistics-class" id="toc-what-constitutes-plagiarism-in-a-statistics-class" class="nav-link" data-scroll-target="#what-constitutes-plagiarism-in-a-statistics-class"><span class="header-section-number">7.2</span> What constitutes plagiarism in a statistics class?</a></li>
+  <li><a href="#learning-to-code-with-chatgpt" id="toc-learning-to-code-with-chatgpt" class="nav-link" data-scroll-target="#learning-to-code-with-chatgpt"><span class="header-section-number">7.3</span> Learning to Code with ChatGPT</a></li>
+  <li><a href="#integrity-violations" id="toc-integrity-violations" class="nav-link" data-scroll-target="#integrity-violations"><span class="header-section-number">7.4</span> Integrity Violations</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/course-materials/syllabus.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">STAT 541: Advanced Statistical Computing</h1>
+<p class="subtitle lead">Spring 2024</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Instructor Info</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Class meetings</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">Student Hours</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false">Personal Meetings</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Instructor: Dr.&nbsp;Allison Theobold</strong> – you can call me <a href="https://docs.google.com/document/d/1m4e-2l76luAd9WrxiwCVf8-yf-co82dDSe1jHYf-NBo/edit?usp=sharing"><strong>Dr.&nbsp;Theobold</strong></a> or <a href="https://docs.google.com/document/d/1m4e-2l76luAd9WrxiwCVf8-yf-co82dDSe1jHYf-NBo/edit?usp=sharing"><strong>Dr.&nbsp;T</strong></a>! I use <strong>they / she</strong> pronouns (that is my order of preference). 😊</p>
+<p><strong>Email</strong>: atheobol@calpoly.edu<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a><br>
+<strong>Office</strong>: Building 25, Office 105</p>
+</div><div class="column" style="width:10%;">
+
+</div><div class="column" style="width:40%;">
+<p><img src="../images/headshot.jpg" class="img-fluid" style="width:60.0%" alt="A headshot of Dr. Theobold, in a pink blazer at the top floor of Building 25, overlooking Bishop Peak"></p>
+</div>
+</div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<p><strong>Room:</strong> Math Science (Building 38), Room 122</p>
+<p><strong>Times:</strong> 10:10am - 12:00pm (MW)</p>
+</div>
+<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
+<p>This quarter I will be holding student hours on Mondays, Tuesdays, Wednesdays, and Thursdays at the same time—so it is easy to remember!</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 70%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Day</th>
+<th>Time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mondays</td>
+<td>12:10pm – 1:00pm (in-person)</td>
+</tr>
+<tr class="even">
+<td>Tuesdays</td>
+<td>12:10pm – 1:00pm (on Zoom)</td>
+</tr>
+<tr class="odd">
+<td>Wednesdays</td>
+<td>12:10pm – 1:00pm (in-person)</td>
+</tr>
+<tr class="even">
+<td>Thursdays</td>
+<td>12:10 pm - 1:00 pm (on Zoom)</td>
+</tr>
+</tbody>
+</table>
+<p>I will typically hold student hours in my office (25-105), but may choose to move to the outside vestibule between wings of the building (where all the whiteboards are) or the Statistics department conference room. If we’re meeting somewhere other than my office, I will leave a sign on the door indicating where we’re meeting!</p>
+</div>
+<div id="tabset-1-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-4-tab">
+<p>If you would like to talk with me one-on-one about anything (e.g., grades, research), I’ve reserved time on Tuesdays and Thursdays from 12:10pm to 1:00pm for individual appointments. You can make 10-minute appointments through the following link: <a href="https://calendly.com/allisontheobold" class="uri">https://calendly.com/allisontheobold</a></p>
+<p>I do request that you make appointments at least 3-hours ahead of time, so I don’t accidentally miss our meeting!</p>
+<p>If you need to meet, but none of the student hours work for you please let me know! It is possible we can communicate asynchronously through Discord or email, but I am happy to schedule a meeting during another time if necessary.</p>
+</div>
+</div>
+</div>
+<section id="course-resources" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Course Resources</h1>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">Textbooks</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Required Technology</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-3" role="tab" aria-controls="tabset-2-3" aria-selected="false">Canvas</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-4" role="tab" aria-controls="tabset-2-4" aria-selected="false">Discord</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<p>This course has no specific textbook; we will make use of many online books and resources. Some suggested resources are below.</p>
+<p><strong>Unit 1:</strong></p>
+<ul>
+<li>Review of Content from STAT 331
+<ul>
+<li><a href="https://r4ds.hadley.nz/">R for Data Science</a></li>
+</ul></li>
+<li>Version Control:
+<ul>
+<li><a href="https://happygitwithr.com/">Happy Git with R</a></li>
+</ul></li>
+<li>Refresher on Quarto Documents
+<ul>
+<li><a href="https://quarto.org/docs/get-started/authoring/rstudio.html">Quarto Tutorial on Making Documents</a> – To get familiar with Quarto documents (what we will typically use)</li>
+<li><a href="https://quarto.org/docs/reference/">Quarto Documentation</a> – Extensive documentation on each type of Quarto document</li>
+</ul></li>
+<li>Creating Quarto Dashboards
+<ul>
+<li><a href="https://quarto.org/docs/dashboards/">Guide for Creating Quarto Dashboards</a></li>
+<li><a href="https://quarto.org/docs/reference/formats/dashboard.html">Dashboard Documentation</a></li>
+<li><a href="https://quarto.org/docs/gallery/#dashboards">Gallery of Cool Dashboards</a></li>
+</ul></li>
+<li>Integrating WebR into Quarto
+<ul>
+<li><a href="https://quarto-webr.thecoatlessprofessor.com/">Guide for Using WebR</a></li>
+<li><a href="https://github.com/coatless/quarto-webr">Repository for WebR to Quarto Extension</a></li>
+<li><a href="https://gws.quarto.pub/introduction-to-webr-2023/#/title-slide">Slides from Presentation on WebR by George Stagg</a></li>
+</ul></li>
+</ul>
+<p><strong>Portfolio:</strong></p>
+<ul>
+<li><p>[Quarto ]</p></li>
+<li><p>Templates for Personal Websites</p>
+<ul>
+<li><a href="https://atheobold.github.io/">Dr.&nbsp;T’s Personal Website</a></li>
+<li><a href="https://samanthacsik.github.io/">Sam Shanny-Csik’s Personal Website</a></li>
+<li><a href="https://quarto.org/docs/gallery/#websites">Gallery of Fun Quarto Websites</a></li>
+</ul></li>
+<li><p>Guides on Styling Your Website</p>
+<ul>
+<li><a href="https://samanthacsik.github.io/talks_workshops/2022-10-10-customizing-quarto-websites/">Guide on Using Sass &amp; CSS for Website (also by Sam Shanny-Csik!)</a></li>
+</ul></li>
+</ul>
+<p><strong>Unit 2:</strong></p>
+<ul>
+<li><a href="https://adv-r.hadley.nz/">Advanced R</a></li>
+<li><a href="https://usethis.r-lib.org/">usethis</a> – For pull requests</li>
+</ul>
+</div>
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<p>You will need either</p>
+<ol type="a">
+<li>Access to a laptop that can run R 4.0+, or</li>
+<li>An account at <a href="https://posit.cloud/">posit.cloud</a>. You may need to subscribe at the non-free level ($5 / month) for sufficient computing power for this class.</li>
+</ol>
+</div>
+<div id="tabset-2-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-3-tab">
+<p>Canvas will be your resource for the course materials necessary for each week. Each module will walk you through what you are expected to do each week, including:</p>
+<ul>
+<li>tutorial pages (“Coursework”) to go over before class</li>
+<li>check-ins, that are ideally done before class</li>
+<li>practice activities, that we will work on during class</li>
+<li>lab assignments, that will be started in class time and completed by Monday each week</li>
+<li>projects, one for each of the three units</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Make sure you are receiving email notifications for, at least, announcements and emails. In Canvas, click on your name, then Notifications. Check that Canvas is using an email address that you regularly check; you have the option of registering a mobile number. Check the boxes to get notifications for announcements, and optionally other Canvas activity.</p>
+</div>
+</div>
+</div>
+<div id="tabset-2-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-4-tab">
+<p>This quarter, we will make use of a class wide Discord Server. The link on Canvas will help you join this server. Refer to the Using Discord guide on Canvas for more information on how to effectively use this server.</p>
+<p>Joining the Discord is not optional. Important information and discussion will happen here, and sometimes I will share hints and code snippets for activities or assignments.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Discord is also the best way to possibly get your questions answered outside of ordinary class and office hours.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<section id="course-objectives" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="course-objectives"><span class="header-section-number">1.1</span> Course Objectives</h2>
+<p>After taking this course, you will be able to:</p>
+<ul>
+<li>Create complex and reproducible data reports, that include interactive and / or dynamic elements.</li>
+</ul>
+<!-- Add APIs  -->
+<!-- Add JSON -->
+<!-- Add webscraping -->
+<!-- Add generative art -->
+<!-- - Construct your own R packages to streamline analyses. -->
+</section>
+<section id="prerequisites" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="prerequisites"><span class="header-section-number">1.2</span> Prerequisites</h2>
+<p>I expect you to enter this class with:</p>
+<ul>
+<li><p>Comfort in intermediate level R skills.</p></li>
+<li><p>Statistical knowledge at the Year 2 level; i.e., comfort with the concepts and basic math of multiple linear regression.</p></li>
+<li><p>Familiarity with computers and technology (e.g., Internet browsing, word processing, opening/saving files, converting files to PDF format, sending and receiving e-mail, etc.).</p></li>
+<li><p>A positive attitude, a curious mind, and a respect for ethical use of data science tools.</p></li>
+</ul>
+</section>
+</section>
+<section id="sec-grades" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Assessment</h1>
+<section id="practice-activities-and-check-ins-due-tuesdays-by-midnight" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="practice-activities-and-check-ins-due-tuesdays-by-midnight"><span class="header-section-number">2.1</span> Practice Activities and Check-ins (Due Tuesdays by midnight)</h2>
+<p>These small “quizzes” or activities are posted each week, to give you a way to check your milestones on the main topics of the week.</p>
+<p>You get full credit for any reasonable effort on these; I will not be grading them carefully or giving feedback.</p>
+<p>Check-ins are designed so that they can be done on your own, using the Coursework guides, in advance of class. Practice activities are meant to be done in class during or after lecture.</p>
+</section>
+<section id="lab-assignments-due-mondays-by-5pm" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="lab-assignments-due-mondays-by-5pm"><span class="header-section-number">2.2</span> Lab Assignments (Due Mondays by 5pm)</h2>
+<p>Each week, you will have a “lab” assignment, bringing together the week’s skills.</p>
+<p>These assignments are considered to be due every Monday by 5pm, so you have time to ask questions during student hours on Monday.</p>
+<section id="success-growing-grading" class="level3">
+<h3 class="anchored" data-anchor-id="success-growing-grading">Success / Growing Grading</h3>
+<p>I expect that you will approach each lab assignment seriously, investing the necessary time and energy to prepare your responses. Different from what you may have experienced, lab assignments are graded for “proficiency” of specific learning targets, which describe what you should be able to do after taking this course. You’ll receive a score for each problem on an assignment according to the <strong>Success</strong> / <strong>Growing</strong> rubric below, as well as feedback to help you improve.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 5%">
+<col style="width: 94%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Score</th>
+<th>Justification</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Success</td>
+<td>The solution to the problem is correct, legible, and easy to follow, with all reasoning provided. Any error does not bring into question your understanding of the topic.</td>
+</tr>
+<tr class="even">
+<td>Growing</td>
+<td>The solution shows growth toward mastering the topic; however, elements of the solution bring into question your understanding of the topic, and thus further attention is needed.</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="final-portfolio-due-sunday-june-7" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="final-portfolio-due-sunday-june-7"><span class="header-section-number">2.3</span> Final Portfolio (Due Sunday, June 7)</h2>
+<p>In lieu of exams, you will assemble a portfolio demonstrating your level of proficiency in each of the learning goals for this course. Examples of your code can only be taken from the lab assignments or the projects; i.e., not from check-ins or practice activities. On Canvas you can find a detailed description of the major and minor learning goals, how you can demonstrate your proficiency, and what is required for particular course grades.</p>
+<p>Note that the portfolio is not simply a list of links to your code; it also requires a brief discussion of how that code demonstrates the skill. There are also general reflection and summary questions involved. That is to say, although you will not necessarily need to write code, the portfolio will take a good amount of time and effort to assemble; plan accordingly.</p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Incremental Progress
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You can do your future self a big favor by working on your portfolio progressively throughout the quarter, instead of leaving it all for Finals Week. My suggestion is that each week, you add everything you can to your portfolio that you demonstrated in that week.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="classroom-community-and-policies" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Classroom community and policies</h1>
+<section id="weekly-expectations" class="level3">
+<h3 class="anchored" data-anchor-id="weekly-expectations">Weekly expectations</h3>
+<p>The module for each week will be released no later than 5pm on Friday, so you can look over the content and see what the plan is for the week.</p>
+</section>
+<section id="sec-help" class="level3">
+<h3 class="anchored" data-anchor-id="sec-help">Getting help</h3>
+<p>This quarter, I am instating a policy that <strong>I do not respond to emails with questions of general interest</strong>, such as deadline clarifications or conceptual questions. If you have one of these questions, please ask your question on our course Discord server.</p>
+<p><strong>Discord:</strong> We will use Discord to manage questions and responses regarding course content. There are channels for the different components of each week (e.g., Week 1 Lab Assignment). Please <strong>do not</strong> send an email about homework questions or questions about the course material. It is incredibly helpful for others in the course to see the questions you have and the responses to those questions. I will try to answer any questions posted to Discord within 3-4 hours (unless it is posted at midnight). If you think you can answer another student’s question, please respond!</p>
+</section>
+</section>
+<section id="responding-to-private-messages" class="level1 {callout-note}" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Responding to Private Messages</h1>
+<p>If you use private email or messaging to ask a question that should be public, I may simply answer it in Discord instead. Please don’t take this personally! It just means that you asked a good question, and I think the rest of the class could benefit from seeing the answer.</p>
+</section>
+<p>Of course, if your question is truly private, such as a grade inquiry or a personal concern, you may send me a private email. To help both you and me, here are some specific expectations about emails:</p>
+<ul>
+<li>Please tell me what course and section (by time or number) you are in!</li>
+<li>If you email me between 9am and 4pm on Monday through Friday, I’ll try my best to reply to you on the <em>same</em> day.</li>
+<li>If you email me outside of those hours, I will do my best to respond to you by the <em>next working</em> day. For my own mental health, I <strong>do not</strong> respond to email on the weekend. Thus, if you send an email after 4pm on Friday or during the weekend, you will not receive a response until Monday morning.</li>
+<li>If your question is much easier to discuss face-to-face, I may ask you to meet with me in my office or on Discord (at a time that works for both of us) rather than answering directly in an email.</li>
+<li>Include any relevant photos / screenshots / error messages / PDFs / links with your email.</li>
+</ul>
+<section id="well-being-access-and-accommodations" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Well-being, Access, and Accommodations</h1>
+<section id="what-if-i-have-accommodations-or-feel-that-accommodations-would-be-beneficial-to-my-learning" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="what-if-i-have-accommodations-or-feel-that-accommodations-would-be-beneficial-to-my-learning"><span class="header-section-number">5.1</span> What if I have accommodations or feel that accommodations would be beneficial to my learning?</h2>
+<p>I enthusiastically support the mission of Disability Resource Center to make education accessible to all. I design all my courses with accessibility at the forefront of my thinking, but if you have any suggestions for ways I can make things more accessible, please let me know. Come talk to me if you need accommodation for your disabilities. I honor self-diagnosis: let’s talk to each other about how we can make the course as accessible as possible. See also the standard syllabus statements, which include more information about formal processes.</p>
+</section>
+<section id="im-having-difficulty-paying-for-food-and-rent-what-can-i-do" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="im-having-difficulty-paying-for-food-and-rent-what-can-i-do"><span class="header-section-number">5.2</span> I’m having difficulty paying for food and rent, what can I do?</h2>
+<p>If you have difficulty affording groceries or accessing sufficient food to eat every day, or if you lack a safe and stable place to live, and you believe this may affect your performance in the course, I urge you to contact the Dean of Students for support. Furthermore, please notify me if you are comfortable in doing so. This will enable me to advocate for you and to connect you with other campus resources.</p>
+</section>
+<section id="my-mental-health-is-impairing-my-ability-to-engage-in-my-classes-what-should-i-do" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="my-mental-health-is-impairing-my-ability-to-engage-in-my-classes-what-should-i-do"><span class="header-section-number">5.3</span> My mental health is impairing my ability to engage in my classes, what should I do?</h2>
+<p>National surveys of college students have consistently found that stress, sleep problems, anxiety, depression, interpersonal concerns, death of a significant other and alcohol use are among the top ten health impediments to academic performance. If you are experiencing any mental health issues, I and Cal Poly are here to help you. Cal Poly’s Counseling Services (805-756-2511) is a free and confidential resource for assistance, support and advocacy.</p>
+</section>
+<section id="someone-is-threatening-me-what-can-i-do" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="someone-is-threatening-me-what-can-i-do"><span class="header-section-number">5.4</span> Someone is threatening me, what can I do?</h2>
+<p>I will listen and believe you if someone is threatening you. I will help you get the help you need. I commit to changing campus culture that responds poorly to dating violence and stalking.</p>
+</section>
+<section id="what-if-i-cant-arrange-for-childcare" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="what-if-i-cant-arrange-for-childcare"><span class="header-section-number">5.5</span> What if I can’t arrange for childcare?</h2>
+<p>If you are responsible for childcare on short notice, you are welcome to bring children to class with you. If you are a lactating parent, you many take breaks to feed your infant or express milk as needed. If I can support yo in navigating parenting, coursework, and other obligations in any way, please let me know.</p>
+</section>
+</section>
+<section id="attendance-extensions-and-technology" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Attendance, Extensions, and Technology</h1>
+<section id="what-if-i-need-to-miss-class" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="what-if-i-need-to-miss-class"><span class="header-section-number">6.1</span> What if I need to miss class?</h2>
+<p>I encourage you to attend every class session, but policies are for narcs. I put a great deal of time into making each class session engaging and worth your time. Attendance in this course is not explicitly required, but it degrades your classmates’ trust in you when they don’t see you in class.</p>
+<p>Please do not email me letting me know when you are missing class - you will not lose points for this, but it is your responsibility to catch up on the materials and complete the in-class activities. Here’s what you should do if you do miss a class:</p>
+<ul>
+<li>Talk to a classmate to figure out what information you missed</li>
+<li>Check Canvas for any necessary handouts or changes to assignments</li>
+<li>Stop by student hours with any questions you have after reviewing notes and handouts</li>
+</ul>
+<p>If you miss a bunch of classes, please come talk to me. I’m working from the assumption that you care and are trying, but something is getting in your way (health issues? depression / anxiety? college stress?); let’s figure out what that is and how I can help.</p>
+</section>
+<section id="what-if-i-need-to-turn-something-in-late" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="what-if-i-need-to-turn-something-in-late"><span class="header-section-number">6.2</span> What if I need to turn something in late?</h2>
+<p>Assignments are expected to be submitted on time. However, every student will be permitted to submit up to <strong>three</strong> individual assignments up to 3-days late, by completing a deadline extension form. Similar to the “real world,” deadline extensions must be requested <strong>before</strong> an assignment is due.</p>
+<p>When you complete the deadline extension form you will be required to state (1) what assignment you need an extension for, and (2) your proposed new deadline. <strong>Your new deadline must be within 3-days of the original deadline.</strong></p>
+<p><strong>All</strong> deadline extensions must be done through the form, so I can keep track of who has used their allotment of extensions. If you are registered with DRC to have deadline extensions, you are required to complete a deadline extension request and make a note if your extension is related to a need related to DRC accommodations.</p>
+<p>Any late work is required to have a deadline extension request, meaning if you do not complete a deadline extension request for an assignment you <strong>are not</strong> permitted to turn it in late. The link to the deadline extension form can be found in Canvas in the Course Information module (at the top of the page).</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Deadline extensions are not permitted for the Final Portfolio!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+</section>
+<section id="do-i-need-to-bring-a-computer-to-class" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="do-i-need-to-bring-a-computer-to-class"><span class="header-section-number">6.3</span> Do I need to bring a computer to class?</h2>
+<p>You are allowed to use technology in the classroom! In fact, we will often do so as part of in-class activities. Our class is held in a room with monitors, but no computers. So, bringing a laptop is critical!</p>
+</section>
+</section>
+<section id="expectations-respect-and-integrity" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Expectations, Respect, and Integrity</h1>
+<section id="how-can-i-expect-to-be-treated-in-this-course" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="how-can-i-expect-to-be-treated-in-this-course"><span class="header-section-number">7.1</span> How can I expect to be treated in this course?</h2>
+<p>Following Ihab Hassan, I strive to teach statistics so that people will stop killing each other. In my classroom, diversity and individual differences are a sources of strength. One of the greatest failures of Statistics, historically and in the present, has been the exclusion of voices from the field. <strong>Everyone here can learn from each other, and doing so is vital to the structure of the course.</strong> Significant portions of this course involve group work and discussion in class. Some discussions will touch on sensitive topics. <strong>So that everyone feels comfortable participating in these activities, we must listen to each other and treat each other with respect.</strong> Any attitude or belief that espouses the superiority of one group of people over another is not welcome in my classroom. Such beliefs are directly destructive to the sense of community that we strive to create, and will sabotage our ability to learn from each other (and thus sabotage the entire structure of the course).</p>
+<p>In this classroom, I expect you to be polite, respectful, inclusive, and open-minded.</p>
+<p>Some examples of how to be a good classmate include:</p>
+<ul>
+<li>Doing your best to avoid language that is ableist, racist, sexist, or classist; or that perpetuates harmful stereotypes.</li>
+<li>Addressing your classmates by their preferred name and pronouns.</li>
+<li>Doing your best to be aware of your own biases, privileges, and areas of ignorance.</li>
+<li>Listening to others’ opinions, and making an effort to understand their perspective.</li>
+<li>Taking the time to help your classmates grasp concepts or solve problems, even when you are ready to move on.</li>
+</ul>
+<p>In summary: Be good to each other.</p>
+</section>
+<section id="what-constitutes-plagiarism-in-a-statistics-class" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="what-constitutes-plagiarism-in-a-statistics-class"><span class="header-section-number">7.2</span> What constitutes plagiarism in a statistics class?</h2>
+<p>You are encouraged to work with other classmates on all but the exam portions of this class. You are also encouraged (realistically, required!) to make use of online resources to accomplish tasks.</p>
+<p>When dealing with code, follow these guidelines:</p>
+<ul>
+<li><p>Never copy-paste more than small snippets of code. That is, you might borrow a little three-line function from StackOverflow, but you should not copy over a full analysis you find on Kaggle.</p></li>
+<li><p>Attribute all code that is not completely your own. If you do borrow that StackOverflow snippet, provide a link to the source. If you reference a similar analysis for ideas, mention that in your description.</p></li>
+</ul>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Explain Your Code
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A good rule for deciding if the code you are borrowing is plagiarism is: If I sat you down by yourself in a room with no internet, could you explain to me roughly what each line of code is doing?</p>
+<p>(In fact, this is exactly what I will do if I need to investigate possible cheating.)</p>
+</div>
+</div>
+</section>
+<section id="learning-to-code-with-chatgpt" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="learning-to-code-with-chatgpt"><span class="header-section-number">7.3</span> Learning to Code with ChatGPT</h2>
+<p>New AI models like Chat GPT offer a whole new world of online coding resources. This is exciting! In this class, you are allowed to use these tools like you would any other online coding support tool. (Note that this is not a typical policy; most of your other classes likely do not allow AI tools to be used.)</p>
+<p>If you do use an AI tool to help you write or debug code, it is important that you document and cite this process. That is, you should save the “conversation” with the chatbot, to show how you used your knowledge of R coding to construct queries that lead to useful results.</p>
+<p>When you submit your portfolio, if you use AI-generated code in your examples, you will need to make an argument for how you are demonstrating mastery of the requisite skills, and the AI is only being used as support.</p>
+</section>
+<section id="integrity-violations" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="integrity-violations"><span class="header-section-number">7.4</span> Integrity Violations</h2>
+<p>If you accidentally forget a small citation, or go a little overboard in how much you “borrow” from StackOverflow, you’ll get a warning. Any instance of willful and deliberate cheating will result in a failing grade in this class, full stop.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+The door swings both ways
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Be careful about being on the giving end as well as the taking end. For example: If you send your finished assignment to a friend, and that friend copies it, you have both just failed the course.</p>
+</div>
+</div>
+
+
+</section>
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>See <a href="#sec-help" class="quarto-xref">Section&nbsp;3.0.2</a> for information on what you can expect when you email me.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/github\.com\/atheobold\/stat-541-website");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>This page is built with ❤️ and <a href="https://quarto.org/">Quarto</a>.</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/course-materials/syllabus.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="../LICENSE.md">
+<p>License</p>
+</a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
