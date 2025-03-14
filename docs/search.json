@@ -99,7 +99,7 @@
     "href": "course-materials/syllabus.html#course-objectives",
     "title": "STAT 541: Advanced Statistical Computing",
     "section": "1.1 Course Objectives",
-    "text": "1.1 Course Objectives\nAfter taking this course, you will be able to:\n\nCreate complex and reproducible data reports, that include interactive and / or dynamic elements."
+    "text": "1.1 Course Objectives\nAfter taking this course, you will be able to:\nCreate\n\ncomplex and reproducible data reports, that include interactive and / or dynamic elements.\ncompelling data visualizations with interactive elements.\n\nUse iteration to\n\nobtain data through APIs and webscraping.\ncreate generative art."
   },
   {
     "objectID": "course-materials/syllabus.html#prerequisites",

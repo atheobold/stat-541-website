@@ -91,10 +91,10 @@ resources. Some suggested resources are below.
 **Unit 1:**
 
 - Review of Content from STAT 331
-  + [R for Data Science](https://r4ds.hadley.nz/)
+  + [*R for Data Science*](https://r4ds.hadley.nz/)
 
 - Version Control:
-  + [Happy Git with R](https://happygitwithr.com/) 
+  + [*Happy Git with R*](https://happygitwithr.com/) 
 
 - Refresher on Quarto Documents
   + [Quarto Tutorial on Making Documents](https://quarto.org/docs/get-started/authoring/rstudio.html) -- 
@@ -114,8 +114,6 @@ documentation on each type of Quarto document
   
 **Portfolio:**
 
-- [Quarto ]
-
 - Templates for Personal Websites
   + [Dr. T's Personal Website](https://atheobold.github.io/)
   + [Sam Shanny-Csik's Personal Website](https://samanthacsik.github.io/)
@@ -126,8 +124,16 @@ documentation on each type of Quarto document
 
 **Unit 2:**
 
-- [Advanced R](https://adv-r.hadley.nz/)
-- [usethis](https://usethis.r-lib.org/) -- For pull requests
+- Iteration with `purrr` 
+  + [*R for Data Science*, 1st Edition](https://r4ds.had.co.nz/iteration.html)
+  + [`purrr` documentation](https://purrr.tidyverse.org/)
+  + [Deeper Dive into Functional Programming (*Advanced R*)](https://adv-r.hadley.nz/functionals.html)
+
+- JSON Data
+  + [JSONlite Vignette](https://cran.r-project.org/web/packages/jsonlite/vignettes/json-aaquickstart.html)
+  
+- Pull Requests
+  + [usethis Vignette](https://usethis.r-lib.org/articles/pr-functions.html)
 
 # Required Technology
 
@@ -178,15 +184,17 @@ ordinary class and office hours.
 
 After taking this course, you will be able to:
 
-- Create complex and reproducible data reports, that include interactive 
-and / or dynamic elements.
+**Create**
 
-<!-- Add APIs  -->
-<!-- Add JSON -->
-<!-- Add webscraping -->
-<!-- Add generative art -->
+- complex and reproducible data reports, that include interactive and / or
+dynamic elements.
 
-<!-- - Construct your own R packages to streamline analyses. -->
+- compelling data visualizations with interactive elements. 
+
+**Use iteration to**
+
+- obtain data through APIs and webscraping.
+- create generative art. 
 
 ## Prerequisites
 
