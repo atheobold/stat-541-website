@@ -1,0 +1,142 @@
+---
+title: "Creating Maps with the `leaflet` Package"
+format: html 
+editor: source
+execute: 
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r}
+#| label: set-up
+#| include: false
+
+library(tidyverse)
+library(leaflet)
+```
+
+# Creating Maps
+
+Maps are fantastic and complicated all at the same time! Maps are some of the
+richest visualizations around because they come with data built into them. That 
+is, on top of whatever data you're going to plot you are also probably going to
+view terrain, roads, state/country borders, city names or a host of other
+information that come with our geography.
+
+This implicit richness only adds to challenge of creating a good map. Observe
+the following recent tweet for a silly example of how maps can be...difficult. 
+
+There is no shortage of map data visualizations on the web, but all too
+often this is what we end up with:
+
+![](images/xkcdheatmap.png)
+
+## 🎥 Required Video: Introductory Series to `leaflet` in R (6 Videos)
+
+<iframe width="400" height="225" style="width: 400px; height: 225px;" src="https://www.youtube.com/embed/6Uz5KBZ8V5E" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+::: callout-caution
+Be sure to watch all 6 videos in this series.
+:::
+
+::: {.callout-important}
+# Check-in: `leaflet`
+
+**1. Is running just the `leaflet()` function enough to produce a map?**
+
+-   Yes
+-   No
+
+**2. To plot data points on a leaflet map, we should probably use which function?**
+
+-   `addTiles()`
+-   `addMarkers()`
+-   `addProviderTiles()`
+-   `addPolygons()`
+:::
+
+## More on the `leaflet` package
+
+The leaflet package is actually extremely rich and can basically enable
+(interactive) map visualizations as complex as you can imagine. Take some time 
+to peruse the site for the leaflet R package:
+
+<https://rstudio.github.io/leaflet/>
+
+::: {.callout-important}
+# Check-in: `leaflet`
+
+**3.  What do the names of your plotted data columns have to be?**
+
+-   `x`; `y`
+-   `leafletx`; \`leaflety
+-   `lat` / `latitude`; `lon`/ `longitude`
+-   Anything as long as you tell the `addMarkers()` function correctly
+
+**4.  If you were to think of latitude and longitude as coordinates in the
+cartesian coordinate system, then...**
+
+-   latitude is on the horizontal axis and longitude is on the vertical
+-   latitude is on the vertical axis and longitude is on the horizontal
+:::
+
+## Practice With Leaflet
+
+```{r}
+#| label: space-data
+
+space <- read_csv(here::here("unit-1", 
+                             "data",
+                             "space.csv")
+                  )
+```
+
+```{r}
+#| label: map-of-astronauts
+#| warning: false
+#| message: false
+#| echo: true
+
+helmet_icon <- makeIcon(
+  iconUrl = "http://www.clker.com/cliparts/l/R/b/J/X/D/astronaut-helmet-md.png",
+  iconWidth = 15, 
+  iconHeight = 15
+  )
+
+leaflet() %>%
+  addTiles() %>%
+  addMarkers(lng = jitter(space$Longitude, 
+                          factor = 2), 
+             lat = jitter(space$Latitude,
+                          factor = 2), 
+             icon = helmet_icon, 
+             popup = paste(space$Name, "<br>", 
+                           "Birth Place: ", space$`Birth Place`),
+             label = paste(space$Name)
+             )
+```
+
+::: {.callout-important}
+# Check-in: `leaflet`
+
+The above map plots data on NASA astronauts!
+
+**5.  The graphic for each marker is a little astronaut helmet. How cute! This image was used via...**
+
+-   a URL pointing to it on the web.
+-   a downloaded image file.
+
+**6.  The `popup` argument specifies what you see when you \_\_\_\_\_\_, while the `label` argument specifies what you see when you \_\_\_\_\_\_.**
+
+-   hover; click
+-   zoom-in; zoom-out
+-   click; hover
+-   squint your eyes; look normally
+:::
+
+# Extra Resources
+
+-   Greg Sward has a pretty good series of videos on [leaflet in R](https://www.youtube.com/channel/UCVvv6HyBo9pg5-URPeJPQEw/search?query=leaflet) - the entire series is longer than we can fit as required viewing, but they are great tutorials!
+-   Abhinav Agrawal also has a good [beginner series](https://www.youtube.com/watch?v=ktWjjAlAKtE&list=PL6wLL_RojB5y8uL3uuIMnJ6JoTIFywQ-r&index=1)
+-   Don't forget about the [Data-to-Viz Website](https://www.data-to-viz.com/)

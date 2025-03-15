@@ -1,0 +1,107 @@
+---
+title: "`ggplot` Review"
+format: html 
+editor: source
+execute: 
+  echo: true
+  warning: false
+  message: false
+---
+
+```{r}
+#| label: set-up
+#| include: false
+
+library(tidyverse)
+library(flair)
+```
+
+This module consists of readings reviewing material typically taught in STAT
+331. It is possible you can skip over portions of this reading. It is your
+responsibility to decide which areas you need to review before diving into
+Stat 541.
+
+# The Grammar of Graphics
+
+You should feel comfortable with:
+
+-   Knowing what goes into an aesthetic (`aes()`) versus the geometry (`geom_*()`)
+
+-   Identifying these elements of existing plots
+
+## 🎥 Recommended Video
+
+<!-- [Grammar of Graphics with ggplot2](https://www.youtube.com/embed/kepKM7Z2O54) -->
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/kepKM7Z2O54?si=LR2jOR0kKfot1-vy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+::: {.callout-important}
+## Check-in: `ggplot` Review
+
+Identify the elements of the following plot as
+
+(i) An aesthetic
+(ii) A geometry
+(iii) A scale
+(iv) None of the above
+
+![](images/escalators.png)
+
+(a) The x-axis is age
+(b) The y-axis is "Urge to run up the down escalator"
+(c) The y-axis ranges from "Weak" to "Strong"
+(d) This is a line graph
+(e) The two lines are "What I was supposed to feel" and "What I've actually felt"
+(f) The lines are labeled with text
+(g) Only even ages are labelled
+(h) Stick figure people are sliding down the line
+:::
+
+# Using ggplot2
+
+You should be comfortable with:
+
+-   using the "big 5" geometries
+
+-   changing optional arguments.
+
+-   faceting
+
+## 📖 Recommended Reading: [*R4DS*: Data Visualisation](https://r4ds.hadley.nz/data-visualize.html)
+
+::: {.callout-important}
+## Checkin: `ggplot` Review
+
+Fill in the six (6) blanks to make the following plot:
+
+```{r}
+#| eval: false
+#| echo: true
+#| warning: false
+#| label: ggplot-plot-code
+
+starwars %>%
+  ____(species == "Human") %>%
+  ggplot(mapping = aes(____ = height, y = mass, ____ = gender)) + 
+  geom_[____](____ = 17) +
+  ____(x = "Height (cm)", 
+       y = "Mass (kg)", 
+       color = "Gender Expression"
+       )
+```
+
+```{r}
+#| echo: false
+#| warning: false
+#| label: ggplot-plot
+
+starwars %>%
+  filter(species == "Human") %>%
+  ggplot(mapping = aes(x = height, y = mass, color = gender)) + 
+  geom_point(pch = 17) +
+  labs(x = "Height (cm)", 
+       y = "Mass (kg)", 
+       color = "Gender Expression"
+       )
+```
+:::

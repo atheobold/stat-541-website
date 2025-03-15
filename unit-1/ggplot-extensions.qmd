@@ -1,0 +1,312 @@
+---
+title: "`ggplot` Extensions"
+format: html 
+editor: source
+execute: 
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r}
+#| label: set-up
+#| include: false
+
+library(tidyverse)
+library(flair)
+library(lubridate)
+library(gganimate)
+```
+
+```{r}
+#| label: ocars-data-clean
+#| include: false
+
+oscars <- read_csv(
+  here::here("unit-1", 
+             "data", 
+             "oscars-demographics-DFE.csv")
+  )
+
+oscars <- oscars %>%
+  select(-matches("^_")) %>%
+  select(-contains("gold")) %>%
+  select(-contains("confidence")) %>%
+  separate(date_of_birth,
+           into = c("Day", "Month", "Year"),
+           sep = "-") %>%
+  mutate(
+    Year = as.numeric(Year),
+    Year = case_when(
+      Year < 100 ~ Year + 1900,
+      TRUE ~ Year
+    ),
+    Birthdate = ymd(
+      paste(Year, Month, Day)
+      ),
+    Date_of_award = ymd(
+      paste(year_of_award, "Feb", "01")
+      ),
+    Age_at_Award = interval(Birthdate, Date_of_award) / years(1),
+    Award_Gender = case_when(
+      str_detect(award, "Actress") ~ "Woman",
+      str_detect(award, "Actor") ~ "Man",
+      TRUE ~ "Ungendered"
+    ),
+    Decade_of_Award = round(year_of_award, digits = -1)
+  )
+
+```
+
+## Custom Colors and Themes
+
+A huge part of making a compelling and convincing plot is your choice of color
+and layout.
+
+Your first video will take you through some great core principals of
+visualization. Then your two short readings will show you the basics of
+manipulating colors and themes in `ggplot`.
+
+## 🎥 Required Video: The Glamour of Graphics
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/h5cTacaWE6I?si=zLxvctfyr3TuAwlG" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+## 📖 Required Reading: [Colors and Palettes](https://www.datanovia.com/en/blog/ggplot-colors-best-tricks-you-will-love/)
+
+## 📖 Required Reading: [Themes](http://www.sthda.com/english/wiki/ggplot2-themes-and-background-colors-the-3-elements)
+
+## Extra Resouces 
+
+-   The [`jcolors` package](https://jaredhuling.org/jcolors/) for color palettes
+-   The [`ggthemer` package](https://www.shanelynn.ie/themes-and-colours-for-r-ggplots-with-ggthemr/) for setting universal themes.
+-   [Make your own](https://emanuelaf.github.io/own-ggplot-theme.html) theme to use!
+
+::: {.callout-important}
+## Check-in: Extending `ggplot`
+
+**1. Which of the functions below would you use to change the colors of the bars
+on the following plot?**
+
+-   `scale_color_continuous()`
+-   `scale_color_discrete()`
+-   `scale_fill_continuous()`
+-   `scale_fill_discrete()`
+
+```{r}
+#| label: oscars-plot
+
+top_5 <- oscars %>%
+  count(birthplace) %>%
+  top_n(5, n) %>%
+  pull(birthplace)
+
+p <- oscars %>%
+  filter(birthplace %in% top_5) %>%
+  ggplot(mapping = aes(y = birthplace, fill = birthplace)) + 
+  labs(title = "Number of Academy Award Winners\n from major cities", 
+       y = "", 
+       x = "") +
+  geom_bar()
+
+p
+```
+
+**2. Consider the plot in Question 1. What change was made to it in each step
+below? That is, what code would go inside the function `+ theme( )` to
+produce the added change?**
+
+a)  
+
+```{r}
+#| label: theme-remove-legend
+
+p + 
+  theme(legend.position = "none")
+```
+
+b)  
+
+```{r}
+#| label: theme-grid-major
+p + 
+  theme(panel.grid.minor.x = element_blank())
+```
+
+**3. Which built-in theme is each of the following plots? That is, what
+`theme_XXXX()` function would produce the added change?**
+
+a)  
+
+```{r}
+#| label: theme-classic
+
+p +
+  theme_classic() +
+  theme(legend.position = "none")
+```
+
+b)  
+
+```{r}
+#| label: theme-bw
+p + 
+  theme_bw() +
+  theme(legend.position = "none")
+```
+
+c)  
+
+```{r}
+#| label: theme-dark
+
+p + 
+  theme_dark() +
+  theme(legend.position = "none")
+```
+
+d)  
+
+```{r}
+#| label: theme-void
+
+p + 
+  theme_void() +
+  theme(legend.position = "none")
+
+```
+
+**4. Which of the plots above (a, b, c, or d) best adheres to the principles
+outlined by Will Chase (in the Glamour of Graphics)?**
+:::
+
+## gganimate
+
+There are many, many ways to "spice up" your plots. We will focus in on one: 
+making your plot animated! The best package for this, if you are using `ggplot`
+already, is `gganimate`.
+
+::: callout-note
+`gganimate` plot objects can sometimes take a long time to render. One way to
+make it quicker is to change the number of frames in your gif. Another trick is
+to use the [cache chunk option](https://quarto.org/docs/computations/r.html#caching) 
+in Quarto, so that you don't re-render the images every time you knit your file.
+:::
+
+## 📖 Required Reading: [Intro to `gganimate`](https://gganimate.com/articles/gganimate.html)
+
+## 📖 Recommended Reading: [Another intro to `gganimate`](https://www.datanovia.com/en/blog/gganimate-how-to-create-plots-with-beautiful-animation-in-r/)
+
+## 🎥 Recommended Video: `gganimate` flipbook demo (RStudio::conf 2017)
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/3UY7Or0v_dI?si=j326j6NNtakM6BmK&amp;start=77" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+::: {.callout-important}
+## Check-in: Extending `ggplot`
+
+**5.  Fill in the five (5) blanks for the `gganimate` plot below:**
+
+```{r}
+#| label: gganimate-plot-code-trans-states
+#| include: false
+#| eval: false
+
+p1 <- oscars %>%
+  filter(Award_Gender != "Ungendered") %>%
+  ggplot(aes(y = Age_at_Award, x = award, fill = Award_Gender)) +
+  geom_boxplot() +
+  ggtitle("Age of Academy Award Winners ({closest_state})") + 
+  xlab("Year of Award") +
+  ylab("Age at Award") +
+  transition_states(Award_Gender) +
+  shadow_mark(alpha = 0.3)
+
+animate(p1, nframes = 10, fps = 5)
+```
+
+```{r}
+#| label: gganimate-transition-time
+#| eval: false
+#| echo: false
+
+p2 <- oscars %>%
+  filter(Award_Gender != "Ungendered") %>%
+  ggplot(aes(x = Age_at_Award, fill = Award_Gender)) +
+  geom_density(alpha = 0.5) +
+  labs(title = "Age of Academy Award Winners ({frame_time}s)", 
+       x = "", 
+       y = "", 
+       fill = "Gender of Award") +
+  theme(legend.position = "top") +
+  transition_time(Decade_of_Award)
+
+animate(p2, nframes = 9, fps = 1)
+
+anim_save(filename = "oscars-animation.gif")
+```
+
+```{r}
+#| eval: false
+#| label: gganimate-code
+#| echo: true
+
+___ <- oscars %>%
+  filter(Award_Gender != "Ungendered") %>%
+  ggplot(aes(x = Age_at_Award, fill = Award_Gender)) +
+  geom_density(alpha = 0.5) +
+  labs(title = "Age of Academy Award Winners ({____}s)", 
+       x = "", 
+       y = "", 
+       fill = "Gender of Award") +
+  theme(legend.position = "top") +
+  ____(Decade_of_Award)
+
+animate(p2, nframes = ____, fps = ____)
+```
+
+![](images/oscars-animation.gif)
+
+:::
+
+## Other Extensions
+
+Although we don't have time to go in-depth on every single extension of
+`ggplot`, there are **so** many wonderful ways to up your Data Viz game.
+
+Take a look around the links below!
+
+## 📖 Required Reading: [`ggplot` Extension Gallery](https://exts.ggplot2.tidyverse.org/gallery/)
+
+## 📖 Required Reading: [More `ggplot` Extension Summaries](https://mode.com/blog/r-ggplot-extension-packages)
+
+::: {.callout-important}
+## Check-in: Extending `ggplot`
+
+**6.  Which extension package would you use to...**
+*Hint: There is more than one possible answer for each question!*
+
+a)  Visualize a **social network** using twitter data?
+
+<!-- ggraph, ggnetwork -->
+
+b)  **Add p-values** to your side-by-side boxplot of treatment groups, showing
+the significance of the differences?
+
+<!-- ggpubr, ggstatsplot -->
+
+c)  Arrange **several different plots** next to each other?
+
+<!-- patchwork, cowplot, GGAlly -->
+
+d)  Make it so **hovering over a point** in your scatterplot shows the
+corresponding label?
+
+<!-- Plotly, ggiraph -->
+:::
+
+## Extra Resources
+
+-   Dave Robinson's [Tidy Tuesday Screencasts](https://www.youtube.com/user/safe4democracy/videos) show a master of Data Viz at work!
+-   You can also search the [Tidy Tuesday hashtag on twitter](https://twitter.com/search?q=%23TidyTuesday&src=typeahead_click) to see some great examples of data manipulating and visualization
+-   Don't forget about the [Data-to-Viz Website](https://www.data-to-viz.com/)
+-   [The "dataisbeautiful" subreddit](https://www.reddit.com/r/dataisbeautiful/top/?t=all) shares many nice visualizations. 
+-   [This webinar](https://www.youtube.com/watch?v=0m4yywqNPVY), by ggplot contributor Thomas Lin Pedersen, is wonderful. It's about 2 hours long - so more than we can fit in as required viewing - but if you want to become a `ggplot` master, watch this!

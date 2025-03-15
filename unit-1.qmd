@@ -1,0 +1,25 @@
+---
+title: "Unit 1"
+editor: source
+---
+
+In this first unit, we will explore various tools for communicating statistical
+ideas. We will start with data visualizations, expanding your repertoire of 
+tools for visualizing data. From there, we will move to dashboards---both 
+static and dynamic. Finally, we will play with methods for including executable
+R code inside these documents. 
+
+Throughout these sections, you will encounter "check-ins" assessing your 
+knowledge on a particular topic. These check-ins are delineated by a red 
+(important) callout box and are associated with the Canvas quizzes assigned 
+each week. 
+
+::: {.callout-important}
+## Example Check-in Callout
+
+This is where you will find the body of the question. The callout name refers
+to the name of the Canvas quiz the question is associated with.
+:::
+
+
+
