@@ -1,79 +1,79 @@
 [
   {
-    "objectID": "set-up/setup-workflow.html",
-    "href": "set-up/setup-workflow.html",
-    "title": "Installing / Updating R & RStudio",
+    "objectID": "set-up/setup-version-control.html",
+    "href": "set-up/setup-version-control.html",
+    "title": "Version Control with Git and GitHub",
     "section": "",
-    "text": "Your workflow refers to the series of good habits you get into in your coding process, that help save you time and headache down the road.\nThis document outlines our suggestions for getting going with your workflow. None of these items is required for the course; they will simply make your life easier down the road.",
+    "text": "Most of this reading is either heavily inspired by Happy Git and Github for the UseR (Bryan, Hester, and The Stat 545 TAs 2021) or directly links to that book. After completing this pre-reading, you should:",
     "crumbs": [
       "Infrastructure",
-      "Installing / Updating R & RStudio"
+      "Version Control with Git and GitHub"
     ]
   },
   {
-    "objectID": "set-up/setup-workflow.html#updating-r",
-    "href": "set-up/setup-workflow.html#updating-r",
-    "title": "Installing / Updating R & RStudio",
-    "section": "1 Updating R",
-    "text": "1 Updating R\nEach of you should have R already installed on your computer, but you might not have the most up to date version of R! Do not ignore these instructions. If you neglect to update your version of R, you may find that updating a package will make it so your code will not run.\n\nStep 1: Open RStudio\nStep 2: At the top of the the Console it will say what version of R you are using\n\n\nIf the version is not 4.4.3 (like the image above), you need to update your version of R! The simplest way to do this is to follow the instructions below to install R.",
+    "objectID": "set-up/setup-version-control.html#footnotes",
+    "href": "set-up/setup-version-control.html#footnotes",
+    "title": "Version Control with Git and GitHub",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nYes, I’m aware that this sounds paranoid. It’s been a very rare occasion that I’ve needed to restore something from another backup. You don’t want to take chances.↩︎",
     "crumbs": [
       "Infrastructure",
-      "Installing / Updating R & RStudio"
+      "Version Control with Git and GitHub"
     ]
   },
   {
-    "objectID": "set-up/setup-workflow.html#installing-r",
-    "href": "set-up/setup-workflow.html#installing-r",
-    "title": "Installing / Updating R & RStudio",
-    "section": "2 Installing R",
-    "text": "2 Installing R\nDownload and install R by going to https://cloud.r-project.org/. Here, you will find three options for installing R—click on the option for your computer’s operating system.\n\n\n\n\nIf you are a Windows user:\n\nClick on “Download R for Windows”\nClick on “base”\nClick on the Download link.\nWhen you open the execution file (.exe) you will be prompted with a variety of questions about installing R. Feel free to use the default features / settings that come with R (continue to click “Ok” until the download starts).\n\n\n\n\n\n\n\nMultiple Versions of R\n\n\n\nBeware that if you had a previous version of R downloaded on your PC, that old version will not be deleted when you download the most recent version of R. We do not want to have two versions of R installed, as your computer can get confused what version of R to use. So, you need to remove the old version of R.\nTo do this you need to:\n\nNavigate to your computer’s settings\nClick on the “Apps” option on the left-hand panel\nSearch for or scroll down to R\nFind the older version of R\n\n\n\nClick on the ... on the right side\nSelect “Uninstall”\n\n\n\n\n\n\nIf you are macOS user:\n\nClick on “Download R for (Mac) OS X”\nUnder “Latest release:” click on R-X.X.X.pkg, where R-X.X.X is the version number. For example, the latest version of R as of July 1, 2024 was R-4.4.1 (Race for Your Life).\nWhen installing, use the default features / settings that come with R (click Ok until the download starts).",
+    "objectID": "unit-1/ggplot-leaflet.html",
+    "href": "unit-1/ggplot-leaflet.html",
+    "title": "Creating Maps with the leaflet Package",
+    "section": "",
+    "text": "Maps are fantastic and complicated all at the same time! Maps are some of the richest visualizations around because they come with data built into them. That is, on top of whatever data you’re going to plot you are also probably going to view terrain, roads, state/country borders, city names or a host of other information that come with our geography.\nThis implicit richness only adds to challenge of creating a good map. Observe the following recent tweet for a silly example of how maps can be…difficult.\nThere is no shortage of map data visualizations on the web, but all too often this is what we end up with:\n\n\n\n\n\n\n\n\n\n\n\nCaution\n\n\n\nBe sure to watch all 6 videos in this series.\n\n\n\n\n\n\n\n\nCheck-in: leaflet\n\n\n\n1. Is running just the leaflet() function enough to produce a map?\n\nYes\nNo\n\n2. To plot data points on a leaflet map, we should probably use which function?\n\naddTiles()\naddMarkers()\naddProviderTiles()\naddPolygons()\n\n\n\n\n\n\nThe leaflet package is actually extremely rich and can basically enable (interactive) map visualizations as complex as you can imagine. Take some time to peruse the site for the leaflet R package:\nhttps://rstudio.github.io/leaflet/\n\n\n\n\n\n\nCheck-in: leaflet\n\n\n\n3. What do the names of your plotted data columns have to be?\n\nx; y\nleafletx; `leaflety\nlat / latitude; lon/ longitude\nAnything as long as you tell the addMarkers() function correctly\n\n4. If you were to think of latitude and longitude as coordinates in the cartesian coordinate system, then…\n\nlatitude is on the horizontal axis and longitude is on the vertical\nlatitude is on the vertical axis and longitude is on the horizontal\n\n\n\n\n\n\n\nhelmet_icon &lt;- makeIcon(\n  iconUrl = \"http://www.clker.com/cliparts/l/R/b/J/X/D/astronaut-helmet-md.png\",\n  iconWidth = 15, \n  iconHeight = 15\n  )\n\nleaflet() %&gt;%\n  addTiles() %&gt;%\n  addMarkers(lng = jitter(space$Longitude, \n                          factor = 2), \n             lat = jitter(space$Latitude,\n                          factor = 2), \n             icon = helmet_icon, \n             popup = paste(space$Name, \"&lt;br&gt;\", \n                           \"Birth Place: \", space$`Birth Place`),\n             label = paste(space$Name)\n             )\n\n\n\n\n\n\n\n\n\n\n\nCheck-in: leaflet\n\n\n\nThe above map plots data on NASA astronauts!\n5. The graphic for each marker is a little astronaut helmet. How cute! This image was used via…\n\na URL pointing to it on the web.\na downloaded image file.\n\n6. The popup argument specifies what you see when you ______, while the label argument specifies what you see when you ______.\n\nhover; click\nzoom-in; zoom-out\nclick; hover\nsquint your eyes; look normally",
     "crumbs": [
-      "Infrastructure",
-      "Installing / Updating R & RStudio"
+      "Unit 1 - Communication",
+      "Creating Maps with the `leaflet` Package"
     ]
   },
   {
-    "objectID": "set-up/setup-workflow.html#updating-rstudio",
-    "href": "set-up/setup-workflow.html#updating-rstudio",
-    "title": "Installing / Updating R & RStudio",
-    "section": "3 Updating RStudio",
-    "text": "3 Updating RStudio\nRStudio can be downloaded here\nThe most recent version of RStudio is 2024.12.1+563. You can check if you are using the most recent version of RStudio by:\n\nOpening RStudio\nClicking on “Help”\nSelecting “Check for Updates”\nChoosing “Quit and Download” if there is an update available",
+    "objectID": "unit-1/ggplot-leaflet.html#required-video-introductory-series-to-leaflet-in-r-6-videos",
+    "href": "unit-1/ggplot-leaflet.html#required-video-introductory-series-to-leaflet-in-r-6-videos",
+    "title": "Creating Maps with the leaflet Package",
+    "section": "",
+    "text": "Caution\n\n\n\nBe sure to watch all 6 videos in this series.\n\n\n\n\n\n\n\n\nCheck-in: leaflet\n\n\n\n1. Is running just the leaflet() function enough to produce a map?\n\nYes\nNo\n\n2. To plot data points on a leaflet map, we should probably use which function?\n\naddTiles()\naddMarkers()\naddProviderTiles()\naddPolygons()",
     "crumbs": [
-      "Infrastructure",
-      "Installing / Updating R & RStudio"
+      "Unit 1 - Communication",
+      "Creating Maps with the `leaflet` Package"
     ]
   },
   {
-    "objectID": "set-up/setup-workflow.html#installing-updating-the-tidyverse",
-    "href": "set-up/setup-workflow.html#installing-updating-the-tidyverse",
-    "title": "Installing / Updating R & RStudio",
-    "section": "4 Installing / Updating the tidyverse",
-    "text": "4 Installing / Updating the tidyverse\nIn this class, we will make heavy use of the tidyverse packages.\nIf you have not used the tidyverse before, type the following into your console:\n\ninstall.packages(\"tidyverse\")\n\nIf you have used the tidyverse before, you only need to update packages. Type the following into your console:\n\nlibrary(tidyverse)\ntidyverse_update()\n\nThen follow the instructions that print out to update a few of your tidyverse packages.",
+    "objectID": "unit-1/ggplot-leaflet.html#more-on-the-leaflet-package",
+    "href": "unit-1/ggplot-leaflet.html#more-on-the-leaflet-package",
+    "title": "Creating Maps with the leaflet Package",
+    "section": "",
+    "text": "The leaflet package is actually extremely rich and can basically enable (interactive) map visualizations as complex as you can imagine. Take some time to peruse the site for the leaflet R package:\nhttps://rstudio.github.io/leaflet/\n\n\n\n\n\n\nCheck-in: leaflet\n\n\n\n3. What do the names of your plotted data columns have to be?\n\nx; y\nleafletx; `leaflety\nlat / latitude; lon/ longitude\nAnything as long as you tell the addMarkers() function correctly\n\n4. If you were to think of latitude and longitude as coordinates in the cartesian coordinate system, then…\n\nlatitude is on the horizontal axis and longitude is on the vertical\nlatitude is on the vertical axis and longitude is on the horizontal",
     "crumbs": [
-      "Infrastructure",
-      "Installing / Updating R & RStudio"
+      "Unit 1 - Communication",
+      "Creating Maps with the `leaflet` Package"
     ]
   },
   {
-    "objectID": "set-up/setup-workflow.html#configure-your-options",
-    "href": "set-up/setup-workflow.html#configure-your-options",
-    "title": "Installing / Updating R & RStudio",
-    "section": "5 Configure your options",
-    "text": "5 Configure your options\nThere are a few settings we recommend that you change right away in RStudio.\n\nR Workspace\nFirst, you should not save your environment when you close RStudio:\n\n\n\nCode Chunk Output\nSecond, make a deliberate choice about where your chunks will evaluate when you run that. That is, if you reference files, are you referencing them relative to your Project, or relative to your Quarto Document (which might live in a subfolder or even outside the project).",
+    "objectID": "unit-1/ggplot-leaflet.html#practice-with-leaflet",
+    "href": "unit-1/ggplot-leaflet.html#practice-with-leaflet",
+    "title": "Creating Maps with the leaflet Package",
+    "section": "",
+    "text": "helmet_icon &lt;- makeIcon(\n  iconUrl = \"http://www.clker.com/cliparts/l/R/b/J/X/D/astronaut-helmet-md.png\",\n  iconWidth = 15, \n  iconHeight = 15\n  )\n\nleaflet() %&gt;%\n  addTiles() %&gt;%\n  addMarkers(lng = jitter(space$Longitude, \n                          factor = 2), \n             lat = jitter(space$Latitude,\n                          factor = 2), \n             icon = helmet_icon, \n             popup = paste(space$Name, \"&lt;br&gt;\", \n                           \"Birth Place: \", space$`Birth Place`),\n             label = paste(space$Name)\n             )\n\n\n\n\n\n\n\n\n\n\n\nCheck-in: leaflet\n\n\n\nThe above map plots data on NASA astronauts!\n5. The graphic for each marker is a little astronaut helmet. How cute! This image was used via…\n\na URL pointing to it on the web.\na downloaded image file.\n\n6. The popup argument specifies what you see when you ______, while the label argument specifies what you see when you ______.\n\nhover; click\nzoom-in; zoom-out\nclick; hover\nsquint your eyes; look normally",
     "crumbs": [
-      "Infrastructure",
-      "Installing / Updating R & RStudio"
+      "Unit 1 - Communication",
+      "Creating Maps with the `leaflet` Package"
     ]
   },
   {
-    "objectID": "set-up/setup-workflow.html#project-based-workflow",
-    "href": "set-up/setup-workflow.html#project-based-workflow",
-    "title": "Installing / Updating R & RStudio",
-    "section": "6 Project-based workflow",
-    "text": "6 Project-based workflow\nWe strongly recommend that you adopt a project-oriented approach to your R work. That is, you should never open R or RStudio directly; you should only open the project you intend to work on.\nThis resource provides an excellent explanation of why and how to use projects.",
+    "objectID": "unit-1.html",
+    "href": "unit-1.html",
+    "title": "Unit 1",
+    "section": "",
+    "text": "In this first unit, we will explore various tools for communicating statistical ideas. We will start with data visualizations, expanding your repertoire of tools for visualizing data. From there, we will move to dashboards—both static and dynamic. Finally, we will play with methods for including executable R code inside these documents.\nThroughout these sections, you will encounter “check-ins” assessing your knowledge on a particular topic. These check-ins are delineated by a red (important) callout box and are associated with the Canvas quizzes assigned each week.\n\n\n\n\n\n\nExample Check-in Callout\n\n\n\nThis is where you will find the body of the question. The callout name refers to the name of the Canvas quiz the question is associated with.",
     "crumbs": [
-      "Infrastructure",
-      "Installing / Updating R & RStudio"
+      "Unit 1 - Communication",
+      "Unit 1"
     ]
   },
   {
@@ -225,7 +225,7 @@
     "href": "course-materials/calendar.html",
     "title": "STAT 541: Advanced R",
     "section": "",
-    "text": "This page contains an outline of the topics, content, and assignments for the quarter. Note that this schedule will be updated as the quarter progresses, with all changes documented here.\n\n\n\n\n\n\n\n\n\n\n\n\nWeek\nDate\nRequired Reading\nLecture Slides\nLecture Activities\nLab Assignment\nPortfolio\n\n\n\n\n1\nStat 331 Review & Version Control\nMarch 31 (note no class on Monday)\nInstalling / Updating R & RStudio\nVersion Control\n\n\nLab 0 (link to GitHub repository)\n\n\n\n2\nAdvanced Visualizations\nApril 7\n\n\n\n\n\n\n\n3\nQuarto Dashboards (Static)\nApril 14\n\n\n\n\n\n\n\n4\nQuarto Dashboards (Dynamic)\nApril 21\n\n\n\n\n\n\n\n5\nQuarto & WebR\nApril 28\n\n\n\n\n\n\n\n6\nPortfolio Week\nMay 5\n\n\n\n\nPortfolio Instructions\n\n\n7\nJSON Data & APIs\nMay 12\n\n\n\n\n\n\n\n8\nWebscraping\nMay 19\n\n\n\n\n\n\n\n9\nGenerative Art\nMay 26 (note Tuesday follows a Monday schedule)\n\n\n\n\n\n\n\n10\nPortfolio Week\nJune 2\n\n\n\n\n\n\n\nFinals Week (Portfolio Meetings)\nJune 9"
+    "text": "This page contains an outline of the topics, content, and assignments for the quarter. Note that this schedule will be updated as the quarter progresses, with all changes documented here.\n\n\n\n\n\n\n\n\n\n\n\n\nWeek\nDate\nRequired Reading\nLecture Slides\nLecture Activities\nLab Assignment\nPortfolio\n\n\n\n\n1\nStat 331 Review & Version Control\nMarch 31 (note no class on Monday)\nInstalling / Updating R & RStudio\nVersion Control\n\n\nLab 0 (link to GitHub repository)\n\n\n\n2\nAdvanced Visualizations\nApril 7\nggplot Review\nggplotExtensions\nMaking maps with leaflet\n\n\n\n\n\n\n3\nQuarto Dashboards (Static)\nApril 14\n\n\n\n\n\n\n\n4\nQuarto Dashboards (Dynamic)\nApril 21\n\n\n\n\n\n\n\n5\nQuarto & WebR\nApril 28\n\n\n\n\n\n\n\n6\nPortfolio Week\nMay 5\n\n\n\n\nPortfolio Instructions\n\n\n7\nJSON Data & APIs\nMay 12\n\n\n\n\n\n\n\n8\nWebscraping\nMay 19\n\n\n\n\n\n\n\n9\nGenerative Art\nMay 26 (note Tuesday follows a Monday schedule)\n\n\n\n\n\n\n\n10\nPortfolio Week\nJune 2\n\n\n\n\n\n\n\nFinals Week (Portfolio Meetings)\nJune 9"
   },
   {
     "objectID": "index.html",
@@ -277,36 +277,267 @@
     "text": "Additional Styling Options\nIn case you are interested in styling your website further, I would recommend looking over this presentation on using .scss and .sass files."
   },
   {
-    "objectID": "set-up/setup-version-control.html#objectives",
-    "href": "set-up/setup-version-control.html#objectives",
-    "title": "Version Control with Git and GitHub",
+    "objectID": "set-up/setup-workflow.html",
+    "href": "set-up/setup-workflow.html",
+    "title": "Installing / Updating R & RStudio",
     "section": "",
-    "text": "Most of this section is either heavily inspired by Happy Git and Github for the UseR (Bryan, Hester, and The Stat 545 TAs 2021) or directly links to that book.\n\nRecognize the benefits of using version control to improve your coding practices and workflow.\nIdentify git / GitHub as a version control platform (and helper).\nInstall git onto your computer and register for a GitHub account\nStart applying version control practices to your workflow.",
+    "text": "Your workflow refers to the series of good habits you get into in your coding process, that help save you time and headache down the road.\nThis document outlines our suggestions for getting going with your workflow. None of these items is required for the course; they will simply make your life easier down the road.",
     "crumbs": [
       "Infrastructure",
-      "Version Control with Git and GitHub"
+      "Installing / Updating R & RStudio"
     ]
   },
   {
-    "objectID": "set-up/setup-version-control.html#footnotes",
-    "href": "set-up/setup-version-control.html#footnotes",
-    "title": "Version Control with Git and GitHub",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nYes, I’m aware that this sounds paranoid. It’s been a very rare occasion that I’ve needed to restore something from another backup. You don’t want to take chances.↩︎",
+    "objectID": "set-up/setup-workflow.html#updating-r",
+    "href": "set-up/setup-workflow.html#updating-r",
+    "title": "Installing / Updating R & RStudio",
+    "section": "1 Updating R",
+    "text": "1 Updating R\nEach of you should have R already installed on your computer, but you might not have the most up to date version of R! Do not ignore these instructions. If you neglect to update your version of R, you may find that updating a package will make it so your code will not run.\n\nStep 1: Open RStudio\nStep 2: At the top of the the Console it will say what version of R you are using\n\n\nIf the version is not 4.4.3 (like the image above), you need to update your version of R! The simplest way to do this is to follow the instructions below to install R.",
     "crumbs": [
       "Infrastructure",
-      "Version Control with Git and GitHub"
+      "Installing / Updating R & RStudio"
     ]
   },
   {
-    "objectID": "set-up/setup-version-control.html",
-    "href": "set-up/setup-version-control.html",
-    "title": "Version Control with Git and GitHub",
-    "section": "",
-    "text": "Most of this reading is either heavily inspired by Happy Git and Github for the UseR (Bryan, Hester, and The Stat 545 TAs 2021) or directly links to that book. After completing this pre-reading, you should:",
+    "objectID": "set-up/setup-workflow.html#installing-r",
+    "href": "set-up/setup-workflow.html#installing-r",
+    "title": "Installing / Updating R & RStudio",
+    "section": "2 Installing R",
+    "text": "2 Installing R\nDownload and install R by going to https://cloud.r-project.org/. Here, you will find three options for installing R—click on the option for your computer’s operating system.\n\n\n\n\nIf you are a Windows user:\n\nClick on “Download R for Windows”\nClick on “base”\nClick on the Download link.\nWhen you open the execution file (.exe) you will be prompted with a variety of questions about installing R. Feel free to use the default features / settings that come with R (continue to click “Ok” until the download starts).\n\n\n\n\n\n\n\nMultiple Versions of R\n\n\n\nBeware that if you had a previous version of R downloaded on your PC, that old version will not be deleted when you download the most recent version of R. We do not want to have two versions of R installed, as your computer can get confused what version of R to use. So, you need to remove the old version of R.\nTo do this you need to:\n\nNavigate to your computer’s settings\nClick on the “Apps” option on the left-hand panel\nSearch for or scroll down to R\nFind the older version of R\n\n\n\nClick on the ... on the right side\nSelect “Uninstall”\n\n\n\n\n\n\nIf you are macOS user:\n\nClick on “Download R for (Mac) OS X”\nUnder “Latest release:” click on R-X.X.X.pkg, where R-X.X.X is the version number. For example, the latest version of R as of July 1, 2024 was R-4.4.1 (Race for Your Life).\nWhen installing, use the default features / settings that come with R (click Ok until the download starts).",
     "crumbs": [
       "Infrastructure",
-      "Version Control with Git and GitHub"
+      "Installing / Updating R & RStudio"
+    ]
+  },
+  {
+    "objectID": "set-up/setup-workflow.html#updating-rstudio",
+    "href": "set-up/setup-workflow.html#updating-rstudio",
+    "title": "Installing / Updating R & RStudio",
+    "section": "3 Updating RStudio",
+    "text": "3 Updating RStudio\nRStudio can be downloaded here\nThe most recent version of RStudio is 2024.12.1+563. You can check if you are using the most recent version of RStudio by:\n\nOpening RStudio\nClicking on “Help”\nSelecting “Check for Updates”\nChoosing “Quit and Download” if there is an update available",
+    "crumbs": [
+      "Infrastructure",
+      "Installing / Updating R & RStudio"
+    ]
+  },
+  {
+    "objectID": "set-up/setup-workflow.html#installing-updating-the-tidyverse",
+    "href": "set-up/setup-workflow.html#installing-updating-the-tidyverse",
+    "title": "Installing / Updating R & RStudio",
+    "section": "4 Installing / Updating the tidyverse",
+    "text": "4 Installing / Updating the tidyverse\nIn this class, we will make heavy use of the tidyverse packages.\nIf you have not used the tidyverse before, type the following into your console:\n\ninstall.packages(\"tidyverse\")\n\nIf you have used the tidyverse before, you only need to update packages. Type the following into your console:\n\nlibrary(tidyverse)\ntidyverse_update()\n\nThen follow the instructions that print out to update a few of your tidyverse packages.",
+    "crumbs": [
+      "Infrastructure",
+      "Installing / Updating R & RStudio"
+    ]
+  },
+  {
+    "objectID": "set-up/setup-workflow.html#configure-your-options",
+    "href": "set-up/setup-workflow.html#configure-your-options",
+    "title": "Installing / Updating R & RStudio",
+    "section": "5 Configure your options",
+    "text": "5 Configure your options\nThere are a few settings we recommend that you change right away in RStudio.\n\nR Workspace\nFirst, you should not save your environment when you close RStudio:\n\n\n\nCode Chunk Output\nSecond, make a deliberate choice about where your chunks will evaluate when you run that. That is, if you reference files, are you referencing them relative to your Project, or relative to your Quarto Document (which might live in a subfolder or even outside the project).",
+    "crumbs": [
+      "Infrastructure",
+      "Installing / Updating R & RStudio"
+    ]
+  },
+  {
+    "objectID": "set-up/setup-workflow.html#project-based-workflow",
+    "href": "set-up/setup-workflow.html#project-based-workflow",
+    "title": "Installing / Updating R & RStudio",
+    "section": "6 Project-based workflow",
+    "text": "6 Project-based workflow\nWe strongly recommend that you adopt a project-oriented approach to your R work. That is, you should never open R or RStudio directly; you should only open the project you intend to work on.\nThis resource provides an excellent explanation of why and how to use projects.",
+    "crumbs": [
+      "Infrastructure",
+      "Installing / Updating R & RStudio"
+    ]
+  },
+  {
+    "objectID": "unit-1/ggplot-review.html",
+    "href": "unit-1/ggplot-review.html",
+    "title": "ggplot Review",
+    "section": "",
+    "text": "This module consists of readings reviewing material typically taught in STAT 331. It is possible you can skip over portions of this reading. It is your responsibility to decide which areas you need to review before diving into Stat 541.",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "`ggplot` Review"
+    ]
+  },
+  {
+    "objectID": "unit-1/ggplot-review.html#recommended-video",
+    "href": "unit-1/ggplot-review.html#recommended-video",
+    "title": "ggplot Review",
+    "section": "🎥 Recommended Video",
+    "text": "🎥 Recommended Video\n\n\n\n\n\n\n\n\n\nCheck-in: ggplot Review\n\n\n\nIdentify the elements of the following plot as\n\nAn aesthetic\nA geometry\nA scale\nNone of the above\n\n\n\nThe x-axis is age\nThe y-axis is “Urge to run up the down escalator”\nThe y-axis ranges from “Weak” to “Strong”\nThis is a line graph\nThe two lines are “What I was supposed to feel” and “What I’ve actually felt”\nThe lines are labeled with text\nOnly even ages are labelled\nStick figure people are sliding down the line",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "`ggplot` Review"
+    ]
+  },
+  {
+    "objectID": "unit-1/ggplot-review.html#recommended-reading-r4ds-data-visualisation",
+    "href": "unit-1/ggplot-review.html#recommended-reading-r4ds-data-visualisation",
+    "title": "ggplot Review",
+    "section": "📖 Recommended Reading: R4DS: Data Visualisation",
+    "text": "📖 Recommended Reading: R4DS: Data Visualisation\n\n\n\n\n\n\nCheckin: ggplot Review\n\n\n\nFill in the six (6) blanks to make the following plot:\n\nstarwars %&gt;%\n  ____(species == \"Human\") %&gt;%\n  ggplot(mapping = aes(____ = height, y = mass, ____ = gender)) + \n  geom_[____](____ = 17) +\n  ____(x = \"Height (cm)\", \n       y = \"Mass (kg)\", \n       color = \"Gender Expression\"\n       )",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "`ggplot` Review"
+    ]
+  },
+  {
+    "objectID": "unit-1/ggplot-extensions.html",
+    "href": "unit-1/ggplot-extensions.html",
+    "title": "ggplot Extensions",
+    "section": "",
+    "text": "A huge part of making a compelling and convincing plot is your choice of color and layout.\nYour first video will take you through some great core principals of visualization. Then your two short readings will show you the basics of manipulating colors and themes in ggplot.",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "`ggplot` Extensions"
+    ]
+  },
+  {
+    "objectID": "unit-1/ggplot-extensions.html#custom-colors-and-themes",
+    "href": "unit-1/ggplot-extensions.html#custom-colors-and-themes",
+    "title": "ggplot Extensions",
+    "section": "",
+    "text": "A huge part of making a compelling and convincing plot is your choice of color and layout.\nYour first video will take you through some great core principals of visualization. Then your two short readings will show you the basics of manipulating colors and themes in ggplot.",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "`ggplot` Extensions"
+    ]
+  },
+  {
+    "objectID": "unit-1/ggplot-extensions.html#required-video-the-glamour-of-graphics",
+    "href": "unit-1/ggplot-extensions.html#required-video-the-glamour-of-graphics",
+    "title": "ggplot Extensions",
+    "section": "🎥 Required Video: The Glamour of Graphics",
+    "text": "🎥 Required Video: The Glamour of Graphics",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "`ggplot` Extensions"
+    ]
+  },
+  {
+    "objectID": "unit-1/ggplot-extensions.html#required-reading-colors-and-palettes",
+    "href": "unit-1/ggplot-extensions.html#required-reading-colors-and-palettes",
+    "title": "ggplot Extensions",
+    "section": "📖 Required Reading: Colors and Palettes",
+    "text": "📖 Required Reading: Colors and Palettes",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "`ggplot` Extensions"
+    ]
+  },
+  {
+    "objectID": "unit-1/ggplot-extensions.html#required-reading-themes",
+    "href": "unit-1/ggplot-extensions.html#required-reading-themes",
+    "title": "ggplot Extensions",
+    "section": "📖 Required Reading: Themes",
+    "text": "📖 Required Reading: Themes",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "`ggplot` Extensions"
+    ]
+  },
+  {
+    "objectID": "unit-1/ggplot-extensions.html#extra-resouces",
+    "href": "unit-1/ggplot-extensions.html#extra-resouces",
+    "title": "ggplot Extensions",
+    "section": "Extra Resouces",
+    "text": "Extra Resouces\n\nThe jcolors package for color palettes\nThe ggthemer package for setting universal themes.\nMake your own theme to use!\n\n\n\n\n\n\n\nCheck-in: Extending ggplot\n\n\n\n1. Which of the functions below would you use to change the colors of the bars on the following plot?\n\nscale_color_continuous()\nscale_color_discrete()\nscale_fill_continuous()\nscale_fill_discrete()\n\n\n\n\n\n\n\n\n\n\n2. Consider the plot in Question 1. What change was made to it in each step below? That is, what code would go inside the function + theme( ) to produce the added change?\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n3. Which built-in theme is each of the following plots? That is, what theme_XXXX() function would produce the added change?\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n4. Which of the plots above (a, b, c, or d) best adheres to the principles outlined by Will Chase (in the Glamour of Graphics)?",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "`ggplot` Extensions"
+    ]
+  },
+  {
+    "objectID": "unit-1/ggplot-extensions.html#gganimate",
+    "href": "unit-1/ggplot-extensions.html#gganimate",
+    "title": "ggplot Extensions",
+    "section": "gganimate",
+    "text": "gganimate\nThere are many, many ways to “spice up” your plots. We will focus in on one: making your plot animated! The best package for this, if you are using ggplot already, is gganimate.\n\n\n\n\n\n\nNote\n\n\n\ngganimate plot objects can sometimes take a long time to render. One way to make it quicker is to change the number of frames in your gif. Another trick is to use the cache chunk option in Quarto, so that you don’t re-render the images every time you knit your file.",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "`ggplot` Extensions"
+    ]
+  },
+  {
+    "objectID": "unit-1/ggplot-extensions.html#required-reading-intro-to-gganimate",
+    "href": "unit-1/ggplot-extensions.html#required-reading-intro-to-gganimate",
+    "title": "ggplot Extensions",
+    "section": "📖 Required Reading: Intro to gganimate",
+    "text": "📖 Required Reading: Intro to gganimate",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "`ggplot` Extensions"
+    ]
+  },
+  {
+    "objectID": "unit-1/ggplot-extensions.html#recommended-reading-another-intro-to-gganimate",
+    "href": "unit-1/ggplot-extensions.html#recommended-reading-another-intro-to-gganimate",
+    "title": "ggplot Extensions",
+    "section": "📖 Recommended Reading: Another intro to gganimate",
+    "text": "📖 Recommended Reading: Another intro to gganimate",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "`ggplot` Extensions"
+    ]
+  },
+  {
+    "objectID": "unit-1/ggplot-extensions.html#recommended-video-gganimate-flipbook-demo-rstudioconf-2017",
+    "href": "unit-1/ggplot-extensions.html#recommended-video-gganimate-flipbook-demo-rstudioconf-2017",
+    "title": "ggplot Extensions",
+    "section": "🎥 Recommended Video: gganimate flipbook demo (RStudio::conf 2017)",
+    "text": "🎥 Recommended Video: gganimate flipbook demo (RStudio::conf 2017)\n\n\n\n\n\n\n\n\nCheck-in: Extending ggplot\n\n\n\n5. Fill in the five (5) blanks for the gganimate plot below:\n\n___ &lt;- oscars %&gt;%\n  filter(Award_Gender != \"Ungendered\") %&gt;%\n  ggplot(aes(x = Age_at_Award, fill = Award_Gender)) +\n  geom_density(alpha = 0.5) +\n  labs(title = \"Age of Academy Award Winners ({____}s)\", \n       x = \"\", \n       y = \"\", \n       fill = \"Gender of Award\") +\n  theme(legend.position = \"top\") +\n  ____(Decade_of_Award)\n\nanimate(p2, nframes = ____, fps = ____)",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "`ggplot` Extensions"
+    ]
+  },
+  {
+    "objectID": "unit-1/ggplot-extensions.html#other-extensions",
+    "href": "unit-1/ggplot-extensions.html#other-extensions",
+    "title": "ggplot Extensions",
+    "section": "Other Extensions",
+    "text": "Other Extensions\nAlthough we don’t have time to go in-depth on every single extension of ggplot, there are so many wonderful ways to up your Data Viz game.\nTake a look around the links below!",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "`ggplot` Extensions"
+    ]
+  },
+  {
+    "objectID": "unit-1/ggplot-extensions.html#required-reading-ggplot-extension-gallery",
+    "href": "unit-1/ggplot-extensions.html#required-reading-ggplot-extension-gallery",
+    "title": "ggplot Extensions",
+    "section": "📖 Required Reading: ggplot Extension Gallery",
+    "text": "📖 Required Reading: ggplot Extension Gallery",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "`ggplot` Extensions"
+    ]
+  },
+  {
+    "objectID": "unit-1/ggplot-extensions.html#required-reading-more-ggplot-extension-summaries",
+    "href": "unit-1/ggplot-extensions.html#required-reading-more-ggplot-extension-summaries",
+    "title": "ggplot Extensions",
+    "section": "📖 Required Reading: More ggplot Extension Summaries",
+    "text": "📖 Required Reading: More ggplot Extension Summaries\n\n\n\n\n\n\nCheck-in: Extending ggplot\n\n\n\n6. Which extension package would you use to… Hint: There is more than one possible answer for each question!\n\nVisualize a social network using twitter data?\n\n\n\nAdd p-values to your side-by-side boxplot of treatment groups, showing the significance of the differences?\n\n\n\nArrange several different plots next to each other?\n\n\n\nMake it so hovering over a point in your scatterplot shows the corresponding label?",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "`ggplot` Extensions"
+    ]
+  },
+  {
+    "objectID": "unit-1/ggplot-extensions.html#extra-resources",
+    "href": "unit-1/ggplot-extensions.html#extra-resources",
+    "title": "ggplot Extensions",
+    "section": "Extra Resources",
+    "text": "Extra Resources\n\nDave Robinson’s Tidy Tuesday Screencasts show a master of Data Viz at work!\nYou can also search the Tidy Tuesday hashtag on twitter to see some great examples of data manipulating and visualization\nDon’t forget about the Data-to-Viz Website\nThe “dataisbeautiful” subreddit shares many nice visualizations.\nThis webinar, by ggplot contributor Thomas Lin Pedersen, is wonderful. It’s about 2 hours long - so more than we can fit in as required viewing - but if you want to become a ggplot master, watch this!",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "`ggplot` Extensions"
     ]
   }
 ]

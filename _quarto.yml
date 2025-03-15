@@ -3,8 +3,7 @@ project:
   output-dir: docs
   render:
     - "*.qmd"
-    - "!/labs"
-    - "!/weeks"
+    - "!/unit-1/other-plots.qmd"
 
 website:
   page-navigation: true
@@ -45,7 +44,7 @@ website:
       - text: "Infrastructure"
         href: infrastructure.qmd
       - text: "Unit 1 - Communication"
-        href: communication.qmd
+        href: unit-1.qmd
       - text: "Unit 2 - Iteration"
         href: iteration.qmd
       - text: "Portfolio"
@@ -62,18 +61,19 @@ website:
         - href: set-up/setup-workflow.qmd
         - href: set-up/setup-version-control.qmd
 
-    # - id: content
-    #   title: "Content"
-    #   contents:
-    #     - href: content.qmd
-    #     - href: 02-hello-world.qmd
-    #     - href: 02-exploring-data.qmd
-    #     - href: 02-ethics.qmd
-    #     - href: 02-making-rigorous-conclusions.qmd
-    #     - href: 02-looking-further.qmd
-    #     - href: 02-interactive-tutorials.qmd
-    #     - href: 02-project.qmd
-    #     - href: 02-exams.qmd
+    - id: unit-1
+      title: "Unit 1"
+      contents:
+        - href: unit-1.qmd
+        - href: unit-1/ggplot-review.qmd
+        - href: unit-1/ggplot-extensions.qmd
+        - href: unit-1/ggplot-leaflet.qmd
+        - href: unit-1/other-plots.qmd
+        # - href: 02-making-rigorous-conclusions.qmd
+        # - href: 02-looking-further.qmd
+        # - href: 02-interactive-tutorials.qmd
+        # - href: 02-project.qmd
+        # - href: 02-exams.qmd
 
     # - id: infrastructure
     #   title: "Infrastructure"
