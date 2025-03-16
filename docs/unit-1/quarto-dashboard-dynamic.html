@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Unit 1 – Advanced R</title>
+<title>Quarto Dashboards, Part 2 – Advanced R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,26 +23,26 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./unit-1/ggplot-review.html" rel="next">
-<link href="./images/cat-monsters-horst.png" rel="icon" type="image/png">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../unit-1/quarto-dashboard-static.html" rel="prev">
+<link href="../images/cat-monsters-horst.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -81,8 +81,8 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    <img src="./images/cat-monsters-horst.png" alt="" class="navbar-logo">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../images/cat-monsters-horst.png" alt="" class="navbar-logo">
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -92,31 +92,31 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link" href="../index.html"> 
 <span class="menu-text">Overview</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./course-materials/calendar.html"> 
+    <a class="nav-link" href="../course-materials/calendar.html"> 
 <span class="menu-text">Schedule</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./course-materials/syllabus.html"> 
+    <a class="nav-link" href="../course-materials/syllabus.html"> 
 <span class="menu-text">Syllabus</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./infrastructure.html"> 
+    <a class="nav-link" href="../infrastructure.html"> 
 <span class="menu-text">Infrastructure</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./unit-1.html" aria-current="page"> 
+    <a class="nav-link active" href="../unit-1.html" aria-current="page"> 
 <span class="menu-text">Unit 1 - Communication</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./iteration.qmd"> 
+    <a class="nav-link" href="../iteration.qmd"> 
 <span class="menu-text">Unit 2 - Iteration</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./portfolio.qmd"> 
+    <a class="nav-link" href="../portfolio.qmd"> 
 <span class="menu-text">Portfolio</span></a>
   </li>  
 </ul>
@@ -138,7 +138,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./unit-1.html">Unit 1</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../unit-1/quarto-dashboard-dynamic.html">Quarto Dashboards, Part 2</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -152,37 +152,37 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./unit-1.html" class="sidebar-item-text sidebar-link active">
+  <a href="../unit-1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Unit 1</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./unit-1/ggplot-review.html" class="sidebar-item-text sidebar-link">
+  <a href="../unit-1/ggplot-review.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><code>ggplot</code> Review</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./unit-1/ggplot-extensions.html" class="sidebar-item-text sidebar-link">
+  <a href="../unit-1/ggplot-extensions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><code>ggplot</code> Extensions</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./unit-1/ggplot-leaflet.html" class="sidebar-item-text sidebar-link">
+  <a href="../unit-1/ggplot-leaflet.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Creating Maps with the <code>leaflet</code> Package</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./unit-1/quarto-dashboard-static.html" class="sidebar-item-text sidebar-link">
+  <a href="../unit-1/quarto-dashboard-static.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Quarto Dashboards, Part 1</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./unit-1/quarto-dashboard-dynamic.html" class="sidebar-item-text sidebar-link">
+  <a href="../unit-1/quarto-dashboard-dynamic.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Quarto Dashboards, Part 2</span></a>
   </div>
 </li>
@@ -191,15 +191,21 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#required-video-hello-quarto-dashboards" id="toc-required-video-hello-quarto-dashboards" class="nav-link active" data-scroll-target="#required-video-hello-quarto-dashboards">🎥 Required Video: Hello Quarto Dashboards</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/unit-1/quarto-dashboard-dynamic.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Unit 1</h1>
+<h1 class="title">Quarto Dashboards, Part 2</h1>
 </div>
 
 
@@ -216,23 +222,12 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>In this first unit, we will explore various tools for communicating statistical ideas. We will start with data visualizations, expanding your repertoire of tools for visualizing data. From there, we will move to dashboards—both static and dynamic. Finally, we will play with methods for including executable R code inside these documents.</p>
-<p>Throughout these sections, you will encounter “check-ins” assessing your knowledge on a particular topic. These check-ins are delineated by a red (important) callout box and are associated with the Canvas quizzes assigned each week.</p>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Example Check-in Callout
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>This is where you will find the body of the question. The callout name refers to the name of the Canvas quiz the question is associated with.</p>
-</div>
-</div>
+<p>Now that we’ve acquired some skills for making dashboards, let’s spice them up a bit! This week, we’re going to add interactive content to our dashboards!</p>
+<section id="required-video-hello-quarto-dashboards" class="level2">
+<h2 class="anchored" data-anchor-id="required-video-hello-quarto-dashboards">🎥 Required Video: Hello Quarto Dashboards</h2>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -801,11 +796,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="../unit-1/quarto-dashboard-static.html" class="pagination-link" aria-label="Quarto Dashboards, Part 1">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Quarto Dashboards, Part 1</span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./unit-1/ggplot-review.html" class="pagination-link" aria-label="`ggplot` Review">
-        <span class="nav-page-text"><code>ggplot</code> Review</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
@@ -816,11 +811,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/unit-1.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/unit-1/quarto-dashboard-dynamic.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item">
-    <a class="nav-link" href="./LICENSE.md">
+    <a class="nav-link" href="../LICENSE.md">
 <p>License</p>
 </a>
   </li>  

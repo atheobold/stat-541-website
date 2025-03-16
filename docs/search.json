@@ -66,6 +66,50 @@
     ]
   },
   {
+    "objectID": "unit-1/quarto-dashboard-static.html",
+    "href": "unit-1/quarto-dashboard-static.html",
+    "title": "Quarto Dashboards, Part 1",
+    "section": "",
+    "text": "This week, we’re taking the visualization skills we learned last week and using them to create an informational dashboard. Quarto dashboards were integrated into version 1.4, so you can use a familiar tool to create these dashboards. In part 1, we will focus on creating “static” dashboards—where the user does not interact with the content.",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "Quarto Dashboards, Part 1"
+    ]
+  },
+  {
+    "objectID": "unit-1/quarto-dashboard-static.html#required-video-hello-quarto-dashboards",
+    "href": "unit-1/quarto-dashboard-static.html#required-video-hello-quarto-dashboards",
+    "title": "Quarto Dashboards, Part 1",
+    "section": "🎥 Required Video: Hello Quarto Dashboards",
+    "text": "🎥 Required Video: Hello Quarto Dashboards",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "Quarto Dashboards, Part 1"
+    ]
+  },
+  {
+    "objectID": "unit-1/quarto-dashboard-static.html#video-resources",
+    "href": "unit-1/quarto-dashboard-static.html#video-resources",
+    "title": "Quarto Dashboards, Part 1",
+    "section": "Video Resources",
+    "text": "Video Resources\n\nSlides for this Video: https://mine.quarto.pub/quarto-dashboards/\nStarter Documents: https://github.com/mine-cetinkaya-rundel/olympicdash",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "Quarto Dashboards, Part 1"
+    ]
+  },
+  {
+    "objectID": "unit-1/quarto-dashboard-static.html#optional-resources",
+    "href": "unit-1/quarto-dashboard-static.html#optional-resources",
+    "title": "Quarto Dashboards, Part 1",
+    "section": "Optional Resources",
+    "text": "Optional Resources\n\nQuarto Dashboard Gallery\nQuarto Dashboard Tutorial\nQuarto Dashboard Reference\n\n\n\n\n\n\n\nCheck-in: Hello Quarto Dashboard\n\n\n\nFor this first section, you are expected to complete the coding activity associated with Dr. Mine Çetinkaya-Rundel’s video. Specifically, you will need to:\n\nCopy the template repository into your own repository.\nCreate a new folder inside your STAT 541 folder.\nCreate a new RStudio project that links to your copy of the template repo.\nFollow along and edit the olympicdash-r-1.qmd document.\nSubmit the HTML of your revised dashboard (olympicdash-r-1.html) to Canvas.",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "Quarto Dashboards, Part 1"
+    ]
+  },
+  {
     "objectID": "unit-1.html",
     "href": "unit-1.html",
     "title": "Unit 1",
@@ -275,6 +319,28 @@
     "title": "Final Portfolio Instructions",
     "section": "Additional Styling Options",
     "text": "Additional Styling Options\nIn case you are interested in styling your website further, I would recommend looking over this presentation on using .scss and .sass files."
+  },
+  {
+    "objectID": "unit-1/quarto-dashboard-dynamic.html",
+    "href": "unit-1/quarto-dashboard-dynamic.html",
+    "title": "Quarto Dashboards, Part 2",
+    "section": "",
+    "text": "Now that we’ve acquired some skills for making dashboards, let’s spice them up a bit! This week, we’re going to add interactive content to our dashboards!",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "Quarto Dashboards, Part 2"
+    ]
+  },
+  {
+    "objectID": "unit-1/quarto-dashboard-dynamic.html#required-video-hello-quarto-dashboards",
+    "href": "unit-1/quarto-dashboard-dynamic.html#required-video-hello-quarto-dashboards",
+    "title": "Quarto Dashboards, Part 2",
+    "section": "🎥 Required Video: Hello Quarto Dashboards",
+    "text": "🎥 Required Video: Hello Quarto Dashboards",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "Quarto Dashboards, Part 2"
+    ]
   },
   {
     "objectID": "set-up/setup-workflow.html",

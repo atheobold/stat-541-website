@@ -1,0 +1,9 @@
+---
+title: "Quarto Dashboards, Part 2"
+editor: source
+---
+
+Now that we've acquired some skills for making dashboards, let's spice them up
+a bit! This week, we're going to add interactive content to our dashboards!
+
+## 🎥 Required Video: Hello Quarto Dashboards

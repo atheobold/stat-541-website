@@ -1,0 +1,54 @@
+---
+title: "Quarto Dashboards, Part 1"
+editor: source
+---
+
+This week, we're taking the visualization skills we learned last week and using
+them to create an informational dashboard. Quarto dashboards were integrated
+into version 1.4, so you can use a familiar tool to create these dashboards. 
+In part 1, we will focus on creating "static" dashboards---where the user 
+**does not** interact with the content. 
+
+## 🎥 Required Video: Hello Quarto Dashboards
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/HW7QbqI4fH0?si=Rw6Cwy173CNJN3M-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<!-- #| title:  -->
+<!-- is code chunk option used to make titles for cards -->
+
+<!-- by default content is organized in rows -->
+
+## Video Resources
+
+- Slides for this Video: <https://mine.quarto.pub/quarto-dashboards/>
+- Starter Documents: <https://github.com/mine-cetinkaya-rundel/olympicdash>
+
+## Optional Resources 
+
+- [Quarto Dashboard Gallery](https://quarto.org/docs/gallery/#dashboards)
+- [Quarto Dashboard Tutorial](https://quarto.org/docs/dashboards/)
+- [Quarto Dashboard Reference](https://quarto.org/docs/reference/formats/dashboard.html)
+
+::: {.callout-important}
+# Check-in: Hello Quarto Dashboard
+
+For this first section, you are expected to complete the coding activity 
+associated with Dr. Mine Çetinkaya-Rundel's video. Specifically, you will need
+to:
+
+1. Copy the [template repository](https://github.com/mine-cetinkaya-rundel/olympicdash) into your 
+own repository.
+2. Create a new folder inside your `STAT 541` folder. 
+3. Create a new RStudio project that links to your copy of the template repo.
+4. Follow along and edit the `olympicdash-r-1.qmd` document.
+5. Submit the HTML of your revised dashboard (`olympicdash-r-1.html`) to 
+Canvas.
+:::
+
+<!-- Lab assignment -- Use dataset from last week to make a styled dashboard -->
+<!-- must have:  -->
+<!-- - logo -->
+<!-- - icons to your socials -->
+<!-- - sidebar -->
+<!-- - tabsets -->
+<!-- - non-default layout -->

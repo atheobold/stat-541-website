@@ -69,6 +69,8 @@ website:
         - href: unit-1/ggplot-extensions.qmd
         - href: unit-1/ggplot-leaflet.qmd
         - href: unit-1/other-plots.qmd
+        - href: unit-1/quarto-dashboard-static.qmd
+        - href: unit-1/quarto-dashboard-dynamic.qmd
         # - href: 02-making-rigorous-conclusions.qmd
         # - href: 02-looking-further.qmd
         # - href: 02-interactive-tutorials.qmd
