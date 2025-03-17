@@ -1,0 +1,154 @@
+---
+title: "Lab 1 - Quarto Warmup & STAT 331 Review"
+author: "YOUR NAME HERE"
+format: html
+embed-resources: true
+editor: source
+execute: 
+  echo: true
+  eval: false
+---
+
+```{r}
+#| label: packages-setup
+
+library(tidyverse)
+library(ggridges)
+```
+
+## Quarto
+
+First, let's make sure you know how to use Markdown formatting to style a Quarto
+document.
+
+1.  Make this text bold.
+
+2.  Make this text italicized.
+
+3.  Make these into a bullet point list:
+
+Apples Bananas Potatoes
+
+4.  Edit the YAML to remove warning messages from being output in the rendered
+HTML file
+
+5.  Using code chunk options, make it so this chunk shows the plot but not the
+source code:
+
+```{r}
+ggplot(data = mpg, 
+       mapping = aes(y = manufacturer, x = hwy)) + 
+  geom_boxplot() +
+  labs(x = "",
+       y = "", 
+       title = "Highway Milage (mpg) for Different Car Manufacturers"
+       )
+```
+
+6.  Using code chunk options, remove the messages about bandwidth
+`geom_density_ridges()` chose to use:
+
+```{r}
+ggplot(data = mpg, 
+       mapping = aes(y = manufacturer, x = hwy)) + 
+  geom_density_ridges() +
+  labs(x = "",
+       y = "", 
+       title = "Highway Milage (mpg) for Different Car Manufacturers"
+       )
+```
+
+7.  Using code chunk options, make it so that these plots are printed
+side-by-side:
+
+```{r}
+
+ggplot(data = mpg, 
+       mapping = aes(y = manufacturer, x = hwy)) + 
+  geom_boxplot() +
+  labs(x = "",
+       y = "", 
+       title = "Highway Milage (mpg) for Different Car Manufacturers"
+       )
+
+ggplot(data = mpg, 
+       mapping = aes(y = manufacturer, x = hwy)) + 
+  geom_density_ridges() +
+  labs(x = "",
+       y = "", 
+       title = "Highway Milage (mpg) for Different Car Manufacturers"
+       )
+
+```
+
+8.  Using code chunk options, make it so this chunk shows the code but not the
+output:
+
+```{r}
+2 + 2
+```
+
+9.  Using code chunk options, make it so the file can still knit even though
+this chunk has an error
+
+```{r}
+2 + a
+```
+
+10. Using code chunk options, create a descriptive `label` for each of the code
+chunks above.
+
+## Data Wrangling Review
+
+Since you already seen some `ggplot`s, let's do a bit of review on data 
+handling. In this class, we will exclusively make use of tools from the 
+`tidyverse` suite of packages to perform our data cleaning and wrangling
+operations. If you are less familiar with these packages or it's been some time
+since you used them, I would strongly recommend referencing the function 
+documentation!  
+
+For these problems, we will continue to work with the `mpg` data frame, making
+various changes to the data to clean it up. 
+
+11. The `fl` variable describes the type of fuel for each car, with levels: `p`, 
+`r`, `e`, `d`, and `c`. Do some research into what each of these labels mean! 
+Then, use the `if_else()` function to create a new variable (`fuel_type`) with
+two levels: `petrol` (any car using petrolium-based gas) and 
+`alternative energy` (any car not using petrolium-based gas). 
+
+```{r}
+
+```
+
+12. The `drv` variable describes if the car has front drive (`f`), rear drive
+(`r`), or four wheel drive (`4`). Let's make better labels for these values! 
+Specifically, use the `case_when()` function to change the `drv` varible to have
+the following levels: `front`, `rear`, `four wheel`. 
+
+```{r}
+
+```
+
+(string split + remove extra ")" )
+13. The `trans` variable contains two pieces of information, (1) the
+transmission style (`auto` or `manual`) and the specific type of transmission
+(e.g., `l5`, `m5`). Using the `str_split()` function, create a new variable
+(`trans_type`) containing the specific type of transmission of each car. Once
+you've made this new variable, use the `rename()` function to change the name
+of the `trans` column to `trans_style`.   
+*Hint: You will need to deal with the stray parenthesis!* 
+
+```{r}
+
+```
+
+## Getting to know your classmates
+
+14. Find someone who took Stat 331 from a different professor than you. Compare
+your experiences. Tell me their name and professor. List one or two things that
+you think you learned more about, and one or two things that they learned more
+about.
+
+15. Find someone in the class who **does not** share your birth month. Tell me
+their name and birthday, and use R to find out how many days apart your
+birthdays are.

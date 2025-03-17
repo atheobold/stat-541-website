@@ -1,0 +1,91 @@
+---
+title: "Lab 3"
+subtitle: "Transforming a Report into a Dashboard"
+editor: source
+---
+
+For this lab assignment, you are tasked with transforming some aspect of the
+[2020 Wellcome Global Health Monitor Report ](https://wellcome.org/reports/wellcome-global-monitor/2020) or the 
+[2018 Global Health Monitor Report](https://wellcome.org/reports/wellcome-global-monitor/2018) into a 
+dashboard. Anything in either of these reports is fair game, so find something
+that inspires you!
+
+In case you are drawing a blank, here are some ideas:
+
+- compare data from 2018 and 2020
+- compare two aspects of the same issue (e.g., knowledge of science)
+- compare two related issues (e.g., knowledge of science and trust in science)
+
+## Dashboard Requirements
+
+The dashboard you create **must** have the following:
+
+- a navigation logo (similar to the Olympic rings)
+- icons to your socials (e.g., LinkedIn, Instagram, Twitter, email)
+- at least two pages
+- at least two tabsets (can be on just one page)
+- at least two cards with quick information (e.g., % of people across the world
+who have faith in vaccines)
+- at least on plot made with `leaflet`
+- a non-default theme
+- non-default plot colors 
+
+::: {.callout-warning}
+# Coordinate Colors
+
+The colors in your styled dashboard should match the colors in your plots!
+:::
+
+## Resources for Creating Your Dashboard
+
+There are two additional videos by Dr. Mine Çetinkaya-Rundel that you will 
+need to watch in order to create your dashboard. 
+
+::: columns
+::: {.column width="49%"}
+<iframe width="300" height="200" src="https://www.youtube.com/embed/KdsQgwaY950?si=bDtlzgi2TB3nFpsy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
+::: {.column width="2%"}
+:::
+
+::: {.column width="49%"}
+<iframe width="300" height="200" src="https://www.youtube.com/embed/NigWSB-jG4Y?si=ZWlzMudpY8Ub1PFi" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+:::
+
+## Submission
+
+You are required to submit **both** the link to your GitHub repository 
+containing your source code **and** a link to your [published]{.underline}
+dashboard. You are expected to publish your dashboard through
+[Quarto Pub](https://quarto.org/docs/publishing/quarto-pub.html), a free
+publishing service for static content created with Quarto. 
+
+::: columns
+::: {.column width="48%"}
+::: {.callout-note}
+# Sign-up for Quarto Pub
+
+You will need to sign up for a free [Quarto Pub](https://quartopub.com/)
+account. I would highly recommend you link your Quarto Pub account with your
+GitHub account, since the documents you will be publishing should live in a 
+GitHub repository!
+:::
+:::
+
+::: {.column width="4%"}
+:::
+
+::: {.column width="48%"}
+::: {.callout-warning}
+# Do not use GitHub actions!
+
+You are expected to publish the content rendered on your local machine. Do not
+follow the instructions for using GitHub Actions to publish---that's too 
+spicy!
+:::
+:::
+:::
+
+
