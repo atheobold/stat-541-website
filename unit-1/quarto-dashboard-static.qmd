@@ -44,11 +44,3 @@ own repository.
 5. Submit the HTML of your revised dashboard (`olympicdash-r-1.html`) to 
 Canvas.
 :::
-
-<!-- Lab assignment -- Use dataset from last week to make a styled dashboard -->
-<!-- must have:  -->
-<!-- - logo -->
-<!-- - icons to your socials -->
-<!-- - sidebar -->
-<!-- - tabsets -->
-<!-- - non-default layout -->
