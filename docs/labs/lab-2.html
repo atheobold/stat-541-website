@@ -203,8 +203,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions">Instructions</a>
-  <ul class="collapse">
+  <li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions">Instructions</a></li>
   <li><a href="#part-one-identifying-bad-visualizations" id="toc-part-one-identifying-bad-visualizations" class="nav-link" data-scroll-target="#part-one-identifying-bad-visualizations">Part One: Identifying Bad Visualizations</a>
   <ul class="collapse">
   <li><a href="#dissecting-a-bad-visualization" id="toc-dissecting-a-bad-visualization" class="nav-link" data-scroll-target="#dissecting-a-bad-visualization">Dissecting a Bad Visualization</a></li>
@@ -214,7 +213,6 @@ ul.task-list li input[type="checkbox"] {
   <ul class="collapse">
   <li><a href="#second-data-visualization-improvement" id="toc-second-data-visualization-improvement" class="nav-link" data-scroll-target="#second-data-visualization-improvement">Second Data Visualization Improvement</a></li>
   <li><a href="#third-data-visualization-improvement" id="toc-third-data-visualization-improvement" class="nav-link" data-scroll-target="#third-data-visualization-improvement">Third Data Visualization Improvement</a></li>
-  </ul></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/labs/lab-2.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></nav>
@@ -247,40 +245,41 @@ ul.task-list li input[type="checkbox"] {
 <p><strong>Create a Quarto file for ALL Lab 2 (no separate files for Parts 1 and 2).</strong></p>
 <ul>
 <li>Make sure your final file is carefully formatted, so that each analysis is clear and concise.</li>
-<li>Be sure your knitted .html file shows all your source code, including any function definitions.</li>
+<li>Be sure your knitted <code>.html</code> file shows <strong>all</strong> your source code, including any function definitions.</li>
 </ul>
-<section id="part-one-identifying-bad-visualizations" class="level2">
-<h2 class="anchored" data-anchor-id="part-one-identifying-bad-visualizations">Part One: Identifying Bad Visualizations</h2>
+</section>
+<section id="part-one-identifying-bad-visualizations" class="level1">
+<h1>Part One: Identifying Bad Visualizations</h1>
 <p>If you happen to be bored and looking for a sensible chuckle, you should check out these <a href="https://badvisualisations.tumblr.com/">Bad Visualisations</a>. Looking through these is also a good exercise in cataloging what makes a visualization good or bad.</p>
-<section id="dissecting-a-bad-visualization" class="level3">
-<h3 class="anchored" data-anchor-id="dissecting-a-bad-visualization">Dissecting a Bad Visualization</h3>
-<p>Below is an example of a less-than-ideal visualization from the collection linked above. It comes to us from data provided for the Wellcome Global Monitor 2018 report by the Gallup World Poll 2018:</p>
-<p><img src="images/bad_wellcome_graph.jpg" class="img-fluid"></p>
+<section id="dissecting-a-bad-visualization" class="level2">
+<h2 class="anchored" data-anchor-id="dissecting-a-bad-visualization">Dissecting a Bad Visualization</h2>
+<p>Below is an example of a less-than-ideal visualization from the collection linked above. It comes to us from data provided for the <a href="https://wellcome.ac.uk/reports/wellcome-global-monitor/2018">Wellcome Global Monitor 2018 report</a> by the Gallup World Poll:</p>
+<p><img src="images/bad-wellcome-graph.jpg" class="img-fluid"></p>
 <ol type="1">
 <li><p>While there are certainly issues with this image, do your best to tell the story of this graph in words. That is, what is this graph telling you? What do you think the authors meant to convey with it?</p></li>
-<li><p>List the variables that appear to be displayed in this visualization.</p></li>
-<li><p>Now that you’re versed in the grammar of graphics (e.g., ggplot), list the <em>aesthetics</em> used and which <em>variables</em> are mapped to each.</p></li>
-<li><p>What type of graph would you call this?</p></li>
-<li><p>Provide at least four problems or changes that would improve this graph.</p></li>
+<li><p>List the variables that appear to be displayed in this visualization. <em>Hint: Variables refer to columns in the data.</em></p></li>
+<li><p>Now that you’re versed in the grammar of graphics (e.g., <code>ggplot</code>), list the <em>aesthetics</em> used and which <em>variables</em> are mapped to each.</p></li>
+<li><p>What type of graph would you call this? Meaning, what <code>geom</code> would you use to produce this plot?</p></li>
+<li><p>Provide at least four problems or changes that would improve this graph. <em>Please format your changes as bullet points!</em></p></li>
 </ol>
 </section>
-<section id="improving-the-bad-visualization" class="level3">
-<h3 class="anchored" data-anchor-id="improving-the-bad-visualization">Improving the Bad Visualization</h3>
-<p>The data for the Wellcome Global Monitor 2018 report can be downloaded at the following site at the “Dataset and crosstabs for all countries” link on the right side of the page:</p>
-<p><a href="https://wellcome.org/sites/default/files/wgm2018-dataset-crosstabs-all-countries.xlsx">https://wellcome.ac.uk/reports/wellcome-global-monitor/2018</a></p>
+<section id="improving-the-bad-visualization" class="level2">
+<h2 class="anchored" data-anchor-id="improving-the-bad-visualization">Improving the Bad Visualization</h2>
+<p>The data for the Wellcome Global Monitor 2018 report can be downloaded at the following site: <a href="https://wellcome.org/sites/default/files/wgm2018-dataset-crosstabs-all-countries.xlsx">https://wellcome.ac.uk/reports/wellcome-global-monitor/2018</a></p>
+<!-- at the "Dataset and crosstabs for all countries" link on the right side of the page-->
 <p>There are two worksheets in the downloaded dataset file. You may need to read them in separately, but you may also just use one if it suffices.</p>
-<ul>
+<ol start="6" type="1">
 <li>Improve the visualization above by either re-creating it with the issues you identified fixed OR by creating a new visualization that you believe tells the same story better.</li>
-</ul>
+</ol>
 </section>
 </section>
-<section id="part-two-broad-visualization-improvement" class="level2">
-<h2 class="anchored" data-anchor-id="part-two-broad-visualization-improvement">Part Two: Broad Visualization Improvement</h2>
+<section id="part-two-broad-visualization-improvement" class="level1">
+<h1>Part Two: Broad Visualization Improvement</h1>
 <p>The full Wellcome Global Monitor 2018 report can be found here: <a href="https://wellcome.ac.uk/sites/default/files/wellcome-global-monitor-2018.pdf">https://wellcome.ac.uk/sites/default/files/wellcome-global-monitor-2018.pdf</a>. Surprisingly, the visualization above does not appear in the report despite the citation in the bottom corner of the image!</p>
-<p><strong>For the work below, you must use leaflet at least once. You must also use one of the other packages mentioned this week. More specifically, you cannot only use ggplot for the remainder of the lab assignment.</strong></p>
-<section id="second-data-visualization-improvement" class="level3">
-<h3 class="anchored" data-anchor-id="second-data-visualization-improvement">Second Data Visualization Improvement</h3>
-<ol type="1">
+<section id="second-data-visualization-improvement" class="level2">
+<h2 class="anchored" data-anchor-id="second-data-visualization-improvement">Second Data Visualization Improvement</h2>
+<p><strong>For this second plot, you must select a plot that uses maps so you can demonstrate your proficiency with the <code>leaflet</code> package!</strong></p>
+<ol start="7" type="1">
 <li><p>Select a data visualization in the report that you think could be improved. Be sure to cite both the page number and figure title. Do your best to tell the story of this graph in words. That is, what is this graph telling you? What do you think the authors meant to convey with it?</p></li>
 <li><p>List the variables that appear to be displayed in this visualization.</p></li>
 <li><p>Now that you’re versed in the grammar of graphics (ggplot), list the aesthetics used and which variables are specified for each.</p></li>
@@ -289,19 +288,19 @@ ul.task-list li input[type="checkbox"] {
 <li><p>Improve the visualization above by either re-creating it with the issues you identified fixed OR by creating a new visualization that you believe tells the same story better.</p></li>
 </ol>
 </section>
-<section id="third-data-visualization-improvement" class="level3">
-<h3 class="anchored" data-anchor-id="third-data-visualization-improvement">Third Data Visualization Improvement</h3>
-<ol type="1">
+<section id="third-data-visualization-improvement" class="level2">
+<h2 class="anchored" data-anchor-id="third-data-visualization-improvement">Third Data Visualization Improvement</h2>
+<p><strong>For this third plot, you must use one of the other <code>ggplot2</code> extension packages mentioned this week (e.g., <code>gganimate</code>, <code>plotly</code>, <code>patchwork</code>, <code>cowplot</code>).</strong></p>
+<ol start="13" type="1">
 <li><p>Select a data visualization in the report that you think could be improved. Be sure to cite both the page number and figure title. Do your best to tell the story of this graph in words. That is, what is this graph telling you? What do you think the authors meant to convey with it?</p></li>
 <li><p>List the variables that appear to be displayed in this visualization.</p></li>
-<li><p>Now that you’re versed in the grammar of graphics (e.g., ggplot), list the <em>aesthetics</em> used and which <em>variables</em> are mapped to each.</p></li>
+<li><p>Now that you’re versed in the grammar of graphics (ggplot), list the aesthetics used and which variables are specified for each.</p></li>
 <li><p>What type of graph would you call this?</p></li>
-<li><p>List all of the problems or changes that would improve this graph.</p></li>
+<li><p>List all of the problems or things you would improve about this graph.</p></li>
 <li><p>Improve the visualization above by either re-creating it with the issues you identified fixed OR by creating a new visualization that you believe tells the same story better.</p></li>
 </ol>
 
 
-</section>
 </section>
 </section>
 
