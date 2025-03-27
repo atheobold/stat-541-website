@@ -1,6 +1,5 @@
 ---
 title: "Lab 1 - Quarto Warmup & STAT 331 Review"
-author: "YOUR NAME HERE"
 format: html
 embed-resources: true
 editor: source
