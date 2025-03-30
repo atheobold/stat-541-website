@@ -44,128 +44,158 @@
     ]
   },
   {
-    "objectID": "unit-1/ggplot-review.html",
-    "href": "unit-1/ggplot-review.html",
-    "title": "ggplot Review",
+    "objectID": "labs/lab-2.html",
+    "href": "labs/lab-2.html",
+    "title": "Lab 2",
     "section": "",
-    "text": "This module consists of readings reviewing material typically taught in STAT 331. It is possible you can skip over portions of this reading. It is your responsibility to decide which areas you need to review before diving into Stat 541.",
+    "text": "Create a Quarto file for ALL Lab 2 (no separate files for Parts 1 and 2).\n\nMake sure your final file is carefully formatted, so that each analysis is clear and concise.\nBe sure your knitted .html file shows all your source code, including any function definitions.",
     "crumbs": [
       "Unit 1 - Communication",
-      "`ggplot` Review"
+      "Lab 2"
     ]
   },
   {
-    "objectID": "unit-1/ggplot-review.html#recommended-video",
-    "href": "unit-1/ggplot-review.html#recommended-video",
-    "title": "ggplot Review",
-    "section": "🎥 Recommended Video",
-    "text": "🎥 Recommended Video\n\n\n\n\n\n\n\n\n\nCheck-in: ggplot Review\n\n\n\nIdentify the elements of the following plot as\n\nAn aesthetic\nA geometry\nA scale\nNone of the above\n\n\n\nThe x-axis is age\nThe y-axis is “Urge to run up the down escalator”\nThe y-axis ranges from “Weak” to “Strong”\nThis is a line graph\nThe two lines are “What I was supposed to feel” and “What I’ve actually felt”\nThe lines are labeled with text\nOnly even ages are labelled\nStick figure people are sliding down the line",
+    "objectID": "labs/lab-2.html#dissecting-a-bad-visualization",
+    "href": "labs/lab-2.html#dissecting-a-bad-visualization",
+    "title": "Lab 2",
+    "section": "Dissecting a Bad Visualization",
+    "text": "Dissecting a Bad Visualization\nBelow is an example of a less-than-ideal visualization from the collection linked above. It comes to us from data provided for the Wellcome Global Monitor 2018 report by the Gallup World Poll:\n\n\nWhile there are certainly issues with this image, do your best to tell the story of this graph in words. That is, what is this graph telling you? What do you think the authors meant to convey with it?\nList the variables that appear to be displayed in this visualization. Hint: Variables refer to columns in the data.\nNow that you’re versed in the grammar of graphics (e.g., ggplot), list the aesthetics used and which variables are mapped to each.\nWhat type of graph would you call this? Meaning, what geom would you use to produce this plot?\nProvide at least four problems or changes that would improve this graph. Please format your changes as bullet points!",
     "crumbs": [
       "Unit 1 - Communication",
-      "`ggplot` Review"
+      "Lab 2"
     ]
   },
   {
-    "objectID": "unit-1/ggplot-review.html#recommended-reading-r4ds-data-visualisation",
-    "href": "unit-1/ggplot-review.html#recommended-reading-r4ds-data-visualisation",
-    "title": "ggplot Review",
-    "section": "📖 Recommended Reading: R4DS: Data Visualisation",
-    "text": "📖 Recommended Reading: R4DS: Data Visualisation\n\n\n\n\n\n\nCheckin: ggplot Review\n\n\n\nFill in the six (6) blanks to make the following plot:\n\nstarwars %&gt;%\n  ____(species == \"Human\") %&gt;%\n  ggplot(mapping = aes(____ = height, y = mass, ____ = gender)) + \n  geom_[____](____ = 17) +\n  ____(x = \"Height (cm)\", \n       y = \"Mass (kg)\", \n       color = \"Gender Expression\"\n       )",
+    "objectID": "labs/lab-2.html#improving-the-bad-visualization",
+    "href": "labs/lab-2.html#improving-the-bad-visualization",
+    "title": "Lab 2",
+    "section": "Improving the Bad Visualization",
+    "text": "Improving the Bad Visualization\nThe data for the Wellcome Global Monitor 2018 report can be downloaded at the following site: https://wellcome.ac.uk/reports/wellcome-global-monitor/2018\n\nThere are two worksheets in the downloaded dataset file. You may need to read them in separately, but you may also just use one if it suffices.\n\nImprove the visualization above by either re-creating it with the issues you identified fixed OR by creating a new visualization that you believe tells the same story better.",
     "crumbs": [
       "Unit 1 - Communication",
-      "`ggplot` Review"
+      "Lab 2"
     ]
   },
   {
-    "objectID": "set-up/setup-workflow.html",
-    "href": "set-up/setup-workflow.html",
-    "title": "Installing / Updating R & RStudio",
+    "objectID": "labs/lab-2.html#second-data-visualization-improvement",
+    "href": "labs/lab-2.html#second-data-visualization-improvement",
+    "title": "Lab 2",
+    "section": "Second Data Visualization Improvement",
+    "text": "Second Data Visualization Improvement\nFor this second plot, you must select a plot that uses maps so you can demonstrate your proficiency with the leaflet package!\n\nSelect a data visualization in the report that you think could be improved. Be sure to cite both the page number and figure title. Do your best to tell the story of this graph in words. That is, what is this graph telling you? What do you think the authors meant to convey with it?\nList the variables that appear to be displayed in this visualization.\nNow that you’re versed in the grammar of graphics (ggplot), list the aesthetics used and which variables are specified for each.\nWhat type of graph would you call this?\nList all of the problems or things you would improve about this graph.\nImprove the visualization above by either re-creating it with the issues you identified fixed OR by creating a new visualization that you believe tells the same story better.",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "Lab 2"
+    ]
+  },
+  {
+    "objectID": "labs/lab-2.html#third-data-visualization-improvement",
+    "href": "labs/lab-2.html#third-data-visualization-improvement",
+    "title": "Lab 2",
+    "section": "Third Data Visualization Improvement",
+    "text": "Third Data Visualization Improvement\nFor this third plot, you must use one of the other ggplot2 extension packages mentioned this week (e.g., gganimate, plotly, patchwork, cowplot).\n\nSelect a data visualization in the report that you think could be improved. Be sure to cite both the page number and figure title. Do your best to tell the story of this graph in words. That is, what is this graph telling you? What do you think the authors meant to convey with it?\nList the variables that appear to be displayed in this visualization.\nNow that you’re versed in the grammar of graphics (ggplot), list the aesthetics used and which variables are specified for each.\nWhat type of graph would you call this?\nList all of the problems or things you would improve about this graph.\nImprove the visualization above by either re-creating it with the issues you identified fixed OR by creating a new visualization that you believe tells the same story better.",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "Lab 2"
+    ]
+  },
+  {
+    "objectID": "unit-1/ggplot-leaflet.html",
+    "href": "unit-1/ggplot-leaflet.html",
+    "title": "Creating Maps with the leaflet Package",
     "section": "",
-    "text": "Your workflow refers to the series of good habits you get into in your coding process, that help save you time and headache down the road.\nThis document outlines our suggestions for getting going with your workflow. None of these items is required for the course; they will simply make your life easier down the road.",
+    "text": "Maps are fantastic and complicated all at the same time! Maps are some of the richest visualizations around because they come with data built into them. That is, on top of whatever data you’re going to plot you are also probably going to view terrain, roads, state/country borders, city names or a host of other information that come with our geography.\nThis implicit richness only adds to challenge of creating a good map. Observe the following recent tweet for a silly example of how maps can be…difficult.\nThere is no shortage of map data visualizations on the web, but all too often this is what we end up with:\n\n\n\n\n\n\n\n\n\n\n\nCaution\n\n\n\nBe sure to watch all 6 videos in this series.\n\n\n\n\n\n\n\n\nCheck-in: leaflet\n\n\n\n1. Is running just the leaflet() function enough to produce a map?\n\nYes\nNo\n\n2. To plot data points on a leaflet map, we should probably use which function?\n\naddTiles()\naddMarkers()\naddProviderTiles()\naddPolygons()\n\n\n\n\n\n\nThe leaflet package is actually extremely rich and can basically enable (interactive) map visualizations as complex as you can imagine. Take some time to peruse the site for the leaflet R package:\nhttps://rstudio.github.io/leaflet/\n\n\n\n\n\n\nCheck-in: leaflet\n\n\n\n3. What do the names of your plotted data columns have to be?\n\nx; y\nleafletx; `leaflety\nlat / latitude; lon/ longitude\nAnything as long as you tell the addMarkers() function correctly\n\n4. If you were to think of latitude and longitude as coordinates in the cartesian coordinate system, then…\n\nlatitude is on the horizontal axis and longitude is on the vertical\nlatitude is on the vertical axis and longitude is on the horizontal\n\n\n\n\n\n\n\nhelmet_icon &lt;- makeIcon(\n  iconUrl = \"http://www.clker.com/cliparts/l/R/b/J/X/D/astronaut-helmet-md.png\",\n  iconWidth = 15, \n  iconHeight = 15\n  )\n\nleaflet() %&gt;%\n  addTiles() %&gt;%\n  addMarkers(lng = jitter(space$Longitude, \n                          factor = 2), \n             lat = jitter(space$Latitude,\n                          factor = 2), \n             icon = helmet_icon, \n             popup = paste(space$Name, \"&lt;br&gt;\", \n                           \"Birth Place: \", space$`Birth Place`),\n             label = paste(space$Name)\n             )\n\n\n\n\n\n\n\n\n\n\n\nCheck-in: leaflet\n\n\n\nThe above map plots data on NASA astronauts!\n5. The graphic for each marker is a little astronaut helmet. How cute! This image was used via…\n\na URL pointing to it on the web.\na downloaded image file.\n\n6. The popup argument specifies what you see when you ______, while the label argument specifies what you see when you ______.\n\nhover; click\nzoom-in; zoom-out\nclick; hover\nsquint your eyes; look normally",
     "crumbs": [
-      "Infrastructure",
-      "Installing / Updating R & RStudio"
+      "Unit 1 - Communication",
+      "Creating Maps with the `leaflet` Package"
     ]
   },
   {
-    "objectID": "set-up/setup-workflow.html#updating-r",
-    "href": "set-up/setup-workflow.html#updating-r",
-    "title": "Installing / Updating R & RStudio",
-    "section": "1 Updating R",
-    "text": "1 Updating R\nEach of you should have R already installed on your computer, but you might not have the most up to date version of R! Do not ignore these instructions. If you neglect to update your version of R, you may find that updating a package will make it so your code will not run.\n\nStep 1: Open RStudio\nStep 2: At the top of the the Console it will say what version of R you are using\n\n\nIf the version is not 4.4.3 (like the image above), you need to update your version of R! The simplest way to do this is to follow the instructions below to install R.",
-    "crumbs": [
-      "Infrastructure",
-      "Installing / Updating R & RStudio"
-    ]
-  },
-  {
-    "objectID": "set-up/setup-workflow.html#installing-r",
-    "href": "set-up/setup-workflow.html#installing-r",
-    "title": "Installing / Updating R & RStudio",
-    "section": "2 Installing R",
-    "text": "2 Installing R\nDownload and install R by going to https://cloud.r-project.org/. Here, you will find three options for installing R—click on the option for your computer’s operating system.\n\n\n\n\nIf you are a Windows user:\n\nClick on “Download R for Windows”\nClick on “base”\nClick on the Download link.\nWhen you open the execution file (.exe) you will be prompted with a variety of questions about installing R. Feel free to use the default features / settings that come with R (continue to click “Ok” until the download starts).\n\n\n\n\n\n\n\nMultiple Versions of R\n\n\n\nBeware that if you had a previous version of R downloaded on your PC, that old version will not be deleted when you download the most recent version of R. We do not want to have two versions of R installed, as your computer can get confused what version of R to use. So, you need to remove the old version of R.\nTo do this you need to:\n\nNavigate to your computer’s settings\nClick on the “Apps” option on the left-hand panel\nSearch for or scroll down to R\nFind the older version of R\n\n\n\nClick on the ... on the right side\nSelect “Uninstall”\n\n\n\n\n\n\nIf you are macOS user:\n\nClick on “Download R for (Mac) OS X”\nUnder “Latest release:” click on R-X.X.X.pkg, where R-X.X.X is the version number. For example, the latest version of R as of July 1, 2024 was R-4.4.1 (Race for Your Life).\nWhen installing, use the default features / settings that come with R (click Ok until the download starts).",
-    "crumbs": [
-      "Infrastructure",
-      "Installing / Updating R & RStudio"
-    ]
-  },
-  {
-    "objectID": "set-up/setup-workflow.html#updating-rstudio",
-    "href": "set-up/setup-workflow.html#updating-rstudio",
-    "title": "Installing / Updating R & RStudio",
-    "section": "3 Updating RStudio",
-    "text": "3 Updating RStudio\nRStudio can be downloaded here\nThe most recent version of RStudio is 2024.12.1+563. You can check if you are using the most recent version of RStudio by:\n\nOpening RStudio\nClicking on “Help”\nSelecting “Check for Updates”\nChoosing “Quit and Download” if there is an update available",
-    "crumbs": [
-      "Infrastructure",
-      "Installing / Updating R & RStudio"
-    ]
-  },
-  {
-    "objectID": "set-up/setup-workflow.html#installing-updating-the-tidyverse",
-    "href": "set-up/setup-workflow.html#installing-updating-the-tidyverse",
-    "title": "Installing / Updating R & RStudio",
-    "section": "4 Installing / Updating the tidyverse",
-    "text": "4 Installing / Updating the tidyverse\nIn this class, we will make heavy use of the tidyverse packages.\nIf you have not used the tidyverse before, type the following into your console:\n\ninstall.packages(\"tidyverse\")\n\nIf you have used the tidyverse before, you only need to update packages. Type the following into your console:\n\nlibrary(tidyverse)\ntidyverse_update()\n\nThen follow the instructions that print out to update a few of your tidyverse packages.",
-    "crumbs": [
-      "Infrastructure",
-      "Installing / Updating R & RStudio"
-    ]
-  },
-  {
-    "objectID": "set-up/setup-workflow.html#configure-your-options",
-    "href": "set-up/setup-workflow.html#configure-your-options",
-    "title": "Installing / Updating R & RStudio",
-    "section": "5 Configure your options",
-    "text": "5 Configure your options\nThere are a few settings we recommend that you change right away in RStudio.\n\nR Workspace\nFirst, you should not save your environment when you close RStudio:\n\n\n\nCode Chunk Output\nSecond, make a deliberate choice about where your chunks will evaluate when you run that. That is, if you reference files, are you referencing them relative to your Project, or relative to your Quarto Document (which might live in a subfolder or even outside the project).",
-    "crumbs": [
-      "Infrastructure",
-      "Installing / Updating R & RStudio"
-    ]
-  },
-  {
-    "objectID": "set-up/setup-workflow.html#project-based-workflow",
-    "href": "set-up/setup-workflow.html#project-based-workflow",
-    "title": "Installing / Updating R & RStudio",
-    "section": "6 Project-based workflow",
-    "text": "6 Project-based workflow\nWe strongly recommend that you adopt a project-oriented approach to your R work. That is, you should never open R or RStudio directly; you should only open the project you intend to work on.\nThis resource provides an excellent explanation of why and how to use projects.",
-    "crumbs": [
-      "Infrastructure",
-      "Installing / Updating R & RStudio"
-    ]
-  },
-  {
-    "objectID": "unit-1/quarto-dashboard-dynamic.html",
-    "href": "unit-1/quarto-dashboard-dynamic.html",
-    "title": "Quarto Dashboards, Part 2",
+    "objectID": "unit-1/ggplot-leaflet.html#required-video-introductory-series-to-leaflet-in-r-6-videos",
+    "href": "unit-1/ggplot-leaflet.html#required-video-introductory-series-to-leaflet-in-r-6-videos",
+    "title": "Creating Maps with the leaflet Package",
     "section": "",
-    "text": "Now that we’ve acquired some skills for making dashboards, let’s spice them up a bit! This week, we’re going to add interactive content to our dashboards!"
+    "text": "Caution\n\n\n\nBe sure to watch all 6 videos in this series.\n\n\n\n\n\n\n\n\nCheck-in: leaflet\n\n\n\n1. Is running just the leaflet() function enough to produce a map?\n\nYes\nNo\n\n2. To plot data points on a leaflet map, we should probably use which function?\n\naddTiles()\naddMarkers()\naddProviderTiles()\naddPolygons()",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "Creating Maps with the `leaflet` Package"
+    ]
   },
   {
-    "objectID": "unit-1/quarto-dashboard-dynamic.html#required-video-hello-quarto-dashboards",
-    "href": "unit-1/quarto-dashboard-dynamic.html#required-video-hello-quarto-dashboards",
-    "title": "Quarto Dashboards, Part 2",
+    "objectID": "unit-1/ggplot-leaflet.html#more-on-the-leaflet-package",
+    "href": "unit-1/ggplot-leaflet.html#more-on-the-leaflet-package",
+    "title": "Creating Maps with the leaflet Package",
+    "section": "",
+    "text": "The leaflet package is actually extremely rich and can basically enable (interactive) map visualizations as complex as you can imagine. Take some time to peruse the site for the leaflet R package:\nhttps://rstudio.github.io/leaflet/\n\n\n\n\n\n\nCheck-in: leaflet\n\n\n\n3. What do the names of your plotted data columns have to be?\n\nx; y\nleafletx; `leaflety\nlat / latitude; lon/ longitude\nAnything as long as you tell the addMarkers() function correctly\n\n4. If you were to think of latitude and longitude as coordinates in the cartesian coordinate system, then…\n\nlatitude is on the horizontal axis and longitude is on the vertical\nlatitude is on the vertical axis and longitude is on the horizontal",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "Creating Maps with the `leaflet` Package"
+    ]
+  },
+  {
+    "objectID": "unit-1/ggplot-leaflet.html#practice-with-leaflet",
+    "href": "unit-1/ggplot-leaflet.html#practice-with-leaflet",
+    "title": "Creating Maps with the leaflet Package",
+    "section": "",
+    "text": "helmet_icon &lt;- makeIcon(\n  iconUrl = \"http://www.clker.com/cliparts/l/R/b/J/X/D/astronaut-helmet-md.png\",\n  iconWidth = 15, \n  iconHeight = 15\n  )\n\nleaflet() %&gt;%\n  addTiles() %&gt;%\n  addMarkers(lng = jitter(space$Longitude, \n                          factor = 2), \n             lat = jitter(space$Latitude,\n                          factor = 2), \n             icon = helmet_icon, \n             popup = paste(space$Name, \"&lt;br&gt;\", \n                           \"Birth Place: \", space$`Birth Place`),\n             label = paste(space$Name)\n             )\n\n\n\n\n\n\n\n\n\n\n\nCheck-in: leaflet\n\n\n\nThe above map plots data on NASA astronauts!\n5. The graphic for each marker is a little astronaut helmet. How cute! This image was used via…\n\na URL pointing to it on the web.\na downloaded image file.\n\n6. The popup argument specifies what you see when you ______, while the label argument specifies what you see when you ______.\n\nhover; click\nzoom-in; zoom-out\nclick; hover\nsquint your eyes; look normally",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "Creating Maps with the `leaflet` Package"
+    ]
+  },
+  {
+    "objectID": "unit-1/quarto-dashboard-static.html",
+    "href": "unit-1/quarto-dashboard-static.html",
+    "title": "Quarto Dashboards, Part 1",
+    "section": "",
+    "text": "This week, we’re taking the visualization skills we learned last week and using them to create an informational dashboard. Quarto dashboards were integrated into version 1.4, so you can use a familiar tool to create these dashboards. In part 1, we will focus on creating “static” dashboards—where the user does not interact with the content.",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "Quarto Dashboards, Part 1"
+    ]
+  },
+  {
+    "objectID": "unit-1/quarto-dashboard-static.html#required-video-hello-quarto-dashboards",
+    "href": "unit-1/quarto-dashboard-static.html#required-video-hello-quarto-dashboards",
+    "title": "Quarto Dashboards, Part 1",
     "section": "🎥 Required Video: Hello Quarto Dashboards",
-    "text": "🎥 Required Video: Hello Quarto Dashboards"
+    "text": "🎥 Required Video: Hello Quarto Dashboards",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "Quarto Dashboards, Part 1"
+    ]
+  },
+  {
+    "objectID": "unit-1/quarto-dashboard-static.html#video-resources",
+    "href": "unit-1/quarto-dashboard-static.html#video-resources",
+    "title": "Quarto Dashboards, Part 1",
+    "section": "Video Resources",
+    "text": "Video Resources\n\nSlides for this Video: https://mine.quarto.pub/quarto-dashboards/\nStarter Documents: https://github.com/mine-cetinkaya-rundel/olympicdash",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "Quarto Dashboards, Part 1"
+    ]
+  },
+  {
+    "objectID": "unit-1/quarto-dashboard-static.html#optional-resources",
+    "href": "unit-1/quarto-dashboard-static.html#optional-resources",
+    "title": "Quarto Dashboards, Part 1",
+    "section": "Optional Resources",
+    "text": "Optional Resources\n\nQuarto Dashboard Gallery\nQuarto Dashboard Tutorial\nQuarto Dashboard Reference\n\n\n\n\n\n\n\nCheck-in: Hello Quarto Dashboard\n\n\n\nFor this first section, you are expected to complete the coding activity associated with Dr. Mine Çetinkaya-Rundel’s video. Specifically, you will need to:\n\nCopy the template repository into your own repository.\nCreate a new folder inside your STAT 541 folder.\nCreate a new RStudio project that links to your copy of the template repo.\nFollow along and edit the olympicdash-r-1.qmd document.\nSubmit the HTML of your revised dashboard (olympicdash-r-1.html) to Canvas.",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "Quarto Dashboards, Part 1"
+    ]
+  },
+  {
+    "objectID": "unit-1.html",
+    "href": "unit-1.html",
+    "title": "Unit 1",
+    "section": "",
+    "text": "In this first unit, we will explore various tools for communicating statistical ideas. We will start with data visualizations, expanding your repertoire of tools for visualizing data. From there, we will move to dashboards—both static and dynamic. Finally, we will play with methods for including executable R code inside these documents.\nThroughout these sections, you will encounter “check-ins” assessing your knowledge on a particular topic. These check-ins are delineated by a red (important) callout box and are associated with the Canvas quizzes assigned each week.\n\n\n\n\n\n\nExample Check-in Callout\n\n\n\nThis is where you will find the body of the question. The callout name refers to the name of the Canvas quiz the question is associated with.",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "Unit 1"
+    ]
   },
   {
     "objectID": "portfolio/portfolio-instructions.html",
@@ -196,65 +226,15 @@
     "text": "Additional Styling Options\nIn case you are interested in styling your website further, I would recommend looking over this presentation on using .scss and .sass files."
   },
   {
-    "objectID": "labs/lab-2.html",
-    "href": "labs/lab-2.html",
-    "title": "Lab 2",
+    "objectID": "infrastructure.html",
+    "href": "infrastructure.html",
+    "title": "Computational Infrastructure",
     "section": "",
-    "text": "Create a Quarto file for ALL Lab 2 (no separate files for Parts 1 and 2).\n\nMake sure your final file is carefully formatted, so that each analysis is clear and concise.\nBe sure your knitted .html file shows all your source code, including any function definitions.",
+    "text": "Welcome to STAT 541! We’re excited to have you! This page is dedicated to getting you set-up with the infrastructure will will make use of throughout the course.",
     "crumbs": [
-      "Unit 1 - Communication",
-      "Lab 2"
+      "Infrastructure",
+      "Computational Infrastructure"
     ]
-  },
-  {
-    "objectID": "labs/lab-2.html#part-one-identifying-bad-visualizations",
-    "href": "labs/lab-2.html#part-one-identifying-bad-visualizations",
-    "title": "Lab 2",
-    "section": "",
-    "text": "If you happen to be bored and looking for a sensible chuckle, you should check out these Bad Visualisations. Looking through these is also a good exercise in cataloging what makes a visualization good or bad.\n\n\nBelow is an example of a less-than-ideal visualization from the collection linked above. It comes to us from data provided for the Wellcome Global Monitor 2018 report by the Gallup World Poll 2018:\n\n\nWhile there are certainly issues with this image, do your best to tell the story of this graph in words. That is, what is this graph telling you? What do you think the authors meant to convey with it?\nList the variables that appear to be displayed in this visualization.\nNow that you’re versed in the grammar of graphics (e.g., ggplot), list the aesthetics used and which variables are mapped to each.\nWhat type of graph would you call this? Meaning, what geom would you use to produce this plot?\nProvide at least four problems or changes that would improve this graph.\n\n\n\n\nThe data for the Wellcome Global Monitor 2018 report can be downloaded at the following site at the “Dataset and crosstabs for all countries” link on the right side of the page:\nhttps://wellcome.ac.uk/reports/wellcome-global-monitor/2018\nThere are two worksheets in the downloaded dataset file. You may need to read them in separately, but you may also just use one if it suffices.\n\nImprove the visualization above by either re-creating it with the issues you identified fixed OR by creating a new visualization that you believe tells the same story better.",
-    "crumbs": [
-      "Unit 1 - Communication",
-      "Lab 2"
-    ]
-  },
-  {
-    "objectID": "labs/lab-2.html#part-two-broad-visualization-improvement",
-    "href": "labs/lab-2.html#part-two-broad-visualization-improvement",
-    "title": "Lab 2",
-    "section": "",
-    "text": "The full Wellcome Global Monitor 2018 report can be found here: https://wellcome.ac.uk/sites/default/files/wellcome-global-monitor-2018.pdf. Surprisingly, the visualization above does not appear in the report despite the citation in the bottom corner of the image!\nFor the work below, you must use leaflet at least once. You must also use one of the other packages mentioned this week. More specifically, you cannot only use ggplot for the remainder of the lab assignment.\n\n\n\nSelect a data visualization in the report that you think could be improved. Be sure to cite both the page number and figure title. Do your best to tell the story of this graph in words. That is, what is this graph telling you? What do you think the authors meant to convey with it?\nList the variables that appear to be displayed in this visualization.\nNow that you’re versed in the grammar of graphics (ggplot), list the aesthetics used and which variables are specified for each.\nWhat type of graph would you call this?\nList all of the problems or things you would improve about this graph.\nImprove the visualization above by either re-creating it with the issues you identified fixed OR by creating a new visualization that you believe tells the same story better.",
-    "crumbs": [
-      "Unit 1 - Communication",
-      "Lab 2"
-    ]
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Welcome",
-    "section": "",
-    "text": "Stat 541 takes a deeper dive into statistical computing in R, building your communication and iteration skills. We will explore different modalities for communicating statistical ideas—dynamic visualizations and dashboards, while also exploring ways to integrate R code into these environments. We will also continue to expand your skills as a developer—writing functions and iterating over those functions to query data from APIs and scrape the web. We’re going to have a lot of fun!"
-  },
-  {
-    "objectID": "index.html#acknowledements",
-    "href": "index.html#acknowledements",
-    "title": "Welcome",
-    "section": "Acknowledements",
-    "text": "Acknowledements\nA huge shout out to Dr. Kelly Bodwin for creating this class and adding it to the amazing number of computing courses the Statistics Department teaches. Another shout out goes the the amazing women at Macalester College—Leslie Myint, Brianna Heggeseth, and Alicia Johnson—for making their Intermediate Data Science course materials public. And finally, a massive thank you to Sam Shanny-Csik for their incredible resources for making and styling Quarto websites!\nThis website is built with Quarto, the lovely icons are all by Allison Horst, and none of this would be possible without the tidyverse."
-  },
-  {
-    "objectID": "index.html#license",
-    "href": "index.html#license",
-    "title": "Welcome",
-    "section": "License",
-    "text": "License\nThis online work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International. Visit here for more information about the license."
-  },
-  {
-    "objectID": "course-materials/calendar.html",
-    "href": "course-materials/calendar.html",
-    "title": "STAT 541: Advanced R",
-    "section": "",
-    "text": "This page contains an outline of the topics, content, and assignments for the quarter. Note that this schedule will be updated as the quarter progresses, with all changes documented here.\n\n\n\n\n\n\n\n\n\n\n\nWeek\nDate\nRequired Reading\nLecture Activities\nLab Assignment\nPortfolio\n\n\n\n\n1\nStat 331 Review & Version Control\nMarch 31 (note no class on Monday)\nInstalling / Updating R & RStudio\nVersion Control\n\nLab 1 Instructions\nLab 1 GitHub repository\n\n\n\n2\nAdvanced Visualizations\nApril 7\nggplot Review\nggplotExtensions\nMaking maps with leaflet\n\nLab 2 Instructions\nLab 2 GitHub repository\n\n\n\n3\nQuarto Dashboards (Static)\nApril 14\n\n\nLab 3 Instructions\nLab 3 GitHub repository\n\n\n\n4\nQuarto Dashboards (Dynamic)\nApril 21\n\n\n\n\n\n\n5\nQuarto & WebR\nApril 28\n\n\n\n\n\n\n6\nPortfolio Week\nMay 5\n\n\n\nPortfolio Instructions\n\n\n7\nJSON Data & APIs\nMay 12\n\n\n\n\n\n\n8\nWebscraping\nMay 19\n\n\n\n\n\n\n9\nGenerative Art\nMay 26 (note Tuesday follows a Monday schedule)\n\n\n\n\n\n\n10\nPortfolio Week\nJune 2\n\n\n\n\n\n\nFinals Week (Portfolio Meetings)\nJune 9"
   },
   {
     "objectID": "course-materials/syllabus.html",
@@ -390,15 +370,32 @@
     "text": "Footnotes\n\n\nSee Section 3.0.2 for information on what you can expect when you email me.↩︎"
   },
   {
-    "objectID": "infrastructure.html",
-    "href": "infrastructure.html",
-    "title": "Computational Infrastructure",
+    "objectID": "course-materials/calendar.html",
+    "href": "course-materials/calendar.html",
+    "title": "STAT 541: Advanced R",
     "section": "",
-    "text": "Welcome to STAT 541! We’re excited to have you! This page is dedicated to getting you set-up with the infrastructure will will make use of throughout the course.",
-    "crumbs": [
-      "Infrastructure",
-      "Computational Infrastructure"
-    ]
+    "text": "This page contains an outline of the topics, content, and assignments for the quarter. Note that this schedule will be updated as the quarter progresses, with all changes documented here.\n\n\n\n\n\n\n\n\n\n\n\nWeek\nDate\nRequired Reading\nLecture Activities\nLab Assignment\nPortfolio\n\n\n\n\n1\nStat 331 Review & Version Control\nMarch 31 (note no class on Monday)\nInstalling / Updating R & RStudio\nVersion Control\n\nLab 1 Instructions\nLab 1 GitHub repository\n\n\n\n2\nAdvanced Visualizations\nApril 7\nggplot Review\nggplotExtensions\nMaking maps with leaflet\n\nLab 2 Instructions\nLab 2 GitHub repository\n\n\n\n3\nQuarto Dashboards (Static)\nApril 14\n\n\nLab 3 Instructions\nLab 3 GitHub repository\n\n\n\n4\nQuarto Dashboards (Dynamic)\nApril 21\n\n\n\n\n\n\n5\nQuarto & WebR\nApril 28\n\n\n\n\n\n\n6\nPortfolio Week\nMay 5\n\n\n\nPortfolio Instructions\n\n\n7\nJSON Data & APIs\nMay 12\n\n\n\n\n\n\n8\nWebscraping\nMay 19\n\n\n\n\n\n\n9\nGenerative Art\nMay 26 (note Tuesday follows a Monday schedule)\n\n\n\n\n\n\n10\nPortfolio Week\nJune 2\n\n\n\n\n\n\nFinals Week (Portfolio Meetings)\nJune 9"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Welcome",
+    "section": "",
+    "text": "Stat 541 takes a deeper dive into statistical computing in R, building your communication and iteration skills. We will explore different modalities for communicating statistical ideas—dynamic visualizations and dashboards, while also exploring ways to integrate R code into these environments. We will also continue to expand your skills as a developer—writing functions and iterating over those functions to query data from APIs and scrape the web. We’re going to have a lot of fun!"
+  },
+  {
+    "objectID": "index.html#acknowledements",
+    "href": "index.html#acknowledements",
+    "title": "Welcome",
+    "section": "Acknowledements",
+    "text": "Acknowledements\nA huge shout out to Dr. Kelly Bodwin for creating this class and adding it to the amazing number of computing courses the Statistics Department teaches. Another shout out goes the the amazing women at Macalester College—Leslie Myint, Brianna Heggeseth, and Alicia Johnson—for making their Intermediate Data Science course materials public. And finally, a massive thank you to Sam Shanny-Csik for their incredible resources for making and styling Quarto websites!\nThis website is built with Quarto, the lovely icons are all by Allison Horst, and none of this would be possible without the tidyverse."
+  },
+  {
+    "objectID": "index.html#license",
+    "href": "index.html#license",
+    "title": "Welcome",
+    "section": "License",
+    "text": "License\nThis online work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International. Visit here for more information about the license."
   },
   {
     "objectID": "labs/lab-3.html",
@@ -445,102 +442,182 @@
     ]
   },
   {
-    "objectID": "unit-1.html",
-    "href": "unit-1.html",
-    "title": "Unit 1",
+    "objectID": "set-up/setup-discord.html",
+    "href": "set-up/setup-discord.html",
+    "title": "Using Discord 101",
     "section": "",
-    "text": "In this first unit, we will explore various tools for communicating statistical ideas. We will start with data visualizations, expanding your repertoire of tools for visualizing data. From there, we will move to dashboards—both static and dynamic. Finally, we will play with methods for including executable R code inside these documents.\nThroughout these sections, you will encounter “check-ins” assessing your knowledge on a particular topic. These check-ins are delineated by a red (important) callout box and are associated with the Canvas quizzes assigned each week.\n\n\n\n\n\n\nExample Check-in Callout\n\n\n\nThis is where you will find the body of the question. The callout name refers to the name of the Canvas quiz the question is associated with.",
+    "text": "Discord is a platform for text chatting, voice chatting, and screen sharing. We will be using Discord as a group “workspace” for this class.\nJoin the Stat 541 Server to start experimenting with the interface. When you join the server, you will be given some suggestions to get started.\n\nWe recommend you click through these - and in particular, it is probably a good idea to download the desktop version of Discord.",
     "crumbs": [
-      "Unit 1 - Communication",
-      "Unit 1"
+      "Infrastructure",
+      "Using Discord 101"
     ]
   },
   {
-    "objectID": "unit-1/quarto-dashboard-static.html",
-    "href": "unit-1/quarto-dashboard-static.html",
-    "title": "Quarto Dashboards, Part 1",
+    "objectID": "set-up/setup-discord.html#what-is-discord",
+    "href": "set-up/setup-discord.html#what-is-discord",
+    "title": "Using Discord 101",
     "section": "",
-    "text": "This week, we’re taking the visualization skills we learned last week and using them to create an informational dashboard. Quarto dashboards were integrated into version 1.4, so you can use a familiar tool to create these dashboards. In part 1, we will focus on creating “static” dashboards—where the user does not interact with the content.",
+    "text": "Discord is a platform for text chatting, voice chatting, and screen sharing. We will be using Discord as a group “workspace” for this class.\nJoin the Stat 541 Server to start experimenting with the interface. When you join the server, you will be given some suggestions to get started.\n\nWe recommend you click through these - and in particular, it is probably a good idea to download the desktop version of Discord.",
     "crumbs": [
-      "Unit 1 - Communication",
-      "Quarto Dashboards, Part 1"
+      "Infrastructure",
+      "Using Discord 101"
     ]
   },
   {
-    "objectID": "unit-1/quarto-dashboard-static.html#required-video-hello-quarto-dashboards",
-    "href": "unit-1/quarto-dashboard-static.html#required-video-hello-quarto-dashboards",
-    "title": "Quarto Dashboards, Part 1",
+    "objectID": "set-up/setup-discord.html#setting-up-your-account",
+    "href": "set-up/setup-discord.html#setting-up-your-account",
+    "title": "Using Discord 101",
+    "section": "2 Setting up your account",
+    "text": "2 Setting up your account\n\nVerify your email\nTo use this Discord server, you must have a verified email.\nNobody (including your professors) will be able to see this email, and it does not have to be your Cal Poly email. This is simply to keep the server from being overrun by temporary accounts.\n\n\nCreate your identity\nThe first thing you should do is decide what name and picture you would like to use.\n\nWe would like to strongly encourage you to use your real name and picture, so that we can get to know you. However, if you prefer to remain anonymous, you are free to do so.\n\n(Please do not be like Regina and use the name of another student, however! This kind of impersonation will result in a permanent ban from the server.)\n\n\nDecide about privacy and notifications\nThe default settings on the channel are probably just fine for you. Feel free to make any changes that work for you, though.\nYou can change your message notifications:\n\nYou can edit your privacy settings, although most things are already private:\n\n\n\nConnect other apps\nYou can connect other apps to Discord, either for productivity or just for fun.\n\nDr. Bodwin has connected her Spotify, so you can listen along with her music and/or judge her taste.",
+    "crumbs": [
+      "Infrastructure",
+      "Using Discord 101"
+    ]
+  },
+  {
+    "objectID": "set-up/setup-discord.html#using-the-channels",
+    "href": "set-up/setup-discord.html#using-the-channels",
+    "title": "Using Discord 101",
+    "section": "3 Using the Channels",
+    "text": "3 Using the Channels\nThe server is made up of many channels. Some are text chatrooms, while some are “Voice Channels” that connect you via audio to everyone else in the channel.\n\nText Channels\nUse the #general channel for anything and everything:\n\nIf your question is about course logistics, rather than the material itself, consider using the #class-logistics channel:\n\nYou can use the specific weekly channels to ask questions about the material…\n\n… or the specific lab assignment.\n\nNotice that you can use tick marks (```), like in R Markdown, to make your code appear in a formatted code box.\n\n\nVoice Channels\nTo join a voice channel, simply click it! Make sure you are careful about when you are muted or unmuted.\n\nThe extra “Side Chat” channels are limited to 4 or 8 people, if you would like to start an impromptu study conversation without being heard by the professors and/or the rest of the class. (We’ll only drop in if you invite us!)\nVoice channels can also be used for people to “Go Live”, and share their screen with everyone else.\n\nWhile this will usually be something professors use to demonstrate code, you can go live, too! But you may need to download the desktop version of Discord to do so.\n\n\nPrivate messages\nIt is also easy to send private messages, to your professor(s) or to each other. These private messages can also easily be used to launch a private video chat and/or screen sharing.",
+    "crumbs": [
+      "Infrastructure",
+      "Using Discord 101"
+    ]
+  },
+  {
+    "objectID": "set-up/setup-discord.html#creating-your-own-server",
+    "href": "set-up/setup-discord.html#creating-your-own-server",
+    "title": "Using Discord 101",
+    "section": "4 Creating your own server",
+    "text": "4 Creating your own server\nLast but not least - if you have an established study group you like to work with, and you want to use Discord to communicate without the distraction or invasion of the rest of the class, feel free to create your very own server! You can easily hop between servers during work parties, to ask each other questions or just to take a break and chat about life.",
+    "crumbs": [
+      "Infrastructure",
+      "Using Discord 101"
+    ]
+  },
+  {
+    "objectID": "unit-1/quarto-dashboard-dynamic.html",
+    "href": "unit-1/quarto-dashboard-dynamic.html",
+    "title": "Quarto Dashboards, Part 2",
+    "section": "",
+    "text": "Now that we’ve acquired some skills for making dashboards, let’s spice them up a bit! This week, we’re going to add interactive content to our dashboards!"
+  },
+  {
+    "objectID": "unit-1/quarto-dashboard-dynamic.html#required-video-hello-quarto-dashboards",
+    "href": "unit-1/quarto-dashboard-dynamic.html#required-video-hello-quarto-dashboards",
+    "title": "Quarto Dashboards, Part 2",
     "section": "🎥 Required Video: Hello Quarto Dashboards",
-    "text": "🎥 Required Video: Hello Quarto Dashboards",
-    "crumbs": [
-      "Unit 1 - Communication",
-      "Quarto Dashboards, Part 1"
-    ]
+    "text": "🎥 Required Video: Hello Quarto Dashboards"
   },
   {
-    "objectID": "unit-1/quarto-dashboard-static.html#video-resources",
-    "href": "unit-1/quarto-dashboard-static.html#video-resources",
-    "title": "Quarto Dashboards, Part 1",
-    "section": "Video Resources",
-    "text": "Video Resources\n\nSlides for this Video: https://mine.quarto.pub/quarto-dashboards/\nStarter Documents: https://github.com/mine-cetinkaya-rundel/olympicdash",
-    "crumbs": [
-      "Unit 1 - Communication",
-      "Quarto Dashboards, Part 1"
-    ]
-  },
-  {
-    "objectID": "unit-1/quarto-dashboard-static.html#optional-resources",
-    "href": "unit-1/quarto-dashboard-static.html#optional-resources",
-    "title": "Quarto Dashboards, Part 1",
-    "section": "Optional Resources",
-    "text": "Optional Resources\n\nQuarto Dashboard Gallery\nQuarto Dashboard Tutorial\nQuarto Dashboard Reference\n\n\n\n\n\n\n\nCheck-in: Hello Quarto Dashboard\n\n\n\nFor this first section, you are expected to complete the coding activity associated with Dr. Mine Çetinkaya-Rundel’s video. Specifically, you will need to:\n\nCopy the template repository into your own repository.\nCreate a new folder inside your STAT 541 folder.\nCreate a new RStudio project that links to your copy of the template repo.\nFollow along and edit the olympicdash-r-1.qmd document.\nSubmit the HTML of your revised dashboard (olympicdash-r-1.html) to Canvas.",
-    "crumbs": [
-      "Unit 1 - Communication",
-      "Quarto Dashboards, Part 1"
-    ]
-  },
-  {
-    "objectID": "unit-1/ggplot-leaflet.html",
-    "href": "unit-1/ggplot-leaflet.html",
-    "title": "Creating Maps with the leaflet Package",
+    "objectID": "set-up/setup-workflow.html",
+    "href": "set-up/setup-workflow.html",
+    "title": "Installing / Updating R & RStudio",
     "section": "",
-    "text": "Maps are fantastic and complicated all at the same time! Maps are some of the richest visualizations around because they come with data built into them. That is, on top of whatever data you’re going to plot you are also probably going to view terrain, roads, state/country borders, city names or a host of other information that come with our geography.\nThis implicit richness only adds to challenge of creating a good map. Observe the following recent tweet for a silly example of how maps can be…difficult.\nThere is no shortage of map data visualizations on the web, but all too often this is what we end up with:\n\n\n\n\n\n\n\n\n\n\n\nCaution\n\n\n\nBe sure to watch all 6 videos in this series.\n\n\n\n\n\n\n\n\nCheck-in: leaflet\n\n\n\n1. Is running just the leaflet() function enough to produce a map?\n\nYes\nNo\n\n2. To plot data points on a leaflet map, we should probably use which function?\n\naddTiles()\naddMarkers()\naddProviderTiles()\naddPolygons()\n\n\n\n\n\n\nThe leaflet package is actually extremely rich and can basically enable (interactive) map visualizations as complex as you can imagine. Take some time to peruse the site for the leaflet R package:\nhttps://rstudio.github.io/leaflet/\n\n\n\n\n\n\nCheck-in: leaflet\n\n\n\n3. What do the names of your plotted data columns have to be?\n\nx; y\nleafletx; `leaflety\nlat / latitude; lon/ longitude\nAnything as long as you tell the addMarkers() function correctly\n\n4. If you were to think of latitude and longitude as coordinates in the cartesian coordinate system, then…\n\nlatitude is on the horizontal axis and longitude is on the vertical\nlatitude is on the vertical axis and longitude is on the horizontal\n\n\n\n\n\n\n\nhelmet_icon &lt;- makeIcon(\n  iconUrl = \"http://www.clker.com/cliparts/l/R/b/J/X/D/astronaut-helmet-md.png\",\n  iconWidth = 15, \n  iconHeight = 15\n  )\n\nleaflet() %&gt;%\n  addTiles() %&gt;%\n  addMarkers(lng = jitter(space$Longitude, \n                          factor = 2), \n             lat = jitter(space$Latitude,\n                          factor = 2), \n             icon = helmet_icon, \n             popup = paste(space$Name, \"&lt;br&gt;\", \n                           \"Birth Place: \", space$`Birth Place`),\n             label = paste(space$Name)\n             )\n\n\n\n\n\n\n\n\n\n\n\nCheck-in: leaflet\n\n\n\nThe above map plots data on NASA astronauts!\n5. The graphic for each marker is a little astronaut helmet. How cute! This image was used via…\n\na URL pointing to it on the web.\na downloaded image file.\n\n6. The popup argument specifies what you see when you ______, while the label argument specifies what you see when you ______.\n\nhover; click\nzoom-in; zoom-out\nclick; hover\nsquint your eyes; look normally",
+    "text": "Your workflow refers to the series of good habits you get into in your coding process, that help save you time and headache down the road.\nThis document outlines our suggestions for getting going with your workflow. None of these items is required for the course; they will simply make your life easier down the road.",
     "crumbs": [
-      "Unit 1 - Communication",
-      "Creating Maps with the `leaflet` Package"
+      "Infrastructure",
+      "Installing / Updating R & RStudio"
     ]
   },
   {
-    "objectID": "unit-1/ggplot-leaflet.html#required-video-introductory-series-to-leaflet-in-r-6-videos",
-    "href": "unit-1/ggplot-leaflet.html#required-video-introductory-series-to-leaflet-in-r-6-videos",
-    "title": "Creating Maps with the leaflet Package",
-    "section": "",
-    "text": "Caution\n\n\n\nBe sure to watch all 6 videos in this series.\n\n\n\n\n\n\n\n\nCheck-in: leaflet\n\n\n\n1. Is running just the leaflet() function enough to produce a map?\n\nYes\nNo\n\n2. To plot data points on a leaflet map, we should probably use which function?\n\naddTiles()\naddMarkers()\naddProviderTiles()\naddPolygons()",
+    "objectID": "set-up/setup-workflow.html#updating-r",
+    "href": "set-up/setup-workflow.html#updating-r",
+    "title": "Installing / Updating R & RStudio",
+    "section": "1 Updating R",
+    "text": "1 Updating R\nEach of you should have R already installed on your computer, but you might not have the most up to date version of R! Do not ignore these instructions. If you neglect to update your version of R, you may find that updating a package will make it so your code will not run.\n\nStep 1: Open RStudio\nStep 2: At the top of the the Console it will say what version of R you are using\n\n\nIf the version is not 4.4.3 (like the image above), you need to update your version of R! The simplest way to do this is to follow the instructions below to install R.",
     "crumbs": [
-      "Unit 1 - Communication",
-      "Creating Maps with the `leaflet` Package"
+      "Infrastructure",
+      "Installing / Updating R & RStudio"
     ]
   },
   {
-    "objectID": "unit-1/ggplot-leaflet.html#more-on-the-leaflet-package",
-    "href": "unit-1/ggplot-leaflet.html#more-on-the-leaflet-package",
-    "title": "Creating Maps with the leaflet Package",
-    "section": "",
-    "text": "The leaflet package is actually extremely rich and can basically enable (interactive) map visualizations as complex as you can imagine. Take some time to peruse the site for the leaflet R package:\nhttps://rstudio.github.io/leaflet/\n\n\n\n\n\n\nCheck-in: leaflet\n\n\n\n3. What do the names of your plotted data columns have to be?\n\nx; y\nleafletx; `leaflety\nlat / latitude; lon/ longitude\nAnything as long as you tell the addMarkers() function correctly\n\n4. If you were to think of latitude and longitude as coordinates in the cartesian coordinate system, then…\n\nlatitude is on the horizontal axis and longitude is on the vertical\nlatitude is on the vertical axis and longitude is on the horizontal",
+    "objectID": "set-up/setup-workflow.html#installing-r",
+    "href": "set-up/setup-workflow.html#installing-r",
+    "title": "Installing / Updating R & RStudio",
+    "section": "2 Installing R",
+    "text": "2 Installing R\nDownload and install R by going to https://cloud.r-project.org/. Here, you will find three options for installing R—click on the option for your computer’s operating system.\n\n\n\n\nIf you are a Windows user:\n\nClick on “Download R for Windows”\nClick on “base”\nClick on the Download link.\nWhen you open the execution file (.exe) you will be prompted with a variety of questions about installing R. Feel free to use the default features / settings that come with R (continue to click “Ok” until the download starts).\n\n\n\n\n\n\n\nMultiple Versions of R\n\n\n\nBeware that if you had a previous version of R downloaded on your PC, that old version will not be deleted when you download the most recent version of R. We do not want to have two versions of R installed, as your computer can get confused what version of R to use. So, you need to remove the old version of R.\nTo do this you need to:\n\nNavigate to your computer’s settings\nClick on the “Apps” option on the left-hand panel\nSearch for or scroll down to R\nFind the older version of R\n\n\n\nClick on the ... on the right side\nSelect “Uninstall”\n\n\n\n\n\n\nIf you are macOS user:\n\nClick on “Download R for (Mac) OS X”\nUnder “Latest release:” click on R-X.X.X.pkg, where R-X.X.X is the version number. For example, the latest version of R as of July 1, 2024 was R-4.4.1 (Race for Your Life).\nWhen installing, use the default features / settings that come with R (click Ok until the download starts).",
     "crumbs": [
-      "Unit 1 - Communication",
-      "Creating Maps with the `leaflet` Package"
+      "Infrastructure",
+      "Installing / Updating R & RStudio"
     ]
   },
   {
-    "objectID": "unit-1/ggplot-leaflet.html#practice-with-leaflet",
-    "href": "unit-1/ggplot-leaflet.html#practice-with-leaflet",
-    "title": "Creating Maps with the leaflet Package",
+    "objectID": "set-up/setup-workflow.html#updating-rstudio",
+    "href": "set-up/setup-workflow.html#updating-rstudio",
+    "title": "Installing / Updating R & RStudio",
+    "section": "3 Updating RStudio",
+    "text": "3 Updating RStudio\nRStudio can be downloaded here\nThe most recent version of RStudio is 2024.12.1+563. You can check if you are using the most recent version of RStudio by:\n\nOpening RStudio\nClicking on “Help”\nSelecting “Check for Updates”\nChoosing “Quit and Download” if there is an update available",
+    "crumbs": [
+      "Infrastructure",
+      "Installing / Updating R & RStudio"
+    ]
+  },
+  {
+    "objectID": "set-up/setup-workflow.html#installing-updating-the-tidyverse",
+    "href": "set-up/setup-workflow.html#installing-updating-the-tidyverse",
+    "title": "Installing / Updating R & RStudio",
+    "section": "4 Installing / Updating the tidyverse",
+    "text": "4 Installing / Updating the tidyverse\nIn this class, we will make heavy use of the tidyverse packages.\nIf you have not used the tidyverse before, type the following into your console:\n\ninstall.packages(\"tidyverse\")\n\nIf you have used the tidyverse before, you only need to update packages. Type the following into your console:\n\nlibrary(tidyverse)\ntidyverse_update()\n\nThen follow the instructions that print out to update a few of your tidyverse packages.",
+    "crumbs": [
+      "Infrastructure",
+      "Installing / Updating R & RStudio"
+    ]
+  },
+  {
+    "objectID": "set-up/setup-workflow.html#configure-your-options",
+    "href": "set-up/setup-workflow.html#configure-your-options",
+    "title": "Installing / Updating R & RStudio",
+    "section": "5 Configure your options",
+    "text": "5 Configure your options\nThere are a few settings we recommend that you change right away in RStudio.\n\nR Workspace\nFirst, you should not save your environment when you close RStudio:\n\n\n\nCode Chunk Output\nSecond, make a deliberate choice about where your chunks will evaluate when you run that. That is, if you reference files, are you referencing them relative to your Project, or relative to your Quarto Document (which might live in a subfolder or even outside the project).",
+    "crumbs": [
+      "Infrastructure",
+      "Installing / Updating R & RStudio"
+    ]
+  },
+  {
+    "objectID": "set-up/setup-workflow.html#project-based-workflow",
+    "href": "set-up/setup-workflow.html#project-based-workflow",
+    "title": "Installing / Updating R & RStudio",
+    "section": "6 Project-based workflow",
+    "text": "6 Project-based workflow\nWe strongly recommend that you adopt a project-oriented approach to your R work. That is, you should never open R or RStudio directly; you should only open the project you intend to work on.\nThis resource provides an excellent explanation of why and how to use projects.",
+    "crumbs": [
+      "Infrastructure",
+      "Installing / Updating R & RStudio"
+    ]
+  },
+  {
+    "objectID": "unit-1/ggplot-review.html",
+    "href": "unit-1/ggplot-review.html",
+    "title": "ggplot Review",
     "section": "",
-    "text": "helmet_icon &lt;- makeIcon(\n  iconUrl = \"http://www.clker.com/cliparts/l/R/b/J/X/D/astronaut-helmet-md.png\",\n  iconWidth = 15, \n  iconHeight = 15\n  )\n\nleaflet() %&gt;%\n  addTiles() %&gt;%\n  addMarkers(lng = jitter(space$Longitude, \n                          factor = 2), \n             lat = jitter(space$Latitude,\n                          factor = 2), \n             icon = helmet_icon, \n             popup = paste(space$Name, \"&lt;br&gt;\", \n                           \"Birth Place: \", space$`Birth Place`),\n             label = paste(space$Name)\n             )\n\n\n\n\n\n\n\n\n\n\n\nCheck-in: leaflet\n\n\n\nThe above map plots data on NASA astronauts!\n5. The graphic for each marker is a little astronaut helmet. How cute! This image was used via…\n\na URL pointing to it on the web.\na downloaded image file.\n\n6. The popup argument specifies what you see when you ______, while the label argument specifies what you see when you ______.\n\nhover; click\nzoom-in; zoom-out\nclick; hover\nsquint your eyes; look normally",
+    "text": "This module consists of readings reviewing material typically taught in STAT 331. It is possible you can skip over portions of this reading. It is your responsibility to decide which areas you need to review before diving into Stat 541.",
     "crumbs": [
       "Unit 1 - Communication",
-      "Creating Maps with the `leaflet` Package"
+      "`ggplot` Review"
+    ]
+  },
+  {
+    "objectID": "unit-1/ggplot-review.html#recommended-video",
+    "href": "unit-1/ggplot-review.html#recommended-video",
+    "title": "ggplot Review",
+    "section": "🎥 Recommended Video",
+    "text": "🎥 Recommended Video\n\n\n\n\n\n\n\n\n\nCheck-in: ggplot Review\n\n\n\nIdentify the elements of the following plot as\n\nAn aesthetic\nA geometry\nA scale\nNone of the above\n\n\n\nThe x-axis is age\nThe y-axis is “Urge to run up the down escalator”\nThe y-axis ranges from “Weak” to “Strong”\nThis is a line graph\nThe two lines are “What I was supposed to feel” and “What I’ve actually felt”\nThe lines are labeled with text\nOnly even ages are labelled\nStick figure people are sliding down the line",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "`ggplot` Review"
+    ]
+  },
+  {
+    "objectID": "unit-1/ggplot-review.html#recommended-reading-r4ds-data-visualisation",
+    "href": "unit-1/ggplot-review.html#recommended-reading-r4ds-data-visualisation",
+    "title": "ggplot Review",
+    "section": "📖 Recommended Reading: R4DS: Data Visualisation",
+    "text": "📖 Recommended Reading: R4DS: Data Visualisation\n\n\n\n\n\n\nCheckin: ggplot Review\n\n\n\nFill in the six (6) blanks to make the following plot:\n\nstarwars %&gt;%\n  ____(species == \"Human\") %&gt;%\n  ggplot(mapping = aes(____ = height, y = mass, ____ = gender)) + \n  geom_[____](____ = 17) +\n  ____(x = \"Height (cm)\", \n       y = \"Mass (kg)\", \n       color = \"Gender Expression\"\n       )",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "`ggplot` Review"
     ]
   },
   {
@@ -717,50 +794,6 @@
     "crumbs": [
       "Unit 1 - Communication",
       "`ggplot` Extensions"
-    ]
-  },
-  {
-    "objectID": "labs/lab-2.html#dissecting-a-bad-visualization",
-    "href": "labs/lab-2.html#dissecting-a-bad-visualization",
-    "title": "Lab 2",
-    "section": "Dissecting a Bad Visualization",
-    "text": "Dissecting a Bad Visualization\nBelow is an example of a less-than-ideal visualization from the collection linked above. It comes to us from data provided for the Wellcome Global Monitor 2018 report by the Gallup World Poll:\n\n\nWhile there are certainly issues with this image, do your best to tell the story of this graph in words. That is, what is this graph telling you? What do you think the authors meant to convey with it?\nList the variables that appear to be displayed in this visualization. Hint: Variables refer to columns in the data.\nNow that you’re versed in the grammar of graphics (e.g., ggplot), list the aesthetics used and which variables are mapped to each.\nWhat type of graph would you call this? Meaning, what geom would you use to produce this plot?\nProvide at least four problems or changes that would improve this graph. Please format your changes as bullet points!",
-    "crumbs": [
-      "Unit 1 - Communication",
-      "Lab 2"
-    ]
-  },
-  {
-    "objectID": "labs/lab-2.html#improving-the-bad-visualization",
-    "href": "labs/lab-2.html#improving-the-bad-visualization",
-    "title": "Lab 2",
-    "section": "Improving the Bad Visualization",
-    "text": "Improving the Bad Visualization\nThe data for the Wellcome Global Monitor 2018 report can be downloaded at the following site: https://wellcome.ac.uk/reports/wellcome-global-monitor/2018\n\nThere are two worksheets in the downloaded dataset file. You may need to read them in separately, but you may also just use one if it suffices.\n\nImprove the visualization above by either re-creating it with the issues you identified fixed OR by creating a new visualization that you believe tells the same story better.",
-    "crumbs": [
-      "Unit 1 - Communication",
-      "Lab 2"
-    ]
-  },
-  {
-    "objectID": "labs/lab-2.html#second-data-visualization-improvement",
-    "href": "labs/lab-2.html#second-data-visualization-improvement",
-    "title": "Lab 2",
-    "section": "Second Data Visualization Improvement",
-    "text": "Second Data Visualization Improvement\nFor this second plot, you must select a plot that uses maps so you can demonstrate your proficiency with the leaflet package!\n\nSelect a data visualization in the report that you think could be improved. Be sure to cite both the page number and figure title. Do your best to tell the story of this graph in words. That is, what is this graph telling you? What do you think the authors meant to convey with it?\nList the variables that appear to be displayed in this visualization.\nNow that you’re versed in the grammar of graphics (ggplot), list the aesthetics used and which variables are specified for each.\nWhat type of graph would you call this?\nList all of the problems or things you would improve about this graph.\nImprove the visualization above by either re-creating it with the issues you identified fixed OR by creating a new visualization that you believe tells the same story better.",
-    "crumbs": [
-      "Unit 1 - Communication",
-      "Lab 2"
-    ]
-  },
-  {
-    "objectID": "labs/lab-2.html#third-data-visualization-improvement",
-    "href": "labs/lab-2.html#third-data-visualization-improvement",
-    "title": "Lab 2",
-    "section": "Third Data Visualization Improvement",
-    "text": "Third Data Visualization Improvement\nFor this third plot, you must use one of the other ggplot2 extension packages mentioned this week (e.g., gganimate, plotly, patchwork, cowplot).\n\nSelect a data visualization in the report that you think could be improved. Be sure to cite both the page number and figure title. Do your best to tell the story of this graph in words. That is, what is this graph telling you? What do you think the authors meant to convey with it?\nList the variables that appear to be displayed in this visualization.\nNow that you’re versed in the grammar of graphics (ggplot), list the aesthetics used and which variables are specified for each.\nWhat type of graph would you call this?\nList all of the problems or things you would improve about this graph.\nImprove the visualization above by either re-creating it with the issues you identified fixed OR by creating a new visualization that you believe tells the same story better.",
-    "crumbs": [
-      "Unit 1 - Communication",
-      "Lab 2"
     ]
   }
 ]

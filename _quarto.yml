@@ -58,6 +58,7 @@ website:
       align: left
       contents:
         - href: infrastructure.qmd
+        - href: set-up/setup-discord.qmd
         - href: set-up/setup-workflow.qmd
         - href: set-up/setup-version-control.qmd
         - href: labs/lab-1.qmd
@@ -74,22 +75,22 @@ website:
         - href: labs/lab-3.qmd
         #- href: unit-1/quarto-dashboard-dynamic.qmd
 
-    # - id: infrastructure
-    #   title: "Infrastructure"
+    # - id: unit-2
+    #   title: "Unit 2"
     #   contents:
-    #     - href: infrastructure.qmd
-    #     - href: 03-access-r.qmd
-    #     - href: 03-version-control.qmd
-    #     - href: 03-discussion.qmd
-    #     - href: 03-sharing.qmd
-    #     - href: 03-alternative-setups.qmd
-    # 
-    # - id: design
-    #   align: left
+    #     - href: unit-2.qmd
+    #     - href: unit-2/json-data.qmd
+    #     - href: unit-2/sql.qmd
+    #     - href: unit-2/writing-functions.qmd
+    #     - href: unit-2/writing-efficient-functions.qmd
+    #     - href: unit-2/web-scraping.qmd
+    #     - href: unit-2/generative-art.qmd
+    
+    # - id: portfolio
+    #   title: "Portfolio"
     #   contents:
-    #     - href: design.qmd
-    #     - href: 04-pedagogy.qmd
-    #     - href: 04-schedule.qmd
+    #     - href: porfolio.qmd
+    #     - href: portfolio/portfolio-instructions.qmd
 
 format:
   html:
