@@ -30,6 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../portfolio/portfolio-rubric.html" rel="next">
+<link href="../portfolio.html" rel="prev">
 <link href="../images/cat-monsters-horst.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -73,7 +75,7 @@ ul.task-list li input[type="checkbox"] {
 
 </head>
 
-<body class="nav-fixed">
+<body class="nav-sidebar floating nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -115,7 +117,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Unit 2 - Iteration</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../portfolio.qmd"> 
+    <a class="nav-link active" href="../portfolio.html" aria-current="page"> 
 <span class="menu-text">Portfolio</span></a>
   </li>  
 </ul>
@@ -132,10 +134,45 @@ ul.task-list li input[type="checkbox"] {
 </div>
       </div> <!-- /container-fluid -->
     </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../portfolio/portfolio-instructions.html">Final Portfolio Instructions</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../portfolio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Portfolio</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../portfolio/portfolio-instructions.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Final Portfolio Instructions</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../portfolio/portfolio-rubric.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Final Portfolio Evaluation Rubric</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -229,12 +266,12 @@ Important
 <p>I’m expecting that your posts are contained in a <code>portfolio</code> folder, so they are easy for me to find.</p>
 </div>
 </div>
-<p>By the end of the quarter, you should have blog posts for the following projects you’ve completed:</p>
+<p>By the end of the quarter, you should have <strong>seven</strong> blog posts for the following projects you’ve completed:</p>
 <ul>
 <li>Advanced Visualizations</li>
 <li>Quarto Dashboards (Static)</li>
 <li>Quarto Dashboards (Dynamic)</li>
-<li>Quarto with WebR</li>
+<li>Writing Efficient Functions</li>
 <li>JSON Data &amp; APIs</li>
 <li>Webscraping</li>
 <li>Generative Art</li>
@@ -812,6 +849,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../portfolio.html" class="pagination-link" aria-label="Portfolio">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Portfolio</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../portfolio/portfolio-rubric.html" class="pagination-link" aria-label="Final Portfolio Evaluation Rubric">
+        <span class="nav-page-text">Final Portfolio Evaluation Rubric</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">

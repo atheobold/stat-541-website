@@ -1,5 +1,173 @@
 [
   {
+    "objectID": "portfolio/reflection-template.html",
+    "href": "portfolio/reflection-template.html",
+    "title": "Stat 541 Final Grade Reflection",
+    "section": "",
+    "text": "Download the source code for the template here: portfolio-template.qmd"
+  },
+  {
+    "objectID": "portfolio/reflection-template.html#il-1-adding-new-skills",
+    "href": "portfolio/reflection-template.html#il-1-adding-new-skills",
+    "title": "Stat 541 Final Grade Reflection",
+    "section": "[IL-1] Adding new skills:",
+    "text": "[IL-1] Adding new skills:\n\nI can find and adopt new packages to accomplish tasks.\nI can adapt to different syntax styles (tidy, base, formula style, data.table).\nI can use tutorials, etc. to enhance my understanding of new concepts\n\n\nLevel: 1\n\n\nJustification:"
+  },
+  {
+    "objectID": "portfolio/reflection-template.html#il-2-online-resources",
+    "href": "portfolio/reflection-template.html#il-2-online-resources",
+    "title": "Stat 541 Final Grade Reflection",
+    "section": "[IL-2] Online resources:",
+    "text": "[IL-2] Online resources:\n\nI can use online resources (Google, ChatGPT, StackOverflow) to solve problems, debug, or find new tools.\nI can find source code for similar projects to use as starting points for my own\nI can read the documentation of an API to figure out how to access data.\n\n\nLevel: 1\n\n\nJustification:"
+  },
+  {
+    "objectID": "portfolio/reflection-template.html#rw-1-file-code-and-data-management",
+    "href": "portfolio/reflection-template.html#rw-1-file-code-and-data-management",
+    "title": "Stat 541 Final Grade Reflection",
+    "section": "[RW-1] File, code, and data management:",
+    "text": "[RW-1] File, code, and data management:\n\nI can use Git and GitHub to track my progress and collaborate (creating repos, cloning, forking, pull requesting).\nI always use R Projects and the {here} package to organize my scripts, notebooks, data, and applications.\n\n\nLevel: 1\n\n\nJustification:"
+  },
+  {
+    "objectID": "portfolio/reflection-template.html#rw-2-notebooks",
+    "href": "portfolio/reflection-template.html#rw-2-notebooks",
+    "title": "Stat 541 Final Grade Reflection",
+    "section": "[RW-2] Notebooks:",
+    "text": "[RW-2] Notebooks:\n\nI can use Quarto and/or R Markdown to produce a reproducible notebook and polished rendered document.\nI can use appropriate chunk options (echo, error, cache, etc.) to render my qmd/Rmd quickly and cleanly.\n\n\nLevel: 1\n\n\nJustification:"
+  },
+  {
+    "objectID": "portfolio/reflection-template.html#rw-3-code-style",
+    "href": "portfolio/reflection-template.html#rw-3-code-style",
+    "title": "Stat 541 Final Grade Reflection",
+    "section": "[RW-3] Code style",
+    "text": "[RW-3] Code style\n\nMy code is clear, readable, well-organized, and well-commented.\nI can use a package-based workflow to organize my analyses\n\n\nLevel: 1\n\n\nJustification"
+  },
+  {
+    "objectID": "portfolio/reflection-template.html#tc-1-project-summaries",
+    "href": "portfolio/reflection-template.html#tc-1-project-summaries",
+    "title": "Stat 541 Final Grade Reflection",
+    "section": "[TC-1] Project summaries:",
+    "text": "[TC-1] Project summaries:\n\nI can clearly and succinctly summarize the contributions of my project.\nI accurately interpret statistical or modeling results.\nI consider the appropriate scope and impact of my project results.\n\n\nLevel: 1\n\n\nJustification:"
+  },
+  {
+    "objectID": "portfolio/reflection-template.html#tc-2-documentation",
+    "href": "portfolio/reflection-template.html#tc-2-documentation",
+    "title": "Stat 541 Final Grade Reflection",
+    "section": "[TC-2] Documentation:",
+    "text": "[TC-2] Documentation:\n\nI provide ample documentation and tutorials for my custom functions.\nI provide user-friendly guides for my tools and software\n\n\nLevel: 1\n\n\nJustification:"
+  },
+  {
+    "objectID": "portfolio/reflection-template.html#dm-1-data-preparation",
+    "href": "portfolio/reflection-template.html#dm-1-data-preparation",
+    "title": "Stat 541 Final Grade Reflection",
+    "section": "[DM-1] Data preparation:",
+    "text": "[DM-1] Data preparation:\n\nI can read in datasets to R, including untidy ones.\nI can clean datasets to deal with missing data, typos, poor formatting, etc.\n\n\nLevel: 1\n\n\nJustification:"
+  },
+  {
+    "objectID": "portfolio/reflection-template.html#dm-2-data-wrangling",
+    "href": "portfolio/reflection-template.html#dm-2-data-wrangling",
+    "title": "Stat 541 Final Grade Reflection",
+    "section": "[DM-2] Data wrangling",
+    "text": "[DM-2] Data wrangling\n\nI can cleverly use pivoting, grouping, and joining to wrangle data.\nI can use mapping ({purrr}), applying (tapply, lapply, …), and/or iteration (for loops) to perform repeated tasks.\n\n\nLevel: 1\n\n\nJustification:"
+  },
+  {
+    "objectID": "portfolio/reflection-template.html#dm-3-data-formats",
+    "href": "portfolio/reflection-template.html#dm-3-data-formats",
+    "title": "Stat 541 Final Grade Reflection",
+    "section": "[DM-3] Data formats",
+    "text": "[DM-3] Data formats\n\nI can use API urls to access JSON data and convert it to a data frame\n\n\nLevel: 0\n\n\nJustification"
+  },
+  {
+    "objectID": "portfolio/reflection-template.html#dm-4-data-collection",
+    "href": "portfolio/reflection-template.html#dm-4-data-collection",
+    "title": "Stat 541 Final Grade Reflection",
+    "section": "[DM-4] Data collection",
+    "text": "[DM-4] Data collection\n\nI can webscrape simple tables and information\n\n\nLevel: 1\n\n\nJustification"
+  },
+  {
+    "objectID": "portfolio/reflection-template.html#pv-1-ggplot-grammar-of-graphics",
+    "href": "portfolio/reflection-template.html#pv-1-ggplot-grammar-of-graphics",
+    "title": "Stat 541 Final Grade Reflection",
+    "section": "[PV-1] ggplot: grammar of graphics",
+    "text": "[PV-1] ggplot: grammar of graphics\n\nI can use less common geometries, including those from ggplot extension packages.\nI can use the correct aesthetics to map variables\nI understand how geometries inherit aesthetics I can add annotations to my plot\n\n\nLevel: 1\n\n\nJustification:"
+  },
+  {
+    "objectID": "portfolio/reflection-template.html#pv-2-ggplot-theme",
+    "href": "portfolio/reflection-template.html#pv-2-ggplot-theme",
+    "title": "Stat 541 Final Grade Reflection",
+    "section": "[PV-2] ggplot: theme",
+    "text": "[PV-2] ggplot: theme\n\nI can edit the titles, subtitles, captions, axis labels, etc. to create a clearly labelled plot\nI can choose colors (“scales”) and themes to make a visually pleasing and accessible plot\n\n\nLevel: 1\n\n\nJustification:"
+  },
+  {
+    "objectID": "portfolio/reflection-template.html#pv-3-dynamic-visualizations",
+    "href": "portfolio/reflection-template.html#pv-3-dynamic-visualizations",
+    "title": "Stat 541 Final Grade Reflection",
+    "section": "[PV-3] Dynamic visualizations",
+    "text": "[PV-3] Dynamic visualizations\n\nI can use a package like {gganimate} to create self-contained gifs\nI can use a package like {plotly}, {ggplotly}, {leaflet}, {ggirafe}, etc. to make interactive html widgets\n\n\nLevel: 1\n\n\nJustification:"
+  },
+  {
+    "objectID": "portfolio/reflection-template.html#pv-4-shiny",
+    "href": "portfolio/reflection-template.html#pv-4-shiny",
+    "title": "Stat 541 Final Grade Reflection",
+    "section": "[PV-4] Shiny",
+    "text": "[PV-4] Shiny\n\nI can create a functional Shiny app.\nI understand the principle of reactivity, and how to use it.\n\n\nLevel: 1\n\n\nJustification:"
+  },
+  {
+    "objectID": "portfolio/reflection-template.html#sd-1-r-programming-language-details",
+    "href": "portfolio/reflection-template.html#sd-1-r-programming-language-details",
+    "title": "Stat 541 Final Grade Reflection",
+    "section": "[SD-1] R programming language details",
+    "text": "[SD-1] R programming language details\n\nI understand non-standard evaluation (aka “Tidy Eval” or “unquoted objects”), and I can use tunneling in my functions.\nI understand functional programming, and I can use functions as objects in my code design\nI understand object-oriented programming, and I can define my own classes and methods.\n\n\nLevel: 1\n\n\nJustification:"
+  },
+  {
+    "objectID": "portfolio/reflection-template.html#ai-1-creating-an-algorithm",
+    "href": "portfolio/reflection-template.html#ai-1-creating-an-algorithm",
+    "title": "Stat 541 Final Grade Reflection",
+    "section": "[AI-1] Creating an algorithm:",
+    "text": "[AI-1] Creating an algorithm:\n\nI can invent and implement my own iterative algorithm.\n\n\nLevel: 1\n\n\nJustification:"
+  },
+  {
+    "objectID": "portfolio/reflection-template.html#ai-2-generative-art",
+    "href": "portfolio/reflection-template.html#ai-2-generative-art",
+    "title": "Stat 541 Final Grade Reflection",
+    "section": "[AI-2] Generative art:",
+    "text": "[AI-2] Generative art:\n\nI can apply a variety of generative art functions to make a visually pleasing piece.\nI can explain why particular changes to the code result in particular differences in the visualization.\n\n\nLevel: 1\n\n\nJustification:"
+  },
+  {
+    "objectID": "portfolio/reflection-template.html#cd-1-speed-and-efficiency",
+    "href": "portfolio/reflection-template.html#cd-1-speed-and-efficiency",
+    "title": "Stat 541 Final Grade Reflection",
+    "section": "[CD-1] Speed and Efficiency:",
+    "text": "[CD-1] Speed and Efficiency:\n\nI can recognize moments of possible slowdown in my code, and use built-in functions or parallelizing to speed them up.\nI always use and design vectorized functions whenever possible.\n\n\nLevel: 1\n\n\nJustification:"
+  },
+  {
+    "objectID": "portfolio/reflection-template.html#cd-2-object-handling",
+    "href": "portfolio/reflection-template.html#cd-2-object-handling",
+    "title": "Stat 541 Final Grade Reflection",
+    "section": "[CD-2] Object handling:",
+    "text": "[CD-2] Object handling:\n\nI can make reasonable choices in my code design about when to save intermediate objects.\nI can convert objects between types and structures as needed.\n\n\nLevel: 1\n\n\nJustification:"
+  },
+  {
+    "objectID": "portfolio/reflection-template.html#cd-3-supporting-functions",
+    "href": "portfolio/reflection-template.html#cd-3-supporting-functions",
+    "title": "Stat 541 Final Grade Reflection",
+    "section": "[CD-3] Supporting functions:",
+    "text": "[CD-3] Supporting functions:\n\nI write helper/shortcut functions to streamline repeated tasks and make my code easier to read.\nI use intermediate functions to streamline repeated or looping processes.\n\n\nLevel: 1\n\n\nJustification:"
+  },
+  {
+    "objectID": "portfolio/reflection-template.html#cd-4-algorithmic-process",
+    "href": "portfolio/reflection-template.html#cd-4-algorithmic-process",
+    "title": "Stat 541 Final Grade Reflection",
+    "section": "[CD-4] Algorithmic process:",
+    "text": "[CD-4] Algorithmic process:\n\nMy loops are clean and efficient\nProper values are calculated to update objects and/or determine stopping conditions\nI have built in checks for possible problems or extreme cases in the algorithm\n\n\nLevel: 1\n\n\nJustification:"
+  },
+  {
+    "objectID": "portfolio/reflection-template.html#grade",
+    "href": "portfolio/reflection-template.html#grade",
+    "title": "Stat 541 Final Grade Reflection",
+    "section": "Grade",
+    "text": "Grade\nBased on the summary plot above, I believe I have earned a ____ in STAT 541.\n\nJustification"
+  },
+  {
     "objectID": "labs/lab-1.html",
     "href": "labs/lab-1.html",
     "title": "Lab 1 - Quarto Warmup & STAT 331 Review",
@@ -198,32 +366,87 @@
     ]
   },
   {
-    "objectID": "portfolio/portfolio-instructions.html",
-    "href": "portfolio/portfolio-instructions.html",
-    "title": "Final Portfolio Instructions",
+    "objectID": "portfolio/portfolio-rubric.html",
+    "href": "portfolio/portfolio-rubric.html",
+    "title": "Final Portfolio Evaluation Rubric",
     "section": "",
-    "text": "GitHub is an incredibly useful tool for project management and collaboration. It also has several useful features for professional promotion: you can host your own site on github using GitHub pages, describe yourself using a GitHub developer profile, and even use resume.github.io to generate a resume summary of your activity on GitHub (you must opt-in by starring the project page).\nThe development of Quarto has made it incredibly simple to generate websites, which can be easily hosted by GitHub Pages."
+    "text": "You will use the following labels to score each of the learning objectives in this course. Think of these as levels of achievement, like in a video game.",
+    "crumbs": [
+      "Portfolio",
+      "Final Portfolio Evaluation Rubric"
+    ]
   },
   {
-    "objectID": "portfolio/portfolio-instructions.html#instructions-for-creating-a-personal-website",
-    "href": "portfolio/portfolio-instructions.html#instructions-for-creating-a-personal-website",
-    "title": "Final Portfolio Instructions",
-    "section": "Instructions for Creating a Personal Website",
-    "text": "Instructions for Creating a Personal Website\nIf you’ve never made a personal website, you will need to create one! There are so many resources for creating Quarto websites, but my absolute favorite one’s are from Sam Shanny-Csik.\nFollow this step-by-step guide for creating a new Quarto website: &lt;https://ucsb-meds.github.io/creating-quarto-websites/\n\n\n\n\n\n\n\n\nName your project &lt;YourGitHubUsername&gt;.github.io\n\n\n\nWe’re going to deploy websites using GitHub pages, and it would be nice if your website had a professional name! I would recommend using your username, unless you chose a username that isn’t very descriptive or unique (e.g., brandonk04). If this is the case, I would recommend you use a more descriptive name for your project (e.g., brandon-kim-04).\n\n\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nI would strongly recommend this folder living inside your broader “STAT 541” folder, at least for now!"
+    "objectID": "portfolio/portfolio-rubric.html#grade-calculation",
+    "href": "portfolio/portfolio-rubric.html#grade-calculation",
+    "title": "Final Portfolio Evaluation Rubric",
+    "section": "Grade Calculation",
+    "text": "Grade Calculation\nThese are benchmarks to give you an idea of what achievements might correspond to what grade. It is not an exact mathematical conversion; your actual Portfolio Grade will be decided during our discussion meeting.\n\n\n\n\nNovice\nProficient\nVirtuoso\n\n\nA\n20%\n20%\n60%\n\n\nB\n40%\n40%\n20%\n\n\nC\n60%\n25%\n5%\n\n\nD\n90%\n10%\n0%",
+    "crumbs": [
+      "Portfolio",
+      "Final Portfolio Evaluation Rubric"
+    ]
   },
   {
-    "objectID": "portfolio/portfolio-instructions.html#making-changes-to-an-existing-website",
-    "href": "portfolio/portfolio-instructions.html#making-changes-to-an-existing-website",
-    "title": "Final Portfolio Instructions",
-    "section": "Making Changes to an Existing Website",
-    "text": "Making Changes to an Existing Website\nSo you already have a personal website? Great! Let’s get started making blog posts for your website!\nWe’re going to follow another one of Sam Shanny-Csik’s guides for integrating blog posts into your existing website:\nhttps://samanthacsik.github.io/posts/2022-10-24-quarto-blogs/\n\n\n\n\n\n\nImportant\n\n\n\nI’m expecting that your posts are contained in a portfolio folder, so they are easy for me to find.\n\n\nBy the end of the quarter, you should have blog posts for the following projects you’ve completed:\n\nAdvanced Visualizations\nQuarto Dashboards (Static)\nQuarto Dashboards (Dynamic)\nQuarto with WebR\nJSON Data & APIs\nWebscraping\nGenerative Art"
+    "objectID": "portfolio/portfolio-rubric.html#missing-portfolios",
+    "href": "portfolio/portfolio-rubric.html#missing-portfolios",
+    "title": "Final Portfolio Evaluation Rubric",
+    "section": "Missing Portfolios",
+    "text": "Missing Portfolios\nIf you do not submit a Final Portfolio, your grade will be determined based on your Midterm Portfolio. If, however, you also did not submit a Midterm Portfolio, the best grade you can earn in the course is a C-.",
+    "crumbs": [
+      "Portfolio",
+      "Final Portfolio Evaluation Rubric"
+    ]
   },
   {
-    "objectID": "portfolio/portfolio-instructions.html#additional-styling-options",
-    "href": "portfolio/portfolio-instructions.html#additional-styling-options",
-    "title": "Final Portfolio Instructions",
-    "section": "Additional Styling Options",
-    "text": "Additional Styling Options\nIn case you are interested in styling your website further, I would recommend looking over this presentation on using .scss and .sass files."
+    "objectID": "portfolio.html",
+    "href": "portfolio.html",
+    "title": "Portfolio",
+    "section": "",
+    "text": "A portfolio is a collection of work that gives information about the person doing the work. Artists and architects, for example, have portfolios that show the range and scope of what they do, and by looking through their portfolios, you get a sense of who this person is, how they have grown as a professional, what they have produced, and what they are capable of producing.\nThat’s the spirit intended for the STAT 331 Portfolio. In your portfolio, you will give a curated collection of your best work along with reflections that tell the story of your growth from the first day of classes all the way to the end. Your goal is to argue, convincingly and with concrete evidence, that you have met the criteria for both content proficiency, evidence of continued learning, and growth as a team member that goes with a particular grade. I will read your portfolio carefully, and if you make a convincing case for a grade, that’s the grade you’ll receive.",
+    "crumbs": [
+      "Portfolio"
+    ]
+  },
+  {
+    "objectID": "portfolio.html#key-information",
+    "href": "portfolio.html#key-information",
+    "title": "Portfolio",
+    "section": "Key Information",
+    "text": "Key Information\nFormat: Your portfolio will have two components:\n\nA personal website with blog posts containing your projects from STAT 541\nA final grade reflection, justifying your achievement for the course’s learning objectives\n\nThe blog posts from your website is what you will reference when justifying your achievement for a given learning objective.\n\nDue date: The portfolio is due the Saturday before finals week. No deadline extensions are available for the Final Portfolio.",
+    "crumbs": [
+      "Portfolio"
+    ]
+  },
+  {
+    "objectID": "portfolio.html#final-grade-reflection",
+    "href": "portfolio.html#final-grade-reflection",
+    "title": "Portfolio",
+    "section": "Final Grade Reflection",
+    "text": "Final Grade Reflection\nThis component is a self-evaluation of your performance in the class. Your goal is to state clearly what grade you think you have earned in the course, and convincingly argue that you have met the criteria for that grade. Please be thoughtful, honest, and reflective, but also brief and focused.\nThis reflection will be done in the reflection_template.qmd file. The structure of the document is as follows:\n\nFor each of the learning targets, carefully select examples of your code that demonstrate concretely and directly your proficiency with the given target.\n\n\nYou must indicate where the code you provided came from, linking to the blog post from your personal website.\n\n\nWhat grade did you earn? State it clearly in one sentence. You can include plus/minus modifiers; see below about those.\nHow did you meet that grade’s requirements? The requirements for grades are found in the Portfolio Rubric. Review the criteria carefully. Then, explain how you have satisfied the criteria for the grade you are saying you’ve earned. Be specific and thorough. List each criterion you have met and how you know you’ve met it. Refer to specific artifacts or examples in the Portfolio that support your case. Again, keep it brief and focused on concrete evidence that the criteria have been met.\nWhat else? There may be some other criteria that figures into your grade request that isn’t explicitly listed in the syllabus. If so, state the criteria you’re thinking of, explain why they are useful criteria for your grade determination, and then explain how well you met those criteria (and provide evidence in the artifacts, if applicable). As with the syllabus criteria, be focused, specific, and thorough — and refer to specific artifacts that provide evidence.\n\nPlus/minus grades: You may argue to add a “+” or “-” modifier to your grade. Generally speaking a “+” added to a letter grade means you’ve met all the criteria for the letter grade along with a significant amount, but not all, of the criteria for the next letter grade up. And a “-” means that you have met the requirements for a letter grade but only in a way that you believe is a bare minimum, or you’ve met almost all the requirements for the letter grade except for a small number of minor criteria.",
+    "crumbs": [
+      "Portfolio"
+    ]
+  },
+  {
+    "objectID": "portfolio.html#about-time-and-effort",
+    "href": "portfolio.html#about-time-and-effort",
+    "title": "Portfolio",
+    "section": "About Time and Effort",
+    "text": "About Time and Effort\nAs your instructor, I understand and respect that you have spent a great deal of time and effort on this course and will probably continue to do so until the end of the quarter. It’s possible that STAT 331 has been the most challenging course on your schedule this quarter, perhaps in your entire college career so far. I want you to know that I see you, I respect your efforts, and it’s extremely fulfilling to see you respond to the challenges and grow.\nI also want to be clear that while the time and effort spent on the class are vitally important, they are not explicitly part of the grade criteria you find in the syllabus. So, when you make the case for your grade in the portfolio, I respectfully ask that you keep your argument focused on concrete evidence of understanding of the learning targets and engagement with the class.\nWhen making the case for your grade, the focus needs to be on the results of your investment of time and effort. Did your efforts result in several exemplary solutions through the quarter? If so, put a subset of them in the Portfolio. Did the time you spend on coursework result in being an engaged collaborator during Practice Activities? If so, document how your efforts made you a valuable group member.",
+    "crumbs": [
+      "Portfolio"
+    ]
+  },
+  {
+    "objectID": "portfolio.html#questions-you-might-have",
+    "href": "portfolio.html#questions-you-might-have",
+    "title": "Portfolio",
+    "section": "Questions You Might Have",
+    "text": "Questions You Might Have\n\nQ: What if you disagree with our final grade reflection?\n\nA: There are two ways this might happen.\n\nYou ask for a grade that is higher than the evidence supports. That is, you grade yourself too highly, for example you believe you earned an A in the course, but I do not feel the evidence you’ve provided supports this grade. If this occurs in your Midterm Portfolio, I will discuss this with you in your 5-minute Midterm Portfolio meeting.I’ll tell you what grade I would have given you based on the evidence you provided in the portfolio. You can then use this feedback when constructing your final portfolio. If I believe the grade you’ve proposed in your Final Portfolio does not reflect the evidence you’ve provided, I will discuss this with you in your 5-minute Final Portfolio meeting. I’ll tell you what grade I would have given you based on the evidence you provided in the portfolio, and then give you the chance to provide additional evidence and explanations for your grade request. In our meeting, if you still think your grade request is correct, you’ll have the chance to walk me through your materials and reasoning. Afterwards, I might agree with you. But if we still disagree, we will try to come to an agreement on the highest grade that the evidence supports. I have faith that we’ll be able to come to a mutually-agreeable result. But, if we can’t, I will assign the grade that in my estimation is the highest grade supported by the evidence, and my determination will be final. However, again, I will exhaust all other options before simply overriding your grade determination.\nYou ask for a grade that was lower than your actual performance indicates. That is, you “lowball” yourself, for example you say you earned a B when in fact I think you earned an A-. In this case, I will award you the grade I think you earned, and then just inform you that I’ve done so (and why).\n\nIn my experience, the second situation happens significantly more frequently than the first.\n\n\n\nQ: Is there a limit on the number of artifacts I can include to support my grade?\n\nA: There is no strict limit, but please be selective.\nQuality, not quantity is what we are after. We do not want every assignment in our portfolio! Typically you should be able to give a complete portfolio in fewer than 8 assignments with judicious selection of homework solutions and other work. A handful of homework solutions that clearly indicate your attainment of the grade criteria is just as good as, if not better than, a massive binder of mediocre examples.\n\n\n\nQ: How specific or detailed do I need to be on some of the criteria? For example, do I need to list all the dates when I answered someone’s question on Discord?\n\nA: This isn’t filing your taxes, so a precise down-to-the-minute accounting of your work isn’t necessary.\nDetails and your reasoning are more important than precision and completeness here. For example if you made a handful of supportive comments in Discord, pick a few and tell me about them. What was the question about? What did you say? Why was that comment an example of “helpful feedback”? (Do you know that it was helpful?) Remember the purpose is to make a convincing case that you’ve earned a particular grade.\n\n\n\nQ: Would someone actually make a case that they earned a “D” in the class?\n\nA: Yes, if the person is honest and there’s not enough evidence to make the case for a “C”.\nIf you’re in that situation, be honest and don’t overreach just because the consequences are significant.\n\n\n\nQ: How long should the essays be?\n\nA: You should put serious effort into each of the essays and give thorough, detailed, and thoughtful responses — without going overboard and writing more than you need.\nThere is no hard word or character count here, but if you are writing less than half a page using ordinary font and line spacing, then you probably need to spend more time carefully reflecting on the question; if you are writing more than two pages for a single essay, you might consider editing it down for clarity. As always, put yourself in the shoes of your readers and then use your judgment as a writer.\n\n\n\nQ: What if you do not submit a Final Portfolio?\n\nA: If you do not complete a Final Portfolio submission, your grade will be at my discretion.\nI will use your Midterm Portfolio as well as completion of assignments from Week 7 - 10 to guide my decision.\nI’ll add more questions and answers in this space as they come up.",
+    "crumbs": [
+      "Portfolio"
+    ]
   },
   {
     "objectID": "infrastructure.html",
@@ -439,6 +662,50 @@
     "crumbs": [
       "Unit 1 - Communication",
       "Lab 3"
+    ]
+  },
+  {
+    "objectID": "portfolio/portfolio-instructions.html",
+    "href": "portfolio/portfolio-instructions.html",
+    "title": "Final Portfolio Instructions",
+    "section": "",
+    "text": "GitHub is an incredibly useful tool for project management and collaboration. It also has several useful features for professional promotion: you can host your own site on github using GitHub pages, describe yourself using a GitHub developer profile, and even use resume.github.io to generate a resume summary of your activity on GitHub (you must opt-in by starring the project page).\nThe development of Quarto has made it incredibly simple to generate websites, which can be easily hosted by GitHub Pages.",
+    "crumbs": [
+      "Portfolio",
+      "Final Portfolio Instructions"
+    ]
+  },
+  {
+    "objectID": "portfolio/portfolio-instructions.html#instructions-for-creating-a-personal-website",
+    "href": "portfolio/portfolio-instructions.html#instructions-for-creating-a-personal-website",
+    "title": "Final Portfolio Instructions",
+    "section": "Instructions for Creating a Personal Website",
+    "text": "Instructions for Creating a Personal Website\nIf you’ve never made a personal website, you will need to create one! There are so many resources for creating Quarto websites, but my absolute favorite one’s are from Sam Shanny-Csik.\nFollow this step-by-step guide for creating a new Quarto website: &lt;https://ucsb-meds.github.io/creating-quarto-websites/\n\n\n\n\n\n\n\n\nName your project &lt;YourGitHubUsername&gt;.github.io\n\n\n\nWe’re going to deploy websites using GitHub pages, and it would be nice if your website had a professional name! I would recommend using your username, unless you chose a username that isn’t very descriptive or unique (e.g., brandonk04). If this is the case, I would recommend you use a more descriptive name for your project (e.g., brandon-kim-04).\n\n\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nI would strongly recommend this folder living inside your broader “STAT 541” folder, at least for now!",
+    "crumbs": [
+      "Portfolio",
+      "Final Portfolio Instructions"
+    ]
+  },
+  {
+    "objectID": "portfolio/portfolio-instructions.html#making-changes-to-an-existing-website",
+    "href": "portfolio/portfolio-instructions.html#making-changes-to-an-existing-website",
+    "title": "Final Portfolio Instructions",
+    "section": "Making Changes to an Existing Website",
+    "text": "Making Changes to an Existing Website\nSo you already have a personal website? Great! Let’s get started making blog posts for your website!\nWe’re going to follow another one of Sam Shanny-Csik’s guides for integrating blog posts into your existing website:\nhttps://samanthacsik.github.io/posts/2022-10-24-quarto-blogs/\n\n\n\n\n\n\nImportant\n\n\n\nI’m expecting that your posts are contained in a portfolio folder, so they are easy for me to find.\n\n\nBy the end of the quarter, you should have seven blog posts for the following projects you’ve completed:\n\nAdvanced Visualizations\nQuarto Dashboards (Static)\nQuarto Dashboards (Dynamic)\nWriting Efficient Functions\nJSON Data & APIs\nWebscraping\nGenerative Art",
+    "crumbs": [
+      "Portfolio",
+      "Final Portfolio Instructions"
+    ]
+  },
+  {
+    "objectID": "portfolio/portfolio-instructions.html#additional-styling-options",
+    "href": "portfolio/portfolio-instructions.html#additional-styling-options",
+    "title": "Final Portfolio Instructions",
+    "section": "Additional Styling Options",
+    "text": "Additional Styling Options\nIn case you are interested in styling your website further, I would recommend looking over this presentation on using .scss and .sass files.",
+    "crumbs": [
+      "Portfolio",
+      "Final Portfolio Instructions"
     ]
   },
   {

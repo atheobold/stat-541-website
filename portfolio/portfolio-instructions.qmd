@@ -62,13 +62,13 @@ I'm expecting that your posts are contained in a `portfolio` folder, so they
 are easy for me to find. 
 :::
 
-By the end of the quarter, you should have blog posts for the following 
-projects you've completed:
+By the end of the quarter, you should have **seven** blog posts for the
+following projects you've completed:
 
 - Advanced Visualizations
 - Quarto Dashboards (Static)
 - Quarto Dashboards (Dynamic)
-- Quarto with WebR
+- Writing Efficient Functions
 - JSON Data & APIs
 - Webscraping
 - Generative Art

@@ -1,0 +1,115 @@
+---
+title: "Portfolio"
+editor: source
+---
+
+A **portfolio** is a collection of work that gives information about the person
+doing the work. Artists and architects, for example, have portfolios that show
+the range and scope of what they do, and by looking through their portfolios, 
+you get a sense of who this person is, how they have grown as a professional,
+what they have produced, and what they are capable of producing.
+
+That’s the spirit intended for the STAT 331 Portfolio. In your portfolio, you
+will give a curated collection of your best work along with reflections that
+tell the story of your growth from the first day of classes all the way to the
+end. **Your goal is to argue, convincingly and with concrete evidence, that you
+have met the criteria for both content proficiency, evidence of continued
+learning, and growth as a team member that goes with a particular grade.** I
+will read your portfolio carefully, and if you make a convincing case for a grade, that’s the grade you’ll receive.
+
+## Key Information
+
+**Format:** Your portfolio will have two components: 
+
+1. A personal website with blog posts containing your projects from STAT 541
+2. A final grade reflection, justifying your achievement for the course's
+learning objectives 
+
+The blog posts from your website is what you will reference when justifying 
+your achievement for a given learning objective. 
+
+<!-- **Template:** Here is a template repository you can use to guide how you should organize your portfolio: <https://github.com/atheobold/STAT331_portfolio_template> -->
+
+**Due date:** The portfolio is due **the Saturday before finals week**. No deadline extensions are available for the Final Portfolio.
+
+## Final Grade Reflection
+
+This component is a self-evaluation of your performance in the class. Your goal is **to state clearly what grade you think you have earned in the course, and convincingly argue that you have met the criteria for that grade.** Please be thoughtful, honest, and reflective, but also brief and focused.
+
+This reflection will be done in the [`reflection_template.qmd`](portfolio/reflection_template.qmd) file. The structure of the
+document is as follows:
+
+1. **For each of the learning targets**, carefully select examples of your code
+that demonstrate concretely and directly your proficiency with the given target.
+
+-   You must indicate where the code you provided came from, linking to the 
+blog post from your personal website. 
+
+2. **What grade did you earn?** State it clearly in one sentence. You can
+include plus/minus modifiers; see below about those.
+
+3.  **How did you meet that grade’s requirements?** The requirements for grades are found in the [Portfolio Rubric](/portfolio/portfolio-rubric.qmd). Review 
+the criteria carefully. Then, explain how you have satisfied the criteria for
+the grade you are saying you’ve earned. Be specific and thorough. List each
+criterion you have met and how you know you’ve met it. Refer to specific
+artifacts or examples in the Portfolio that support your case. Again, keep it
+brief and focused on concrete evidence that the criteria have been met.
+
+4.  **What else?** There may be some other criteria that figures into your grade request that isn’t explicitly listed in the syllabus. If so, state the criteria you’re thinking of, explain why they are useful criteria for your grade determination, and then explain how well you met those criteria (and provide evidence in the artifacts, if applicable). As with the syllabus criteria, be focused, specific, and thorough — and refer to specific artifacts that provide evidence.
+
+**Plus/minus grades:** You may argue to add a "+" or "-" modifier to your grade. Generally speaking a "+" added to a letter grade means you’ve met all the criteria for the letter grade along with a significant amount, but not all, of the criteria for the next letter grade up. And a "-" means that you have met the requirements for a letter grade but only in a way that you believe is a bare minimum, or you’ve met almost all the requirements for the letter grade except for a small number of **minor** criteria.
+
+## About Time and Effort
+
+As your instructor, I understand and respect that you have spent a great deal of time and effort on this course and will probably continue to do so until the end of the quarter. It’s possible that STAT 331 has been the most challenging course on your schedule this quarter, perhaps in your entire college career so far. I want you to know that I see you, I respect your efforts, and it’s extremely fulfilling to see you respond to the challenges and grow.
+
+I also want to be clear that while the time and effort spent on the class are vitally important, they are not explicitly part of the grade criteria you find
+in the syllabus. So, when you make the case for your grade in the portfolio, 
+**I respectfully ask that you keep your argument focused on concrete evidence 
+of understanding of the learning targets and engagement with the class**.
+
+**When making the case for your grade, the focus needs to be on the results of your investment of time and effort**. Did your efforts result in several exemplary solutions through the quarter? If so, put a subset of them in the Portfolio. Did the time you spend on coursework result in being an engaged collaborator during Practice Activities? If so, document how your efforts made you a valuable group member.
+
+## Questions You Might Have
+
+### Q: What if you disagree with our final grade reflection?
+
+#### A: There are two ways this might happen.
+
+1.  You ask for a grade that is higher than the evidence supports. That is, you grade yourself too highly, for example you believe you earned an A in the course, but I do not feel the evidence you’ve provided supports this grade. If this occurs in your Midterm Portfolio, **I will discuss this with you in your 5-minute Midterm Portfolio meeting**.I’ll tell you what grade I would have given you based on the evidence you provided in the portfolio. You can then use this feedback when constructing your final portfolio. If I believe the grade you’ve proposed in your Final Portfolio does not reflect the evidence you’ve provided, **I will discuss this with you in your 5-minute Final Portfolio meeting**. I’ll tell you what grade I would have given you based on the evidence you provided in the portfolio, and then give you the chance to provide additional evidence and explanations for your grade request. In our meeting, if you still think your grade request is correct, you’ll have the chance to walk me through your materials and reasoning. Afterwards, I might agree with you. But if we still disagree, we will try to come to an agreement on the highest grade that the evidence supports. I have faith that we’ll be able to come to a mutually-agreeable result. But, if we can’t, I will assign the grade that in my estimation is the highest grade supported by the evidence, and my determination will be final. However, again, I will exhaust all other options before simply overriding your grade determination.
+
+2.  You ask for a grade that was lower than your actual performance indicates. That is, you "lowball" yourself, for example you say you earned a B when in fact I think you earned an A-. In this case, I will award you the grade I think you earned, and then just inform you that I’ve done so (and why).
+
+**In my experience, the second situation happens significantly more frequently than the first.**
+
+### Q: Is there a limit on the number of artifacts I can include to support my grade?
+
+#### A: There is no strict limit, but **please be selective**.
+
+**Quality, not quantity** is what we are after. We do not want every assignment in our portfolio! Typically you should be able to give a complete portfolio in **fewer than 8 assignments** with judicious selection of homework solutions and other work. A handful of homework solutions that clearly indicate your attainment of the grade criteria is just as good as, if not better than, a massive binder of mediocre examples.
+
+### Q: How specific or detailed do I need to be on some of the criteria? For example, do I need to list all the dates when I answered someone’s question on Discord?
+
+#### A: This isn’t filing your taxes, so a precise down-to-the-minute accounting of your work isn’t necessary.
+
+**Details and your reasoning are more important than precision and completeness here.** For example if you made a handful of supportive comments in Discord, pick a few and tell me about them. What was the question about? What did you say? Why was that comment an example of "helpful feedback"? (Do you know that it was helpful?) Remember the purpose is to **make a convincing case that you’ve earned a particular grade.**
+
+### Q: Would someone actually make a case that they earned a "D" in the class?
+
+#### A: Yes, if the person is honest and there’s not enough evidence to make the case for a "C".
+
+If you’re in that situation, be honest and don’t overreach just because the consequences are significant.
+
+### Q: How long should the essays be?
+
+#### A: You should put serious effort into each of the essays and give thorough, detailed, and thoughtful responses — without going overboard and writing more than you need.
+
+There is no hard word or character count here, but if you are writing less than half a page using ordinary font and line spacing, then you probably need to spend more time carefully reflecting on the question; if you are writing more than two pages for a single essay, you might consider editing it down for clarity. As always, put yourself in the shoes of your readers and then use your judgment as a writer.
+
+### Q: What if you do not submit a Final Portfolio?
+
+#### A: If you do not complete a Final Portfolio submission, your grade will be at my discretion.
+
+I will use your Midterm Portfolio as well as completion of assignments from Week 7 - 10 to guide my decision.
+
+**I’ll add more questions and answers in this space as they come up.**
