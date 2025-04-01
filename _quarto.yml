@@ -4,6 +4,8 @@ project:
   render:
     - "*.qmd"
     - "!/unit-1/other-plots.qmd"
+  resources: 
+    - portfolio/reflection-template.qmd
 
 website:
   page-navigation: true
