@@ -1,10 +1,11 @@
 ---
-title: "Stat 541 Final Portfolio"
-format: pdf
-editor: visual
-self-contained: true
+title: "Stat 541 Final Grade Reflection"
+editor: source
 toc: true
 ---
+
+Download the source code for the template here: 
+[`portfolio-template.qmd`](portfolio/reflection-template.qmd)
 
 ```{r}
 #| include: false
@@ -22,9 +23,7 @@ portfolio_levels <- tibble(
 
 *These objectives show your ability to seek out new information and adapt to new tools to solve data analysis problems.*
 
-------------------------------------------------------------------------
-
-## \[IL-1\] Adding new skills:
+## [IL-1] Adding new skills:
 
 -   I can find and adopt new packages to accomplish tasks.
 -   I can adapt to different syntax styles (tidy, base, formula style, data.table).
@@ -37,10 +36,9 @@ portfolio_levels <- tibble(
 ## Fill in the line below with your self-assigned level for this objective.
 ## Remember, you have the following levels to choose from:
 
-# 1 = novice
-# 2 = proficiency
-# 3 = mastery 
-# 4 = expert
+# 1 = Novice
+# 2 = Proficient
+# 3 = Virtuoso
 
 my_level <- 1
 
@@ -54,8 +52,8 @@ portfolio_levels <- portfolio_levels %>%
 ### Level: `r my_level`
 
 ### Justification:
+<!-- Insert references to the work shown in the blog(s) on your personal website -->
 
-------------------------------------------------------------------------
 
 ## \[IL-2\] Online resources:
 
@@ -80,8 +78,8 @@ portfolio_levels <- portfolio_levels %>%
 ### Level: `r my_level`
 
 ### Justification:
+<!-- Insert references to the work shown in the blog(s) on your personal website -->
 
-------------------------------------------------------------------------
 
 # Reproducible Workflow (RW):
 
@@ -108,8 +106,7 @@ portfolio_levels <- portfolio_levels %>%
 ### Level: `r my_level`
 
 ### Justification:
-
-------------------------------------------------------------------------
+<!-- Insert references to the work shown in the blog(s) on your personal website -->
 
 ## \[RW-2\] Notebooks:
 
@@ -132,8 +129,8 @@ portfolio_levels <- portfolio_levels %>%
 ### Level: `r my_level`
 
 ### Justification:
+<!-- Insert references to the work shown in the blog(s) on your personal website -->
 
-------------------------------------------------------------------------
 
 ## \[RW-3\] Code style
 
@@ -156,14 +153,12 @@ portfolio_levels <- portfolio_levels %>%
 ### Level: `r my_level`
 
 ### Justification
+<!-- Insert references to the work shown in the blog(s) on your personal website -->
 
-------------------------------------------------------------------------
 
 # Technical Communication (TC):
 
 *These objectives show your ability to communicate the processes you have implemented in your code, as well as the data conclusions and results.*
-
-------------------------------------------------------------------------
 
 ## \[TC-1\] Project summaries:
 
@@ -187,8 +182,8 @@ portfolio_levels <- portfolio_levels %>%
 ### Level: `r my_level`
 
 ### Justification:
+<!-- Insert references to the work shown in the blog(s) on your personal website -->
 
-------------------------------------------------------------------------
 
 ## \[TC-2\] Documentation:
 
@@ -211,14 +206,12 @@ portfolio_levels <- portfolio_levels %>%
 ### Level: `r my_level`
 
 ### Justification:
+<!-- Insert references to the work shown in the blog(s) on your personal website -->
 
-------------------------------------------------------------------------
 
 # Data Manipulation (DM):
 
 *These objectives relate to the collection, cleaning, processing, and preparing of datasets for analysis.*
-
-------------------------------------------------------------------------
 
 ## \[DM-1\] Data preparation:
 
@@ -241,8 +234,8 @@ portfolio_levels <- portfolio_levels %>%
 ### Level: `r my_level`
 
 ### Justification:
+<!-- Insert references to the work shown in the blog(s) on your personal website -->
 
-------------------------------------------------------------------------
 
 ## \[DM-2\] Data wrangling
 
@@ -265,8 +258,8 @@ portfolio_levels <- portfolio_levels %>%
 ### Level: `r my_level`
 
 ### Justification:
+<!-- Insert references to the work shown in the blog(s) on your personal website -->
 
-------------------------------------------------------------------------
 
 ## \[DM-3\] Data formats
 
@@ -284,8 +277,8 @@ portfolio_levels <- portfolio_levels %>%
 ### Level: `r my_level`
 
 ### Justification
+<!-- Insert references to the work shown in the blog(s) on your personal website -->
 
-------------------------------------------------------------------------
 
 ## \[DM-4\] Data collection
 
@@ -307,12 +300,11 @@ portfolio_levels <- portfolio_levels %>%
 ### Level: `r my_level`
 
 ### Justification
+<!-- Insert references to the work shown in the blog(s) on your personal website -->
 
-------------------------------------------------------------------------
 
 # Professional Visualization (PV):
 
-------------------------------------------------------------------------
 
 ## \[PV-1\] ggplot: grammar of graphics
 
@@ -336,8 +328,8 @@ portfolio_levels <- portfolio_levels %>%
 ### Level: `r my_level`
 
 ### Justification:
+<!-- Insert references to the work shown in the blog(s) on your personal website -->
 
-------------------------------------------------------------------------
 
 ## \[PV-2\] ggplot: theme
 
@@ -360,8 +352,8 @@ portfolio_levels <- portfolio_levels %>%
 ### Level: `r my_level`
 
 ### Justification:
+<!-- Insert references to the work shown in the blog(s) on your personal website -->
 
-------------------------------------------------------------------------
 
 ## \[PV-3\] Dynamic visualizations
 
@@ -384,8 +376,8 @@ portfolio_levels <- portfolio_levels %>%
 ### Level: `r my_level`
 
 ### Justification:
+<!-- Insert references to the work shown in the blog(s) on your personal website -->
 
-------------------------------------------------------------------------
 
 ## \[PV-4\] Shiny
 
@@ -408,14 +400,12 @@ portfolio_levels <- portfolio_levels %>%
 ### Level: `r my_level`
 
 ### Justification:
+<!-- Insert references to the work shown in the blog(s) on your personal website -->
 
-------------------------------------------------------------------------
 
-# Software Development (SD):
+# Algorithms and Iteration (AI):
 
-*These objectives relate to your ability to develop correct, usable, well-designed, and sophisticated software in the R language.*
-
-------------------------------------------------------------------------
+*These objectives ask you to design code-based approaches to statistical computing problems, usually involving iteration to a stopping condition.*
 
 ## \[SD-1\] R programming language details
 
@@ -439,94 +429,8 @@ portfolio_levels <- portfolio_levels %>%
 ### Level: `r my_level`
 
 ### Justification:
+<!-- Insert references to the work shown in the blog(s) on your personal website -->
 
-------------------------------------------------------------------------
-
-## \[SD-2\] Package creation:
-
--   I can create a folder that is installable as an R package, possibly using {usethis} helper functions
--   I can document my functions using {roxygen2} style commenting
--   I can write and run unit tests using {testthat}
--   I can design a package that is user-friendly and has well-designed functions.
-
-```{r}
-#| include: false
-#| label: SD-2
-
-my_level <- 1
-
-portfolio_levels <- portfolio_levels %>%
-  bind_rows(
-    tibble(Objective = "SD-2", 
-           Level = my_level)
-    )
-```
-
-### Level: `r my_level`
-
-### Justification
-
-------------------------------------------------------------------------
-
-# Matrix Operations (MO):
-
-*These objectives show your ability to manipulate data-related information in the form of vectors and matrices, rather than in high-level data structures.*
-
-------------------------------------------------------------------------
-
-## \[MO-1\] Theory:
-
--   I understand the difference between ordinary multiplication and matrix multiplication, and how to implement each in R
--   I can implement and briefly explain the matrix equations for multiple linear regression
-
-```{r}
-#| include: false
-#| label: MO-1
-
-my_level <- 1
-
-portfolio_levels <- portfolio_levels %>%
-  bind_rows(
-    tibble(Objective = "MO-1", 
-           Level = my_level)
-    )
-```
-
-### Level: `r my_level`
-
-### Justification:
-
-------------------------------------------------------------------------
-
-## \[MO-2\] Object structures:
-
--   I can convert data objects into the necessary matrix structures to perform operations on them.
--   I can convert results of matrix operations to convenient data analysis formats
-
-```{r}
-#| include: false
-#| label: MO-2
-
-my_level <- 1
-
-portfolio_levels <- portfolio_levels %>%
-  bind_rows(
-    tibble(Objective = "MO-2", 
-           Level = my_level)
-    )
-```
-
-### Level: `r my_level`
-
-### Justification:
-
-------------------------------------------------------------------------
-
-# Algorithms and Iteration (AI):
-
-*These objectives ask you to design code-based approaches to statistical computing problems, usually involving iteration to a stopping condition.*
-
-------------------------------------------------------------------------
 
 ## \[AI-1\] Creating an algorithm:
 
@@ -548,8 +452,8 @@ portfolio_levels <- portfolio_levels %>%
 ### Level: `r my_level`
 
 ### Justification:
+<!-- Insert references to the work shown in the blog(s) on your personal website -->
 
-------------------------------------------------------------------------
 
 ## \[AI-2\] Generative art:
 
@@ -572,14 +476,12 @@ portfolio_levels <- portfolio_levels %>%
 ### Level: `r my_level`
 
 ### Justification:
+<!-- Insert references to the work shown in the blog(s) on your personal website -->
 
-------------------------------------------------------------------------
 
 # Code Design (CD):
 
 *These objectives relate to making wise or clever choices in how you implement a procedure in code; including creating functions and objects, or thinking about the clarity and efficiency of processes.*
-
-------------------------------------------------------------------------
 
 ## \[CD-1\] Speed and Efficiency:
 
@@ -602,8 +504,7 @@ portfolio_levels <- portfolio_levels %>%
 ### Level: `r my_level`
 
 ### Justification:
-
-------------------------------------------------------------------------
+<!-- Insert references to the work shown in the blog(s) on your personal website -->
 
 ## \[CD-2\] Object handling:
 
@@ -626,8 +527,8 @@ portfolio_levels <- portfolio_levels %>%
 ### Level: `r my_level`
 
 ### Justification:
+<!-- Insert references to the work shown in the blog(s) on your personal website -->
 
-------------------------------------------------------------------------
 
 ## \[CD-3\] Supporting functions:
 
@@ -650,8 +551,8 @@ portfolio_levels <- portfolio_levels %>%
 ### Level: `r my_level`
 
 ### Justification:
+<!-- Insert references to the work shown in the blog(s) on your personal website -->
 
-------------------------------------------------------------------------
 
 ## \[CD-4\] Algorithmic process:
 
@@ -675,8 +576,8 @@ portfolio_levels <- portfolio_levels %>%
 ### Level: `r my_level`
 
 ### Justification:
+<!-- Insert references to the work shown in the blog(s) on your personal website -->
 
-------------------------------------------------------------------------
 
 # Summary
 
@@ -703,6 +604,6 @@ portfolio_levels %>%
 
 ## Grade
 
-Based on the summary plot above, I believe I have earned a \_\_\_ in STAT 541.
+Based on the summary plot above, I believe I have earned a ____ in STAT 541.
 
 ### Justification
