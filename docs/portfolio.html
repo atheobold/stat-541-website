@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>ggplot Extensions – Advanced R</title>
+<title>Portfolio – Advanced R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,64 +20,29 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<link href="../unit-1/ggplot-leaflet.html" rel="next">
-<link href="../unit-1/ggplot-review.html" rel="prev">
-<link href="../images/cat-monsters-horst.png" rel="icon" type="image/png">
-<script src="../site_libs/quarto-html/quarto.js"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./portfolio/portfolio-instructions.html" rel="next">
+<link href="./images/cat-monsters-horst.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -116,8 +81,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../images/cat-monsters-horst.png" alt="" class="navbar-logo">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    <img src="./images/cat-monsters-horst.png" alt="" class="navbar-logo">
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -127,31 +92,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
+    <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Overview</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../course-materials/calendar.html"> 
+    <a class="nav-link" href="./course-materials/calendar.html"> 
 <span class="menu-text">Schedule</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../course-materials/syllabus.html"> 
+    <a class="nav-link" href="./course-materials/syllabus.html"> 
 <span class="menu-text">Syllabus</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../infrastructure.html"> 
+    <a class="nav-link" href="./infrastructure.html"> 
 <span class="menu-text">Infrastructure</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../unit-1.html" aria-current="page"> 
+    <a class="nav-link" href="./unit-1.html"> 
 <span class="menu-text">Unit 1 - Communication</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../iteration.qmd"> 
+    <a class="nav-link" href="./iteration.qmd"> 
 <span class="menu-text">Unit 2 - Iteration</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../portfolio.html"> 
+    <a class="nav-link active" href="./portfolio.html" aria-current="page"> 
 <span class="menu-text">Portfolio</span></a>
   </li>  
 </ul>
@@ -173,7 +138,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../unit-1/ggplot-extensions.html"><code>ggplot</code> Extensions</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./portfolio.html">Portfolio</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -187,44 +152,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../unit-1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Unit 1</span></a>
+  <a href="./portfolio.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Portfolio</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../unit-1/ggplot-review.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><code>ggplot</code> Review</span></a>
+  <a href="./portfolio/portfolio-instructions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Final Portfolio Instructions</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../unit-1/ggplot-extensions.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><code>ggplot</code> Extensions</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../unit-1/ggplot-leaflet.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Creating Maps with the <code>leaflet</code> Package</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../labs/lab-2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lab 2</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../unit-1/quarto-dashboard-static.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Quarto Dashboards, Part 1</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../labs/lab-3.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lab 3</span></a>
+  <a href="./portfolio/portfolio-rubric.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Final Portfolio Evaluation Rubric</span></a>
   </div>
 </li>
     </ul>
@@ -237,28 +178,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#custom-colors-and-themes" id="toc-custom-colors-and-themes" class="nav-link active" data-scroll-target="#custom-colors-and-themes">Custom Colors and Themes</a></li>
-  <li><a href="#required-video-the-glamour-of-graphics" id="toc-required-video-the-glamour-of-graphics" class="nav-link" data-scroll-target="#required-video-the-glamour-of-graphics">🎥 Required Video: The Glamour of Graphics</a></li>
-  <li><a href="#required-reading-colors-and-palettes" id="toc-required-reading-colors-and-palettes" class="nav-link" data-scroll-target="#required-reading-colors-and-palettes">📖 Required Reading: Colors and Palettes</a></li>
-  <li><a href="#required-reading-themes" id="toc-required-reading-themes" class="nav-link" data-scroll-target="#required-reading-themes">📖 Required Reading: Themes</a></li>
-  <li><a href="#extra-resouces" id="toc-extra-resouces" class="nav-link" data-scroll-target="#extra-resouces">Extra Resouces</a></li>
-  <li><a href="#gganimate" id="toc-gganimate" class="nav-link" data-scroll-target="#gganimate">gganimate</a></li>
-  <li><a href="#required-reading-intro-to-gganimate" id="toc-required-reading-intro-to-gganimate" class="nav-link" data-scroll-target="#required-reading-intro-to-gganimate">📖 Required Reading: Intro to <code>gganimate</code></a></li>
-  <li><a href="#recommended-reading-another-intro-to-gganimate" id="toc-recommended-reading-another-intro-to-gganimate" class="nav-link" data-scroll-target="#recommended-reading-another-intro-to-gganimate">📖 Recommended Reading: Another intro to <code>gganimate</code></a></li>
-  <li><a href="#recommended-video-gganimate-flipbook-demo-rstudioconf-2017" id="toc-recommended-video-gganimate-flipbook-demo-rstudioconf-2017" class="nav-link" data-scroll-target="#recommended-video-gganimate-flipbook-demo-rstudioconf-2017">🎥 Recommended Video: <code>gganimate</code> flipbook demo (RStudio::conf 2017)</a></li>
-  <li><a href="#other-extensions" id="toc-other-extensions" class="nav-link" data-scroll-target="#other-extensions">Other Extensions</a></li>
-  <li><a href="#required-reading-ggplot-extension-gallery" id="toc-required-reading-ggplot-extension-gallery" class="nav-link" data-scroll-target="#required-reading-ggplot-extension-gallery">📖 Required Reading: <code>ggplot</code> Extension Gallery</a></li>
-  <li><a href="#required-reading-more-ggplot-extension-summaries" id="toc-required-reading-more-ggplot-extension-summaries" class="nav-link" data-scroll-target="#required-reading-more-ggplot-extension-summaries">📖 Required Reading: More <code>ggplot</code> Extension Summaries</a></li>
-  <li><a href="#extra-resources" id="toc-extra-resources" class="nav-link" data-scroll-target="#extra-resources">Extra Resources</a></li>
+  <li><a href="#key-information" id="toc-key-information" class="nav-link active" data-scroll-target="#key-information">Key Information</a></li>
+  <li><a href="#final-grade-reflection" id="toc-final-grade-reflection" class="nav-link" data-scroll-target="#final-grade-reflection">Final Grade Reflection</a></li>
+  <li><a href="#about-time-and-effort" id="toc-about-time-and-effort" class="nav-link" data-scroll-target="#about-time-and-effort">About Time and Effort</a></li>
+  <li><a href="#questions-you-might-have" id="toc-questions-you-might-have" class="nav-link" data-scroll-target="#questions-you-might-have">Questions You Might Have</a>
+  <ul class="collapse">
+  <li><a href="#q-what-if-you-disagree-with-our-final-grade-reflection" id="toc-q-what-if-you-disagree-with-our-final-grade-reflection" class="nav-link" data-scroll-target="#q-what-if-you-disagree-with-our-final-grade-reflection">Q: What if you disagree with our final grade reflection?</a></li>
+  <li><a href="#q-is-there-a-limit-on-the-number-of-artifacts-i-can-include-to-support-my-grade" id="toc-q-is-there-a-limit-on-the-number-of-artifacts-i-can-include-to-support-my-grade" class="nav-link" data-scroll-target="#q-is-there-a-limit-on-the-number-of-artifacts-i-can-include-to-support-my-grade">Q: Is there a limit on the number of artifacts I can include to support my grade?</a></li>
+  <li><a href="#q-how-specific-or-detailed-do-i-need-to-be-on-some-of-the-criteria-for-example-do-i-need-to-list-all-the-dates-when-i-answered-someones-question-on-discord" id="toc-q-how-specific-or-detailed-do-i-need-to-be-on-some-of-the-criteria-for-example-do-i-need-to-list-all-the-dates-when-i-answered-someones-question-on-discord" class="nav-link" data-scroll-target="#q-how-specific-or-detailed-do-i-need-to-be-on-some-of-the-criteria-for-example-do-i-need-to-list-all-the-dates-when-i-answered-someones-question-on-discord">Q: How specific or detailed do I need to be on some of the criteria? For example, do I need to list all the dates when I answered someone’s question on Discord?</a></li>
+  <li><a href="#q-would-someone-actually-make-a-case-that-they-earned-a-d-in-the-class" id="toc-q-would-someone-actually-make-a-case-that-they-earned-a-d-in-the-class" class="nav-link" data-scroll-target="#q-would-someone-actually-make-a-case-that-they-earned-a-d-in-the-class">Q: Would someone actually make a case that they earned a “D” in the class?</a></li>
+  <li><a href="#q-how-long-should-the-essays-be" id="toc-q-how-long-should-the-essays-be" class="nav-link" data-scroll-target="#q-how-long-should-the-essays-be">Q: How long should the essays be?</a></li>
+  <li><a href="#q-what-if-you-do-not-submit-a-final-portfolio" id="toc-q-what-if-you-do-not-submit-a-final-portfolio" class="nav-link" data-scroll-target="#q-what-if-you-do-not-submit-a-final-portfolio">Q: What if you do not submit a Final Portfolio?</a></li>
+  </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/unit-1/ggplot-extensions.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/portfolio.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><code>ggplot</code> Extensions</h1>
+<h1 class="title">Portfolio</h1>
 </div>
 
 
@@ -275,240 +215,93 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="custom-colors-and-themes" class="level2">
-<h2 class="anchored" data-anchor-id="custom-colors-and-themes">Custom Colors and Themes</h2>
-<p>A huge part of making a compelling and convincing plot is your choice of color and layout.</p>
-<p>Your first video will take you through some great core principals of visualization. Then your two short readings will show you the basics of manipulating colors and themes in <code>ggplot</code>.</p>
+<p>A <strong>portfolio</strong> is a collection of work that gives information about the person doing the work. Artists and architects, for example, have portfolios that show the range and scope of what they do, and by looking through their portfolios, you get a sense of who this person is, how they have grown as a professional, what they have produced, and what they are capable of producing.</p>
+<p>That’s the spirit intended for the STAT 331 Portfolio. In your portfolio, you will give a curated collection of your best work along with reflections that tell the story of your growth from the first day of classes all the way to the end. <strong>Your goal is to argue, convincingly and with concrete evidence, that you have met the criteria for both content proficiency, evidence of continued learning, and growth as a team member that goes with a particular grade.</strong> I will read your portfolio carefully, and if you make a convincing case for a grade, that’s the grade you’ll receive.</p>
+<section id="key-information" class="level2">
+<h2 class="anchored" data-anchor-id="key-information">Key Information</h2>
+<p><strong>Format:</strong> Your portfolio will have two components:</p>
+<ol type="1">
+<li>A personal website with blog posts containing your projects from STAT 541</li>
+<li>A final grade reflection, justifying your achievement for the course’s learning objectives</li>
+</ol>
+<p>The blog posts from your website is what you will reference when justifying your achievement for a given learning objective.</p>
+<!-- **Template:** Here is a template repository you can use to guide how you should organize your portfolio: <https://github.com/atheobold/STAT331_portfolio_template> -->
+<p><strong>Due date:</strong> The portfolio is due <strong>the Saturday before finals week</strong>. No deadline extensions are available for the Final Portfolio.</p>
 </section>
-<section id="required-video-the-glamour-of-graphics" class="level2">
-<h2 class="anchored" data-anchor-id="required-video-the-glamour-of-graphics">🎥 Required Video: The Glamour of Graphics</h2>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/h5cTacaWE6I?si=zLxvctfyr3TuAwlG" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen="">
-</iframe>
-</section>
-<section id="required-reading-colors-and-palettes" class="level2">
-<h2 class="anchored" data-anchor-id="required-reading-colors-and-palettes">📖 Required Reading: <a href="https://www.datanovia.com/en/blog/ggplot-colors-best-tricks-you-will-love/">Colors and Palettes</a></h2>
-</section>
-<section id="required-reading-themes" class="level2">
-<h2 class="anchored" data-anchor-id="required-reading-themes">📖 Required Reading: <a href="http://www.sthda.com/english/wiki/ggplot2-themes-and-background-colors-the-3-elements">Themes</a></h2>
-</section>
-<section id="extra-resouces" class="level2">
-<h2 class="anchored" data-anchor-id="extra-resouces">Extra Resouces</h2>
+<section id="final-grade-reflection" class="level2">
+<h2 class="anchored" data-anchor-id="final-grade-reflection">Final Grade Reflection</h2>
+<p>This component is a self-evaluation of your performance in the class. Your goal is <strong>to state clearly what grade you think you have earned in the course, and convincingly argue that you have met the criteria for that grade.</strong> Please be thoughtful, honest, and reflective, but also brief and focused.</p>
+<p>This reflection will be done in the <a href="portfolio/reflection_template.qmd"><code>reflection_template.qmd</code></a> file. The structure of the document is as follows:</p>
+<ol type="1">
+<li><strong>For each of the learning targets</strong>, carefully select examples of your code that demonstrate concretely and directly your proficiency with the given target.</li>
+</ol>
 <ul>
-<li>The <a href="https://jaredhuling.org/jcolors/"><code>jcolors</code> package</a> for color palettes</li>
-<li>The <a href="https://www.shanelynn.ie/themes-and-colours-for-r-ggplots-with-ggthemr/"><code>ggthemer</code> package</a> for setting universal themes.</li>
-<li><a href="https://emanuelaf.github.io/own-ggplot-theme.html">Make your own</a> theme to use!</li>
+<li>You must indicate where the code you provided came from, linking to the blog post from your personal website.</li>
 </ul>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Check-in: Extending <code>ggplot</code>
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><strong>1. Which of the functions below would you use to change the colors of the bars on the following plot?</strong></p>
-<ul>
-<li><code>scale_color_continuous()</code></li>
-<li><code>scale_color_discrete()</code></li>
-<li><code>scale_fill_continuous()</code></li>
-<li><code>scale_fill_discrete()</code></li>
-</ul>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="ggplot-extensions_files/figure-html/oscars-plot-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p><strong>2. Consider the plot in Question 1. What change was made to it in each step below? That is, what code would go inside the function <code>+ theme( )</code> to produce the added change?</strong></p>
-<ol type="a">
-<li></li>
+<ol start="2" type="1">
+<li><p><strong>What grade did you earn?</strong> State it clearly in one sentence. You can include plus/minus modifiers; see below about those.</p></li>
+<li><p><strong>How did you meet that grade’s requirements?</strong> The requirements for grades are found in the <a href="./portfolio/portfolio-rubric.html">Portfolio Rubric</a>. Review the criteria carefully. Then, explain how you have satisfied the criteria for the grade you are saying you’ve earned. Be specific and thorough. List each criterion you have met and how you know you’ve met it. Refer to specific artifacts or examples in the Portfolio that support your case. Again, keep it brief and focused on concrete evidence that the criteria have been met.</p></li>
+<li><p><strong>What else?</strong> There may be some other criteria that figures into your grade request that isn’t explicitly listed in the syllabus. If so, state the criteria you’re thinking of, explain why they are useful criteria for your grade determination, and then explain how well you met those criteria (and provide evidence in the artifacts, if applicable). As with the syllabus criteria, be focused, specific, and thorough — and refer to specific artifacts that provide evidence.</p></li>
 </ol>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="ggplot-extensions_files/figure-html/theme-remove-legend-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<ol start="2" type="a">
-<li></li>
-</ol>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="ggplot-extensions_files/figure-html/theme-grid-major-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p><strong>3. Which built-in theme is each of the following plots? That is, what <code>theme_XXXX()</code> function would produce the added change?</strong></p>
-<ol type="a">
-<li></li>
-</ol>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="ggplot-extensions_files/figure-html/theme-classic-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<ol start="2" type="a">
-<li></li>
-</ol>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="ggplot-extensions_files/figure-html/theme-bw-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<ol start="3" type="a">
-<li></li>
-</ol>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="ggplot-extensions_files/figure-html/theme-dark-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<ol start="4" type="a">
-<li></li>
-</ol>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="ggplot-extensions_files/figure-html/theme-void-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p><strong>4. Which of the plots above (a, b, c, or d) best adheres to the principles outlined by Will Chase (in the Glamour of Graphics)?</strong></p>
-</div>
-</div>
+<p><strong>Plus/minus grades:</strong> You may argue to add a “+” or “-” modifier to your grade. Generally speaking a “+” added to a letter grade means you’ve met all the criteria for the letter grade along with a significant amount, but not all, of the criteria for the next letter grade up. And a “-” means that you have met the requirements for a letter grade but only in a way that you believe is a bare minimum, or you’ve met almost all the requirements for the letter grade except for a small number of <strong>minor</strong> criteria.</p>
 </section>
-<section id="gganimate" class="level2">
-<h2 class="anchored" data-anchor-id="gganimate">gganimate</h2>
-<p>There are many, many ways to “spice up” your plots. We will focus in on one: making your plot animated! The best package for this, if you are using <code>ggplot</code> already, is <code>gganimate</code>.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><code>gganimate</code> plot objects can sometimes take a long time to render. One way to make it quicker is to change the number of frames in your gif. Another trick is to use the <a href="https://quarto.org/docs/computations/r.html#caching">cache chunk option</a> in Quarto, so that you don’t re-render the images every time you knit your file.</p>
-</div>
-</div>
+<section id="about-time-and-effort" class="level2">
+<h2 class="anchored" data-anchor-id="about-time-and-effort">About Time and Effort</h2>
+<p>As your instructor, I understand and respect that you have spent a great deal of time and effort on this course and will probably continue to do so until the end of the quarter. It’s possible that STAT 331 has been the most challenging course on your schedule this quarter, perhaps in your entire college career so far. I want you to know that I see you, I respect your efforts, and it’s extremely fulfilling to see you respond to the challenges and grow.</p>
+<p>I also want to be clear that while the time and effort spent on the class are vitally important, they are not explicitly part of the grade criteria you find in the syllabus. So, when you make the case for your grade in the portfolio, <strong>I respectfully ask that you keep your argument focused on concrete evidence of understanding of the learning targets and engagement with the class</strong>.</p>
+<p><strong>When making the case for your grade, the focus needs to be on the results of your investment of time and effort</strong>. Did your efforts result in several exemplary solutions through the quarter? If so, put a subset of them in the Portfolio. Did the time you spend on coursework result in being an engaged collaborator during Practice Activities? If so, document how your efforts made you a valuable group member.</p>
 </section>
-<section id="required-reading-intro-to-gganimate" class="level2">
-<h2 class="anchored" data-anchor-id="required-reading-intro-to-gganimate">📖 Required Reading: <a href="https://gganimate.com/articles/gganimate.html">Intro to <code>gganimate</code></a></h2>
-</section>
-<section id="recommended-reading-another-intro-to-gganimate" class="level2">
-<h2 class="anchored" data-anchor-id="recommended-reading-another-intro-to-gganimate">📖 Recommended Reading: <a href="https://www.datanovia.com/en/blog/gganimate-how-to-create-plots-with-beautiful-animation-in-r/">Another intro to <code>gganimate</code></a></h2>
-</section>
-<section id="recommended-video-gganimate-flipbook-demo-rstudioconf-2017" class="level2">
-<h2 class="anchored" data-anchor-id="recommended-video-gganimate-flipbook-demo-rstudioconf-2017">🎥 Recommended Video: <code>gganimate</code> flipbook demo (RStudio::conf 2017)</h2>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/3UY7Or0v_dI?si=j326j6NNtakM6BmK&amp;start=77" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen="">
-</iframe>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Check-in: Extending <code>ggplot</code>
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><strong>5. Fill in the five (5) blanks for the <code>gganimate</code> plot below:</strong></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>___ <span class="ot">&lt;-</span> oscars <span class="sc">%&gt;%</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Award_Gender <span class="sc">!=</span> <span class="st">"Ungendered"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Age_at_Award, <span class="at">fill =</span> Award_Gender)) <span class="sc">+</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Age of Academy Award Winners ({____}s)"</span>, </span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">""</span>, </span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">""</span>, </span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">fill =</span> <span class="st">"Gender of Award"</span>) <span class="sc">+</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"top"</span>) <span class="sc">+</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">____</span>(Decade_of_Award)</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">animate</span>(p2, <span class="at">nframes =</span> ____, <span class="at">fps =</span> ____)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><img src="images/oscars-animation.gif" class="img-fluid"></p>
-</div>
-</div>
-</section>
-<section id="other-extensions" class="level2">
-<h2 class="anchored" data-anchor-id="other-extensions">Other Extensions</h2>
-<p>Although we don’t have time to go in-depth on every single extension of <code>ggplot</code>, there are <strong>so</strong> many wonderful ways to up your Data Viz game.</p>
-<p>Take a look around the links below!</p>
-</section>
-<section id="required-reading-ggplot-extension-gallery" class="level2">
-<h2 class="anchored" data-anchor-id="required-reading-ggplot-extension-gallery">📖 Required Reading: <a href="https://exts.ggplot2.tidyverse.org/gallery/"><code>ggplot</code> Extension Gallery</a></h2>
-</section>
-<section id="required-reading-more-ggplot-extension-summaries" class="level2">
-<h2 class="anchored" data-anchor-id="required-reading-more-ggplot-extension-summaries">📖 Required Reading: <a href="https://mode.com/blog/r-ggplot-extension-packages">More <code>ggplot</code> Extension Summaries</a></h2>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Check-in: Extending <code>ggplot</code>
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><strong>6. Which extension package would you use to…</strong> <em>Hint: There is more than one possible answer for each question!</em></p>
-<ol type="a">
-<li>Visualize a <strong>social network</strong> using twitter data?</li>
+<section id="questions-you-might-have" class="level2">
+<h2 class="anchored" data-anchor-id="questions-you-might-have">Questions You Might Have</h2>
+<section id="q-what-if-you-disagree-with-our-final-grade-reflection" class="level3">
+<h3 class="anchored" data-anchor-id="q-what-if-you-disagree-with-our-final-grade-reflection">Q: What if you disagree with our final grade reflection?</h3>
+<section id="a-there-are-two-ways-this-might-happen." class="level4">
+<h4 class="anchored" data-anchor-id="a-there-are-two-ways-this-might-happen.">A: There are two ways this might happen.</h4>
+<ol type="1">
+<li><p>You ask for a grade that is higher than the evidence supports. That is, you grade yourself too highly, for example you believe you earned an A in the course, but I do not feel the evidence you’ve provided supports this grade. If this occurs in your Midterm Portfolio, <strong>I will discuss this with you in your 5-minute Midterm Portfolio meeting</strong>.I’ll tell you what grade I would have given you based on the evidence you provided in the portfolio. You can then use this feedback when constructing your final portfolio. If I believe the grade you’ve proposed in your Final Portfolio does not reflect the evidence you’ve provided, <strong>I will discuss this with you in your 5-minute Final Portfolio meeting</strong>. I’ll tell you what grade I would have given you based on the evidence you provided in the portfolio, and then give you the chance to provide additional evidence and explanations for your grade request. In our meeting, if you still think your grade request is correct, you’ll have the chance to walk me through your materials and reasoning. Afterwards, I might agree with you. But if we still disagree, we will try to come to an agreement on the highest grade that the evidence supports. I have faith that we’ll be able to come to a mutually-agreeable result. But, if we can’t, I will assign the grade that in my estimation is the highest grade supported by the evidence, and my determination will be final. However, again, I will exhaust all other options before simply overriding your grade determination.</p></li>
+<li><p>You ask for a grade that was lower than your actual performance indicates. That is, you “lowball” yourself, for example you say you earned a B when in fact I think you earned an A-. In this case, I will award you the grade I think you earned, and then just inform you that I’ve done so (and why).</p></li>
 </ol>
-<!-- ggraph, ggnetwork -->
-<ol start="2" type="a">
-<li><strong>Add p-values</strong> to your side-by-side boxplot of treatment groups, showing the significance of the differences?</li>
-</ol>
-<!-- ggpubr, ggstatsplot -->
-<ol start="3" type="a">
-<li>Arrange <strong>several different plots</strong> next to each other?</li>
-</ol>
-<!-- patchwork, cowplot, GGAlly -->
-<ol start="4" type="a">
-<li>Make it so <strong>hovering over a point</strong> in your scatterplot shows the corresponding label?</li>
-</ol>
-<!-- Plotly, ggraph -->
-</div>
-</div>
+<p><strong>In my experience, the second situation happens significantly more frequently than the first.</strong></p>
 </section>
-<section id="extra-resources" class="level2">
-<h2 class="anchored" data-anchor-id="extra-resources">Extra Resources</h2>
-<ul>
-<li>Dave Robinson’s <a href="https://www.youtube.com/user/safe4democracy/videos">Tidy Tuesday Screencasts</a> show a master of Data Viz at work!</li>
-<li>You can also search the <a href="https://twitter.com/search?q=%23TidyTuesday&amp;src=typeahead_click">Tidy Tuesday hashtag on twitter</a> to see some great examples of data manipulating and visualization</li>
-<li>Don’t forget about the <a href="https://www.data-to-viz.com/">Data-to-Viz Website</a></li>
-<li><a href="https://www.reddit.com/r/dataisbeautiful/top/?t=all">The “dataisbeautiful” subreddit</a> shares many nice visualizations.</li>
-<li><a href="https://www.youtube.com/watch?v=0m4yywqNPVY">This webinar</a>, by ggplot contributor Thomas Lin Pedersen, is wonderful. It’s about 2 hours long - so more than we can fit in as required viewing - but if you want to become a <code>ggplot</code> master, watch this!</li>
-</ul>
+</section>
+<section id="q-is-there-a-limit-on-the-number-of-artifacts-i-can-include-to-support-my-grade" class="level3">
+<h3 class="anchored" data-anchor-id="q-is-there-a-limit-on-the-number-of-artifacts-i-can-include-to-support-my-grade">Q: Is there a limit on the number of artifacts I can include to support my grade?</h3>
+<section id="a-there-is-no-strict-limit-but-please-be-selective." class="level4">
+<h4 class="anchored" data-anchor-id="a-there-is-no-strict-limit-but-please-be-selective.">A: There is no strict limit, but <strong>please be selective</strong>.</h4>
+<p><strong>Quality, not quantity</strong> is what we are after. We do not want every assignment in our portfolio! Typically you should be able to give a complete portfolio in <strong>fewer than 8 assignments</strong> with judicious selection of homework solutions and other work. A handful of homework solutions that clearly indicate your attainment of the grade criteria is just as good as, if not better than, a massive binder of mediocre examples.</p>
+</section>
+</section>
+<section id="q-how-specific-or-detailed-do-i-need-to-be-on-some-of-the-criteria-for-example-do-i-need-to-list-all-the-dates-when-i-answered-someones-question-on-discord" class="level3">
+<h3 class="anchored" data-anchor-id="q-how-specific-or-detailed-do-i-need-to-be-on-some-of-the-criteria-for-example-do-i-need-to-list-all-the-dates-when-i-answered-someones-question-on-discord">Q: How specific or detailed do I need to be on some of the criteria? For example, do I need to list all the dates when I answered someone’s question on Discord?</h3>
+<section id="a-this-isnt-filing-your-taxes-so-a-precise-down-to-the-minute-accounting-of-your-work-isnt-necessary." class="level4">
+<h4 class="anchored" data-anchor-id="a-this-isnt-filing-your-taxes-so-a-precise-down-to-the-minute-accounting-of-your-work-isnt-necessary.">A: This isn’t filing your taxes, so a precise down-to-the-minute accounting of your work isn’t necessary.</h4>
+<p><strong>Details and your reasoning are more important than precision and completeness here.</strong> For example if you made a handful of supportive comments in Discord, pick a few and tell me about them. What was the question about? What did you say? Why was that comment an example of “helpful feedback”? (Do you know that it was helpful?) Remember the purpose is to <strong>make a convincing case that you’ve earned a particular grade.</strong></p>
+</section>
+</section>
+<section id="q-would-someone-actually-make-a-case-that-they-earned-a-d-in-the-class" class="level3">
+<h3 class="anchored" data-anchor-id="q-would-someone-actually-make-a-case-that-they-earned-a-d-in-the-class">Q: Would someone actually make a case that they earned a “D” in the class?</h3>
+<section id="a-yes-if-the-person-is-honest-and-theres-not-enough-evidence-to-make-the-case-for-a-c." class="level4">
+<h4 class="anchored" data-anchor-id="a-yes-if-the-person-is-honest-and-theres-not-enough-evidence-to-make-the-case-for-a-c.">A: Yes, if the person is honest and there’s not enough evidence to make the case for a “C”.</h4>
+<p>If you’re in that situation, be honest and don’t overreach just because the consequences are significant.</p>
+</section>
+</section>
+<section id="q-how-long-should-the-essays-be" class="level3">
+<h3 class="anchored" data-anchor-id="q-how-long-should-the-essays-be">Q: How long should the essays be?</h3>
+<section id="a-you-should-put-serious-effort-into-each-of-the-essays-and-give-thorough-detailed-and-thoughtful-responses-without-going-overboard-and-writing-more-than-you-need." class="level4">
+<h4 class="anchored" data-anchor-id="a-you-should-put-serious-effort-into-each-of-the-essays-and-give-thorough-detailed-and-thoughtful-responses-without-going-overboard-and-writing-more-than-you-need.">A: You should put serious effort into each of the essays and give thorough, detailed, and thoughtful responses — without going overboard and writing more than you need.</h4>
+<p>There is no hard word or character count here, but if you are writing less than half a page using ordinary font and line spacing, then you probably need to spend more time carefully reflecting on the question; if you are writing more than two pages for a single essay, you might consider editing it down for clarity. As always, put yourself in the shoes of your readers and then use your judgment as a writer.</p>
+</section>
+</section>
+<section id="q-what-if-you-do-not-submit-a-final-portfolio" class="level3">
+<h3 class="anchored" data-anchor-id="q-what-if-you-do-not-submit-a-final-portfolio">Q: What if you do not submit a Final Portfolio?</h3>
+<section id="a-if-you-do-not-complete-a-final-portfolio-submission-your-grade-will-be-at-my-discretion." class="level4">
+<h4 class="anchored" data-anchor-id="a-if-you-do-not-complete-a-final-portfolio-submission-your-grade-will-be-at-my-discretion.">A: If you do not complete a Final Portfolio submission, your grade will be at my discretion.</h4>
+<p>I will use your Midterm Portfolio as well as completion of assignments from Week 7 - 10 to guide my decision.</p>
+<p><strong>I’ll add more questions and answers in this space as they come up.</strong></p>
 
 
+</section>
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -1078,13 +871,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../unit-1/ggplot-review.html" class="pagination-link" aria-label="`ggplot` Review">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><code>ggplot</code> Review</span>
-      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../unit-1/ggplot-leaflet.html" class="pagination-link" aria-label="Creating Maps with the `leaflet` Package">
-        <span class="nav-page-text">Creating Maps with the <code>leaflet</code> Package</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./portfolio/portfolio-instructions.html" class="pagination-link" aria-label="Final Portfolio Instructions">
+        <span class="nav-page-text">Final Portfolio Instructions</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1096,11 +886,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/unit-1/ggplot-extensions.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/portfolio.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item">
-    <a class="nav-link" href="../LICENSE.md">
+    <a class="nav-link" href="./LICENSE.md">
 <p>License</p>
 </a>
   </li>  
