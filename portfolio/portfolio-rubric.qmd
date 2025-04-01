@@ -1,0 +1,91 @@
+---
+title: "Final Portfolio Evaluation Rubric"
+---
+
+You will use the following labels to score each of the learning objectives in
+this course. Think of these as levels of achievement, like in a video game.
+
+### Novice 
+
+*I have partial proficiency for this objective; I can explain some parts of it, and I can create simple implementations or edit code provided to me.*
+
+You might be at a “Novice” level if you completed the coursework, labs, and
+projects; but you did not extend beyond the “simple” examples shown in the
+coursework. Meaning, you did not extend your understanding beyond simple cases.
+
+It is completely fine to have a few “Novice” objectives in this course, for
+topics that you struggled a bit more with. If you mark “Novice,” you should show
+evidence of simple implementations. I might ask you to talk me through what is
+happening in your work.
+
+::: {.callout-note}
+# Example
+
+You wrote a simple working interactive Quarto dashboard after the class
+activity, and for the lab you made some small changes to this "template"
+dashboard. You can explain how to incorporate either interactive shiny elements
+or webR components, but your lab assignment had few if any of these elements.
+:::
+
+### Proficient
+
+*I have a firm understanding of the foundational elements of this objective; I
+can explain the important parts, and I can implement it with some help from collaborators.*
+
+You might be at a “Proficient” level if you completed all the related coursework, and you took this knowledge and extended it slightly beyond your labs.
+
+The majority of your learning objectives in this class should reach a 
+"Proficient level.
+
+If you assign "Proficient" to a learning objective, you should provide concrete
+evidence of times when you personally implemented this skill, although you may
+have (documented) help from AI to get to the final product. I may ask you to
+explain all steps of your work, and why you approached the problem that way.
+
+::: {.callout-note}
+# Example
+
+You can explain how the ui and server pass information to each other, and you know when reactive objects will update. You added features into your Quarto Dashboard beyond what was done in the class activity.
+:::
+
+### Virtuoso
+
+I have a comprehensive understanding of this objective including edge cases and nuances; I can explain it thoroughly and I can independently execute it in my work.
+
+You might be at "Virtuoso" level if you felt like you fully understood every bit
+of the coursework and practice activities, and you took this knowledge and
+extended it substantially beyond your labs.
+
+A few of your learning objectives in this class should reach a "Virtuoso" level.
+
+If you assign “Virtuoso” to a learning objective, you need to provide evidence of your independent work, from scratch, in a lab. You also need to be able to answer questions much like those that a professor might get in class.
+
+::: {.callout-note}
+# Example
+
+You can explain exactly how the ui and server pass information to each other, 
+and you know how to keep reactive objects from updating until some other action
+is triggered. You incorporated complex reactive components into your Quarto
+Dashboard, beyond what was done in the class activity.
+:::
+
+## Grade Calculation
+
+*These are benchmarks to give you an idea of what achievements might correspond 
+to what grade. It is not an exact mathematical conversion; your actual Portfolio
+Grade will be decided during our discussion meeting.*
+
+|       |            |                |              |
+|-------|------------|----------------|--------------|
+|       | **Novice** | **Proficient** | **Virtuoso** |
+| **A** | 20%        | 20%            | 60%          |
+| **B** | 40%        | 40%            | 20%          |
+| **C** | 60%        | 25%            | 5%           |
+| **D** | 90%        | 10%            | 0%           |
+
+
+## Missing Portfolios
+
+If you do not submit a Final Portfolio, your grade will be determined based on
+your Midterm Portfolio. If, however, you also did not submit a Midterm 
+Portfolio, the best grade you can earn in the course is a C-.
