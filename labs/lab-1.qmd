@@ -121,24 +121,30 @@ two levels: `petrol` (any car using petrolium-based gas) and
 
 12. The `drv` variable describes if the car has front drive (`f`), rear drive
 (`r`), or four wheel drive (`4`). Let's make better labels for these values! 
-Specifically, use the `case_when()` function to change the `drv` varible to have
-the following levels: `front`, `rear`, `four wheel`. 
+Specifically, use the `case_when()` function to change the `drv` variable to 
+have the following levels: `front`, `rear`, `four wheel`. 
 
 ```{r}
 
 ```
 
-(string split + remove extra ")" )
 13. The `trans` variable contains two pieces of information, (1) the
 transmission style (`auto` or `manual`) and the specific type of transmission
-(e.g., `l5`, `m5`). Using the `str_split()` function, create a new variable
-(`trans_type`) containing the specific type of transmission of each car. Once
-you've made this new variable, use the `rename()` function to change the name
-of the `trans` column to `trans_style`.   
+(e.g., `l5`, `m5`). Using the `separate_wider_delim()` function, create two new
+variables from `trans`, (1) `trans_type` containing the specific type of
+transmission of each car (e.g., `l5`), and (2) `trans_style` the style of the 
+transmission (e.g., `auto`). 
 *Hint: You will need to deal with the stray parenthesis!* 
 
 ```{r}
+#| include: false
 
+mpg %>% 
+  separate_wider_delim(cols = trans, 
+                       delim = "(", 
+                       names = c("trans_style", "trans_name")
+                       ) %>% 
+  mutate(trans_name = str_remove(trans_name, pattern = "\\)"))
 ```
 
 ## Getting to know your classmates
