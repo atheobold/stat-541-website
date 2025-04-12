@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Quarto Dashboards, Part 2 – Advanced R</title>
+<title>Lab 4 – Advanced R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../labs/lab-4.html" rel="next">
-<link href="../labs/lab-3.html" rel="prev">
+<link href="../unit-1/quarto-dashboard-dynamic.html" rel="prev">
 <link href="../images/cat-monsters-horst.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -139,7 +138,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../unit-1/quarto-dashboard-dynamic.html">Quarto Dashboards, Part 2</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../labs/lab-4.html">Lab 4</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -195,13 +194,13 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../unit-1/quarto-dashboard-dynamic.html" class="sidebar-item-text sidebar-link active">
+  <a href="../unit-1/quarto-dashboard-dynamic.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Quarto Dashboards, Part 2</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/lab-4.html" class="sidebar-item-text sidebar-link">
+  <a href="../labs/lab-4.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Lab 4</span></a>
   </div>
 </li>
@@ -215,17 +214,18 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#making-interactive-content-with-shiny" id="toc-making-interactive-content-with-shiny" class="nav-link active" data-scroll-target="#making-interactive-content-with-shiny">Making Interactive Content with Shiny</a></li>
-  <li><a href="#making-interactive-content-with-webr-and-ojs" id="toc-making-interactive-content-with-webr-and-ojs" class="nav-link" data-scroll-target="#making-interactive-content-with-webr-and-ojs">Making Interactive Content with webR (and OJS)</a></li>
+  <li><a href="#dashboard-requirements" id="toc-dashboard-requirements" class="nav-link active" data-scroll-target="#dashboard-requirements">Dashboard Requirements</a></li>
+  <li><a href="#submission" id="toc-submission" class="nav-link" data-scroll-target="#submission">Submission</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/unit-1/quarto-dashboard-dynamic.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/labs/lab-4.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Quarto Dashboards, Part 2</h1>
+<h1 class="title">Lab 4</h1>
+<p class="subtitle lead">Transforming a Static Dashboard into an Interactive Dashboard</p>
 </div>
 
 
@@ -242,23 +242,36 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Now that we’ve acquired some skills for making dashboards, let’s spice them up a bit! This week, we’re going to add interactive content to our dashboards!</p>
-<p>This week is different from the previous weeks in that you get to choose which tool you want to explore when creating interactive content on your dashboard. There are two options:</p>
-<ol type="1">
-<li>Shiny</li>
-<li>webR (and Observable JavaScript)</li>
-</ol>
-<p>Either tool will allow you to make interactive content, but the way that you go about making the content differs (pretty substantially). Since you may not have heard about or explored either of these tools I would strongly recommend poking around the resources below before making your decision!</p>
-<section id="making-interactive-content-with-shiny" class="level1">
-<h1>Making Interactive Content with Shiny</h1>
-<p>Quick vignette: <a href="https://quarto.org/docs/dashboards/interactivity/shiny-r.html" class="uri">https://quarto.org/docs/dashboards/interactivity/shiny-r.html</a></p>
-<p>Example Shiny dashboard: <a href="https://jjallaire.shinyapps.io/penguins-dashboard/" class="uri">https://jjallaire.shinyapps.io/penguins-dashboard/</a></p>
+<p>For this lab assignment, you are tasked with transforming your previous static dashboard into an interactive dashboard using either Shiny or webR.</p>
+<section id="dashboard-requirements" class="level2">
+<h2 class="anchored" data-anchor-id="dashboard-requirements">Dashboard Requirements</h2>
+<p>The dashboard you create <strong>must</strong> have the following:</p>
+<ul>
+<li>at least one opportunity for user input via a slide bar</li>
+<li>at least one opportunity for user input via check boxes</li>
+</ul>
+<p>These interactive features are expected to be used to:</p>
+<ul>
+<li>update at least one visualization</li>
+<li>update at least one of your “quick information” cards</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Interactive Table
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You are free to swap one of your visualizations out for an interactive table!</p>
+</div>
+</div>
 </section>
-<section id="making-interactive-content-with-webr-and-ojs" class="level1">
-<h1>Making Interactive Content with webR (and OJS)</h1>
-<p>Quick vignette: <a href="https://www.tidyverse.org/blog/2024/10/quarto-live-0-1-1/" class="uri">https://www.tidyverse.org/blog/2024/10/quarto-live-0-1-1/</a></p>
-<p>Full Quarto Live documentation: <a href="https://r-wasm.github.io/quarto-live/" class="uri">https://r-wasm.github.io/quarto-live/</a></p>
-<p>Example webR dashboard: <a href="https://r-wasm.github.io/quarto-live/interactive/dashboards.html" class="uri">https://r-wasm.github.io/quarto-live/interactive/dashboards.html</a></p>
+<section id="submission" class="level2">
+<h2 class="anchored" data-anchor-id="submission">Submission</h2>
+<p>You are required to submit <strong>both</strong> the link to your GitHub repository containing your source code <strong>and</strong> a link to your <u>published</u> dashboard. You are expected to publish your dashboard through <a href="https://quarto.org/docs/publishing/quarto-pub.html">Quarto Pub</a>, a free publishing service for static content created with Quarto.</p>
 
 
 </section>
@@ -830,14 +843,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../labs/lab-3.html" class="pagination-link" aria-label="Lab 3">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Lab 3</span>
+      <a href="../unit-1/quarto-dashboard-dynamic.html" class="pagination-link" aria-label="Quarto Dashboards, Part 2">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Quarto Dashboards, Part 2</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../labs/lab-4.html" class="pagination-link" aria-label="Lab 4">
-        <span class="nav-page-text">Lab 4</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
@@ -848,7 +858,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/unit-1/quarto-dashboard-dynamic.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/labs/lab-4.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item">

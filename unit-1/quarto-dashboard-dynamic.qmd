@@ -6,4 +6,28 @@ editor: source
 Now that we've acquired some skills for making dashboards, let's spice them up
 a bit! This week, we're going to add interactive content to our dashboards!
 
-## 🎥 Required Video: Hello Quarto Dashboards
+This week is different from the previous weeks in that you get to choose which 
+tool you want to explore when creating interactive content on your dashboard. 
+There are two options:
+
+1. Shiny
+2. webR (and Observable JavaScript)
+
+Either tool will allow you to make interactive content, but the way that you 
+go about making the content differs (pretty substantially). Since you may not 
+have heard about or explored either of these tools I would strongly recommend
+poking around the resources below before making your decision! 
+
+# Making Interactive Content with Shiny 
+
+Quick vignette: <https://quarto.org/docs/dashboards/interactivity/shiny-r.html> 
+
+Example Shiny dashboard: <https://jjallaire.shinyapps.io/penguins-dashboard/>
+
+# Making Interactive Content with webR (and OJS)
+
+Quick vignette: <https://www.tidyverse.org/blog/2024/10/quarto-live-0-1-1/> 
+
+Full Quarto Live documentation: <https://r-wasm.github.io/quarto-live/>
+
+Example webR dashboard: <https://r-wasm.github.io/quarto-live/interactive/dashboards.html> 
