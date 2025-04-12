@@ -4,6 +4,7 @@ project:
   render:
     - "*.qmd"
     - "!/unit-1/other-plots.qmd"
+    - "!/portfolio/reflection-template.qmd"
   resources: 
     - portfolio/reflection-template.qmd
 
@@ -75,7 +76,8 @@ website:
         - href: labs/lab-2.qmd
         - href: unit-1/quarto-dashboard-static.qmd
         - href: labs/lab-3.qmd
-        #- href: unit-1/quarto-dashboard-dynamic.qmd
+        - href: unit-1/quarto-dashboard-dynamic.qmd
+        - href: labs/lab-4.qmd
         
     - id: portfolio
       title: "Portfolio"
@@ -83,7 +85,7 @@ website:
         - href: portfolio.qmd
         - href: portfolio/portfolio-instructions.qmd
         - href: portfolio/portfolio-rubric.qmd
-        - href: portfolio/reflection_template.qmd
+        - href: portfolio/reflection-template.qmd
 
     # - id: unit-2
     #   title: "Unit 2"
