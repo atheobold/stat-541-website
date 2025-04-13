@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Using Discord 101 – Advanced R</title>
+<title>Lab 7 – Advanced R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../set-up/setup-workflow.html" rel="next">
-<link href="../infrastructure.html" rel="prev">
 <link href="../images/cat-monsters-horst.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -75,7 +73,7 @@ ul.task-list li input[type="checkbox"] {
 
 </head>
 
-<body class="nav-sidebar floating nav-fixed">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -105,7 +103,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Syllabus</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../infrastructure.html" aria-current="page"> 
+    <a class="nav-link" href="../infrastructure.html"> 
 <span class="menu-text">Infrastructure</span></a>
   </li>  
   <li class="nav-item">
@@ -134,87 +132,33 @@ ul.task-list li input[type="checkbox"] {
 </div>
       </div> <!-- /container-fluid -->
     </nav>
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../set-up/setup-discord.html">Using Discord 101</a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
-    </div>
-  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../infrastructure.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Computational Infrastructure</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../set-up/setup-discord.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Using Discord 101</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../set-up/setup-workflow.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Installing / Updating R &amp; RStudio</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../set-up/setup-version-control.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Version Control with Git and GitHub</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../labs/lab-1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lab 1 - Quarto Warmup &amp; STAT 331 Review</span></a>
-  </div>
-</li>
-    </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#what-is-discord" id="toc-what-is-discord" class="nav-link active" data-scroll-target="#what-is-discord"><span class="header-section-number">1</span> What is Discord?</a></li>
-  <li><a href="#setting-up-your-account" id="toc-setting-up-your-account" class="nav-link" data-scroll-target="#setting-up-your-account"><span class="header-section-number">2</span> Setting up your account</a>
+  <li><a href="#the-open-notify-api" id="toc-the-open-notify-api" class="nav-link active" data-scroll-target="#the-open-notify-api">The Open-Notify API</a>
   <ul class="collapse">
-  <li><a href="#verify-your-email" id="toc-verify-your-email" class="nav-link" data-scroll-target="#verify-your-email">Verify your email</a></li>
-  <li><a href="#create-your-identity" id="toc-create-your-identity" class="nav-link" data-scroll-target="#create-your-identity">Create your identity</a></li>
-  <li><a href="#decide-about-privacy-and-notifications" id="toc-decide-about-privacy-and-notifications" class="nav-link" data-scroll-target="#decide-about-privacy-and-notifications">Decide about privacy and notifications</a></li>
-  <li><a href="#connect-other-apps" id="toc-connect-other-apps" class="nav-link" data-scroll-target="#connect-other-apps">Connect other apps</a></li>
+  <li><a href="#pass-times-for-u.s.-state-captials" id="toc-pass-times-for-u.s.-state-captials" class="nav-link" data-scroll-target="#pass-times-for-u.s.-state-captials">Pass Times for U.S. State Captials</a></li>
+  <li><a href="#mapping-the-data" id="toc-mapping-the-data" class="nav-link" data-scroll-target="#mapping-the-data">Mapping the Data</a></li>
+  <li><a href="#drawing-the-route-of-the-iss" id="toc-drawing-the-route-of-the-iss" class="nav-link" data-scroll-target="#drawing-the-route-of-the-iss">Drawing the Route of the ISS</a></li>
+  <li><a href="#submission" id="toc-submission" class="nav-link" data-scroll-target="#submission">Submission</a></li>
   </ul></li>
-  <li><a href="#using-the-channels" id="toc-using-the-channels" class="nav-link" data-scroll-target="#using-the-channels"><span class="header-section-number">3</span> Using the Channels</a>
-  <ul class="collapse">
-  <li><a href="#text-channels" id="toc-text-channels" class="nav-link" data-scroll-target="#text-channels">Text Channels</a></li>
-  <li><a href="#voice-channels" id="toc-voice-channels" class="nav-link" data-scroll-target="#voice-channels">Voice Channels</a></li>
-  <li><a href="#private-messages" id="toc-private-messages" class="nav-link" data-scroll-target="#private-messages">Private messages</a></li>
-  </ul></li>
-  <li><a href="#creating-your-own-server" id="toc-creating-your-own-server" class="nav-link" data-scroll-target="#creating-your-own-server"><span class="header-section-number">4</span> Creating your own server</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/set-up/setup-discord.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/labs/lab-7.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Using Discord 101</h1>
+<h1 class="title">Lab 7</h1>
+<p class="subtitle lead">Visualizing International Space Station Information via APIs</p>
 </div>
 
 
@@ -231,82 +175,38 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="what-is-discord" class="level2" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="what-is-discord"><span class="header-section-number">1</span> What is Discord?</h2>
-<p>Discord is a platform for text chatting, voice chatting, and screen sharing. We will be using Discord as a group “workspace” for this class.</p>
-<p>Join the <a href="https://discord.gg/tff5gYsrNa">Stat 541 Server</a> to start experimenting with the interface. When you join the server, you will be given some suggestions to get started.</p>
-<p><img src="images/welcome-discord.png" class="img-fluid"></p>
-<p>We recommend you click through these - and in particular, it is probably a good idea to download the desktop version of Discord.</p>
-<hr>
+<section id="the-open-notify-api" class="level2">
+<h2 class="anchored" data-anchor-id="the-open-notify-api">The Open-Notify API</h2>
+<p>One of the Open-Notify APIs provides predictions of pass times for a given location when given the corresponding latitude, longitude, and altitude are given:</p>
+<p><a href="https://g7vrd.co.uk/public-satellite-pass-rest-api">Pass Times API</a></p>
+<section id="pass-times-for-u.s.-state-captials" class="level3">
+<h3 class="anchored" data-anchor-id="pass-times-for-u.s.-state-captials">Pass Times for U.S. State Captials</h3>
+<p>You can find the latitudes and longitudes for the U.S. state capitals at <a href="https://people.sc.fsu.edu/~jburkardt/datasets/states/states.html">this site</a>.</p>
+<ol type="1">
+<li>Use the API to get the next <strong>three</strong> predicted pass times for all of the U.S. state capitals. Organize all of this information into a nice data frame (or data frame-like object) that will be easy to use for mapping.</li>
+</ol>
 </section>
-<section id="setting-up-your-account" class="level2" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="setting-up-your-account"><span class="header-section-number">2</span> Setting up your account</h2>
-<section id="verify-your-email" class="level3">
-<h3 class="anchored" data-anchor-id="verify-your-email">Verify your email</h3>
-<p>To use this Discord server, you <strong>must</strong> have a verified email.</p>
-<p>Nobody (including your professors) will be able to see this email, and it does not have to be your Cal Poly email. This is simply to keep the server from being overrun by temporary accounts.</p>
+<section id="mapping-the-data" class="level3">
+<h3 class="anchored" data-anchor-id="mapping-the-data">Mapping the Data</h3>
+<ol start="2" type="1">
+<li><p>Map the U.S. state capitals using <code>leaflet</code>.</p></li>
+<li><p>Find an image of your choosing to use as the marker icon, that’s relevant for these data. Maybe a spaceship? 🚀 Or an astronaut? 🧑‍🚀</p></li>
+<li><p>The hover-over information for each marker should include the name of the state capital and the soonest predicted pass time. The click information should include the name of the state capital and all three predicted pass times. Make sure these times are in an easy-to-read format.</p></li>
+</ol>
 </section>
-<section id="create-your-identity" class="level3">
-<h3 class="anchored" data-anchor-id="create-your-identity">Create your identity</h3>
-<p>The first thing you should do is decide what name and picture you would like to use.</p>
-<p><img src="images/pic.gif" class="img-fluid"></p>
-<p>We would like to <strong>strongly</strong> encourage you to use your <strong>real name and picture</strong>, so that we can get to know you. However, if you prefer to remain anonymous, you are free to do so.</p>
-<p><img src="images/pic-name.gif" class="img-fluid"></p>
-<p>(Please do not be like Regina and use the name of another student, however! This kind of impersonation will result in a permanent ban from the server.)</p>
+<section id="drawing-the-route-of-the-iss" class="level3">
+<h3 class="anchored" data-anchor-id="drawing-the-route-of-the-iss">Drawing the Route of the ISS</h3>
+<p>Check out this video for <a href="https://www.youtube.com/watch?v=iKESL0Iwmmw">adding polylines</a> to a <code>leaflet</code> map.</p>
+<ol start="5" type="1">
+<li>Overlay lines on your map that connect the U.S. state capitals in order of pass times (essentially east to west) so that we can see the expected pass order.</li>
+</ol>
 </section>
-<section id="decide-about-privacy-and-notifications" class="level3">
-<h3 class="anchored" data-anchor-id="decide-about-privacy-and-notifications">Decide about privacy and notifications</h3>
-<p>The default settings on the channel are probably just fine for you. Feel free to make any changes that work for you, though.</p>
-<p>You can change your message notifications:</p>
-<p><img src="images/notifications.gif" class="img-fluid"></p>
-<p>You can edit your privacy settings, although most things are already private:</p>
-<p><img src="images/privacy.gif" class="img-fluid"></p>
-</section>
-<section id="connect-other-apps" class="level3">
-<h3 class="anchored" data-anchor-id="connect-other-apps">Connect other apps</h3>
-<p>You can connect other apps to Discord, either for productivity or just for fun.</p>
-<p><img src="images/connect-spotify.gif" class="img-fluid"></p>
-<p>Dr.&nbsp;Bodwin has connected her Spotify, so you can listen along with her music and/or judge her taste.</p>
-<hr>
-</section>
-</section>
-<section id="using-the-channels" class="level2" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="using-the-channels"><span class="header-section-number">3</span> Using the Channels</h2>
-<p>The server is made up of many channels. Some are text chatrooms, while some are “Voice Channels” that connect you via audio to everyone else in the channel.</p>
-<section id="text-channels" class="level3">
-<h3 class="anchored" data-anchor-id="text-channels">Text Channels</h3>
-<p>Use the <code>#general</code> channel for anything and everything:</p>
-<p><img src="images/saying-hi.gif" class="img-fluid"></p>
-<p>If your question is about course logistics, rather than the material itself, consider using the <code>#class-logistics</code> channel:</p>
-<p><img src="images/logistics.gif" class="img-fluid"></p>
-<p>You can use the specific weekly channels to ask questions about the material…</p>
-<p><img src="images/github.gif" class="img-fluid"></p>
-<p>… or the specific lab assignment.</p>
-<p><img src="images/code-in-chat.gif" class="img-fluid"></p>
-<p>Notice that you can use tick marks (<code>```</code>), like in R Markdown, to make your code appear in a formatted code box.</p>
-</section>
-<section id="voice-channels" class="level3">
-<h3 class="anchored" data-anchor-id="voice-channels">Voice Channels</h3>
-<p>To join a voice channel, simply click it! Make sure you are careful about when you are muted or unmuted.</p>
-<p><img src="images/voice-channel.gif" class="img-fluid"></p>
-<p>The extra “Side Chat” channels are limited to 4 or 8 people, if you would like to start an impromptu study conversation without being heard by the professors and/or the rest of the class. (We’ll only drop in if you invite us!)</p>
-<p>Voice channels can also be used for people to “Go Live”, and share their screen with everyone else.</p>
-<p><img src="images/going-live.gif" class="img-fluid"></p>
-<p>While this will usually be something professors use to demonstrate code, you can go live, too! But you may need to download the desktop version of Discord to do so.</p>
-</section>
-<section id="private-messages" class="level3">
-<h3 class="anchored" data-anchor-id="private-messages">Private messages</h3>
-<p>It is also easy to send private messages, to your professor(s) or to each other. These private messages can also easily be used to launch a private video chat and/or screen sharing.</p>
-<p><img src="images/private-message.gif" class="img-fluid"></p>
-<hr>
-</section>
-</section>
-<section id="creating-your-own-server" class="level2" data-number="4">
-<h2 data-number="4" class="anchored" data-anchor-id="creating-your-own-server"><span class="header-section-number">4</span> Creating your own server</h2>
-<p>Last but not least - if you have an established study group you like to work with, and you want to use Discord to communicate without the distraction or invasion of the rest of the class, feel free to create your very own server! You can easily hop between servers during work parties, to ask each other questions or just to take a break and chat about life.</p>
-<p><img src="images/new-server.gif" class="img-fluid"></p>
+<section id="submission" class="level3">
+<h3 class="anchored" data-anchor-id="submission">Submission</h3>
+<p>Make sure your final file is carefully formatted, so that each analysis is clear and concise. Be sure your knitted .html file shows all your source code, including your function definitions.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -874,18 +774,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="../infrastructure.html" class="pagination-link" aria-label="Computational Infrastructure">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Computational Infrastructure</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="../set-up/setup-workflow.html" class="pagination-link" aria-label="Installing / Updating R &amp; RStudio">
-        <span class="nav-page-text">Installing / Updating R &amp; RStudio</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
@@ -894,7 +782,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/set-up/setup-discord.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/labs/lab-7.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item">

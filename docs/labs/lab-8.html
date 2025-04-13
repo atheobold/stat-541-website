@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Using Discord 101 – Advanced R</title>
+<title>Lab 8 – Advanced R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,8 +64,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../set-up/setup-workflow.html" rel="next">
-<link href="../infrastructure.html" rel="prev">
 <link href="../images/cat-monsters-horst.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -75,7 +107,7 @@ ul.task-list li input[type="checkbox"] {
 
 </head>
 
-<body class="nav-sidebar floating nav-fixed">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -105,7 +137,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Syllabus</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../infrastructure.html" aria-current="page"> 
+    <a class="nav-link" href="../infrastructure.html"> 
 <span class="menu-text">Infrastructure</span></a>
   </li>  
   <li class="nav-item">
@@ -134,87 +166,21 @@ ul.task-list li input[type="checkbox"] {
 </div>
       </div> <!-- /container-fluid -->
     </nav>
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../set-up/setup-discord.html">Using Discord 101</a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
-    </div>
-  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../infrastructure.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Computational Infrastructure</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../set-up/setup-discord.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Using Discord 101</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../set-up/setup-workflow.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Installing / Updating R &amp; RStudio</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../set-up/setup-version-control.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Version Control with Git and GitHub</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../labs/lab-1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lab 1 - Quarto Warmup &amp; STAT 331 Review</span></a>
-  </div>
-</li>
-    </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#what-is-discord" id="toc-what-is-discord" class="nav-link active" data-scroll-target="#what-is-discord"><span class="header-section-number">1</span> What is Discord?</a></li>
-  <li><a href="#setting-up-your-account" id="toc-setting-up-your-account" class="nav-link" data-scroll-target="#setting-up-your-account"><span class="header-section-number">2</span> Setting up your account</a>
-  <ul class="collapse">
-  <li><a href="#verify-your-email" id="toc-verify-your-email" class="nav-link" data-scroll-target="#verify-your-email">Verify your email</a></li>
-  <li><a href="#create-your-identity" id="toc-create-your-identity" class="nav-link" data-scroll-target="#create-your-identity">Create your identity</a></li>
-  <li><a href="#decide-about-privacy-and-notifications" id="toc-decide-about-privacy-and-notifications" class="nav-link" data-scroll-target="#decide-about-privacy-and-notifications">Decide about privacy and notifications</a></li>
-  <li><a href="#connect-other-apps" id="toc-connect-other-apps" class="nav-link" data-scroll-target="#connect-other-apps">Connect other apps</a></li>
-  </ul></li>
-  <li><a href="#using-the-channels" id="toc-using-the-channels" class="nav-link" data-scroll-target="#using-the-channels"><span class="header-section-number">3</span> Using the Channels</a>
-  <ul class="collapse">
-  <li><a href="#text-channels" id="toc-text-channels" class="nav-link" data-scroll-target="#text-channels">Text Channels</a></li>
-  <li><a href="#voice-channels" id="toc-voice-channels" class="nav-link" data-scroll-target="#voice-channels">Voice Channels</a></li>
-  <li><a href="#private-messages" id="toc-private-messages" class="nav-link" data-scroll-target="#private-messages">Private messages</a></li>
-  </ul></li>
-  <li><a href="#creating-your-own-server" id="toc-creating-your-own-server" class="nav-link" data-scroll-target="#creating-your-own-server"><span class="header-section-number">4</span> Creating your own server</a></li>
-  </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/set-up/setup-discord.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Using Discord 101</h1>
+<h1 class="title">Lab 8</h1>
+<p class="subtitle lead">Cheese Gromit!</p>
 </div>
 
 
@@ -231,83 +197,65 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="what-is-discord" class="level2" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="what-is-discord"><span class="header-section-number">1</span> What is Discord?</h2>
-<p>Discord is a platform for text chatting, voice chatting, and screen sharing. We will be using Discord as a group “workspace” for this class.</p>
-<p>Join the <a href="https://discord.gg/tff5gYsrNa">Stat 541 Server</a> to start experimenting with the interface. When you join the server, you will be given some suggestions to get started.</p>
-<p><img src="images/welcome-discord.png" class="img-fluid"></p>
-<p>We recommend you click through these - and in particular, it is probably a good idea to download the desktop version of Discord.</p>
-<hr>
-</section>
-<section id="setting-up-your-account" class="level2" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="setting-up-your-account"><span class="header-section-number">2</span> Setting up your account</h2>
-<section id="verify-your-email" class="level3">
-<h3 class="anchored" data-anchor-id="verify-your-email">Verify your email</h3>
-<p>To use this Discord server, you <strong>must</strong> have a verified email.</p>
-<p>Nobody (including your professors) will be able to see this email, and it does not have to be your Cal Poly email. This is simply to keep the server from being overrun by temporary accounts.</p>
-</section>
-<section id="create-your-identity" class="level3">
-<h3 class="anchored" data-anchor-id="create-your-identity">Create your identity</h3>
-<p>The first thing you should do is decide what name and picture you would like to use.</p>
-<p><img src="images/pic.gif" class="img-fluid"></p>
-<p>We would like to <strong>strongly</strong> encourage you to use your <strong>real name and picture</strong>, so that we can get to know you. However, if you prefer to remain anonymous, you are free to do so.</p>
-<p><img src="images/pic-name.gif" class="img-fluid"></p>
-<p>(Please do not be like Regina and use the name of another student, however! This kind of impersonation will result in a permanent ban from the server.)</p>
-</section>
-<section id="decide-about-privacy-and-notifications" class="level3">
-<h3 class="anchored" data-anchor-id="decide-about-privacy-and-notifications">Decide about privacy and notifications</h3>
-<p>The default settings on the channel are probably just fine for you. Feel free to make any changes that work for you, though.</p>
-<p>You can change your message notifications:</p>
-<p><img src="images/notifications.gif" class="img-fluid"></p>
-<p>You can edit your privacy settings, although most things are already private:</p>
-<p><img src="images/privacy.gif" class="img-fluid"></p>
-</section>
-<section id="connect-other-apps" class="level3">
-<h3 class="anchored" data-anchor-id="connect-other-apps">Connect other apps</h3>
-<p>You can connect other apps to Discord, either for productivity or just for fun.</p>
-<p><img src="images/connect-spotify.gif" class="img-fluid"></p>
-<p>Dr.&nbsp;Bodwin has connected her Spotify, so you can listen along with her music and/or judge her taste.</p>
-<hr>
-</section>
-</section>
-<section id="using-the-channels" class="level2" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="using-the-channels"><span class="header-section-number">3</span> Using the Channels</h2>
-<p>The server is made up of many channels. Some are text chatrooms, while some are “Voice Channels” that connect you via audio to everyone else in the channel.</p>
-<section id="text-channels" class="level3">
-<h3 class="anchored" data-anchor-id="text-channels">Text Channels</h3>
-<p>Use the <code>#general</code> channel for anything and everything:</p>
-<p><img src="images/saying-hi.gif" class="img-fluid"></p>
-<p>If your question is about course logistics, rather than the material itself, consider using the <code>#class-logistics</code> channel:</p>
-<p><img src="images/logistics.gif" class="img-fluid"></p>
-<p>You can use the specific weekly channels to ask questions about the material…</p>
-<p><img src="images/github.gif" class="img-fluid"></p>
-<p>… or the specific lab assignment.</p>
-<p><img src="images/code-in-chat.gif" class="img-fluid"></p>
-<p>Notice that you can use tick marks (<code>```</code>), like in R Markdown, to make your code appear in a formatted code box.</p>
-</section>
-<section id="voice-channels" class="level3">
-<h3 class="anchored" data-anchor-id="voice-channels">Voice Channels</h3>
-<p>To join a voice channel, simply click it! Make sure you are careful about when you are muted or unmuted.</p>
-<p><img src="images/voice-channel.gif" class="img-fluid"></p>
-<p>The extra “Side Chat” channels are limited to 4 or 8 people, if you would like to start an impromptu study conversation without being heard by the professors and/or the rest of the class. (We’ll only drop in if you invite us!)</p>
-<p>Voice channels can also be used for people to “Go Live”, and share their screen with everyone else.</p>
-<p><img src="images/going-live.gif" class="img-fluid"></p>
-<p>While this will usually be something professors use to demonstrate code, you can go live, too! But you may need to download the desktop version of Discord to do so.</p>
-</section>
-<section id="private-messages" class="level3">
-<h3 class="anchored" data-anchor-id="private-messages">Private messages</h3>
-<p>It is also easy to send private messages, to your professor(s) or to each other. These private messages can also easily be used to launch a private video chat and/or screen sharing.</p>
-<p><img src="images/private-message.gif" class="img-fluid"></p>
-<hr>
-</section>
-</section>
-<section id="creating-your-own-server" class="level2" data-number="4">
-<h2 data-number="4" class="anchored" data-anchor-id="creating-your-own-server"><span class="header-section-number">4</span> Creating your own server</h2>
-<p>Last but not least - if you have an established study group you like to work with, and you want to use Discord to communicate without the distraction or invasion of the rest of the class, feel free to create your very own server! You can easily hop between servers during work parties, to ask each other questions or just to take a break and chat about life.</p>
-<p><img src="images/new-server.gif" class="img-fluid"></p>
+<blockquote class="blockquote">
+<p><strong>Goal:</strong> Scrape information from <a href="https://www.cheese.com" class="uri">https://www.cheese.com</a> to obtain a dataset of characteristics about different cheeses, and gain deeper insight into your coding process. 🪤</p>
+</blockquote>
+<p><strong>Part 1:</strong> Locate and examine the <code>robots.txt</code> file for this website. Summarize what you learn from it.</p>
+<p><strong>Part 2:</strong> Learn about the <code>html_attr()</code> function from <code>rvest</code>. Describe how this function works with a small example.</p>
+<p><strong>Part 3:</strong> (Do this alongside Part 4 below.) I used <a href="https://chat.openai.com/chat">ChatGPT</a> to start the process of scraping cheese information with the following prompt:</p>
+<blockquote class="blockquote">
+<p>Write R code using the rvest package that allows me to scrape cheese information from cheese.com.</p>
+</blockquote>
+<p>Fully document your process of checking this code. Record any observations you make about where ChatGPT is useful / not useful.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load required libraries</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rvest)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the URL</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">"https://www.cheese.com/alphabetical"</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Read the HTML content from the webpage</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>webpage <span class="ot">&lt;-</span> <span class="fu">read_html</span>(url)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract the cheese names and URLs</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>cheese_data <span class="ot">&lt;-</span> webpage <span class="sc">%&gt;%</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_nodes</span>(<span class="st">".cheese-item"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_nodes</span>(<span class="st">"a"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_attr</span>(<span class="st">"href"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">paste0</span>(<span class="st">"https://cheese.com"</span>, .)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>cheese_names <span class="ot">&lt;-</span> webpage <span class="sc">%&gt;%</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_nodes</span>(<span class="st">".cheese-item h3"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_text</span>()</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a data frame to store the results</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>cheese_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Name =</span> cheese_names,</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>                        <span class="at">URL =</span> cheese_data,</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>                        <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the data frame</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(cheese_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Part 4:</strong> Obtain the following information for <strong>all</strong> cheeses in the database:</p>
+<ul>
+<li>Cheese name</li>
+<li>URL for the cheese’s webpage (e.g., <a href="https://www.cheese.com/gouda/" class="uri">https://www.cheese.com/gouda/</a>)</li>
+<li>Whether or not the cheese has a picture (e.g., <a href="https://www.cheese.com/gouda/">gouda</a> has a picture, but <a href="https://www.cheese.com/bianco/">bianco</a> does not)</li>
+</ul>
+<p>To be kind to the website owners, please add a 1 second pause between page queries. (Note that you can view 100 cheeses at a time.)</p>
+<p><strong>Part 5:</strong> When you go to a particular cheese’s page (like <a href="https://www.cheese.com/gouda/">gouda</a>), you’ll see more detailed information about the cheese. For <u><strong>just 10</strong></u> of the cheeses in the database, obtain the following detailed information:</p>
+<ul>
+<li>milk information</li>
+<li>country of origin</li>
+<li>family</li>
+<li>type</li>
+<li>flavour</li>
+</ul>
+<p>(Just 10 to avoid overtaxing the website! Continue adding a 1 second pause between page queries.)</p>
+<p><strong>Part 6:</strong> Evaluate the code that you wrote in terms of the <a href="function-strategies.html">core principle of good function writing</a>. To what extent does your implementation follow these principles? What are you learning about what is easy / challenging for you about approaching complex tasks requiring functions and loops?</p>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -874,18 +822,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="../infrastructure.html" class="pagination-link" aria-label="Computational Infrastructure">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Computational Infrastructure</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="../set-up/setup-workflow.html" class="pagination-link" aria-label="Installing / Updating R &amp; RStudio">
-        <span class="nav-page-text">Installing / Updating R &amp; RStudio</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
@@ -894,7 +830,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/set-up/setup-discord.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></div>
+    <div class="toc-actions"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/labs/lab-8.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item">
