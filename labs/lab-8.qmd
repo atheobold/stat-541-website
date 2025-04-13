@@ -1,0 +1,71 @@
+---
+title: "Lab 8"
+subtitle: "Cheese Gromit!"
+editor: source
+---
+
+> **Goal:** Scrape information from <https://www.cheese.com> to obtain a dataset of characteristics about different cheeses, and gain deeper insight into your coding process. 🪤
+
+**Part 1:** Locate and examine the `robots.txt` file for this website. Summarize what you learn from it.
+
+**Part 2:** Learn about the `html_attr()` function from `rvest`. Describe how this function works with a small example.
+
+**Part 3:** (Do this alongside Part 4 below.) I used [ChatGPT](https://chat.openai.com/chat) to start the process of scraping cheese information with the following prompt:
+
+> Write R code using the rvest package that allows me to scrape cheese information from cheese.com.
+
+Fully document your process of checking this code. Record any observations you make about where ChatGPT is useful / not useful.
+
+```{r}
+#| eval: false
+#| label: small-example-of-getting-cheese-info
+
+# Load required libraries
+library(rvest)
+library(dplyr)
+
+# Define the URL
+url <- "https://www.cheese.com/alphabetical"
+
+# Read the HTML content from the webpage
+webpage <- read_html(url)
+
+# Extract the cheese names and URLs
+cheese_data <- webpage %>%
+  html_nodes(".cheese-item") %>%
+  html_nodes("a") %>%
+  html_attr("href") %>%
+  paste0("https://cheese.com", .)
+
+cheese_names <- webpage %>%
+  html_nodes(".cheese-item h3") %>%
+  html_text()
+
+# Create a data frame to store the results
+cheese_df <- data.frame(Name = cheese_names,
+                        URL = cheese_data,
+                        stringsAsFactors = FALSE)
+
+# Print the data frame
+print(cheese_df)
+```
+
+**Part 4:** Obtain the following information for **all** cheeses in the database:
+
+-   Cheese name
+-   URL for the cheese's webpage (e.g., <https://www.cheese.com/gouda/>)
+-   Whether or not the cheese has a picture (e.g., [gouda](https://www.cheese.com/gouda/) has a picture, but [bianco](https://www.cheese.com/bianco/) does not)
+
+To be kind to the website owners, please add a 1 second pause between page queries. (Note that you can view 100 cheeses at a time.)
+
+**Part 5:** When you go to a particular cheese's page (like [gouda](https://www.cheese.com/gouda/)), you'll see more detailed information about the cheese. For [**just 10**]{.underline} of the cheeses in the database, obtain the following detailed information:
+
+-   milk information
+-   country of origin
+-   family
+-   type
+-   flavour
+
+(Just 10 to avoid overtaxing the website! Continue adding a 1 second pause between page queries.)
+
+**Part 6:** Evaluate the code that you wrote in terms of the [core principle of good function writing](function-strategies.html). To what extent does your implementation follow these principles? What are you learning about what is easy / challenging for you about approaching complex tasks requiring functions and loops?
