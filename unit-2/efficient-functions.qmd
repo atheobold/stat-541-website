@@ -1,6 +1,0 @@
----
-title: "Writing Efficient Functions"
----
-
-<!-- writing good functions -->
-<!-- https://lmyint.github.io/212_spring_2024/15-strategies-principles.html -->
