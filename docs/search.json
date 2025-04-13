@@ -25,8 +25,8 @@
     "objectID": "unit-2/writing-functions.html#recommended-reading-r-for-data-science-vector-functions",
     "href": "unit-2/writing-functions.html#recommended-reading-r-for-data-science-vector-functions",
     "title": "Writing Functions in R",
-    "section": "🎥 Recommended Reading: R for Data Science: Vector Functions",
-    "text": "🎥 Recommended Reading: R for Data Science: Vector Functions\n\nAnatomy of a Function\nLet’s establish some vocabulary moving forward. Consider the very simple function below:\n\nadd_or_subtract &lt;- function(first_num, second_num = 2, type = \"add\") {\n  \n  if (type == \"add\") {\n    first_num + second_num\n  } else if (type == \"subtract\") {\n    first_num - second_num\n  } else {\n    stop(\"Please choose `add` or `subtract` as the type.\")\n  }\n  \n}\n\n\nThe function name is chosen by whoever writes the function: add_or_subtract\nThe required arguments are the ones for which no default value is supplied: first_num\nThe optional arguments are the ones for which a default value is supplied: second_num = 2, type = \"add\"\nThe body of the function is all the code inside the definition. This code will be run in the environment of the function, rather than in the global environment. This means that code in the body of the function does not have the power to alter anything outside the function1:\n\n\n  if (type == \"add\") {\n    first_num + second_num\n  } else if (type == \"subtract\") {\n    first_num - second_num\n  } else {\n    stop(\"Please choose `add` or `subtract` as the type.\")\n  }\n\n\nThe return values of the function are the possible objects that get returned: first_num + second_num, first_num - second_num\n\nWhen we use a function in code, this is referred to as a function call.\n\n\n\n\n\n\nCheck-in: Function Basics\n\n\n\nQuestion 1: What will be returned by each of the following?\n\n1\n-1\n30\nAn error defined in the function add_or_subtract\nAn error defined in a different function, that is called from inside add_or_subtract\n\n\nadd_or_subtract(5, 6, type = \"subtract\")\n\nadd_or_subtract(\"orange\")\n\nadd_or_subtract(5, 6, type = \"multiply\")\n\nadd_or_subtract(\"orange\", type = \"multiply\")\n\nQuestion 2:\nConsider the following code:\n\nfirst_num &lt;- 5\nsecond_num &lt;- 3\n\nresult &lt;- 8\n\nresult &lt;- add_or_subtract(first_num, second_num = 4)\n\nresult_2 &lt;- add_or_subtract(first_num)\n\nIn your Global Environment, what is the value of…\n\nfirst_num\nsecond_num\nresult\nresult_2",
+    "section": "📖 Recommended Reading: R for Data Science: Vector Functions",
+    "text": "📖 Recommended Reading: R for Data Science: Vector Functions\n\nAnatomy of a Function\nLet’s establish some vocabulary moving forward. Consider the very simple function below:\n\nadd_or_subtract &lt;- function(first_num, second_num = 2, type = \"add\") {\n  \n  if (type == \"add\") {\n    first_num + second_num\n  } else if (type == \"subtract\") {\n    first_num - second_num\n  } else {\n    stop(\"Please choose `add` or `subtract` as the type.\")\n  }\n  \n}\n\n\nThe function name is chosen by whoever writes the function: add_or_subtract\nThe required arguments are the ones for which no default value is supplied: first_num\nThe optional arguments are the ones for which a default value is supplied: second_num = 2, type = \"add\"\nThe body of the function is all the code inside the definition. This code will be run in the environment of the function, rather than in the global environment. This means that code in the body of the function does not have the power to alter anything outside the function1:\n\n\n  if (type == \"add\") {\n    first_num + second_num\n  } else if (type == \"subtract\") {\n    first_num - second_num\n  } else {\n    stop(\"Please choose `add` or `subtract` as the type.\")\n  }\n\n\nThe return values of the function are the possible objects that get returned: first_num + second_num, first_num - second_num\n\nWhen we use a function in code, this is referred to as a function call.\n\n\n\n\n\n\nCheck-in: Function Basics\n\n\n\nQuestion 1: What will be returned by each of the following?\n\n1\n-1\n30\nAn error defined in the function add_or_subtract\nAn error defined in a different function, that is called from inside add_or_subtract\n\n\nadd_or_subtract(5, 6, type = \"subtract\")\n\nadd_or_subtract(\"orange\")\n\nadd_or_subtract(5, 6, type = \"multiply\")\n\nadd_or_subtract(\"orange\", type = \"multiply\")\n\nQuestion 2:\nConsider the following code:\n\nfirst_num &lt;- 5\nsecond_num &lt;- 3\n\nresult &lt;- 8\n\nresult &lt;- add_or_subtract(first_num, second_num = 4)\n\nresult_2 &lt;- add_or_subtract(first_num)\n\nIn your Global Environment, what is the value of…\n\nfirst_num\nsecond_num\nresult\nresult_2",
     "crumbs": [
       "Unit 2 - Iteration",
       "Writing Functions in R"
@@ -113,8 +113,8 @@
     "objectID": "unit-2/writing-functions.html#recommended-reading-r-for-data-science-data-frame-functions",
     "href": "unit-2/writing-functions.html#recommended-reading-r-for-data-science-data-frame-functions",
     "title": "Writing Functions in R",
-    "section": "🎥 Recommended Reading: R for Data Science: Data Frame Functions",
-    "text": "🎥 Recommended Reading: R for Data Science: Data Frame Functions\nTo solve this conundrum, we use a trick called tunneling to “force” the unquoted name Species through to the function group_by(). It looks like this:\n\nmeans_by_group &lt;- function(dataset, cat_var, quant_var) {\n  \n  dataset %&gt;%\n    group_by({{cat_var}}) %&gt;%\n    summarize(\n      means = mean({{quant_var}})\n              )\n  \n  \n}\n\n\n\n\n\n\n\nNote\n\n\n\nNote: The tunnel, or “curly-curly” operator, {{ }}, is from the tidyverse package rlang.\n\n\nNow everything works!\n\nmeans_by_group(penguins, \n               cat_var = species, \n               quant_var = bill_length_mm\n               )\n\n# A tibble: 3 × 2\n  species   means\n  &lt;fct&gt;     &lt;dbl&gt;\n1 Adelie     NA  \n2 Chinstrap  48.8\n3 Gentoo     NA  \n\n\nOkay, now let’s group by both species and sex:\n\nmeans_by_group(penguins, \n               cat_var = c(species, sex), \n               quant_var = bill_length_mm)\n\nError in `group_by()`:\nℹ In argument: `c(species, sex)`.\nCaused by error:\n! `c(species, sex)` must be size 344 or 1, not 688.\n\n\nOh no! What now?! When c(species, sex) is put inside {{ c(species, sex) }} within the function, R is actually running the code inside {{ }}. This combines the columns for those two variables into one long vector. What we really meant by c(species, sex) is “group by both cut and color.”\nTo fix this, we need the pick() function to get R to see {{ group_var }} as a list of separate variables (like the way select() works).\n\nmeans_by_group &lt;- function(df, cat_var, quant_var) {\n    df %&gt;%\n        group_by(pick({{ cat_var }})) %&gt;%\n        summarize(mean = mean({{ quant_var }})\n                  )\n}\n\nNow it’s back to working!\n\nmeans_by_group(penguins, \n               cat_var = c(species, sex), \n               quant_var = bill_length_mm\n               )\n\n# A tibble: 8 × 3\n# Groups:   species [3]\n  species   sex     mean\n  &lt;fct&gt;     &lt;fct&gt;  &lt;dbl&gt;\n1 Adelie    female  37.3\n2 Adelie    male    40.4\n3 Adelie    &lt;NA&gt;    NA  \n4 Chinstrap female  46.6\n5 Chinstrap male    51.1\n6 Gentoo    female  45.6\n7 Gentoo    male    49.5\n8 Gentoo    &lt;NA&gt;    NA  \n\n\n\n\n\n\n\n\nCheck-in: Tidy Eval Functions\n\n\n\nQuestion 9: Create a new version of dplyr::count() that also shows proportions instead of just sample sizes. The function should be able to handle counting by multiple variables.",
+    "section": "📖 Recommended Reading: R for Data Science: Data Frame Functions",
+    "text": "📖 Recommended Reading: R for Data Science: Data Frame Functions\nTo solve this conundrum, we use a trick called tunneling to “force” the unquoted name Species through to the function group_by(). It looks like this:\n\nmeans_by_group &lt;- function(dataset, cat_var, quant_var) {\n  \n  dataset %&gt;%\n    group_by({{cat_var}}) %&gt;%\n    summarize(\n      means = mean({{quant_var}})\n              )\n  \n  \n}\n\n\n\n\n\n\n\nNote\n\n\n\nNote: The tunnel, or “curly-curly” operator, {{ }}, is from the tidyverse package rlang.\n\n\nNow everything works!\n\nmeans_by_group(penguins, \n               cat_var = species, \n               quant_var = bill_length_mm\n               )\n\n# A tibble: 3 × 2\n  species   means\n  &lt;fct&gt;     &lt;dbl&gt;\n1 Adelie     NA  \n2 Chinstrap  48.8\n3 Gentoo     NA  \n\n\nOkay, now let’s group by both species and sex:\n\nmeans_by_group(penguins, \n               cat_var = c(species, sex), \n               quant_var = bill_length_mm)\n\nError in `group_by()`:\nℹ In argument: `c(species, sex)`.\nCaused by error:\n! `c(species, sex)` must be size 344 or 1, not 688.\n\n\nOh no! What now?! When c(species, sex) is put inside {{ c(species, sex) }} within the function, R is actually running the code inside {{ }}. This combines the columns for those two variables into one long vector. What we really meant by c(species, sex) is “group by both cut and color.”\nTo fix this, we need the pick() function to get R to see {{ group_var }} as a list of separate variables (like the way select() works).\n\nmeans_by_group &lt;- function(df, cat_var, quant_var) {\n    df %&gt;%\n        group_by(pick({{ cat_var }})) %&gt;%\n        summarize(mean = mean({{ quant_var }})\n                  )\n}\n\nNow it’s back to working!\n\nmeans_by_group(penguins, \n               cat_var = c(species, sex), \n               quant_var = bill_length_mm\n               )\n\n# A tibble: 8 × 3\n# Groups:   species [3]\n  species   sex     mean\n  &lt;fct&gt;     &lt;fct&gt;  &lt;dbl&gt;\n1 Adelie    female  37.3\n2 Adelie    male    40.4\n3 Adelie    &lt;NA&gt;    NA  \n4 Chinstrap female  46.6\n5 Chinstrap male    51.1\n6 Gentoo    female  45.6\n7 Gentoo    male    49.5\n8 Gentoo    &lt;NA&gt;    NA  \n\n\n\n\n\n\n\n\nCheck-in: Tidy Eval Functions\n\n\n\nQuestion 9: Create a new version of dplyr::count() that also shows proportions instead of just sample sizes. The function should be able to handle counting by multiple variables.",
     "crumbs": [
       "Unit 2 - Iteration",
       "Writing Functions in R"
@@ -1088,5 +1088,103 @@
       "Unit 1 - Communication",
       "`ggplot` Extensions"
     ]
+  },
+  {
+    "objectID": "unit-2/efficient-code.html",
+    "href": "unit-2/efficient-code.html",
+    "title": "Writing Efficient Code",
+    "section": "",
+    "text": "In this module, you’ll learn a bit about how to make your code faster in general."
+  },
+  {
+    "objectID": "unit-2/efficient-code.html#required-reading-the-tictoc-and-microbenchmark-packages",
+    "href": "unit-2/efficient-code.html#required-reading-the-tictoc-and-microbenchmark-packages",
+    "title": "Writing Efficient Code",
+    "section": "📖 Required Reading: The tictoc and microbenchmark packages",
+    "text": "📖 Required Reading: The tictoc and microbenchmark packages"
+  },
+  {
+    "objectID": "unit-2/efficient-code.html#required-reading-the-bench-package",
+    "href": "unit-2/efficient-code.html#required-reading-the-bench-package",
+    "title": "Writing Efficient Code",
+    "section": "📖 Required Reading: The bench package",
+    "text": "📖 Required Reading: The bench package"
+  },
+  {
+    "objectID": "unit-2/efficient-code.html#required-reading-lobstrobj_size",
+    "href": "unit-2/efficient-code.html#required-reading-lobstrobj_size",
+    "title": "Writing Efficient Code",
+    "section": "📖 Required Reading: lobstr::obj_size",
+    "text": "📖 Required Reading: lobstr::obj_size"
+  },
+  {
+    "objectID": "unit-2/efficient-code.html#save-smaller-data-frames-if-you-are-going-to-use-them-many-times",
+    "href": "unit-2/efficient-code.html#save-smaller-data-frames-if-you-are-going-to-use-them-many-times",
+    "title": "Writing Efficient Code",
+    "section": "Save smaller data frames, if you are going to use them many times",
+    "text": "Save smaller data frames, if you are going to use them many times\nConsider the following dataset:\n\nlibrary(fivethirtyeight)\n\nglimpse(congress_age)\n\nRows: 18,635\nColumns: 13\n$ congress   &lt;int&gt; 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80,…\n$ chamber    &lt;chr&gt; \"house\", \"house\", \"house\", \"house\", \"house\", \"house\", \"hous…\n$ bioguide   &lt;chr&gt; \"M000112\", \"D000448\", \"S000001\", \"E000023\", \"L000296\", \"G00…\n$ firstname  &lt;chr&gt; \"Joseph\", \"Robert\", \"Adolph\", \"Charles\", \"William\", \"James\"…\n$ middlename &lt;chr&gt; \"Jefferson\", \"Lee\", \"Joachim\", \"Aubrey\", NA, \"A.\", \"Joseph\"…\n$ lastname   &lt;chr&gt; \"Mansfield\", \"Doughton\", \"Sabath\", \"Eaton\", \"Lewis\", \"Galla…\n$ suffix     &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…\n$ birthday   &lt;date&gt; 1861-02-09, 1863-11-07, 1866-04-04, 1868-03-29, 1868-09-22…\n$ state      &lt;chr&gt; \"TX\", \"NC\", \"IL\", \"NJ\", \"KY\", \"PA\", \"CA\", \"NY\", \"WI\", \"MA\",…\n$ party      &lt;chr&gt; \"D\", \"D\", \"D\", \"R\", \"R\", \"R\", \"R\", \"D\", \"R\", \"R\", \"D\", \"R\",…\n$ incumbent  &lt;lgl&gt; TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, TRUE, TRUE, TRUE, TRU…\n$ termstart  &lt;date&gt; 1947-01-03, 1947-01-03, 1947-01-03, 1947-01-03, 1947-01-03…\n$ age        &lt;dbl&gt; 86, 83, 81, 79, 78, 78, 78, 77, 76, 76, 75, 74, 74, 73, 73,…\n\n\nSuppose we want to do some exploratory analysis on these data. Let’s use the tic() and toc() functions from the tictoc packages to check how much time it takes to run this code:\n\ntic()\n\ncongress_age %&gt;%\n  filter(chamber == \"senate\") %&gt;%\n  summarize(mean(age))\n\ncongress_age %&gt;%\n  filter(chamber == \"senate\") %&gt;%\n  ggplot() + \n  geom_histogram(mapping = aes(x = age))\ncongress_age %&gt;%\n  filter(chamber == \"senate\") %&gt;%\n  slice_max(n = 5, order_by = age)\n\n\ntoc()\n\n0.213 sec elapsed\n\n\nThese are all three reasonable things to do, and they can’t be done in the same pipeline. But wait - we just made R do the process of subsetting to only Senators three separate times!\n\ntic()\n  congress_age %&gt;%\n    filter(chamber == \"senate\")\n\n\ntoc()\n\n0.013 sec elapsed\n\n\nInstead, how about we filter the data once, save it into an object, and call on that object:\n\ntic()\n\n senate &lt;- congress_age %&gt;%\n  filter(chamber == \"senate\")\n\nsenate %&gt;%\n  summarize(mean(age))\n\nsenate %&gt;%\n  ggplot() + \n  geom_histogram(mapping = aes(x = age))\nsenate %&gt;%\n  slice_max(n = 5, order_by = age)\n\n\ntoc()\n\n0.107 sec elapsed"
+  },
+  {
+    "objectID": "unit-2/efficient-code.html#avoid-for-loops",
+    "href": "unit-2/efficient-code.html#avoid-for-loops",
+    "title": "Writing Efficient Code",
+    "section": "Avoid for-loops",
+    "text": "Avoid for-loops\nFor-loops are deathly slow in R. If you absolutely must iterate over a process, rely on the apply() or map() function families. These will typically be close to the same speed, depending on the situation.\n\nloop_func &lt;- function(df){\n  \n  # initialize the type object\n  type &lt;- rep(NA, ncol(df))\n  \n  for(i in 1:ncol(df)){\n    \n    # store the class of the ith column of df into the ith entry of type \n    type[i] &lt;- class(df[,i])\n  }\n  \n  return(type)\n}\n\nmap_func &lt;- function(df){\n  \n  type &lt;- map_chr(df, class)\n  \n  return(type)\n\n  }\n\ndat &lt;- as.data.frame(\n  matrix(1,\n         nrow = 5,\n         ncol = 100000)\n  )\n\nmicrobenchmark::microbenchmark(loop_func(dat),\n                               map_func(dat),\n                               times = 2)\n\nUnit: milliseconds\n           expr  min   lq mean median   uq  max neval\n loop_func(dat) 6534 6534 6567   6567 6601 6601     2\n  map_func(dat)   36   36   36     36   37   37     2"
+  },
+  {
+    "objectID": "unit-2/efficient-code.html#use-vectorized-functions",
+    "href": "unit-2/efficient-code.html#use-vectorized-functions",
+    "title": "Writing Efficient Code",
+    "section": "Use vectorized functions",
+    "text": "Use vectorized functions\nBetter even than apply() or map() is not to iterate at all! Writing vectorized functions is tough, but do-able in many cases. Here’s an example:"
+  },
+  {
+    "objectID": "unit-2/efficient-code.html#required-video-simple-vectorizing-example",
+    "href": "unit-2/efficient-code.html#required-video-simple-vectorizing-example",
+    "title": "Writing Efficient Code",
+    "section": "🎥 Required Video: Simple Vectorizing Example",
+    "text": "🎥 Required Video: Simple Vectorizing Example\nBetter yet - rely on built-in functions in other packages to do it for you!"
+  },
+  {
+    "objectID": "unit-2/efficient-code.html#allocate-memory-in-advance",
+    "href": "unit-2/efficient-code.html#allocate-memory-in-advance",
+    "title": "Writing Efficient Code",
+    "section": "Allocate memory in advance",
+    "text": "Allocate memory in advance\nA trick we use very often in coding is to “tack on” values to the end of a vector or list as we iterate through something. However, this is actually very slow! If you know how long your list is going to end up, consider pre-creating that list.\n\ndo_stuff_allocate &lt;- function(reps) {\n  results &lt;- vector(length = reps)\n  for (i in 1:reps) {\n    results[i] &lt;- i\n  }\n  return(results)\n}\n\ndo_stuff_tackon &lt;- function(reps) {\n   results &lt;- c()\n  for (i in 1:reps) {\n    results &lt;- c(results, i)\n  }\n  return(results)\n}\n\nmicrobenchmark::microbenchmark(\n  do_stuff_allocate(1000),\n  do_stuff_tackon(1000)\n)\n\nUnit: microseconds\n                    expr min  lq mean median  uq  max neval\n do_stuff_allocate(1000)  22  22   37     22  23 1470   100\n   do_stuff_tackon(1000) 594 701  919    722 735 6106   100"
+  },
+  {
+    "objectID": "unit-2/efficient-code.html#data.table",
+    "href": "unit-2/efficient-code.html#data.table",
+    "title": "Writing Efficient Code",
+    "section": "data.table",
+    "text": "data.table\nFor speeding up work with data frames, no package is better than data.table!"
+  },
+  {
+    "objectID": "unit-2/efficient-code.html#required-video-5-minute-intro-to-data.table",
+    "href": "unit-2/efficient-code.html#required-video-5-minute-intro-to-data.table",
+    "title": "Writing Efficient Code",
+    "section": "📖 Required Video: 5-minute intro to data.table",
+    "text": "📖 Required Video: 5-minute intro to data.table"
+  },
+  {
+    "objectID": "unit-2/efficient-code.html#required-reading-data.table-cheatsheet",
+    "href": "unit-2/efficient-code.html#required-reading-data.table-cheatsheet",
+    "title": "Writing Efficient Code",
+    "section": "📖 Required Reading: data.table cheatsheet",
+    "text": "📖 Required Reading: data.table cheatsheet\n\n\n\n\n\n\nCheck-in: data.table\n\n\n\nHere is some dplyr code. Re-write it in data.table syntax. Then perform a speed test to see which one is faster, and by how much.\n\ncongress_age %&gt;%\n  group_by(state) %&gt;%\n  summarize(mean_age = mean(age))\n\n# A tibble: 50 × 2\n   state mean_age\n   &lt;chr&gt;    &lt;dbl&gt;\n 1 AK        57.6\n 2 AL        53.0\n 3 AR        52.8\n 4 AZ        54.7\n 5 CA        53.6\n 6 CO        52.3\n 7 CT        49.7\n 8 DE        53.1\n 9 FL        53.4\n10 GA        53.4\n# ℹ 40 more rows"
+  },
+  {
+    "objectID": "unit-2/efficient-code.html#required-reading-profiling",
+    "href": "unit-2/efficient-code.html#required-reading-profiling",
+    "title": "Writing Efficient Code",
+    "section": "📖 Required Reading: Profiling",
+    "text": "📖 Required Reading: Profiling\nFor this reading, I strongly encourage you to skim. The code aspects are mostly more complicated that we expect in this class; but the general overview of the principles behind speeding up code is helpful.\nIn your work, you will most likely “profile” manually, by tictoc-ing bits of your code and so forth, not by these fancy methods.\n\n\n\n\n\n\nCheck-in: Profiling\n\n\n\nQuestion 1: Why is vapply() faster than sapply()?\n\nIt specifies the output type.\nIt specifies the input type.\nIt performs fewer safety checks.\nIt performs fewer iterations.\n\nQuestion 2: Why is mean(x) slower than sum(x)/length(x)?\n\nsum() is vectorized, while mean() is not.\nA mean is a smaller number than a sum, so it needs less memory.\nmean() calculates the mean twice just in case.\nmean() was written in an old version of R.\n\nQuestion 3: What is the name of the site where you can search packages by topic?\n\nCRANberries\nCRAN search algorithm\nCRAN archive network\nCRAN task views\n\n\nOptional: Super advanced mode\nThe following are some suggestions of ways you can level-up your code speed. These are outside the scope of this class, but you are welcome to explore them!\n\nDive deep into the R efficiency rabbit hole…\nParallelize your computations\nMake your code run in C++ with Rcpp\nLearn to use recursion\nLearn more about memory allocation and garbage collecting in R."
+  },
+  {
+    "objectID": "unit-2/efficient-code.html#optional-super-advanced-mode",
+    "href": "unit-2/efficient-code.html#optional-super-advanced-mode",
+    "title": "Writing Efficient Code",
+    "section": "Optional: Super advanced mode",
+    "text": "Optional: Super advanced mode\nThe following are some suggestions of ways you can level-up your code speed. These are outside the scope of this class, but you are welcome to explore them!\n\nDive deep into the R efficiency rabbit hole…\nParallelize your computations\nMake your code run in C++ with Rcpp\nLearn to use recursion\nLearn more about memory allocation and garbage collecting in R."
   }
 ]

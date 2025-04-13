@@ -36,7 +36,7 @@ refresher, watch the video below.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/zA5eVuUMM8U?si=AlTQG1N79B48UjT_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-## 🎥 Recommended Reading: [*R for Data Science*: Vector Functions](https://r4ds.hadley.nz/functions.html#vector-functions)
+## 📖 Recommended Reading: [*R for Data Science*: Vector Functions](https://r4ds.hadley.nz/functions.html#vector-functions)
 
 ### Anatomy of a Function
 
@@ -450,7 +450,7 @@ unquoted variable `cat_var`, and tries to use it as an input in `group_by()`,
 not realizing that we *actually* meant to pass along the variable name 
 `species` into the function.
 
-## 🎥 Recommended Reading: [*R for Data Science*: Data Frame Functions](https://r4ds.hadley.nz/functions.html#data-frame-functions)
+## 📖 Recommended Reading: [*R for Data Science*: Data Frame Functions](https://r4ds.hadley.nz/functions.html#data-frame-functions)
 
 To solve this conundrum, we use a trick called **tunneling** to "force" the
 unquoted name `Species` through to the function `group_by()`. It looks like

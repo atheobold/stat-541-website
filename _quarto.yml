@@ -7,8 +7,7 @@ project:
     - "!/portfolio/reflection-template.qmd"
     - "!/unit-2/json.qmd"
     - "!/unit-2/web-scraping.qmd"
-    - "!/unit-2/efficient-functions.qmd"
-    - "!/unit-2/efficient-code.qmd"
+    - "!/unit-2/iterating-functions.qmd"
   resources: 
     - portfolio/reflection-template.qmd
 

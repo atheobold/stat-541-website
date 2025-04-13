@@ -209,7 +209,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#basics-of-functions" id="toc-basics-of-functions" class="nav-link active" data-scroll-target="#basics-of-functions">Basics of Functions</a>
   <ul class="collapse">
   <li><a href="#recommended-video-how-to-write-a-function-in-r" id="toc-recommended-video-how-to-write-a-function-in-r" class="nav-link" data-scroll-target="#recommended-video-how-to-write-a-function-in-r">🎥 Recommended Video: How to Write a Function in R</a></li>
-  <li><a href="#recommended-reading-r-for-data-science-vector-functions" id="toc-recommended-reading-r-for-data-science-vector-functions" class="nav-link" data-scroll-target="#recommended-reading-r-for-data-science-vector-functions">🎥 Recommended Reading: <em>R for Data Science</em>: Vector Functions</a>
+  <li><a href="#recommended-reading-r-for-data-science-vector-functions" id="toc-recommended-reading-r-for-data-science-vector-functions" class="nav-link" data-scroll-target="#recommended-reading-r-for-data-science-vector-functions">📖 Recommended Reading: <em>R for Data Science</em>: Vector Functions</a>
   <ul class="collapse">
   <li><a href="#anatomy-of-a-function" id="toc-anatomy-of-a-function" class="nav-link" data-scroll-target="#anatomy-of-a-function">Anatomy of a Function</a></li>
   </ul></li>
@@ -226,7 +226,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#objects-of-type-closure" id="toc-objects-of-type-closure" class="nav-link" data-scroll-target="#objects-of-type-closure">Objects of Type Closure</a></li>
   <li><a href="#lazy-evaluation" id="toc-lazy-evaluation" class="nav-link" data-scroll-target="#lazy-evaluation">Lazy Evaluation</a></li>
   <li><a href="#non-standard-evaluation-and-tunnelling" id="toc-non-standard-evaluation-and-tunnelling" class="nav-link" data-scroll-target="#non-standard-evaluation-and-tunnelling">Non-Standard Evaluation and Tunnelling</a></li>
-  <li><a href="#recommended-reading-r-for-data-science-data-frame-functions" id="toc-recommended-reading-r-for-data-science-data-frame-functions" class="nav-link" data-scroll-target="#recommended-reading-r-for-data-science-data-frame-functions">🎥 Recommended Reading: <em>R for Data Science</em>: Data Frame Functions</a></li>
+  <li><a href="#recommended-reading-r-for-data-science-data-frame-functions" id="toc-recommended-reading-r-for-data-science-data-frame-functions" class="nav-link" data-scroll-target="#recommended-reading-r-for-data-science-data-frame-functions">📖 Recommended Reading: <em>R for Data Science</em>: Data Frame Functions</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/unit-2/writing-functions.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></nav>
@@ -276,7 +276,7 @@ Go on a walk and listen to a talk!
 </iframe>
 </section>
 <section id="recommended-reading-r-for-data-science-vector-functions" class="level2">
-<h2 class="anchored" data-anchor-id="recommended-reading-r-for-data-science-vector-functions">🎥 Recommended Reading: <a href="https://r4ds.hadley.nz/functions.html#vector-functions"><em>R for Data Science</em>: Vector Functions</a></h2>
+<h2 class="anchored" data-anchor-id="recommended-reading-r-for-data-science-vector-functions">📖 Recommended Reading: <a href="https://r4ds.hadley.nz/functions.html#vector-functions"><em>R for Data Science</em>: Vector Functions</a></h2>
 <section id="anatomy-of-a-function" class="level3">
 <h3 class="anchored" data-anchor-id="anatomy-of-a-function">Anatomy of a Function</h3>
 <p>Let’s establish some vocabulary moving forward. Consider the very simple function below:</p>
@@ -622,7 +622,7 @@ Check-in: Lazy Evaluation
 <p>What happened here is that the function <code>group_by()</code> uses <strong>non-standard evaluation</strong>. This means it has a very special type of input called <strong>unquoted</strong>. Notice that we say <code>group_by(species)</code> not <code>group_by("species")</code> - there are no quotation marks, because <code>species</code> is a variable name, not a string. In the <code>means_by_group()</code> function, R sees the unquoted variable <code>cat_var</code>, and tries to use it as an input in <code>group_by()</code>, not realizing that we <em>actually</em> meant to pass along the variable name <code>species</code> into the function.</p>
 </section>
 <section id="recommended-reading-r-for-data-science-data-frame-functions" class="level2">
-<h2 class="anchored" data-anchor-id="recommended-reading-r-for-data-science-data-frame-functions">🎥 Recommended Reading: <a href="https://r4ds.hadley.nz/functions.html#data-frame-functions"><em>R for Data Science</em>: Data Frame Functions</a></h2>
+<h2 class="anchored" data-anchor-id="recommended-reading-r-for-data-science-data-frame-functions">📖 Recommended Reading: <a href="https://r4ds.hadley.nz/functions.html#data-frame-functions"><em>R for Data Science</em>: Data Frame Functions</a></h2>
 <p>To solve this conundrum, we use a trick called <strong>tunneling</strong> to “force” the unquoted name <code>Species</code> through to the function <code>group_by()</code>. It looks like this:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>means_by_group <span class="ot">&lt;-</span> <span class="cf">function</span>(dataset, cat_var, quant_var) {</span>
