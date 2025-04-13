@@ -1,0 +1,412 @@
+---
+title: "Week 7: Writing Functions"
+editor: source
+execute: 
+  echo: false
+  warning: false
+  message: false
+---
+
+<!-- tidyverse functions -->
+<!-- https://lmyint.github.io/212_spring_2024/09-functions.html#writing-functions-with-tidyverse-verbs -->
+<!-- https://r4ds.hadley.nz/functions.html -->
+
+
+```{r}
+#| label: setup
+#| include: false
+
+library(tidyverse)
+library(flair)
+```
+
+Before we start developing our very own R Packages, let's review the basic building blocks of R programming: **functions**.
+
+-   [Some thoughts from Hadley on writing good functions](https://www.youtube.com/watch?v=Qne86lxjgtg)
+-   [Jenny Bryan's advice for nice code design](https://www.youtube.com/watch?v=7oyiPBjLAWY)
+-   [RStudio's Primers](https://rstudio.cloud/learn/primers) are interactive lessons on the basics of R; these would be a great way to refresh your knowledge.
+
+## Basics of Functions
+
+If you do not recall the basics of writing functions, or if you want a quick refresher, watch the video below.
+
+```{r}
+#| results: asis
+#| label: required-video-functions
+
+req_vid("How to Write a Function", type = "Optional", url = "https://youtu.be/zA5eVuUMM8U")
+```
+
+### Anatomy of a function definition
+
+Let's establish some vocabulary moving forward. Consider the very simple function below:
+
+```{r}
+#| label: addtwo
+#| echo: true
+
+add_or_subtract <- function(first_num, second_num = 2, type = "add") {
+  
+  if (type == "add") {
+    first_num + second_num
+  } else if (type == "subtract") {
+    first_num - second_num
+  } else {
+    stop("Please choose `add` or `subtract` as the type.")
+  }
+  
+}
+  
+```
+
+-   The **function name** is chosen by whoever writes the function: `add_or_subtract`
+
+-   The **required arguments** are the ones for which no default value is supplied: `first_num`
+
+-   The **optional arguments** are the ones for which a default value is supplied: `second_num = 2`, `type = "add")`
+
+-   The **body of the function** is all the code inside the definition. This code will be run in the **environment of the function**, rather than in the **global environment**. This means that code in the body of the function does *not* have the power to alter anything outside the function[^1]:
+
+[^1]: There are ways to cheat your way around this, but **we will avoid them**!
+
+```{r}
+#| eval: false
+#| echo: true
+#| label: function-body
+
+  if (type == "add") {
+    first_num + second_num
+  } else if (type == "subtract") {
+    first_num - second_num
+  } else {
+    stop("Please choose `add` or `subtract` as the type.")
+  }
+```
+
+-   The **return values** of the function are the possible objects that get returned: `first_num + second_num`, `first_num - second_num`
+
+When we use a function in code, this is referred to as a **function call**.
+
+```{r}
+#| eval: false
+#| label: example-function-call
+
+add_or_subtract(1, 2)
+```
+
+```{r}
+#| results: asis
+#| label: check-in-function-basics
+
+checkin("Function Basics")
+```
+
+**Question 1:** What will be returned by each of the following?
+
+i)  1
+ii) -1
+iii) 30
+iv) An error defined in the function `add_or_subtract`
+v)  An error defined in a different function, that is called from inside `add_or_subtract`
+
+```{r}
+#| echo: true
+#| eval: false
+#| label: function-errors
+
+add_or_subtract(5, 6, type = "subtract")
+
+add_or_subtract("orange")
+
+add_or_subtract(5, 6, type = "multiply")
+
+add_or_subtract("orange", type = "multiply")
+```
+
+**Question 2:**
+
+Consider the following code:
+
+```{r}
+#| echo: true
+#| eval: false
+#| label: global-environment
+
+first_num <- 5
+second_num <- 3
+
+result <- 8
+
+result <- add_or_subtract(first_num, second_num = 4)
+
+result_2 <- add_or_subtract(first_num)
+```
+
+In your Global Environment, what is the value of...
+
+a)  `first_num`
+b)  `second_num`
+c)  `result`
+d)  `result_2`
+
+## Good function design
+
+Most likely, you have so far only written functions for your own convenience. (Or for assignments, of course!)
+
+We are now going to be designing functions for *other people* to use and possibly even edit them. This means we need to put some thought into the *design* of the function.
+
+```{r, results = "asis", echo = FALSE}
+#| results: asis
+#| label: required-reading-r4ds-functions
+
+req_read("R4DS Chapter 25: Functions", type = "Required", url = "https://r4ds.hadley.nz/functions.html")
+```
+
+Designing functions is somewhat subjective, but there are a few principles that apply:
+
+1.  Choose a good, descriptive **names**
+    -   Your function name should describe what it does, and usually involves a verb.
+    -   Your argument names should be simple and/or descriptive.
+    -   Names of variables in the body of the function should be descriptive.
+2.  Output should be **very predictable**
+    -   Your function should always *return* the same object type, no matter what input it gets.
+    -   Your function should expect certain objects or object types as *input*, and give errors when it does not get them.
+    -   Your function should give errors or warnings for common mistakes.
+    -   Default values of arguments should only be used when there is a clear common choice.
+3.  The body of the function should be **easy to read**.
+    -   Code should use [good style principles](https://style.tidyverse.org/).
+    -   There should be occasional comments to explain the purpose of the steps.
+    -   Complicated steps, or steps that are repeated many times, should be written into **separate functions** (sometimes called *helper functions*).
+4.  Functions should be **self-contained**.
+    -   They should not rely on any information besides what is given as input.
+    -   *(Relying on other functions* is fine, though)
+    -   They should not alter the Global Environment
+    -   *(do not put `library()` statements inside functions!)*
+
+```{r}
+#| results: asis
+#| label: check-in-function-design
+
+checkin("Function Design")
+```
+
+Identify five major violations of design principles for the following function:
+
+```{r}
+#| eval: false
+#| echo: true
+
+ugh <- function(dataset) {
+  
+  library(tidyverse)
+  
+  thing <- dataset%>%group_by(Species)%>%summarize(newvar = mean(Sepal.Length))
+  
+  ggplot(thing)+geom_col(aes(x = Species, y = newvar))+ggtitle("Sepal Lengths")
+  
+  
+}
+
+ugh(iris)
+```
+
+## Debugging Functions
+
+Suppose you've done it: You've written the most glorious, beautiful, well-designed function of all time. It's many lines long, and it relies on several sub-functions.
+
+You run it and - it doesn't work.
+
+![](https://media2.giphy.com/media/DZk5LcH4ekXiU/200.gif)
+
+How can you track down exactly where in your complicated functions, something went wrong?
+
+```{r}
+#| results: asis
+#| label: required-video-jenny-bryan-functions
+
+req_vid("Object of type closure is not subsettable", url = 'https://resources.rstudio.com/rstudio-conf-2020/object-of-type-closure-is-not-subsettable-jenny-bryan', 
+        embed = '<p><a href="https://resources.rstudio.com/rstudio-conf-2020/object-of-type-closure-is-not-subsettable-jenny-bryan?wvideo=3eryv8gcor"><img src="https://embed-fastly.wistia.com/deliveries/2e2c4f025a70aaa1659fa66786570766f9f0f11a.jpg?image_play_button_size=2x&amp;image_crop_resized=960x540&amp;image_play_button=1&amp;image_play_button_color=4287c7e0" width="400" height="225" style="width: 400px; height: 225px;"></a></p><p><a href="https://resources.rstudio.com/rstudio-conf-2020/object-of-type-closure-is-not-subsettable-jenny-bryan?wvideo=3eryv8gcor">Object of type ‘closure’ is not subsettable - Jenny Bryan</a></p>')
+```
+
+```{r}
+#| results: asis
+#| label: check-in-function-debugging
+
+checkin("Debugging")
+```
+
+**Question 1:** What does using the `traceback` approach to debugging **NOT** tell you?
+
+a)  The function call that triggered the error.
+b)  The sub-function where the error actually occurred.
+c)  The value of the argument or object that caused the error.
+d)  The text of the full error message.
+
+**Question 2:** Which of the following is **NOT** a disadvantage of using `browser()`?
+
+a)  You can't insert it into existing functions.
+b)  You can't view variables in the function environment when it is running.
+c)  You have to remember to take it out of your code when you are done with it.
+d)  You have to run your code line-by-line until you find the error.
+
+**Question 3:** What is the most fun pronunciation of `debugonce()`
+
+a)  "Debug Once"
+b)  "Debut Gonky"
+c)  "Debugoncé" like "Beyoncé"
+
+## Advanced Details
+
+As this is an Advanced course, let's take a moment to talk about two quirky details of how R handles functions.
+
+### Objects of type closure
+
+In R, functions are **objects**.
+
+That is, creating a function is not fundamentally different from creating a vector or a data frame.
+
+Here we store the vector `1,2,3` in the object named `a`:
+
+```{r}
+#| label: creating-objects
+#| echo: true
+
+a <- 1:3
+
+a
+```
+
+Here we store the procedure "add one plus one" in the object named `a`:
+
+```{r}
+#| echo: true
+#| label: creating-functions
+
+a <- function(){
+  1+1
+}
+
+a
+```
+
+For some strange reason, there is a specific term in R for "an object that is a function"---**closure**. Have you ever gotten this error?
+
+```{r}
+#| echo: true
+#| error: true
+#| label: object-of-type-closure
+
+a[1]
+```
+
+I bet you have! What happened here is that we tried to take a subset of the vector `a`. But `a` is a function, not a vector, so this doesn't work! If you've encounter this error in the wild, it's probably because you tried to reference a non-existent object. However, you used an object name that happens to also be an existing function.
+
+### Lazy Evaluation
+
+Like most people, R's goal is to avoid doing any unnecessary work.
+
+When you "give" a value to an argument of a function, R does a quick check to make sure you haven't done anything too crazy, like forgotten a parenthesis. Then it says, "Yep, looks like R code to me!" and moves on with its life.
+
+Only when that argument is *actually used* does R try to run the code.
+
+Consider the following obvious problem:
+
+```{r}
+#| error: true
+#| echo: true
+#| label: mean-of-orange
+
+mean('orange')
+```
+
+Now consider the following function:
+
+```{r}
+#| label: silly-function
+#| echo: true
+
+silly_function <- function(x) {
+  
+  cat("I am silly!")
+  
+}
+```
+
+What do you think will happen when we run:
+
+```{r, eval = FALSE}
+#| echo: true
+#| eval: false
+#| label: adding-in-problematic-function
+
+silly_function(x = mean("orange"))
+```
+
+Seems like it should be an error, right? But wait! Try it out for yourself.
+
+The function `silly_function()` doesn't use the `x` argument. Thus, R was "lazy", and never even bothered to try to run `mean("orange")` - so we never get an error. 🙀
+
+### Non-Standard Evaluation and Tunnelling
+
+Suppose you want to write a function that takes a dataset, a categorical variable, and a quantitative variable; and returns the means by group.
+
+You might think to yourself, "Easy!" and write something like this:
+
+```{r}
+#| echo: true
+#| label: no-tunneling-function
+
+means_by_group <- function(dataset, cat_var, quant_var) {
+  
+  dataset %>%
+    group_by(cat_var) %>%
+    summarize(means = mean(quant_var, 
+                           na.rm = TRUE)
+              )
+}
+```
+
+Okay, let's run it!
+
+```{r, error = TRUE}
+#| echo: true
+#| error: true
+#| label: no-tunneling-function-error
+
+means_by_group(iris, Species, Sepal.Length)
+```
+
+Dagnabbit! The function tried to group the data by a variable named `cat_var` - but the dataset `iris` doesn't have any variables named `cat_var`!
+
+What happened here is that the function `group_by()` uses **non-standard evaluation**. This means it has a very special type of input called **unquoted**. Notice that we say `group_by(Species)` not `group_by("Species")` - there are no quotation marks, because `Species` is a variable name, not a string. In the `means_by_group()` function, R sees the unquoted variable `cat_var`, and tries to use it as an input in `group_by()`, not realizing that we *actually* meant to pass along the variable name `Species` into the function.
+
+To solve this conundrum, we use a trick called **tunneling** to "force" the unquoted name `Species` through to the function `group_by()`. It looks like this:
+
+```{r}
+#| echo: true
+#| label: function-with-tunneling
+
+means_by_group <- function(dataset, cat_var, quant_var) {
+  
+  dataset %>%
+    group_by({{cat_var}}) %>%
+    summarize(means = mean({{quant_var}}))
+  
+  
+}
+```
+
+::: callout-note
+Note: The tunnel, or "curly-curly" operator, `{{{ }}}`, is from the *tidyverse* package `rlang`.
+:::
+
+Now everything works!
+
+```{r}
+#| echo: true
+#| label: function-with-tunneling-success
+
+means_by_group(iris, Species, Sepal.Length)
+```
+
+In your time as an R developer, you may find yourself wanting to do even more complicated and fancy functions using non-standard evaluation. Some of these require much more complexity than the tunneling trick - but all is possible!

@@ -2,9 +2,6 @@
 title: "Writing Functions in R"
 ---
 
-<!-- tidyverse functions -->
-<!-- https://lmyint.github.io/212_spring_2024/09-functions.html#writing-functions-with-tidyverse-verbs -->
-<!-- https://r4ds.hadley.nz/functions.html -->
 
 <!-- iteration with loops -->
 <!-- https://lmyint.github.io/212_spring_2024/11-iteration-1.html -->
