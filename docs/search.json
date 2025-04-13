@@ -553,76 +553,48 @@
     "text": "One of the Open-Notify APIs provides predictions of pass times for a given location when given the corresponding latitude, longitude, and altitude are given:\nPass Times API\n\n\nYou can find the latitudes and longitudes for the U.S. state capitals at this site.\n\nUse the API to get the next three predicted pass times for all of the U.S. state capitals. Organize all of this information into a nice data frame (or data frame-like object) that will be easy to use for mapping.\n\n\n\n\n\nMap the U.S. state capitals using leaflet.\nFind an image of your choosing to use as the marker icon, that’s relevant for these data. Maybe a spaceship? 🚀 Or an astronaut? 🧑‍🚀\nThe hover-over information for each marker should include the name of the state capital and the soonest predicted pass time. The click information should include the name of the state capital and all three predicted pass times. Make sure these times are in an easy-to-read format.\n\n\n\n\nCheck out this video for adding polylines to a leaflet map.\n\nOverlay lines on your map that connect the U.S. state capitals in order of pass times (essentially east to west) so that we can see the expected pass order.\n\n\n\n\nMake sure your final file is carefully formatted, so that each analysis is clear and concise. Be sure your knitted .html file shows all your source code, including your function definitions."
   },
   {
-    "objectID": "labs/lab-3.html",
-    "href": "labs/lab-3.html",
-    "title": "Lab 3",
+    "objectID": "labs/lab-4.html",
+    "href": "labs/lab-4.html",
+    "title": "Lab 4",
     "section": "",
-    "text": "For this lab assignment, you are tasked with transforming some aspect of the 2020 Wellcome Global Health Monitor Report or the 2018 Global Health Monitor Report into a dashboard. Anything in either of these reports is fair game, so find something that inspires you!\nIn case you are drawing a blank, here are some ideas:",
+    "text": "For this lab assignment, you are tasked with transforming your previous static dashboard into an interactive dashboard using either Shiny or webR.",
     "crumbs": [
       "Unit 1 - Communication",
-      "Lab 3"
+      "Lab 4"
     ]
   },
   {
-    "objectID": "labs/lab-3.html#dashboard-requirements",
-    "href": "labs/lab-3.html#dashboard-requirements",
-    "title": "Lab 3",
+    "objectID": "labs/lab-4.html#dashboard-requirements",
+    "href": "labs/lab-4.html#dashboard-requirements",
+    "title": "Lab 4",
     "section": "Dashboard Requirements",
-    "text": "Dashboard Requirements\nThe dashboard you create must have the following:\n\na navigation logo (similar to the Olympic rings)\nicons to your socials (e.g., LinkedIn, Instagram, Twitter, email)\nat least two pages\nat least two tabsets (can be on just one page)\nat least two cards with quick information (e.g., % of people across the world who have faith in vaccines)\nat least on plot made with leaflet\na non-default theme\nnon-default plot colors\n\n\n\n\n\n\n\nCoordinate Colors\n\n\n\nThe colors in your styled dashboard should match the colors in your plots!",
+    "text": "Dashboard Requirements\nThe dashboard you create must have the following:\n\nat least one opportunity for user input via a slide bar\nat least one opportunity for user input via check boxes\n\nThese interactive features are expected to be used to:\n\nupdate at least one visualization\nupdate at least one of your “quick information” cards\n\n\n\n\n\n\n\nInteractive Table\n\n\n\nYou are free to swap one of your visualizations out for an interactive table!",
     "crumbs": [
       "Unit 1 - Communication",
-      "Lab 3"
+      "Lab 4"
     ]
   },
   {
-    "objectID": "labs/lab-3.html#resources-for-creating-your-dashboard",
-    "href": "labs/lab-3.html#resources-for-creating-your-dashboard",
-    "title": "Lab 3",
-    "section": "Resources for Creating Your Dashboard",
-    "text": "Resources for Creating Your Dashboard\nThere are two additional videos by Dr. Mine Çetinkaya-Rundel that you will need to watch in order to create your dashboard.",
-    "crumbs": [
-      "Unit 1 - Communication",
-      "Lab 3"
-    ]
-  },
-  {
-    "objectID": "labs/lab-3.html#submission",
-    "href": "labs/lab-3.html#submission",
-    "title": "Lab 3",
+    "objectID": "labs/lab-4.html#submission",
+    "href": "labs/lab-4.html#submission",
+    "title": "Lab 4",
     "section": "Submission",
-    "text": "Submission\nYou are required to submit both the link to your GitHub repository containing your source code and a link to your published dashboard. You are expected to publish your dashboard through Quarto Pub, a free publishing service for static content created with Quarto.\n\n\n\n\n\n\n\n\nSign-up for Quarto Pub\n\n\n\nYou will need to sign up for a free Quarto Pub account. I would highly recommend you link your Quarto Pub account with your GitHub account, since the documents you will be publishing should live in a GitHub repository!\n\n\n\n\n\n\n\n\n\n\n\nDo not use GitHub actions!\n\n\n\nYou are expected to publish the content rendered on your local machine. Do not follow the instructions for using GitHub Actions to publish—that’s too spicy!",
+    "text": "Submission\nYou are required to submit both the link to your GitHub repository containing your source code and a link to your published dashboard. You are expected to publish your dashboard through Quarto Pub, a free publishing service for static content created with Quarto.",
     "crumbs": [
       "Unit 1 - Communication",
-      "Lab 3"
+      "Lab 4"
     ]
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Welcome",
+    "objectID": "infrastructure.html",
+    "href": "infrastructure.html",
+    "title": "Computational Infrastructure",
     "section": "",
-    "text": "Stat 541 takes a deeper dive into statistical computing in R, building your communication and iteration skills. We will explore different modalities for communicating statistical ideas—dynamic visualizations and dashboards, while also exploring ways to integrate R code into these environments. We will also continue to expand your skills as a developer—writing functions and iterating over those functions to query data from APIs and scrape the web. We’re going to have a lot of fun!"
-  },
-  {
-    "objectID": "index.html#acknowledements",
-    "href": "index.html#acknowledements",
-    "title": "Welcome",
-    "section": "Acknowledements",
-    "text": "Acknowledements\nA huge shout out to Dr. Kelly Bodwin for creating this class and adding it to the amazing number of computing courses the Statistics Department teaches. Another shout out goes the the amazing women at Macalester College—Leslie Myint, Brianna Heggeseth, and Alicia Johnson—for making their Intermediate Data Science course materials public. And finally, a massive thank you to Sam Shanny-Csik for their incredible resources for making and styling Quarto websites!\nThis website is built with Quarto, the lovely icons are all by Allison Horst, and none of this would be possible without the tidyverse."
-  },
-  {
-    "objectID": "index.html#license",
-    "href": "index.html#license",
-    "title": "Welcome",
-    "section": "License",
-    "text": "License\nThis online work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International. Visit here for more information about the license."
-  },
-  {
-    "objectID": "course-materials/calendar.html",
-    "href": "course-materials/calendar.html",
-    "title": "STAT 541: Advanced R",
-    "section": "",
-    "text": "This page contains an outline of the topics, content, and assignments for the quarter. Note that this schedule will be updated as the quarter progresses, with all changes documented here.\n\n\n\n\n\n\n\n\n\n\n\nWeek\nDate\nRequired Reading\nLecture Activities\nLab Assignment\nPortfolio\n\n\n\n\n1\nStat 331 Review & Version Control\nMarch 31 (note no class on Monday)\nInstalling / Updating R & RStudio\nVersion Control\n\nLab 1 Instructions\nLab 1 GitHub repository\n\n\n\n2\nAdvanced Visualizations\nApril 7\nggplot Review\nggplotExtensions\nMaking maps with leaflet\n\nLab 2 Instructions\nLab 2 GitHub repository\n\n\n\n3\nQuarto Dashboards (Static)\nApril 14\nCreating Static Quarto Dashboards\n\nLab 3 Instructions\nLab 3 GitHub repository\n\n\n\n4\nQuarto Dashboards (Dynamic)\nApril 21\nCreating Interactive Quarto Dashboards\n\nLab 4 Instructions\nLab 4 GitHub repository\n\n\n\n5\nPortfolio Week\nApril 28\n\n\n\nPortfolio Instructions\n\n\n6\nWriting Efficient Functions\nMay 5\nReview of Writing Functions in R\nWriting Efficient Functions\nEfficiently Iterating over Functions\n\nLab 6 Instructions\nLab 6 GitHub repository\n\n\n\n7\nJSON Data & APIs\nMay 12\nHierarchical (JSON) Data\nWorking with APIs\n\nLab 7 Instructions\nLab 7 GitHub repository\n\n\n\n8\nWebscraping\nMay 19\nWebscraping\n\nLab 8 Instructions\nLab 8 GitHub repository\n\n\n\n9\nGenerative Art\nMay 26 (note Tuesday follows a Monday schedule)\n\n\nLab 9 Instructions\nLab 9 GitHub repository\n\n\n\n10\nPortfolio Week\nJune 2\n\n\n\nPortfolio Instructions\n\n\nFinals Week (Portfolio Meetings)\nJune 9"
+    "text": "Welcome to STAT 541! We’re excited to have you! This page is dedicated to getting you set-up with the infrastructure will will make use of throughout the course.",
+    "crumbs": [
+      "Infrastructure",
+      "Computational Infrastructure"
+    ]
   },
   {
     "objectID": "course-materials/syllabus.html",
@@ -758,47 +730,75 @@
     "text": "Footnotes\n\n\nSee Section 3.0.2 for information on what you can expect when you email me.↩︎"
   },
   {
-    "objectID": "infrastructure.html",
-    "href": "infrastructure.html",
-    "title": "Computational Infrastructure",
+    "objectID": "course-materials/calendar.html",
+    "href": "course-materials/calendar.html",
+    "title": "STAT 541: Advanced R",
     "section": "",
-    "text": "Welcome to STAT 541! We’re excited to have you! This page is dedicated to getting you set-up with the infrastructure will will make use of throughout the course.",
-    "crumbs": [
-      "Infrastructure",
-      "Computational Infrastructure"
-    ]
+    "text": "This page contains an outline of the topics, content, and assignments for the quarter. Note that this schedule will be updated as the quarter progresses, with all changes documented here.\n\n\n\n\n\n\n\n\n\n\n\nWeek\nDate\nRequired Reading\nLecture Activities\nLab Assignment\nPortfolio\n\n\n\n\n1\nStat 331 Review & Version Control\nMarch 31 (note no class on Monday)\nInstalling / Updating R & RStudio\nVersion Control\n\nLab 1 Instructions\nLab 1 GitHub repository\n\n\n\n2\nAdvanced Visualizations\nApril 7\nggplot Review\nggplotExtensions\nMaking maps with leaflet\n\nLab 2 Instructions\nLab 2 GitHub repository\n\n\n\n3\nQuarto Dashboards (Static)\nApril 14\nCreating Static Quarto Dashboards\n\nLab 3 Instructions\nLab 3 GitHub repository\n\n\n\n4\nQuarto Dashboards (Dynamic)\nApril 21\nCreating Interactive Quarto Dashboards\n\nLab 4 Instructions\nLab 4 GitHub repository\n\n\n\n5\nPortfolio Week\nApril 28\n\n\n\nPortfolio Instructions\n\n\n6\nWriting Efficient Functions\nMay 5\nReview of Writing Functions in R\nWriting Efficient Functions\nEfficiently Iterating over Functions\n\nLab 6 Instructions\nLab 6 GitHub repository\n\n\n\n7\nJSON Data & APIs\nMay 12\nHierarchical (JSON) Data\nWorking with APIs\n\nLab 7 Instructions\nLab 7 GitHub repository\n\n\n\n8\nWebscraping\nMay 19\nWebscraping\n\nLab 8 Instructions\nLab 8 GitHub repository\n\n\n\n9\nGenerative Art\nMay 26 (note Tuesday follows a Monday schedule)\n\n\nLab 9 Instructions\nLab 9 GitHub repository\n\n\n\n10\nPortfolio Week\nJune 2\n\n\n\nPortfolio Instructions\n\n\nFinals Week (Portfolio Meetings)\nJune 9"
   },
   {
-    "objectID": "labs/lab-4.html",
-    "href": "labs/lab-4.html",
-    "title": "Lab 4",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Welcome",
     "section": "",
-    "text": "For this lab assignment, you are tasked with transforming your previous static dashboard into an interactive dashboard using either Shiny or webR.",
+    "text": "Stat 541 takes a deeper dive into statistical computing in R, building your communication and iteration skills. We will explore different modalities for communicating statistical ideas—dynamic visualizations and dashboards, while also exploring ways to integrate R code into these environments. We will also continue to expand your skills as a developer—writing functions and iterating over those functions to query data from APIs and scrape the web. We’re going to have a lot of fun!"
+  },
+  {
+    "objectID": "index.html#acknowledements",
+    "href": "index.html#acknowledements",
+    "title": "Welcome",
+    "section": "Acknowledements",
+    "text": "Acknowledements\nA huge shout out to Dr. Kelly Bodwin for creating this class and adding it to the amazing number of computing courses the Statistics Department teaches. Another shout out goes the the amazing women at Macalester College—Leslie Myint, Brianna Heggeseth, and Alicia Johnson—for making their Intermediate Data Science course materials public. And finally, a massive thank you to Sam Shanny-Csik for their incredible resources for making and styling Quarto websites!\nThis website is built with Quarto, the lovely icons are all by Allison Horst, and none of this would be possible without the tidyverse."
+  },
+  {
+    "objectID": "index.html#license",
+    "href": "index.html#license",
+    "title": "Welcome",
+    "section": "License",
+    "text": "License\nThis online work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International. Visit here for more information about the license."
+  },
+  {
+    "objectID": "labs/lab-3.html",
+    "href": "labs/lab-3.html",
+    "title": "Lab 3",
+    "section": "",
+    "text": "For this lab assignment, you are tasked with transforming some aspect of the 2020 Wellcome Global Health Monitor Report or the 2018 Global Health Monitor Report into a dashboard. Anything in either of these reports is fair game, so find something that inspires you!\nIn case you are drawing a blank, here are some ideas:",
     "crumbs": [
       "Unit 1 - Communication",
-      "Lab 4"
+      "Lab 3"
     ]
   },
   {
-    "objectID": "labs/lab-4.html#dashboard-requirements",
-    "href": "labs/lab-4.html#dashboard-requirements",
-    "title": "Lab 4",
+    "objectID": "labs/lab-3.html#dashboard-requirements",
+    "href": "labs/lab-3.html#dashboard-requirements",
+    "title": "Lab 3",
     "section": "Dashboard Requirements",
-    "text": "Dashboard Requirements\nThe dashboard you create must have the following:\n\nat least one opportunity for user input via a slide bar\nat least one opportunity for user input via check boxes\n\nThese interactive features are expected to be used to:\n\nupdate at least one visualization\nupdate at least one of your “quick information” cards\n\n\n\n\n\n\n\nInteractive Table\n\n\n\nYou are free to swap one of your visualizations out for an interactive table!",
+    "text": "Dashboard Requirements\nThe dashboard you create must have the following:\n\na navigation logo (similar to the Olympic rings)\nicons to your socials (e.g., LinkedIn, Instagram, Twitter, email)\nat least two pages\nat least two tabsets (can be on just one page)\nat least two cards with quick information (e.g., % of people across the world who have faith in vaccines)\nat least on plot made with leaflet\na non-default theme\nnon-default plot colors\n\n\n\n\n\n\n\nCoordinate Colors\n\n\n\nThe colors in your styled dashboard should match the colors in your plots!",
     "crumbs": [
       "Unit 1 - Communication",
-      "Lab 4"
+      "Lab 3"
     ]
   },
   {
-    "objectID": "labs/lab-4.html#submission",
-    "href": "labs/lab-4.html#submission",
-    "title": "Lab 4",
-    "section": "Submission",
-    "text": "Submission\nYou are required to submit both the link to your GitHub repository containing your source code and a link to your published dashboard. You are expected to publish your dashboard through Quarto Pub, a free publishing service for static content created with Quarto.",
+    "objectID": "labs/lab-3.html#resources-for-creating-your-dashboard",
+    "href": "labs/lab-3.html#resources-for-creating-your-dashboard",
+    "title": "Lab 3",
+    "section": "Resources for Creating Your Dashboard",
+    "text": "Resources for Creating Your Dashboard\nThere are two additional videos by Dr. Mine Çetinkaya-Rundel that you will need to watch in order to create your dashboard.",
     "crumbs": [
       "Unit 1 - Communication",
-      "Lab 4"
+      "Lab 3"
+    ]
+  },
+  {
+    "objectID": "labs/lab-3.html#submission",
+    "href": "labs/lab-3.html#submission",
+    "title": "Lab 3",
+    "section": "Submission",
+    "text": "Submission\nYou are required to submit both the link to your GitHub repository containing your source code and a link to your published dashboard. You are expected to publish your dashboard through Quarto Pub, a free publishing service for static content created with Quarto.\n\n\n\n\n\n\n\n\nSign-up for Quarto Pub\n\n\n\nYou will need to sign up for a free Quarto Pub account. I would highly recommend you link your Quarto Pub account with your GitHub account, since the documents you will be publishing should live in a GitHub repository!\n\n\n\n\n\n\n\n\n\n\n\nDo not use GitHub actions!\n\n\n\nYou are expected to publish the content rendered on your local machine. Do not follow the instructions for using GitHub Actions to publish—that’s too spicy!",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "Lab 3"
     ]
   },
   {
@@ -1094,104 +1094,164 @@
     "href": "unit-2/efficient-code.html",
     "title": "Writing Efficient Code",
     "section": "",
-    "text": "In this module, you’ll learn a bit about how to make your code faster in general."
+    "text": "In this module, you’ll learn a bit about how to make your code faster in general.",
+    "crumbs": [
+      "Unit 2 - Iteration",
+      "Writing Efficient Code"
+    ]
   },
   {
     "objectID": "unit-2/efficient-code.html#required-reading-the-tictoc-and-microbenchmark-packages",
     "href": "unit-2/efficient-code.html#required-reading-the-tictoc-and-microbenchmark-packages",
     "title": "Writing Efficient Code",
     "section": "📖 Required Reading: The tictoc and microbenchmark packages",
-    "text": "📖 Required Reading: The tictoc and microbenchmark packages"
+    "text": "📖 Required Reading: The tictoc and microbenchmark packages",
+    "crumbs": [
+      "Unit 2 - Iteration",
+      "Writing Efficient Code"
+    ]
   },
   {
     "objectID": "unit-2/efficient-code.html#required-reading-the-bench-package",
     "href": "unit-2/efficient-code.html#required-reading-the-bench-package",
     "title": "Writing Efficient Code",
     "section": "📖 Required Reading: The bench package",
-    "text": "📖 Required Reading: The bench package"
+    "text": "📖 Required Reading: The bench package",
+    "crumbs": [
+      "Unit 2 - Iteration",
+      "Writing Efficient Code"
+    ]
   },
   {
     "objectID": "unit-2/efficient-code.html#required-reading-lobstrobj_size",
     "href": "unit-2/efficient-code.html#required-reading-lobstrobj_size",
     "title": "Writing Efficient Code",
     "section": "📖 Required Reading: lobstr::obj_size()",
-    "text": "📖 Required Reading: lobstr::obj_size()"
+    "text": "📖 Required Reading: lobstr::obj_size()",
+    "crumbs": [
+      "Unit 2 - Iteration",
+      "Writing Efficient Code"
+    ]
   },
   {
     "objectID": "unit-2/efficient-code.html#save-smaller-data-frames-if-you-are-going-to-use-them-many-times",
     "href": "unit-2/efficient-code.html#save-smaller-data-frames-if-you-are-going-to-use-them-many-times",
     "title": "Writing Efficient Code",
     "section": "Save smaller data frames, if you are going to use them many times",
-    "text": "Save smaller data frames, if you are going to use them many times\nConsider the following dataset:\n\nlibrary(fivethirtyeight)\n\nglimpse(congress_age)\n\nRows: 18,635\nColumns: 13\n$ congress   &lt;int&gt; 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80,…\n$ chamber    &lt;chr&gt; \"house\", \"house\", \"house\", \"house\", \"house\", \"house\", \"hous…\n$ bioguide   &lt;chr&gt; \"M000112\", \"D000448\", \"S000001\", \"E000023\", \"L000296\", \"G00…\n$ firstname  &lt;chr&gt; \"Joseph\", \"Robert\", \"Adolph\", \"Charles\", \"William\", \"James\"…\n$ middlename &lt;chr&gt; \"Jefferson\", \"Lee\", \"Joachim\", \"Aubrey\", NA, \"A.\", \"Joseph\"…\n$ lastname   &lt;chr&gt; \"Mansfield\", \"Doughton\", \"Sabath\", \"Eaton\", \"Lewis\", \"Galla…\n$ suffix     &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…\n$ birthday   &lt;date&gt; 1861-02-09, 1863-11-07, 1866-04-04, 1868-03-29, 1868-09-22…\n$ state      &lt;chr&gt; \"TX\", \"NC\", \"IL\", \"NJ\", \"KY\", \"PA\", \"CA\", \"NY\", \"WI\", \"MA\",…\n$ party      &lt;chr&gt; \"D\", \"D\", \"D\", \"R\", \"R\", \"R\", \"R\", \"D\", \"R\", \"R\", \"D\", \"R\",…\n$ incumbent  &lt;lgl&gt; TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, TRUE, TRUE, TRUE, TRU…\n$ termstart  &lt;date&gt; 1947-01-03, 1947-01-03, 1947-01-03, 1947-01-03, 1947-01-03…\n$ age        &lt;dbl&gt; 86, 83, 81, 79, 78, 78, 78, 77, 76, 76, 75, 74, 74, 73, 73,…\n\n\nSuppose we want to do some exploratory analysis on these data. Let’s use the tic() and toc() functions from the tictoc packages to check how much time it takes to run this code:\n\ntic()\n\ncongress_age %&gt;%\n  filter(chamber == \"senate\") %&gt;%\n  summarize(mean(age))\n\ncongress_age %&gt;%\n  filter(chamber == \"senate\") %&gt;%\n  ggplot() + \n  geom_histogram(mapping = aes(x = age))\ncongress_age %&gt;%\n  filter(chamber == \"senate\") %&gt;%\n  slice_max(n = 5, order_by = age)\n\n\ntoc()\n\n0.233 sec elapsed\n\n\nThese are all three reasonable things to do, and they can’t be done in the same pipeline. But wait - we just made R do the process of subsetting to only Senators three separate times!\n\ntic()\n  congress_age %&gt;%\n    filter(chamber == \"senate\")\n\n\ntoc()\n\n0.012 sec elapsed\n\n\nInstead, how about we filter the data once, save it into an object, and call on that object:\n\ntic()\n\n senate &lt;- congress_age %&gt;%\n  filter(chamber == \"senate\")\n\nsenate %&gt;%\n  summarize(mean(age))\n\nsenate %&gt;%\n  ggplot() + \n  geom_histogram(mapping = aes(x = age))\nsenate %&gt;%\n  slice_max(n = 5, order_by = age)\n\n\ntoc()\n\n0.108 sec elapsed\n\n\nThat is half the run time! Yes, we are dealing with minute increments of time (less than a second), but hopefully you could see how this might scale to larger calcuations."
+    "text": "Save smaller data frames, if you are going to use them many times\nConsider the following dataset:\n\nlibrary(fivethirtyeight)\n\nglimpse(congress_age)\n\nRows: 18,635\nColumns: 13\n$ congress   &lt;int&gt; 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80,…\n$ chamber    &lt;chr&gt; \"house\", \"house\", \"house\", \"house\", \"house\", \"house\", \"hous…\n$ bioguide   &lt;chr&gt; \"M000112\", \"D000448\", \"S000001\", \"E000023\", \"L000296\", \"G00…\n$ firstname  &lt;chr&gt; \"Joseph\", \"Robert\", \"Adolph\", \"Charles\", \"William\", \"James\"…\n$ middlename &lt;chr&gt; \"Jefferson\", \"Lee\", \"Joachim\", \"Aubrey\", NA, \"A.\", \"Joseph\"…\n$ lastname   &lt;chr&gt; \"Mansfield\", \"Doughton\", \"Sabath\", \"Eaton\", \"Lewis\", \"Galla…\n$ suffix     &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…\n$ birthday   &lt;date&gt; 1861-02-09, 1863-11-07, 1866-04-04, 1868-03-29, 1868-09-22…\n$ state      &lt;chr&gt; \"TX\", \"NC\", \"IL\", \"NJ\", \"KY\", \"PA\", \"CA\", \"NY\", \"WI\", \"MA\",…\n$ party      &lt;chr&gt; \"D\", \"D\", \"D\", \"R\", \"R\", \"R\", \"R\", \"D\", \"R\", \"R\", \"D\", \"R\",…\n$ incumbent  &lt;lgl&gt; TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, TRUE, TRUE, TRUE, TRU…\n$ termstart  &lt;date&gt; 1947-01-03, 1947-01-03, 1947-01-03, 1947-01-03, 1947-01-03…\n$ age        &lt;dbl&gt; 86, 83, 81, 79, 78, 78, 78, 77, 76, 76, 75, 74, 74, 73, 73,…\n\n\nSuppose we want to do some exploratory analysis on these data. Let’s use the tic() and toc() functions from the tictoc packages to check how much time it takes to run this code:\n\ntic()\n\ncongress_age %&gt;%\n  filter(chamber == \"senate\") %&gt;%\n  summarize(mean(age))\n\ncongress_age %&gt;%\n  filter(chamber == \"senate\") %&gt;%\n  ggplot() + \n  geom_histogram(mapping = aes(x = age))\ncongress_age %&gt;%\n  filter(chamber == \"senate\") %&gt;%\n  slice_max(n = 5, order_by = age)\n\n\ntoc()\n\n0.238 sec elapsed\n\n\nThese are all three reasonable things to do, and they can’t be done in the same pipeline. But wait - we just made R do the process of subsetting to only Senators three separate times!\n\ntic()\n  congress_age %&gt;%\n    filter(chamber == \"senate\")\n\n\ntoc()\n\n0.014 sec elapsed\n\n\nInstead, how about we filter the data once, save it into an object, and call on that object:\n\ntic()\n\n senate &lt;- congress_age %&gt;%\n  filter(chamber == \"senate\")\n\nsenate %&gt;%\n  summarize(mean(age))\n\nsenate %&gt;%\n  ggplot() + \n  geom_histogram(mapping = aes(x = age))\nsenate %&gt;%\n  slice_max(n = 5, order_by = age)\n\n\ntoc()\n\n0.114 sec elapsed\n\n\nThat is half the run time! Yes, we are dealing with minute increments of time (less than a second), but hopefully you could see how this might scale to larger calcuations.",
+    "crumbs": [
+      "Unit 2 - Iteration",
+      "Writing Efficient Code"
+    ]
   },
   {
     "objectID": "unit-2/efficient-code.html#avoid-for-loops",
     "href": "unit-2/efficient-code.html#avoid-for-loops",
     "title": "Writing Efficient Code",
     "section": "Avoid for-loops",
-    "text": "Avoid for-loops\nFor-loops are deathly slow in R. If you absolutely must iterate over a process, rely on the map() or apply() function families.\n\n\n\n\n\n\nWhy choose map() instead of apply()?\n\n\n\nThe map() and apply() functions will typically be close to the same speed, so the largest argument in favor of the map() family of functions are (1) their consistent syntax, and (2) their consistent object output.\nThe map() function always returns a list and the map_XXX() variants always return a vector of a specified data type. Whereas, apply() returns a vector or a list, lapply() returns a list, and sapply() returns a vetor or a matrix.\n\n\nHere is a motivating example demonstrating the difference in run time between a function which loops over every column in a data frame to extract the data type and a function which uses map_chr() to apply the class() function to every column of a data frame:\n\nloop_func &lt;- function(df){\n  \n  # initialize the type object\n  type &lt;- rep(NA, ncol(df))\n  \n  for(i in 1:ncol(df)){\n    \n    # store the class of the ith column of df into the ith entry of type \n    type[i] &lt;- class(df[,i])\n  }\n  \n  return(type)\n}\n\nmap_func &lt;- function(df){\n  \n  type &lt;- map_chr(df, class)\n  \n  return(type)\n\n  }\n\ndat &lt;- as.data.frame(\n  matrix(1,\n         nrow = 5,\n         ncol = 100000)\n  )\n\nmicrobenchmark::microbenchmark(loop_func(dat),\n                               map_func(dat),\n                               times = 3)\n\nUnit: milliseconds\n           expr  min   lq mean median   uq  max neval\n loop_func(dat) 6586 6594 6602   6602 6610 6618     3\n  map_func(dat)   36   36   36     36   36   36     3\n\n\nThat’s a pretty big difference!"
+    "text": "Avoid for-loops\nFor-loops are deathly slow in R. If you absolutely must iterate over a process, rely on the map() or apply() function families.\n\n\n\n\n\n\nWhy choose map() instead of apply()?\n\n\n\nThe map() and apply() functions will typically be close to the same speed, so the largest argument in favor of the map() family of functions are (1) their consistent syntax, and (2) their consistent object output.\nThe map() function always returns a list and the map_XXX() variants always return a vector of a specified data type. Whereas, apply() returns a vector or a list, lapply() returns a list, and sapply() returns a vetor or a matrix.\n\n\nHere is a motivating example demonstrating the difference in run time between a function which loops over every column in a data frame to extract the data type and a function which uses map_chr() to apply the class() function to every column of a data frame:\n\nloop_func &lt;- function(df){\n  \n  # initialize the type object\n  type &lt;- rep(NA, ncol(df))\n  \n  for(i in 1:ncol(df)){\n    \n    # store the class of the ith column of df into the ith entry of type \n    type[i] &lt;- class(df[,i])\n  }\n  \n  return(type)\n}\n\nmap_func &lt;- function(df){\n  \n  type &lt;- map_chr(df, class)\n  \n  return(type)\n\n  }\n\ndat &lt;- as.data.frame(\n  matrix(1,\n         nrow = 5,\n         ncol = 100000)\n  )\n\nmicrobenchmark::microbenchmark(loop_func(dat),\n                               map_func(dat),\n                               times = 3)\n\nUnit: milliseconds\n           expr  min   lq mean median   uq  max neval\n loop_func(dat) 6586 6594 6602   6602 6610 6618     3\n  map_func(dat)   36   36   36     36   36   36     3\n\n\nThat’s a pretty big difference!",
+    "crumbs": [
+      "Unit 2 - Iteration",
+      "Writing Efficient Code"
+    ]
   },
   {
     "objectID": "unit-2/efficient-code.html#use-vectorized-functions",
     "href": "unit-2/efficient-code.html#use-vectorized-functions",
     "title": "Writing Efficient Code",
     "section": "Use vectorized functions",
-    "text": "Use vectorized functions\nBetter even than map() or apply() is not to iterate at all! Writing vectorized functions is tough, but do-able in many cases. Here’s an example:"
+    "text": "Use vectorized functions\nBetter even than map() or apply() is not to iterate at all! Writing vectorized functions is tough, but do-able in many cases. Here’s an example:",
+    "crumbs": [
+      "Unit 2 - Iteration",
+      "Writing Efficient Code"
+    ]
   },
   {
     "objectID": "unit-2/efficient-code.html#required-video-simple-vectorizing-example",
     "href": "unit-2/efficient-code.html#required-video-simple-vectorizing-example",
     "title": "Writing Efficient Code",
     "section": "🎥 Required Video: Simple Vectorizing Example",
-    "text": "🎥 Required Video: Simple Vectorizing Example\nBetter yet - rely on built-in functions in other packages to do it for you!"
+    "text": "🎥 Required Video: Simple Vectorizing Example\nBetter yet - rely on built-in functions in other packages to do it for you!",
+    "crumbs": [
+      "Unit 2 - Iteration",
+      "Writing Efficient Code"
+    ]
   },
   {
     "objectID": "unit-2/efficient-code.html#allocate-memory-in-advance",
     "href": "unit-2/efficient-code.html#allocate-memory-in-advance",
     "title": "Writing Efficient Code",
     "section": "Allocate memory in advance",
-    "text": "Allocate memory in advance\nA trick we use very often in coding is to “tack on” values to the end of a vector or list as we iterate through something. However, this is actually very slow! If you know how long your list is going to end up, consider pre-creating that list.\n\ndo_stuff_allocate &lt;- function(reps) {\n  results &lt;- vector(length = reps)\n  for (i in 1:reps) {\n    results[i] &lt;- i\n  }\n  return(results)\n}\n\ndo_stuff_tackon &lt;- function(reps) {\n   results &lt;- c()\n  for (i in 1:reps) {\n    results &lt;- c(results, i)\n  }\n  return(results)\n}\n\nmicrobenchmark::microbenchmark(\n  do_stuff_allocate(1000),\n  do_stuff_tackon(1000)\n)\n\nUnit: microseconds\n                    expr min  lq mean median  uq  max neval\n do_stuff_allocate(1000)  22  22   38     23  23 1483   100\n   do_stuff_tackon(1000) 595 709  932    724 738 5970   100"
+    "text": "Allocate memory in advance\nA trick we use very often in coding is to “tack on” values to the end of a vector or list as we iterate through something. However, this is actually very slow! If you know how long your list is going to end up, consider pre-creating that list.\n\ndo_stuff_allocate &lt;- function(reps) {\n  results &lt;- vector(length = reps)\n  for (i in 1:reps) {\n    results[i] &lt;- i\n  }\n  return(results)\n}\n\ndo_stuff_tackon &lt;- function(reps) {\n   results &lt;- c()\n  for (i in 1:reps) {\n    results &lt;- c(results, i)\n  }\n  return(results)\n}\n\nmicrobenchmark::microbenchmark(\n  do_stuff_allocate(1000),\n  do_stuff_tackon(1000)\n)\n\nUnit: microseconds\n                    expr min  lq mean median  uq  max neval\n do_stuff_allocate(1000)  22  22   39     23  24 1578   100\n   do_stuff_tackon(1000) 593 710  985    726 761 8244   100",
+    "crumbs": [
+      "Unit 2 - Iteration",
+      "Writing Efficient Code"
+    ]
   },
   {
     "objectID": "unit-2/efficient-code.html#data.table",
     "href": "unit-2/efficient-code.html#data.table",
     "title": "Writing Efficient Code",
     "section": "data.table",
-    "text": "data.table\nFor speeding up work with data frames, no package is better than data.table!"
+    "text": "data.table\nFor speeding up work with data frames, no package is better than data.table!",
+    "crumbs": [
+      "Unit 2 - Iteration",
+      "Writing Efficient Code"
+    ]
   },
   {
     "objectID": "unit-2/efficient-code.html#required-video-5-minute-intro-to-data.table",
     "href": "unit-2/efficient-code.html#required-video-5-minute-intro-to-data.table",
     "title": "Writing Efficient Code",
     "section": "📖 Required Video: 5-minute intro to data.table",
-    "text": "📖 Required Video: 5-minute intro to data.table"
+    "text": "📖 Required Video: 5-minute intro to data.table",
+    "crumbs": [
+      "Unit 2 - Iteration",
+      "Writing Efficient Code"
+    ]
   },
   {
     "objectID": "unit-2/efficient-code.html#required-reading-data.table-cheatsheet",
     "href": "unit-2/efficient-code.html#required-reading-data.table-cheatsheet",
     "title": "Writing Efficient Code",
     "section": "📖 Required Reading: data.table cheatsheet",
-    "text": "📖 Required Reading: data.table cheatsheet\n\n\n\n\n\n\nCheck-in: data.table\n\n\n\nQuestion 1: Here is some dplyr code. Re-write it in data.table syntax. Then perform a speed test to see which one is faster, and by how much.\n\ncongress_age %&gt;%\n  group_by(state) %&gt;%\n  summarize(mean_age = mean(age))"
+    "text": "📖 Required Reading: data.table cheatsheet\n\n\n\n\n\n\nCheck-in: data.table\n\n\n\nQuestion 1: Here is some dplyr code. Re-write it in data.table syntax. Then perform a speed test to see which one is faster, and by how much.\n\ncongress_age %&gt;%\n  group_by(state) %&gt;%\n  summarize(mean_age = mean(age))",
+    "crumbs": [
+      "Unit 2 - Iteration",
+      "Writing Efficient Code"
+    ]
   },
   {
     "objectID": "unit-2/efficient-code.html#required-reading-profiling",
     "href": "unit-2/efficient-code.html#required-reading-profiling",
     "title": "Writing Efficient Code",
     "section": "📖 Required Reading: [Profiling] ",
-    "text": "📖 Required Reading: [Profiling]"
+    "text": "📖 Required Reading: [Profiling]",
+    "crumbs": [
+      "Unit 2 - Iteration",
+      "Writing Efficient Code"
+    ]
   },
   {
     "objectID": "unit-2/efficient-code.html#recommended-reading-measuring-performance",
     "href": "unit-2/efficient-code.html#recommended-reading-measuring-performance",
     "title": "Writing Efficient Code",
     "section": "📖 Recommended Reading: Measuring Performance",
-    "text": "📖 Recommended Reading: Measuring Performance\n\n\n\n\n\n\nSkimming is sufficient!\n\n\n\nFor this reading, I strongly encourage you to skim. The code aspects are mostly more complicated that we expect in this class; but the general overview of the principles behind speeding up code is helpful.\nIn your work, you will most likely “profile” manually, by tictoc-ing bits of your code and so forth, not by these fancy methods.\n\n\n\n\n\n\n\n\nCheck-in: Profiling\n\n\n\nQuestion 2: Why is vapply() faster than sapply()?\n\nIt specifies the output type.\nIt specifies the input type.\nIt performs fewer safety checks.\nIt performs fewer iterations.\n\nQuestion 3: Here are two other ways to compute the square root of a vector. Which is faster? fastest? Use microbenchmarking to test your answers!\n\nx ^ (1 / 2)\nexp(log(x) / 2)\n\nQuestion 4: Why is mean(x) slower than sum(x)/length(x)?\n\nsum() is vectorized, while mean() is not.\nA mean is a smaller number than a sum, so it needs less memory.\nmean() calculates the mean twice just in case.\nmean() was written in an old version of R."
+    "text": "📖 Recommended Reading: Measuring Performance\n\n\n\n\n\n\nSkimming is sufficient!\n\n\n\nFor this reading, I strongly encourage you to skim. The code aspects are mostly more complicated that we expect in this class; but the general overview of the principles behind speeding up code is helpful.\nIn your work, you will most likely “profile” manually, by tictoc-ing bits of your code and so forth, not by these fancy methods.\n\n\n\n\n\n\n\n\nCheck-in: Profiling\n\n\n\nQuestion 2: Why is vapply() faster than sapply()?\n\nIt specifies the output type.\nIt specifies the input type.\nIt performs fewer safety checks.\nIt performs fewer iterations.\n\nQuestion 3: Here are two other ways to compute the square root of a vector. Which is faster? fastest? Use microbenchmarking to test your answers!\n\nx ^ (1 / 2)\nexp(log(x) / 2)\n\nQuestion 4: Why is mean(x) slower than sum(x)/length(x)?\n\nsum() is vectorized, while mean() is not.\nA mean is a smaller number than a sum, so it needs less memory.\nmean() calculates the mean twice just in case.\nmean() was written in an old version of R.",
+    "crumbs": [
+      "Unit 2 - Iteration",
+      "Writing Efficient Code"
+    ]
   },
   {
     "objectID": "unit-2/efficient-code.html#optional-super-advanced-mode",
     "href": "unit-2/efficient-code.html#optional-super-advanced-mode",
     "title": "Writing Efficient Code",
     "section": "Optional: Super advanced mode",
-    "text": "Optional: Super advanced mode\nThe following are some suggestions of ways you can level-up your code speed. These are outside the scope of this class, but you are welcome to explore them!\n\nDive deep into the R efficiency rabbit hole…\nParallelize your computations\nMake your code run in C++ with Rcpp\nLearn to use recursion\nLearn more about memory allocation and garbage collecting in R."
+    "text": "Optional: Super advanced mode\nThe following are some suggestions of ways you can level-up your code speed. These are outside the scope of this class, but you are welcome to explore them!\n\nDive deep into the R efficiency rabbit hole…\nParallelize your computations\nMake your code run in C++ with Rcpp\nLearn to use recursion\nLearn more about memory allocation and garbage collecting in R.",
+    "crumbs": [
+      "Unit 2 - Iteration",
+      "Writing Efficient Code"
+    ]
   }
 ]

@@ -95,7 +95,7 @@ website:
       contents:
         - href: unit-2.qmd
         - href: unit-2/writing-functions.qmd
-        # - href: unit-2/writing-efficient-functions.qmd
+        - href: unit-2/efficient-code.qmd
         # - href: unit-2/json-data.qmd
         # - href: unit-2/sql.qmd
         # - href: unit-2/web-scraping.qmd
