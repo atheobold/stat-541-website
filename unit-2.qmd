@@ -1,0 +1,23 @@
+---
+title: "Unit 2"
+editor: source
+---
+
+In this second unit, we will dig deeper into the ideas surrounding efficiency. 
+We will start with a review of writing functions in R---creating both vector
+and data frame functions and learning how to write functions which incorporate 
+"tidy evaluation." Next, we will take these functions to the next step by 
+considering the efficiency of the function---how many intermediate objects are 
+created, what order are operations run, what functions are used internally? 
+Alongside these considerations, we will also compare and contrast different 
+methods for iterating over functions---`for` loops and the `purrr` family of 
+functions. From the perspective of efficiency, we will consider why one would 
+choose one tool over the other. 
+
+After this review of efficiency, we will put our function writing an iteration
+to work! First we will explore hierarchical (JSON) data, iterating over multiple
+calls to an API. Next, we will explore extracting (scraping) data from a
+webpage, iterating over multiple webpages. Finally, we will use iteration to 
+generate art from code. 
+
+
