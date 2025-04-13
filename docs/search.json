@@ -132,154 +132,290 @@
     ]
   },
   {
-    "objectID": "labs/lab-1.html",
-    "href": "labs/lab-1.html",
-    "title": "Lab 1 - Quarto Warmup & STAT 331 Review",
+    "objectID": "unit-1/ggplot-extensions.html",
+    "href": "unit-1/ggplot-extensions.html",
+    "title": "ggplot Extensions",
     "section": "",
-    "text": "library(tidyverse)\nlibrary(ggridges)",
+    "text": "A huge part of making a compelling and convincing plot is your choice of color and layout.\nYour first video will take you through some great core principals of visualization. Then your two short readings will show you the basics of manipulating colors and themes in ggplot.",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "`ggplot` Extensions"
+    ]
+  },
+  {
+    "objectID": "unit-1/ggplot-extensions.html#custom-colors-and-themes",
+    "href": "unit-1/ggplot-extensions.html#custom-colors-and-themes",
+    "title": "ggplot Extensions",
+    "section": "",
+    "text": "A huge part of making a compelling and convincing plot is your choice of color and layout.\nYour first video will take you through some great core principals of visualization. Then your two short readings will show you the basics of manipulating colors and themes in ggplot.",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "`ggplot` Extensions"
+    ]
+  },
+  {
+    "objectID": "unit-1/ggplot-extensions.html#required-video-the-glamour-of-graphics",
+    "href": "unit-1/ggplot-extensions.html#required-video-the-glamour-of-graphics",
+    "title": "ggplot Extensions",
+    "section": "🎥 Required Video: The Glamour of Graphics",
+    "text": "🎥 Required Video: The Glamour of Graphics",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "`ggplot` Extensions"
+    ]
+  },
+  {
+    "objectID": "unit-1/ggplot-extensions.html#required-reading-colors-and-palettes",
+    "href": "unit-1/ggplot-extensions.html#required-reading-colors-and-palettes",
+    "title": "ggplot Extensions",
+    "section": "📖 Required Reading: Colors and Palettes",
+    "text": "📖 Required Reading: Colors and Palettes",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "`ggplot` Extensions"
+    ]
+  },
+  {
+    "objectID": "unit-1/ggplot-extensions.html#required-reading-themes",
+    "href": "unit-1/ggplot-extensions.html#required-reading-themes",
+    "title": "ggplot Extensions",
+    "section": "📖 Required Reading: Themes",
+    "text": "📖 Required Reading: Themes",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "`ggplot` Extensions"
+    ]
+  },
+  {
+    "objectID": "unit-1/ggplot-extensions.html#extra-resouces",
+    "href": "unit-1/ggplot-extensions.html#extra-resouces",
+    "title": "ggplot Extensions",
+    "section": "Extra Resouces",
+    "text": "Extra Resouces\n\nThe jcolors package for color palettes\nThe ggthemer package for setting universal themes.\nMake your own theme to use!\n\n\n\n\n\n\n\nCheck-in: Extending ggplot\n\n\n\n1. Which of the functions below would you use to change the colors of the bars on the following plot?\n\nscale_color_continuous()\nscale_color_discrete()\nscale_fill_continuous()\nscale_fill_discrete()\n\n\n\n\n\n\n\n\n\n\n2. Consider the plot in Question 1. What change was made to it in each step below? That is, what code would go inside the function + theme( ) to produce the added change?\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n3. Which built-in theme is each of the following plots? That is, what theme_XXXX() function would produce the added change?\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n4. Which of the plots above (a, b, c, or d) best adheres to the principles outlined by Will Chase (in the Glamour of Graphics)?",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "`ggplot` Extensions"
+    ]
+  },
+  {
+    "objectID": "unit-1/ggplot-extensions.html#gganimate",
+    "href": "unit-1/ggplot-extensions.html#gganimate",
+    "title": "ggplot Extensions",
+    "section": "gganimate",
+    "text": "gganimate\nThere are many, many ways to “spice up” your plots. We will focus in on one: making your plot animated! The best package for this, if you are using ggplot already, is gganimate.\n\n\n\n\n\n\nNote\n\n\n\ngganimate plot objects can sometimes take a long time to render. One way to make it quicker is to change the number of frames in your gif. Another trick is to use the cache chunk option in Quarto, so that you don’t re-render the images every time you knit your file.",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "`ggplot` Extensions"
+    ]
+  },
+  {
+    "objectID": "unit-1/ggplot-extensions.html#required-reading-intro-to-gganimate",
+    "href": "unit-1/ggplot-extensions.html#required-reading-intro-to-gganimate",
+    "title": "ggplot Extensions",
+    "section": "📖 Required Reading: Intro to gganimate",
+    "text": "📖 Required Reading: Intro to gganimate",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "`ggplot` Extensions"
+    ]
+  },
+  {
+    "objectID": "unit-1/ggplot-extensions.html#recommended-reading-another-intro-to-gganimate",
+    "href": "unit-1/ggplot-extensions.html#recommended-reading-another-intro-to-gganimate",
+    "title": "ggplot Extensions",
+    "section": "📖 Recommended Reading: Another intro to gganimate",
+    "text": "📖 Recommended Reading: Another intro to gganimate",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "`ggplot` Extensions"
+    ]
+  },
+  {
+    "objectID": "unit-1/ggplot-extensions.html#recommended-video-gganimate-flipbook-demo-rstudioconf-2017",
+    "href": "unit-1/ggplot-extensions.html#recommended-video-gganimate-flipbook-demo-rstudioconf-2017",
+    "title": "ggplot Extensions",
+    "section": "🎥 Recommended Video: gganimate flipbook demo (RStudio::conf 2017)",
+    "text": "🎥 Recommended Video: gganimate flipbook demo (RStudio::conf 2017)\n\n\n\n\n\n\n\n\nCheck-in: Extending ggplot\n\n\n\n5. Fill in the five (5) blanks for the gganimate plot below:\n\n___ &lt;- oscars %&gt;%\n  filter(Award_Gender != \"Ungendered\") %&gt;%\n  ggplot(aes(x = Age_at_Award, fill = Award_Gender)) +\n  geom_density(alpha = 0.5) +\n  labs(title = \"Age of Academy Award Winners ({____}s)\", \n       x = \"\", \n       y = \"\", \n       fill = \"Gender of Award\") +\n  theme(legend.position = \"top\") +\n  ____(Decade_of_Award)\n\nanimate(p2, nframes = ____, fps = ____)",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "`ggplot` Extensions"
+    ]
+  },
+  {
+    "objectID": "unit-1/ggplot-extensions.html#other-extensions",
+    "href": "unit-1/ggplot-extensions.html#other-extensions",
+    "title": "ggplot Extensions",
+    "section": "Other Extensions",
+    "text": "Other Extensions\nAlthough we don’t have time to go in-depth on every single extension of ggplot, there are so many wonderful ways to up your Data Viz game.\nTake a look around the links below!",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "`ggplot` Extensions"
+    ]
+  },
+  {
+    "objectID": "unit-1/ggplot-extensions.html#required-reading-ggplot-extension-gallery",
+    "href": "unit-1/ggplot-extensions.html#required-reading-ggplot-extension-gallery",
+    "title": "ggplot Extensions",
+    "section": "📖 Required Reading: ggplot Extension Gallery",
+    "text": "📖 Required Reading: ggplot Extension Gallery",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "`ggplot` Extensions"
+    ]
+  },
+  {
+    "objectID": "unit-1/ggplot-extensions.html#required-reading-more-ggplot-extension-summaries",
+    "href": "unit-1/ggplot-extensions.html#required-reading-more-ggplot-extension-summaries",
+    "title": "ggplot Extensions",
+    "section": "📖 Required Reading: More ggplot Extension Summaries",
+    "text": "📖 Required Reading: More ggplot Extension Summaries\n\n\n\n\n\n\nCheck-in: Extending ggplot\n\n\n\n6. Which extension package would you use to… Hint: There is more than one possible answer for each question!\n\nVisualize a social network using twitter data?\n\n\n\nAdd p-values to your side-by-side boxplot of treatment groups, showing the significance of the differences?\n\n\n\nArrange several different plots next to each other?\n\n\n\nMake it so hovering over a point in your scatterplot shows the corresponding label?",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "`ggplot` Extensions"
+    ]
+  },
+  {
+    "objectID": "unit-1/ggplot-extensions.html#extra-resources",
+    "href": "unit-1/ggplot-extensions.html#extra-resources",
+    "title": "ggplot Extensions",
+    "section": "Extra Resources",
+    "text": "Extra Resources\n\nDave Robinson’s Tidy Tuesday Screencasts show a master of Data Viz at work!\nYou can also search the Tidy Tuesday hashtag on twitter to see some great examples of data manipulating and visualization\nDon’t forget about the Data-to-Viz Website\nThe “dataisbeautiful” subreddit shares many nice visualizations.\nThis webinar, by ggplot contributor Thomas Lin Pedersen, is wonderful. It’s about 2 hours long - so more than we can fit in as required viewing - but if you want to become a ggplot master, watch this!",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "`ggplot` Extensions"
+    ]
+  },
+  {
+    "objectID": "set-up/setup-version-control.html",
+    "href": "set-up/setup-version-control.html",
+    "title": "Version Control with Git and GitHub",
+    "section": "",
+    "text": "Most of this reading is either heavily inspired by Happy Git and Github for the UseR (Bryan, Hester, and The Stat 545 TAs 2021) or directly links to that book. After completing this pre-reading, you should:",
     "crumbs": [
       "Infrastructure",
-      "Lab 1 - Quarto Warmup & STAT 331 Review"
+      "Version Control with Git and GitHub"
     ]
   },
   {
-    "objectID": "labs/lab-1.html#quarto",
-    "href": "labs/lab-1.html#quarto",
-    "title": "Lab 1 - Quarto Warmup & STAT 331 Review",
-    "section": "Quarto",
-    "text": "Quarto\nFirst, let’s make sure you know how to use Markdown formatting to style a Quarto document.\n\nMake this text bold.\nMake this text italicized.\nMake these into a bullet point list:\n\nApples Bananas Potatoes\n\nEdit the YAML to remove warning messages from being output in the rendered HTML file\nUsing code chunk options, make it so this chunk shows the plot but not the source code:\n\n\nggplot(data = mpg, \n       mapping = aes(y = manufacturer, x = hwy)) + \n  geom_boxplot() +\n  labs(x = \"\",\n       y = \"\", \n       title = \"Highway Milage (mpg) for Different Car Manufacturers\"\n       )\n\n\nUsing code chunk options, remove the messages about bandwidth geom_density_ridges() chose to use:\n\n\nggplot(data = mpg, \n       mapping = aes(y = manufacturer, x = hwy)) + \n  geom_density_ridges() +\n  labs(x = \"\",\n       y = \"\", \n       title = \"Highway Milage (mpg) for Different Car Manufacturers\"\n       )\n\n\nUsing code chunk options, make it so that these plots are printed side-by-side:\n\n\nggplot(data = mpg, \n       mapping = aes(y = manufacturer, x = hwy)) + \n  geom_boxplot() +\n  labs(x = \"\",\n       y = \"\", \n       title = \"Highway Milage (mpg) for Different Car Manufacturers\"\n       )\n\nggplot(data = mpg, \n       mapping = aes(y = manufacturer, x = hwy)) + \n  geom_density_ridges() +\n  labs(x = \"\",\n       y = \"\", \n       title = \"Highway Milage (mpg) for Different Car Manufacturers\"\n       )\n\n\nUsing code chunk options, make it so this chunk shows the code but not the output:\n\n\n2 + 2\n\n\nUsing code chunk options, make it so the file can still knit even though this chunk has an error\n\n\n2 + a\n\n\nUsing code chunk options, create a descriptive label for each of the code chunks above.",
+    "objectID": "set-up/setup-version-control.html#footnotes",
+    "href": "set-up/setup-version-control.html#footnotes",
+    "title": "Version Control with Git and GitHub",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nYes, I’m aware that this sounds paranoid. It’s been a very rare occasion that I’ve needed to restore something from another backup. You don’t want to take chances.↩︎",
     "crumbs": [
       "Infrastructure",
-      "Lab 1 - Quarto Warmup & STAT 331 Review"
+      "Version Control with Git and GitHub"
     ]
   },
   {
-    "objectID": "labs/lab-1.html#data-wrangling-review",
-    "href": "labs/lab-1.html#data-wrangling-review",
-    "title": "Lab 1 - Quarto Warmup & STAT 331 Review",
-    "section": "Data Wrangling Review",
-    "text": "Data Wrangling Review\nSince you already seen some ggplots, let’s do a bit of review on data handling. In this class, we will exclusively make use of tools from the tidyverse suite of packages to perform our data cleaning and wrangling operations. If you are less familiar with these packages or it’s been some time since you used them, I would strongly recommend referencing the function documentation!\nFor these problems, we will continue to work with the mpg data frame, making various changes to the data to clean it up.\n\nThe fl variable describes the type of fuel for each car, with levels: p, r, e, d, and c. Do some research into what each of these labels mean! Then, use the if_else() function to create a new variable (fuel_type) with two levels: petrol (any car using petrolium-based gas) and alternative energy (any car not using petrolium-based gas).\n\n\nThe drv variable describes if the car has front drive (f), rear drive (r), or four wheel drive (4). Let’s make better labels for these values! Specifically, use the case_when() function to change the drv variable to have the following levels: front, rear, four wheel.\n\n\nThe trans variable contains two pieces of information, (1) the transmission style (auto or manual) and the specific type of transmission (e.g., l5, m5). Using the separate_wider_delim() function, create two new variables from trans, (1) trans_type containing the specific type of transmission of each car (e.g., l5), and (2) trans_style the style of the transmission (e.g., auto). Hint: You will need to deal with the stray parenthesis!",
+    "objectID": "unit-1/ggplot-review.html",
+    "href": "unit-1/ggplot-review.html",
+    "title": "ggplot Review",
+    "section": "",
+    "text": "This module consists of readings reviewing material typically taught in STAT 331. It is possible you can skip over portions of this reading. It is your responsibility to decide which areas you need to review before diving into Stat 541.",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "`ggplot` Review"
+    ]
+  },
+  {
+    "objectID": "unit-1/ggplot-review.html#recommended-video",
+    "href": "unit-1/ggplot-review.html#recommended-video",
+    "title": "ggplot Review",
+    "section": "🎥 Recommended Video",
+    "text": "🎥 Recommended Video\n\n\n\n\n\n\n\n\n\nCheck-in: ggplot Review\n\n\n\nIdentify the elements of the following plot as\n\nAn aesthetic\nA geometry\nA scale\nNone of the above\n\n\n\nThe x-axis is age\nThe y-axis is “Urge to run up the down escalator”\nThe y-axis ranges from “Weak” to “Strong”\nThis is a line graph\nThe two lines are “What I was supposed to feel” and “What I’ve actually felt”\nThe lines are labeled with text\nOnly even ages are labelled\nStick figure people are sliding down the line",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "`ggplot` Review"
+    ]
+  },
+  {
+    "objectID": "unit-1/ggplot-review.html#recommended-reading-r4ds-data-visualisation",
+    "href": "unit-1/ggplot-review.html#recommended-reading-r4ds-data-visualisation",
+    "title": "ggplot Review",
+    "section": "📖 Recommended Reading: R4DS: Data Visualisation",
+    "text": "📖 Recommended Reading: R4DS: Data Visualisation\n\n\n\n\n\n\nCheckin: ggplot Review\n\n\n\nFill in the six (6) blanks to make the following plot:\n\nstarwars %&gt;%\n  ____(species == \"Human\") %&gt;%\n  ggplot(mapping = aes(____ = height, y = mass, ____ = gender)) + \n  geom_[____](____ = 17) +\n  ____(x = \"Height (cm)\", \n       y = \"Mass (kg)\", \n       color = \"Gender Expression\"\n       )",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "`ggplot` Review"
+    ]
+  },
+  {
+    "objectID": "set-up/setup-workflow.html",
+    "href": "set-up/setup-workflow.html",
+    "title": "Installing / Updating R & RStudio",
+    "section": "",
+    "text": "Your workflow refers to the series of good habits you get into in your coding process, that help save you time and headache down the road.\nThis document outlines our suggestions for getting going with your workflow. None of these items is required for the course; they will simply make your life easier down the road.",
     "crumbs": [
       "Infrastructure",
-      "Lab 1 - Quarto Warmup & STAT 331 Review"
+      "Installing / Updating R & RStudio"
     ]
   },
   {
-    "objectID": "labs/lab-1.html#getting-to-know-your-classmates",
-    "href": "labs/lab-1.html#getting-to-know-your-classmates",
-    "title": "Lab 1 - Quarto Warmup & STAT 331 Review",
-    "section": "Getting to know your classmates",
-    "text": "Getting to know your classmates\n\nFind someone who took Stat 331 from a different professor than you. Compare your experiences. Tell me their name and professor. List one or two things that you think you learned more about, and one or two things that they learned more about.\nFind someone in the class who does not share your birth month. Tell me their name and birthday, and use R to find out how many days apart your birthdays are.",
+    "objectID": "set-up/setup-workflow.html#updating-r",
+    "href": "set-up/setup-workflow.html#updating-r",
+    "title": "Installing / Updating R & RStudio",
+    "section": "1 Updating R",
+    "text": "1 Updating R\nEach of you should have R already installed on your computer, but you might not have the most up to date version of R! Do not ignore these instructions. If you neglect to update your version of R, you may find that updating a package will make it so your code will not run.\n\nStep 1: Open RStudio\nStep 2: At the top of the the Console it will say what version of R you are using\n\n\nIf the version is not 4.4.3 (like the image above), you need to update your version of R! The simplest way to do this is to follow the instructions below to install R.",
     "crumbs": [
       "Infrastructure",
-      "Lab 1 - Quarto Warmup & STAT 331 Review"
+      "Installing / Updating R & RStudio"
     ]
   },
   {
-    "objectID": "labs/lab-2.html",
-    "href": "labs/lab-2.html",
-    "title": "Lab 2",
-    "section": "",
-    "text": "Create a Quarto file for ALL Lab 2 (no separate files for Parts 1 and 2).\n\nMake sure your final file is carefully formatted, so that each analysis is clear and concise.\nBe sure your knitted .html file shows all your source code, including any function definitions.",
+    "objectID": "set-up/setup-workflow.html#installing-r",
+    "href": "set-up/setup-workflow.html#installing-r",
+    "title": "Installing / Updating R & RStudio",
+    "section": "2 Installing R",
+    "text": "2 Installing R\nDownload and install R by going to https://cloud.r-project.org/. Here, you will find three options for installing R—click on the option for your computer’s operating system.\n\n\n\n\nIf you are a Windows user:\n\nClick on “Download R for Windows”\nClick on “base”\nClick on the Download link.\nWhen you open the execution file (.exe) you will be prompted with a variety of questions about installing R. Feel free to use the default features / settings that come with R (continue to click “Ok” until the download starts).\n\n\n\n\n\n\n\nMultiple Versions of R\n\n\n\nBeware that if you had a previous version of R downloaded on your PC, that old version will not be deleted when you download the most recent version of R. We do not want to have two versions of R installed, as your computer can get confused what version of R to use. So, you need to remove the old version of R.\nTo do this you need to:\n\nNavigate to your computer’s settings\nClick on the “Apps” option on the left-hand panel\nSearch for or scroll down to R\nFind the older version of R\n\n\n\nClick on the ... on the right side\nSelect “Uninstall”\n\n\n\n\n\n\nIf you are macOS user:\n\nClick on “Download R for (Mac) OS X”\nUnder “Latest release:” click on R-X.X.X.pkg, where R-X.X.X is the version number. For example, the latest version of R as of July 1, 2024 was R-4.4.1 (Race for Your Life).\nWhen installing, use the default features / settings that come with R (click Ok until the download starts).",
     "crumbs": [
-      "Unit 1 - Communication",
-      "Lab 2"
+      "Infrastructure",
+      "Installing / Updating R & RStudio"
     ]
   },
   {
-    "objectID": "labs/lab-2.html#dissecting-a-bad-visualization",
-    "href": "labs/lab-2.html#dissecting-a-bad-visualization",
-    "title": "Lab 2",
-    "section": "Dissecting a Bad Visualization",
-    "text": "Dissecting a Bad Visualization\nBelow is an example of a less-than-ideal visualization from the collection linked above. It comes to us from data provided for the Wellcome Global Monitor 2018 report by the Gallup World Poll:\n\n\nWhile there are certainly issues with this image, do your best to tell the story of this graph in words. That is, what is this graph telling you? What do you think the authors meant to convey with it?\nList the variables that appear to be displayed in this visualization. Hint: Variables refer to columns in the data.\nNow that you’re versed in the grammar of graphics (e.g., ggplot), list the aesthetics used and which variables are mapped to each.\nWhat type of graph would you call this? Meaning, what geom would you use to produce this plot?\nProvide at least four problems or changes that would improve this graph. Please format your changes as bullet points!",
+    "objectID": "set-up/setup-workflow.html#updating-rstudio",
+    "href": "set-up/setup-workflow.html#updating-rstudio",
+    "title": "Installing / Updating R & RStudio",
+    "section": "3 Updating RStudio",
+    "text": "3 Updating RStudio\nRStudio can be downloaded here\nThe most recent version of RStudio is 2024.12.1+563. You can check if you are using the most recent version of RStudio by:\n\nOpening RStudio\nClicking on “Help”\nSelecting “Check for Updates”\nChoosing “Quit and Download” if there is an update available",
     "crumbs": [
-      "Unit 1 - Communication",
-      "Lab 2"
+      "Infrastructure",
+      "Installing / Updating R & RStudio"
     ]
   },
   {
-    "objectID": "labs/lab-2.html#improving-the-bad-visualization",
-    "href": "labs/lab-2.html#improving-the-bad-visualization",
-    "title": "Lab 2",
-    "section": "Improving the Bad Visualization",
-    "text": "Improving the Bad Visualization\nThe data for the Wellcome Global Monitor 2018 report can be downloaded at the following site: https://wellcome.ac.uk/reports/wellcome-global-monitor/2018\n\nThere are two worksheets in the downloaded dataset file. You may need to read them in separately, but you may also just use one if it suffices.\n\nImprove the visualization above by either re-creating it with the issues you identified fixed OR by creating a new visualization that you believe tells the same story better.",
+    "objectID": "set-up/setup-workflow.html#installing-updating-the-tidyverse",
+    "href": "set-up/setup-workflow.html#installing-updating-the-tidyverse",
+    "title": "Installing / Updating R & RStudio",
+    "section": "4 Installing / Updating the tidyverse",
+    "text": "4 Installing / Updating the tidyverse\nIn this class, we will make heavy use of the tidyverse packages.\nIf you have not used the tidyverse before, type the following into your console:\n\ninstall.packages(\"tidyverse\")\n\nIf you have used the tidyverse before, you only need to update packages. Type the following into your console:\n\nlibrary(tidyverse)\ntidyverse_update()\n\nThen follow the instructions that print out to update a few of your tidyverse packages.",
     "crumbs": [
-      "Unit 1 - Communication",
-      "Lab 2"
+      "Infrastructure",
+      "Installing / Updating R & RStudio"
     ]
   },
   {
-    "objectID": "labs/lab-2.html#second-data-visualization-improvement",
-    "href": "labs/lab-2.html#second-data-visualization-improvement",
-    "title": "Lab 2",
-    "section": "Second Data Visualization Improvement",
-    "text": "Second Data Visualization Improvement\nFor this second plot, you must select a plot that uses maps so you can demonstrate your proficiency with the leaflet package!\n\nSelect a data visualization in the report that you think could be improved. Be sure to cite both the page number and figure title. Do your best to tell the story of this graph in words. That is, what is this graph telling you? What do you think the authors meant to convey with it?\nList the variables that appear to be displayed in this visualization.\nNow that you’re versed in the grammar of graphics (ggplot), list the aesthetics used and which variables are specified for each.\nWhat type of graph would you call this?\nList all of the problems or things you would improve about this graph.\nImprove the visualization above by either re-creating it with the issues you identified fixed OR by creating a new visualization that you believe tells the same story better.",
+    "objectID": "set-up/setup-workflow.html#configure-your-options",
+    "href": "set-up/setup-workflow.html#configure-your-options",
+    "title": "Installing / Updating R & RStudio",
+    "section": "5 Configure your options",
+    "text": "5 Configure your options\nThere are a few settings we recommend that you change right away in RStudio.\n\nR Workspace\nFirst, you should not save your environment when you close RStudio:\n\n\n\nCode Chunk Output\nSecond, make a deliberate choice about where your chunks will evaluate when you run that. That is, if you reference files, are you referencing them relative to your Project, or relative to your Quarto Document (which might live in a subfolder or even outside the project).",
     "crumbs": [
-      "Unit 1 - Communication",
-      "Lab 2"
+      "Infrastructure",
+      "Installing / Updating R & RStudio"
     ]
   },
   {
-    "objectID": "labs/lab-2.html#third-data-visualization-improvement",
-    "href": "labs/lab-2.html#third-data-visualization-improvement",
-    "title": "Lab 2",
-    "section": "Third Data Visualization Improvement",
-    "text": "Third Data Visualization Improvement\nFor this third plot, you must use one of the other ggplot2 extension packages mentioned this week (e.g., gganimate, plotly, patchwork, cowplot).\n\nSelect a data visualization in the report that you think could be improved. Be sure to cite both the page number and figure title. Do your best to tell the story of this graph in words. That is, what is this graph telling you? What do you think the authors meant to convey with it?\nList the variables that appear to be displayed in this visualization.\nNow that you’re versed in the grammar of graphics (ggplot), list the aesthetics used and which variables are specified for each.\nWhat type of graph would you call this?\nList all of the problems or things you would improve about this graph.\nImprove the visualization above by either re-creating it with the issues you identified fixed OR by creating a new visualization that you believe tells the same story better.",
+    "objectID": "set-up/setup-workflow.html#project-based-workflow",
+    "href": "set-up/setup-workflow.html#project-based-workflow",
+    "title": "Installing / Updating R & RStudio",
+    "section": "6 Project-based workflow",
+    "text": "6 Project-based workflow\nWe strongly recommend that you adopt a project-oriented approach to your R work. That is, you should never open R or RStudio directly; you should only open the project you intend to work on.\nThis resource provides an excellent explanation of why and how to use projects.",
     "crumbs": [
-      "Unit 1 - Communication",
-      "Lab 2"
+      "Infrastructure",
+      "Installing / Updating R & RStudio"
     ]
-  },
-  {
-    "objectID": "unit-1/ggplot-leaflet.html",
-    "href": "unit-1/ggplot-leaflet.html",
-    "title": "Creating Maps with the leaflet Package",
-    "section": "",
-    "text": "Maps are fantastic and complicated all at the same time! Maps are some of the richest visualizations around because they come with data built into them. That is, on top of whatever data you’re going to plot you are also probably going to view terrain, roads, state/country borders, city names or a host of other information that come with our geography.\nThis implicit richness only adds to challenge of creating a good map. Observe the following recent tweet for a silly example of how maps can be…difficult.\nThere is no shortage of map data visualizations on the web, but all too often this is what we end up with:\n\n\n\n\n\n\n\n\n\n\n\nCaution\n\n\n\nBe sure to watch all 6 videos in this series.\n\n\n\n\n\n\n\n\nCheck-in: leaflet\n\n\n\n1. Is running just the leaflet() function enough to produce a map?\n\nYes\nNo\n\n2. To plot data points on a leaflet map, we should probably use which function?\n\naddTiles()\naddMarkers()\naddProviderTiles()\naddPolygons()\n\n\n\n\n\n\nThe leaflet package is actually extremely rich and can basically enable (interactive) map visualizations as complex as you can imagine. Take some time to peruse the site for the leaflet R package:\nhttps://rstudio.github.io/leaflet/\n\n\n\n\n\n\nCheck-in: leaflet\n\n\n\n3. What do the names of your plotted data columns have to be?\n\nx; y\nleafletx; `leaflety\nlat / latitude; lon/ longitude\nAnything as long as you tell the addMarkers() function correctly\n\n4. If you were to think of latitude and longitude as coordinates in the cartesian coordinate system, then…\n\nlatitude is on the horizontal axis and longitude is on the vertical\nlatitude is on the vertical axis and longitude is on the horizontal\n\n\n\n\n\n\n\nhelmet_icon &lt;- makeIcon(\n  iconUrl = \"http://www.clker.com/cliparts/l/R/b/J/X/D/astronaut-helmet-md.png\",\n  iconWidth = 15, \n  iconHeight = 15\n  )\n\nleaflet() %&gt;%\n  addTiles() %&gt;%\n  addMarkers(lng = jitter(space$Longitude, \n                          factor = 2), \n             lat = jitter(space$Latitude,\n                          factor = 2), \n             icon = helmet_icon, \n             popup = paste(space$Name, \"&lt;br&gt;\", \n                           \"Birth Place: \", space$`Birth Place`),\n             label = paste(space$Name)\n             )\n\n\n\n\n\n\n\n\n\n\n\nCheck-in: leaflet\n\n\n\nThe above map plots data on NASA astronauts!\n5. The graphic for each marker is a little astronaut helmet. How cute! This image was used via…\n\na URL pointing to it on the web.\na downloaded image file.\n\n6. The popup argument specifies what you see when you ______, while the label argument specifies what you see when you ______.\n\nhover; click\nzoom-in; zoom-out\nclick; hover\nsquint your eyes; look normally",
-    "crumbs": [
-      "Unit 1 - Communication",
-      "Creating Maps with the `leaflet` Package"
-    ]
-  },
-  {
-    "objectID": "unit-1/ggplot-leaflet.html#required-video-introductory-series-to-leaflet-in-r-6-videos",
-    "href": "unit-1/ggplot-leaflet.html#required-video-introductory-series-to-leaflet-in-r-6-videos",
-    "title": "Creating Maps with the leaflet Package",
-    "section": "",
-    "text": "Caution\n\n\n\nBe sure to watch all 6 videos in this series.\n\n\n\n\n\n\n\n\nCheck-in: leaflet\n\n\n\n1. Is running just the leaflet() function enough to produce a map?\n\nYes\nNo\n\n2. To plot data points on a leaflet map, we should probably use which function?\n\naddTiles()\naddMarkers()\naddProviderTiles()\naddPolygons()",
-    "crumbs": [
-      "Unit 1 - Communication",
-      "Creating Maps with the `leaflet` Package"
-    ]
-  },
-  {
-    "objectID": "unit-1/ggplot-leaflet.html#more-on-the-leaflet-package",
-    "href": "unit-1/ggplot-leaflet.html#more-on-the-leaflet-package",
-    "title": "Creating Maps with the leaflet Package",
-    "section": "",
-    "text": "The leaflet package is actually extremely rich and can basically enable (interactive) map visualizations as complex as you can imagine. Take some time to peruse the site for the leaflet R package:\nhttps://rstudio.github.io/leaflet/\n\n\n\n\n\n\nCheck-in: leaflet\n\n\n\n3. What do the names of your plotted data columns have to be?\n\nx; y\nleafletx; `leaflety\nlat / latitude; lon/ longitude\nAnything as long as you tell the addMarkers() function correctly\n\n4. If you were to think of latitude and longitude as coordinates in the cartesian coordinate system, then…\n\nlatitude is on the horizontal axis and longitude is on the vertical\nlatitude is on the vertical axis and longitude is on the horizontal",
-    "crumbs": [
-      "Unit 1 - Communication",
-      "Creating Maps with the `leaflet` Package"
-    ]
-  },
-  {
-    "objectID": "unit-1/ggplot-leaflet.html#practice-with-leaflet",
-    "href": "unit-1/ggplot-leaflet.html#practice-with-leaflet",
-    "title": "Creating Maps with the leaflet Package",
-    "section": "",
-    "text": "helmet_icon &lt;- makeIcon(\n  iconUrl = \"http://www.clker.com/cliparts/l/R/b/J/X/D/astronaut-helmet-md.png\",\n  iconWidth = 15, \n  iconHeight = 15\n  )\n\nleaflet() %&gt;%\n  addTiles() %&gt;%\n  addMarkers(lng = jitter(space$Longitude, \n                          factor = 2), \n             lat = jitter(space$Latitude,\n                          factor = 2), \n             icon = helmet_icon, \n             popup = paste(space$Name, \"&lt;br&gt;\", \n                           \"Birth Place: \", space$`Birth Place`),\n             label = paste(space$Name)\n             )\n\n\n\n\n\n\n\n\n\n\n\nCheck-in: leaflet\n\n\n\nThe above map plots data on NASA astronauts!\n5. The graphic for each marker is a little astronaut helmet. How cute! This image was used via…\n\na URL pointing to it on the web.\na downloaded image file.\n\n6. The popup argument specifies what you see when you ______, while the label argument specifies what you see when you ______.\n\nhover; click\nzoom-in; zoom-out\nclick; hover\nsquint your eyes; look normally",
-    "crumbs": [
-      "Unit 1 - Communication",
-      "Creating Maps with the `leaflet` Package"
-    ]
-  },
-  {
-    "objectID": "labs/lab-8.html",
-    "href": "labs/lab-8.html",
-    "title": "Lab 8",
-    "section": "",
-    "text": "Goal: Scrape information from https://www.cheese.com to obtain a dataset of characteristics about different cheeses, and gain deeper insight into your coding process. 🪤\n\nPart 1: Locate and examine the robots.txt file for this website. Summarize what you learn from it.\nPart 2: Learn about the html_attr() function from rvest. Describe how this function works with a small example.\nPart 3: (Do this alongside Part 4 below.) I used ChatGPT to start the process of scraping cheese information with the following prompt:\n\nWrite R code using the rvest package that allows me to scrape cheese information from cheese.com.\n\nFully document your process of checking this code. Record any observations you make about where ChatGPT is useful / not useful.\n\n# Load required libraries\nlibrary(rvest)\nlibrary(dplyr)\n\n# Define the URL\nurl &lt;- \"https://www.cheese.com/alphabetical\"\n\n# Read the HTML content from the webpage\nwebpage &lt;- read_html(url)\n\n# Extract the cheese names and URLs\ncheese_data &lt;- webpage %&gt;%\n  html_nodes(\".cheese-item\") %&gt;%\n  html_nodes(\"a\") %&gt;%\n  html_attr(\"href\") %&gt;%\n  paste0(\"https://cheese.com\", .)\n\ncheese_names &lt;- webpage %&gt;%\n  html_nodes(\".cheese-item h3\") %&gt;%\n  html_text()\n\n# Create a data frame to store the results\ncheese_df &lt;- data.frame(Name = cheese_names,\n                        URL = cheese_data,\n                        stringsAsFactors = FALSE)\n\n# Print the data frame\nprint(cheese_df)\n\nPart 4: Obtain the following information for all cheeses in the database:\n\nCheese name\nURL for the cheese’s webpage (e.g., https://www.cheese.com/gouda/)\nWhether or not the cheese has a picture (e.g., gouda has a picture, but bianco does not)\n\nTo be kind to the website owners, please add a 1 second pause between page queries. (Note that you can view 100 cheeses at a time.)\nPart 5: When you go to a particular cheese’s page (like gouda), you’ll see more detailed information about the cheese. For just 10 of the cheeses in the database, obtain the following detailed information:\n\nmilk information\ncountry of origin\nfamily\ntype\nflavour\n\n(Just 10 to avoid overtaxing the website! Continue adding a 1 second pause between page queries.)\nPart 6: Evaluate the code that you wrote in terms of the core principle of good function writing. To what extent does your implementation follow these principles? What are you learning about what is easy / challenging for you about approaching complex tasks requiring functions and loops?"
   },
   {
     "objectID": "unit-2.html",
@@ -804,289 +940,153 @@
     ]
   },
   {
-    "objectID": "set-up/setup-workflow.html",
-    "href": "set-up/setup-workflow.html",
-    "title": "Installing / Updating R & RStudio",
+    "objectID": "labs/lab-8.html",
+    "href": "labs/lab-8.html",
+    "title": "Lab 8",
     "section": "",
-    "text": "Your workflow refers to the series of good habits you get into in your coding process, that help save you time and headache down the road.\nThis document outlines our suggestions for getting going with your workflow. None of these items is required for the course; they will simply make your life easier down the road.",
-    "crumbs": [
-      "Infrastructure",
-      "Installing / Updating R & RStudio"
-    ]
+    "text": "Goal: Scrape information from https://www.cheese.com to obtain a dataset of characteristics about different cheeses, and gain deeper insight into your coding process. 🪤\n\nPart 1: Locate and examine the robots.txt file for this website. Summarize what you learn from it.\nPart 2: Learn about the html_attr() function from rvest. Describe how this function works with a small example.\nPart 3: (Do this alongside Part 4 below.) I used ChatGPT to start the process of scraping cheese information with the following prompt:\n\nWrite R code using the rvest package that allows me to scrape cheese information from cheese.com.\n\nFully document your process of checking this code. Record any observations you make about where ChatGPT is useful / not useful.\n\n# Load required libraries\nlibrary(rvest)\nlibrary(dplyr)\n\n# Define the URL\nurl &lt;- \"https://www.cheese.com/alphabetical\"\n\n# Read the HTML content from the webpage\nwebpage &lt;- read_html(url)\n\n# Extract the cheese names and URLs\ncheese_data &lt;- webpage %&gt;%\n  html_nodes(\".cheese-item\") %&gt;%\n  html_nodes(\"a\") %&gt;%\n  html_attr(\"href\") %&gt;%\n  paste0(\"https://cheese.com\", .)\n\ncheese_names &lt;- webpage %&gt;%\n  html_nodes(\".cheese-item h3\") %&gt;%\n  html_text()\n\n# Create a data frame to store the results\ncheese_df &lt;- data.frame(Name = cheese_names,\n                        URL = cheese_data,\n                        stringsAsFactors = FALSE)\n\n# Print the data frame\nprint(cheese_df)\n\nPart 4: Obtain the following information for all cheeses in the database:\n\ncheese name\nURL for the cheese’s webpage (e.g., https://www.cheese.com/gouda/)\nwhether or not the cheese has a picture (e.g., gouda has a picture, but bianco does not).\n\nTo be kind to the website owners, please add a 1 second pause between page queries. (Note that you can view 100 cheeses at a time.)\nPart 5: When you go to a particular cheese’s page (like gouda), you’ll see more detailed information about the cheese. For just 10 of the cheeses in the database, obtain the following detailed information:\n\nmilk information\ncountry of origin\nfamily\ntype\nflavour\n\n(Just 10 to avoid overtaxing the website! Continue adding a 1 second pause between page queries.)\nPart 6: Evaluate the code that you wrote in terms of efficiency. To what extent do your function(s) adhere to the principles for writing good functions? To what extent are your functions efficient? To what extent is your iteration of these functions efficient?"
   },
   {
-    "objectID": "set-up/setup-workflow.html#updating-r",
-    "href": "set-up/setup-workflow.html#updating-r",
-    "title": "Installing / Updating R & RStudio",
-    "section": "1 Updating R",
-    "text": "1 Updating R\nEach of you should have R already installed on your computer, but you might not have the most up to date version of R! Do not ignore these instructions. If you neglect to update your version of R, you may find that updating a package will make it so your code will not run.\n\nStep 1: Open RStudio\nStep 2: At the top of the the Console it will say what version of R you are using\n\n\nIf the version is not 4.4.3 (like the image above), you need to update your version of R! The simplest way to do this is to follow the instructions below to install R.",
-    "crumbs": [
-      "Infrastructure",
-      "Installing / Updating R & RStudio"
-    ]
-  },
-  {
-    "objectID": "set-up/setup-workflow.html#installing-r",
-    "href": "set-up/setup-workflow.html#installing-r",
-    "title": "Installing / Updating R & RStudio",
-    "section": "2 Installing R",
-    "text": "2 Installing R\nDownload and install R by going to https://cloud.r-project.org/. Here, you will find three options for installing R—click on the option for your computer’s operating system.\n\n\n\n\nIf you are a Windows user:\n\nClick on “Download R for Windows”\nClick on “base”\nClick on the Download link.\nWhen you open the execution file (.exe) you will be prompted with a variety of questions about installing R. Feel free to use the default features / settings that come with R (continue to click “Ok” until the download starts).\n\n\n\n\n\n\n\nMultiple Versions of R\n\n\n\nBeware that if you had a previous version of R downloaded on your PC, that old version will not be deleted when you download the most recent version of R. We do not want to have two versions of R installed, as your computer can get confused what version of R to use. So, you need to remove the old version of R.\nTo do this you need to:\n\nNavigate to your computer’s settings\nClick on the “Apps” option on the left-hand panel\nSearch for or scroll down to R\nFind the older version of R\n\n\n\nClick on the ... on the right side\nSelect “Uninstall”\n\n\n\n\n\n\nIf you are macOS user:\n\nClick on “Download R for (Mac) OS X”\nUnder “Latest release:” click on R-X.X.X.pkg, where R-X.X.X is the version number. For example, the latest version of R as of July 1, 2024 was R-4.4.1 (Race for Your Life).\nWhen installing, use the default features / settings that come with R (click Ok until the download starts).",
-    "crumbs": [
-      "Infrastructure",
-      "Installing / Updating R & RStudio"
-    ]
-  },
-  {
-    "objectID": "set-up/setup-workflow.html#updating-rstudio",
-    "href": "set-up/setup-workflow.html#updating-rstudio",
-    "title": "Installing / Updating R & RStudio",
-    "section": "3 Updating RStudio",
-    "text": "3 Updating RStudio\nRStudio can be downloaded here\nThe most recent version of RStudio is 2024.12.1+563. You can check if you are using the most recent version of RStudio by:\n\nOpening RStudio\nClicking on “Help”\nSelecting “Check for Updates”\nChoosing “Quit and Download” if there is an update available",
-    "crumbs": [
-      "Infrastructure",
-      "Installing / Updating R & RStudio"
-    ]
-  },
-  {
-    "objectID": "set-up/setup-workflow.html#installing-updating-the-tidyverse",
-    "href": "set-up/setup-workflow.html#installing-updating-the-tidyverse",
-    "title": "Installing / Updating R & RStudio",
-    "section": "4 Installing / Updating the tidyverse",
-    "text": "4 Installing / Updating the tidyverse\nIn this class, we will make heavy use of the tidyverse packages.\nIf you have not used the tidyverse before, type the following into your console:\n\ninstall.packages(\"tidyverse\")\n\nIf you have used the tidyverse before, you only need to update packages. Type the following into your console:\n\nlibrary(tidyverse)\ntidyverse_update()\n\nThen follow the instructions that print out to update a few of your tidyverse packages.",
-    "crumbs": [
-      "Infrastructure",
-      "Installing / Updating R & RStudio"
-    ]
-  },
-  {
-    "objectID": "set-up/setup-workflow.html#configure-your-options",
-    "href": "set-up/setup-workflow.html#configure-your-options",
-    "title": "Installing / Updating R & RStudio",
-    "section": "5 Configure your options",
-    "text": "5 Configure your options\nThere are a few settings we recommend that you change right away in RStudio.\n\nR Workspace\nFirst, you should not save your environment when you close RStudio:\n\n\n\nCode Chunk Output\nSecond, make a deliberate choice about where your chunks will evaluate when you run that. That is, if you reference files, are you referencing them relative to your Project, or relative to your Quarto Document (which might live in a subfolder or even outside the project).",
-    "crumbs": [
-      "Infrastructure",
-      "Installing / Updating R & RStudio"
-    ]
-  },
-  {
-    "objectID": "set-up/setup-workflow.html#project-based-workflow",
-    "href": "set-up/setup-workflow.html#project-based-workflow",
-    "title": "Installing / Updating R & RStudio",
-    "section": "6 Project-based workflow",
-    "text": "6 Project-based workflow\nWe strongly recommend that you adopt a project-oriented approach to your R work. That is, you should never open R or RStudio directly; you should only open the project you intend to work on.\nThis resource provides an excellent explanation of why and how to use projects.",
-    "crumbs": [
-      "Infrastructure",
-      "Installing / Updating R & RStudio"
-    ]
-  },
-  {
-    "objectID": "unit-1/ggplot-review.html",
-    "href": "unit-1/ggplot-review.html",
-    "title": "ggplot Review",
+    "objectID": "unit-1/ggplot-leaflet.html",
+    "href": "unit-1/ggplot-leaflet.html",
+    "title": "Creating Maps with the leaflet Package",
     "section": "",
-    "text": "This module consists of readings reviewing material typically taught in STAT 331. It is possible you can skip over portions of this reading. It is your responsibility to decide which areas you need to review before diving into Stat 541.",
+    "text": "Maps are fantastic and complicated all at the same time! Maps are some of the richest visualizations around because they come with data built into them. That is, on top of whatever data you’re going to plot you are also probably going to view terrain, roads, state/country borders, city names or a host of other information that come with our geography.\nThis implicit richness only adds to challenge of creating a good map. Observe the following recent tweet for a silly example of how maps can be…difficult.\nThere is no shortage of map data visualizations on the web, but all too often this is what we end up with:\n\n\n\n\n\n\n\n\n\n\n\nCaution\n\n\n\nBe sure to watch all 6 videos in this series.\n\n\n\n\n\n\n\n\nCheck-in: leaflet\n\n\n\n1. Is running just the leaflet() function enough to produce a map?\n\nYes\nNo\n\n2. To plot data points on a leaflet map, we should probably use which function?\n\naddTiles()\naddMarkers()\naddProviderTiles()\naddPolygons()\n\n\n\n\n\n\nThe leaflet package is actually extremely rich and can basically enable (interactive) map visualizations as complex as you can imagine. Take some time to peruse the site for the leaflet R package:\nhttps://rstudio.github.io/leaflet/\n\n\n\n\n\n\nCheck-in: leaflet\n\n\n\n3. What do the names of your plotted data columns have to be?\n\nx; y\nleafletx; `leaflety\nlat / latitude; lon/ longitude\nAnything as long as you tell the addMarkers() function correctly\n\n4. If you were to think of latitude and longitude as coordinates in the cartesian coordinate system, then…\n\nlatitude is on the horizontal axis and longitude is on the vertical\nlatitude is on the vertical axis and longitude is on the horizontal\n\n\n\n\n\n\n\nhelmet_icon &lt;- makeIcon(\n  iconUrl = \"http://www.clker.com/cliparts/l/R/b/J/X/D/astronaut-helmet-md.png\",\n  iconWidth = 15, \n  iconHeight = 15\n  )\n\nleaflet() %&gt;%\n  addTiles() %&gt;%\n  addMarkers(lng = jitter(space$Longitude, \n                          factor = 2), \n             lat = jitter(space$Latitude,\n                          factor = 2), \n             icon = helmet_icon, \n             popup = paste(space$Name, \"&lt;br&gt;\", \n                           \"Birth Place: \", space$`Birth Place`),\n             label = paste(space$Name)\n             )\n\n\n\n\n\n\n\n\n\n\n\nCheck-in: leaflet\n\n\n\nThe above map plots data on NASA astronauts!\n5. The graphic for each marker is a little astronaut helmet. How cute! This image was used via…\n\na URL pointing to it on the web.\na downloaded image file.\n\n6. The popup argument specifies what you see when you ______, while the label argument specifies what you see when you ______.\n\nhover; click\nzoom-in; zoom-out\nclick; hover\nsquint your eyes; look normally",
     "crumbs": [
       "Unit 1 - Communication",
-      "`ggplot` Review"
+      "Creating Maps with the `leaflet` Package"
     ]
   },
   {
-    "objectID": "unit-1/ggplot-review.html#recommended-video",
-    "href": "unit-1/ggplot-review.html#recommended-video",
-    "title": "ggplot Review",
-    "section": "🎥 Recommended Video",
-    "text": "🎥 Recommended Video\n\n\n\n\n\n\n\n\n\nCheck-in: ggplot Review\n\n\n\nIdentify the elements of the following plot as\n\nAn aesthetic\nA geometry\nA scale\nNone of the above\n\n\n\nThe x-axis is age\nThe y-axis is “Urge to run up the down escalator”\nThe y-axis ranges from “Weak” to “Strong”\nThis is a line graph\nThe two lines are “What I was supposed to feel” and “What I’ve actually felt”\nThe lines are labeled with text\nOnly even ages are labelled\nStick figure people are sliding down the line",
-    "crumbs": [
-      "Unit 1 - Communication",
-      "`ggplot` Review"
-    ]
-  },
-  {
-    "objectID": "unit-1/ggplot-review.html#recommended-reading-r4ds-data-visualisation",
-    "href": "unit-1/ggplot-review.html#recommended-reading-r4ds-data-visualisation",
-    "title": "ggplot Review",
-    "section": "📖 Recommended Reading: R4DS: Data Visualisation",
-    "text": "📖 Recommended Reading: R4DS: Data Visualisation\n\n\n\n\n\n\nCheckin: ggplot Review\n\n\n\nFill in the six (6) blanks to make the following plot:\n\nstarwars %&gt;%\n  ____(species == \"Human\") %&gt;%\n  ggplot(mapping = aes(____ = height, y = mass, ____ = gender)) + \n  geom_[____](____ = 17) +\n  ____(x = \"Height (cm)\", \n       y = \"Mass (kg)\", \n       color = \"Gender Expression\"\n       )",
-    "crumbs": [
-      "Unit 1 - Communication",
-      "`ggplot` Review"
-    ]
-  },
-  {
-    "objectID": "set-up/setup-version-control.html",
-    "href": "set-up/setup-version-control.html",
-    "title": "Version Control with Git and GitHub",
+    "objectID": "unit-1/ggplot-leaflet.html#required-video-introductory-series-to-leaflet-in-r-6-videos",
+    "href": "unit-1/ggplot-leaflet.html#required-video-introductory-series-to-leaflet-in-r-6-videos",
+    "title": "Creating Maps with the leaflet Package",
     "section": "",
-    "text": "Most of this reading is either heavily inspired by Happy Git and Github for the UseR (Bryan, Hester, and The Stat 545 TAs 2021) or directly links to that book. After completing this pre-reading, you should:",
+    "text": "Caution\n\n\n\nBe sure to watch all 6 videos in this series.\n\n\n\n\n\n\n\n\nCheck-in: leaflet\n\n\n\n1. Is running just the leaflet() function enough to produce a map?\n\nYes\nNo\n\n2. To plot data points on a leaflet map, we should probably use which function?\n\naddTiles()\naddMarkers()\naddProviderTiles()\naddPolygons()",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "Creating Maps with the `leaflet` Package"
+    ]
+  },
+  {
+    "objectID": "unit-1/ggplot-leaflet.html#more-on-the-leaflet-package",
+    "href": "unit-1/ggplot-leaflet.html#more-on-the-leaflet-package",
+    "title": "Creating Maps with the leaflet Package",
+    "section": "",
+    "text": "The leaflet package is actually extremely rich and can basically enable (interactive) map visualizations as complex as you can imagine. Take some time to peruse the site for the leaflet R package:\nhttps://rstudio.github.io/leaflet/\n\n\n\n\n\n\nCheck-in: leaflet\n\n\n\n3. What do the names of your plotted data columns have to be?\n\nx; y\nleafletx; `leaflety\nlat / latitude; lon/ longitude\nAnything as long as you tell the addMarkers() function correctly\n\n4. If you were to think of latitude and longitude as coordinates in the cartesian coordinate system, then…\n\nlatitude is on the horizontal axis and longitude is on the vertical\nlatitude is on the vertical axis and longitude is on the horizontal",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "Creating Maps with the `leaflet` Package"
+    ]
+  },
+  {
+    "objectID": "unit-1/ggplot-leaflet.html#practice-with-leaflet",
+    "href": "unit-1/ggplot-leaflet.html#practice-with-leaflet",
+    "title": "Creating Maps with the leaflet Package",
+    "section": "",
+    "text": "helmet_icon &lt;- makeIcon(\n  iconUrl = \"http://www.clker.com/cliparts/l/R/b/J/X/D/astronaut-helmet-md.png\",\n  iconWidth = 15, \n  iconHeight = 15\n  )\n\nleaflet() %&gt;%\n  addTiles() %&gt;%\n  addMarkers(lng = jitter(space$Longitude, \n                          factor = 2), \n             lat = jitter(space$Latitude,\n                          factor = 2), \n             icon = helmet_icon, \n             popup = paste(space$Name, \"&lt;br&gt;\", \n                           \"Birth Place: \", space$`Birth Place`),\n             label = paste(space$Name)\n             )\n\n\n\n\n\n\n\n\n\n\n\nCheck-in: leaflet\n\n\n\nThe above map plots data on NASA astronauts!\n5. The graphic for each marker is a little astronaut helmet. How cute! This image was used via…\n\na URL pointing to it on the web.\na downloaded image file.\n\n6. The popup argument specifies what you see when you ______, while the label argument specifies what you see when you ______.\n\nhover; click\nzoom-in; zoom-out\nclick; hover\nsquint your eyes; look normally",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "Creating Maps with the `leaflet` Package"
+    ]
+  },
+  {
+    "objectID": "labs/lab-2.html",
+    "href": "labs/lab-2.html",
+    "title": "Lab 2",
+    "section": "",
+    "text": "Create a Quarto file for ALL Lab 2 (no separate files for Parts 1 and 2).\n\nMake sure your final file is carefully formatted, so that each analysis is clear and concise.\nBe sure your knitted .html file shows all your source code, including any function definitions.",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "Lab 2"
+    ]
+  },
+  {
+    "objectID": "labs/lab-2.html#dissecting-a-bad-visualization",
+    "href": "labs/lab-2.html#dissecting-a-bad-visualization",
+    "title": "Lab 2",
+    "section": "Dissecting a Bad Visualization",
+    "text": "Dissecting a Bad Visualization\nBelow is an example of a less-than-ideal visualization from the collection linked above. It comes to us from data provided for the Wellcome Global Monitor 2018 report by the Gallup World Poll:\n\n\nWhile there are certainly issues with this image, do your best to tell the story of this graph in words. That is, what is this graph telling you? What do you think the authors meant to convey with it?\nList the variables that appear to be displayed in this visualization. Hint: Variables refer to columns in the data.\nNow that you’re versed in the grammar of graphics (e.g., ggplot), list the aesthetics used and which variables are mapped to each.\nWhat type of graph would you call this? Meaning, what geom would you use to produce this plot?\nProvide at least four problems or changes that would improve this graph. Please format your changes as bullet points!",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "Lab 2"
+    ]
+  },
+  {
+    "objectID": "labs/lab-2.html#improving-the-bad-visualization",
+    "href": "labs/lab-2.html#improving-the-bad-visualization",
+    "title": "Lab 2",
+    "section": "Improving the Bad Visualization",
+    "text": "Improving the Bad Visualization\nThe data for the Wellcome Global Monitor 2018 report can be downloaded at the following site: https://wellcome.ac.uk/reports/wellcome-global-monitor/2018\n\nThere are two worksheets in the downloaded dataset file. You may need to read them in separately, but you may also just use one if it suffices.\n\nImprove the visualization above by either re-creating it with the issues you identified fixed OR by creating a new visualization that you believe tells the same story better.",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "Lab 2"
+    ]
+  },
+  {
+    "objectID": "labs/lab-2.html#second-data-visualization-improvement",
+    "href": "labs/lab-2.html#second-data-visualization-improvement",
+    "title": "Lab 2",
+    "section": "Second Data Visualization Improvement",
+    "text": "Second Data Visualization Improvement\nFor this second plot, you must select a plot that uses maps so you can demonstrate your proficiency with the leaflet package!\n\nSelect a data visualization in the report that you think could be improved. Be sure to cite both the page number and figure title. Do your best to tell the story of this graph in words. That is, what is this graph telling you? What do you think the authors meant to convey with it?\nList the variables that appear to be displayed in this visualization.\nNow that you’re versed in the grammar of graphics (ggplot), list the aesthetics used and which variables are specified for each.\nWhat type of graph would you call this?\nList all of the problems or things you would improve about this graph.\nImprove the visualization above by either re-creating it with the issues you identified fixed OR by creating a new visualization that you believe tells the same story better.",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "Lab 2"
+    ]
+  },
+  {
+    "objectID": "labs/lab-2.html#third-data-visualization-improvement",
+    "href": "labs/lab-2.html#third-data-visualization-improvement",
+    "title": "Lab 2",
+    "section": "Third Data Visualization Improvement",
+    "text": "Third Data Visualization Improvement\nFor this third plot, you must use one of the other ggplot2 extension packages mentioned this week (e.g., gganimate, plotly, patchwork, cowplot).\n\nSelect a data visualization in the report that you think could be improved. Be sure to cite both the page number and figure title. Do your best to tell the story of this graph in words. That is, what is this graph telling you? What do you think the authors meant to convey with it?\nList the variables that appear to be displayed in this visualization.\nNow that you’re versed in the grammar of graphics (ggplot), list the aesthetics used and which variables are specified for each.\nWhat type of graph would you call this?\nList all of the problems or things you would improve about this graph.\nImprove the visualization above by either re-creating it with the issues you identified fixed OR by creating a new visualization that you believe tells the same story better.",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "Lab 2"
+    ]
+  },
+  {
+    "objectID": "labs/lab-1.html",
+    "href": "labs/lab-1.html",
+    "title": "Lab 1 - Quarto Warmup & STAT 331 Review",
+    "section": "",
+    "text": "library(tidyverse)\nlibrary(ggridges)",
     "crumbs": [
       "Infrastructure",
-      "Version Control with Git and GitHub"
+      "Lab 1 - Quarto Warmup & STAT 331 Review"
     ]
   },
   {
-    "objectID": "set-up/setup-version-control.html#footnotes",
-    "href": "set-up/setup-version-control.html#footnotes",
-    "title": "Version Control with Git and GitHub",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nYes, I’m aware that this sounds paranoid. It’s been a very rare occasion that I’ve needed to restore something from another backup. You don’t want to take chances.↩︎",
+    "objectID": "labs/lab-1.html#quarto",
+    "href": "labs/lab-1.html#quarto",
+    "title": "Lab 1 - Quarto Warmup & STAT 331 Review",
+    "section": "Quarto",
+    "text": "Quarto\nFirst, let’s make sure you know how to use Markdown formatting to style a Quarto document.\n\nMake this text bold.\nMake this text italicized.\nMake these into a bullet point list:\n\nApples Bananas Potatoes\n\nEdit the YAML to remove warning messages from being output in the rendered HTML file\nUsing code chunk options, make it so this chunk shows the plot but not the source code:\n\n\nggplot(data = mpg, \n       mapping = aes(y = manufacturer, x = hwy)) + \n  geom_boxplot() +\n  labs(x = \"\",\n       y = \"\", \n       title = \"Highway Milage (mpg) for Different Car Manufacturers\"\n       )\n\n\nUsing code chunk options, remove the messages about bandwidth geom_density_ridges() chose to use:\n\n\nggplot(data = mpg, \n       mapping = aes(y = manufacturer, x = hwy)) + \n  geom_density_ridges() +\n  labs(x = \"\",\n       y = \"\", \n       title = \"Highway Milage (mpg) for Different Car Manufacturers\"\n       )\n\n\nUsing code chunk options, make it so that these plots are printed side-by-side:\n\n\nggplot(data = mpg, \n       mapping = aes(y = manufacturer, x = hwy)) + \n  geom_boxplot() +\n  labs(x = \"\",\n       y = \"\", \n       title = \"Highway Milage (mpg) for Different Car Manufacturers\"\n       )\n\nggplot(data = mpg, \n       mapping = aes(y = manufacturer, x = hwy)) + \n  geom_density_ridges() +\n  labs(x = \"\",\n       y = \"\", \n       title = \"Highway Milage (mpg) for Different Car Manufacturers\"\n       )\n\n\nUsing code chunk options, make it so this chunk shows the code but not the output:\n\n\n2 + 2\n\n\nUsing code chunk options, make it so the file can still knit even though this chunk has an error\n\n\n2 + a\n\n\nUsing code chunk options, create a descriptive label for each of the code chunks above.",
     "crumbs": [
       "Infrastructure",
-      "Version Control with Git and GitHub"
+      "Lab 1 - Quarto Warmup & STAT 331 Review"
     ]
   },
   {
-    "objectID": "unit-1/ggplot-extensions.html",
-    "href": "unit-1/ggplot-extensions.html",
-    "title": "ggplot Extensions",
-    "section": "",
-    "text": "A huge part of making a compelling and convincing plot is your choice of color and layout.\nYour first video will take you through some great core principals of visualization. Then your two short readings will show you the basics of manipulating colors and themes in ggplot.",
+    "objectID": "labs/lab-1.html#data-wrangling-review",
+    "href": "labs/lab-1.html#data-wrangling-review",
+    "title": "Lab 1 - Quarto Warmup & STAT 331 Review",
+    "section": "Data Wrangling Review",
+    "text": "Data Wrangling Review\nSince you already seen some ggplots, let’s do a bit of review on data handling. In this class, we will exclusively make use of tools from the tidyverse suite of packages to perform our data cleaning and wrangling operations. If you are less familiar with these packages or it’s been some time since you used them, I would strongly recommend referencing the function documentation!\nFor these problems, we will continue to work with the mpg data frame, making various changes to the data to clean it up.\n\nThe fl variable describes the type of fuel for each car, with levels: p, r, e, d, and c. Do some research into what each of these labels mean! Then, use the if_else() function to create a new variable (fuel_type) with two levels: petrol (any car using petrolium-based gas) and alternative energy (any car not using petrolium-based gas).\n\n\nThe drv variable describes if the car has front drive (f), rear drive (r), or four wheel drive (4). Let’s make better labels for these values! Specifically, use the case_when() function to change the drv variable to have the following levels: front, rear, four wheel.\n\n\nThe trans variable contains two pieces of information, (1) the transmission style (auto or manual) and the specific type of transmission (e.g., l5, m5). Using the separate_wider_delim() function, create two new variables from trans, (1) trans_type containing the specific type of transmission of each car (e.g., l5), and (2) trans_style the style of the transmission (e.g., auto). Hint: You will need to deal with the stray parenthesis!",
     "crumbs": [
-      "Unit 1 - Communication",
-      "`ggplot` Extensions"
+      "Infrastructure",
+      "Lab 1 - Quarto Warmup & STAT 331 Review"
     ]
   },
   {
-    "objectID": "unit-1/ggplot-extensions.html#custom-colors-and-themes",
-    "href": "unit-1/ggplot-extensions.html#custom-colors-and-themes",
-    "title": "ggplot Extensions",
-    "section": "",
-    "text": "A huge part of making a compelling and convincing plot is your choice of color and layout.\nYour first video will take you through some great core principals of visualization. Then your two short readings will show you the basics of manipulating colors and themes in ggplot.",
+    "objectID": "labs/lab-1.html#getting-to-know-your-classmates",
+    "href": "labs/lab-1.html#getting-to-know-your-classmates",
+    "title": "Lab 1 - Quarto Warmup & STAT 331 Review",
+    "section": "Getting to know your classmates",
+    "text": "Getting to know your classmates\n\nFind someone who took Stat 331 from a different professor than you. Compare your experiences. Tell me their name and professor. List one or two things that you think you learned more about, and one or two things that they learned more about.\nFind someone in the class who does not share your birth month. Tell me their name and birthday, and use R to find out how many days apart your birthdays are.",
     "crumbs": [
-      "Unit 1 - Communication",
-      "`ggplot` Extensions"
-    ]
-  },
-  {
-    "objectID": "unit-1/ggplot-extensions.html#required-video-the-glamour-of-graphics",
-    "href": "unit-1/ggplot-extensions.html#required-video-the-glamour-of-graphics",
-    "title": "ggplot Extensions",
-    "section": "🎥 Required Video: The Glamour of Graphics",
-    "text": "🎥 Required Video: The Glamour of Graphics",
-    "crumbs": [
-      "Unit 1 - Communication",
-      "`ggplot` Extensions"
-    ]
-  },
-  {
-    "objectID": "unit-1/ggplot-extensions.html#required-reading-colors-and-palettes",
-    "href": "unit-1/ggplot-extensions.html#required-reading-colors-and-palettes",
-    "title": "ggplot Extensions",
-    "section": "📖 Required Reading: Colors and Palettes",
-    "text": "📖 Required Reading: Colors and Palettes",
-    "crumbs": [
-      "Unit 1 - Communication",
-      "`ggplot` Extensions"
-    ]
-  },
-  {
-    "objectID": "unit-1/ggplot-extensions.html#required-reading-themes",
-    "href": "unit-1/ggplot-extensions.html#required-reading-themes",
-    "title": "ggplot Extensions",
-    "section": "📖 Required Reading: Themes",
-    "text": "📖 Required Reading: Themes",
-    "crumbs": [
-      "Unit 1 - Communication",
-      "`ggplot` Extensions"
-    ]
-  },
-  {
-    "objectID": "unit-1/ggplot-extensions.html#extra-resouces",
-    "href": "unit-1/ggplot-extensions.html#extra-resouces",
-    "title": "ggplot Extensions",
-    "section": "Extra Resouces",
-    "text": "Extra Resouces\n\nThe jcolors package for color palettes\nThe ggthemer package for setting universal themes.\nMake your own theme to use!\n\n\n\n\n\n\n\nCheck-in: Extending ggplot\n\n\n\n1. Which of the functions below would you use to change the colors of the bars on the following plot?\n\nscale_color_continuous()\nscale_color_discrete()\nscale_fill_continuous()\nscale_fill_discrete()\n\n\n\n\n\n\n\n\n\n\n2. Consider the plot in Question 1. What change was made to it in each step below? That is, what code would go inside the function + theme( ) to produce the added change?\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n3. Which built-in theme is each of the following plots? That is, what theme_XXXX() function would produce the added change?\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n4. Which of the plots above (a, b, c, or d) best adheres to the principles outlined by Will Chase (in the Glamour of Graphics)?",
-    "crumbs": [
-      "Unit 1 - Communication",
-      "`ggplot` Extensions"
-    ]
-  },
-  {
-    "objectID": "unit-1/ggplot-extensions.html#gganimate",
-    "href": "unit-1/ggplot-extensions.html#gganimate",
-    "title": "ggplot Extensions",
-    "section": "gganimate",
-    "text": "gganimate\nThere are many, many ways to “spice up” your plots. We will focus in on one: making your plot animated! The best package for this, if you are using ggplot already, is gganimate.\n\n\n\n\n\n\nNote\n\n\n\ngganimate plot objects can sometimes take a long time to render. One way to make it quicker is to change the number of frames in your gif. Another trick is to use the cache chunk option in Quarto, so that you don’t re-render the images every time you knit your file.",
-    "crumbs": [
-      "Unit 1 - Communication",
-      "`ggplot` Extensions"
-    ]
-  },
-  {
-    "objectID": "unit-1/ggplot-extensions.html#required-reading-intro-to-gganimate",
-    "href": "unit-1/ggplot-extensions.html#required-reading-intro-to-gganimate",
-    "title": "ggplot Extensions",
-    "section": "📖 Required Reading: Intro to gganimate",
-    "text": "📖 Required Reading: Intro to gganimate",
-    "crumbs": [
-      "Unit 1 - Communication",
-      "`ggplot` Extensions"
-    ]
-  },
-  {
-    "objectID": "unit-1/ggplot-extensions.html#recommended-reading-another-intro-to-gganimate",
-    "href": "unit-1/ggplot-extensions.html#recommended-reading-another-intro-to-gganimate",
-    "title": "ggplot Extensions",
-    "section": "📖 Recommended Reading: Another intro to gganimate",
-    "text": "📖 Recommended Reading: Another intro to gganimate",
-    "crumbs": [
-      "Unit 1 - Communication",
-      "`ggplot` Extensions"
-    ]
-  },
-  {
-    "objectID": "unit-1/ggplot-extensions.html#recommended-video-gganimate-flipbook-demo-rstudioconf-2017",
-    "href": "unit-1/ggplot-extensions.html#recommended-video-gganimate-flipbook-demo-rstudioconf-2017",
-    "title": "ggplot Extensions",
-    "section": "🎥 Recommended Video: gganimate flipbook demo (RStudio::conf 2017)",
-    "text": "🎥 Recommended Video: gganimate flipbook demo (RStudio::conf 2017)\n\n\n\n\n\n\n\n\nCheck-in: Extending ggplot\n\n\n\n5. Fill in the five (5) blanks for the gganimate plot below:\n\n___ &lt;- oscars %&gt;%\n  filter(Award_Gender != \"Ungendered\") %&gt;%\n  ggplot(aes(x = Age_at_Award, fill = Award_Gender)) +\n  geom_density(alpha = 0.5) +\n  labs(title = \"Age of Academy Award Winners ({____}s)\", \n       x = \"\", \n       y = \"\", \n       fill = \"Gender of Award\") +\n  theme(legend.position = \"top\") +\n  ____(Decade_of_Award)\n\nanimate(p2, nframes = ____, fps = ____)",
-    "crumbs": [
-      "Unit 1 - Communication",
-      "`ggplot` Extensions"
-    ]
-  },
-  {
-    "objectID": "unit-1/ggplot-extensions.html#other-extensions",
-    "href": "unit-1/ggplot-extensions.html#other-extensions",
-    "title": "ggplot Extensions",
-    "section": "Other Extensions",
-    "text": "Other Extensions\nAlthough we don’t have time to go in-depth on every single extension of ggplot, there are so many wonderful ways to up your Data Viz game.\nTake a look around the links below!",
-    "crumbs": [
-      "Unit 1 - Communication",
-      "`ggplot` Extensions"
-    ]
-  },
-  {
-    "objectID": "unit-1/ggplot-extensions.html#required-reading-ggplot-extension-gallery",
-    "href": "unit-1/ggplot-extensions.html#required-reading-ggplot-extension-gallery",
-    "title": "ggplot Extensions",
-    "section": "📖 Required Reading: ggplot Extension Gallery",
-    "text": "📖 Required Reading: ggplot Extension Gallery",
-    "crumbs": [
-      "Unit 1 - Communication",
-      "`ggplot` Extensions"
-    ]
-  },
-  {
-    "objectID": "unit-1/ggplot-extensions.html#required-reading-more-ggplot-extension-summaries",
-    "href": "unit-1/ggplot-extensions.html#required-reading-more-ggplot-extension-summaries",
-    "title": "ggplot Extensions",
-    "section": "📖 Required Reading: More ggplot Extension Summaries",
-    "text": "📖 Required Reading: More ggplot Extension Summaries\n\n\n\n\n\n\nCheck-in: Extending ggplot\n\n\n\n6. Which extension package would you use to… Hint: There is more than one possible answer for each question!\n\nVisualize a social network using twitter data?\n\n\n\nAdd p-values to your side-by-side boxplot of treatment groups, showing the significance of the differences?\n\n\n\nArrange several different plots next to each other?\n\n\n\nMake it so hovering over a point in your scatterplot shows the corresponding label?",
-    "crumbs": [
-      "Unit 1 - Communication",
-      "`ggplot` Extensions"
-    ]
-  },
-  {
-    "objectID": "unit-1/ggplot-extensions.html#extra-resources",
-    "href": "unit-1/ggplot-extensions.html#extra-resources",
-    "title": "ggplot Extensions",
-    "section": "Extra Resources",
-    "text": "Extra Resources\n\nDave Robinson’s Tidy Tuesday Screencasts show a master of Data Viz at work!\nYou can also search the Tidy Tuesday hashtag on twitter to see some great examples of data manipulating and visualization\nDon’t forget about the Data-to-Viz Website\nThe “dataisbeautiful” subreddit shares many nice visualizations.\nThis webinar, by ggplot contributor Thomas Lin Pedersen, is wonderful. It’s about 2 hours long - so more than we can fit in as required viewing - but if you want to become a ggplot master, watch this!",
-    "crumbs": [
-      "Unit 1 - Communication",
-      "`ggplot` Extensions"
+      "Infrastructure",
+      "Lab 1 - Quarto Warmup & STAT 331 Review"
     ]
   },
   {
@@ -1114,29 +1114,29 @@
     "objectID": "unit-2/efficient-code.html#required-reading-lobstrobj_size",
     "href": "unit-2/efficient-code.html#required-reading-lobstrobj_size",
     "title": "Writing Efficient Code",
-    "section": "📖 Required Reading: lobstr::obj_size",
-    "text": "📖 Required Reading: lobstr::obj_size"
+    "section": "📖 Required Reading: lobstr::obj_size()",
+    "text": "📖 Required Reading: lobstr::obj_size()"
   },
   {
     "objectID": "unit-2/efficient-code.html#save-smaller-data-frames-if-you-are-going-to-use-them-many-times",
     "href": "unit-2/efficient-code.html#save-smaller-data-frames-if-you-are-going-to-use-them-many-times",
     "title": "Writing Efficient Code",
     "section": "Save smaller data frames, if you are going to use them many times",
-    "text": "Save smaller data frames, if you are going to use them many times\nConsider the following dataset:\n\nlibrary(fivethirtyeight)\n\nglimpse(congress_age)\n\nRows: 18,635\nColumns: 13\n$ congress   &lt;int&gt; 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80,…\n$ chamber    &lt;chr&gt; \"house\", \"house\", \"house\", \"house\", \"house\", \"house\", \"hous…\n$ bioguide   &lt;chr&gt; \"M000112\", \"D000448\", \"S000001\", \"E000023\", \"L000296\", \"G00…\n$ firstname  &lt;chr&gt; \"Joseph\", \"Robert\", \"Adolph\", \"Charles\", \"William\", \"James\"…\n$ middlename &lt;chr&gt; \"Jefferson\", \"Lee\", \"Joachim\", \"Aubrey\", NA, \"A.\", \"Joseph\"…\n$ lastname   &lt;chr&gt; \"Mansfield\", \"Doughton\", \"Sabath\", \"Eaton\", \"Lewis\", \"Galla…\n$ suffix     &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…\n$ birthday   &lt;date&gt; 1861-02-09, 1863-11-07, 1866-04-04, 1868-03-29, 1868-09-22…\n$ state      &lt;chr&gt; \"TX\", \"NC\", \"IL\", \"NJ\", \"KY\", \"PA\", \"CA\", \"NY\", \"WI\", \"MA\",…\n$ party      &lt;chr&gt; \"D\", \"D\", \"D\", \"R\", \"R\", \"R\", \"R\", \"D\", \"R\", \"R\", \"D\", \"R\",…\n$ incumbent  &lt;lgl&gt; TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, TRUE, TRUE, TRUE, TRU…\n$ termstart  &lt;date&gt; 1947-01-03, 1947-01-03, 1947-01-03, 1947-01-03, 1947-01-03…\n$ age        &lt;dbl&gt; 86, 83, 81, 79, 78, 78, 78, 77, 76, 76, 75, 74, 74, 73, 73,…\n\n\nSuppose we want to do some exploratory analysis on these data. Let’s use the tic() and toc() functions from the tictoc packages to check how much time it takes to run this code:\n\ntic()\n\ncongress_age %&gt;%\n  filter(chamber == \"senate\") %&gt;%\n  summarize(mean(age))\n\ncongress_age %&gt;%\n  filter(chamber == \"senate\") %&gt;%\n  ggplot() + \n  geom_histogram(mapping = aes(x = age))\ncongress_age %&gt;%\n  filter(chamber == \"senate\") %&gt;%\n  slice_max(n = 5, order_by = age)\n\n\ntoc()\n\n0.213 sec elapsed\n\n\nThese are all three reasonable things to do, and they can’t be done in the same pipeline. But wait - we just made R do the process of subsetting to only Senators three separate times!\n\ntic()\n  congress_age %&gt;%\n    filter(chamber == \"senate\")\n\n\ntoc()\n\n0.013 sec elapsed\n\n\nInstead, how about we filter the data once, save it into an object, and call on that object:\n\ntic()\n\n senate &lt;- congress_age %&gt;%\n  filter(chamber == \"senate\")\n\nsenate %&gt;%\n  summarize(mean(age))\n\nsenate %&gt;%\n  ggplot() + \n  geom_histogram(mapping = aes(x = age))\nsenate %&gt;%\n  slice_max(n = 5, order_by = age)\n\n\ntoc()\n\n0.107 sec elapsed"
+    "text": "Save smaller data frames, if you are going to use them many times\nConsider the following dataset:\n\nlibrary(fivethirtyeight)\n\nglimpse(congress_age)\n\nRows: 18,635\nColumns: 13\n$ congress   &lt;int&gt; 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80,…\n$ chamber    &lt;chr&gt; \"house\", \"house\", \"house\", \"house\", \"house\", \"house\", \"hous…\n$ bioguide   &lt;chr&gt; \"M000112\", \"D000448\", \"S000001\", \"E000023\", \"L000296\", \"G00…\n$ firstname  &lt;chr&gt; \"Joseph\", \"Robert\", \"Adolph\", \"Charles\", \"William\", \"James\"…\n$ middlename &lt;chr&gt; \"Jefferson\", \"Lee\", \"Joachim\", \"Aubrey\", NA, \"A.\", \"Joseph\"…\n$ lastname   &lt;chr&gt; \"Mansfield\", \"Doughton\", \"Sabath\", \"Eaton\", \"Lewis\", \"Galla…\n$ suffix     &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…\n$ birthday   &lt;date&gt; 1861-02-09, 1863-11-07, 1866-04-04, 1868-03-29, 1868-09-22…\n$ state      &lt;chr&gt; \"TX\", \"NC\", \"IL\", \"NJ\", \"KY\", \"PA\", \"CA\", \"NY\", \"WI\", \"MA\",…\n$ party      &lt;chr&gt; \"D\", \"D\", \"D\", \"R\", \"R\", \"R\", \"R\", \"D\", \"R\", \"R\", \"D\", \"R\",…\n$ incumbent  &lt;lgl&gt; TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, TRUE, TRUE, TRUE, TRU…\n$ termstart  &lt;date&gt; 1947-01-03, 1947-01-03, 1947-01-03, 1947-01-03, 1947-01-03…\n$ age        &lt;dbl&gt; 86, 83, 81, 79, 78, 78, 78, 77, 76, 76, 75, 74, 74, 73, 73,…\n\n\nSuppose we want to do some exploratory analysis on these data. Let’s use the tic() and toc() functions from the tictoc packages to check how much time it takes to run this code:\n\ntic()\n\ncongress_age %&gt;%\n  filter(chamber == \"senate\") %&gt;%\n  summarize(mean(age))\n\ncongress_age %&gt;%\n  filter(chamber == \"senate\") %&gt;%\n  ggplot() + \n  geom_histogram(mapping = aes(x = age))\ncongress_age %&gt;%\n  filter(chamber == \"senate\") %&gt;%\n  slice_max(n = 5, order_by = age)\n\n\ntoc()\n\n0.233 sec elapsed\n\n\nThese are all three reasonable things to do, and they can’t be done in the same pipeline. But wait - we just made R do the process of subsetting to only Senators three separate times!\n\ntic()\n  congress_age %&gt;%\n    filter(chamber == \"senate\")\n\n\ntoc()\n\n0.012 sec elapsed\n\n\nInstead, how about we filter the data once, save it into an object, and call on that object:\n\ntic()\n\n senate &lt;- congress_age %&gt;%\n  filter(chamber == \"senate\")\n\nsenate %&gt;%\n  summarize(mean(age))\n\nsenate %&gt;%\n  ggplot() + \n  geom_histogram(mapping = aes(x = age))\nsenate %&gt;%\n  slice_max(n = 5, order_by = age)\n\n\ntoc()\n\n0.108 sec elapsed\n\n\nThat is half the run time! Yes, we are dealing with minute increments of time (less than a second), but hopefully you could see how this might scale to larger calcuations."
   },
   {
     "objectID": "unit-2/efficient-code.html#avoid-for-loops",
     "href": "unit-2/efficient-code.html#avoid-for-loops",
     "title": "Writing Efficient Code",
     "section": "Avoid for-loops",
-    "text": "Avoid for-loops\nFor-loops are deathly slow in R. If you absolutely must iterate over a process, rely on the apply() or map() function families. These will typically be close to the same speed, depending on the situation.\n\nloop_func &lt;- function(df){\n  \n  # initialize the type object\n  type &lt;- rep(NA, ncol(df))\n  \n  for(i in 1:ncol(df)){\n    \n    # store the class of the ith column of df into the ith entry of type \n    type[i] &lt;- class(df[,i])\n  }\n  \n  return(type)\n}\n\nmap_func &lt;- function(df){\n  \n  type &lt;- map_chr(df, class)\n  \n  return(type)\n\n  }\n\ndat &lt;- as.data.frame(\n  matrix(1,\n         nrow = 5,\n         ncol = 100000)\n  )\n\nmicrobenchmark::microbenchmark(loop_func(dat),\n                               map_func(dat),\n                               times = 2)\n\nUnit: milliseconds\n           expr  min   lq mean median   uq  max neval\n loop_func(dat) 6534 6534 6567   6567 6601 6601     2\n  map_func(dat)   36   36   36     36   37   37     2"
+    "text": "Avoid for-loops\nFor-loops are deathly slow in R. If you absolutely must iterate over a process, rely on the map() or apply() function families.\n\n\n\n\n\n\nWhy choose map() instead of apply()?\n\n\n\nThe map() and apply() functions will typically be close to the same speed, so the largest argument in favor of the map() family of functions are (1) their consistent syntax, and (2) their consistent object output.\nThe map() function always returns a list and the map_XXX() variants always return a vector of a specified data type. Whereas, apply() returns a vector or a list, lapply() returns a list, and sapply() returns a vetor or a matrix.\n\n\nHere is a motivating example demonstrating the difference in run time between a function which loops over every column in a data frame to extract the data type and a function which uses map_chr() to apply the class() function to every column of a data frame:\n\nloop_func &lt;- function(df){\n  \n  # initialize the type object\n  type &lt;- rep(NA, ncol(df))\n  \n  for(i in 1:ncol(df)){\n    \n    # store the class of the ith column of df into the ith entry of type \n    type[i] &lt;- class(df[,i])\n  }\n  \n  return(type)\n}\n\nmap_func &lt;- function(df){\n  \n  type &lt;- map_chr(df, class)\n  \n  return(type)\n\n  }\n\ndat &lt;- as.data.frame(\n  matrix(1,\n         nrow = 5,\n         ncol = 100000)\n  )\n\nmicrobenchmark::microbenchmark(loop_func(dat),\n                               map_func(dat),\n                               times = 3)\n\nUnit: milliseconds\n           expr  min   lq mean median   uq  max neval\n loop_func(dat) 6586 6594 6602   6602 6610 6618     3\n  map_func(dat)   36   36   36     36   36   36     3\n\n\nThat’s a pretty big difference!"
   },
   {
     "objectID": "unit-2/efficient-code.html#use-vectorized-functions",
     "href": "unit-2/efficient-code.html#use-vectorized-functions",
     "title": "Writing Efficient Code",
     "section": "Use vectorized functions",
-    "text": "Use vectorized functions\nBetter even than apply() or map() is not to iterate at all! Writing vectorized functions is tough, but do-able in many cases. Here’s an example:"
+    "text": "Use vectorized functions\nBetter even than map() or apply() is not to iterate at all! Writing vectorized functions is tough, but do-able in many cases. Here’s an example:"
   },
   {
     "objectID": "unit-2/efficient-code.html#required-video-simple-vectorizing-example",
@@ -1150,7 +1150,7 @@
     "href": "unit-2/efficient-code.html#allocate-memory-in-advance",
     "title": "Writing Efficient Code",
     "section": "Allocate memory in advance",
-    "text": "Allocate memory in advance\nA trick we use very often in coding is to “tack on” values to the end of a vector or list as we iterate through something. However, this is actually very slow! If you know how long your list is going to end up, consider pre-creating that list.\n\ndo_stuff_allocate &lt;- function(reps) {\n  results &lt;- vector(length = reps)\n  for (i in 1:reps) {\n    results[i] &lt;- i\n  }\n  return(results)\n}\n\ndo_stuff_tackon &lt;- function(reps) {\n   results &lt;- c()\n  for (i in 1:reps) {\n    results &lt;- c(results, i)\n  }\n  return(results)\n}\n\nmicrobenchmark::microbenchmark(\n  do_stuff_allocate(1000),\n  do_stuff_tackon(1000)\n)\n\nUnit: microseconds\n                    expr min  lq mean median  uq  max neval\n do_stuff_allocate(1000)  22  22   37     22  23 1470   100\n   do_stuff_tackon(1000) 594 701  919    722 735 6106   100"
+    "text": "Allocate memory in advance\nA trick we use very often in coding is to “tack on” values to the end of a vector or list as we iterate through something. However, this is actually very slow! If you know how long your list is going to end up, consider pre-creating that list.\n\ndo_stuff_allocate &lt;- function(reps) {\n  results &lt;- vector(length = reps)\n  for (i in 1:reps) {\n    results[i] &lt;- i\n  }\n  return(results)\n}\n\ndo_stuff_tackon &lt;- function(reps) {\n   results &lt;- c()\n  for (i in 1:reps) {\n    results &lt;- c(results, i)\n  }\n  return(results)\n}\n\nmicrobenchmark::microbenchmark(\n  do_stuff_allocate(1000),\n  do_stuff_tackon(1000)\n)\n\nUnit: microseconds\n                    expr min  lq mean median  uq  max neval\n do_stuff_allocate(1000)  22  22   38     23  23 1483   100\n   do_stuff_tackon(1000) 595 709  932    724 738 5970   100"
   },
   {
     "objectID": "unit-2/efficient-code.html#data.table",
@@ -1171,14 +1171,21 @@
     "href": "unit-2/efficient-code.html#required-reading-data.table-cheatsheet",
     "title": "Writing Efficient Code",
     "section": "📖 Required Reading: data.table cheatsheet",
-    "text": "📖 Required Reading: data.table cheatsheet\n\n\n\n\n\n\nCheck-in: data.table\n\n\n\nHere is some dplyr code. Re-write it in data.table syntax. Then perform a speed test to see which one is faster, and by how much.\n\ncongress_age %&gt;%\n  group_by(state) %&gt;%\n  summarize(mean_age = mean(age))\n\n# A tibble: 50 × 2\n   state mean_age\n   &lt;chr&gt;    &lt;dbl&gt;\n 1 AK        57.6\n 2 AL        53.0\n 3 AR        52.8\n 4 AZ        54.7\n 5 CA        53.6\n 6 CO        52.3\n 7 CT        49.7\n 8 DE        53.1\n 9 FL        53.4\n10 GA        53.4\n# ℹ 40 more rows"
+    "text": "📖 Required Reading: data.table cheatsheet\n\n\n\n\n\n\nCheck-in: data.table\n\n\n\nQuestion 1: Here is some dplyr code. Re-write it in data.table syntax. Then perform a speed test to see which one is faster, and by how much.\n\ncongress_age %&gt;%\n  group_by(state) %&gt;%\n  summarize(mean_age = mean(age))"
   },
   {
     "objectID": "unit-2/efficient-code.html#required-reading-profiling",
     "href": "unit-2/efficient-code.html#required-reading-profiling",
     "title": "Writing Efficient Code",
-    "section": "📖 Required Reading: Profiling",
-    "text": "📖 Required Reading: Profiling\nFor this reading, I strongly encourage you to skim. The code aspects are mostly more complicated that we expect in this class; but the general overview of the principles behind speeding up code is helpful.\nIn your work, you will most likely “profile” manually, by tictoc-ing bits of your code and so forth, not by these fancy methods.\n\n\n\n\n\n\nCheck-in: Profiling\n\n\n\nQuestion 1: Why is vapply() faster than sapply()?\n\nIt specifies the output type.\nIt specifies the input type.\nIt performs fewer safety checks.\nIt performs fewer iterations.\n\nQuestion 2: Why is mean(x) slower than sum(x)/length(x)?\n\nsum() is vectorized, while mean() is not.\nA mean is a smaller number than a sum, so it needs less memory.\nmean() calculates the mean twice just in case.\nmean() was written in an old version of R.\n\nQuestion 3: What is the name of the site where you can search packages by topic?\n\nCRANberries\nCRAN search algorithm\nCRAN archive network\nCRAN task views\n\n\nOptional: Super advanced mode\nThe following are some suggestions of ways you can level-up your code speed. These are outside the scope of this class, but you are welcome to explore them!\n\nDive deep into the R efficiency rabbit hole…\nParallelize your computations\nMake your code run in C++ with Rcpp\nLearn to use recursion\nLearn more about memory allocation and garbage collecting in R."
+    "section": "📖 Required Reading: [Profiling] ",
+    "text": "📖 Required Reading: [Profiling]"
+  },
+  {
+    "objectID": "unit-2/efficient-code.html#recommended-reading-measuring-performance",
+    "href": "unit-2/efficient-code.html#recommended-reading-measuring-performance",
+    "title": "Writing Efficient Code",
+    "section": "📖 Recommended Reading: Measuring Performance",
+    "text": "📖 Recommended Reading: Measuring Performance\n\n\n\n\n\n\nSkimming is sufficient!\n\n\n\nFor this reading, I strongly encourage you to skim. The code aspects are mostly more complicated that we expect in this class; but the general overview of the principles behind speeding up code is helpful.\nIn your work, you will most likely “profile” manually, by tictoc-ing bits of your code and so forth, not by these fancy methods.\n\n\n\n\n\n\n\n\nCheck-in: Profiling\n\n\n\nQuestion 2: Why is vapply() faster than sapply()?\n\nIt specifies the output type.\nIt specifies the input type.\nIt performs fewer safety checks.\nIt performs fewer iterations.\n\nQuestion 3: Here are two other ways to compute the square root of a vector. Which is faster? fastest? Use microbenchmarking to test your answers!\n\nx ^ (1 / 2)\nexp(log(x) / 2)\n\nQuestion 4: Why is mean(x) slower than sum(x)/length(x)?\n\nsum() is vectorized, while mean() is not.\nA mean is a smaller number than a sum, so it needs less memory.\nmean() calculates the mean twice just in case.\nmean() was written in an old version of R."
   },
   {
     "objectID": "unit-2/efficient-code.html#optional-super-advanced-mode",
