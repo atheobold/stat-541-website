@@ -377,7 +377,7 @@ silly_function <- function(x) {
 
 What do you think will happen when we run:
 
-```{r, eval = FALSE}
+```{r}
 #| echo: true
 #| eval: false
 #| label: adding-in-problematic-function
@@ -428,7 +428,7 @@ means_by_group <- function(dataset, cat_var, quant_var) {
 
 Okay, let's run it!
 
-```{r, error = TRUE}
+```{r}
 #| echo: true
 #| error: true
 #| label: no-tunneling-function-error

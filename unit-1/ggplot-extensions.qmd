@@ -13,8 +13,6 @@ execute:
 #| include: false
 
 library(tidyverse)
-library(flair)
-library(lubridate)
 library(gganimate)
 ```
 

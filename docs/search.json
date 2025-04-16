@@ -4,127 +4,11 @@
     "href": "unit-2/writing-functions.html",
     "title": "Writing Functions in R",
     "section": "",
-<<<<<<< HEAD
-    "text": "Download the source code for the template here:\nreflection-template.qmd"
-  },
-  {
-    "objectID": "portfolio/reflection-template.html#il-1-adding-new-skills",
-    "href": "portfolio/reflection-template.html#il-1-adding-new-skills",
-    "title": "Stat 541 Final Grade Reflection",
-    "section": "[IL-1] Adding new skills:",
-    "text": "[IL-1] Adding new skills:\n\nI can find and adopt new packages to accomplish tasks.\nI can adapt to different syntax styles (tidy, base, formula style, data.table).\n\n\nLevel: 1\n\n\nJustification:"
-  },
-  {
-    "objectID": "portfolio/reflection-template.html#il-2-online-resources",
-    "href": "portfolio/reflection-template.html#il-2-online-resources",
-    "title": "Stat 541 Final Grade Reflection",
-    "section": "[IL-2] Online resources:",
-    "text": "[IL-2] Online resources:\n\nI can use online resources (e.g., Google, ChatGPT, StackOverflow, YouTube) to solve problems, debug, or find new tools.\nI can use tutorials, etc. to enhance my understanding of new concepts.\nI can find source code for similar projects to use as starting points for my own.\n\n\nLevel: 1\n\n\nJustification:"
-  },
-  {
-    "objectID": "portfolio/reflection-template.html#rw-1-file-code-and-data-management",
-    "href": "portfolio/reflection-template.html#rw-1-file-code-and-data-management",
-    "title": "Stat 541 Final Grade Reflection",
-    "section": "[RW-1] File, code, and data management:",
-    "text": "[RW-1] File, code, and data management:\n\nI can use Git and GitHub to track my progress (creating repos, cloning, forking, pull requesting).\nI always use R Projects and the {here} package to organize my scripts, notebooks, data, and applications.\nI always use pull requests when collaborating with others.\n\n\nLevel: 1\n\n\nJustification:"
-  },
-  {
-    "objectID": "portfolio/reflection-template.html#rw-2-notebooks",
-    "href": "portfolio/reflection-template.html#rw-2-notebooks",
-    "title": "Stat 541 Final Grade Reflection",
-    "section": "[RW-2] Notebooks:",
-    "text": "[RW-2] Notebooks:\n\nI can use Quarto to produce a reproducible notebook and polished rendered documents\nI can use appropriate chunk options (echo, error, cache, etc.) to render my Quarto document quickly and cleanly.\n\n\nLevel: 1\n\n\nJustification:"
-  },
-  {
-    "objectID": "portfolio/reflection-template.html#rw-3-code-style",
-    "href": "portfolio/reflection-template.html#rw-3-code-style",
-    "title": "Stat 541 Final Grade Reflection",
-    "section": "[RW-3] Code style",
-    "text": "[RW-3] Code style\n\nMy code is clear, readable, well-organized, and well-commented.\n\n\nLevel: 1\n\n\nJustification"
-  },
-  {
-    "objectID": "portfolio/reflection-template.html#tc-1-project-summaries",
-    "href": "portfolio/reflection-template.html#tc-1-project-summaries",
-    "title": "Stat 541 Final Grade Reflection",
-    "section": "[TC-1] Project summaries:",
-    "text": "[TC-1] Project summaries:\n\nI can create clear and succinct summaries of a project.\nI accurately interpret statistical or modeling results.\nI consider the appropriate scope and impact of my project results.\n\n\nLevel: 1\n\n\nJustification:"
-  },
-  {
-    "objectID": "portfolio/reflection-template.html#tc-2-documentation",
-    "href": "portfolio/reflection-template.html#tc-2-documentation",
-    "title": "Stat 541 Final Grade Reflection",
-    "section": "[TC-2] Documentation:",
-    "text": "[TC-2] Documentation:\n\nI can create a user-friendly dashboard.\nI provide ample documentation for my custom functions.\n\n\nLevel: 1\n\n\nJustification:"
-  },
-  {
-    "objectID": "portfolio/reflection-template.html#dm-1-data-preparation",
-    "href": "portfolio/reflection-template.html#dm-1-data-preparation",
-    "title": "Stat 541 Final Grade Reflection",
-    "section": "[DM-1] Data Preparation",
-    "text": "[DM-1] Data Preparation\n\nI can read in datasets to R, including untidy ones.\nI can clean datasets to deal with missing data, typos, poor formatting, etc.\n\n\nLevel: 1\n\n\nJustification:"
-  },
-  {
-    "objectID": "portfolio/reflection-template.html#dm-2-data-wrangling",
-    "href": "portfolio/reflection-template.html#dm-2-data-wrangling",
-    "title": "Stat 541 Final Grade Reflection",
-    "section": "[DM-2] Data Wrangling",
-    "text": "[DM-2] Data Wrangling\n\nI can cleverly use pivoting, separating, grouping, and joining to wrangle data.\nI can use mapping (purrr) to perform repeated tasks.\n\n\nLevel: 1\n\n\nJustification:"
-  },
-  {
-    "objectID": "portfolio/reflection-template.html#dm-3-data-formats",
-    "href": "portfolio/reflection-template.html#dm-3-data-formats",
-    "title": "Stat 541 Final Grade Reflection",
-    "section": "[DM-3] Data Formats",
-    "text": "[DM-3] Data Formats\n\nI can use API urls to access JSON data and convert it into a data frame\nI can scrape data from the web and convert it into a data frame\n\n\n## Fill in the line below with your self-assigned level for this objective.\nmy_level &lt;- 1\n\nportfolio_levels &lt;- portfolio_levels %&gt;%\n  bind_rows(tibble(Objective = \"DM-3\", \n                   Level = my_level))\n\n\nLevel: 1\n\n\nJustification"
-  },
-  {
-    "objectID": "portfolio/reflection-template.html#dm-4-data-collection",
-    "href": "portfolio/reflection-template.html#dm-4-data-collection",
-    "title": "Stat 541 Final Grade Reflection",
-    "section": "[DM-4] Data collection",
-    "text": "[DM-4] Data collection\n\nI can webscrape simple tables and information\n\n\nLevel: 1\n\n\nJustification"
-  },
-  {
-    "objectID": "portfolio/reflection-template.html#pv-1-ggplot-grammar-of-graphics",
-    "href": "portfolio/reflection-template.html#pv-1-ggplot-grammar-of-graphics",
-    "title": "Stat 541 Final Grade Reflection",
-    "section": "[PV-1] ggplot: grammar of graphics",
-    "text": "[PV-1] ggplot: grammar of graphics\n\nI can use less common geometries, including those from ggplot extension packages.\nI can use the correct aesthetics to map variables\nI understand how geometries inherit aesthetics I can add annotations to my plot\n\n\nLevel: 1\n\n\nJustification:"
-  },
-  {
-    "objectID": "portfolio/reflection-template.html#pv-2-ggplot-theme",
-    "href": "portfolio/reflection-template.html#pv-2-ggplot-theme",
-    "title": "Stat 541 Final Grade Reflection",
-    "section": "[PV-2] ggplot: theme",
-    "text": "[PV-2] ggplot: theme\n\nI can edit the titles, subtitles, captions, axis labels, etc. to create a clearly labelled plot\nI can choose colors (“scales”) and themes to make a visually pleasing and accessible plot\n\n\nLevel: 1\n\n\nJustification:"
-  },
-  {
-    "objectID": "portfolio/reflection-template.html#pv-3-dynamic-visualizations",
-    "href": "portfolio/reflection-template.html#pv-3-dynamic-visualizations",
-    "title": "Stat 541 Final Grade Reflection",
-    "section": "[PV-3] Dynamic visualizations",
-    "text": "[PV-3] Dynamic visualizations\n\nI can use a package like {gganimate} to create self-contained gifs\nI can use a package like {plotly}, {ggplotly}, {leaflet}, {ggirafe}, etc. to make interactive html widgets\n\n\nLevel: 1\n\n\nJustification:"
-  },
-  {
-    "objectID": "portfolio/reflection-template.html#pv-4-shiny",
-    "href": "portfolio/reflection-template.html#pv-4-shiny",
-    "title": "Stat 541 Final Grade Reflection",
-    "section": "[PV-4] Shiny",
-    "text": "[PV-4] Shiny\n\nI can create a functional Shiny app.\nI understand the principle of reactivity, and how to use it.\n\n\nLevel: 1\n\n\nJustification:"
-  },
-  {
-    "objectID": "portfolio/reflection-template.html#sd-1-r-programming-language-details",
-    "href": "portfolio/reflection-template.html#sd-1-r-programming-language-details",
-    "title": "Stat 541 Final Grade Reflection",
-    "section": "[SD-1] R programming language details",
-    "text": "[SD-1] R programming language details\n\nI understand non-standard evaluation (aka “Tidy Eval” or “unquoted objects”), and I can use tunneling in my functions.\nI understand functional programming, and I can use functions as objects in my code design\nI understand object-oriented programming, and I can define my own classes and methods.\n\n\nLevel: 1\n\n\nJustification:"
-=======
     "text": "Go on a walk and listen to a talk!\n\n\n\nI’ve included quite a few talks in this coursework (1) because they do a great job discussing topics related to function design, and (2) they were given by my coding heroes (cough, Jenny Bryan 🤩).\nIt’s not critical for you to sit in front of a computer when listening to these talks, so I might recommend going on a walk and listening to one! The weather is too nice to sit in front of a computer all day!",
     "crumbs": [
       "Unit 2 - Iteration",
       "Writing Functions in R"
     ]
->>>>>>> ff1bf87b393f03d56b998b31117d6fe6e4dc0072
   },
   {
     "objectID": "unit-2/writing-functions.html#recommended-video-how-to-write-a-function-in-r",
@@ -197,7 +81,7 @@
     "href": "unit-2/writing-functions.html#objects-of-type-closure",
     "title": "Writing Functions in R",
     "section": "Objects of Type Closure",
-    "text": "Objects of Type Closure\nIn R, functions are objects. That is, creating a function is not fundamentally different from creating a vector or a data frame.\nHere we store the vector 1, 2, 3 in the object named a:\n\na &lt;- 1:3\n\na\n\n[1] 1 2 3\n\n\nHere we store the procedure “add one plus one” in the object named a:\n\na &lt;- function(){\n  1 + 1\n}\n\na\n\nfunction(){\n  1 + 1\n}\n\n\nFor some strange reason, there is a specific term in R for “an object that is a function”—closure. Have you ever gotten this error?\n\na[1]\n\nError in a[1]: object of type 'closure' is not subsettable\n\n\nI bet you have! What happened here is that we tried to take a subset of the vector a. But a is a function, not a vector, so this doesn’t work! If you’ve encounter this error in the wild, it’s probably because you tried to reference a non-existent object. However, you used an object name that happens to also be an existing function.\n\n\n\n\n\n\nCheck-in: Object of Type “closure”\n\n\n\nQuestion 7: What is the most likely cause of the error message Error in x[1] : object of type 'closure' is not subsettable?\n\nTrying to access an element of a list using parentheses () instead of square brackets []\nAttempting to subset a numeric vector using the wrong index type\nTrying to extract an element from a function using square bracket notation\nPassing a missing argument to a function",
+    "text": "Objects of Type Closure\nIn R, functions are objects. That is, creating a function is not fundamentally different from creating a vector or a data frame.\nHere we store the vector 1, 2, 3 in the object named a:\n\na &lt;- 1:3\n\na\n\n[1] 1 2 3\n\n\nHere we store the procedure “add one plus one” in the object named a:\n\na &lt;- function(){\n  1 + 1\n}\n\na\n\nfunction () \n{\n    1 + 1\n}\n\n\nFor some strange reason, there is a specific term in R for “an object that is a function”—closure. Have you ever gotten this error?\n\na[1]\n\nError in a[1]: object of type 'closure' is not subsettable\n\n\nI bet you have! What happened here is that we tried to take a subset of the vector a. But a is a function, not a vector, so this doesn’t work! If you’ve encounter this error in the wild, it’s probably because you tried to reference a non-existent object. However, you used an object name that happens to also be an existing function.\n\n\n\n\n\n\nCheck-in: Object of Type “closure”\n\n\n\nQuestion 7: What is the most likely cause of the error message Error in x[1] : object of type 'closure' is not subsettable?\n\nTrying to access an element of a list using parentheses () instead of square brackets []\nAttempting to subset a numeric vector using the wrong index type\nTrying to extract an element from a function using square bracket notation\nPassing a missing argument to a function",
     "crumbs": [
       "Unit 2 - Iteration",
       "Writing Functions in R"
@@ -226,19 +110,11 @@
     ]
   },
   {
-<<<<<<< HEAD
-    "objectID": "labs/lab-1.html#data-wrangling-review",
-    "href": "labs/lab-1.html#data-wrangling-review",
-    "title": "Lab 1 - Quarto Warmup & STAT 331 Review",
-    "section": "Data Wrangling Review",
-    "text": "Data Wrangling Review\nSince you already seen some ggplots, let’s do a bit of review on data handling. In this class, we will exclusively make use of tools from the tidyverse suite of packages to perform our data cleaning and wrangling operations. If you are less familiar with these packages or it’s been some time since you used them, I would strongly recommend referencing the function documentation!\nFor these problems, we will continue to work with the mpg data frame, making various changes to the data to clean it up.\n\nThe fl variable describes the type of fuel for each car, with levels: p, r, e, d, and c. Do some research into what each of these labels mean! Then, use the if_else() function to create a new variable (fuel_type) with two levels: petrol (any car using petrolium-based gas) and alternative energy (any car not using petrolium-based gas).\n\n\nThe drv variable describes if the car has front drive (f), rear drive (r), or four wheel drive (4). Let’s make better labels for these values! Specifically, use the case_when() function to change the drv variable to have the following levels: front, rear, four wheel.\n\n\nThe trans variable contains two pieces of information, (1) the transmission style (auto or manual) and the specific type of transmission (e.g., l5, m5). Using the separate_wider_delim() function, create two new variables from trans, (1) trans_type containing the specific type of transmission of each car (e.g., l5), and (2) trans_style the style of the transmission (e.g., auto). Hint: You will need to deal with the stray parenthesis!",
-=======
     "objectID": "unit-2/writing-functions.html#recommended-reading-r-for-data-science-data-frame-functions",
     "href": "unit-2/writing-functions.html#recommended-reading-r-for-data-science-data-frame-functions",
     "title": "Writing Functions in R",
     "section": "📖 Recommended Reading: R for Data Science: Data Frame Functions",
     "text": "📖 Recommended Reading: R for Data Science: Data Frame Functions\nTo solve this conundrum, we use a trick called tunneling to “force” the unquoted name Species through to the function group_by(). It looks like this:\n\nmeans_by_group &lt;- function(dataset, cat_var, quant_var) {\n  \n  dataset %&gt;%\n    group_by({{cat_var}}) %&gt;%\n    summarize(\n      means = mean({{quant_var}})\n              )\n  \n  \n}\n\n\n\n\n\n\n\nNote\n\n\n\nNote: The tunnel, or “curly-curly” operator, {{ }}, is from the tidyverse package rlang.\n\n\nNow everything works!\n\nmeans_by_group(penguins, \n               cat_var = species, \n               quant_var = bill_length_mm\n               )\n\n# A tibble: 3 × 2\n  species   means\n  &lt;fct&gt;     &lt;dbl&gt;\n1 Adelie     NA  \n2 Chinstrap  48.8\n3 Gentoo     NA  \n\n\nOkay, now let’s group by both species and sex:\n\nmeans_by_group(penguins, \n               cat_var = c(species, sex), \n               quant_var = bill_length_mm)\n\nError in `group_by()`:\nℹ In argument: `c(species, sex)`.\nCaused by error:\n! `c(species, sex)` must be size 344 or 1, not 688.\n\n\nOh no! What now?! When c(species, sex) is put inside {{ c(species, sex) }} within the function, R is actually running the code inside {{ }}. This combines the columns for those two variables into one long vector. What we really meant by c(species, sex) is “group by both cut and color.”\nTo fix this, we need the pick() function to get R to see {{ group_var }} as a list of separate variables (like the way select() works).\n\nmeans_by_group &lt;- function(df, cat_var, quant_var) {\n    df %&gt;%\n        group_by(pick({{ cat_var }})) %&gt;%\n        summarize(mean = mean({{ quant_var }})\n                  )\n}\n\nNow it’s back to working!\n\nmeans_by_group(penguins, \n               cat_var = c(species, sex), \n               quant_var = bill_length_mm\n               )\n\n# A tibble: 8 × 3\n# Groups:   species [3]\n  species   sex     mean\n  &lt;fct&gt;     &lt;fct&gt;  &lt;dbl&gt;\n1 Adelie    female  37.3\n2 Adelie    male    40.4\n3 Adelie    &lt;NA&gt;    NA  \n4 Chinstrap female  46.6\n5 Chinstrap male    51.1\n6 Gentoo    female  45.6\n7 Gentoo    male    49.5\n8 Gentoo    &lt;NA&gt;    NA  \n\n\n\n\n\n\n\n\nCheck-in: Tidy Eval Functions\n\n\n\nQuestion 9: Create a new version of dplyr::count() that also shows proportions instead of just sample sizes. The function should be able to handle counting by multiple variables.",
->>>>>>> ff1bf87b393f03d56b998b31117d6fe6e4dc0072
     "crumbs": [
       "Unit 2 - Iteration",
       "Writing Functions in R"
@@ -1262,7 +1138,7 @@
     "href": "unit-2/efficient-code.html#save-smaller-data-frames-if-you-are-going-to-use-them-many-times",
     "title": "Writing Efficient Code",
     "section": "Save smaller data frames, if you are going to use them many times",
-    "text": "Save smaller data frames, if you are going to use them many times\nConsider the following dataset:\n\nlibrary(fivethirtyeight)\n\nglimpse(congress_age)\n\nRows: 18,635\nColumns: 13\n$ congress   &lt;int&gt; 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80,…\n$ chamber    &lt;chr&gt; \"house\", \"house\", \"house\", \"house\", \"house\", \"house\", \"hous…\n$ bioguide   &lt;chr&gt; \"M000112\", \"D000448\", \"S000001\", \"E000023\", \"L000296\", \"G00…\n$ firstname  &lt;chr&gt; \"Joseph\", \"Robert\", \"Adolph\", \"Charles\", \"William\", \"James\"…\n$ middlename &lt;chr&gt; \"Jefferson\", \"Lee\", \"Joachim\", \"Aubrey\", NA, \"A.\", \"Joseph\"…\n$ lastname   &lt;chr&gt; \"Mansfield\", \"Doughton\", \"Sabath\", \"Eaton\", \"Lewis\", \"Galla…\n$ suffix     &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…\n$ birthday   &lt;date&gt; 1861-02-09, 1863-11-07, 1866-04-04, 1868-03-29, 1868-09-22…\n$ state      &lt;chr&gt; \"TX\", \"NC\", \"IL\", \"NJ\", \"KY\", \"PA\", \"CA\", \"NY\", \"WI\", \"MA\",…\n$ party      &lt;chr&gt; \"D\", \"D\", \"D\", \"R\", \"R\", \"R\", \"R\", \"D\", \"R\", \"R\", \"D\", \"R\",…\n$ incumbent  &lt;lgl&gt; TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, TRUE, TRUE, TRUE, TRU…\n$ termstart  &lt;date&gt; 1947-01-03, 1947-01-03, 1947-01-03, 1947-01-03, 1947-01-03…\n$ age        &lt;dbl&gt; 86, 83, 81, 79, 78, 78, 78, 77, 76, 76, 75, 74, 74, 73, 73,…\n\n\nSuppose we want to do some exploratory analysis on these data. Let’s use the tic() and toc() functions from the tictoc packages to check how much time it takes to run this code:\n\ntic()\n\ncongress_age %&gt;%\n  filter(chamber == \"senate\") %&gt;%\n  summarize(mean(age))\n\ncongress_age %&gt;%\n  filter(chamber == \"senate\") %&gt;%\n  ggplot() + \n  geom_histogram(mapping = aes(x = age))\ncongress_age %&gt;%\n  filter(chamber == \"senate\") %&gt;%\n  slice_max(n = 5, order_by = age)\n\n\ntoc()\n\n0.238 sec elapsed\n\n\nThese are all three reasonable things to do, and they can’t be done in the same pipeline. But wait - we just made R do the process of subsetting to only Senators three separate times!\n\ntic()\n  congress_age %&gt;%\n    filter(chamber == \"senate\")\n\n\ntoc()\n\n0.014 sec elapsed\n\n\nInstead, how about we filter the data once, save it into an object, and call on that object:\n\ntic()\n\n senate &lt;- congress_age %&gt;%\n  filter(chamber == \"senate\")\n\nsenate %&gt;%\n  summarize(mean(age))\n\nsenate %&gt;%\n  ggplot() + \n  geom_histogram(mapping = aes(x = age))\nsenate %&gt;%\n  slice_max(n = 5, order_by = age)\n\n\ntoc()\n\n0.114 sec elapsed\n\n\nThat is half the run time! Yes, we are dealing with minute increments of time (less than a second), but hopefully you could see how this might scale to larger calcuations.",
+    "text": "Save smaller data frames, if you are going to use them many times\nConsider the following dataset:\n\nlibrary(fivethirtyeight)\n\nglimpse(congress_age)\n\nRows: 18,635\nColumns: 13\n$ congress   &lt;int&gt; 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80,…\n$ chamber    &lt;chr&gt; \"house\", \"house\", \"house\", \"house\", \"house\", \"house\", \"hous…\n$ bioguide   &lt;chr&gt; \"M000112\", \"D000448\", \"S000001\", \"E000023\", \"L000296\", \"G00…\n$ firstname  &lt;chr&gt; \"Joseph\", \"Robert\", \"Adolph\", \"Charles\", \"William\", \"James\"…\n$ middlename &lt;chr&gt; \"Jefferson\", \"Lee\", \"Joachim\", \"Aubrey\", NA, \"A.\", \"Joseph\"…\n$ lastname   &lt;chr&gt; \"Mansfield\", \"Doughton\", \"Sabath\", \"Eaton\", \"Lewis\", \"Galla…\n$ suffix     &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…\n$ birthday   &lt;date&gt; 1861-02-09, 1863-11-07, 1866-04-04, 1868-03-29, 1868-09-22…\n$ state      &lt;chr&gt; \"TX\", \"NC\", \"IL\", \"NJ\", \"KY\", \"PA\", \"CA\", \"NY\", \"WI\", \"MA\",…\n$ party      &lt;chr&gt; \"D\", \"D\", \"D\", \"R\", \"R\", \"R\", \"R\", \"D\", \"R\", \"R\", \"D\", \"R\",…\n$ incumbent  &lt;lgl&gt; TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, TRUE, TRUE, TRUE, TRU…\n$ termstart  &lt;date&gt; 1947-01-03, 1947-01-03, 1947-01-03, 1947-01-03, 1947-01-03…\n$ age        &lt;dbl&gt; 86, 83, 81, 79, 78, 78, 78, 77, 76, 76, 75, 74, 74, 73, 73,…\n\n\nSuppose we want to do some exploratory analysis on these data. Let’s use the tic() and toc() functions from the tictoc packages to check how much time it takes to run this code:\n\ntic()\n\ncongress_age %&gt;%\n  filter(chamber == \"senate\") %&gt;%\n  summarize(mean(age))\n\ncongress_age %&gt;%\n  filter(chamber == \"senate\") %&gt;%\n  ggplot() + \n  geom_histogram(mapping = aes(x = age))\ncongress_age %&gt;%\n  filter(chamber == \"senate\") %&gt;%\n  slice_max(n = 5, order_by = age)\n\n\ntoc()\n\n0.688 sec elapsed\n\n\nThese are all three reasonable things to do, and they can’t be done in the same pipeline. But wait - we just made R do the process of subsetting to only Senators three separate times!\n\ntic()\n  congress_age %&gt;%\n    filter(chamber == \"senate\")\n\n\ntoc()\n\n0.053 sec elapsed\n\n\nInstead, how about we filter the data once, save it into an object, and call on that object:\n\ntic()\n\n senate &lt;- congress_age %&gt;%\n  filter(chamber == \"senate\")\n\nsenate %&gt;%\n  summarize(mean(age))\n\nsenate %&gt;%\n  ggplot() + \n  geom_histogram(mapping = aes(x = age))\nsenate %&gt;%\n  slice_max(n = 5, order_by = age)\n\n\ntoc()\n\n0.286 sec elapsed\n\n\nThat is half the run time! Yes, we are dealing with minute increments of time (less than a second), but hopefully you could see how this might scale to larger calcuations.",
     "crumbs": [
       "Unit 2 - Iteration",
       "Writing Efficient Code"
@@ -1306,7 +1182,7 @@
     "href": "unit-2/efficient-code.html#allocate-memory-in-advance",
     "title": "Writing Efficient Code",
     "section": "Allocate memory in advance",
-    "text": "Allocate memory in advance\nA trick we use very often in coding is to “tack on” values to the end of a vector or list as we iterate through something. However, this is actually very slow! If you know how long your list is going to end up, consider pre-creating that list.\n\ndo_stuff_allocate &lt;- function(reps) {\n  results &lt;- vector(length = reps)\n  for (i in 1:reps) {\n    results[i] &lt;- i\n  }\n  return(results)\n}\n\ndo_stuff_tackon &lt;- function(reps) {\n   results &lt;- c()\n  for (i in 1:reps) {\n    results &lt;- c(results, i)\n  }\n  return(results)\n}\n\nmicrobenchmark::microbenchmark(\n  do_stuff_allocate(1000),\n  do_stuff_tackon(1000)\n)\n\nUnit: microseconds\n                    expr min  lq mean median  uq  max neval\n do_stuff_allocate(1000)  22  22   39     23  24 1578   100\n   do_stuff_tackon(1000) 593 710  985    726 761 8244   100",
+    "text": "Allocate memory in advance\nA trick we use very often in coding is to “tack on” values to the end of a vector or list as we iterate through something. However, this is actually very slow! If you know how long your list is going to end up, consider pre-creating that list.\n\ndo_stuff_allocate &lt;- function(reps) {\n  results &lt;- vector(length = reps)\n  for (i in 1:reps) {\n    results[i] &lt;- i\n  }\n  return(results)\n}\n\ndo_stuff_tackon &lt;- function(reps) {\n   results &lt;- c()\n  for (i in 1:reps) {\n    results &lt;- c(results, i)\n  }\n  return(results)\n}\n\nmicrobenchmark::microbenchmark(\n  do_stuff_allocate(1000),\n  do_stuff_tackon(1000)\n)\n\nUnit: microseconds\n                    expr min  lq mean median   uq   max neval\n do_stuff_allocate(1000)  27  30  101     41   62  5445   100\n   do_stuff_tackon(1000) 834 972 2119   1740 2641 13057   100",
     "crumbs": [
       "Unit 2 - Iteration",
       "Writing Efficient Code"
@@ -1377,110 +1253,5 @@
       "Unit 2 - Iteration",
       "Writing Efficient Code"
     ]
-  },
-  {
-    "objectID": "portfolio/reflection-template.html#il-summary",
-    "href": "portfolio/reflection-template.html#il-summary",
-    "title": "Stat 541 Final Grade Reflection",
-    "section": "IL Summary",
-    "text": "IL Summary"
-  },
-  {
-    "objectID": "portfolio/reflection-template.html#rw-summary",
-    "href": "portfolio/reflection-template.html#rw-summary",
-    "title": "Stat 541 Final Grade Reflection",
-    "section": "RW Summary",
-    "text": "RW Summary"
-  },
-  {
-    "objectID": "portfolio/reflection-template.html#tc-summary",
-    "href": "portfolio/reflection-template.html#tc-summary",
-    "title": "Stat 541 Final Grade Reflection",
-    "section": "TC Summary",
-    "text": "TC Summary"
-  },
-  {
-    "objectID": "portfolio/reflection-template.html#dm-summary",
-    "href": "portfolio/reflection-template.html#dm-summary",
-    "title": "Stat 541 Final Grade Reflection",
-    "section": "DM Summary",
-    "text": "DM Summary"
-  },
-  {
-    "objectID": "portfolio/reflection-template.html#pv-1-clear-accessible-visualizations",
-    "href": "portfolio/reflection-template.html#pv-1-clear-accessible-visualizations",
-    "title": "Stat 541 Final Grade Reflection",
-    "section": "[PV-1] Clear & Accessible Visualizations",
-    "text": "[PV-1] Clear & Accessible Visualizations\n\nI can make my plots more clear by removing the legend and adding annotations.\nI can edit the titles, subtitles, captions, axis labels, etc. to create a clearly labelled plot.\nI can choose colors (“scales”) and themes to make a visually pleasing and accessible plot.\n\n\nLevel: 1\n\n\nJustification:"
-  },
-  {
-    "objectID": "portfolio/reflection-template.html#pv-2-dynamic-visualizations",
-    "href": "portfolio/reflection-template.html#pv-2-dynamic-visualizations",
-    "title": "Stat 541 Final Grade Reflection",
-    "section": "[PV-2] Dynamic Visualizations",
-    "text": "[PV-2] Dynamic Visualizations\n\nI can use a package like {gganimate} to create self-contained gifs.\nI can use a package like {plotly}, {ggplotly}, {leaflet}, {ggirafe}, etc. to make interactive html widgets.\n\n\nLevel: 1\n\n\nJustification:"
-  },
-  {
-    "objectID": "portfolio/reflection-template.html#pv-3-interactive-visualizations",
-    "href": "portfolio/reflection-template.html#pv-3-interactive-visualizations",
-    "title": "Stat 541 Final Grade Reflection",
-    "section": "[PV-3] Interactive Visualizations",
-    "text": "[PV-3] Interactive Visualizations\n\nI can use Shiny or webR to create visualizations that react to a user’s input.\n\n\nLevel: 1\n\n\nJustification:"
-  },
-  {
-    "objectID": "portfolio/reflection-template.html#pv-summary",
-    "href": "portfolio/reflection-template.html#pv-summary",
-    "title": "Stat 541 Final Grade Reflection",
-    "section": "PV Summary",
-    "text": "PV Summary"
-  },
-  {
-    "objectID": "portfolio/reflection-template.html#cdai-1-r-programming-language",
-    "href": "portfolio/reflection-template.html#cdai-1-r-programming-language",
-    "title": "Stat 541 Final Grade Reflection",
-    "section": "[CDAI-1] R Programming Language",
-    "text": "[CDAI-1] R Programming Language\n\nI understand non-standard evaluation (aka “tidy eval” or “unquoted objects”), and I can use tunneling in my functions.\nI understand functional programming, and I can use functions as objects in my code design.\n\n\nLevel: 1\n\n\nJustification:"
-  },
-  {
-    "objectID": "portfolio/reflection-template.html#cdai-2-object-handling",
-    "href": "portfolio/reflection-template.html#cdai-2-object-handling",
-    "title": "Stat 541 Final Grade Reflection",
-    "section": "[CDAI-2] Object Handling",
-    "text": "[CDAI-2] Object Handling\n\nI have built in checks for possible input problems\nI can make reasonable choices in my code design about when to save intermediate objects.\nI can convert objects between types and structures as needed.\n\n\nLevel: 1\n\n\nJustification:"
-  },
-  {
-    "objectID": "portfolio/reflection-template.html#cdai-3-speed-and-efficiency",
-    "href": "portfolio/reflection-template.html#cdai-3-speed-and-efficiency",
-    "title": "Stat 541 Final Grade Reflection",
-    "section": "[CDAI-3] Speed and Efficiency",
-    "text": "[CDAI-3] Speed and Efficiency\n\nI can recognize moments of possible slowdown in my code, and use built-in functions or parallelizing to speed them up.\nI always use and design vectorized functions whenever possible.\n\n\nLevel: 1\n\n\nJustification:"
-  },
-  {
-    "objectID": "portfolio/reflection-template.html#cdai-4-supporting-functions",
-    "href": "portfolio/reflection-template.html#cdai-4-supporting-functions",
-    "title": "Stat 541 Final Grade Reflection",
-    "section": "[CDAI-4] Supporting Functions",
-    "text": "[CDAI-4] Supporting Functions\n\nI write helper / shortcut functions to streamline repeated tasks and make my code easier to read.\nI use intermediate functions to streamline repeated or looping processes.\n\n\nLevel: 1\n\n\nJustification:"
-  },
-  {
-    "objectID": "portfolio/reflection-template.html#cdai-5-algorithmic-process",
-    "href": "portfolio/reflection-template.html#cdai-5-algorithmic-process",
-    "title": "Stat 541 Final Grade Reflection",
-    "section": "[CDAI-5] Algorithmic Process",
-    "text": "[CDAI-5] Algorithmic Process\n\nI can invent and implement my own iterative algorithm.\nMy loops are clean and efficient.\nI have built in checks for possible problems or extreme cases in the algorithm.\n\n\nLevel: 1\n\n\nJustification:"
-  },
-  {
-    "objectID": "portfolio/reflection-template.html#cdai-6-generative-art",
-    "href": "portfolio/reflection-template.html#cdai-6-generative-art",
-    "title": "Stat 541 Final Grade Reflection",
-    "section": "[CDAI-6] Generative Art",
-    "text": "[CDAI-6] Generative Art\n\nI can apply a variety of generative art functions to make a visually pleasing piece.\nI can explain why particular changes to the code result in particular differences in the visualization.\n\n\nLevel: 1\n\n\nJustification:"
-  },
-  {
-    "objectID": "portfolio/reflection-template.html#cdai-summary",
-    "href": "portfolio/reflection-template.html#cdai-summary",
-    "title": "Stat 541 Final Grade Reflection",
-    "section": "CDAI Summary",
-    "text": "CDAI Summary"
   }
 ]

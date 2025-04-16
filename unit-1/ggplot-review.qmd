@@ -13,7 +13,6 @@ execute:
 #| include: false
 
 library(tidyverse)
-library(flair)
 ```
 
 This module consists of readings reviewing material typically taught in STAT
