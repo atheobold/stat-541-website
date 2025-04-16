@@ -1,0 +1,360 @@
+---
+title: "Writing Efficient Code"
+editor: source
+execute: 
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+library(tidyverse)
+library(tictoc)
+library(microbenchmark)
+
+options(digits = 2)
+```
+
+In this module, you'll learn a bit about how to make your code faster in general.
+
+
+# Code speed
+
+Fortunately, we stand on the shoulders of giants. Many skilled computer
+scientists have put a lot of time and effort into writing R functions that run
+as fast as possible. For you, most of the work to speed up code is simply 
+finding the right packages to rely on.
+
+However, there are a few baseline principles that can get you a long way. If
+your code takes a long time to run, the reason is often one of these:
+
+-   You are doing a very large computation, relative to the power of your
+computer.
+-   You are repeating a slow process many times.
+-   You are trying to do simple things, but on a very large object.
+
+To speed up the code, without deep knowledge of computer algorithms and inner
+workings, you can sometimes come up with clever ways to avoid these pitfalls.
+
+First, though: as you start thinking about writing faster code, you'll need a
+way to check whether your improvements actually sped up the code.
+
+## 📖 Required Reading: [The tictoc and microbenchmark packages](https://www.jumpingrivers.com/blog/timing-in-r/)
+
+## 📖 Required Reading: [The bench package](https://www.tidyverse.org/blog/2018/06/bench-1.0.1/)
+
+## 📖 Required Reading: [`lobstr::obj_size()`](https://lobstr.r-lib.org/reference/obj_size.html)
+
+# Tip 1: Avoid larger calculations and memory demands
+
+## Save smaller data frames, if you are going to use them many times
+
+Consider the following dataset:
+
+```{r}
+#| echo: true
+#| message: false
+#| label: load-data
+
+library(fivethirtyeight)
+
+glimpse(congress_age)
+```
+
+Suppose we want to do some exploratory analysis on these data. Let's use the
+`tic()` and `toc()` functions from the **tictoc** packages to check how much
+time it takes to run this code:
+
+```{r}
+#| results: false
+#| message: false
+#| fig-show: hide
+#| echo: true
+#| label: exploratory-analysis
+
+tic()
+
+congress_age %>%
+  filter(chamber == "senate") %>%
+  summarize(mean(age))
+
+congress_age %>%
+  filter(chamber == "senate") %>%
+  ggplot() + 
+  geom_histogram(mapping = aes(x = age))
+
+congress_age %>%
+  filter(chamber == "senate") %>%
+  slice_max(n = 5, order_by = age)
+
+```
+
+```{r}
+#| echo: true
+toc()
+```
+
+These are all three reasonable things to do, and they can't be done in the same pipeline. But wait - we just made R do the process of subsetting to only Senators three separate times!
+
+```{r, results = FALSE}
+#| echo: true
+
+tic()
+  congress_age %>%
+    filter(chamber == "senate")
+```
+
+```{r}
+#| echo: true
+toc()
+```
+
+Instead, how about we filter the data once, save it into an object, and call on that object:
+
+```{r}
+#| echo: true
+#| fig-show: hide
+#| message: false
+#| results: false
+
+tic()
+
+ senate <- congress_age %>%
+  filter(chamber == "senate")
+
+senate %>%
+  summarize(mean(age))
+
+senate %>%
+  ggplot() + 
+  geom_histogram(mapping = aes(x = age))
+
+
+senate %>%
+  slice_max(n = 5, order_by = age)
+```
+
+```{r}
+#| echo: true
+
+toc()
+```
+
+That is **half** the run time! Yes, we are dealing with minute increments of
+time (less than a second), but hopefully you could see how this might scale to
+larger calcuations. 
+
+# Tip 2: Avoid repeating slow steps
+
+## Avoid for-loops
+
+For-loops are deathly slow in R. If you absolutely must iterate over a process,
+rely on the `map()` or `apply()` function families. 
+
+::: {.callout-note}
+# Why choose `map()` instead of `apply()`? 
+
+The `map()` and `apply()` functions will typically be close to the same speed, 
+so the largest  argument in favor of the `map()` family of functions are (1)
+their consistent syntax, and (2) their consistent object output. 
+
+The `map()` function **always** returns a list and the `map_XXX()` variants
+**always** return a vector of a specified data type. Whereas, `apply()` returns
+a vector or a list, `lapply()` returns a list, and `sapply()` returns a vetor or
+a matrix. 
+:::
+
+Here is a motivating example demonstrating the difference in run time between 
+a function which loops over every column in a data frame to extract the data
+type and a function which uses `map_chr()` to apply the `class()` function to
+every column of a data frame:
+
+```{r}
+#| echo: true
+#| cache: true
+#| warning: false
+#| label: compare-loops-map-apply
+
+loop_func <- function(df){
+  
+  # initialize the type object
+  type <- rep(NA, ncol(df))
+  
+  for(i in 1:ncol(df)){
+    
+    # store the class of the ith column of df into the ith entry of type 
+    type[i] <- class(df[,i])
+  }
+  
+  return(type)
+}
+
+map_func <- function(df){
+  
+  type <- map_chr(df, class)
+  
+  return(type)
+
+  }
+
+dat <- as.data.frame(
+  matrix(1,
+         nrow = 5,
+         ncol = 100000)
+  )
+
+microbenchmark::microbenchmark(loop_func(dat),
+                               map_func(dat),
+                               times = 3)
+```
+
+That's a pretty big difference!
+
+## Use vectorized functions
+
+Better even than `map()` or `apply()` is not to iterate at all! Writing 
+vectorized functions is tough, but do-able in many cases. Here's an example:
+
+## 🎥 Required Video: [Simple Vectorizing Example](https://www.youtube.com/embed/ShewFCbPHv8)
+
+Better yet - rely on built-in functions in other packages to do it for you!
+
+## Allocate memory in advance
+
+A trick we use very often in coding is to "tack on" values to the end of a
+vector or list as we iterate through something. However, this is actually very
+slow! If you know how long your list is going to end up, consider pre-creating
+that list.
+
+```{r}
+#| echo: true
+
+do_stuff_allocate <- function(reps) {
+  results <- vector(length = reps)
+  for (i in 1:reps) {
+    results[i] <- i
+  }
+  return(results)
+}
+
+do_stuff_tackon <- function(reps) {
+   results <- c()
+  for (i in 1:reps) {
+    results <- c(results, i)
+  }
+  return(results)
+}
+
+microbenchmark::microbenchmark(
+  do_stuff_allocate(1000),
+  do_stuff_tackon(1000)
+)
+
+```
+
+# Tip 3: Use faster existing functions
+
+Because R has so many packages, there are often many functions to perform the
+same task. Not all functions are created equal!
+
+## `data.table`
+
+For speeding up work with data frames, no package is better than `data.table`!
+
+## 📖 Required Video: [5-minute intro to data.table](https://www.youtube.com/embed/uueVddWwbkk)
+
+## 📖 Required Reading: [data.table cheatsheet](https://pbs.twimg.com/media/Dwoq0ZQXQAE5lJt.jpg)
+
+::: {.callout-important}
+# Check-in: `data.table`
+
+**Question 1:** Here is some `dplyr` code. Re-write it in `data.table` syntax. 
+Then perform a speed test to see which one is faster, and by how much.
+
+```{r}
+#| echo: true
+#| eval: false
+
+congress_age %>%
+  group_by(state) %>%
+  summarize(mean_age = mean(age))
+
+```
+:::
+
+# Tip 4: Only improve what needs improving
+
+> “We should forget about small efficiencies, say about 97% of the time:
+> premature optimization is the root of all evil. Yet we should not pass up our
+> opportunities in that critical 3%. A good programmer will not be lulled into
+> complacency by such reasoning, \[they\] will be wise to look carefully at the
+> critical code; but only after that code has been identified.” — Donald Knuth.
+
+Speed and computational efficiency are important, but there can be a tradeoff. 
+If you make a small speed improvement, but your code becomes overly complex, 
+confusing, or difficult to edit and test it's not worth it!
+
+Also, consider your time and energy as the programmer. Suppose you have a 
+function that takes 30-minutes to run. It relies on a subfunction that takes 
+30-seconds to run. Should you really spend your efforts making the subfunction
+take only 10-seconds?
+
+The art of finding the slow bits of your code where you can make the most
+improvement is called **profiling**.
+
+## 📖 Required Reading: [Profiling] [](http://adv-r.had.co.nz/Profiling.html#profiling)
+
+## 📖 Recommended Reading: [Measuring Performance](https://adv-r.hadley.nz/perf-measure.html)
+
+::: {.callout-tip}
+# Skimming is sufficient!
+
+For this reading, I strongly encourage you to skim. The code aspects are mostly
+more complicated that we expect in this class; but the general overview of the
+principles behind speeding up code is helpful.
+
+In your work, you will most likely "profile" manually, by `tictoc`-ing bits of
+your code and so forth, not by these fancy methods.
+:::
+
+::: {.callout-important}
+# Check-in: Profiling
+
+**Question 2:** Why is `vapply()` faster than `sapply()`?
+
+a.  It specifies the output type.
+b.  It specifies the input type.
+c.  It performs fewer safety checks.
+d.  It performs fewer iterations.
+
+**Question 3:** Here are two other ways to compute the square root of a vector.
+Which is faster?  fastest? Use microbenchmarking to test your answers!
+
+```{r}
+#| echo: true
+#| eval: false
+x ^ (1 / 2)
+exp(log(x) / 2)
+```
+
+**Question 4:** Why is `mean(x)` slower than `sum(x)/length(x)`?
+
+a.  `sum()` is vectorized, while `mean()` is not.
+b.  A mean is a smaller number than a sum, so it needs less memory.
+c.  `mean()` calculates the mean twice just in case.
+d.  `mean()` was written in an old version of R.
+
+:::
+
+## Optional: Super advanced mode
+
+The following are some suggestions of ways you can level-up your code speed. These are outside the scope of this class, but you are welcome to explore them!
+
+-   [Dive deep into the R efficiency rabbit hole...](https://csgillespie.github.io/efficientR/)
+-   [Parallelize your computations](http://zevross.com/blog/2019/02/12/dramatically-speed-up-your-r-purrr-functions-with-the-furrr-package/)
+-   [Make your code run in C++ with Rcpp](http://adv-r.had.co.nz/Rcpp.html#rcpp)
+-   Learn to use [recursion](https://techvidvan.com/tutorials/recursion-in-r/)
+-   Learn more about [memory allocation](https://adv-r.hadley.nz/names-values.html) and [garbage collecting](http://adv-r.had.co.nz/memory.html) in R.

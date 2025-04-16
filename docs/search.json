@@ -1,9 +1,10 @@
 [
   {
-    "objectID": "portfolio/reflection-template.html",
-    "href": "portfolio/reflection-template.html",
-    "title": "Stat 541 Final Grade Reflection",
+    "objectID": "unit-2/writing-functions.html",
+    "href": "unit-2/writing-functions.html",
+    "title": "Writing Functions in R",
     "section": "",
+<<<<<<< HEAD
     "text": "Download the source code for the template here:\nreflection-template.qmd"
   },
   {
@@ -117,796 +118,141 @@
     "title": "Stat 541 Final Grade Reflection",
     "section": "[SD-1] R programming language details",
     "text": "[SD-1] R programming language details\n\nI understand non-standard evaluation (aka “Tidy Eval” or “unquoted objects”), and I can use tunneling in my functions.\nI understand functional programming, and I can use functions as objects in my code design\nI understand object-oriented programming, and I can define my own classes and methods.\n\n\nLevel: 1\n\n\nJustification:"
-  },
-  {
-    "objectID": "portfolio/reflection-template.html#ai-1-creating-an-algorithm",
-    "href": "portfolio/reflection-template.html#ai-1-creating-an-algorithm",
-    "title": "Stat 541 Final Grade Reflection",
-    "section": "[AI-1] Creating an algorithm:",
-    "text": "[AI-1] Creating an algorithm:\n\nI can invent and implement my own iterative algorithm.\n\n\nLevel: 1\n\n\nJustification:"
-  },
-  {
-    "objectID": "portfolio/reflection-template.html#ai-2-generative-art",
-    "href": "portfolio/reflection-template.html#ai-2-generative-art",
-    "title": "Stat 541 Final Grade Reflection",
-    "section": "[AI-2] Generative art:",
-    "text": "[AI-2] Generative art:\n\nI can apply a variety of generative art functions to make a visually pleasing piece.\nI can explain why particular changes to the code result in particular differences in the visualization.\n\n\nLevel: 1\n\n\nJustification:"
-  },
-  {
-    "objectID": "portfolio/reflection-template.html#cd-1-speed-and-efficiency",
-    "href": "portfolio/reflection-template.html#cd-1-speed-and-efficiency",
-    "title": "Stat 541 Final Grade Reflection",
-    "section": "[CD-1] Speed and Efficiency:",
-    "text": "[CD-1] Speed and Efficiency:\n\nI can recognize moments of possible slowdown in my code, and use built-in functions or parallelizing to speed them up.\nI always use and design vectorized functions whenever possible.\n\n\nLevel: 1\n\n\nJustification:"
-  },
-  {
-    "objectID": "portfolio/reflection-template.html#cd-2-object-handling",
-    "href": "portfolio/reflection-template.html#cd-2-object-handling",
-    "title": "Stat 541 Final Grade Reflection",
-    "section": "[CD-2] Object handling:",
-    "text": "[CD-2] Object handling:\n\nI can make reasonable choices in my code design about when to save intermediate objects.\nI can convert objects between types and structures as needed.\n\n\nLevel: 1\n\n\nJustification:"
-  },
-  {
-    "objectID": "portfolio/reflection-template.html#cd-3-supporting-functions",
-    "href": "portfolio/reflection-template.html#cd-3-supporting-functions",
-    "title": "Stat 541 Final Grade Reflection",
-    "section": "[CD-3] Supporting functions:",
-    "text": "[CD-3] Supporting functions:\n\nI write helper/shortcut functions to streamline repeated tasks and make my code easier to read.\nI use intermediate functions to streamline repeated or looping processes.\n\n\nLevel: 1\n\n\nJustification:"
-  },
-  {
-    "objectID": "portfolio/reflection-template.html#cd-4-algorithmic-process",
-    "href": "portfolio/reflection-template.html#cd-4-algorithmic-process",
-    "title": "Stat 541 Final Grade Reflection",
-    "section": "[CD-4] Algorithmic process:",
-    "text": "[CD-4] Algorithmic process:\n\nMy loops are clean and efficient\nProper values are calculated to update objects and/or determine stopping conditions\nI have built in checks for possible problems or extreme cases in the algorithm\n\n\nLevel: 1\n\n\nJustification:"
-  },
-  {
-    "objectID": "portfolio/reflection-template.html#grade",
-    "href": "portfolio/reflection-template.html#grade",
-    "title": "Stat 541 Final Grade Reflection",
-    "section": "Grade",
-    "text": "Grade\nBased on the summary plot above, I believe I have earned a ____ in STAT 541.\n\nJustification"
-  },
-  {
-    "objectID": "labs/lab-1.html",
-    "href": "labs/lab-1.html",
-    "title": "Lab 1 - Quarto Warmup & STAT 331 Review",
-    "section": "",
-    "text": "library(tidyverse)\nlibrary(ggridges)",
+=======
+    "text": "Go on a walk and listen to a talk!\n\n\n\nI’ve included quite a few talks in this coursework (1) because they do a great job discussing topics related to function design, and (2) they were given by my coding heroes (cough, Jenny Bryan 🤩).\nIt’s not critical for you to sit in front of a computer when listening to these talks, so I might recommend going on a walk and listening to one! The weather is too nice to sit in front of a computer all day!",
     "crumbs": [
-      "Infrastructure",
-      "Lab 1 - Quarto Warmup & STAT 331 Review"
+      "Unit 2 - Iteration",
+      "Writing Functions in R"
+    ]
+>>>>>>> ff1bf87b393f03d56b998b31117d6fe6e4dc0072
+  },
+  {
+    "objectID": "unit-2/writing-functions.html#recommended-video-how-to-write-a-function-in-r",
+    "href": "unit-2/writing-functions.html#recommended-video-how-to-write-a-function-in-r",
+    "title": "Writing Functions in R",
+    "section": "🎥 Recommended Video: How to Write a Function in R",
+    "text": "🎥 Recommended Video: How to Write a Function in R",
+    "crumbs": [
+      "Unit 2 - Iteration",
+      "Writing Functions in R"
     ]
   },
   {
-    "objectID": "labs/lab-1.html#quarto",
-    "href": "labs/lab-1.html#quarto",
-    "title": "Lab 1 - Quarto Warmup & STAT 331 Review",
-    "section": "Quarto",
-    "text": "Quarto\nFirst, let’s make sure you know how to use Markdown formatting to style a Quarto document.\n\nMake this text bold.\nMake this text italicized.\nMake these into a bullet point list:\n\nApples Bananas Potatoes\n\nEdit the YAML to remove warning messages from being output in the rendered HTML file\nUsing code chunk options, make it so this chunk shows the plot but not the source code:\n\n\nggplot(data = mpg, \n       mapping = aes(y = manufacturer, x = hwy)) + \n  geom_boxplot() +\n  labs(x = \"\",\n       y = \"\", \n       title = \"Highway Milage (mpg) for Different Car Manufacturers\"\n       )\n\n\nUsing code chunk options, remove the messages about bandwidth geom_density_ridges() chose to use:\n\n\nggplot(data = mpg, \n       mapping = aes(y = manufacturer, x = hwy)) + \n  geom_density_ridges() +\n  labs(x = \"\",\n       y = \"\", \n       title = \"Highway Milage (mpg) for Different Car Manufacturers\"\n       )\n\n\nUsing code chunk options, make it so that these plots are printed side-by-side:\n\n\nggplot(data = mpg, \n       mapping = aes(y = manufacturer, x = hwy)) + \n  geom_boxplot() +\n  labs(x = \"\",\n       y = \"\", \n       title = \"Highway Milage (mpg) for Different Car Manufacturers\"\n       )\n\nggplot(data = mpg, \n       mapping = aes(y = manufacturer, x = hwy)) + \n  geom_density_ridges() +\n  labs(x = \"\",\n       y = \"\", \n       title = \"Highway Milage (mpg) for Different Car Manufacturers\"\n       )\n\n\nUsing code chunk options, make it so this chunk shows the code but not the output:\n\n\n2 + 2\n\n\nUsing code chunk options, make it so the file can still knit even though this chunk has an error\n\n\n2 + a\n\n\nUsing code chunk options, create a descriptive label for each of the code chunks above.",
+    "objectID": "unit-2/writing-functions.html#recommended-reading-r-for-data-science-vector-functions",
+    "href": "unit-2/writing-functions.html#recommended-reading-r-for-data-science-vector-functions",
+    "title": "Writing Functions in R",
+    "section": "📖 Recommended Reading: R for Data Science: Vector Functions",
+    "text": "📖 Recommended Reading: R for Data Science: Vector Functions\n\nAnatomy of a Function\nLet’s establish some vocabulary moving forward. Consider the very simple function below:\n\nadd_or_subtract &lt;- function(first_num, second_num = 2, type = \"add\") {\n  \n  if (type == \"add\") {\n    first_num + second_num\n  } else if (type == \"subtract\") {\n    first_num - second_num\n  } else {\n    stop(\"Please choose `add` or `subtract` as the type.\")\n  }\n  \n}\n\n\nThe function name is chosen by whoever writes the function: add_or_subtract\nThe required arguments are the ones for which no default value is supplied: first_num\nThe optional arguments are the ones for which a default value is supplied: second_num = 2, type = \"add\"\nThe body of the function is all the code inside the definition. This code will be run in the environment of the function, rather than in the global environment. This means that code in the body of the function does not have the power to alter anything outside the function1:\n\n\n  if (type == \"add\") {\n    first_num + second_num\n  } else if (type == \"subtract\") {\n    first_num - second_num\n  } else {\n    stop(\"Please choose `add` or `subtract` as the type.\")\n  }\n\n\nThe return values of the function are the possible objects that get returned: first_num + second_num, first_num - second_num\n\nWhen we use a function in code, this is referred to as a function call.\n\n\n\n\n\n\nCheck-in: Function Basics\n\n\n\nQuestion 1: What will be returned by each of the following?\n\n1\n-1\n30\nAn error defined in the function add_or_subtract\nAn error defined in a different function, that is called from inside add_or_subtract\n\n\nadd_or_subtract(5, 6, type = \"subtract\")\n\nadd_or_subtract(\"orange\")\n\nadd_or_subtract(5, 6, type = \"multiply\")\n\nadd_or_subtract(\"orange\", type = \"multiply\")\n\nQuestion 2:\nConsider the following code:\n\nfirst_num &lt;- 5\nsecond_num &lt;- 3\n\nresult &lt;- 8\n\nresult &lt;- add_or_subtract(first_num, second_num = 4)\n\nresult_2 &lt;- add_or_subtract(first_num)\n\nIn your Global Environment, what is the value of…\n\nfirst_num\nsecond_num\nresult\nresult_2",
     "crumbs": [
-      "Infrastructure",
-      "Lab 1 - Quarto Warmup & STAT 331 Review"
+      "Unit 2 - Iteration",
+      "Writing Functions in R"
     ]
   },
   {
+    "objectID": "unit-2/writing-functions.html#good-function-design",
+    "href": "unit-2/writing-functions.html#good-function-design",
+    "title": "Writing Functions in R",
+    "section": "Good Function Design",
+    "text": "Good Function Design\nMost likely, you have so far only written functions for your own convenience. (Or for assignments, of course!) We are now going to be designing functions for other people to use and possibly even edit them. This means we need to put some thought into the design of the function.",
+    "crumbs": [
+      "Unit 2 - Iteration",
+      "Writing Functions in R"
+    ]
+  },
+  {
+    "objectID": "unit-2/writing-functions.html#recommended-video-what-makes-a-good-function",
+    "href": "unit-2/writing-functions.html#recommended-video-what-makes-a-good-function",
+    "title": "Writing Functions in R",
+    "section": "🎥 Recommended Video: What Makes a Good Function",
+    "text": "🎥 Recommended Video: What Makes a Good Function",
+    "crumbs": [
+      "Unit 2 - Iteration",
+      "Writing Functions in R"
+    ]
+  },
+  {
+    "objectID": "unit-2/writing-functions.html#recommended-video-code-smells-and-feels",
+    "href": "unit-2/writing-functions.html#recommended-video-code-smells-and-feels",
+    "title": "Writing Functions in R",
+    "section": "🎥 Recommended Video: Code Smells and Feels",
+    "text": "🎥 Recommended Video: Code Smells and Feels\n\n\nDesigning functions is somewhat subjective, but there are a few principles that apply:\n\nChoose a good, descriptive names\n\nYour function name should describe what it does, and usually involves a verb.\nYour argument names should be simple and/or descriptive.\nNames of variables in the body of the function should be descriptive.\n\nOutput should be very predictable\n\nYour function should always return the same object type, no matter what input it gets.\nYour function should expect certain objects or object types as input, and give errors when it does not get them.\nYour function should give errors or warnings for common mistakes.\nDefault values of arguments should only be used when there is a clear common choice.\n\nThe body of the function should be easy to read.\n\nCode should use good style principles.\nThere should be occasional comments to explain the purpose of the steps.\nComplicated steps, or steps that are repeated many times, should be written into separate functions (sometimes called helper functions).\n\nFunctions should be self-contained.\n\nThey should not rely on any information besides what is given as input. (Relying on other functions is fine, though!)\nThey should not alter the Global Environment. (Do not put library() statements inside functions!)\n\n\n\n\n\n\n\n\nCheck-in: Function Design\n\n\n\nQuestion 3: Identify the relevant issues for the following function:\n\ndoStuff &lt;- function(x) {\n  if (is.numeric(x)) {\n    y &lt;&lt;- x + 1  \n    return(y)    \n  } else if (is.character(x)) {\n    result &lt;&lt;- list(msg = paste(\"Hello\", x)) \n    return(result)\n  } else {\n    warning(\"Unsupported input type\")\n    return(NULL)\n  }\n}\n\n\nthe body of the function does not follow good style principles\nthe argument names are not descriptive\nthe function returns a different object type for different inputs\nfunction does not give errors when unexpected object types are input\nthe names of variables in the body of the function are not descriptive\nthe function doesn’t use\nthe function modifies the global environment\nthe function’s name does not describe what it does",
+    "crumbs": [
+      "Unit 2 - Iteration",
+      "Writing Functions in R"
+    ]
+  },
+  {
+    "objectID": "unit-2/writing-functions.html#recommended-video-object-of-type-closure-is-not-subsettable",
+    "href": "unit-2/writing-functions.html#recommended-video-object-of-type-closure-is-not-subsettable",
+    "title": "Writing Functions in R",
+    "section": "🎥 Recommended Video: Object of Type ‘closure’ is Not Subsettable",
+    "text": "🎥 Recommended Video: Object of Type ‘closure’ is Not Subsettable\n\n\n\n\n\n\n\n\nCheckin: Debugging\n\n\n\nQuestion 4: What does using the traceback approach to debugging NOT tell you?\n\nThe function call that triggered the error.\nThe sub-function where the error actually occurred.\nThe value of the argument or object that caused the error.\nThe text of the full error message.\n\nQuestion 5: Which of the following is NOT a disadvantage of using browser()?\n\nYou can’t insert it into existing functions.\nYou can’t view variables in the function environment when it is running.\nYou have to remember to take it out of your code when you are done with it.\nYou have to run your code line-by-line until you find the error.\n\nQuestion 6: What is the most fun pronunciation of debugonce()\n\n“Debug Once”\n“Debut Gonky”\n“Debugoncé” like “Beyoncé”",
+    "crumbs": [
+      "Unit 2 - Iteration",
+      "Writing Functions in R"
+    ]
+  },
+  {
+    "objectID": "unit-2/writing-functions.html#objects-of-type-closure",
+    "href": "unit-2/writing-functions.html#objects-of-type-closure",
+    "title": "Writing Functions in R",
+    "section": "Objects of Type Closure",
+    "text": "Objects of Type Closure\nIn R, functions are objects. That is, creating a function is not fundamentally different from creating a vector or a data frame.\nHere we store the vector 1, 2, 3 in the object named a:\n\na &lt;- 1:3\n\na\n\n[1] 1 2 3\n\n\nHere we store the procedure “add one plus one” in the object named a:\n\na &lt;- function(){\n  1 + 1\n}\n\na\n\nfunction(){\n  1 + 1\n}\n\n\nFor some strange reason, there is a specific term in R for “an object that is a function”—closure. Have you ever gotten this error?\n\na[1]\n\nError in a[1]: object of type 'closure' is not subsettable\n\n\nI bet you have! What happened here is that we tried to take a subset of the vector a. But a is a function, not a vector, so this doesn’t work! If you’ve encounter this error in the wild, it’s probably because you tried to reference a non-existent object. However, you used an object name that happens to also be an existing function.\n\n\n\n\n\n\nCheck-in: Object of Type “closure”\n\n\n\nQuestion 7: What is the most likely cause of the error message Error in x[1] : object of type 'closure' is not subsettable?\n\nTrying to access an element of a list using parentheses () instead of square brackets []\nAttempting to subset a numeric vector using the wrong index type\nTrying to extract an element from a function using square bracket notation\nPassing a missing argument to a function",
+    "crumbs": [
+      "Unit 2 - Iteration",
+      "Writing Functions in R"
+    ]
+  },
+  {
+    "objectID": "unit-2/writing-functions.html#lazy-evaluation",
+    "href": "unit-2/writing-functions.html#lazy-evaluation",
+    "title": "Writing Functions in R",
+    "section": "Lazy Evaluation",
+    "text": "Lazy Evaluation\nLike most people, R’s goal is to avoid doing any unnecessary work. When you “give” a value to an argument of a function, R does a quick check to make sure you haven’t done anything too crazy, like forgotten a parenthesis. Then it says, “Yep, looks like R code to me!” and moves on with its life. Only when that argument is actually used does R try to run the code.\nConsider the following obvious problem:\n\nmean('orange')\n\nWarning in mean.default(\"orange\"): argument is not numeric or logical:\nreturning NA\n\n\n[1] NA\n\n\nNow consider the following function:\n\nsilly_function &lt;- function(x) {\n  \n  cat(\"I am silly!\")\n  \n}\n\nWhat do you think will happen when we run:\n\nsilly_function(\n  x = mean(\"orange\")\n  )\n\nSeems like it should be an error, right? But wait! Try it out for yourself.\nThe function silly_function() doesn’t use the x argument. Thus, R was “lazy”, and never even bothered to try to run mean(\"orange\") - so we never get an error. 🙀\n\n\n\n\n\n\nCheck-in: Lazy Evaluation\n\n\n\nQuestion 8: In R, when exactly does the evaluation of a function argument occur?\n\nImmediately when the function is called\nOnly if and when the argument’s value is actually used within the function body\nWhen the function is compiled\nOnly after all other arguments have been evaluated",
+    "crumbs": [
+      "Unit 2 - Iteration",
+      "Writing Functions in R"
+    ]
+  },
+  {
+    "objectID": "unit-2/writing-functions.html#non-standard-evaluation-and-tunnelling",
+    "href": "unit-2/writing-functions.html#non-standard-evaluation-and-tunnelling",
+    "title": "Writing Functions in R",
+    "section": "Non-Standard Evaluation and Tunnelling",
+    "text": "Non-Standard Evaluation and Tunnelling\nSuppose you want to write a function that takes a dataset, a categorical variable, and a quantitative variable; and returns the means by group.\nYou might think to yourself, “Easy!” and write something like this:\n\nmeans_by_group &lt;- function(dataset, cat_var, quant_var) {\n  \n  dataset %&gt;%\n    group_by(cat_var) %&gt;%\n    summarize(means = mean(quant_var, \n                           na.rm = TRUE)\n              )\n}\n\nOkay, let’s run it!\n\nmeans_by_group(penguins, \n               cat_var = species, \n               quant_var = bill_length_mm)\n\nError in `group_by()`:\n! Must group by variables found in `.data`.\n✖ Column `cat_var` is not found.\n\n\nDagnabbit! The function tried to group the data by a variable named cat_var - but the dataset penguins doesn’t have any variables named cat_var!\nWhat happened here is that the function group_by() uses non-standard evaluation. This means it has a very special type of input called unquoted. Notice that we say group_by(species) not group_by(\"species\") - there are no quotation marks, because species is a variable name, not a string. In the means_by_group() function, R sees the unquoted variable cat_var, and tries to use it as an input in group_by(), not realizing that we actually meant to pass along the variable name species into the function.",
+    "crumbs": [
+      "Unit 2 - Iteration",
+      "Writing Functions in R"
+    ]
+  },
+  {
+<<<<<<< HEAD
     "objectID": "labs/lab-1.html#data-wrangling-review",
     "href": "labs/lab-1.html#data-wrangling-review",
     "title": "Lab 1 - Quarto Warmup & STAT 331 Review",
     "section": "Data Wrangling Review",
     "text": "Data Wrangling Review\nSince you already seen some ggplots, let’s do a bit of review on data handling. In this class, we will exclusively make use of tools from the tidyverse suite of packages to perform our data cleaning and wrangling operations. If you are less familiar with these packages or it’s been some time since you used them, I would strongly recommend referencing the function documentation!\nFor these problems, we will continue to work with the mpg data frame, making various changes to the data to clean it up.\n\nThe fl variable describes the type of fuel for each car, with levels: p, r, e, d, and c. Do some research into what each of these labels mean! Then, use the if_else() function to create a new variable (fuel_type) with two levels: petrol (any car using petrolium-based gas) and alternative energy (any car not using petrolium-based gas).\n\n\nThe drv variable describes if the car has front drive (f), rear drive (r), or four wheel drive (4). Let’s make better labels for these values! Specifically, use the case_when() function to change the drv variable to have the following levels: front, rear, four wheel.\n\n\nThe trans variable contains two pieces of information, (1) the transmission style (auto or manual) and the specific type of transmission (e.g., l5, m5). Using the separate_wider_delim() function, create two new variables from trans, (1) trans_type containing the specific type of transmission of each car (e.g., l5), and (2) trans_style the style of the transmission (e.g., auto). Hint: You will need to deal with the stray parenthesis!",
+=======
+    "objectID": "unit-2/writing-functions.html#recommended-reading-r-for-data-science-data-frame-functions",
+    "href": "unit-2/writing-functions.html#recommended-reading-r-for-data-science-data-frame-functions",
+    "title": "Writing Functions in R",
+    "section": "📖 Recommended Reading: R for Data Science: Data Frame Functions",
+    "text": "📖 Recommended Reading: R for Data Science: Data Frame Functions\nTo solve this conundrum, we use a trick called tunneling to “force” the unquoted name Species through to the function group_by(). It looks like this:\n\nmeans_by_group &lt;- function(dataset, cat_var, quant_var) {\n  \n  dataset %&gt;%\n    group_by({{cat_var}}) %&gt;%\n    summarize(\n      means = mean({{quant_var}})\n              )\n  \n  \n}\n\n\n\n\n\n\n\nNote\n\n\n\nNote: The tunnel, or “curly-curly” operator, {{ }}, is from the tidyverse package rlang.\n\n\nNow everything works!\n\nmeans_by_group(penguins, \n               cat_var = species, \n               quant_var = bill_length_mm\n               )\n\n# A tibble: 3 × 2\n  species   means\n  &lt;fct&gt;     &lt;dbl&gt;\n1 Adelie     NA  \n2 Chinstrap  48.8\n3 Gentoo     NA  \n\n\nOkay, now let’s group by both species and sex:\n\nmeans_by_group(penguins, \n               cat_var = c(species, sex), \n               quant_var = bill_length_mm)\n\nError in `group_by()`:\nℹ In argument: `c(species, sex)`.\nCaused by error:\n! `c(species, sex)` must be size 344 or 1, not 688.\n\n\nOh no! What now?! When c(species, sex) is put inside {{ c(species, sex) }} within the function, R is actually running the code inside {{ }}. This combines the columns for those two variables into one long vector. What we really meant by c(species, sex) is “group by both cut and color.”\nTo fix this, we need the pick() function to get R to see {{ group_var }} as a list of separate variables (like the way select() works).\n\nmeans_by_group &lt;- function(df, cat_var, quant_var) {\n    df %&gt;%\n        group_by(pick({{ cat_var }})) %&gt;%\n        summarize(mean = mean({{ quant_var }})\n                  )\n}\n\nNow it’s back to working!\n\nmeans_by_group(penguins, \n               cat_var = c(species, sex), \n               quant_var = bill_length_mm\n               )\n\n# A tibble: 8 × 3\n# Groups:   species [3]\n  species   sex     mean\n  &lt;fct&gt;     &lt;fct&gt;  &lt;dbl&gt;\n1 Adelie    female  37.3\n2 Adelie    male    40.4\n3 Adelie    &lt;NA&gt;    NA  \n4 Chinstrap female  46.6\n5 Chinstrap male    51.1\n6 Gentoo    female  45.6\n7 Gentoo    male    49.5\n8 Gentoo    &lt;NA&gt;    NA  \n\n\n\n\n\n\n\n\nCheck-in: Tidy Eval Functions\n\n\n\nQuestion 9: Create a new version of dplyr::count() that also shows proportions instead of just sample sizes. The function should be able to handle counting by multiple variables.",
+>>>>>>> ff1bf87b393f03d56b998b31117d6fe6e4dc0072
     "crumbs": [
-      "Infrastructure",
-      "Lab 1 - Quarto Warmup & STAT 331 Review"
+      "Unit 2 - Iteration",
+      "Writing Functions in R"
     ]
   },
   {
-    "objectID": "labs/lab-1.html#getting-to-know-your-classmates",
-    "href": "labs/lab-1.html#getting-to-know-your-classmates",
-    "title": "Lab 1 - Quarto Warmup & STAT 331 Review",
-    "section": "Getting to know your classmates",
-    "text": "Getting to know your classmates\n\nFind someone who took Stat 331 from a different professor than you. Compare your experiences. Tell me their name and professor. List one or two things that you think you learned more about, and one or two things that they learned more about.\nFind someone in the class who does not share your birth month. Tell me their name and birthday, and use R to find out how many days apart your birthdays are.",
-    "crumbs": [
-      "Infrastructure",
-      "Lab 1 - Quarto Warmup & STAT 331 Review"
-    ]
-  },
-  {
-    "objectID": "labs/lab-2.html",
-    "href": "labs/lab-2.html",
-    "title": "Lab 2",
-    "section": "",
-    "text": "Create a Quarto file for ALL Lab 2 (no separate files for Parts 1 and 2).\n\nMake sure your final file is carefully formatted, so that each analysis is clear and concise.\nBe sure your knitted .html file shows all your source code, including any function definitions.",
-    "crumbs": [
-      "Unit 1 - Communication",
-      "Lab 2"
-    ]
-  },
-  {
-    "objectID": "labs/lab-2.html#dissecting-a-bad-visualization",
-    "href": "labs/lab-2.html#dissecting-a-bad-visualization",
-    "title": "Lab 2",
-    "section": "Dissecting a Bad Visualization",
-    "text": "Dissecting a Bad Visualization\nBelow is an example of a less-than-ideal visualization from the collection linked above. It comes to us from data provided for the Wellcome Global Monitor 2018 report by the Gallup World Poll:\n\n\nWhile there are certainly issues with this image, do your best to tell the story of this graph in words. That is, what is this graph telling you? What do you think the authors meant to convey with it?\nList the variables that appear to be displayed in this visualization. Hint: Variables refer to columns in the data.\nNow that you’re versed in the grammar of graphics (e.g., ggplot), list the aesthetics used and which variables are mapped to each.\nWhat type of graph would you call this? Meaning, what geom would you use to produce this plot?\nProvide at least four problems or changes that would improve this graph. Please format your changes as bullet points!",
-    "crumbs": [
-      "Unit 1 - Communication",
-      "Lab 2"
-    ]
-  },
-  {
-    "objectID": "labs/lab-2.html#improving-the-bad-visualization",
-    "href": "labs/lab-2.html#improving-the-bad-visualization",
-    "title": "Lab 2",
-    "section": "Improving the Bad Visualization",
-    "text": "Improving the Bad Visualization\nThe data for the Wellcome Global Monitor 2018 report can be downloaded at the following site: https://wellcome.ac.uk/reports/wellcome-global-monitor/2018\n\nThere are two worksheets in the downloaded dataset file. You may need to read them in separately, but you may also just use one if it suffices.\n\nImprove the visualization above by either re-creating it with the issues you identified fixed OR by creating a new visualization that you believe tells the same story better.",
-    "crumbs": [
-      "Unit 1 - Communication",
-      "Lab 2"
-    ]
-  },
-  {
-    "objectID": "labs/lab-2.html#second-data-visualization-improvement",
-    "href": "labs/lab-2.html#second-data-visualization-improvement",
-    "title": "Lab 2",
-    "section": "Second Data Visualization Improvement",
-    "text": "Second Data Visualization Improvement\nFor this second plot, you must select a plot that uses maps so you can demonstrate your proficiency with the leaflet package!\n\nSelect a data visualization in the report that you think could be improved. Be sure to cite both the page number and figure title. Do your best to tell the story of this graph in words. That is, what is this graph telling you? What do you think the authors meant to convey with it?\nList the variables that appear to be displayed in this visualization.\nNow that you’re versed in the grammar of graphics (ggplot), list the aesthetics used and which variables are specified for each.\nWhat type of graph would you call this?\nList all of the problems or things you would improve about this graph.\nImprove the visualization above by either re-creating it with the issues you identified fixed OR by creating a new visualization that you believe tells the same story better.",
-    "crumbs": [
-      "Unit 1 - Communication",
-      "Lab 2"
-    ]
-  },
-  {
-    "objectID": "labs/lab-2.html#third-data-visualization-improvement",
-    "href": "labs/lab-2.html#third-data-visualization-improvement",
-    "title": "Lab 2",
-    "section": "Third Data Visualization Improvement",
-    "text": "Third Data Visualization Improvement\nFor this third plot, you must use one of the other ggplot2 extension packages mentioned this week (e.g., gganimate, plotly, patchwork, cowplot).\n\nSelect a data visualization in the report that you think could be improved. Be sure to cite both the page number and figure title. Do your best to tell the story of this graph in words. That is, what is this graph telling you? What do you think the authors meant to convey with it?\nList the variables that appear to be displayed in this visualization.\nNow that you’re versed in the grammar of graphics (ggplot), list the aesthetics used and which variables are specified for each.\nWhat type of graph would you call this?\nList all of the problems or things you would improve about this graph.\nImprove the visualization above by either re-creating it with the issues you identified fixed OR by creating a new visualization that you believe tells the same story better.",
-    "crumbs": [
-      "Unit 1 - Communication",
-      "Lab 2"
-    ]
-  },
-  {
-    "objectID": "unit-1/ggplot-leaflet.html",
-    "href": "unit-1/ggplot-leaflet.html",
-    "title": "Creating Maps with the leaflet Package",
-    "section": "",
-    "text": "Maps are fantastic and complicated all at the same time! Maps are some of the richest visualizations around because they come with data built into them. That is, on top of whatever data you’re going to plot you are also probably going to view terrain, roads, state/country borders, city names or a host of other information that come with our geography.\nThis implicit richness only adds to challenge of creating a good map. Observe the following recent tweet for a silly example of how maps can be…difficult.\nThere is no shortage of map data visualizations on the web, but all too often this is what we end up with:\n\n\n\n\n\n\n\n\n\n\n\nCaution\n\n\n\nBe sure to watch all 6 videos in this series.\n\n\n\n\n\n\n\n\nCheck-in: leaflet\n\n\n\n1. Is running just the leaflet() function enough to produce a map?\n\nYes\nNo\n\n2. To plot data points on a leaflet map, we should probably use which function?\n\naddTiles()\naddMarkers()\naddProviderTiles()\naddPolygons()\n\n\n\n\n\n\nThe leaflet package is actually extremely rich and can basically enable (interactive) map visualizations as complex as you can imagine. Take some time to peruse the site for the leaflet R package:\nhttps://rstudio.github.io/leaflet/\n\n\n\n\n\n\nCheck-in: leaflet\n\n\n\n3. What do the names of your plotted data columns have to be?\n\nx; y\nleafletx; `leaflety\nlat / latitude; lon/ longitude\nAnything as long as you tell the addMarkers() function correctly\n\n4. If you were to think of latitude and longitude as coordinates in the cartesian coordinate system, then…\n\nlatitude is on the horizontal axis and longitude is on the vertical\nlatitude is on the vertical axis and longitude is on the horizontal\n\n\n\n\n\n\n\nhelmet_icon &lt;- makeIcon(\n  iconUrl = \"http://www.clker.com/cliparts/l/R/b/J/X/D/astronaut-helmet-md.png\",\n  iconWidth = 15, \n  iconHeight = 15\n  )\n\nleaflet() %&gt;%\n  addTiles() %&gt;%\n  addMarkers(lng = jitter(space$Longitude, \n                          factor = 2), \n             lat = jitter(space$Latitude,\n                          factor = 2), \n             icon = helmet_icon, \n             popup = paste(space$Name, \"&lt;br&gt;\", \n                           \"Birth Place: \", space$`Birth Place`),\n             label = paste(space$Name)\n             )\n\n\n\n\n\n\n\n\n\n\n\nCheck-in: leaflet\n\n\n\nThe above map plots data on NASA astronauts!\n5. The graphic for each marker is a little astronaut helmet. How cute! This image was used via…\n\na URL pointing to it on the web.\na downloaded image file.\n\n6. The popup argument specifies what you see when you ______, while the label argument specifies what you see when you ______.\n\nhover; click\nzoom-in; zoom-out\nclick; hover\nsquint your eyes; look normally",
-    "crumbs": [
-      "Unit 1 - Communication",
-      "Creating Maps with the `leaflet` Package"
-    ]
-  },
-  {
-    "objectID": "unit-1/ggplot-leaflet.html#required-video-introductory-series-to-leaflet-in-r-6-videos",
-    "href": "unit-1/ggplot-leaflet.html#required-video-introductory-series-to-leaflet-in-r-6-videos",
-    "title": "Creating Maps with the leaflet Package",
-    "section": "",
-    "text": "Caution\n\n\n\nBe sure to watch all 6 videos in this series.\n\n\n\n\n\n\n\n\nCheck-in: leaflet\n\n\n\n1. Is running just the leaflet() function enough to produce a map?\n\nYes\nNo\n\n2. To plot data points on a leaflet map, we should probably use which function?\n\naddTiles()\naddMarkers()\naddProviderTiles()\naddPolygons()",
-    "crumbs": [
-      "Unit 1 - Communication",
-      "Creating Maps with the `leaflet` Package"
-    ]
-  },
-  {
-    "objectID": "unit-1/ggplot-leaflet.html#more-on-the-leaflet-package",
-    "href": "unit-1/ggplot-leaflet.html#more-on-the-leaflet-package",
-    "title": "Creating Maps with the leaflet Package",
-    "section": "",
-    "text": "The leaflet package is actually extremely rich and can basically enable (interactive) map visualizations as complex as you can imagine. Take some time to peruse the site for the leaflet R package:\nhttps://rstudio.github.io/leaflet/\n\n\n\n\n\n\nCheck-in: leaflet\n\n\n\n3. What do the names of your plotted data columns have to be?\n\nx; y\nleafletx; `leaflety\nlat / latitude; lon/ longitude\nAnything as long as you tell the addMarkers() function correctly\n\n4. If you were to think of latitude and longitude as coordinates in the cartesian coordinate system, then…\n\nlatitude is on the horizontal axis and longitude is on the vertical\nlatitude is on the vertical axis and longitude is on the horizontal",
-    "crumbs": [
-      "Unit 1 - Communication",
-      "Creating Maps with the `leaflet` Package"
-    ]
-  },
-  {
-    "objectID": "unit-1/ggplot-leaflet.html#practice-with-leaflet",
-    "href": "unit-1/ggplot-leaflet.html#practice-with-leaflet",
-    "title": "Creating Maps with the leaflet Package",
-    "section": "",
-    "text": "helmet_icon &lt;- makeIcon(\n  iconUrl = \"http://www.clker.com/cliparts/l/R/b/J/X/D/astronaut-helmet-md.png\",\n  iconWidth = 15, \n  iconHeight = 15\n  )\n\nleaflet() %&gt;%\n  addTiles() %&gt;%\n  addMarkers(lng = jitter(space$Longitude, \n                          factor = 2), \n             lat = jitter(space$Latitude,\n                          factor = 2), \n             icon = helmet_icon, \n             popup = paste(space$Name, \"&lt;br&gt;\", \n                           \"Birth Place: \", space$`Birth Place`),\n             label = paste(space$Name)\n             )\n\n\n\n\n\n\n\n\n\n\n\nCheck-in: leaflet\n\n\n\nThe above map plots data on NASA astronauts!\n5. The graphic for each marker is a little astronaut helmet. How cute! This image was used via…\n\na URL pointing to it on the web.\na downloaded image file.\n\n6. The popup argument specifies what you see when you ______, while the label argument specifies what you see when you ______.\n\nhover; click\nzoom-in; zoom-out\nclick; hover\nsquint your eyes; look normally",
-    "crumbs": [
-      "Unit 1 - Communication",
-      "Creating Maps with the `leaflet` Package"
-    ]
-  },
-  {
-    "objectID": "unit-1/quarto-dashboard-static.html",
-    "href": "unit-1/quarto-dashboard-static.html",
-    "title": "Quarto Dashboards, Part 1",
-    "section": "",
-    "text": "This week, we’re taking the visualization skills we learned last week and using them to create an informational dashboard. Quarto dashboards were integrated into version 1.4, so you can use a familiar tool to create these dashboards. In part 1, we will focus on creating “static” dashboards—where the user does not interact with the content.",
-    "crumbs": [
-      "Unit 1 - Communication",
-      "Quarto Dashboards, Part 1"
-    ]
-  },
-  {
-    "objectID": "unit-1/quarto-dashboard-static.html#required-video-hello-quarto-dashboards",
-    "href": "unit-1/quarto-dashboard-static.html#required-video-hello-quarto-dashboards",
-    "title": "Quarto Dashboards, Part 1",
-    "section": "🎥 Required Video: Hello Quarto Dashboards",
-    "text": "🎥 Required Video: Hello Quarto Dashboards",
-    "crumbs": [
-      "Unit 1 - Communication",
-      "Quarto Dashboards, Part 1"
-    ]
-  },
-  {
-    "objectID": "unit-1/quarto-dashboard-static.html#video-resources",
-    "href": "unit-1/quarto-dashboard-static.html#video-resources",
-    "title": "Quarto Dashboards, Part 1",
-    "section": "Video Resources",
-    "text": "Video Resources\n\nSlides for this Video: https://mine.quarto.pub/quarto-dashboards/\nStarter Documents: https://github.com/mine-cetinkaya-rundel/olympicdash",
-    "crumbs": [
-      "Unit 1 - Communication",
-      "Quarto Dashboards, Part 1"
-    ]
-  },
-  {
-    "objectID": "unit-1/quarto-dashboard-static.html#optional-resources",
-    "href": "unit-1/quarto-dashboard-static.html#optional-resources",
-    "title": "Quarto Dashboards, Part 1",
-    "section": "Optional Resources",
-    "text": "Optional Resources\n\nQuarto Dashboard Gallery\nQuarto Dashboard Tutorial\nQuarto Dashboard Reference\n\n\n\n\n\n\n\nCheck-in: Hello Quarto Dashboard\n\n\n\nFor this first section, you are expected to complete the coding activity associated with Dr. Mine Çetinkaya-Rundel’s video. Specifically, you will need to:\n\nCopy the template repository into your own repository.\nCreate a new folder inside your STAT 541 folder.\nCreate a new RStudio project that links to your copy of the template repo.\nFollow along and edit the olympicdash-r-1.qmd document.\nSubmit the HTML of your revised dashboard (olympicdash-r-1.html) to Canvas.",
-    "crumbs": [
-      "Unit 1 - Communication",
-      "Quarto Dashboards, Part 1"
-    ]
-  },
-  {
-    "objectID": "unit-1.html",
-    "href": "unit-1.html",
-    "title": "Unit 1",
-    "section": "",
-    "text": "In this first unit, we will explore various tools for communicating statistical ideas. We will start with data visualizations, expanding your repertoire of tools for visualizing data. From there, we will move to dashboards—both static and dynamic. Finally, we will play with methods for including executable R code inside these documents.\nThroughout these sections, you will encounter “check-ins” assessing your knowledge on a particular topic. These check-ins are delineated by a red (important) callout box and are associated with the Canvas quizzes assigned each week.\n\n\n\n\n\n\nExample Check-in Callout\n\n\n\nThis is where you will find the body of the question. The callout name refers to the name of the Canvas quiz the question is associated with.",
-    "crumbs": [
-      "Unit 1 - Communication",
-      "Unit 1"
-    ]
-  },
-  {
-    "objectID": "portfolio/portfolio-rubric.html",
-    "href": "portfolio/portfolio-rubric.html",
-    "title": "Final Portfolio Evaluation Rubric",
-    "section": "",
-    "text": "You will use the following labels to score each of the learning objectives in this course. Think of these as levels of achievement, like in a video game.",
-    "crumbs": [
-      "Portfolio",
-      "Final Portfolio Evaluation Rubric"
-    ]
-  },
-  {
-    "objectID": "portfolio/portfolio-rubric.html#grade-calculation",
-    "href": "portfolio/portfolio-rubric.html#grade-calculation",
-    "title": "Final Portfolio Evaluation Rubric",
-    "section": "Grade Calculation",
-    "text": "Grade Calculation\nThese are benchmarks to give you an idea of what achievements might correspond to what grade. It is not an exact mathematical conversion; your actual Portfolio Grade will be decided during our discussion meeting.\n\n\n\n\nNovice\nProficient\nVirtuoso\n\n\nA\n20%\n20%\n60%\n\n\nB\n40%\n40%\n20%\n\n\nC\n60%\n25%\n5%\n\n\nD\n90%\n10%\n0%",
-    "crumbs": [
-      "Portfolio",
-      "Final Portfolio Evaluation Rubric"
-    ]
-  },
-  {
-    "objectID": "portfolio/portfolio-rubric.html#missing-portfolios",
-    "href": "portfolio/portfolio-rubric.html#missing-portfolios",
-    "title": "Final Portfolio Evaluation Rubric",
-    "section": "Missing Portfolios",
-    "text": "Missing Portfolios\nIf you do not submit a Final Portfolio, your grade will be determined based on your Midterm Portfolio. If, however, you also did not submit a Midterm Portfolio, the best grade you can earn in the course is a C-.",
-    "crumbs": [
-      "Portfolio",
-      "Final Portfolio Evaluation Rubric"
-    ]
-  },
-  {
-    "objectID": "portfolio.html",
-    "href": "portfolio.html",
-    "title": "Portfolio",
-    "section": "",
-    "text": "A portfolio is a collection of work that gives information about the person doing the work. Artists and architects, for example, have portfolios that show the range and scope of what they do, and by looking through their portfolios, you get a sense of who this person is, how they have grown as a professional, what they have produced, and what they are capable of producing.\nThat’s the spirit intended for the STAT 331 Portfolio. In your portfolio, you will give a curated collection of your best work along with reflections that tell the story of your growth from the first day of classes all the way to the end. Your goal is to argue, convincingly and with concrete evidence, that you have met the criteria for both content proficiency, evidence of continued learning, and growth as a team member that goes with a particular grade. I will read your portfolio carefully, and if you make a convincing case for a grade, that’s the grade you’ll receive.",
-    "crumbs": [
-      "Portfolio"
-    ]
-  },
-  {
-    "objectID": "portfolio.html#key-information",
-    "href": "portfolio.html#key-information",
-    "title": "Portfolio",
-    "section": "Key Information",
-    "text": "Key Information\nFormat: Your portfolio will have two components:\n\nA personal website with blog posts containing your projects from STAT 541\nA final grade reflection, justifying your achievement for the course’s learning objectives\n\nThe blog posts from your website is what you will reference when justifying your achievement for a given learning objective.\n\nDue date: The portfolio is due the Saturday before finals week. No deadline extensions are available for the Final Portfolio.",
-    "crumbs": [
-      "Portfolio"
-    ]
-  },
-  {
-    "objectID": "portfolio.html#final-grade-reflection",
-    "href": "portfolio.html#final-grade-reflection",
-    "title": "Portfolio",
-    "section": "Final Grade Reflection",
-    "text": "Final Grade Reflection\nThis component is a self-evaluation of your performance in the class. Your goal is to state clearly what grade you think you have earned in the course, and convincingly argue that you have met the criteria for that grade. Please be thoughtful, honest, and reflective, but also brief and focused.\nThis reflection will be done in the reflection_template.qmd file. The structure of the document is as follows:\n\nFor each of the learning targets, carefully select examples of your code that demonstrate concretely and directly your proficiency with the given target.\n\n\nYou must indicate where the code you provided came from, linking to the blog post from your personal website.\n\n\nWhat grade did you earn? State it clearly in one sentence. You can include plus/minus modifiers; see below about those.\nHow did you meet that grade’s requirements? The requirements for grades are found in the Portfolio Rubric. Review the criteria carefully. Then, explain how you have satisfied the criteria for the grade you are saying you’ve earned. Be specific and thorough. List each criterion you have met and how you know you’ve met it. Refer to specific artifacts or examples in the Portfolio that support your case. Again, keep it brief and focused on concrete evidence that the criteria have been met.\nWhat else? There may be some other criteria that figures into your grade request that isn’t explicitly listed in the syllabus. If so, state the criteria you’re thinking of, explain why they are useful criteria for your grade determination, and then explain how well you met those criteria (and provide evidence in the artifacts, if applicable). As with the syllabus criteria, be focused, specific, and thorough — and refer to specific artifacts that provide evidence.\n\nPlus/minus grades: You may argue to add a “+” or “-” modifier to your grade. Generally speaking a “+” added to a letter grade means you’ve met all the criteria for the letter grade along with a significant amount, but not all, of the criteria for the next letter grade up. And a “-” means that you have met the requirements for a letter grade but only in a way that you believe is a bare minimum, or you’ve met almost all the requirements for the letter grade except for a small number of minor criteria.",
-    "crumbs": [
-      "Portfolio"
-    ]
-  },
-  {
-    "objectID": "portfolio.html#about-time-and-effort",
-    "href": "portfolio.html#about-time-and-effort",
-    "title": "Portfolio",
-    "section": "About Time and Effort",
-    "text": "About Time and Effort\nAs your instructor, I understand and respect that you have spent a great deal of time and effort on this course and will probably continue to do so until the end of the quarter. It’s possible that STAT 331 has been the most challenging course on your schedule this quarter, perhaps in your entire college career so far. I want you to know that I see you, I respect your efforts, and it’s extremely fulfilling to see you respond to the challenges and grow.\nI also want to be clear that while the time and effort spent on the class are vitally important, they are not explicitly part of the grade criteria you find in the syllabus. So, when you make the case for your grade in the portfolio, I respectfully ask that you keep your argument focused on concrete evidence of understanding of the learning targets and engagement with the class.\nWhen making the case for your grade, the focus needs to be on the results of your investment of time and effort. Did your efforts result in several exemplary solutions through the quarter? If so, put a subset of them in the Portfolio. Did the time you spend on coursework result in being an engaged collaborator during Practice Activities? If so, document how your efforts made you a valuable group member.",
-    "crumbs": [
-      "Portfolio"
-    ]
-  },
-  {
-    "objectID": "portfolio.html#questions-you-might-have",
-    "href": "portfolio.html#questions-you-might-have",
-    "title": "Portfolio",
-    "section": "Questions You Might Have",
-    "text": "Questions You Might Have\n\nQ: What if you disagree with our final grade reflection?\n\nA: There are two ways this might happen.\n\nYou ask for a grade that is higher than the evidence supports. That is, you grade yourself too highly, for example you believe you earned an A in the course, but I do not feel the evidence you’ve provided supports this grade. If this occurs in your Midterm Portfolio, I will discuss this with you in your 5-minute Midterm Portfolio meeting.I’ll tell you what grade I would have given you based on the evidence you provided in the portfolio. You can then use this feedback when constructing your final portfolio. If I believe the grade you’ve proposed in your Final Portfolio does not reflect the evidence you’ve provided, I will discuss this with you in your 5-minute Final Portfolio meeting. I’ll tell you what grade I would have given you based on the evidence you provided in the portfolio, and then give you the chance to provide additional evidence and explanations for your grade request. In our meeting, if you still think your grade request is correct, you’ll have the chance to walk me through your materials and reasoning. Afterwards, I might agree with you. But if we still disagree, we will try to come to an agreement on the highest grade that the evidence supports. I have faith that we’ll be able to come to a mutually-agreeable result. But, if we can’t, I will assign the grade that in my estimation is the highest grade supported by the evidence, and my determination will be final. However, again, I will exhaust all other options before simply overriding your grade determination.\nYou ask for a grade that was lower than your actual performance indicates. That is, you “lowball” yourself, for example you say you earned a B when in fact I think you earned an A-. In this case, I will award you the grade I think you earned, and then just inform you that I’ve done so (and why).\n\nIn my experience, the second situation happens significantly more frequently than the first.\n\n\n\nQ: Is there a limit on the number of artifacts I can include to support my grade?\n\nA: There is no strict limit, but please be selective.\nQuality, not quantity is what we are after. We do not want every assignment in our portfolio! Typically you should be able to give a complete portfolio in fewer than 8 assignments with judicious selection of homework solutions and other work. A handful of homework solutions that clearly indicate your attainment of the grade criteria is just as good as, if not better than, a massive binder of mediocre examples.\n\n\n\nQ: How specific or detailed do I need to be on some of the criteria? For example, do I need to list all the dates when I answered someone’s question on Discord?\n\nA: This isn’t filing your taxes, so a precise down-to-the-minute accounting of your work isn’t necessary.\nDetails and your reasoning are more important than precision and completeness here. For example if you made a handful of supportive comments in Discord, pick a few and tell me about them. What was the question about? What did you say? Why was that comment an example of “helpful feedback”? (Do you know that it was helpful?) Remember the purpose is to make a convincing case that you’ve earned a particular grade.\n\n\n\nQ: Would someone actually make a case that they earned a “D” in the class?\n\nA: Yes, if the person is honest and there’s not enough evidence to make the case for a “C”.\nIf you’re in that situation, be honest and don’t overreach just because the consequences are significant.\n\n\n\nQ: How long should the essays be?\n\nA: You should put serious effort into each of the essays and give thorough, detailed, and thoughtful responses — without going overboard and writing more than you need.\nThere is no hard word or character count here, but if you are writing less than half a page using ordinary font and line spacing, then you probably need to spend more time carefully reflecting on the question; if you are writing more than two pages for a single essay, you might consider editing it down for clarity. As always, put yourself in the shoes of your readers and then use your judgment as a writer.\n\n\n\nQ: What if you do not submit a Final Portfolio?\n\nA: If you do not complete a Final Portfolio submission, your grade will be at my discretion.\nI will use your Midterm Portfolio as well as completion of assignments from Week 7 - 10 to guide my decision.\nI’ll add more questions and answers in this space as they come up.",
-    "crumbs": [
-      "Portfolio"
-    ]
-  },
-  {
-    "objectID": "infrastructure.html",
-    "href": "infrastructure.html",
-    "title": "Computational Infrastructure",
-    "section": "",
-    "text": "Welcome to STAT 541! We’re excited to have you! This page is dedicated to getting you set-up with the infrastructure will will make use of throughout the course.",
-    "crumbs": [
-      "Infrastructure",
-      "Computational Infrastructure"
-    ]
-  },
-  {
-    "objectID": "course-materials/syllabus.html",
-    "href": "course-materials/syllabus.html",
-    "title": "STAT 541: Advanced Statistical Computing",
-    "section": "",
-    "text": "Of course, if your question is truly private, such as a grade inquiry or a personal concern, you may send me a private email. To help both you and me, here are some specific expectations about emails:"
-  },
-  {
-    "objectID": "course-materials/syllabus.html#course-objectives",
-    "href": "course-materials/syllabus.html#course-objectives",
-    "title": "STAT 541: Advanced Statistical Computing",
-    "section": "1.1 Course Objectives",
-    "text": "1.1 Course Objectives\nAfter taking this course, you will be able to:\nCreate\n\ncomplex and reproducible data reports, that include interactive and / or dynamic elements.\ncompelling data visualizations with interactive elements.\n\nUse iteration to\n\nobtain data through APIs and webscraping.\ncreate generative art."
-  },
-  {
-    "objectID": "course-materials/syllabus.html#prerequisites",
-    "href": "course-materials/syllabus.html#prerequisites",
-    "title": "STAT 541: Advanced Statistical Computing",
-    "section": "1.2 Prerequisites",
-    "text": "1.2 Prerequisites\nI expect you to enter this class with:\n\nComfort in intermediate level R skills.\nStatistical knowledge at the Year 2 level; i.e., comfort with the concepts and basic math of multiple linear regression.\nFamiliarity with computers and technology (e.g., Internet browsing, word processing, opening/saving files, converting files to PDF format, sending and receiving e-mail, etc.).\nA positive attitude, a curious mind, and a respect for ethical use of data science tools."
-  },
-  {
-    "objectID": "course-materials/syllabus.html#practice-activities-and-check-ins-due-tuesdays-by-midnight",
-    "href": "course-materials/syllabus.html#practice-activities-and-check-ins-due-tuesdays-by-midnight",
-    "title": "STAT 541: Advanced Statistical Computing",
-    "section": "2.1 Practice Activities and Check-ins (Due Tuesdays by midnight)",
-    "text": "2.1 Practice Activities and Check-ins (Due Tuesdays by midnight)\nThese small “quizzes” or activities are posted each week, to give you a way to check your milestones on the main topics of the week.\nYou get full credit for any reasonable effort on these; I will not be grading them carefully or giving feedback.\nCheck-ins are designed so that they can be done on your own, using the Coursework guides, in advance of class. Practice activities are meant to be done in class during or after lecture."
-  },
-  {
-    "objectID": "course-materials/syllabus.html#lab-assignments-due-mondays-by-5pm",
-    "href": "course-materials/syllabus.html#lab-assignments-due-mondays-by-5pm",
-    "title": "STAT 541: Advanced Statistical Computing",
-    "section": "2.2 Lab Assignments (Due Mondays by 5pm)",
-    "text": "2.2 Lab Assignments (Due Mondays by 5pm)\nEach week, you will have a “lab” assignment, bringing together the week’s skills.\nThese assignments are considered to be due every Monday by 5pm, so you have time to ask questions during student hours on Monday.\n\nSuccess / Growing Grading\nI expect that you will approach each lab assignment seriously, investing the necessary time and energy to prepare your responses. Different from what you may have experienced, lab assignments are graded for “proficiency” of specific learning targets, which describe what you should be able to do after taking this course. You’ll receive a score for each problem on an assignment according to the Success / Growing rubric below, as well as feedback to help you improve.\n\n\n\n\n\n\n\nScore\nJustification\n\n\n\n\nSuccess\nThe solution to the problem is correct, legible, and easy to follow, with all reasoning provided. Any error does not bring into question your understanding of the topic.\n\n\nGrowing\nThe solution shows growth toward mastering the topic; however, elements of the solution bring into question your understanding of the topic, and thus further attention is needed."
-  },
-  {
-    "objectID": "course-materials/syllabus.html#final-portfolio-due-sunday-june-7",
-    "href": "course-materials/syllabus.html#final-portfolio-due-sunday-june-7",
-    "title": "STAT 541: Advanced Statistical Computing",
-    "section": "2.3 Final Portfolio (Due Sunday, June 7)",
-    "text": "2.3 Final Portfolio (Due Sunday, June 7)\nIn lieu of exams, you will assemble a portfolio demonstrating your level of proficiency in each of the learning goals for this course. Examples of your code can only be taken from the lab assignments or the projects; i.e., not from check-ins or practice activities. On Canvas you can find a detailed description of the major and minor learning goals, how you can demonstrate your proficiency, and what is required for particular course grades.\nNote that the portfolio is not simply a list of links to your code; it also requires a brief discussion of how that code demonstrates the skill. There are also general reflection and summary questions involved. That is to say, although you will not necessarily need to write code, the portfolio will take a good amount of time and effort to assemble; plan accordingly.\n\n\n\n\n\n\nIncremental Progress\n\n\n\nYou can do your future self a big favor by working on your portfolio progressively throughout the quarter, instead of leaving it all for Finals Week. My suggestion is that each week, you add everything you can to your portfolio that you demonstrated in that week."
-  },
-  {
-    "objectID": "course-materials/syllabus.html#what-if-i-have-accommodations-or-feel-that-accommodations-would-be-beneficial-to-my-learning",
-    "href": "course-materials/syllabus.html#what-if-i-have-accommodations-or-feel-that-accommodations-would-be-beneficial-to-my-learning",
-    "title": "STAT 541: Advanced Statistical Computing",
-    "section": "5.1 What if I have accommodations or feel that accommodations would be beneficial to my learning?",
-    "text": "5.1 What if I have accommodations or feel that accommodations would be beneficial to my learning?\nI enthusiastically support the mission of Disability Resource Center to make education accessible to all. I design all my courses with accessibility at the forefront of my thinking, but if you have any suggestions for ways I can make things more accessible, please let me know. Come talk to me if you need accommodation for your disabilities. I honor self-diagnosis: let’s talk to each other about how we can make the course as accessible as possible. See also the standard syllabus statements, which include more information about formal processes."
-  },
-  {
-    "objectID": "course-materials/syllabus.html#im-having-difficulty-paying-for-food-and-rent-what-can-i-do",
-    "href": "course-materials/syllabus.html#im-having-difficulty-paying-for-food-and-rent-what-can-i-do",
-    "title": "STAT 541: Advanced Statistical Computing",
-    "section": "5.2 I’m having difficulty paying for food and rent, what can I do?",
-    "text": "5.2 I’m having difficulty paying for food and rent, what can I do?\nIf you have difficulty affording groceries or accessing sufficient food to eat every day, or if you lack a safe and stable place to live, and you believe this may affect your performance in the course, I urge you to contact the Dean of Students for support. Furthermore, please notify me if you are comfortable in doing so. This will enable me to advocate for you and to connect you with other campus resources."
-  },
-  {
-    "objectID": "course-materials/syllabus.html#my-mental-health-is-impairing-my-ability-to-engage-in-my-classes-what-should-i-do",
-    "href": "course-materials/syllabus.html#my-mental-health-is-impairing-my-ability-to-engage-in-my-classes-what-should-i-do",
-    "title": "STAT 541: Advanced Statistical Computing",
-    "section": "5.3 My mental health is impairing my ability to engage in my classes, what should I do?",
-    "text": "5.3 My mental health is impairing my ability to engage in my classes, what should I do?\nNational surveys of college students have consistently found that stress, sleep problems, anxiety, depression, interpersonal concerns, death of a significant other and alcohol use are among the top ten health impediments to academic performance. If you are experiencing any mental health issues, I and Cal Poly are here to help you. Cal Poly’s Counseling Services (805-756-2511) is a free and confidential resource for assistance, support and advocacy."
-  },
-  {
-    "objectID": "course-materials/syllabus.html#someone-is-threatening-me-what-can-i-do",
-    "href": "course-materials/syllabus.html#someone-is-threatening-me-what-can-i-do",
-    "title": "STAT 541: Advanced Statistical Computing",
-    "section": "5.4 Someone is threatening me, what can I do?",
-    "text": "5.4 Someone is threatening me, what can I do?\nI will listen and believe you if someone is threatening you. I will help you get the help you need. I commit to changing campus culture that responds poorly to dating violence and stalking."
-  },
-  {
-    "objectID": "course-materials/syllabus.html#what-if-i-cant-arrange-for-childcare",
-    "href": "course-materials/syllabus.html#what-if-i-cant-arrange-for-childcare",
-    "title": "STAT 541: Advanced Statistical Computing",
-    "section": "5.5 What if I can’t arrange for childcare?",
-    "text": "5.5 What if I can’t arrange for childcare?\nIf you are responsible for childcare on short notice, you are welcome to bring children to class with you. If you are a lactating parent, you many take breaks to feed your infant or express milk as needed. If I can support yo in navigating parenting, coursework, and other obligations in any way, please let me know."
-  },
-  {
-    "objectID": "course-materials/syllabus.html#what-if-i-need-to-miss-class",
-    "href": "course-materials/syllabus.html#what-if-i-need-to-miss-class",
-    "title": "STAT 541: Advanced Statistical Computing",
-    "section": "6.1 What if I need to miss class?",
-    "text": "6.1 What if I need to miss class?\nI encourage you to attend every class session, but policies are for narcs. I put a great deal of time into making each class session engaging and worth your time. Attendance in this course is not explicitly required, but it degrades your classmates’ trust in you when they don’t see you in class.\nPlease do not email me letting me know when you are missing class - you will not lose points for this, but it is your responsibility to catch up on the materials and complete the in-class activities. Here’s what you should do if you do miss a class:\n\nTalk to a classmate to figure out what information you missed\nCheck Canvas for any necessary handouts or changes to assignments\nStop by student hours with any questions you have after reviewing notes and handouts\n\nIf you miss a bunch of classes, please come talk to me. I’m working from the assumption that you care and are trying, but something is getting in your way (health issues? depression / anxiety? college stress?); let’s figure out what that is and how I can help."
-  },
-  {
-    "objectID": "course-materials/syllabus.html#what-if-i-need-to-turn-something-in-late",
-    "href": "course-materials/syllabus.html#what-if-i-need-to-turn-something-in-late",
-    "title": "STAT 541: Advanced Statistical Computing",
-    "section": "6.2 What if I need to turn something in late?",
-    "text": "6.2 What if I need to turn something in late?\nAssignments are expected to be submitted on time. However, every student will be permitted to submit up to three individual assignments up to 3-days late, by completing a deadline extension form. Similar to the “real world,” deadline extensions must be requested before an assignment is due.\nWhen you complete the deadline extension form you will be required to state (1) what assignment you need an extension for, and (2) your proposed new deadline. Your new deadline must be within 3-days of the original deadline.\nAll deadline extensions must be done through the form, so I can keep track of who has used their allotment of extensions. If you are registered with DRC to have deadline extensions, you are required to complete a deadline extension request and make a note if your extension is related to a need related to DRC accommodations.\nAny late work is required to have a deadline extension request, meaning if you do not complete a deadline extension request for an assignment you are not permitted to turn it in late. The link to the deadline extension form can be found in Canvas in the Course Information module (at the top of the page).\n\n\n\n\n\n\nDeadline extensions are not permitted for the Final Portfolio!"
-  },
-  {
-    "objectID": "course-materials/syllabus.html#do-i-need-to-bring-a-computer-to-class",
-    "href": "course-materials/syllabus.html#do-i-need-to-bring-a-computer-to-class",
-    "title": "STAT 541: Advanced Statistical Computing",
-    "section": "6.3 Do I need to bring a computer to class?",
-    "text": "6.3 Do I need to bring a computer to class?\nYou are allowed to use technology in the classroom! In fact, we will often do so as part of in-class activities. Our class is held in a room with monitors, but no computers. So, bringing a laptop is critical!"
-  },
-  {
-    "objectID": "course-materials/syllabus.html#how-can-i-expect-to-be-treated-in-this-course",
-    "href": "course-materials/syllabus.html#how-can-i-expect-to-be-treated-in-this-course",
-    "title": "STAT 541: Advanced Statistical Computing",
-    "section": "7.1 How can I expect to be treated in this course?",
-    "text": "7.1 How can I expect to be treated in this course?\nFollowing Ihab Hassan, I strive to teach statistics so that people will stop killing each other. In my classroom, diversity and individual differences are a sources of strength. One of the greatest failures of Statistics, historically and in the present, has been the exclusion of voices from the field. Everyone here can learn from each other, and doing so is vital to the structure of the course. Significant portions of this course involve group work and discussion in class. Some discussions will touch on sensitive topics. So that everyone feels comfortable participating in these activities, we must listen to each other and treat each other with respect. Any attitude or belief that espouses the superiority of one group of people over another is not welcome in my classroom. Such beliefs are directly destructive to the sense of community that we strive to create, and will sabotage our ability to learn from each other (and thus sabotage the entire structure of the course).\nIn this classroom, I expect you to be polite, respectful, inclusive, and open-minded.\nSome examples of how to be a good classmate include:\n\nDoing your best to avoid language that is ableist, racist, sexist, or classist; or that perpetuates harmful stereotypes.\nAddressing your classmates by their preferred name and pronouns.\nDoing your best to be aware of your own biases, privileges, and areas of ignorance.\nListening to others’ opinions, and making an effort to understand their perspective.\nTaking the time to help your classmates grasp concepts or solve problems, even when you are ready to move on.\n\nIn summary: Be good to each other."
-  },
-  {
-    "objectID": "course-materials/syllabus.html#what-constitutes-plagiarism-in-a-statistics-class",
-    "href": "course-materials/syllabus.html#what-constitutes-plagiarism-in-a-statistics-class",
-    "title": "STAT 541: Advanced Statistical Computing",
-    "section": "7.2 What constitutes plagiarism in a statistics class?",
-    "text": "7.2 What constitutes plagiarism in a statistics class?\nYou are encouraged to work with other classmates on all but the exam portions of this class. You are also encouraged (realistically, required!) to make use of online resources to accomplish tasks.\nWhen dealing with code, follow these guidelines:\n\nNever copy-paste more than small snippets of code. That is, you might borrow a little three-line function from StackOverflow, but you should not copy over a full analysis you find on Kaggle.\nAttribute all code that is not completely your own. If you do borrow that StackOverflow snippet, provide a link to the source. If you reference a similar analysis for ideas, mention that in your description.\n\n\n\n\n\n\n\nExplain Your Code\n\n\n\nA good rule for deciding if the code you are borrowing is plagiarism is: If I sat you down by yourself in a room with no internet, could you explain to me roughly what each line of code is doing?\n(In fact, this is exactly what I will do if I need to investigate possible cheating.)"
-  },
-  {
-    "objectID": "course-materials/syllabus.html#learning-to-code-with-chatgpt",
-    "href": "course-materials/syllabus.html#learning-to-code-with-chatgpt",
-    "title": "STAT 541: Advanced Statistical Computing",
-    "section": "7.3 Learning to Code with ChatGPT",
-    "text": "7.3 Learning to Code with ChatGPT\nNew AI models like Chat GPT offer a whole new world of online coding resources. This is exciting! In this class, you are allowed to use these tools like you would any other online coding support tool. (Note that this is not a typical policy; most of your other classes likely do not allow AI tools to be used.)\nIf you do use an AI tool to help you write or debug code, it is important that you document and cite this process. That is, you should save the “conversation” with the chatbot, to show how you used your knowledge of R coding to construct queries that lead to useful results.\nWhen you submit your portfolio, if you use AI-generated code in your examples, you will need to make an argument for how you are demonstrating mastery of the requisite skills, and the AI is only being used as support."
-  },
-  {
-    "objectID": "course-materials/syllabus.html#integrity-violations",
-    "href": "course-materials/syllabus.html#integrity-violations",
-    "title": "STAT 541: Advanced Statistical Computing",
-    "section": "7.4 Integrity Violations",
-    "text": "7.4 Integrity Violations\nIf you accidentally forget a small citation, or go a little overboard in how much you “borrow” from StackOverflow, you’ll get a warning. Any instance of willful and deliberate cheating will result in a failing grade in this class, full stop.\n\n\n\n\n\n\nThe door swings both ways\n\n\n\nBe careful about being on the giving end as well as the taking end. For example: If you send your finished assignment to a friend, and that friend copies it, you have both just failed the course."
-  },
-  {
-    "objectID": "course-materials/syllabus.html#footnotes",
-    "href": "course-materials/syllabus.html#footnotes",
-    "title": "STAT 541: Advanced Statistical Computing",
+    "objectID": "unit-2/writing-functions.html#footnotes",
+    "href": "unit-2/writing-functions.html#footnotes",
+    "title": "Writing Functions in R",
     "section": "Footnotes",
-    "text": "Footnotes\n\n\nSee Section 3.0.2 for information on what you can expect when you email me.↩︎"
-  },
-  {
-    "objectID": "course-materials/calendar.html",
-    "href": "course-materials/calendar.html",
-    "title": "STAT 541: Advanced R",
-    "section": "",
-    "text": "This page contains an outline of the topics, content, and assignments for the quarter. Note that this schedule will be updated as the quarter progresses, with all changes documented here.\n\n\n\n\n\n\n\n\n\n\n\nWeek\nDate\nRequired Reading\nLecture Activities\nLab Assignment\nPortfolio\n\n\n\n\n1\nStat 331 Review & Version Control\nMarch 31 (note no class on Monday)\nInstalling / Updating R & RStudio\nVersion Control\n\nLab 1 Instructions\nLab 1 GitHub repository\n\n\n\n2\nAdvanced Visualizations\nApril 7\nggplot Review\nggplotExtensions\nMaking maps with leaflet\n\nLab 2 Instructions\nLab 2 GitHub repository\n\n\n\n3\nQuarto Dashboards (Static)\nApril 14\n\n\nLab 3 Instructions\nLab 3 GitHub repository\n\n\n\n4\nQuarto Dashboards (Dynamic)\nApril 21\n\n\n\n\n\n\n5\nQuarto & WebR\nApril 28\n\n\n\n\n\n\n6\nPortfolio Week\nMay 5\n\n\n\nPortfolio Instructions\n\n\n7\nJSON Data & APIs\nMay 12\n\n\n\n\n\n\n8\nWebscraping\nMay 19\n\n\n\n\n\n\n9\nGenerative Art\nMay 26 (note Tuesday follows a Monday schedule)\n\n\n\n\n\n\n10\nPortfolio Week\nJune 2\n\n\n\n\n\n\nFinals Week (Portfolio Meetings)\nJune 9"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Welcome",
-    "section": "",
-    "text": "Stat 541 takes a deeper dive into statistical computing in R, building your communication and iteration skills. We will explore different modalities for communicating statistical ideas—dynamic visualizations and dashboards, while also exploring ways to integrate R code into these environments. We will also continue to expand your skills as a developer—writing functions and iterating over those functions to query data from APIs and scrape the web. We’re going to have a lot of fun!"
-  },
-  {
-    "objectID": "index.html#acknowledements",
-    "href": "index.html#acknowledements",
-    "title": "Welcome",
-    "section": "Acknowledements",
-    "text": "Acknowledements\nA huge shout out to Dr. Kelly Bodwin for creating this class and adding it to the amazing number of computing courses the Statistics Department teaches. Another shout out goes the the amazing women at Macalester College—Leslie Myint, Brianna Heggeseth, and Alicia Johnson—for making their Intermediate Data Science course materials public. And finally, a massive thank you to Sam Shanny-Csik for their incredible resources for making and styling Quarto websites!\nThis website is built with Quarto, the lovely icons are all by Allison Horst, and none of this would be possible without the tidyverse."
-  },
-  {
-    "objectID": "index.html#license",
-    "href": "index.html#license",
-    "title": "Welcome",
-    "section": "License",
-    "text": "License\nThis online work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International. Visit here for more information about the license."
-  },
-  {
-    "objectID": "labs/lab-3.html",
-    "href": "labs/lab-3.html",
-    "title": "Lab 3",
-    "section": "",
-    "text": "For this lab assignment, you are tasked with transforming some aspect of the 2020 Wellcome Global Health Monitor Report or the 2018 Global Health Monitor Report into a dashboard. Anything in either of these reports is fair game, so find something that inspires you!\nIn case you are drawing a blank, here are some ideas:",
+    "text": "Footnotes\n\n\nThere are ways to cheat your way around this, but we will avoid them!↩︎",
     "crumbs": [
-      "Unit 1 - Communication",
-      "Lab 3"
-    ]
-  },
-  {
-    "objectID": "labs/lab-3.html#dashboard-requirements",
-    "href": "labs/lab-3.html#dashboard-requirements",
-    "title": "Lab 3",
-    "section": "Dashboard Requirements",
-    "text": "Dashboard Requirements\nThe dashboard you create must have the following:\n\na navigation logo (similar to the Olympic rings)\nicons to your socials (e.g., LinkedIn, Instagram, Twitter, email)\nat least two pages\nat least two tabsets (can be on just one page)\nat least two cards with quick information (e.g., % of people across the world who have faith in vaccines)\nat least on plot made with leaflet\na non-default theme\nnon-default plot colors\n\n\n\n\n\n\n\nCoordinate Colors\n\n\n\nThe colors in your styled dashboard should match the colors in your plots!",
-    "crumbs": [
-      "Unit 1 - Communication",
-      "Lab 3"
-    ]
-  },
-  {
-    "objectID": "labs/lab-3.html#resources-for-creating-your-dashboard",
-    "href": "labs/lab-3.html#resources-for-creating-your-dashboard",
-    "title": "Lab 3",
-    "section": "Resources for Creating Your Dashboard",
-    "text": "Resources for Creating Your Dashboard\nThere are two additional videos by Dr. Mine Çetinkaya-Rundel that you will need to watch in order to create your dashboard.",
-    "crumbs": [
-      "Unit 1 - Communication",
-      "Lab 3"
-    ]
-  },
-  {
-    "objectID": "labs/lab-3.html#submission",
-    "href": "labs/lab-3.html#submission",
-    "title": "Lab 3",
-    "section": "Submission",
-    "text": "Submission\nYou are required to submit both the link to your GitHub repository containing your source code and a link to your published dashboard. You are expected to publish your dashboard through Quarto Pub, a free publishing service for static content created with Quarto.\n\n\n\n\n\n\n\n\nSign-up for Quarto Pub\n\n\n\nYou will need to sign up for a free Quarto Pub account. I would highly recommend you link your Quarto Pub account with your GitHub account, since the documents you will be publishing should live in a GitHub repository!\n\n\n\n\n\n\n\n\n\n\n\nDo not use GitHub actions!\n\n\n\nYou are expected to publish the content rendered on your local machine. Do not follow the instructions for using GitHub Actions to publish—that’s too spicy!",
-    "crumbs": [
-      "Unit 1 - Communication",
-      "Lab 3"
-    ]
-  },
-  {
-    "objectID": "portfolio/portfolio-instructions.html",
-    "href": "portfolio/portfolio-instructions.html",
-    "title": "Final Portfolio Instructions",
-    "section": "",
-    "text": "GitHub is an incredibly useful tool for project management and collaboration. It also has several useful features for professional promotion: you can host your own site on github using GitHub pages, describe yourself using a GitHub developer profile, and even use resume.github.io to generate a resume summary of your activity on GitHub (you must opt-in by starring the project page).\nThe development of Quarto has made it incredibly simple to generate websites, which can be easily hosted by GitHub Pages.",
-    "crumbs": [
-      "Portfolio",
-      "Final Portfolio Instructions"
-    ]
-  },
-  {
-    "objectID": "portfolio/portfolio-instructions.html#instructions-for-creating-a-personal-website",
-    "href": "portfolio/portfolio-instructions.html#instructions-for-creating-a-personal-website",
-    "title": "Final Portfolio Instructions",
-    "section": "Instructions for Creating a Personal Website",
-    "text": "Instructions for Creating a Personal Website\nIf you’ve never made a personal website, you will need to create one! There are so many resources for creating Quarto websites, but my absolute favorite one’s are from Sam Shanny-Csik.\nFollow this step-by-step guide for creating a new Quarto website: &lt;https://ucsb-meds.github.io/creating-quarto-websites/\n\n\n\n\n\n\n\n\nName your project &lt;YourGitHubUsername&gt;.github.io\n\n\n\nWe’re going to deploy websites using GitHub pages, and it would be nice if your website had a professional name! I would recommend using your username, unless you chose a username that isn’t very descriptive or unique (e.g., brandonk04). If this is the case, I would recommend you use a more descriptive name for your project (e.g., brandon-kim-04).\n\n\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nI would strongly recommend this folder living inside your broader “STAT 541” folder, at least for now!",
-    "crumbs": [
-      "Portfolio",
-      "Final Portfolio Instructions"
-    ]
-  },
-  {
-    "objectID": "portfolio/portfolio-instructions.html#making-changes-to-an-existing-website",
-    "href": "portfolio/portfolio-instructions.html#making-changes-to-an-existing-website",
-    "title": "Final Portfolio Instructions",
-    "section": "Making Changes to an Existing Website",
-    "text": "Making Changes to an Existing Website\nSo you already have a personal website? Great! Let’s get started making blog posts for your website!\nWe’re going to follow another one of Sam Shanny-Csik’s guides for integrating blog posts into your existing website:\nhttps://samanthacsik.github.io/posts/2022-10-24-quarto-blogs/\n\n\n\n\n\n\nImportant\n\n\n\nI’m expecting that your posts are contained in a portfolio folder, so they are easy for me to find.\n\n\nBy the end of the quarter, you should have seven blog posts for the following projects you’ve completed:\n\nAdvanced Visualizations\nQuarto Dashboards (Static)\nQuarto Dashboards (Dynamic)\nWriting Efficient Functions\nJSON Data & APIs\nWebscraping\nGenerative Art",
-    "crumbs": [
-      "Portfolio",
-      "Final Portfolio Instructions"
-    ]
-  },
-  {
-    "objectID": "portfolio/portfolio-instructions.html#additional-styling-options",
-    "href": "portfolio/portfolio-instructions.html#additional-styling-options",
-    "title": "Final Portfolio Instructions",
-    "section": "Additional Styling Options",
-    "text": "Additional Styling Options\nIn case you are interested in styling your website further, I would recommend looking over this presentation on using .scss and .sass files.",
-    "crumbs": [
-      "Portfolio",
-      "Final Portfolio Instructions"
-    ]
-  },
-  {
-    "objectID": "set-up/setup-discord.html",
-    "href": "set-up/setup-discord.html",
-    "title": "Using Discord 101",
-    "section": "",
-    "text": "Discord is a platform for text chatting, voice chatting, and screen sharing. We will be using Discord as a group “workspace” for this class.\nJoin the Stat 541 Server to start experimenting with the interface. When you join the server, you will be given some suggestions to get started.\n\nWe recommend you click through these - and in particular, it is probably a good idea to download the desktop version of Discord.",
-    "crumbs": [
-      "Infrastructure",
-      "Using Discord 101"
-    ]
-  },
-  {
-    "objectID": "set-up/setup-discord.html#what-is-discord",
-    "href": "set-up/setup-discord.html#what-is-discord",
-    "title": "Using Discord 101",
-    "section": "",
-    "text": "Discord is a platform for text chatting, voice chatting, and screen sharing. We will be using Discord as a group “workspace” for this class.\nJoin the Stat 541 Server to start experimenting with the interface. When you join the server, you will be given some suggestions to get started.\n\nWe recommend you click through these - and in particular, it is probably a good idea to download the desktop version of Discord.",
-    "crumbs": [
-      "Infrastructure",
-      "Using Discord 101"
-    ]
-  },
-  {
-    "objectID": "set-up/setup-discord.html#setting-up-your-account",
-    "href": "set-up/setup-discord.html#setting-up-your-account",
-    "title": "Using Discord 101",
-    "section": "2 Setting up your account",
-    "text": "2 Setting up your account\n\nVerify your email\nTo use this Discord server, you must have a verified email.\nNobody (including your professors) will be able to see this email, and it does not have to be your Cal Poly email. This is simply to keep the server from being overrun by temporary accounts.\n\n\nCreate your identity\nThe first thing you should do is decide what name and picture you would like to use.\n\nWe would like to strongly encourage you to use your real name and picture, so that we can get to know you. However, if you prefer to remain anonymous, you are free to do so.\n\n(Please do not be like Regina and use the name of another student, however! This kind of impersonation will result in a permanent ban from the server.)\n\n\nDecide about privacy and notifications\nThe default settings on the channel are probably just fine for you. Feel free to make any changes that work for you, though.\nYou can change your message notifications:\n\nYou can edit your privacy settings, although most things are already private:\n\n\n\nConnect other apps\nYou can connect other apps to Discord, either for productivity or just for fun.\n\nDr. Bodwin has connected her Spotify, so you can listen along with her music and/or judge her taste.",
-    "crumbs": [
-      "Infrastructure",
-      "Using Discord 101"
-    ]
-  },
-  {
-    "objectID": "set-up/setup-discord.html#using-the-channels",
-    "href": "set-up/setup-discord.html#using-the-channels",
-    "title": "Using Discord 101",
-    "section": "3 Using the Channels",
-    "text": "3 Using the Channels\nThe server is made up of many channels. Some are text chatrooms, while some are “Voice Channels” that connect you via audio to everyone else in the channel.\n\nText Channels\nUse the #general channel for anything and everything:\n\nIf your question is about course logistics, rather than the material itself, consider using the #class-logistics channel:\n\nYou can use the specific weekly channels to ask questions about the material…\n\n… or the specific lab assignment.\n\nNotice that you can use tick marks (```), like in R Markdown, to make your code appear in a formatted code box.\n\n\nVoice Channels\nTo join a voice channel, simply click it! Make sure you are careful about when you are muted or unmuted.\n\nThe extra “Side Chat” channels are limited to 4 or 8 people, if you would like to start an impromptu study conversation without being heard by the professors and/or the rest of the class. (We’ll only drop in if you invite us!)\nVoice channels can also be used for people to “Go Live”, and share their screen with everyone else.\n\nWhile this will usually be something professors use to demonstrate code, you can go live, too! But you may need to download the desktop version of Discord to do so.\n\n\nPrivate messages\nIt is also easy to send private messages, to your professor(s) or to each other. These private messages can also easily be used to launch a private video chat and/or screen sharing.",
-    "crumbs": [
-      "Infrastructure",
-      "Using Discord 101"
-    ]
-  },
-  {
-    "objectID": "set-up/setup-discord.html#creating-your-own-server",
-    "href": "set-up/setup-discord.html#creating-your-own-server",
-    "title": "Using Discord 101",
-    "section": "4 Creating your own server",
-    "text": "4 Creating your own server\nLast but not least - if you have an established study group you like to work with, and you want to use Discord to communicate without the distraction or invasion of the rest of the class, feel free to create your very own server! You can easily hop between servers during work parties, to ask each other questions or just to take a break and chat about life.",
-    "crumbs": [
-      "Infrastructure",
-      "Using Discord 101"
-    ]
-  },
-  {
-    "objectID": "unit-1/quarto-dashboard-dynamic.html",
-    "href": "unit-1/quarto-dashboard-dynamic.html",
-    "title": "Quarto Dashboards, Part 2",
-    "section": "",
-    "text": "Now that we’ve acquired some skills for making dashboards, let’s spice them up a bit! This week, we’re going to add interactive content to our dashboards!"
-  },
-  {
-    "objectID": "unit-1/quarto-dashboard-dynamic.html#required-video-hello-quarto-dashboards",
-    "href": "unit-1/quarto-dashboard-dynamic.html#required-video-hello-quarto-dashboards",
-    "title": "Quarto Dashboards, Part 2",
-    "section": "🎥 Required Video: Hello Quarto Dashboards",
-    "text": "🎥 Required Video: Hello Quarto Dashboards"
-  },
-  {
-    "objectID": "set-up/setup-workflow.html",
-    "href": "set-up/setup-workflow.html",
-    "title": "Installing / Updating R & RStudio",
-    "section": "",
-    "text": "Your workflow refers to the series of good habits you get into in your coding process, that help save you time and headache down the road.\nThis document outlines our suggestions for getting going with your workflow. None of these items is required for the course; they will simply make your life easier down the road.",
-    "crumbs": [
-      "Infrastructure",
-      "Installing / Updating R & RStudio"
-    ]
-  },
-  {
-    "objectID": "set-up/setup-workflow.html#updating-r",
-    "href": "set-up/setup-workflow.html#updating-r",
-    "title": "Installing / Updating R & RStudio",
-    "section": "1 Updating R",
-    "text": "1 Updating R\nEach of you should have R already installed on your computer, but you might not have the most up to date version of R! Do not ignore these instructions. If you neglect to update your version of R, you may find that updating a package will make it so your code will not run.\n\nStep 1: Open RStudio\nStep 2: At the top of the the Console it will say what version of R you are using\n\n\nIf the version is not 4.4.3 (like the image above), you need to update your version of R! The simplest way to do this is to follow the instructions below to install R.",
-    "crumbs": [
-      "Infrastructure",
-      "Installing / Updating R & RStudio"
-    ]
-  },
-  {
-    "objectID": "set-up/setup-workflow.html#installing-r",
-    "href": "set-up/setup-workflow.html#installing-r",
-    "title": "Installing / Updating R & RStudio",
-    "section": "2 Installing R",
-    "text": "2 Installing R\nDownload and install R by going to https://cloud.r-project.org/. Here, you will find three options for installing R—click on the option for your computer’s operating system.\n\n\n\n\nIf you are a Windows user:\n\nClick on “Download R for Windows”\nClick on “base”\nClick on the Download link.\nWhen you open the execution file (.exe) you will be prompted with a variety of questions about installing R. Feel free to use the default features / settings that come with R (continue to click “Ok” until the download starts).\n\n\n\n\n\n\n\nMultiple Versions of R\n\n\n\nBeware that if you had a previous version of R downloaded on your PC, that old version will not be deleted when you download the most recent version of R. We do not want to have two versions of R installed, as your computer can get confused what version of R to use. So, you need to remove the old version of R.\nTo do this you need to:\n\nNavigate to your computer’s settings\nClick on the “Apps” option on the left-hand panel\nSearch for or scroll down to R\nFind the older version of R\n\n\n\nClick on the ... on the right side\nSelect “Uninstall”\n\n\n\n\n\n\nIf you are macOS user:\n\nClick on “Download R for (Mac) OS X”\nUnder “Latest release:” click on R-X.X.X.pkg, where R-X.X.X is the version number. For example, the latest version of R as of July 1, 2024 was R-4.4.1 (Race for Your Life).\nWhen installing, use the default features / settings that come with R (click Ok until the download starts).",
-    "crumbs": [
-      "Infrastructure",
-      "Installing / Updating R & RStudio"
-    ]
-  },
-  {
-    "objectID": "set-up/setup-workflow.html#updating-rstudio",
-    "href": "set-up/setup-workflow.html#updating-rstudio",
-    "title": "Installing / Updating R & RStudio",
-    "section": "3 Updating RStudio",
-    "text": "3 Updating RStudio\nRStudio can be downloaded here\nThe most recent version of RStudio is 2024.12.1+563. You can check if you are using the most recent version of RStudio by:\n\nOpening RStudio\nClicking on “Help”\nSelecting “Check for Updates”\nChoosing “Quit and Download” if there is an update available",
-    "crumbs": [
-      "Infrastructure",
-      "Installing / Updating R & RStudio"
-    ]
-  },
-  {
-    "objectID": "set-up/setup-workflow.html#installing-updating-the-tidyverse",
-    "href": "set-up/setup-workflow.html#installing-updating-the-tidyverse",
-    "title": "Installing / Updating R & RStudio",
-    "section": "4 Installing / Updating the tidyverse",
-    "text": "4 Installing / Updating the tidyverse\nIn this class, we will make heavy use of the tidyverse packages.\nIf you have not used the tidyverse before, type the following into your console:\n\ninstall.packages(\"tidyverse\")\n\nIf you have used the tidyverse before, you only need to update packages. Type the following into your console:\n\nlibrary(tidyverse)\ntidyverse_update()\n\nThen follow the instructions that print out to update a few of your tidyverse packages.",
-    "crumbs": [
-      "Infrastructure",
-      "Installing / Updating R & RStudio"
-    ]
-  },
-  {
-    "objectID": "set-up/setup-workflow.html#configure-your-options",
-    "href": "set-up/setup-workflow.html#configure-your-options",
-    "title": "Installing / Updating R & RStudio",
-    "section": "5 Configure your options",
-    "text": "5 Configure your options\nThere are a few settings we recommend that you change right away in RStudio.\n\nR Workspace\nFirst, you should not save your environment when you close RStudio:\n\n\n\nCode Chunk Output\nSecond, make a deliberate choice about where your chunks will evaluate when you run that. That is, if you reference files, are you referencing them relative to your Project, or relative to your Quarto Document (which might live in a subfolder or even outside the project).",
-    "crumbs": [
-      "Infrastructure",
-      "Installing / Updating R & RStudio"
-    ]
-  },
-  {
-    "objectID": "set-up/setup-workflow.html#project-based-workflow",
-    "href": "set-up/setup-workflow.html#project-based-workflow",
-    "title": "Installing / Updating R & RStudio",
-    "section": "6 Project-based workflow",
-    "text": "6 Project-based workflow\nWe strongly recommend that you adopt a project-oriented approach to your R work. That is, you should never open R or RStudio directly; you should only open the project you intend to work on.\nThis resource provides an excellent explanation of why and how to use projects.",
-    "crumbs": [
-      "Infrastructure",
-      "Installing / Updating R & RStudio"
-    ]
-  },
-  {
-    "objectID": "unit-1/ggplot-review.html",
-    "href": "unit-1/ggplot-review.html",
-    "title": "ggplot Review",
-    "section": "",
-    "text": "This module consists of readings reviewing material typically taught in STAT 331. It is possible you can skip over portions of this reading. It is your responsibility to decide which areas you need to review before diving into Stat 541.",
-    "crumbs": [
-      "Unit 1 - Communication",
-      "`ggplot` Review"
-    ]
-  },
-  {
-    "objectID": "unit-1/ggplot-review.html#recommended-video",
-    "href": "unit-1/ggplot-review.html#recommended-video",
-    "title": "ggplot Review",
-    "section": "🎥 Recommended Video",
-    "text": "🎥 Recommended Video\n\n\n\n\n\n\n\n\n\nCheck-in: ggplot Review\n\n\n\nIdentify the elements of the following plot as\n\nAn aesthetic\nA geometry\nA scale\nNone of the above\n\n\n\nThe x-axis is age\nThe y-axis is “Urge to run up the down escalator”\nThe y-axis ranges from “Weak” to “Strong”\nThis is a line graph\nThe two lines are “What I was supposed to feel” and “What I’ve actually felt”\nThe lines are labeled with text\nOnly even ages are labelled\nStick figure people are sliding down the line",
-    "crumbs": [
-      "Unit 1 - Communication",
-      "`ggplot` Review"
-    ]
-  },
-  {
-    "objectID": "unit-1/ggplot-review.html#recommended-reading-r4ds-data-visualisation",
-    "href": "unit-1/ggplot-review.html#recommended-reading-r4ds-data-visualisation",
-    "title": "ggplot Review",
-    "section": "📖 Recommended Reading: R4DS: Data Visualisation",
-    "text": "📖 Recommended Reading: R4DS: Data Visualisation\n\n\n\n\n\n\nCheckin: ggplot Review\n\n\n\nFill in the six (6) blanks to make the following plot:\n\nstarwars %&gt;%\n  ____(species == \"Human\") %&gt;%\n  ggplot(mapping = aes(____ = height, y = mass, ____ = gender)) + \n  geom_[____](____ = 17) +\n  ____(x = \"Height (cm)\", \n       y = \"Mass (kg)\", \n       color = \"Gender Expression\"\n       )",
-    "crumbs": [
-      "Unit 1 - Communication",
-      "`ggplot` Review"
-    ]
-  },
-  {
-    "objectID": "set-up/setup-version-control.html",
-    "href": "set-up/setup-version-control.html",
-    "title": "Version Control with Git and GitHub",
-    "section": "",
-    "text": "Most of this reading is either heavily inspired by Happy Git and Github for the UseR (Bryan, Hester, and The Stat 545 TAs 2021) or directly links to that book. After completing this pre-reading, you should:",
-    "crumbs": [
-      "Infrastructure",
-      "Version Control with Git and GitHub"
-    ]
-  },
-  {
-    "objectID": "set-up/setup-version-control.html#footnotes",
-    "href": "set-up/setup-version-control.html#footnotes",
-    "title": "Version Control with Git and GitHub",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nYes, I’m aware that this sounds paranoid. It’s been a very rare occasion that I’ve needed to restore something from another backup. You don’t want to take chances.↩︎",
-    "crumbs": [
-      "Infrastructure",
-      "Version Control with Git and GitHub"
+      "Unit 2 - Iteration",
+      "Writing Functions in R"
     ]
   },
   {
@@ -1061,6 +407,975 @@
     "crumbs": [
       "Unit 1 - Communication",
       "`ggplot` Extensions"
+    ]
+  },
+  {
+    "objectID": "set-up/setup-version-control.html",
+    "href": "set-up/setup-version-control.html",
+    "title": "Version Control with Git and GitHub",
+    "section": "",
+    "text": "Most of this reading is either heavily inspired by Happy Git and Github for the UseR (Bryan, Hester, and The Stat 545 TAs 2021) or directly links to that book. After completing this pre-reading, you should:",
+    "crumbs": [
+      "Infrastructure",
+      "Version Control with Git and GitHub"
+    ]
+  },
+  {
+    "objectID": "set-up/setup-version-control.html#footnotes",
+    "href": "set-up/setup-version-control.html#footnotes",
+    "title": "Version Control with Git and GitHub",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nYes, I’m aware that this sounds paranoid. It’s been a very rare occasion that I’ve needed to restore something from another backup. You don’t want to take chances.↩︎",
+    "crumbs": [
+      "Infrastructure",
+      "Version Control with Git and GitHub"
+    ]
+  },
+  {
+    "objectID": "unit-1/ggplot-review.html",
+    "href": "unit-1/ggplot-review.html",
+    "title": "ggplot Review",
+    "section": "",
+    "text": "This module consists of readings reviewing material typically taught in STAT 331. It is possible you can skip over portions of this reading. It is your responsibility to decide which areas you need to review before diving into Stat 541.",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "`ggplot` Review"
+    ]
+  },
+  {
+    "objectID": "unit-1/ggplot-review.html#recommended-video",
+    "href": "unit-1/ggplot-review.html#recommended-video",
+    "title": "ggplot Review",
+    "section": "🎥 Recommended Video",
+    "text": "🎥 Recommended Video\n\n\n\n\n\n\n\n\n\nCheck-in: ggplot Review\n\n\n\nIdentify the elements of the following plot as\n\nAn aesthetic\nA geometry\nA scale\nNone of the above\n\n\n\nThe x-axis is age\nThe y-axis is “Urge to run up the down escalator”\nThe y-axis ranges from “Weak” to “Strong”\nThis is a line graph\nThe two lines are “What I was supposed to feel” and “What I’ve actually felt”\nThe lines are labeled with text\nOnly even ages are labelled\nStick figure people are sliding down the line",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "`ggplot` Review"
+    ]
+  },
+  {
+    "objectID": "unit-1/ggplot-review.html#recommended-reading-r4ds-data-visualisation",
+    "href": "unit-1/ggplot-review.html#recommended-reading-r4ds-data-visualisation",
+    "title": "ggplot Review",
+    "section": "📖 Recommended Reading: R4DS: Data Visualisation",
+    "text": "📖 Recommended Reading: R4DS: Data Visualisation\n\n\n\n\n\n\nCheckin: ggplot Review\n\n\n\nFill in the six (6) blanks to make the following plot:\n\nstarwars %&gt;%\n  ____(species == \"Human\") %&gt;%\n  ggplot(mapping = aes(____ = height, y = mass, ____ = gender)) + \n  geom_[____](____ = 17) +\n  ____(x = \"Height (cm)\", \n       y = \"Mass (kg)\", \n       color = \"Gender Expression\"\n       )",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "`ggplot` Review"
+    ]
+  },
+  {
+    "objectID": "set-up/setup-workflow.html",
+    "href": "set-up/setup-workflow.html",
+    "title": "Installing / Updating R & RStudio",
+    "section": "",
+    "text": "Your workflow refers to the series of good habits you get into in your coding process, that help save you time and headache down the road.\nThis document outlines our suggestions for getting going with your workflow. None of these items is required for the course; they will simply make your life easier down the road.",
+    "crumbs": [
+      "Infrastructure",
+      "Installing / Updating R & RStudio"
+    ]
+  },
+  {
+    "objectID": "set-up/setup-workflow.html#updating-r",
+    "href": "set-up/setup-workflow.html#updating-r",
+    "title": "Installing / Updating R & RStudio",
+    "section": "1 Updating R",
+    "text": "1 Updating R\nEach of you should have R already installed on your computer, but you might not have the most up to date version of R! Do not ignore these instructions. If you neglect to update your version of R, you may find that updating a package will make it so your code will not run.\n\nStep 1: Open RStudio\nStep 2: At the top of the the Console it will say what version of R you are using\n\n\nIf the version is not 4.4.3 (like the image above), you need to update your version of R! The simplest way to do this is to follow the instructions below to install R.",
+    "crumbs": [
+      "Infrastructure",
+      "Installing / Updating R & RStudio"
+    ]
+  },
+  {
+    "objectID": "set-up/setup-workflow.html#installing-r",
+    "href": "set-up/setup-workflow.html#installing-r",
+    "title": "Installing / Updating R & RStudio",
+    "section": "2 Installing R",
+    "text": "2 Installing R\nDownload and install R by going to https://cloud.r-project.org/. Here, you will find three options for installing R—click on the option for your computer’s operating system.\n\n\n\n\nIf you are a Windows user:\n\nClick on “Download R for Windows”\nClick on “base”\nClick on the Download link.\nWhen you open the execution file (.exe) you will be prompted with a variety of questions about installing R. Feel free to use the default features / settings that come with R (continue to click “Ok” until the download starts).\n\n\n\n\n\n\n\nMultiple Versions of R\n\n\n\nBeware that if you had a previous version of R downloaded on your PC, that old version will not be deleted when you download the most recent version of R. We do not want to have two versions of R installed, as your computer can get confused what version of R to use. So, you need to remove the old version of R.\nTo do this you need to:\n\nNavigate to your computer’s settings\nClick on the “Apps” option on the left-hand panel\nSearch for or scroll down to R\nFind the older version of R\n\n\n\nClick on the ... on the right side\nSelect “Uninstall”\n\n\n\n\n\n\nIf you are macOS user:\n\nClick on “Download R for (Mac) OS X”\nUnder “Latest release:” click on R-X.X.X.pkg, where R-X.X.X is the version number. For example, the latest version of R as of July 1, 2024 was R-4.4.1 (Race for Your Life).\nWhen installing, use the default features / settings that come with R (click Ok until the download starts).",
+    "crumbs": [
+      "Infrastructure",
+      "Installing / Updating R & RStudio"
+    ]
+  },
+  {
+    "objectID": "set-up/setup-workflow.html#updating-rstudio",
+    "href": "set-up/setup-workflow.html#updating-rstudio",
+    "title": "Installing / Updating R & RStudio",
+    "section": "3 Updating RStudio",
+    "text": "3 Updating RStudio\nRStudio can be downloaded here\nThe most recent version of RStudio is 2024.12.1+563. You can check if you are using the most recent version of RStudio by:\n\nOpening RStudio\nClicking on “Help”\nSelecting “Check for Updates”\nChoosing “Quit and Download” if there is an update available",
+    "crumbs": [
+      "Infrastructure",
+      "Installing / Updating R & RStudio"
+    ]
+  },
+  {
+    "objectID": "set-up/setup-workflow.html#installing-updating-the-tidyverse",
+    "href": "set-up/setup-workflow.html#installing-updating-the-tidyverse",
+    "title": "Installing / Updating R & RStudio",
+    "section": "4 Installing / Updating the tidyverse",
+    "text": "4 Installing / Updating the tidyverse\nIn this class, we will make heavy use of the tidyverse packages.\nIf you have not used the tidyverse before, type the following into your console:\n\ninstall.packages(\"tidyverse\")\n\nIf you have used the tidyverse before, you only need to update packages. Type the following into your console:\n\nlibrary(tidyverse)\ntidyverse_update()\n\nThen follow the instructions that print out to update a few of your tidyverse packages.",
+    "crumbs": [
+      "Infrastructure",
+      "Installing / Updating R & RStudio"
+    ]
+  },
+  {
+    "objectID": "set-up/setup-workflow.html#configure-your-options",
+    "href": "set-up/setup-workflow.html#configure-your-options",
+    "title": "Installing / Updating R & RStudio",
+    "section": "5 Configure your options",
+    "text": "5 Configure your options\nThere are a few settings we recommend that you change right away in RStudio.\n\nR Workspace\nFirst, you should not save your environment when you close RStudio:\n\n\n\nCode Chunk Output\nSecond, make a deliberate choice about where your chunks will evaluate when you run that. That is, if you reference files, are you referencing them relative to your Project, or relative to your Quarto Document (which might live in a subfolder or even outside the project).",
+    "crumbs": [
+      "Infrastructure",
+      "Installing / Updating R & RStudio"
+    ]
+  },
+  {
+    "objectID": "set-up/setup-workflow.html#project-based-workflow",
+    "href": "set-up/setup-workflow.html#project-based-workflow",
+    "title": "Installing / Updating R & RStudio",
+    "section": "6 Project-based workflow",
+    "text": "6 Project-based workflow\nWe strongly recommend that you adopt a project-oriented approach to your R work. That is, you should never open R or RStudio directly; you should only open the project you intend to work on.\nThis resource provides an excellent explanation of why and how to use projects.",
+    "crumbs": [
+      "Infrastructure",
+      "Installing / Updating R & RStudio"
+    ]
+  },
+  {
+    "objectID": "unit-2.html",
+    "href": "unit-2.html",
+    "title": "Unit 2",
+    "section": "",
+    "text": "In this second unit, we will dig deeper into the ideas surrounding efficiency. We will start with a review of writing functions in R—creating both vector and data frame functions and learning how to write functions which incorporate “tidy evaluation.” Next, we will take these functions to the next step by considering the efficiency of the function—how many intermediate objects are created, what order are operations run, what functions are used internally? Alongside these considerations, we will also compare and contrast different methods for iterating over functions—for loops and the purrr family of functions. From the perspective of efficiency, we will consider why one would choose one tool over the other.\nAfter this review of efficiency, we will put our function writing an iteration to work! First we will explore hierarchical (JSON) data, iterating over multiple calls to an API. Next, we will explore extracting (scraping) data from a webpage, iterating over multiple webpages. Finally, we will use iteration to generate art from code.",
+    "crumbs": [
+      "Unit 2 - Iteration",
+      "Unit 2"
+    ]
+  },
+  {
+    "objectID": "unit-1/quarto-dashboard-dynamic.html",
+    "href": "unit-1/quarto-dashboard-dynamic.html",
+    "title": "Quarto Dashboards, Part 2",
+    "section": "",
+    "text": "Now that we’ve acquired some skills for making dashboards, let’s spice them up a bit! This week, we’re going to add interactive content to our dashboards!\nThis week is different from the previous weeks in that you get to choose which tool you want to explore when creating interactive content on your dashboard. There are two options:\n\nShiny\nwebR (and Observable JavaScript)\n\nEither tool will allow you to make interactive content, but the way that you go about making the content differs (pretty substantially). Since you may not have heard about or explored either of these tools I would strongly recommend poking around the resources below before making your decision!\n\nMaking Interactive Content with Shiny\nQuick vignette: https://quarto.org/docs/dashboards/interactivity/shiny-r.html\nExample Shiny dashboard: https://jjallaire.shinyapps.io/penguins-dashboard/\n\n\nMaking Interactive Content with webR (and OJS)\nQuick vignette: https://www.tidyverse.org/blog/2024/10/quarto-live-0-1-1/\nFull Quarto Live documentation: https://r-wasm.github.io/quarto-live/\nExample webR dashboard: https://r-wasm.github.io/quarto-live/interactive/dashboards.html",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "Quarto Dashboards, Part 2"
+    ]
+  },
+  {
+    "objectID": "set-up/setup-discord.html",
+    "href": "set-up/setup-discord.html",
+    "title": "Using Discord 101",
+    "section": "",
+    "text": "Discord is a platform for text chatting, voice chatting, and screen sharing. We will be using Discord as a group “workspace” for this class.\nJoin the Stat 541 Server to start experimenting with the interface. When you join the server, you will be given some suggestions to get started.\n\nWe recommend you click through these - and in particular, it is probably a good idea to download the desktop version of Discord.",
+    "crumbs": [
+      "Infrastructure",
+      "Using Discord 101"
+    ]
+  },
+  {
+    "objectID": "set-up/setup-discord.html#what-is-discord",
+    "href": "set-up/setup-discord.html#what-is-discord",
+    "title": "Using Discord 101",
+    "section": "",
+    "text": "Discord is a platform for text chatting, voice chatting, and screen sharing. We will be using Discord as a group “workspace” for this class.\nJoin the Stat 541 Server to start experimenting with the interface. When you join the server, you will be given some suggestions to get started.\n\nWe recommend you click through these - and in particular, it is probably a good idea to download the desktop version of Discord.",
+    "crumbs": [
+      "Infrastructure",
+      "Using Discord 101"
+    ]
+  },
+  {
+    "objectID": "set-up/setup-discord.html#setting-up-your-account",
+    "href": "set-up/setup-discord.html#setting-up-your-account",
+    "title": "Using Discord 101",
+    "section": "2 Setting up your account",
+    "text": "2 Setting up your account\n\nVerify your email\nTo use this Discord server, you must have a verified email.\nNobody (including your professors) will be able to see this email, and it does not have to be your Cal Poly email. This is simply to keep the server from being overrun by temporary accounts.\n\n\nCreate your identity\nThe first thing you should do is decide what name and picture you would like to use.\n\nWe would like to strongly encourage you to use your real name and picture, so that we can get to know you. However, if you prefer to remain anonymous, you are free to do so.\n\n(Please do not be like Regina and use the name of another student, however! This kind of impersonation will result in a permanent ban from the server.)\n\n\nDecide about privacy and notifications\nThe default settings on the channel are probably just fine for you. Feel free to make any changes that work for you, though.\nYou can change your message notifications:\n\nYou can edit your privacy settings, although most things are already private:\n\n\n\nConnect other apps\nYou can connect other apps to Discord, either for productivity or just for fun.\n\nDr. Bodwin has connected her Spotify, so you can listen along with her music and/or judge her taste.",
+    "crumbs": [
+      "Infrastructure",
+      "Using Discord 101"
+    ]
+  },
+  {
+    "objectID": "set-up/setup-discord.html#using-the-channels",
+    "href": "set-up/setup-discord.html#using-the-channels",
+    "title": "Using Discord 101",
+    "section": "3 Using the Channels",
+    "text": "3 Using the Channels\nThe server is made up of many channels. Some are text chatrooms, while some are “Voice Channels” that connect you via audio to everyone else in the channel.\n\nText Channels\nUse the #general channel for anything and everything:\n\nIf your question is about course logistics, rather than the material itself, consider using the #class-logistics channel:\n\nYou can use the specific weekly channels to ask questions about the material…\n\n… or the specific lab assignment.\n\nNotice that you can use tick marks (```), like in R Markdown, to make your code appear in a formatted code box.\n\n\nVoice Channels\nTo join a voice channel, simply click it! Make sure you are careful about when you are muted or unmuted.\n\nThe extra “Side Chat” channels are limited to 4 or 8 people, if you would like to start an impromptu study conversation without being heard by the professors and/or the rest of the class. (We’ll only drop in if you invite us!)\nVoice channels can also be used for people to “Go Live”, and share their screen with everyone else.\n\nWhile this will usually be something professors use to demonstrate code, you can go live, too! But you may need to download the desktop version of Discord to do so.\n\n\nPrivate messages\nIt is also easy to send private messages, to your professor(s) or to each other. These private messages can also easily be used to launch a private video chat and/or screen sharing.",
+    "crumbs": [
+      "Infrastructure",
+      "Using Discord 101"
+    ]
+  },
+  {
+    "objectID": "set-up/setup-discord.html#creating-your-own-server",
+    "href": "set-up/setup-discord.html#creating-your-own-server",
+    "title": "Using Discord 101",
+    "section": "4 Creating your own server",
+    "text": "4 Creating your own server\nLast but not least - if you have an established study group you like to work with, and you want to use Discord to communicate without the distraction or invasion of the rest of the class, feel free to create your very own server! You can easily hop between servers during work parties, to ask each other questions or just to take a break and chat about life.",
+    "crumbs": [
+      "Infrastructure",
+      "Using Discord 101"
+    ]
+  },
+  {
+    "objectID": "portfolio/portfolio-instructions.html",
+    "href": "portfolio/portfolio-instructions.html",
+    "title": "Final Portfolio Instructions",
+    "section": "",
+    "text": "GitHub is an incredibly useful tool for project management and collaboration. It also has several useful features for professional promotion: you can host your own site on github using GitHub pages, describe yourself using a GitHub developer profile, and even use resume.github.io to generate a resume summary of your activity on GitHub (you must opt-in by starring the project page).\nThe development of Quarto has made it incredibly simple to generate websites, which can be easily hosted by GitHub Pages.",
+    "crumbs": [
+      "Portfolio",
+      "Final Portfolio Instructions"
+    ]
+  },
+  {
+    "objectID": "portfolio/portfolio-instructions.html#instructions-for-creating-a-personal-website",
+    "href": "portfolio/portfolio-instructions.html#instructions-for-creating-a-personal-website",
+    "title": "Final Portfolio Instructions",
+    "section": "Instructions for Creating a Personal Website",
+    "text": "Instructions for Creating a Personal Website\nIf you’ve never made a personal website, you will need to create one! There are so many resources for creating Quarto websites, but my absolute favorite one’s are from Sam Shanny-Csik.\nFollow this step-by-step guide for creating a new Quarto website: &lt;https://ucsb-meds.github.io/creating-quarto-websites/\n\n\n\n\n\n\n\n\nName your project &lt;YourGitHubUsername&gt;.github.io\n\n\n\nWe’re going to deploy websites using GitHub pages, and it would be nice if your website had a professional name! I would recommend using your username, unless you chose a username that isn’t very descriptive or unique (e.g., brandonk04). If this is the case, I would recommend you use a more descriptive name for your project (e.g., brandon-kim-04).\n\n\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nI would strongly recommend this folder living inside your broader “STAT 541” folder, at least for now!",
+    "crumbs": [
+      "Portfolio",
+      "Final Portfolio Instructions"
+    ]
+  },
+  {
+    "objectID": "portfolio/portfolio-instructions.html#making-changes-to-an-existing-website",
+    "href": "portfolio/portfolio-instructions.html#making-changes-to-an-existing-website",
+    "title": "Final Portfolio Instructions",
+    "section": "Making Changes to an Existing Website",
+    "text": "Making Changes to an Existing Website\nSo you already have a personal website? Great! Let’s get started making blog posts for your website!\nWe’re going to follow another one of Sam Shanny-Csik’s guides for integrating blog posts into your existing website:\nhttps://samanthacsik.github.io/posts/2022-10-24-quarto-blogs/\n\n\n\n\n\n\nImportant\n\n\n\nI’m expecting that your posts are contained in a portfolio folder, so they are easy for me to find.\n\n\nBy the end of the quarter, you should have seven blog posts for the following projects you’ve completed:\n\nAdvanced Visualizations\nQuarto Dashboards (Static)\nQuarto Dashboards (Dynamic)\nWriting Efficient Functions\nJSON Data & APIs\nWebscraping\nGenerative Art",
+    "crumbs": [
+      "Portfolio",
+      "Final Portfolio Instructions"
+    ]
+  },
+  {
+    "objectID": "portfolio/portfolio-instructions.html#additional-styling-options",
+    "href": "portfolio/portfolio-instructions.html#additional-styling-options",
+    "title": "Final Portfolio Instructions",
+    "section": "Additional Styling Options",
+    "text": "Additional Styling Options\nIn case you are interested in styling your website further, I would recommend looking over this presentation on using .scss and .sass files.",
+    "crumbs": [
+      "Portfolio",
+      "Final Portfolio Instructions"
+    ]
+  },
+  {
+    "objectID": "labs/lab-7.html",
+    "href": "labs/lab-7.html",
+    "title": "Lab 7",
+    "section": "",
+    "text": "One of the Open-Notify APIs provides predictions of pass times for a given location when given the corresponding latitude, longitude, and altitude are given:\nPass Times API\n\n\nYou can find the latitudes and longitudes for the U.S. state capitals at this site.\n\nUse the API to get the next three predicted pass times for all of the U.S. state capitals. Organize all of this information into a nice data frame (or data frame-like object) that will be easy to use for mapping.\n\n\n\n\n\nMap the U.S. state capitals using leaflet.\nFind an image of your choosing to use as the marker icon, that’s relevant for these data. Maybe a spaceship? 🚀 Or an astronaut? 🧑‍🚀\nThe hover-over information for each marker should include the name of the state capital and the soonest predicted pass time. The click information should include the name of the state capital and all three predicted pass times. Make sure these times are in an easy-to-read format.\n\n\n\n\nCheck out this video for adding polylines to a leaflet map.\n\nOverlay lines on your map that connect the U.S. state capitals in order of pass times (essentially east to west) so that we can see the expected pass order.\n\n\n\n\nMake sure your final file is carefully formatted, so that each analysis is clear and concise. Be sure your knitted .html file shows all your source code, including your function definitions."
+  },
+  {
+    "objectID": "labs/lab-7.html#the-open-notify-api",
+    "href": "labs/lab-7.html#the-open-notify-api",
+    "title": "Lab 7",
+    "section": "",
+    "text": "One of the Open-Notify APIs provides predictions of pass times for a given location when given the corresponding latitude, longitude, and altitude are given:\nPass Times API\n\n\nYou can find the latitudes and longitudes for the U.S. state capitals at this site.\n\nUse the API to get the next three predicted pass times for all of the U.S. state capitals. Organize all of this information into a nice data frame (or data frame-like object) that will be easy to use for mapping.\n\n\n\n\n\nMap the U.S. state capitals using leaflet.\nFind an image of your choosing to use as the marker icon, that’s relevant for these data. Maybe a spaceship? 🚀 Or an astronaut? 🧑‍🚀\nThe hover-over information for each marker should include the name of the state capital and the soonest predicted pass time. The click information should include the name of the state capital and all three predicted pass times. Make sure these times are in an easy-to-read format.\n\n\n\n\nCheck out this video for adding polylines to a leaflet map.\n\nOverlay lines on your map that connect the U.S. state capitals in order of pass times (essentially east to west) so that we can see the expected pass order.\n\n\n\n\nMake sure your final file is carefully formatted, so that each analysis is clear and concise. Be sure your knitted .html file shows all your source code, including your function definitions."
+  },
+  {
+    "objectID": "labs/lab-4.html",
+    "href": "labs/lab-4.html",
+    "title": "Lab 4",
+    "section": "",
+    "text": "For this lab assignment, you are tasked with transforming your previous static dashboard into an interactive dashboard using either Shiny or webR.",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "Lab 4"
+    ]
+  },
+  {
+    "objectID": "labs/lab-4.html#dashboard-requirements",
+    "href": "labs/lab-4.html#dashboard-requirements",
+    "title": "Lab 4",
+    "section": "Dashboard Requirements",
+    "text": "Dashboard Requirements\nThe dashboard you create must have the following:\n\nat least one opportunity for user input via a slide bar\nat least one opportunity for user input via check boxes\n\nThese interactive features are expected to be used to:\n\nupdate at least one visualization\nupdate at least one of your “quick information” cards\n\n\n\n\n\n\n\nInteractive Table\n\n\n\nYou are free to swap one of your visualizations out for an interactive table!",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "Lab 4"
+    ]
+  },
+  {
+    "objectID": "labs/lab-4.html#submission",
+    "href": "labs/lab-4.html#submission",
+    "title": "Lab 4",
+    "section": "Submission",
+    "text": "Submission\nYou are required to submit both the link to your GitHub repository containing your source code and a link to your published dashboard. You are expected to publish your dashboard through Quarto Pub, a free publishing service for static content created with Quarto.",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "Lab 4"
+    ]
+  },
+  {
+    "objectID": "infrastructure.html",
+    "href": "infrastructure.html",
+    "title": "Computational Infrastructure",
+    "section": "",
+    "text": "Welcome to STAT 541! We’re excited to have you! This page is dedicated to getting you set-up with the infrastructure will will make use of throughout the course.",
+    "crumbs": [
+      "Infrastructure",
+      "Computational Infrastructure"
+    ]
+  },
+  {
+    "objectID": "course-materials/syllabus.html",
+    "href": "course-materials/syllabus.html",
+    "title": "STAT 541: Advanced Statistical Computing",
+    "section": "",
+    "text": "Of course, if your question is truly private, such as a grade inquiry or a personal concern, you may send me a private email. To help both you and me, here are some specific expectations about emails:"
+  },
+  {
+    "objectID": "course-materials/syllabus.html#course-objectives",
+    "href": "course-materials/syllabus.html#course-objectives",
+    "title": "STAT 541: Advanced Statistical Computing",
+    "section": "1.1 Course Objectives",
+    "text": "1.1 Course Objectives\nAfter taking this course, you will be able to:\nCreate\n\ncomplex and reproducible data reports, that include interactive and / or dynamic elements.\ncompelling data visualizations with interactive elements.\n\nUse iteration to\n\nobtain data through APIs and webscraping.\ncreate generative art."
+  },
+  {
+    "objectID": "course-materials/syllabus.html#prerequisites",
+    "href": "course-materials/syllabus.html#prerequisites",
+    "title": "STAT 541: Advanced Statistical Computing",
+    "section": "1.2 Prerequisites",
+    "text": "1.2 Prerequisites\nI expect you to enter this class with:\n\nComfort in intermediate level R skills.\nStatistical knowledge at the Year 2 level; i.e., comfort with the concepts and basic math of multiple linear regression.\nFamiliarity with computers and technology (e.g., Internet browsing, word processing, opening/saving files, converting files to PDF format, sending and receiving e-mail, etc.).\nA positive attitude, a curious mind, and a respect for ethical use of data science tools."
+  },
+  {
+    "objectID": "course-materials/syllabus.html#practice-activities-and-check-ins-due-tuesdays-by-midnight",
+    "href": "course-materials/syllabus.html#practice-activities-and-check-ins-due-tuesdays-by-midnight",
+    "title": "STAT 541: Advanced Statistical Computing",
+    "section": "2.1 Practice Activities and Check-ins (Due Tuesdays by midnight)",
+    "text": "2.1 Practice Activities and Check-ins (Due Tuesdays by midnight)\nThese small “quizzes” or activities are posted each week, to give you a way to check your milestones on the main topics of the week.\nYou get full credit for any reasonable effort on these; I will not be grading them carefully or giving feedback.\nCheck-ins are designed so that they can be done on your own, using the Coursework guides, in advance of class. Practice activities are meant to be done in class during or after lecture."
+  },
+  {
+    "objectID": "course-materials/syllabus.html#lab-assignments-due-mondays-by-5pm",
+    "href": "course-materials/syllabus.html#lab-assignments-due-mondays-by-5pm",
+    "title": "STAT 541: Advanced Statistical Computing",
+    "section": "2.2 Lab Assignments (Due Mondays by 5pm)",
+    "text": "2.2 Lab Assignments (Due Mondays by 5pm)\nEach week, you will have a “lab” assignment, bringing together the week’s skills.\nThese assignments are considered to be due every Monday by 5pm, so you have time to ask questions during student hours on Monday.\n\nSuccess / Growing Grading\nI expect that you will approach each lab assignment seriously, investing the necessary time and energy to prepare your responses. Different from what you may have experienced, lab assignments are graded for “proficiency” of specific learning targets, which describe what you should be able to do after taking this course. You’ll receive a score for each problem on an assignment according to the Success / Growing rubric below, as well as feedback to help you improve.\n\n\n\n\n\n\n\nScore\nJustification\n\n\n\n\nSuccess\nThe solution to the problem is correct, legible, and easy to follow, with all reasoning provided. Any error does not bring into question your understanding of the topic.\n\n\nGrowing\nThe solution shows growth toward mastering the topic; however, elements of the solution bring into question your understanding of the topic, and thus further attention is needed."
+  },
+  {
+    "objectID": "course-materials/syllabus.html#final-portfolio-due-sunday-june-7",
+    "href": "course-materials/syllabus.html#final-portfolio-due-sunday-june-7",
+    "title": "STAT 541: Advanced Statistical Computing",
+    "section": "2.3 Final Portfolio (Due Sunday, June 7)",
+    "text": "2.3 Final Portfolio (Due Sunday, June 7)\nIn lieu of exams, you will assemble a portfolio demonstrating your level of proficiency in each of the learning goals for this course. Examples of your code can only be taken from the lab assignments or the projects; i.e., not from check-ins or practice activities. On Canvas you can find a detailed description of the major and minor learning goals, how you can demonstrate your proficiency, and what is required for particular course grades.\nNote that the portfolio is not simply a list of links to your code; it also requires a brief discussion of how that code demonstrates the skill. There are also general reflection and summary questions involved. That is to say, although you will not necessarily need to write code, the portfolio will take a good amount of time and effort to assemble; plan accordingly.\n\n\n\n\n\n\nIncremental Progress\n\n\n\nYou can do your future self a big favor by working on your portfolio progressively throughout the quarter, instead of leaving it all for Finals Week. My suggestion is that each week, you add everything you can to your portfolio that you demonstrated in that week."
+  },
+  {
+    "objectID": "course-materials/syllabus.html#what-if-i-have-accommodations-or-feel-that-accommodations-would-be-beneficial-to-my-learning",
+    "href": "course-materials/syllabus.html#what-if-i-have-accommodations-or-feel-that-accommodations-would-be-beneficial-to-my-learning",
+    "title": "STAT 541: Advanced Statistical Computing",
+    "section": "5.1 What if I have accommodations or feel that accommodations would be beneficial to my learning?",
+    "text": "5.1 What if I have accommodations or feel that accommodations would be beneficial to my learning?\nI enthusiastically support the mission of Disability Resource Center to make education accessible to all. I design all my courses with accessibility at the forefront of my thinking, but if you have any suggestions for ways I can make things more accessible, please let me know. Come talk to me if you need accommodation for your disabilities. I honor self-diagnosis: let’s talk to each other about how we can make the course as accessible as possible. See also the standard syllabus statements, which include more information about formal processes."
+  },
+  {
+    "objectID": "course-materials/syllabus.html#im-having-difficulty-paying-for-food-and-rent-what-can-i-do",
+    "href": "course-materials/syllabus.html#im-having-difficulty-paying-for-food-and-rent-what-can-i-do",
+    "title": "STAT 541: Advanced Statistical Computing",
+    "section": "5.2 I’m having difficulty paying for food and rent, what can I do?",
+    "text": "5.2 I’m having difficulty paying for food and rent, what can I do?\nIf you have difficulty affording groceries or accessing sufficient food to eat every day, or if you lack a safe and stable place to live, and you believe this may affect your performance in the course, I urge you to contact the Dean of Students for support. Furthermore, please notify me if you are comfortable in doing so. This will enable me to advocate for you and to connect you with other campus resources."
+  },
+  {
+    "objectID": "course-materials/syllabus.html#my-mental-health-is-impairing-my-ability-to-engage-in-my-classes-what-should-i-do",
+    "href": "course-materials/syllabus.html#my-mental-health-is-impairing-my-ability-to-engage-in-my-classes-what-should-i-do",
+    "title": "STAT 541: Advanced Statistical Computing",
+    "section": "5.3 My mental health is impairing my ability to engage in my classes, what should I do?",
+    "text": "5.3 My mental health is impairing my ability to engage in my classes, what should I do?\nNational surveys of college students have consistently found that stress, sleep problems, anxiety, depression, interpersonal concerns, death of a significant other and alcohol use are among the top ten health impediments to academic performance. If you are experiencing any mental health issues, I and Cal Poly are here to help you. Cal Poly’s Counseling Services (805-756-2511) is a free and confidential resource for assistance, support and advocacy."
+  },
+  {
+    "objectID": "course-materials/syllabus.html#someone-is-threatening-me-what-can-i-do",
+    "href": "course-materials/syllabus.html#someone-is-threatening-me-what-can-i-do",
+    "title": "STAT 541: Advanced Statistical Computing",
+    "section": "5.4 Someone is threatening me, what can I do?",
+    "text": "5.4 Someone is threatening me, what can I do?\nI will listen and believe you if someone is threatening you. I will help you get the help you need. I commit to changing campus culture that responds poorly to dating violence and stalking."
+  },
+  {
+    "objectID": "course-materials/syllabus.html#what-if-i-cant-arrange-for-childcare",
+    "href": "course-materials/syllabus.html#what-if-i-cant-arrange-for-childcare",
+    "title": "STAT 541: Advanced Statistical Computing",
+    "section": "5.5 What if I can’t arrange for childcare?",
+    "text": "5.5 What if I can’t arrange for childcare?\nIf you are responsible for childcare on short notice, you are welcome to bring children to class with you. If you are a lactating parent, you many take breaks to feed your infant or express milk as needed. If I can support yo in navigating parenting, coursework, and other obligations in any way, please let me know."
+  },
+  {
+    "objectID": "course-materials/syllabus.html#what-if-i-need-to-miss-class",
+    "href": "course-materials/syllabus.html#what-if-i-need-to-miss-class",
+    "title": "STAT 541: Advanced Statistical Computing",
+    "section": "6.1 What if I need to miss class?",
+    "text": "6.1 What if I need to miss class?\nI encourage you to attend every class session, but policies are for narcs. I put a great deal of time into making each class session engaging and worth your time. Attendance in this course is not explicitly required, but it degrades your classmates’ trust in you when they don’t see you in class.\nPlease do not email me letting me know when you are missing class - you will not lose points for this, but it is your responsibility to catch up on the materials and complete the in-class activities. Here’s what you should do if you do miss a class:\n\nTalk to a classmate to figure out what information you missed\nCheck Canvas for any necessary handouts or changes to assignments\nStop by student hours with any questions you have after reviewing notes and handouts\n\nIf you miss a bunch of classes, please come talk to me. I’m working from the assumption that you care and are trying, but something is getting in your way (health issues? depression / anxiety? college stress?); let’s figure out what that is and how I can help."
+  },
+  {
+    "objectID": "course-materials/syllabus.html#what-if-i-need-to-turn-something-in-late",
+    "href": "course-materials/syllabus.html#what-if-i-need-to-turn-something-in-late",
+    "title": "STAT 541: Advanced Statistical Computing",
+    "section": "6.2 What if I need to turn something in late?",
+    "text": "6.2 What if I need to turn something in late?\nAssignments are expected to be submitted on time. However, every student will be permitted to submit up to three individual assignments up to 3-days late, by completing a deadline extension form. Similar to the “real world,” deadline extensions must be requested before an assignment is due.\nWhen you complete the deadline extension form you will be required to state (1) what assignment you need an extension for, and (2) your proposed new deadline. Your new deadline must be within 3-days of the original deadline.\nAll deadline extensions must be done through the form, so I can keep track of who has used their allotment of extensions. If you are registered with DRC to have deadline extensions, you are required to complete a deadline extension request and make a note if your extension is related to a need related to DRC accommodations.\nAny late work is required to have a deadline extension request, meaning if you do not complete a deadline extension request for an assignment you are not permitted to turn it in late. The link to the deadline extension form can be found in Canvas in the Course Information module (at the top of the page).\n\n\n\n\n\n\nDeadline extensions are not permitted for the Final Portfolio!"
+  },
+  {
+    "objectID": "course-materials/syllabus.html#do-i-need-to-bring-a-computer-to-class",
+    "href": "course-materials/syllabus.html#do-i-need-to-bring-a-computer-to-class",
+    "title": "STAT 541: Advanced Statistical Computing",
+    "section": "6.3 Do I need to bring a computer to class?",
+    "text": "6.3 Do I need to bring a computer to class?\nYou are allowed to use technology in the classroom! In fact, we will often do so as part of in-class activities. Our class is held in a room with monitors, but no computers. So, bringing a laptop is critical!"
+  },
+  {
+    "objectID": "course-materials/syllabus.html#how-can-i-expect-to-be-treated-in-this-course",
+    "href": "course-materials/syllabus.html#how-can-i-expect-to-be-treated-in-this-course",
+    "title": "STAT 541: Advanced Statistical Computing",
+    "section": "7.1 How can I expect to be treated in this course?",
+    "text": "7.1 How can I expect to be treated in this course?\nFollowing Ihab Hassan, I strive to teach statistics so that people will stop killing each other. In my classroom, diversity and individual differences are a sources of strength. One of the greatest failures of Statistics, historically and in the present, has been the exclusion of voices from the field. Everyone here can learn from each other, and doing so is vital to the structure of the course. Significant portions of this course involve group work and discussion in class. Some discussions will touch on sensitive topics. So that everyone feels comfortable participating in these activities, we must listen to each other and treat each other with respect. Any attitude or belief that espouses the superiority of one group of people over another is not welcome in my classroom. Such beliefs are directly destructive to the sense of community that we strive to create, and will sabotage our ability to learn from each other (and thus sabotage the entire structure of the course).\nIn this classroom, I expect you to be polite, respectful, inclusive, and open-minded.\nSome examples of how to be a good classmate include:\n\nDoing your best to avoid language that is ableist, racist, sexist, or classist; or that perpetuates harmful stereotypes.\nAddressing your classmates by their preferred name and pronouns.\nDoing your best to be aware of your own biases, privileges, and areas of ignorance.\nListening to others’ opinions, and making an effort to understand their perspective.\nTaking the time to help your classmates grasp concepts or solve problems, even when you are ready to move on.\n\nIn summary: Be good to each other."
+  },
+  {
+    "objectID": "course-materials/syllabus.html#what-constitutes-plagiarism-in-a-statistics-class",
+    "href": "course-materials/syllabus.html#what-constitutes-plagiarism-in-a-statistics-class",
+    "title": "STAT 541: Advanced Statistical Computing",
+    "section": "7.2 What constitutes plagiarism in a statistics class?",
+    "text": "7.2 What constitutes plagiarism in a statistics class?\nYou are encouraged to work with other classmates on all but the exam portions of this class. You are also encouraged (realistically, required!) to make use of online resources to accomplish tasks.\nWhen dealing with code, follow these guidelines:\n\nNever copy-paste more than small snippets of code. That is, you might borrow a little three-line function from StackOverflow, but you should not copy over a full analysis you find on Kaggle.\nAttribute all code that is not completely your own. If you do borrow that StackOverflow snippet, provide a link to the source. If you reference a similar analysis for ideas, mention that in your description.\n\n\n\n\n\n\n\nExplain Your Code\n\n\n\nA good rule for deciding if the code you are borrowing is plagiarism is: If I sat you down by yourself in a room with no internet, could you explain to me roughly what each line of code is doing?\n(In fact, this is exactly what I will do if I need to investigate possible cheating.)"
+  },
+  {
+    "objectID": "course-materials/syllabus.html#learning-to-code-with-chatgpt",
+    "href": "course-materials/syllabus.html#learning-to-code-with-chatgpt",
+    "title": "STAT 541: Advanced Statistical Computing",
+    "section": "7.3 Learning to Code with ChatGPT",
+    "text": "7.3 Learning to Code with ChatGPT\nNew AI models like Chat GPT offer a whole new world of online coding resources. This is exciting! In this class, you are allowed to use these tools like you would any other online coding support tool. (Note that this is not a typical policy; most of your other classes likely do not allow AI tools to be used.)\nIf you do use an AI tool to help you write or debug code, it is important that you document and cite this process. That is, you should save the “conversation” with the chatbot, to show how you used your knowledge of R coding to construct queries that lead to useful results.\nWhen you submit your portfolio, if you use AI-generated code in your examples, you will need to make an argument for how you are demonstrating mastery of the requisite skills, and the AI is only being used as support."
+  },
+  {
+    "objectID": "course-materials/syllabus.html#integrity-violations",
+    "href": "course-materials/syllabus.html#integrity-violations",
+    "title": "STAT 541: Advanced Statistical Computing",
+    "section": "7.4 Integrity Violations",
+    "text": "7.4 Integrity Violations\nIf you accidentally forget a small citation, or go a little overboard in how much you “borrow” from StackOverflow, you’ll get a warning. Any instance of willful and deliberate cheating will result in a failing grade in this class, full stop.\n\n\n\n\n\n\nThe door swings both ways\n\n\n\nBe careful about being on the giving end as well as the taking end. For example: If you send your finished assignment to a friend, and that friend copies it, you have both just failed the course."
+  },
+  {
+    "objectID": "course-materials/syllabus.html#footnotes",
+    "href": "course-materials/syllabus.html#footnotes",
+    "title": "STAT 541: Advanced Statistical Computing",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nSee Section 3.0.2 for information on what you can expect when you email me.↩︎"
+  },
+  {
+    "objectID": "course-materials/calendar.html",
+    "href": "course-materials/calendar.html",
+    "title": "STAT 541: Advanced R",
+    "section": "",
+    "text": "This page contains an outline of the topics, content, and assignments for the quarter. Note that this schedule will be updated as the quarter progresses, with all changes documented here.\n\n\n\n\n\n\n\n\n\n\n\nWeek\nDate\nRequired Reading\nLecture Activities\nLab Assignment\nPortfolio\n\n\n\n\n1\nStat 331 Review & Version Control\nMarch 31 (note no class on Monday)\nInstalling / Updating R & RStudio\nVersion Control\n\nLab 1 Instructions\nLab 1 GitHub repository\n\n\n\n2\nAdvanced Visualizations\nApril 7\nggplot Review\nggplotExtensions\nMaking maps with leaflet\n\nLab 2 Instructions\nLab 2 GitHub repository\n\n\n\n3\nQuarto Dashboards (Static)\nApril 14\nCreating Static Quarto Dashboards\n\nLab 3 Instructions\nLab 3 GitHub repository\n\n\n\n4\nQuarto Dashboards (Dynamic)\nApril 21\nCreating Interactive Quarto Dashboards\n\nLab 4 Instructions\nLab 4 GitHub repository\n\n\n\n5\nPortfolio Week\nApril 28\n\n\n\nPortfolio Instructions\n\n\n6\nWriting Efficient Functions\nMay 5\nReview of Writing Functions in R\nWriting Efficient Functions\nEfficiently Iterating over Functions\n\nLab 6 Instructions\nLab 6 GitHub repository\n\n\n\n7\nJSON Data & APIs\nMay 12\nHierarchical (JSON) Data\nWorking with APIs\n\nLab 7 Instructions\nLab 7 GitHub repository\n\n\n\n8\nWebscraping\nMay 19\nWebscraping\n\nLab 8 Instructions\nLab 8 GitHub repository\n\n\n\n9\nGenerative Art\nMay 26 (note Tuesday follows a Monday schedule)\n\n\nLab 9 Instructions\nLab 9 GitHub repository\n\n\n\n10\nPortfolio Week\nJune 2\n\n\n\nPortfolio Instructions\n\n\nFinals Week (Portfolio Meetings)\nJune 9"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Welcome",
+    "section": "",
+    "text": "Stat 541 takes a deeper dive into statistical computing in R, building your communication and iteration skills. We will explore different modalities for communicating statistical ideas—dynamic visualizations and dashboards, while also exploring ways to integrate R code into these environments. We will also continue to expand your skills as a developer—writing functions and iterating over those functions to query data from APIs and scrape the web. We’re going to have a lot of fun!"
+  },
+  {
+    "objectID": "index.html#acknowledements",
+    "href": "index.html#acknowledements",
+    "title": "Welcome",
+    "section": "Acknowledements",
+    "text": "Acknowledements\nA huge shout out to Dr. Kelly Bodwin for creating this class and adding it to the amazing number of computing courses the Statistics Department teaches. Another shout out goes the the amazing women at Macalester College—Leslie Myint, Brianna Heggeseth, and Alicia Johnson—for making their Intermediate Data Science course materials public. And finally, a massive thank you to Sam Shanny-Csik for their incredible resources for making and styling Quarto websites!\nThis website is built with Quarto, the lovely icons are all by Allison Horst, and none of this would be possible without the tidyverse."
+  },
+  {
+    "objectID": "index.html#license",
+    "href": "index.html#license",
+    "title": "Welcome",
+    "section": "License",
+    "text": "License\nThis online work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International. Visit here for more information about the license."
+  },
+  {
+    "objectID": "labs/lab-3.html",
+    "href": "labs/lab-3.html",
+    "title": "Lab 3",
+    "section": "",
+    "text": "For this lab assignment, you are tasked with transforming some aspect of the 2020 Wellcome Global Health Monitor Report or the 2018 Global Health Monitor Report into a dashboard. Anything in either of these reports is fair game, so find something that inspires you!\nIn case you are drawing a blank, here are some ideas:",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "Lab 3"
+    ]
+  },
+  {
+    "objectID": "labs/lab-3.html#dashboard-requirements",
+    "href": "labs/lab-3.html#dashboard-requirements",
+    "title": "Lab 3",
+    "section": "Dashboard Requirements",
+    "text": "Dashboard Requirements\nThe dashboard you create must have the following:\n\na navigation logo (similar to the Olympic rings)\nicons to your socials (e.g., LinkedIn, Instagram, Twitter, email)\nat least two pages\nat least two tabsets (can be on just one page)\nat least two cards with quick information (e.g., % of people across the world who have faith in vaccines)\nat least on plot made with leaflet\na non-default theme\nnon-default plot colors\n\n\n\n\n\n\n\nCoordinate Colors\n\n\n\nThe colors in your styled dashboard should match the colors in your plots!",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "Lab 3"
+    ]
+  },
+  {
+    "objectID": "labs/lab-3.html#resources-for-creating-your-dashboard",
+    "href": "labs/lab-3.html#resources-for-creating-your-dashboard",
+    "title": "Lab 3",
+    "section": "Resources for Creating Your Dashboard",
+    "text": "Resources for Creating Your Dashboard\nThere are two additional videos by Dr. Mine Çetinkaya-Rundel that you will need to watch in order to create your dashboard.",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "Lab 3"
+    ]
+  },
+  {
+    "objectID": "labs/lab-3.html#submission",
+    "href": "labs/lab-3.html#submission",
+    "title": "Lab 3",
+    "section": "Submission",
+    "text": "Submission\nYou are required to submit both the link to your GitHub repository containing your source code and a link to your published dashboard. You are expected to publish your dashboard through Quarto Pub, a free publishing service for static content created with Quarto.\n\n\n\n\n\n\n\n\nSign-up for Quarto Pub\n\n\n\nYou will need to sign up for a free Quarto Pub account. I would highly recommend you link your Quarto Pub account with your GitHub account, since the documents you will be publishing should live in a GitHub repository!\n\n\n\n\n\n\n\n\n\n\n\nDo not use GitHub actions!\n\n\n\nYou are expected to publish the content rendered on your local machine. Do not follow the instructions for using GitHub Actions to publish—that’s too spicy!",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "Lab 3"
+    ]
+  },
+  {
+    "objectID": "portfolio.html",
+    "href": "portfolio.html",
+    "title": "Portfolio",
+    "section": "",
+    "text": "A portfolio is a collection of work that gives information about the person doing the work. Artists and architects, for example, have portfolios that show the range and scope of what they do, and by looking through their portfolios, you get a sense of who this person is, how they have grown as a professional, what they have produced, and what they are capable of producing.\nThat’s the spirit intended for the STAT 331 Portfolio. In your portfolio, you will give a curated collection of your best work along with reflections that tell the story of your growth from the first day of classes all the way to the end. Your goal is to argue, convincingly and with concrete evidence, that you have met the criteria for both content proficiency, evidence of continued learning, and growth as a team member that goes with a particular grade. I will read your portfolio carefully, and if you make a convincing case for a grade, that’s the grade you’ll receive.",
+    "crumbs": [
+      "Portfolio"
+    ]
+  },
+  {
+    "objectID": "portfolio.html#key-information",
+    "href": "portfolio.html#key-information",
+    "title": "Portfolio",
+    "section": "Key Information",
+    "text": "Key Information\nFormat: Your portfolio will have two components:\n\nA personal website with blog posts containing your projects from STAT 541\nA final grade reflection, justifying your achievement for the course’s learning objectives\n\nThe blog posts from your website is what you will reference when justifying your achievement for a given learning objective.\n\nDue date: The portfolio is due the Saturday before finals week. No deadline extensions are available for the Final Portfolio.",
+    "crumbs": [
+      "Portfolio"
+    ]
+  },
+  {
+    "objectID": "portfolio.html#final-grade-reflection",
+    "href": "portfolio.html#final-grade-reflection",
+    "title": "Portfolio",
+    "section": "Final Grade Reflection",
+    "text": "Final Grade Reflection\nThis component is a self-evaluation of your performance in the class. Your goal is to state clearly what grade you think you have earned in the course, and convincingly argue that you have met the criteria for that grade. Please be thoughtful, honest, and reflective, but also brief and focused.\nThis reflection will be done in the reflection-template.qmd file. The structure of the document is as follows:\n\nFor each of the learning targets, carefully select examples of your code that demonstrate concretely and directly your proficiency with the given target.\n\n\nYou must indicate where the code you provided came from, linking to the blog post from your personal website.\n\n\nWhat grade did you earn? State it clearly in one sentence. You can include plus/minus modifiers; see below about those.\nHow did you meet that grade’s requirements? The requirements for grades are found in the Portfolio Rubric. Review the criteria carefully. Then, explain how you have satisfied the criteria for the grade you are saying you’ve earned. Be specific and thorough. List each criterion you have met and how you know you’ve met it. Refer to specific artifacts or examples in the Portfolio that support your case. Again, keep it brief and focused on concrete evidence that the criteria have been met.\nWhat else? There may be some other criteria that figures into your grade request that isn’t explicitly listed in the syllabus. If so, state the criteria you’re thinking of, explain why they are useful criteria for your grade determination, and then explain how well you met those criteria (and provide evidence in the artifacts, if applicable). As with the syllabus criteria, be focused, specific, and thorough — and refer to specific artifacts that provide evidence.\n\nPlus/minus grades: You may argue to add a “+” or “-” modifier to your grade. Generally speaking a “+” added to a letter grade means you’ve met all the criteria for the letter grade along with a significant amount, but not all, of the criteria for the next letter grade up. And a “-” means that you have met the requirements for a letter grade but only in a way that you believe is a bare minimum, or you’ve met almost all the requirements for the letter grade except for a small number of minor criteria.",
+    "crumbs": [
+      "Portfolio"
+    ]
+  },
+  {
+    "objectID": "portfolio.html#about-time-and-effort",
+    "href": "portfolio.html#about-time-and-effort",
+    "title": "Portfolio",
+    "section": "About Time and Effort",
+    "text": "About Time and Effort\nAs your instructor, I understand and respect that you have spent a great deal of time and effort on this course and will probably continue to do so until the end of the quarter. It’s possible that STAT 331 has been the most challenging course on your schedule this quarter, perhaps in your entire college career so far. I want you to know that I see you, I respect your efforts, and it’s extremely fulfilling to see you respond to the challenges and grow.\nI also want to be clear that while the time and effort spent on the class are vitally important, they are not explicitly part of the grade criteria you find in the syllabus. So, when you make the case for your grade in the portfolio, I respectfully ask that you keep your argument focused on concrete evidence of understanding of the learning targets and engagement with the class.\nWhen making the case for your grade, the focus needs to be on the results of your investment of time and effort. Did your efforts result in several exemplary solutions through the quarter? If so, put a subset of them in the Portfolio. Did the time you spend on coursework result in being an engaged collaborator during Practice Activities? If so, document how your efforts made you a valuable group member.",
+    "crumbs": [
+      "Portfolio"
+    ]
+  },
+  {
+    "objectID": "portfolio.html#questions-you-might-have",
+    "href": "portfolio.html#questions-you-might-have",
+    "title": "Portfolio",
+    "section": "Questions You Might Have",
+    "text": "Questions You Might Have\n\nQ: What if you disagree with our final grade reflection?\n\nA: There are two ways this might happen.\n\nYou ask for a grade that is higher than the evidence supports. That is, you grade yourself too highly, for example you believe you earned an A in the course, but I do not feel the evidence you’ve provided supports this grade. If this occurs in your Midterm Portfolio, I will discuss this with you in your 5-minute Midterm Portfolio meeting.I’ll tell you what grade I would have given you based on the evidence you provided in the portfolio. You can then use this feedback when constructing your final portfolio. If I believe the grade you’ve proposed in your Final Portfolio does not reflect the evidence you’ve provided, I will discuss this with you in your 5-minute Final Portfolio meeting. I’ll tell you what grade I would have given you based on the evidence you provided in the portfolio, and then give you the chance to provide additional evidence and explanations for your grade request. In our meeting, if you still think your grade request is correct, you’ll have the chance to walk me through your materials and reasoning. Afterwards, I might agree with you. But if we still disagree, we will try to come to an agreement on the highest grade that the evidence supports. I have faith that we’ll be able to come to a mutually-agreeable result. But, if we can’t, I will assign the grade that in my estimation is the highest grade supported by the evidence, and my determination will be final. However, again, I will exhaust all other options before simply overriding your grade determination.\nYou ask for a grade that was lower than your actual performance indicates. That is, you “lowball” yourself, for example you say you earned a B when in fact I think you earned an A-. In this case, I will award you the grade I think you earned, and then just inform you that I’ve done so (and why).\n\nIn my experience, the second situation happens significantly more frequently than the first.\n\n\n\nQ: Is there a limit on the number of artifacts I can include to support my grade?\n\nA: There is no strict limit, but please be selective.\nQuality, not quantity is what we are after. We do not want every assignment in our portfolio! Typically you should be able to give a complete portfolio in fewer than 8 assignments with judicious selection of homework solutions and other work. A handful of homework solutions that clearly indicate your attainment of the grade criteria is just as good as, if not better than, a massive binder of mediocre examples.\n\n\n\nQ: How specific or detailed do I need to be on some of the criteria? For example, do I need to list all the dates when I answered someone’s question on Discord?\n\nA: This isn’t filing your taxes, so a precise down-to-the-minute accounting of your work isn’t necessary.\nDetails and your reasoning are more important than precision and completeness here. For example if you made a handful of supportive comments in Discord, pick a few and tell me about them. What was the question about? What did you say? Why was that comment an example of “helpful feedback”? (Do you know that it was helpful?) Remember the purpose is to make a convincing case that you’ve earned a particular grade.\n\n\n\nQ: Would someone actually make a case that they earned a “D” in the class?\n\nA: Yes, if the person is honest and there’s not enough evidence to make the case for a “C”.\nIf you’re in that situation, be honest and don’t overreach just because the consequences are significant.\n\n\n\nQ: How long should the essays be?\n\nA: You should put serious effort into each of the essays and give thorough, detailed, and thoughtful responses — without going overboard and writing more than you need.\nThere is no hard word or character count here, but if you are writing less than half a page using ordinary font and line spacing, then you probably need to spend more time carefully reflecting on the question; if you are writing more than two pages for a single essay, you might consider editing it down for clarity. As always, put yourself in the shoes of your readers and then use your judgment as a writer.\n\n\n\nQ: What if you do not submit a Final Portfolio?\n\nA: If you do not complete a Final Portfolio submission, your grade will be at my discretion.\nI will use your Midterm Portfolio as well as completion of assignments from Week 7 - 10 to guide my decision.\nI’ll add more questions and answers in this space as they come up.",
+    "crumbs": [
+      "Portfolio"
+    ]
+  },
+  {
+    "objectID": "portfolio/portfolio-rubric.html",
+    "href": "portfolio/portfolio-rubric.html",
+    "title": "Final Portfolio Evaluation Rubric",
+    "section": "",
+    "text": "You will use the following labels to score each of the learning objectives in this course. Think of these as levels of achievement, like in a video game.",
+    "crumbs": [
+      "Portfolio",
+      "Final Portfolio Evaluation Rubric"
+    ]
+  },
+  {
+    "objectID": "portfolio/portfolio-rubric.html#grade-calculation",
+    "href": "portfolio/portfolio-rubric.html#grade-calculation",
+    "title": "Final Portfolio Evaluation Rubric",
+    "section": "Grade Calculation",
+    "text": "Grade Calculation\nThese are benchmarks to give you an idea of what achievements might correspond to what grade. It is not an exact mathematical conversion; your actual Portfolio Grade will be decided during our discussion meeting.\n\n\n\n\nNovice\nProficient\nVirtuoso\n\n\nA\n20%\n20%\n60%\n\n\nB\n40%\n40%\n20%\n\n\nC\n60%\n25%\n5%\n\n\nD\n90%\n10%\n0%",
+    "crumbs": [
+      "Portfolio",
+      "Final Portfolio Evaluation Rubric"
+    ]
+  },
+  {
+    "objectID": "portfolio/portfolio-rubric.html#missing-portfolios",
+    "href": "portfolio/portfolio-rubric.html#missing-portfolios",
+    "title": "Final Portfolio Evaluation Rubric",
+    "section": "Missing Portfolios",
+    "text": "Missing Portfolios\nIf you do not submit a Final Portfolio, your grade will be determined based on your Midterm Portfolio. If, however, you also did not submit a Midterm Portfolio, the best grade you can earn in the course is a C-.",
+    "crumbs": [
+      "Portfolio",
+      "Final Portfolio Evaluation Rubric"
+    ]
+  },
+  {
+    "objectID": "unit-1.html",
+    "href": "unit-1.html",
+    "title": "Unit 1",
+    "section": "",
+    "text": "In this first unit, we will explore various tools for communicating statistical ideas. We will start with data visualizations, expanding your repertoire of tools for visualizing data. From there, we will move to dashboards—both static and dynamic. Finally, we will play with methods for including executable R code inside these documents.\nThroughout these sections, you will encounter “check-ins” assessing your knowledge on a particular topic. These check-ins are delineated by a red (important) callout box and are associated with the Canvas quizzes assigned each week.\n\n\n\n\n\n\nExample Check-in Callout\n\n\n\nThis is where you will find the body of the question. The callout name refers to the name of the Canvas quiz the question is associated with.",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "Unit 1"
+    ]
+  },
+  {
+    "objectID": "unit-1/quarto-dashboard-static.html",
+    "href": "unit-1/quarto-dashboard-static.html",
+    "title": "Quarto Dashboards, Part 1",
+    "section": "",
+    "text": "This week, we’re taking the visualization skills we learned last week and using them to create an informational dashboard. Quarto dashboards were integrated into version 1.4, so you can use a familiar tool to create these dashboards. In part 1, we will focus on creating “static” dashboards—where the user does not interact with the content.",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "Quarto Dashboards, Part 1"
+    ]
+  },
+  {
+    "objectID": "unit-1/quarto-dashboard-static.html#required-video-hello-quarto-dashboards",
+    "href": "unit-1/quarto-dashboard-static.html#required-video-hello-quarto-dashboards",
+    "title": "Quarto Dashboards, Part 1",
+    "section": "🎥 Required Video: Hello Quarto Dashboards",
+    "text": "🎥 Required Video: Hello Quarto Dashboards",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "Quarto Dashboards, Part 1"
+    ]
+  },
+  {
+    "objectID": "unit-1/quarto-dashboard-static.html#video-resources",
+    "href": "unit-1/quarto-dashboard-static.html#video-resources",
+    "title": "Quarto Dashboards, Part 1",
+    "section": "Video Resources",
+    "text": "Video Resources\n\nSlides for this Video: https://mine.quarto.pub/quarto-dashboards/\nStarter Documents: https://github.com/mine-cetinkaya-rundel/olympicdash",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "Quarto Dashboards, Part 1"
+    ]
+  },
+  {
+    "objectID": "unit-1/quarto-dashboard-static.html#optional-resources",
+    "href": "unit-1/quarto-dashboard-static.html#optional-resources",
+    "title": "Quarto Dashboards, Part 1",
+    "section": "Optional Resources",
+    "text": "Optional Resources\n\nQuarto Dashboard Gallery\nQuarto Dashboard Tutorial\nQuarto Dashboard Reference\n\n\n\n\n\n\n\nCheck-in: Hello Quarto Dashboard\n\n\n\nFor this first section, you are expected to complete the coding activity associated with Dr. Mine Çetinkaya-Rundel’s video. Specifically, you will need to:\n\nCopy the template repository into your own repository.\nCreate a new folder inside your STAT 541 folder.\nCreate a new RStudio project that links to your copy of the template repo.\nFollow along and edit the olympicdash-r-1.qmd document.\nSubmit the HTML of your revised dashboard (olympicdash-r-1.html) to Canvas.",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "Quarto Dashboards, Part 1"
+    ]
+  },
+  {
+    "objectID": "labs/lab-8.html",
+    "href": "labs/lab-8.html",
+    "title": "Lab 8",
+    "section": "",
+    "text": "Goal: Scrape information from https://www.cheese.com to obtain a dataset of characteristics about different cheeses, and gain deeper insight into your coding process. 🪤\n\nPart 1: Locate and examine the robots.txt file for this website. Summarize what you learn from it.\nPart 2: Learn about the html_attr() function from rvest. Describe how this function works with a small example.\nPart 3: (Do this alongside Part 4 below.) I used ChatGPT to start the process of scraping cheese information with the following prompt:\n\nWrite R code using the rvest package that allows me to scrape cheese information from cheese.com.\n\nFully document your process of checking this code. Record any observations you make about where ChatGPT is useful / not useful.\n\n# Load required libraries\nlibrary(rvest)\nlibrary(dplyr)\n\n# Define the URL\nurl &lt;- \"https://www.cheese.com/alphabetical\"\n\n# Read the HTML content from the webpage\nwebpage &lt;- read_html(url)\n\n# Extract the cheese names and URLs\ncheese_data &lt;- webpage %&gt;%\n  html_nodes(\".cheese-item\") %&gt;%\n  html_nodes(\"a\") %&gt;%\n  html_attr(\"href\") %&gt;%\n  paste0(\"https://cheese.com\", .)\n\ncheese_names &lt;- webpage %&gt;%\n  html_nodes(\".cheese-item h3\") %&gt;%\n  html_text()\n\n# Create a data frame to store the results\ncheese_df &lt;- data.frame(Name = cheese_names,\n                        URL = cheese_data,\n                        stringsAsFactors = FALSE)\n\n# Print the data frame\nprint(cheese_df)\n\nPart 4: Obtain the following information for all cheeses in the database:\n\ncheese name\nURL for the cheese’s webpage (e.g., https://www.cheese.com/gouda/)\nwhether or not the cheese has a picture (e.g., gouda has a picture, but bianco does not).\n\nTo be kind to the website owners, please add a 1 second pause between page queries. (Note that you can view 100 cheeses at a time.)\nPart 5: When you go to a particular cheese’s page (like gouda), you’ll see more detailed information about the cheese. For just 10 of the cheeses in the database, obtain the following detailed information:\n\nmilk information\ncountry of origin\nfamily\ntype\nflavour\n\n(Just 10 to avoid overtaxing the website! Continue adding a 1 second pause between page queries.)\nPart 6: Evaluate the code that you wrote in terms of efficiency. To what extent do your function(s) adhere to the principles for writing good functions? To what extent are your functions efficient? To what extent is your iteration of these functions efficient?"
+  },
+  {
+    "objectID": "unit-1/ggplot-leaflet.html",
+    "href": "unit-1/ggplot-leaflet.html",
+    "title": "Creating Maps with the leaflet Package",
+    "section": "",
+    "text": "Maps are fantastic and complicated all at the same time! Maps are some of the richest visualizations around because they come with data built into them. That is, on top of whatever data you’re going to plot you are also probably going to view terrain, roads, state/country borders, city names or a host of other information that come with our geography.\nThis implicit richness only adds to challenge of creating a good map. Observe the following recent tweet for a silly example of how maps can be…difficult.\nThere is no shortage of map data visualizations on the web, but all too often this is what we end up with:\n\n\n\n\n\n\n\n\n\n\n\nCaution\n\n\n\nBe sure to watch all 6 videos in this series.\n\n\n\n\n\n\n\n\nCheck-in: leaflet\n\n\n\n1. Is running just the leaflet() function enough to produce a map?\n\nYes\nNo\n\n2. To plot data points on a leaflet map, we should probably use which function?\n\naddTiles()\naddMarkers()\naddProviderTiles()\naddPolygons()\n\n\n\n\n\n\nThe leaflet package is actually extremely rich and can basically enable (interactive) map visualizations as complex as you can imagine. Take some time to peruse the site for the leaflet R package:\nhttps://rstudio.github.io/leaflet/\n\n\n\n\n\n\nCheck-in: leaflet\n\n\n\n3. What do the names of your plotted data columns have to be?\n\nx; y\nleafletx; `leaflety\nlat / latitude; lon/ longitude\nAnything as long as you tell the addMarkers() function correctly\n\n4. If you were to think of latitude and longitude as coordinates in the cartesian coordinate system, then…\n\nlatitude is on the horizontal axis and longitude is on the vertical\nlatitude is on the vertical axis and longitude is on the horizontal\n\n\n\n\n\n\n\nhelmet_icon &lt;- makeIcon(\n  iconUrl = \"http://www.clker.com/cliparts/l/R/b/J/X/D/astronaut-helmet-md.png\",\n  iconWidth = 15, \n  iconHeight = 15\n  )\n\nleaflet() %&gt;%\n  addTiles() %&gt;%\n  addMarkers(lng = jitter(space$Longitude, \n                          factor = 2), \n             lat = jitter(space$Latitude,\n                          factor = 2), \n             icon = helmet_icon, \n             popup = paste(space$Name, \"&lt;br&gt;\", \n                           \"Birth Place: \", space$`Birth Place`),\n             label = paste(space$Name)\n             )\n\n\n\n\n\n\n\n\n\n\n\nCheck-in: leaflet\n\n\n\nThe above map plots data on NASA astronauts!\n5. The graphic for each marker is a little astronaut helmet. How cute! This image was used via…\n\na URL pointing to it on the web.\na downloaded image file.\n\n6. The popup argument specifies what you see when you ______, while the label argument specifies what you see when you ______.\n\nhover; click\nzoom-in; zoom-out\nclick; hover\nsquint your eyes; look normally",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "Creating Maps with the `leaflet` Package"
+    ]
+  },
+  {
+    "objectID": "unit-1/ggplot-leaflet.html#required-video-introductory-series-to-leaflet-in-r-6-videos",
+    "href": "unit-1/ggplot-leaflet.html#required-video-introductory-series-to-leaflet-in-r-6-videos",
+    "title": "Creating Maps with the leaflet Package",
+    "section": "",
+    "text": "Caution\n\n\n\nBe sure to watch all 6 videos in this series.\n\n\n\n\n\n\n\n\nCheck-in: leaflet\n\n\n\n1. Is running just the leaflet() function enough to produce a map?\n\nYes\nNo\n\n2. To plot data points on a leaflet map, we should probably use which function?\n\naddTiles()\naddMarkers()\naddProviderTiles()\naddPolygons()",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "Creating Maps with the `leaflet` Package"
+    ]
+  },
+  {
+    "objectID": "unit-1/ggplot-leaflet.html#more-on-the-leaflet-package",
+    "href": "unit-1/ggplot-leaflet.html#more-on-the-leaflet-package",
+    "title": "Creating Maps with the leaflet Package",
+    "section": "",
+    "text": "The leaflet package is actually extremely rich and can basically enable (interactive) map visualizations as complex as you can imagine. Take some time to peruse the site for the leaflet R package:\nhttps://rstudio.github.io/leaflet/\n\n\n\n\n\n\nCheck-in: leaflet\n\n\n\n3. What do the names of your plotted data columns have to be?\n\nx; y\nleafletx; `leaflety\nlat / latitude; lon/ longitude\nAnything as long as you tell the addMarkers() function correctly\n\n4. If you were to think of latitude and longitude as coordinates in the cartesian coordinate system, then…\n\nlatitude is on the horizontal axis and longitude is on the vertical\nlatitude is on the vertical axis and longitude is on the horizontal",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "Creating Maps with the `leaflet` Package"
+    ]
+  },
+  {
+    "objectID": "unit-1/ggplot-leaflet.html#practice-with-leaflet",
+    "href": "unit-1/ggplot-leaflet.html#practice-with-leaflet",
+    "title": "Creating Maps with the leaflet Package",
+    "section": "",
+    "text": "helmet_icon &lt;- makeIcon(\n  iconUrl = \"http://www.clker.com/cliparts/l/R/b/J/X/D/astronaut-helmet-md.png\",\n  iconWidth = 15, \n  iconHeight = 15\n  )\n\nleaflet() %&gt;%\n  addTiles() %&gt;%\n  addMarkers(lng = jitter(space$Longitude, \n                          factor = 2), \n             lat = jitter(space$Latitude,\n                          factor = 2), \n             icon = helmet_icon, \n             popup = paste(space$Name, \"&lt;br&gt;\", \n                           \"Birth Place: \", space$`Birth Place`),\n             label = paste(space$Name)\n             )\n\n\n\n\n\n\n\n\n\n\n\nCheck-in: leaflet\n\n\n\nThe above map plots data on NASA astronauts!\n5. The graphic for each marker is a little astronaut helmet. How cute! This image was used via…\n\na URL pointing to it on the web.\na downloaded image file.\n\n6. The popup argument specifies what you see when you ______, while the label argument specifies what you see when you ______.\n\nhover; click\nzoom-in; zoom-out\nclick; hover\nsquint your eyes; look normally",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "Creating Maps with the `leaflet` Package"
+    ]
+  },
+  {
+    "objectID": "labs/lab-2.html",
+    "href": "labs/lab-2.html",
+    "title": "Lab 2",
+    "section": "",
+    "text": "Create a Quarto file for ALL Lab 2 (no separate files for Parts 1 and 2).\n\nMake sure your final file is carefully formatted, so that each analysis is clear and concise.\nBe sure your knitted .html file shows all your source code, including any function definitions.",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "Lab 2"
+    ]
+  },
+  {
+    "objectID": "labs/lab-2.html#dissecting-a-bad-visualization",
+    "href": "labs/lab-2.html#dissecting-a-bad-visualization",
+    "title": "Lab 2",
+    "section": "Dissecting a Bad Visualization",
+    "text": "Dissecting a Bad Visualization\nBelow is an example of a less-than-ideal visualization from the collection linked above. It comes to us from data provided for the Wellcome Global Monitor 2018 report by the Gallup World Poll:\n\n\nWhile there are certainly issues with this image, do your best to tell the story of this graph in words. That is, what is this graph telling you? What do you think the authors meant to convey with it?\nList the variables that appear to be displayed in this visualization. Hint: Variables refer to columns in the data.\nNow that you’re versed in the grammar of graphics (e.g., ggplot), list the aesthetics used and which variables are mapped to each.\nWhat type of graph would you call this? Meaning, what geom would you use to produce this plot?\nProvide at least four problems or changes that would improve this graph. Please format your changes as bullet points!",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "Lab 2"
+    ]
+  },
+  {
+    "objectID": "labs/lab-2.html#improving-the-bad-visualization",
+    "href": "labs/lab-2.html#improving-the-bad-visualization",
+    "title": "Lab 2",
+    "section": "Improving the Bad Visualization",
+    "text": "Improving the Bad Visualization\nThe data for the Wellcome Global Monitor 2018 report can be downloaded at the following site: https://wellcome.ac.uk/reports/wellcome-global-monitor/2018\n\nThere are two worksheets in the downloaded dataset file. You may need to read them in separately, but you may also just use one if it suffices.\n\nImprove the visualization above by either re-creating it with the issues you identified fixed OR by creating a new visualization that you believe tells the same story better.",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "Lab 2"
+    ]
+  },
+  {
+    "objectID": "labs/lab-2.html#second-data-visualization-improvement",
+    "href": "labs/lab-2.html#second-data-visualization-improvement",
+    "title": "Lab 2",
+    "section": "Second Data Visualization Improvement",
+    "text": "Second Data Visualization Improvement\nFor this second plot, you must select a plot that uses maps so you can demonstrate your proficiency with the leaflet package!\n\nSelect a data visualization in the report that you think could be improved. Be sure to cite both the page number and figure title. Do your best to tell the story of this graph in words. That is, what is this graph telling you? What do you think the authors meant to convey with it?\nList the variables that appear to be displayed in this visualization.\nNow that you’re versed in the grammar of graphics (ggplot), list the aesthetics used and which variables are specified for each.\nWhat type of graph would you call this?\nList all of the problems or things you would improve about this graph.\nImprove the visualization above by either re-creating it with the issues you identified fixed OR by creating a new visualization that you believe tells the same story better.",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "Lab 2"
+    ]
+  },
+  {
+    "objectID": "labs/lab-2.html#third-data-visualization-improvement",
+    "href": "labs/lab-2.html#third-data-visualization-improvement",
+    "title": "Lab 2",
+    "section": "Third Data Visualization Improvement",
+    "text": "Third Data Visualization Improvement\nFor this third plot, you must use one of the other ggplot2 extension packages mentioned this week (e.g., gganimate, plotly, patchwork, cowplot).\n\nSelect a data visualization in the report that you think could be improved. Be sure to cite both the page number and figure title. Do your best to tell the story of this graph in words. That is, what is this graph telling you? What do you think the authors meant to convey with it?\nList the variables that appear to be displayed in this visualization.\nNow that you’re versed in the grammar of graphics (ggplot), list the aesthetics used and which variables are specified for each.\nWhat type of graph would you call this?\nList all of the problems or things you would improve about this graph.\nImprove the visualization above by either re-creating it with the issues you identified fixed OR by creating a new visualization that you believe tells the same story better.",
+    "crumbs": [
+      "Unit 1 - Communication",
+      "Lab 2"
+    ]
+  },
+  {
+    "objectID": "labs/lab-1.html",
+    "href": "labs/lab-1.html",
+    "title": "Lab 1 - Quarto Warmup & STAT 331 Review",
+    "section": "",
+    "text": "library(tidyverse)\nlibrary(ggridges)",
+    "crumbs": [
+      "Infrastructure",
+      "Lab 1 - Quarto Warmup & STAT 331 Review"
+    ]
+  },
+  {
+    "objectID": "labs/lab-1.html#quarto",
+    "href": "labs/lab-1.html#quarto",
+    "title": "Lab 1 - Quarto Warmup & STAT 331 Review",
+    "section": "Quarto",
+    "text": "Quarto\nFirst, let’s make sure you know how to use Markdown formatting to style a Quarto document.\n\nMake this text bold.\nMake this text italicized.\nMake these into a bullet point list:\n\nApples Bananas Potatoes\n\nEdit the YAML to remove warning messages from being output in the rendered HTML file\nUsing code chunk options, make it so this chunk shows the plot but not the source code:\n\n\nggplot(data = mpg, \n       mapping = aes(y = manufacturer, x = hwy)) + \n  geom_boxplot() +\n  labs(x = \"\",\n       y = \"\", \n       title = \"Highway Milage (mpg) for Different Car Manufacturers\"\n       )\n\n\nUsing code chunk options, remove the messages about bandwidth geom_density_ridges() chose to use:\n\n\nggplot(data = mpg, \n       mapping = aes(y = manufacturer, x = hwy)) + \n  geom_density_ridges() +\n  labs(x = \"\",\n       y = \"\", \n       title = \"Highway Milage (mpg) for Different Car Manufacturers\"\n       )\n\n\nUsing code chunk options, make it so that these plots are printed side-by-side:\n\n\nggplot(data = mpg, \n       mapping = aes(y = manufacturer, x = hwy)) + \n  geom_boxplot() +\n  labs(x = \"\",\n       y = \"\", \n       title = \"Highway Milage (mpg) for Different Car Manufacturers\"\n       )\n\nggplot(data = mpg, \n       mapping = aes(y = manufacturer, x = hwy)) + \n  geom_density_ridges() +\n  labs(x = \"\",\n       y = \"\", \n       title = \"Highway Milage (mpg) for Different Car Manufacturers\"\n       )\n\n\nUsing code chunk options, make it so this chunk shows the code but not the output:\n\n\n2 + 2\n\n\nUsing code chunk options, make it so the file can still knit even though this chunk has an error\n\n\n2 + a\n\n\nUsing code chunk options, create a descriptive label for each of the code chunks above.",
+    "crumbs": [
+      "Infrastructure",
+      "Lab 1 - Quarto Warmup & STAT 331 Review"
+    ]
+  },
+  {
+    "objectID": "labs/lab-1.html#data-wrangling-review",
+    "href": "labs/lab-1.html#data-wrangling-review",
+    "title": "Lab 1 - Quarto Warmup & STAT 331 Review",
+    "section": "Data Wrangling Review",
+    "text": "Data Wrangling Review\nSince you already seen some ggplots, let’s do a bit of review on data handling. In this class, we will exclusively make use of tools from the tidyverse suite of packages to perform our data cleaning and wrangling operations. If you are less familiar with these packages or it’s been some time since you used them, I would strongly recommend referencing the function documentation!\nFor these problems, we will continue to work with the mpg data frame, making various changes to the data to clean it up.\n\nThe fl variable describes the type of fuel for each car, with levels: p, r, e, d, and c. Do some research into what each of these labels mean! Then, use the if_else() function to create a new variable (fuel_type) with two levels: petrol (any car using petrolium-based gas) and alternative energy (any car not using petrolium-based gas).\n\n\nThe drv variable describes if the car has front drive (f), rear drive (r), or four wheel drive (4). Let’s make better labels for these values! Specifically, use the case_when() function to change the drv variable to have the following levels: front, rear, four wheel.\n\n\nThe trans variable contains two pieces of information, (1) the transmission style (auto or manual) and the specific type of transmission (e.g., l5, m5). Using the separate_wider_delim() function, create two new variables from trans, (1) trans_type containing the specific type of transmission of each car (e.g., l5), and (2) trans_style the style of the transmission (e.g., auto). Hint: You will need to deal with the stray parenthesis!",
+    "crumbs": [
+      "Infrastructure",
+      "Lab 1 - Quarto Warmup & STAT 331 Review"
+    ]
+  },
+  {
+    "objectID": "labs/lab-1.html#getting-to-know-your-classmates",
+    "href": "labs/lab-1.html#getting-to-know-your-classmates",
+    "title": "Lab 1 - Quarto Warmup & STAT 331 Review",
+    "section": "Getting to know your classmates",
+    "text": "Getting to know your classmates\n\nFind someone who took Stat 331 from a different professor than you. Compare your experiences. Tell me their name and professor. List one or two things that you think you learned more about, and one or two things that they learned more about.\nFind someone in the class who does not share your birth month. Tell me their name and birthday, and use R to find out how many days apart your birthdays are.",
+    "crumbs": [
+      "Infrastructure",
+      "Lab 1 - Quarto Warmup & STAT 331 Review"
+    ]
+  },
+  {
+    "objectID": "unit-2/efficient-code.html",
+    "href": "unit-2/efficient-code.html",
+    "title": "Writing Efficient Code",
+    "section": "",
+    "text": "In this module, you’ll learn a bit about how to make your code faster in general.",
+    "crumbs": [
+      "Unit 2 - Iteration",
+      "Writing Efficient Code"
+    ]
+  },
+  {
+    "objectID": "unit-2/efficient-code.html#required-reading-the-tictoc-and-microbenchmark-packages",
+    "href": "unit-2/efficient-code.html#required-reading-the-tictoc-and-microbenchmark-packages",
+    "title": "Writing Efficient Code",
+    "section": "📖 Required Reading: The tictoc and microbenchmark packages",
+    "text": "📖 Required Reading: The tictoc and microbenchmark packages",
+    "crumbs": [
+      "Unit 2 - Iteration",
+      "Writing Efficient Code"
+    ]
+  },
+  {
+    "objectID": "unit-2/efficient-code.html#required-reading-the-bench-package",
+    "href": "unit-2/efficient-code.html#required-reading-the-bench-package",
+    "title": "Writing Efficient Code",
+    "section": "📖 Required Reading: The bench package",
+    "text": "📖 Required Reading: The bench package",
+    "crumbs": [
+      "Unit 2 - Iteration",
+      "Writing Efficient Code"
+    ]
+  },
+  {
+    "objectID": "unit-2/efficient-code.html#required-reading-lobstrobj_size",
+    "href": "unit-2/efficient-code.html#required-reading-lobstrobj_size",
+    "title": "Writing Efficient Code",
+    "section": "📖 Required Reading: lobstr::obj_size()",
+    "text": "📖 Required Reading: lobstr::obj_size()",
+    "crumbs": [
+      "Unit 2 - Iteration",
+      "Writing Efficient Code"
+    ]
+  },
+  {
+    "objectID": "unit-2/efficient-code.html#save-smaller-data-frames-if-you-are-going-to-use-them-many-times",
+    "href": "unit-2/efficient-code.html#save-smaller-data-frames-if-you-are-going-to-use-them-many-times",
+    "title": "Writing Efficient Code",
+    "section": "Save smaller data frames, if you are going to use them many times",
+    "text": "Save smaller data frames, if you are going to use them many times\nConsider the following dataset:\n\nlibrary(fivethirtyeight)\n\nglimpse(congress_age)\n\nRows: 18,635\nColumns: 13\n$ congress   &lt;int&gt; 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80,…\n$ chamber    &lt;chr&gt; \"house\", \"house\", \"house\", \"house\", \"house\", \"house\", \"hous…\n$ bioguide   &lt;chr&gt; \"M000112\", \"D000448\", \"S000001\", \"E000023\", \"L000296\", \"G00…\n$ firstname  &lt;chr&gt; \"Joseph\", \"Robert\", \"Adolph\", \"Charles\", \"William\", \"James\"…\n$ middlename &lt;chr&gt; \"Jefferson\", \"Lee\", \"Joachim\", \"Aubrey\", NA, \"A.\", \"Joseph\"…\n$ lastname   &lt;chr&gt; \"Mansfield\", \"Doughton\", \"Sabath\", \"Eaton\", \"Lewis\", \"Galla…\n$ suffix     &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…\n$ birthday   &lt;date&gt; 1861-02-09, 1863-11-07, 1866-04-04, 1868-03-29, 1868-09-22…\n$ state      &lt;chr&gt; \"TX\", \"NC\", \"IL\", \"NJ\", \"KY\", \"PA\", \"CA\", \"NY\", \"WI\", \"MA\",…\n$ party      &lt;chr&gt; \"D\", \"D\", \"D\", \"R\", \"R\", \"R\", \"R\", \"D\", \"R\", \"R\", \"D\", \"R\",…\n$ incumbent  &lt;lgl&gt; TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, TRUE, TRUE, TRUE, TRU…\n$ termstart  &lt;date&gt; 1947-01-03, 1947-01-03, 1947-01-03, 1947-01-03, 1947-01-03…\n$ age        &lt;dbl&gt; 86, 83, 81, 79, 78, 78, 78, 77, 76, 76, 75, 74, 74, 73, 73,…\n\n\nSuppose we want to do some exploratory analysis on these data. Let’s use the tic() and toc() functions from the tictoc packages to check how much time it takes to run this code:\n\ntic()\n\ncongress_age %&gt;%\n  filter(chamber == \"senate\") %&gt;%\n  summarize(mean(age))\n\ncongress_age %&gt;%\n  filter(chamber == \"senate\") %&gt;%\n  ggplot() + \n  geom_histogram(mapping = aes(x = age))\ncongress_age %&gt;%\n  filter(chamber == \"senate\") %&gt;%\n  slice_max(n = 5, order_by = age)\n\n\ntoc()\n\n0.238 sec elapsed\n\n\nThese are all three reasonable things to do, and they can’t be done in the same pipeline. But wait - we just made R do the process of subsetting to only Senators three separate times!\n\ntic()\n  congress_age %&gt;%\n    filter(chamber == \"senate\")\n\n\ntoc()\n\n0.014 sec elapsed\n\n\nInstead, how about we filter the data once, save it into an object, and call on that object:\n\ntic()\n\n senate &lt;- congress_age %&gt;%\n  filter(chamber == \"senate\")\n\nsenate %&gt;%\n  summarize(mean(age))\n\nsenate %&gt;%\n  ggplot() + \n  geom_histogram(mapping = aes(x = age))\nsenate %&gt;%\n  slice_max(n = 5, order_by = age)\n\n\ntoc()\n\n0.114 sec elapsed\n\n\nThat is half the run time! Yes, we are dealing with minute increments of time (less than a second), but hopefully you could see how this might scale to larger calcuations.",
+    "crumbs": [
+      "Unit 2 - Iteration",
+      "Writing Efficient Code"
+    ]
+  },
+  {
+    "objectID": "unit-2/efficient-code.html#avoid-for-loops",
+    "href": "unit-2/efficient-code.html#avoid-for-loops",
+    "title": "Writing Efficient Code",
+    "section": "Avoid for-loops",
+    "text": "Avoid for-loops\nFor-loops are deathly slow in R. If you absolutely must iterate over a process, rely on the map() or apply() function families.\n\n\n\n\n\n\nWhy choose map() instead of apply()?\n\n\n\nThe map() and apply() functions will typically be close to the same speed, so the largest argument in favor of the map() family of functions are (1) their consistent syntax, and (2) their consistent object output.\nThe map() function always returns a list and the map_XXX() variants always return a vector of a specified data type. Whereas, apply() returns a vector or a list, lapply() returns a list, and sapply() returns a vetor or a matrix.\n\n\nHere is a motivating example demonstrating the difference in run time between a function which loops over every column in a data frame to extract the data type and a function which uses map_chr() to apply the class() function to every column of a data frame:\n\nloop_func &lt;- function(df){\n  \n  # initialize the type object\n  type &lt;- rep(NA, ncol(df))\n  \n  for(i in 1:ncol(df)){\n    \n    # store the class of the ith column of df into the ith entry of type \n    type[i] &lt;- class(df[,i])\n  }\n  \n  return(type)\n}\n\nmap_func &lt;- function(df){\n  \n  type &lt;- map_chr(df, class)\n  \n  return(type)\n\n  }\n\ndat &lt;- as.data.frame(\n  matrix(1,\n         nrow = 5,\n         ncol = 100000)\n  )\n\nmicrobenchmark::microbenchmark(loop_func(dat),\n                               map_func(dat),\n                               times = 3)\n\nUnit: milliseconds\n           expr  min   lq mean median   uq  max neval\n loop_func(dat) 6586 6594 6602   6602 6610 6618     3\n  map_func(dat)   36   36   36     36   36   36     3\n\n\nThat’s a pretty big difference!",
+    "crumbs": [
+      "Unit 2 - Iteration",
+      "Writing Efficient Code"
+    ]
+  },
+  {
+    "objectID": "unit-2/efficient-code.html#use-vectorized-functions",
+    "href": "unit-2/efficient-code.html#use-vectorized-functions",
+    "title": "Writing Efficient Code",
+    "section": "Use vectorized functions",
+    "text": "Use vectorized functions\nBetter even than map() or apply() is not to iterate at all! Writing vectorized functions is tough, but do-able in many cases. Here’s an example:",
+    "crumbs": [
+      "Unit 2 - Iteration",
+      "Writing Efficient Code"
+    ]
+  },
+  {
+    "objectID": "unit-2/efficient-code.html#required-video-simple-vectorizing-example",
+    "href": "unit-2/efficient-code.html#required-video-simple-vectorizing-example",
+    "title": "Writing Efficient Code",
+    "section": "🎥 Required Video: Simple Vectorizing Example",
+    "text": "🎥 Required Video: Simple Vectorizing Example\nBetter yet - rely on built-in functions in other packages to do it for you!",
+    "crumbs": [
+      "Unit 2 - Iteration",
+      "Writing Efficient Code"
+    ]
+  },
+  {
+    "objectID": "unit-2/efficient-code.html#allocate-memory-in-advance",
+    "href": "unit-2/efficient-code.html#allocate-memory-in-advance",
+    "title": "Writing Efficient Code",
+    "section": "Allocate memory in advance",
+    "text": "Allocate memory in advance\nA trick we use very often in coding is to “tack on” values to the end of a vector or list as we iterate through something. However, this is actually very slow! If you know how long your list is going to end up, consider pre-creating that list.\n\ndo_stuff_allocate &lt;- function(reps) {\n  results &lt;- vector(length = reps)\n  for (i in 1:reps) {\n    results[i] &lt;- i\n  }\n  return(results)\n}\n\ndo_stuff_tackon &lt;- function(reps) {\n   results &lt;- c()\n  for (i in 1:reps) {\n    results &lt;- c(results, i)\n  }\n  return(results)\n}\n\nmicrobenchmark::microbenchmark(\n  do_stuff_allocate(1000),\n  do_stuff_tackon(1000)\n)\n\nUnit: microseconds\n                    expr min  lq mean median  uq  max neval\n do_stuff_allocate(1000)  22  22   39     23  24 1578   100\n   do_stuff_tackon(1000) 593 710  985    726 761 8244   100",
+    "crumbs": [
+      "Unit 2 - Iteration",
+      "Writing Efficient Code"
+    ]
+  },
+  {
+    "objectID": "unit-2/efficient-code.html#data.table",
+    "href": "unit-2/efficient-code.html#data.table",
+    "title": "Writing Efficient Code",
+    "section": "data.table",
+    "text": "data.table\nFor speeding up work with data frames, no package is better than data.table!",
+    "crumbs": [
+      "Unit 2 - Iteration",
+      "Writing Efficient Code"
+    ]
+  },
+  {
+    "objectID": "unit-2/efficient-code.html#required-video-5-minute-intro-to-data.table",
+    "href": "unit-2/efficient-code.html#required-video-5-minute-intro-to-data.table",
+    "title": "Writing Efficient Code",
+    "section": "📖 Required Video: 5-minute intro to data.table",
+    "text": "📖 Required Video: 5-minute intro to data.table",
+    "crumbs": [
+      "Unit 2 - Iteration",
+      "Writing Efficient Code"
+    ]
+  },
+  {
+    "objectID": "unit-2/efficient-code.html#required-reading-data.table-cheatsheet",
+    "href": "unit-2/efficient-code.html#required-reading-data.table-cheatsheet",
+    "title": "Writing Efficient Code",
+    "section": "📖 Required Reading: data.table cheatsheet",
+    "text": "📖 Required Reading: data.table cheatsheet\n\n\n\n\n\n\nCheck-in: data.table\n\n\n\nQuestion 1: Here is some dplyr code. Re-write it in data.table syntax. Then perform a speed test to see which one is faster, and by how much.\n\ncongress_age %&gt;%\n  group_by(state) %&gt;%\n  summarize(mean_age = mean(age))",
+    "crumbs": [
+      "Unit 2 - Iteration",
+      "Writing Efficient Code"
+    ]
+  },
+  {
+    "objectID": "unit-2/efficient-code.html#required-reading-profiling",
+    "href": "unit-2/efficient-code.html#required-reading-profiling",
+    "title": "Writing Efficient Code",
+    "section": "📖 Required Reading: [Profiling] ",
+    "text": "📖 Required Reading: [Profiling]",
+    "crumbs": [
+      "Unit 2 - Iteration",
+      "Writing Efficient Code"
+    ]
+  },
+  {
+    "objectID": "unit-2/efficient-code.html#recommended-reading-measuring-performance",
+    "href": "unit-2/efficient-code.html#recommended-reading-measuring-performance",
+    "title": "Writing Efficient Code",
+    "section": "📖 Recommended Reading: Measuring Performance",
+    "text": "📖 Recommended Reading: Measuring Performance\n\n\n\n\n\n\nSkimming is sufficient!\n\n\n\nFor this reading, I strongly encourage you to skim. The code aspects are mostly more complicated that we expect in this class; but the general overview of the principles behind speeding up code is helpful.\nIn your work, you will most likely “profile” manually, by tictoc-ing bits of your code and so forth, not by these fancy methods.\n\n\n\n\n\n\n\n\nCheck-in: Profiling\n\n\n\nQuestion 2: Why is vapply() faster than sapply()?\n\nIt specifies the output type.\nIt specifies the input type.\nIt performs fewer safety checks.\nIt performs fewer iterations.\n\nQuestion 3: Here are two other ways to compute the square root of a vector. Which is faster? fastest? Use microbenchmarking to test your answers!\n\nx ^ (1 / 2)\nexp(log(x) / 2)\n\nQuestion 4: Why is mean(x) slower than sum(x)/length(x)?\n\nsum() is vectorized, while mean() is not.\nA mean is a smaller number than a sum, so it needs less memory.\nmean() calculates the mean twice just in case.\nmean() was written in an old version of R.",
+    "crumbs": [
+      "Unit 2 - Iteration",
+      "Writing Efficient Code"
+    ]
+  },
+  {
+    "objectID": "unit-2/efficient-code.html#optional-super-advanced-mode",
+    "href": "unit-2/efficient-code.html#optional-super-advanced-mode",
+    "title": "Writing Efficient Code",
+    "section": "Optional: Super advanced mode",
+    "text": "Optional: Super advanced mode\nThe following are some suggestions of ways you can level-up your code speed. These are outside the scope of this class, but you are welcome to explore them!\n\nDive deep into the R efficiency rabbit hole…\nParallelize your computations\nMake your code run in C++ with Rcpp\nLearn to use recursion\nLearn more about memory allocation and garbage collecting in R.",
+    "crumbs": [
+      "Unit 2 - Iteration",
+      "Writing Efficient Code"
     ]
   },
   {

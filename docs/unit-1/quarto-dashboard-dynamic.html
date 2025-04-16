@@ -30,6 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../labs/lab-4.html" rel="next">
+<link href="../labs/lab-3.html" rel="prev">
 <link href="../images/cat-monsters-horst.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -73,7 +75,7 @@ ul.task-list li input[type="checkbox"] {
 
 </head>
 
-<body class="nav-fixed">
+<body class="nav-sidebar floating nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -107,11 +109,11 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Infrastructure</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../unit-1.html"> 
+    <a class="nav-link active" href="../unit-1.html" aria-current="page"> 
 <span class="menu-text">Unit 1 - Communication</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../iteration.qmd"> 
+    <a class="nav-link" href="../unit-2.html"> 
 <span class="menu-text">Unit 2 - Iteration</span></a>
   </li>  
   <li class="nav-item">
@@ -132,17 +134,89 @@ ul.task-list li input[type="checkbox"] {
 </div>
       </div> <!-- /container-fluid -->
     </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../unit-1/quarto-dashboard-dynamic.html">Quarto Dashboards, Part 2</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unit-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Unit 1</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unit-1/ggplot-review.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><code>ggplot</code> Review</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unit-1/ggplot-extensions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><code>ggplot</code> Extensions</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unit-1/ggplot-leaflet.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Creating Maps with the <code>leaflet</code> Package</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/lab-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 2</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unit-1/quarto-dashboard-static.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Quarto Dashboards, Part 1</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/lab-3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 3</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unit-1/quarto-dashboard-dynamic.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Quarto Dashboards, Part 2</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/lab-4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 4</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#required-video-hello-quarto-dashboards" id="toc-required-video-hello-quarto-dashboards" class="nav-link active" data-scroll-target="#required-video-hello-quarto-dashboards">🎥 Required Video: Hello Quarto Dashboards</a></li>
+  <li><a href="#making-interactive-content-with-shiny" id="toc-making-interactive-content-with-shiny" class="nav-link active" data-scroll-target="#making-interactive-content-with-shiny">Making Interactive Content with Shiny</a></li>
+  <li><a href="#making-interactive-content-with-webr-and-ojs" id="toc-making-interactive-content-with-webr-and-ojs" class="nav-link" data-scroll-target="#making-interactive-content-with-webr-and-ojs">Making Interactive Content with webR (and OJS)</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/unit-1/quarto-dashboard-dynamic.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></nav>
     </div>
@@ -169,8 +243,22 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p>Now that we’ve acquired some skills for making dashboards, let’s spice them up a bit! This week, we’re going to add interactive content to our dashboards!</p>
-<section id="required-video-hello-quarto-dashboards" class="level2">
-<h2 class="anchored" data-anchor-id="required-video-hello-quarto-dashboards">🎥 Required Video: Hello Quarto Dashboards</h2>
+<p>This week is different from the previous weeks in that you get to choose which tool you want to explore when creating interactive content on your dashboard. There are two options:</p>
+<ol type="1">
+<li>Shiny</li>
+<li>webR (and Observable JavaScript)</li>
+</ol>
+<p>Either tool will allow you to make interactive content, but the way that you go about making the content differs (pretty substantially). Since you may not have heard about or explored either of these tools I would strongly recommend poking around the resources below before making your decision!</p>
+<section id="making-interactive-content-with-shiny" class="level1">
+<h1>Making Interactive Content with Shiny</h1>
+<p>Quick vignette: <a href="https://quarto.org/docs/dashboards/interactivity/shiny-r.html" class="uri">https://quarto.org/docs/dashboards/interactivity/shiny-r.html</a></p>
+<p>Example Shiny dashboard: <a href="https://jjallaire.shinyapps.io/penguins-dashboard/" class="uri">https://jjallaire.shinyapps.io/penguins-dashboard/</a></p>
+</section>
+<section id="making-interactive-content-with-webr-and-ojs" class="level1">
+<h1>Making Interactive Content with webR (and OJS)</h1>
+<p>Quick vignette: <a href="https://www.tidyverse.org/blog/2024/10/quarto-live-0-1-1/" class="uri">https://www.tidyverse.org/blog/2024/10/quarto-live-0-1-1/</a></p>
+<p>Full Quarto Live documentation: <a href="https://r-wasm.github.io/quarto-live/" class="uri">https://r-wasm.github.io/quarto-live/</a></p>
+<p>Example webR dashboard: <a href="https://r-wasm.github.io/quarto-live/interactive/dashboards.html" class="uri">https://r-wasm.github.io/quarto-live/interactive/dashboards.html</a></p>
 
 
 </section>
@@ -740,6 +828,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../labs/lab-3.html" class="pagination-link" aria-label="Lab 3">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Lab 3</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../labs/lab-4.html" class="pagination-link" aria-label="Lab 4">
+        <span class="nav-page-text">Lab 4</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">

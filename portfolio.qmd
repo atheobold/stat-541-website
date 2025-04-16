@@ -36,7 +36,7 @@ your achievement for a given learning objective.
 
 This component is a self-evaluation of your performance in the class. Your goal is **to state clearly what grade you think you have earned in the course, and convincingly argue that you have met the criteria for that grade.** Please be thoughtful, honest, and reflective, but also brief and focused.
 
-This reflection will be done in the [`reflection_template.qmd`](portfolio/reflection_template.qmd) file. The structure of the
+This reflection will be done in the [`reflection-template.qmd`](portfolio/reflection-template.qmd) file. The structure of the
 document is as follows:
 
 1. **For each of the learning targets**, carefully select examples of your code
