@@ -64,6 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../unit-2/iterating-functions.html" rel="next">
 <link href="../unit-2/writing-functions.html" rel="prev">
 <link href="../images/cat-monsters-horst.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js"></script>
@@ -202,6 +203,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Writing Efficient Code</span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unit-2/iterating-functions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Iterating Over Functions</span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -237,7 +244,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#tip-4-only-improve-what-needs-improving" id="toc-tip-4-only-improve-what-needs-improving" class="nav-link" data-scroll-target="#tip-4-only-improve-what-needs-improving">Tip 4: Only improve what needs improving</a>
   <ul class="collapse">
-  <li><a href="#required-reading-profiling" id="toc-required-reading-profiling" class="nav-link" data-scroll-target="#required-reading-profiling">📖 Required Reading: [Profiling] </a></li>
+  <li><a href="#required-reading-profiling" id="toc-required-reading-profiling" class="nav-link" data-scroll-target="#required-reading-profiling">📖 Required Reading: Profiling</a></li>
   <li><a href="#recommended-reading-measuring-performance" id="toc-recommended-reading-measuring-performance" class="nav-link" data-scroll-target="#recommended-reading-measuring-performance">📖 Recommended Reading: Measuring Performance</a></li>
   <li><a href="#optional-super-advanced-mode" id="toc-optional-super-advanced-mode" class="nav-link" data-scroll-target="#optional-super-advanced-mode">Optional: Super advanced mode</a></li>
   </ul></li>
@@ -334,7 +341,7 @@ $ age        &lt;dbl&gt; 86, 83, 81, 79, 78, 78, 78, 77, 76, 76, 75, 74, 74, 73,
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">toc</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.688 sec elapsed</code></pre>
+<pre><code>0.541 sec elapsed</code></pre>
 </div>
 </div>
 <p>These are all three reasonable things to do, and they can’t be done in the same pipeline. But wait - we just made R do the process of subsetting to only Senators three separate times!</p>
@@ -346,7 +353,7 @@ $ age        &lt;dbl&gt; 86, 83, 81, 79, 78, 78, 78, 77, 76, 76, 75, 74, 74, 73,
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">toc</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.053 sec elapsed</code></pre>
+<pre><code>0.043 sec elapsed</code></pre>
 </div>
 </div>
 <p>Instead, how about we filter the data once, save it into an object, and call on that object:</p>
@@ -368,7 +375,7 @@ $ age        &lt;dbl&gt; 86, 83, 81, 79, 78, 78, 78, 77, 76, 76, 75, 74, 74, 73,
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">toc</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.286 sec elapsed</code></pre>
+<pre><code>0.318 sec elapsed</code></pre>
 </div>
 </div>
 <p>That is <strong>half</strong> the run time! Yes, we are dealing with minute increments of time (less than a second), but hopefully you could see how this might scale to larger calcuations.</p>
@@ -469,9 +476,9 @@ Why choose <code>map()</code> instead of <code>apply()</code>?
 <span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Unit: microseconds
-                    expr min  lq mean median   uq   max neval
- do_stuff_allocate(1000)  27  30  101     41   62  5445   100
-   do_stuff_tackon(1000) 834 972 2119   1740 2641 13057   100</code></pre>
+                    expr  min   lq mean median   uq   max neval
+ do_stuff_allocate(1000)   41   46  158     59   80  9282   100
+   do_stuff_tackon(1000) 1246 2264 3324   2546 3135 24953   100</code></pre>
 </div>
 </div>
 </section>
@@ -517,7 +524,7 @@ Check-in: <code>data.table</code>
 <p>Also, consider your time and energy as the programmer. Suppose you have a function that takes 30-minutes to run. It relies on a subfunction that takes 30-seconds to run. Should you really spend your efforts making the subfunction take only 10-seconds?</p>
 <p>The art of finding the slow bits of your code where you can make the most improvement is called <strong>profiling</strong>.</p>
 <section id="required-reading-profiling" class="level2">
-<h2 class="anchored" data-anchor-id="required-reading-profiling">📖 Required Reading: [Profiling] <a href="http://adv-r.had.co.nz/Profiling.html#profiling"></a></h2>
+<h2 class="anchored" data-anchor-id="required-reading-profiling">📖 Required Reading: <a href="http://adv-r.had.co.nz/Profiling.html#profiling">Profiling</a></h2>
 </section>
 <section id="recommended-reading-measuring-performance" class="level2">
 <h2 class="anchored" data-anchor-id="recommended-reading-measuring-performance">📖 Recommended Reading: <a href="https://adv-r.hadley.nz/perf-measure.html">Measuring Performance</a></h2>
@@ -1154,6 +1161,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="../unit-2/iterating-functions.html" class="pagination-link" aria-label="Iterating Over Functions">
+        <span class="nav-page-text">Iterating Over Functions</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->

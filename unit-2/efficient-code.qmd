@@ -305,7 +305,7 @@ take only 10-seconds?
 The art of finding the slow bits of your code where you can make the most
 improvement is called **profiling**.
 
-## 📖 Required Reading: [Profiling] [](http://adv-r.had.co.nz/Profiling.html#profiling)
+## 📖 Required Reading: [Profiling](http://adv-r.had.co.nz/Profiling.html#profiling)
 
 ## 📖 Recommended Reading: [Measuring Performance](https://adv-r.hadley.nz/perf-measure.html)
 

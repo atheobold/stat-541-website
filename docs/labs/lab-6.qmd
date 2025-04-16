@@ -4,6 +4,7 @@ subtitle: "Performing Many Different Versions of an Analysis"
 editor: source
 ---
 
+
 My number one use case for writing functions and iteration/looping is to perform
 some exploration or modeling repeatedly for different "tweaked" versions. For
 example, our broad goal might be to fit a linear regression model to our data.

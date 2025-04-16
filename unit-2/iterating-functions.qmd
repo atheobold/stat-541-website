@@ -1,15 +1,447 @@
 ---
 title: "Iterating Over Functions"
+editor: source
 ---
 
-<!-- iteration with loops -->
+In this unit, you’ll learn tools for iteration---repeatedly performing the same
+action on different objects. Iteration in R generally tends to look a bit
+different from other programming languages. Much of iteration we get for free! 
+For example, if you want to double a numeric vector `x` in R, you can just 
+write `2 * x`, whereas in many other languages you would need to explicitly 
+double each element of `x` using some sort of `for` loop.
 
-<!-- https://lmyint.github.io/212_spring_2024/11-iteration-1.html -->
+In R, there are generally two methods for iteration---`for()` loops and 
+functionals. We will start with a review of `for()` loops before hopping over
+to functionals. 
 
-<!-- iteration with purrr -->
+```{r}
+#| label: packages
+#| include: false
+library(tidyverse)
+```
 
-<!-- https://lmyint.github.io/212_spring_2024/12-iteration-2.html -->
+# `for` loops
 
-<!-- both -->
+In R, `for` loops have the following general structure:
 
-<!-- https://lmyint.github.io/212_fall_2023/09-iteration.html -->
+```{r for_syntax, eval=FALSE}
+for (i in some_vector) {
+    # Code to do stuff with i
+}
+```
+
+`some_vector` can be **any** vector, including:
+
+- An indexing vector: `1:3`
+- A character vector: `c("group1", "group2", "group3")`
+- A vector of any other class
+
+```{r}
+#| label: for-examples
+
+groups <- c("group1", "group2", "group3")
+
+for (i in 1:3) {
+    print(groups[i])
+}
+
+for (g in groups) {
+    print(g)
+}
+```
+
+The `seq_along()` function generates an integer sequence from 1 to the length of
+the vector supplied. A nice feature of `seq_along()` is that it generates an
+empty iteration vector if the vector you're iterating over itself has length 0.
+
+```{r}
+#| label: for-seq-along
+
+seq_along(groups)
+no_groups <- c()
+seq_along(no_groups)
+
+for (i in seq_along(groups)) {
+    print(groups[i])
+}
+
+for (i in seq_along(no_groups)) {
+    print(no_groups[i])
+}
+```
+
+Closely related to `seq_along()` is `seq_len()`. While `seq_along(x)` generates
+an integer sequence from 1 to `length(x)`, `seq_len(x)` takes `x` itself to be a
+length:
+
+```{r}
+#| label: for-seq-len
+
+seq_len(3)
+seq_len(0)
+
+for (i in seq_len(length(groups))) {
+    print(groups[i])
+}
+
+for (i in seq_len(length(no_groups))) {
+    print(no_groups[i])
+}
+```
+
+`seq_len()` is useful for iterating over the rows of a data frame because `seq_along()` would iterate over columns:
+
+```{r}
+#| label: seq-len-df
+
+small_data <- tibble(a = 1:2, 
+                     b = 2:3, 
+                     c = 4:5)
+
+for (col in small_data) {
+    print(col)
+}
+
+for (r in seq_len(nrow(small_data))) {
+    print(r)
+}
+```
+
+Often we'll want to store output created during a `for` loop. We can create
+storage containers with the `vector()` function:
+
+```{r}
+#| label: store-results
+
+char_storage <- vector("character", 
+                       length = 3)
+char_storage
+
+num_storage <- vector("numeric", 
+                      length = 3)
+num_storage
+
+list_storage <- vector("list", 
+                       length = 3)
+list_storage
+
+for (i in seq_len(3)) {
+    char_storage[i] <- str_c("Number: ", i)
+    num_storage[i] <- 2*i
+    list_storage[[i]] <- i # Note the [[ for subsetting here
+}
+
+char_storage
+num_storage
+list_storage
+```
+
+### Exercises
+
+Write `for()`-loops that do each of the following:
+
+1. Prints the even numbers from 1:20. 
+  - Produce the same output with the `seq()` function!
+
+<details>
+    <summary>Solutions</summary>
+
+```{r}
+#| label: for-ex-solutions-1
+
+for (i in seq_len(10)) {
+    print(2*i)
+}
+
+seq(from = 2, to = 20, by = 2)
+```
+
+</details>
+
+2. Iterates over the `month.name` vector (built-in to base R) and stores a
+character vector of output containing strings like "Month 1: January", "Month 2:
+February".
+  - Produce the same output with `str_c()` only! 
+
+<details>
+    <summary>Solutions</summary>
+
+```{r}
+#| label: for-ex-solutions-2
+
+month_strings <- vector("character", length = length(month.name))
+
+for (i in seq_along(month.name)) {
+    month_strings[i] <- str_c("Month ", i, ": ", month.name[i])
+}
+month_strings
+
+str_c("Month ", 1:12, ": ", month.name)
+```
+
+</details>
+
+3. Store the `class()` (type) of every column in the `mtcars` data frame. 
+
+<details>
+    <summary>Solution</summary>
+
+```{r}
+#| label: col_classes_soln
+
+col_classes <- vector("character", 
+                      ncol(mtcars)
+                      )
+
+# Data frames are **lists** of columns, so this loop iterates over the columns
+for (i in seq_along(mtcars)) {
+    col_classes[i] <- class(mtcars[[i]])
+}
+```
+
+</details>
+
+# Iteration with Functionals
+
+> A functional is a function that takes a function as an input and returns a
+> vector as output. 
+> - Hadley Wickham
+
+## 📖 Required Reading: [Functionals](https://adv-r.hadley.nz/functionals.html)
+
+`purrr` is a `tidyverse` package that provides several useful functions for
+iteration. The main advantages of `purrr` include:
+
+- Improved readability of R code
+- Reduction in the "overhead" in writing a `for` loop (creating storage
+containers and writing the `for (i in ...)`)
+
+In `purrr`, we can use the family of `map()` functions to apply a function to
+each element of a list or vector. We can think of this as mapping an input (a
+list or vector) to a new output via a function. Let's look at the [`purrr` cheatsheet](https://rstudio.github.io/cheatsheets/purrr.pdf) to look at
+graphical representations of how these functions work.
+
+- `map()` returns a list
+- `map_chr()` returns a character vector
+- `map_lgl()` returns a logical vector
+- `map_int()` returns an integer vector
+- `map_dbl()` returns a numeric vector
+- `map_vec()` returns a vector of a different (non-atomic) type (like dates)
+
+To get the `class()` of each data frame column, `map_chr()` is sensible because
+classes are strings:
+
+```{r}
+#| label: purrr_col_classes
+
+map_chr(mtcars, .f = class)
+```
+
+Let's get the class of each variable in `diamonds`:
+
+```{r}
+#| label:  purrr_col_classes_error
+#| error: true
+
+map_chr(diamonds, class)
+```
+
+What happened!? `map_chr()` was expecting to create a character vector with one
+element per element (column) in `diamonds`. But something happened in column 2
+with the `cut` variable. Let's figure out what happened:
+
+```{r}
+#| label: class_diamonds_cut
+
+class(diamonds$cut)
+```
+
+Ah! `cut` has **two** classes. In this case, `map()` (which returns a list) is
+the best option because some variables have multiple classes:
+
+```{r}
+#| label: purrr_col_classes_no_error
+
+map(diamonds, class)
+```
+
+The error we encountered with `map_chr()` is a nice feature of `purrr` because
+it allows us to be very sure of the type of output we are getting. Failing
+loudly is vastly preferable to getting unexpected outputs silently because we
+can catch errors earlier!
+
+We can combine `map_*()` functions with tidy selection for some powerful
+variable summaries that require much less code than `for()` loops.
+
+```{r}
+#| label:  purrr_examples_by_col
+
+diamonds %>% 
+  select(where(is.numeric)) %>% 
+  map_dbl(.f = mean)
+
+diamonds %>% 
+  select(!where(is.numeric)) %>% 
+  map_int(.f = n_distinct)
+```
+
+### Exercises
+
+4. Write a function called `summ_stats()` that takes a numeric vector `x` as
+input and returns the mean, median, standard deviation, and IQR as a data frame.
+You can use `tibble()` to create the data frame.
+    * Example: `tibble(a = 1:2, b = 2:3)` creates a data frame with variables
+    `a` and `b`.
+
+<details>
+    <summary>Solution</summary>
+
+```{r}
+#| label: ex_summ_stats_soln1
+
+summ_stats <- function(x) {
+    tibble(
+        mean = mean(x, na.rm = TRUE),
+        median = median(x, na.rm = TRUE),
+        sd = sd(x, na.rm = TRUE),
+        iqr = IQR(x, na.rm = TRUE)
+    ) 
+}
+```
+
+</details>
+
+5. Use `map()` to apply your `summ_stats()` function to the numeric columns in 
+the `diamonds` dataset. 
+
+::: columns
+::: {.column width="50%"}
+::: {.callout-tip}
+Look up the `bind_rows()` documentation from `dplyr` to combine summary
+statistics for all quantitative variables into one data frame. The `.id` 
+argument will be especially helpful in adding the variable names! 
+:::
+:::
+
+::: {.column width="3%"}
+:::
+
+::: {.column width="47%"}
+::: {.callout-important}
+# Consider pivoting !
+
+The output would be easier for the reader to understand if the summary
+statistics were rows and the variable names were columns.
+:::
+:::
+:::
+
+<details>
+    <summary>Solution</summary>
+
+```{r}
+#| label: ex_summ_stats_soln2
+
+diamonds_num <- diamonds %>% 
+  select(where(is.numeric))
+
+map(diamonds_num, .f = summ_stats) %>% 
+  bind_rows(.id = "variable") %>% 
+  pivot_longer(cols = -variable, 
+               names_to = "statistic", 
+               values_to = "value") %>% 
+  pivot_wider(names_from = variable, values_from = value)
+
+```
+
+</details>
+
+6. Write a `for()` loop to achieve the same result. Which do you prefer in
+terms of ease of code writing and readability?
+
+<details>
+    <summary>Solution</summary>
+
+```{r}
+#| label: ex_summ_stats_soln3
+
+diamonds_summ_stats2 <- vector("list", length = ncol(diamonds_num))
+
+for (i in seq_along(diamonds_num)) {
+    diamonds_summ_stats2[[i]] <- summ_stats(diamonds_num[[i]])
+}
+
+diamonds_summ_stats2 %>%
+    set_names(colnames(diamonds_num)) %>%
+    bind_rows(.id = "variable")
+```
+
+</details>
+
+## Multiple Inputs
+
+`purrr` also offers the `pmap()` family of functions that take multiple inputs
+and loops over them simultaneously. Let's look at the [`purrr` cheatsheet](https://rstudio.github.io/cheatsheets/purrr.pdf) to look at
+graphical representations of how these functions work.
+
+```{r}
+#| label: pmap_ex1
+
+string_data <- tibble(
+    string = c("apple", "banana", "cherry"),
+    pattern = c("p", "n", "h"),
+    replacement = c("P", "N", "H")
+)
+string_data
+
+pmap_chr(string_data, .f = str_replace_all)
+```
+
+Note how the column names in `string_data` exactly match the argument names in
+`str_replace_all()`. The iteration that is happening is across rows, and the
+multiple arguments in `str_replace_all()` are being matched by name.
+
+We can also use `pmap()` to specify variations in some arguments but leave some
+arguments constant across the iterations:
+
+```{r}
+#| label: pmap_ex2
+
+string_data <- tibble(
+    pattern = c("p", "n", "h"),
+    replacement = c("P", "N", "H")
+)
+
+pmap_chr(string_data, str_replace_all, string = "ppp nnn hhh")
+```
+
+### Exercises
+
+7. Create 2 small examples that show how `pmap()` works with `str_sub()`. Your
+examples should:
+
+- Use different arguments for `string`, `start`, and `end`
+- Use different arguments for `start` and `end` but a fixed `string`
+
+<details>
+    <summary>Solution</summary>
+
+```{r}
+#| label: pmap_ex_str_remove_soln
+
+string_data <- tibble(
+    string = c("apple", "banana", "cherry"),
+    start = c(1, 2, 4),
+    end = c(2, 3, 5)
+)
+
+pmap_chr(string_data, str_sub)
+
+string_data <- tibble(
+    start = c(1, 2, 4),
+    end = c(2, 3, 5)
+)
+pmap_chr(string_data, str_sub, string = "abcde")
+```
+
+</details>
