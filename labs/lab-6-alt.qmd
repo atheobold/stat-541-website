@@ -1,0 +1,270 @@
+---
+title: "Lab 6"
+subtitle: "Performing Many Different Versions of an Analysis"
+editor: source
+---
+
+My number one use case for writing functions and iteration / looping is to
+perform some exploration or modeling repeatedly for different "tweaked"
+versions. For example, our broad goal might be to fit a linear regression model
+to our data. However, there are often multiple choices that we have to make in
+practice:
+
+- Keep missing values or fill them in (imputation)? 
+- Filter out outliers in one or more variables?
+
+We can map these choices to **arguments** in a custom model-fitting function:
+
+- `impute`: TRUE or FALSE
+- `remove_outliers`: TRUE or FALSE
+
+The `tidyr` package has a useful function called `crossing()` that is useful for
+generating argument combinations. For each argument, we specify all possible
+values for that argument. `crossing()` generates all combinations.
+
+```{r}
+#| label: crossing-all-sets-of-arguments
+
+df_arg_combos <- crossing(
+    impute = c(TRUE, FALSE),
+    remove_outliers = c(TRUE, FALSE), 
+    mod = c(y ~ x1, 
+            y ~ x1 + x2)
+)
+df_arg_combos
+```
+
+A function that implements the analysis and allows for variation in these 
+choices:
+
+```{r}
+#| echo: true
+#| eval: false
+fit_model <- function(df, impute, remove_outliers, mod) {
+    if (impute) {
+        df <- some_imputation_function(df)
+    }
+    
+    if (remove_outliers) {
+        df <- function_for_removing_outliers(df)
+    }
+    
+    lm(mod, data = df)
+}
+```
+
+# Analysis Goal
+
+In the `diamonds` dataset, we want to understand the relationship between
+`price` and size (`carat`). We want to explore variation along two choices:
+
+1. The variables included in the model. We'll explore 3 sets of variables:
+    - No further variables (just `price` and `carat`)
+    - Adjusting for `cut`
+    - Adjusting for `cut` and `clarity`
+    - Adjusting for `cut`, `clarity`, and `color`
+
+2. Whether or not to impute missing values
+
+3. Whether or not to remove outliers in the `carat` variable (we'll define
+outliers as cases whose `carat` is over 3 SDs away from the mean).
+
+## Defining Parameters
+
+**Question 1:** Use `crossing()` to create the data frame of argument
+combinations for our analyses. Note that you can create a list of **formula**
+objects in R with `c(y ~ x1, y ~ x1 + x2)`.
+
+```{r}
+#| include: false
+#| label: question-1-solution
+
+diamonds_arg_combos <- crossing(
+    mod_formula = c(price ~ carat, 
+                    price ~ carat + cut,  
+                    price ~ carat + cut + clarity,  
+                    price ~ carat + cut + clarity + color),
+    remove_outliers = c(TRUE, FALSE), 
+    impute_missing = c(TRUE, FALSE)
+)
+```
+
+## Helper Functions
+
+**Exercise 2:** Write a function that removes outliers in a dataset. The user
+should be able to supply the dataset, the variables to remove outliers from, and
+a threshold on the number of SDs away from the mean used to define outliers. 
+*Hint 1: You will need to calculate a z-score to filter the values!*
+*Hint 2: You might want to consider specifying a default value (e.g., 3) for `sd_thresh`.*
+
+```{r}
+#| include: false
+#| label: question-2-solution
+
+## Single Variable
+remove_outliers <- function(df, what_var, sd_thresh = 3) {
+    df %>% 
+        mutate(zscore = 
+                 ({{ what_var }} - mean({{ what_var}}, na.rm = TRUE)) / 
+                 sd({{ what_var }}, na.rm = TRUE)) %>%
+        filter(zscore <= sd_thresh)
+}
+
+## Multiple Variables
+remove_outliers <- function(df, vars, sd_thresh = 3) {
+  # Create temporary z-score columns for all selected variables
+  df_with_zscores <- df %>%
+    mutate(across({{vars}}, 
+                 ~(. - mean(., na.rm = TRUE)) / sd(., na.rm = TRUE),
+                 .names = "zscore_{.col}"))
+  
+  # Get the names of the z-score columns
+  zscore_cols <- df_with_zscores %>%
+    select(starts_with("zscore_")) %>%
+    colnames()
+  
+  # Filter rows where all z-scores are within threshold
+  df_with_zscores %>%
+    filter(across(all_of(zscore_cols), ~abs(.) <= sd_thresh)) %>%
+    select(-all_of(zscore_cols)) # Remove temporary z-score columns
+}
+```
+
+**Exercise 3:** Write a function that imputes missing values for numeric 
+variables in a dataset. The user should be able to supply the dataset, the 
+variables to impute values for, and a function to use when imputing. 
+*Hint 1: You will need to use `across()` to apply your function, since the user can input multiple variables.*
+*Hint 2: The `replace_na()` function is helpful here!*
+
+```{r}
+#| include: false
+#| label: question-3-solution
+
+impute_missing <- function(df, vars, impute_fun){
+  # Capture the variable selection
+  vars_enquo <- enquo(vars)
+  
+  # Get the selected column names
+  selected_cols <- df %>% 
+    select(!!vars_enquo) %>% 
+    colnames()
+  
+  # Check if any selected variables are non-numeric
+  non_numeric_cols <- selected_cols[!map_lgl(df[selected_cols], is.numeric)]
+  
+  if (length(non_numeric_cols) > 0) {
+    stop("The following columns are not numeric: ", 
+         paste(non_numeric_cols, collapse = ", "))
+  }
+  
+  df %>% 
+    mutate(
+      across(.cols = {{vars}}, 
+             .fns = ~ replace_na(.x, 
+                                  replace = impute_fun(.x,
+                                                        na.rm = TRUE)
+                                       )
+               )
+        )
+}
+```
+
+
+**Exercise 4:** Write a function that implements the analysis versions
+specifically for a user-specified dataset. 
+
+
+```{r}
+#| include: false
+#| label: question-4-solution
+
+fit_model <- function(df, mod_formula, remove_outliers, impute_missing, ...) {
+  # Start with original data
+  df_clean <- df
+  
+  # Capture additional arguments
+  dots <- list(...)
+  
+  # Remove outliers if requested
+  if (remove_outliers) {
+    
+    # Extract arguments specific to remove_outliers
+    vars_outliers <- dots$outliers_vars
+    sd_thresh <- dots$sd_thresh %||% 3  # Default to 3 if not provided
+    
+    df_clean <- remove_outliers(df_clean, 
+                                vars = !!vars_outliers, 
+                                sd_thresh = sd_thresh)
+  }
+  
+  # Impute missing values if requested
+  if (impute_missing) {
+    
+    # Extract arguments specific to impute_missing
+    vars_impute <- dots$impute_vars
+    impute_fun <- dots$impute_fun %||% mean  # Default to mean if not provided
+    
+    df_clean <- impute_missing(df_clean, 
+                               vars = !!vars_impute, 
+                               impute_fun = impute_fun)
+  }
+  
+  # Fit and return the model
+  lm(mod_formula, data = df_clean)
+}
+```
+
+
+```{r}
+fit_model(
+  diamonds,
+  price ~ carat + cut,
+  do_remove_outliers = TRUE,
+  do_impute_missing = TRUE,
+  outliers_vars = c(price, carat),
+  sd_thresh = 2.5,
+  impute_vars = c(price, carat),
+  impute_fun = median
+)
+```
+
+## Iteration 
+
+But how can we iterate the `fit_model()` function over the combinations in
+`df_arg_combos`? We have two good options in R:
+
+- `for` loops
+- The `purrr` package
+
+### `for` loops
+
+**Exercise 4:** Write a `for` loop that stores the fitted linear models from all versions of the analysis.
+
+Note that you can pull out the contents of a single data frame column in many ways. For a data frame `df` with a variable named `x`:
+
+- `df$x`
+- `df %>% pull(x)`
+- `df[["x"]]`
+
+```{r}
+lin_mod_res_for <- vector(mode = "list", length = nrow(df_arg_combos))
+
+for (i in seq_along(lin_mod_res_for)) {
+    this_formula <- df_arg_combos$mod_formula[[i]] # Double [[ for the **list** of formulas
+    this_remove_outliers <- df_arg_combos$remove_outliers[i] # Single [ for the **atomic vector** of logicals
+    lin_mod_res_for[[i]] <- fit_model(
+        mod_formula = this_formula,
+        remove_outliers = this_remove_outliers
+    )
+}
+```
+
+**Exercise 5:** Use `pmap()` from `purrr` to replicate what you did with the `for` loop.
+
+<details>
+  <summary>Solution</summary>
+  
+```{r}
+lin_mod_res_pmap <- pmap(df_arg_combos, fit_model)
+```
+
