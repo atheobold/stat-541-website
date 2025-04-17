@@ -1,246 +1,164 @@
 ---
 title: "Lab 6"
-subtitle: "Performing Many Different Versions of an Analysis"
+subtitle: "Writing Efficient Code"
 editor: source
 ---
 
-My number one use case for writing functions and iteration/looping is to perform
-some exploration or modeling repeatedly for different "tweaked" versions. For
-example, our broad goal might be to fit a linear regression model to our data.
-However, there are often multiple choices that we have to make in practice:
+# Writing Functions
 
-- Keep missing values or fill them in (imputation)? 
-- Fit the model only on a certain group of cases?
-- Filter out outliers in one or more variables?
-- Transform certain variables? (e.g., log transformation)
+## Vector Functions
 
-We can map these choices to **arguments** in a custom model-fitting function:
-
-- `impute`: TRUE or FALSE
-- `filter_to`: This could be a set of string descriptions: 
-  * "All cases", 
-  * "Group 1", 
-  * "Groups 1 and 2"
-- `remove_outliers`: TRUE or FALSE
-- `outlier_sd_thresh`: Cases that are more than this number of SDs away from the
-mean will be considered outliers and excluded
-
-The `tidyr` package has a useful function called `crossing()` that is useful for
-generating argument combinations. For each argument, we specify all possible
-values for that argument. `crossing()` generates all combinations.
+**Question 1:** The `rescale01()` function below performs a min-max scaling to 
+standardize a numeric vector, but infinite values are left unchanged. Rewrite
+`rescale01()` so that `-Inf` is mapped to 0, and `Inf` is mapped to 1?
+*Hint: This seems like a great place for `case_when()`!
 
 ```{r}
-#| label: crossing-all-sets-of-arguments
+#| label: question-1
 
-df_arg_combos <- crossing(
-    impute = c(TRUE, FALSE),
-    filter_to = c("All cases", "Group 1", "Groups 1 and 2"),
-    remove_outliers = c(TRUE, FALSE)
+rescale01 <- function(x) {
+  rng <- range(x, na.rm = TRUE, finite = TRUE)
+  (x - rng[1]) / (rng[2] - rng[1])
+}
+```
+
+**Question 2:** Write a function that accepts a vector of birthdates and 
+computes the age of each person in years.
+
+```{r}
+#| label: question-2
+
+```
+
+**Question 3:** Write a function that computes the variance and skewness of a
+numeric vector. Feel free to look up the definitions on Wikipedia or elsewhere!
+
+```{r}
+#| label: question-3
+
+```
+
+**Question 4:** Write a function called `both_na()` which takes two vectors of
+the same length and returns the number of positions that have an `NA` in both
+vectors.
+
+## Data Frame Functions
+
+For Questions 5 - 9 you will write different functions which work with data 
+similar to the `nycflights13` data. 
+
+**Question 5:** Write a `filter_severe()` function that finds all flights that
+were cancelled (i.e. `is.na(arr_time)`) or delayed by more than an hour.
+
+```{r}
+#| label: question-5
+
+```
+
+**Question 6:** Write a `summarize_severe()` function that counts the number of 
+cancelled flights and the number of flights delayed by more than an hour.
+
+```{r}
+#| label: question-6
+
+```
+
+**Question 7:** Modify your `filter_severe()` function to allow the user to 
+supply the number of hours that should be used to filter the flights that were
+cancelled or delayed. 
+
+```{r}
+#| label: question-7
+
+```
+
+**Question 8:** Write a `summarize_weather()` function that summarizes the
+weather to compute the minimum, mean, and maximum, of a user supplied variable. 
+
+```{r}
+#| label: question-8
+
+```
+
+**Question 9:** Write a `standardize_time()` function that converts the user
+supplied variable that uses clock time (e.g., `dep_time`, `arr_time`, etc.) into
+a decimal time (i.e. hours + (minutes / 60)).
+
+```{r}
+#| label: question-9
+
+```
+
+
+## Plotting Functions
+
+Build up a rich plotting function by incrementally implementing each of the steps below:
+
+1.  Draw a scatterplot given dataset and `x` and `y` variables.
+
+2.  Add a line of best fit (i.e. a linear model with no standard errors).
+
+3.  Add a title.
+
+# Iteration
+
+### Saving plots
+
+We can take the same basic approach to create many plots.
+Let's first make a function that draws the plot we want:
+
+```{r}
+#| fig-alt: |
+#|   Histogram of carats of diamonds from the by_clarity dataset, ranging from 
+#|   0 to 5 carats. The distribution is unimodal and right skewed with a peak 
+#|   around 1 carat.
+
+carat_histogram <- function(df) {
+  ggplot(df, aes(x = carat)) + geom_histogram(binwidth = 0.1)  
+}
+
+carat_histogram(by_clarity$data[[1]])
+```
+
+Now we can use `map()` to create a list of many plots[^iteration-7] and their eventual file paths:
+
+[^iteration-7]: You can print `by_clarity$plot` to get a crude animation --- you'll get one plot for each element of `plots`.
+    NOTE: this didn't happen for me.
+
+```{r}
+by_clarity <- by_clarity |> 
+  mutate(
+    plot = map(data, carat_histogram),
+    path = str_glue("clarity-{clarity}.png")
+  )
+```
+
+Then use `walk2()` with `ggsave()` to save each plot:
+
+```{r}
+walk2(
+  by_clarity$path,
+  by_clarity$plot,
+  \(path, plot) ggsave(path, plot, width = 6, height = 6)
 )
-df_arg_combos
 ```
 
-A function that implements the analysis and allows for variation in these 
-choices:
+This is shorthand for:
 
 ```{r}
-fit_model <- function(df, impute, filter_to, remove_outliers) {
-    if (impute) {
-        df <- some_imputation_function(df)
-    }
-    
-    if (filter_to == "Group 1") {
-        df <- df %>% 
-            filter(group == 1)
-    } else if (filter_to == "Groups 1 and 2") {
-        df <- df %>% 
-            filter(group %in% c(1, 2))
-    }
-    
-    if (remove_outliers) {
-        df <- function_for_removing_outliers(df)
-    }
-    
-    lm(y ~ x1 + x2, data = df)
-}
-```
-
-But how can we iterate the `fit_model()` function over the combinations in `df_arg_combos`? We have two good options in R:
-
-- `for` loops
-- The `purrr` package
-
-## `for` loops
-
-In the `diamonds` dataset, we want to understand the relationship between `price` and size (`carat`). We want to explore variation along two choices:
-
-1. The variables included in the model. We'll explore 3 sets of variables:
-    - No further variables (just `price` and `carat`)
-    - Adjusting for `cut`
-    - Adjusting for `cut` and `clarity`
-    - Adjusting for `cut`, `clarity`, and `color`
-2. Whether or not to remove outliers in the `carat` variable. We'll define outliers as cases whose `carat` is over 3 SDs away from the mean.
-
-
-**Exercise 1:** Use `crossing()` to create the data frame of argument combinations for our analyses. Note that you can create a list of **formula** objects in R with `c(y ~ x1, y ~ x1 + x2)`.
-
-<details>
-  <summary>Solution</summary>
-  
-```{r}
-df_arg_combos <- crossing(
-    mod_formula = c(price ~ carat, price ~ carat + cut,  price ~ carat + cut + clarity,  price ~ carat + cut + clarity + color),
-    remove_outliers = c(TRUE, FALSE)
-)
-df_arg_combos
-```
-
-</details>
-
-**Exercise 2:** Write a function that removes outliers in a dataset. The user should be able to supply the dataset, the variable to remove outliers in, and a threshold on the number of SDs away from the mean used to define outliers.
-
-<details>
-  <summary>Solution</summary>
-  
-```{r}
-remove_outliers <- function(df, what_var, sd_thresh) {
-    df %>% 
-        mutate(zscore = ({{ what_var }} - mean({{ what_var}}, na.rm = TRUE))/sd({{ what_var }}, na.rm = TRUE)) %>%
-        filter(zscore <= sd_thresh)
-}
-```
-
-</details>
-
-**Exercise 3:** Write a function that implements the analysis versions specifically for the `diamonds` dataset. The user will not specify the dataset as an argument but will input the model formula and whether or not to remove outliers (cases whose `carat` is over 3 SDs away from the mean).
-
-<details>
-  <summary>Solution</summary>
-  
-```{r}
-fit_model <- function(mod_formula, remove_outliers) {
-    if (remove_outliers) {
-        diamonds_clean <- remove_outliers(diamonds, what_var = carat, sd_thresh = 3)
-    } else {
-        diamonds_clean <- diamonds
-    }
-    
-    lm(mod_formula, data = diamonds_clean)
-}
-```
-
-</details>
-
-**Exercise 4:** Write a `for` loop that stores the fitted linear models from all versions of the analysis.
-
-Note that you can pull out the contents of a single data frame column in many ways. For a data frame `df` with a variable named `x`:
-
-- `df$x`
-- `df %>% pull(x)`
-- `df[["x"]]`
-
-<details>
-  <summary>Solution</summary>
-  
-```{r}
-lin_mod_res_for <- vector(mode = "list", length = nrow(df_arg_combos))
-
-for (i in seq_along(lin_mod_res_for)) {
-    this_formula <- df_arg_combos$mod_formula[[i]] # Double [[ for the **list** of formulas
-    this_remove_outliers <- df_arg_combos$remove_outliers[i] # Single [ for the **atomic vector** of logicals
-    lin_mod_res_for[[i]] <- fit_model(
-        mod_formula = this_formula,
-        remove_outliers = this_remove_outliers
-    )
-}
-```
-
-</details>
-
-**Exercise 5:** Use `pmap()` from `purrr` to replicate what you did with the `for` loop.
-
-<details>
-  <summary>Solution</summary>
-  
-```{r}
-lin_mod_res_pmap <- pmap(df_arg_combos, fit_model)
-```
-
-</details>
-
-
-
-<!--
-
-```{r}
-fit_model <- function(df, mod_formula, remove_outliers) {
-    if (remove_outliers) {
-        df <- remove_outliers(df, what_var = carat, sd_thresh = 3)
-    }
-    
-    lm(mod_formula, data = df)
-}
-
-res <- pmap(df_arg_combos, function(remove_outliers, mod_formula) {fit_model(df = diamonds, mod_formula = mod_formula, remove_outliers = remove_outliers)} )
+#| eval: false
+ggsave(by_clarity$path[[1]], by_clarity$plot[[1]], width = 6, height = 6)
+ggsave(by_clarity$path[[2]], by_clarity$plot[[2]], width = 6, height = 6)
+ggsave(by_clarity$path[[3]], by_clarity$plot[[3]], width = 6, height = 6)
+...
+ggsave(by_clarity$path[[8]], by_clarity$plot[[8]], width = 6, height = 6)
 ```
 
 ```{r}
-fit_model <- function(mod_formula, remove_outliers) {
-    if (remove_outliers) {
-        diamonds_clean <- remove_outliers(diamonds, what_var = carat, sd_thresh = 3)
-    } else {
-        diamonds_clean <- diamonds
-    }
-    
-    lm(mod_formula, data = diamonds_clean)
-}
-
-res <- pmap(df_arg_combos, fit_model)
+#| include: false
+unlink(by_clarity$path)
 ```
 
--->
+# Contributing to the R for Data Science Community!
 
----
-
-**Exercise:** Last class we worked on an extended exercise where our goal was to write a series of functions and a `for` loop to repeat linear model fitting under different "settings" (removal of outliers, model formula choice). Repeat this exercise using `pmap()`--you'll need to use the `df_arg_combos` object, your `remove_outliers()` function, and your `fit_model()` function.
-
-<details>
-    <summary>Solution</summary>
-
-```{r pmap_ex_model_variations_soln, eval=FALSE}
-pmap(df_arg_combos, fit_model, data = diamonds)
-```
-
-</details>
-
----
-
-3. On the `diamonds` dataset, fit models of price vs. carat separately for each value of `cut`, and store the fitted models in a list storage container.
-
-<details>
-    <summary>Solutions</summary>
-
-```{r}
-#| label: for-ex-solutions-3
-data(diamonds)
-
-# Fit models of price vs. carat separately for each value of cut
-unique_cuts <- diamonds %>% 
-  pull(cut) %>% 
-  levels()
-
-lin_mod_results <- vector(mode = "list", 
-                          length = length(unique_cuts)
-                          )
-
-for (i in seq_along(unique_cuts)) {
-    this_cut <- unique_cuts[i]
-    diamonds_sub <- diamonds %>%
-        filter(cut == this_cut)
-    # The double square brackets [[i]] accesses the ith element of a list
-    lin_mod_results[[i]] <- lm(price ~ carat, data = diamonds_sub)
-}
-```
-
-</details>
-
+https://github.com/mine-cetinkaya-rundel/r4ds-solutions
