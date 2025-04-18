@@ -81,7 +81,7 @@
     "href": "unit-2/efficient-code.html#save-smaller-data-frames-if-you-are-going-to-use-them-many-times",
     "title": "Writing Efficient Code",
     "section": "Save smaller data frames, if you are going to use them many times",
-    "text": "Save smaller data frames, if you are going to use them many times\nConsider the following dataset:\n\nlibrary(fivethirtyeight)\n\nglimpse(congress_age)\n\nRows: 18,635\nColumns: 13\n$ congress   &lt;int&gt; 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80,…\n$ chamber    &lt;chr&gt; \"house\", \"house\", \"house\", \"house\", \"house\", \"house\", \"hous…\n$ bioguide   &lt;chr&gt; \"M000112\", \"D000448\", \"S000001\", \"E000023\", \"L000296\", \"G00…\n$ firstname  &lt;chr&gt; \"Joseph\", \"Robert\", \"Adolph\", \"Charles\", \"William\", \"James\"…\n$ middlename &lt;chr&gt; \"Jefferson\", \"Lee\", \"Joachim\", \"Aubrey\", NA, \"A.\", \"Joseph\"…\n$ lastname   &lt;chr&gt; \"Mansfield\", \"Doughton\", \"Sabath\", \"Eaton\", \"Lewis\", \"Galla…\n$ suffix     &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…\n$ birthday   &lt;date&gt; 1861-02-09, 1863-11-07, 1866-04-04, 1868-03-29, 1868-09-22…\n$ state      &lt;chr&gt; \"TX\", \"NC\", \"IL\", \"NJ\", \"KY\", \"PA\", \"CA\", \"NY\", \"WI\", \"MA\",…\n$ party      &lt;chr&gt; \"D\", \"D\", \"D\", \"R\", \"R\", \"R\", \"R\", \"D\", \"R\", \"R\", \"D\", \"R\",…\n$ incumbent  &lt;lgl&gt; TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, TRUE, TRUE, TRUE, TRU…\n$ termstart  &lt;date&gt; 1947-01-03, 1947-01-03, 1947-01-03, 1947-01-03, 1947-01-03…\n$ age        &lt;dbl&gt; 86, 83, 81, 79, 78, 78, 78, 77, 76, 76, 75, 74, 74, 73, 73,…\n\n\nSuppose we want to do some exploratory analysis on these data. Let’s use the tic() and toc() functions from the tictoc packages to check how much time it takes to run this code:\n\ntic()\n\ncongress_age %&gt;%\n  filter(chamber == \"senate\") %&gt;%\n  summarize(mean(age))\n\ncongress_age %&gt;%\n  filter(chamber == \"senate\") %&gt;%\n  ggplot() + \n  geom_histogram(mapping = aes(x = age))\ncongress_age %&gt;%\n  filter(chamber == \"senate\") %&gt;%\n  slice_max(n = 5, order_by = age)\n\n\ntoc()\n\n0.541 sec elapsed\n\n\nThese are all three reasonable things to do, and they can’t be done in the same pipeline. But wait - we just made R do the process of subsetting to only Senators three separate times!\n\ntic()\n  congress_age %&gt;%\n    filter(chamber == \"senate\")\n\n\ntoc()\n\n0.043 sec elapsed\n\n\nInstead, how about we filter the data once, save it into an object, and call on that object:\n\ntic()\n\n senate &lt;- congress_age %&gt;%\n  filter(chamber == \"senate\")\n\nsenate %&gt;%\n  summarize(mean(age))\n\nsenate %&gt;%\n  ggplot() + \n  geom_histogram(mapping = aes(x = age))\nsenate %&gt;%\n  slice_max(n = 5, order_by = age)\n\n\ntoc()\n\n0.318 sec elapsed\n\n\nThat is half the run time! Yes, we are dealing with minute increments of time (less than a second), but hopefully you could see how this might scale to larger calcuations.",
+    "text": "Save smaller data frames, if you are going to use them many times\nConsider the following dataset:\n\nlibrary(fivethirtyeight)\n\nglimpse(congress_age)\n\nRows: 18,635\nColumns: 13\n$ congress   &lt;int&gt; 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80,…\n$ chamber    &lt;chr&gt; \"house\", \"house\", \"house\", \"house\", \"house\", \"house\", \"hous…\n$ bioguide   &lt;chr&gt; \"M000112\", \"D000448\", \"S000001\", \"E000023\", \"L000296\", \"G00…\n$ firstname  &lt;chr&gt; \"Joseph\", \"Robert\", \"Adolph\", \"Charles\", \"William\", \"James\"…\n$ middlename &lt;chr&gt; \"Jefferson\", \"Lee\", \"Joachim\", \"Aubrey\", NA, \"A.\", \"Joseph\"…\n$ lastname   &lt;chr&gt; \"Mansfield\", \"Doughton\", \"Sabath\", \"Eaton\", \"Lewis\", \"Galla…\n$ suffix     &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…\n$ birthday   &lt;date&gt; 1861-02-09, 1863-11-07, 1866-04-04, 1868-03-29, 1868-09-22…\n$ state      &lt;chr&gt; \"TX\", \"NC\", \"IL\", \"NJ\", \"KY\", \"PA\", \"CA\", \"NY\", \"WI\", \"MA\",…\n$ party      &lt;chr&gt; \"D\", \"D\", \"D\", \"R\", \"R\", \"R\", \"R\", \"D\", \"R\", \"R\", \"D\", \"R\",…\n$ incumbent  &lt;lgl&gt; TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, TRUE, TRUE, TRUE, TRU…\n$ termstart  &lt;date&gt; 1947-01-03, 1947-01-03, 1947-01-03, 1947-01-03, 1947-01-03…\n$ age        &lt;dbl&gt; 86, 83, 81, 79, 78, 78, 78, 77, 76, 76, 75, 74, 74, 73, 73,…\n\n\nSuppose we want to do some exploratory analysis on these data. Let’s use the tic() and toc() functions from the tictoc packages to check how much time it takes to run this code:\n\ntic()\n\ncongress_age %&gt;%\n  filter(chamber == \"senate\") %&gt;%\n  summarize(mean(age))\n\ncongress_age %&gt;%\n  filter(chamber == \"senate\") %&gt;%\n  ggplot() + \n  geom_histogram(mapping = aes(x = age))\ncongress_age %&gt;%\n  filter(chamber == \"senate\") %&gt;%\n  slice_max(n = 5, order_by = age)\n\n\ntoc()\n\n0.466 sec elapsed\n\n\nThese are all three reasonable things to do, and they can’t be done in the same pipeline. But wait - we just made R do the process of subsetting to only Senators three separate times!\n\ntic()\n  congress_age %&gt;%\n    filter(chamber == \"senate\")\n\n\ntoc()\n\n0.028 sec elapsed\n\n\nInstead, how about we filter the data once, save it into an object, and call on that object:\n\ntic()\n\n senate &lt;- congress_age %&gt;%\n  filter(chamber == \"senate\")\n\nsenate %&gt;%\n  summarize(mean(age))\n\nsenate %&gt;%\n  ggplot() + \n  geom_histogram(mapping = aes(x = age))\nsenate %&gt;%\n  slice_max(n = 5, order_by = age)\n\n\ntoc()\n\n0.214 sec elapsed\n\n\nThat is half the run time! Yes, we are dealing with minute increments of time (less than a second), but hopefully you could see how this might scale to larger calcuations.",
     "crumbs": [
       "Unit 2 - Iteration",
       "Writing Efficient Code"
@@ -125,7 +125,7 @@
     "href": "unit-2/efficient-code.html#allocate-memory-in-advance",
     "title": "Writing Efficient Code",
     "section": "Allocate memory in advance",
-    "text": "Allocate memory in advance\nA trick we use very often in coding is to “tack on” values to the end of a vector or list as we iterate through something. However, this is actually very slow! If you know how long your list is going to end up, consider pre-creating that list.\n\ndo_stuff_allocate &lt;- function(reps) {\n  results &lt;- vector(length = reps)\n  for (i in 1:reps) {\n    results[i] &lt;- i\n  }\n  return(results)\n}\n\ndo_stuff_tackon &lt;- function(reps) {\n   results &lt;- c()\n  for (i in 1:reps) {\n    results &lt;- c(results, i)\n  }\n  return(results)\n}\n\nmicrobenchmark::microbenchmark(\n  do_stuff_allocate(1000),\n  do_stuff_tackon(1000)\n)\n\nUnit: microseconds\n                    expr  min   lq mean median   uq   max neval\n do_stuff_allocate(1000)   41   46  158     59   80  9282   100\n   do_stuff_tackon(1000) 1246 2264 3324   2546 3135 24953   100",
+    "text": "Allocate memory in advance\nA trick we use very often in coding is to “tack on” values to the end of a vector or list as we iterate through something. However, this is actually very slow! If you know how long your list is going to end up, consider pre-creating that list.\n\ndo_stuff_allocate &lt;- function(reps) {\n  results &lt;- vector(length = reps)\n  for (i in 1:reps) {\n    results[i] &lt;- i\n  }\n  return(results)\n}\n\ndo_stuff_tackon &lt;- function(reps) {\n   results &lt;- c()\n  for (i in 1:reps) {\n    results &lt;- c(results, i)\n  }\n  return(results)\n}\n\nmicrobenchmark::microbenchmark(\n  do_stuff_allocate(1000),\n  do_stuff_tackon(1000)\n)\n\nUnit: microseconds\n                    expr min  lq mean median   uq   max neval\n do_stuff_allocate(1000)  26  30   66     31   34  3354   100\n   do_stuff_tackon(1000) 779 972 1918   1620 1687 18965   100",
     "crumbs": [
       "Unit 2 - Iteration",
       "Writing Efficient Code"
@@ -195,6 +195,28 @@
     "crumbs": [
       "Unit 2 - Iteration",
       "Writing Efficient Code"
+    ]
+  },
+  {
+    "objectID": "labs/lab-6-alt.html",
+    "href": "labs/lab-6-alt.html",
+    "title": "Lab 6 - Alternative",
+    "section": "",
+    "text": "The exercises from the functions below were pulled from the newest version of R for Data Science. Specifically, from Chapters 25 and 26. For this “alternative” lab you will complete the exercises from the textbook, with the option of submitting a pull request to the repository for the textbook solutions.",
+    "crumbs": [
+      "Unit 2 - Iteration",
+      "Lab 6 - Alternative"
+    ]
+  },
+  {
+    "objectID": "labs/lab-6-alt.html#data-frame-functions",
+    "href": "labs/lab-6-alt.html#data-frame-functions",
+    "title": "Lab 6 - Alternative",
+    "section": "Data Frame Functions",
+    "text": "Data Frame Functions\nQuestion 5: Insert the data frame function you wrote from Lab 6 (either Exercise 1 or Exercise 2).\nFor Questions 6 - 10 you will write different functions which work with data similar to the nycflights13 data.\nQuestion 6: Write a filter_severe() function that finds all flights that were cancelled (i.e. is.na(arr_time)) or delayed by more than an hour.\nQuestion 7: Write a summarize_severe() function that counts the number of cancelled flights and the number of flights delayed by more than an hour.\nQuestion 8: Modify your filter_severe() function to allow the user to supply the number of hours that should be used to filter the flights that were cancelled or delayed.\nQuestion 9: Write a summarize_weather() function that summarizes the weather to compute the minimum, mean, and maximum, of a user supplied variable.\nQuestion 10: Write a standardize_time() function that converts the user supplied variable that uses clock time (e.g., dep_time, arr_time, etc.) into a decimal time (i.e. hours + (minutes / 60)).",
+    "crumbs": [
+      "Unit 2 - Iteration",
+      "Lab 6 - Alternative"
     ]
   },
   {
@@ -999,6 +1021,72 @@
     "crumbs": [
       "Infrastructure",
       "Version Control with Git and GitHub"
+    ]
+  },
+  {
+    "objectID": "labs/lab-6.html",
+    "href": "labs/lab-6.html",
+    "title": "Lab 6 - Spicy",
+    "section": "",
+    "text": "This assignment will challenge your function writing abilities. I’m not going to lie, these functions are difficult but well within your reach. I do, however, want to recognize that not everyone is interested in being a “virtuoso” with their function writing. So, there are two options for this week’s lab:",
+    "crumbs": [
+      "Unit 2 - Iteration",
+      "Lab 6 - Spicy"
+    ]
+  },
+  {
+    "objectID": "labs/lab-6.html#testing-your-function",
+    "href": "labs/lab-6.html#testing-your-function",
+    "title": "Lab 6 - Spicy",
+    "section": "Testing Your Function!",
+    "text": "Testing Your Function!\n\n## Testing how your function handles multiple input variables\nremove_outliers(diamonds, \n                price, \n                x, \n                y, \n                z)\n\n## Testing how your function handles an input that isn't numeric\nremove_outliers(diamonds, \n                price, \n                color)\n\n## Testing how your function handles a non-default sd_thresh\nremove_outliers(diamonds, \n                price,\n                x, \n                y, \n                z, \n                sd_thresh = 2)\n\nExercise 2: Write a function that imputes missing values for numeric variables in a dataset. The user should be able to supply the dataset, the variables to impute values for, and a function to use when imputing. Hint 1: You will need to use across() to apply your function, since the user can input multiple variables. Hint 2: The replace_na() function is helpful here!",
+    "crumbs": [
+      "Unit 2 - Iteration",
+      "Lab 6 - Spicy"
+    ]
+  },
+  {
+    "objectID": "labs/lab-6.html#testing-your-function-1",
+    "href": "labs/lab-6.html#testing-your-function-1",
+    "title": "Lab 6 - Spicy",
+    "section": "Testing Your Function!",
+    "text": "Testing Your Function!\n\n## Testing how your function handles multiple input variables\nimpute_missing(nycflights13::flights, \n               arr_delay, \n               dep_delay) \n\n## Testing how your function handles an input that isn't numeric\nimpute_missing(nycflights13::flights, \n               arr_delay, \n               carrier)\n\n## Testing how your function handles a non-default impute_fun\nimpute_missing(nycflights13::flights, \n               arr_delay, \n               dep_delay, \n               impute_fun = median)",
+    "crumbs": [
+      "Unit 2 - Iteration",
+      "Lab 6 - Spicy"
+    ]
+  },
+  {
+    "objectID": "labs/lab-6.html#testing-your-function-2",
+    "href": "labs/lab-6.html#testing-your-function-2",
+    "title": "Lab 6 - Spicy",
+    "section": "Testing Your Function!",
+    "text": "Testing Your Function!\n\nfit_model(\n  diamonds,\n  mod_formula = price ~ carat + cut,\n  remove_outliers = TRUE,\n  impute_missing = TRUE,\n  price, \n  carat\n)",
+    "crumbs": [
+      "Unit 2 - Iteration",
+      "Lab 6 - Spicy"
+    ]
+  },
+  {
+    "objectID": "labs/lab-6.html#parameters",
+    "href": "labs/lab-6.html#parameters",
+    "title": "Lab 6 - Spicy",
+    "section": "Parameters",
+    "text": "Parameters\nFirst, we need to define the set of parameters we want to iterate the fit_model() function over. The tidyr package has a useful function called crossing() that is useful for generating argument combinations. For each argument, we specify all possible values for that argument and crossing() generates all combinations. Note that you can create a list of formula objects in R with c(y ~ x1, y ~ x1 + x2).\n\ndf_arg_combos &lt;- crossing(\n    impute = c(TRUE, FALSE),\n    remove_outliers = c(TRUE, FALSE), \n    mod = c(y ~ x1, \n            y ~ x1 + x2)\n)\ndf_arg_combos\n\nExercise 4: Use crossing() to create the data frame of argument combinations for our analyses.",
+    "crumbs": [
+      "Unit 2 - Iteration",
+      "Lab 6 - Spicy"
+    ]
+  },
+  {
+    "objectID": "labs/lab-6.html#iterating-over-the-parameters",
+    "href": "labs/lab-6.html#iterating-over-the-parameters",
+    "title": "Lab 6 - Spicy",
+    "section": "Iterating Over the Parameters",
+    "text": "Iterating Over the Parameters\nWe’ve arrived at the final step!\nExercise 5: Use pmap() from purrr to apply the fit_model() function to every combination of arguments from `diamonds.",
+    "crumbs": [
+      "Unit 2 - Iteration",
+      "Lab 6 - Spicy"
     ]
   },
   {

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Unit 2 – Advanced R</title>
+<title>Lab 6 - Alternative – Advanced R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,29 +20,63 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./unit-2/writing-functions.html" rel="next">
-<link href="./images/cat-monsters-horst.png" rel="icon" type="image/png">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../labs/lab-6.html" rel="prev">
+<link href="../images/cat-monsters-horst.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -81,8 +115,8 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    <img src="./images/cat-monsters-horst.png" alt="" class="navbar-logo">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../images/cat-monsters-horst.png" alt="" class="navbar-logo">
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -92,31 +126,31 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link" href="../index.html"> 
 <span class="menu-text">Overview</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./course-materials/calendar.html"> 
+    <a class="nav-link" href="../course-materials/calendar.html"> 
 <span class="menu-text">Schedule</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./course-materials/syllabus.html"> 
+    <a class="nav-link" href="../course-materials/syllabus.html"> 
 <span class="menu-text">Syllabus</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./infrastructure.html"> 
+    <a class="nav-link" href="../infrastructure.html"> 
 <span class="menu-text">Infrastructure</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./unit-1.html"> 
+    <a class="nav-link" href="../unit-1.html"> 
 <span class="menu-text">Unit 1 - Communication</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./unit-2.html" aria-current="page"> 
+    <a class="nav-link active" href="../unit-2.html" aria-current="page"> 
 <span class="menu-text">Unit 2 - Iteration</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./portfolio.html"> 
+    <a class="nav-link" href="../portfolio.html"> 
 <span class="menu-text">Portfolio</span></a>
   </li>  
 </ul>
@@ -138,7 +172,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./unit-2.html">Unit 2</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../labs/lab-6-alt.html">Lab 6 - Alternative</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -152,37 +186,37 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./unit-2.html" class="sidebar-item-text sidebar-link active">
+  <a href="../unit-2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Unit 2</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./unit-2/writing-functions.html" class="sidebar-item-text sidebar-link">
+  <a href="../unit-2/writing-functions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Writing Functions in R</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./unit-2/efficient-code.html" class="sidebar-item-text sidebar-link">
+  <a href="../unit-2/efficient-code.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Writing Efficient Code</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./unit-2/iterating-functions.html" class="sidebar-item-text sidebar-link">
+  <a href="../unit-2/iterating-functions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Iterating Over Functions</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./labs/lab-6.html" class="sidebar-item-text sidebar-link">
+  <a href="../labs/lab-6.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lab 6 - Spicy</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./labs/lab-6-alt.html" class="sidebar-item-text sidebar-link">
+  <a href="../labs/lab-6-alt.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Lab 6 - Alternative</span></a>
   </div>
 </li>
@@ -191,15 +225,28 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#vector-functions" id="toc-vector-functions" class="nav-link active" data-scroll-target="#vector-functions">Vector Functions</a>
+  <ul class="collapse">
+  <li><a href="#data-frame-functions" id="toc-data-frame-functions" class="nav-link" data-scroll-target="#data-frame-functions">Data Frame Functions</a></li>
+  </ul></li>
+  <li><a href="#plotting-functions" id="toc-plotting-functions" class="nav-link" data-scroll-target="#plotting-functions">Plotting Functions</a></li>
+  <li><a href="#iteration" id="toc-iteration" class="nav-link" data-scroll-target="#iteration">Iteration</a></li>
+  <li><a href="#contributing-to-the-r-for-data-science-community" id="toc-contributing-to-the-r-for-data-science-community" class="nav-link" data-scroll-target="#contributing-to-the-r-for-data-science-community">Contributing to the R for Data Science Community!</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/labs/lab-6-alt.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Unit 2</h1>
+<h1 class="title">Lab 6 - Alternative</h1>
+<p class="subtitle lead">Contributing to R for Data Science</p>
 </div>
 
 
@@ -216,10 +263,54 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>In this second unit, we will dig deeper into the ideas surrounding efficiency. We will start with a review of writing functions in R—creating both vector and data frame functions and learning how to write functions which incorporate “tidy evaluation.” Next, we will take these functions to the next step by considering the efficiency of the function—how many intermediate objects are created, what order are operations run, what functions are used internally? Alongside these considerations, we will also compare and contrast different methods for iterating over functions—<code>for</code> loops and the <code>purrr</code> family of functions. From the perspective of efficiency, we will consider why one would choose one tool over the other.</p>
-<p>After this review of efficiency, we will put our function writing an iteration to work! First we will explore hierarchical (JSON) data, iterating over multiple calls to an API. Next, we will explore extracting (scraping) data from a webpage, iterating over multiple webpages. Finally, we will use iteration to generate art from code.</p>
+<p>The exercises from the functions below were pulled from the newest version of <a href="https://r4ds.hadley.nz/"><em>R for Data Science</em></a>. Specifically, from Chapters 25 and 26. For this “alternative” lab you will complete the exercises from the textbook, with the option of submitting a pull request to the <a href="https://github.com/mine-cetinkaya-rundel/r4ds-solutions/">repository for the textbook solutions</a>.</p>
+<section id="vector-functions" class="level1">
+<h1>Vector Functions</h1>
+<p><strong>Question 1:</strong> The <code>rescale01()</code> function below performs a min-max scaling to standardize a numeric vector, but infinite values are left unchanged. Rewrite <code>rescale01()</code> so that <code>-Inf</code> is mapped to 0, and <code>Inf</code> is mapped to 1? *Hint: This seems like a great place for <code>case_when()</code>!</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>rescale01 <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  rng <span class="ot">&lt;-</span> <span class="fu">range</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>, <span class="at">finite =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  (x <span class="sc">-</span> rng[<span class="dv">1</span>]) <span class="sc">/</span> (rng[<span class="dv">2</span>] <span class="sc">-</span> rng[<span class="dv">1</span>])</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Question 2:</strong> Write a function that accepts a vector of birthdates and computes the age of each person in years.</p>
+<p><strong>Question 3:</strong> Write a function that computes the variance and skewness of a numeric vector. Feel free to look up the definitions on Wikipedia or elsewhere!</p>
+<p><strong>Question 4:</strong> Write a function called <code>both_na()</code> which takes two vectors of the same length and returns the number of positions that have an <code>NA</code> in both vectors.</p>
+<section id="data-frame-functions" class="level2">
+<h2 class="anchored" data-anchor-id="data-frame-functions">Data Frame Functions</h2>
+<p><strong>Question 5:</strong> Insert the data frame function you wrote from Lab 6 (either Exercise 1 or Exercise 2).</p>
+<p>For Questions 6 - 10 you will write different functions which work with data similar to the <code>nycflights13</code> data.</p>
+<p><strong>Question 6:</strong> Write a <code>filter_severe()</code> function that finds all flights that were cancelled (i.e.&nbsp;<code>is.na(arr_time)</code>) or delayed by more than an hour.</p>
+<p><strong>Question 7:</strong> Write a <code>summarize_severe()</code> function that counts the number of cancelled flights and the number of flights delayed by more than an hour.</p>
+<p><strong>Question 8:</strong> Modify your <code>filter_severe()</code> function to allow the user to supply the number of hours that should be used to filter the flights that were cancelled or delayed.</p>
+<p><strong>Question 9:</strong> Write a <code>summarize_weather()</code> function that summarizes the weather to compute the minimum, mean, and maximum, of a user supplied variable.</p>
+<p><strong>Question 10:</strong> Write a <code>standardize_time()</code> function that converts the user supplied variable that uses clock time (e.g., <code>dep_time</code>, <code>arr_time</code>, etc.) into a decimal time (i.e.&nbsp;hours + (minutes / 60)).</p>
+</section>
+</section>
+<section id="plotting-functions" class="level1">
+<h1>Plotting Functions</h1>
+<p>You might want to read over the <a href="https://r4ds.hadley.nz/functions.html#plot-functions">Plot Functions section of <em>R for Data Science</em></a></p>
+<p><strong>Question 11:</strong> Build a <code>sorted_bars()</code> function which:</p>
+<ul>
+<li>takes a data frame and a variable as inputs and returns a <strong>vertical</strong> bar chart</li>
+<li>sorts the bars in decreasing order (largest to smallest)</li>
+<li>adds a title that includes the context of the variable being plotted</li>
+</ul>
+<p><em>Hint 1: The <code>fct_infreq()</code> and <code>fct_rev()</code> functions from the forcats package will be helpful for sorting the bars!</em> <em>Hint 2: The <code>englue()</code> function from the rlang package will be helpful for adding a variable’s name into the plot title!</em></p>
+</section>
+<section id="iteration" class="level1">
+<h1>Iteration</h1>
+<p>Alright, now let’s take our plotting function and iterate it!</p>
+<p><strong>Question 12:</strong> Make a sorted barplot for every character variable in the <code>mpg</code> dataset (built into <code>ggplot2</code>).</p>
+</section>
+<section id="contributing-to-the-r-for-data-science-community" class="level1">
+<h1>Contributing to the R for Data Science Community!</h1>
+<p>The functions you wrote for exercises 1-10 came from <em>R for Data Science</em>. You could consider making a pull request to the repository for the solutions!</p>
+<p><a href="https://github.com/mine-cetinkaya-rundel/r4ds-solutions" class="uri">https://github.com/mine-cetinkaya-rundel/r4ds-solutions</a></p>
+<p>To learn more about how to make a pull request I would suggest this article: <a href="https://usethis.r-lib.org/articles/pr-functions.html" class="uri">https://usethis.r-lib.org/articles/pr-functions.html</a></p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -788,11 +879,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="../labs/lab-6.html" class="pagination-link" aria-label="Lab 6 - Spicy">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Lab 6 - Spicy</span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./unit-2/writing-functions.html" class="pagination-link" aria-label="Writing Functions in R">
-        <span class="nav-page-text">Writing Functions in R</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
@@ -803,11 +894,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/unit-2.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/labs/lab-6-alt.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item">
-    <a class="nav-link" href="./LICENSE.md">
+    <a class="nav-link" href="../LICENSE.md">
 <p>License</p>
 </a>
   </li>  

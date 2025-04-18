@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Unit 2 – Advanced R</title>
+<title>Lab 6 - Spicy – Advanced R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,29 +20,64 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./unit-2/writing-functions.html" rel="next">
-<link href="./images/cat-monsters-horst.png" rel="icon" type="image/png">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../labs/lab-6-alt.html" rel="next">
+<link href="../unit-2/iterating-functions.html" rel="prev">
+<link href="../images/cat-monsters-horst.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -81,8 +116,8 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    <img src="./images/cat-monsters-horst.png" alt="" class="navbar-logo">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../images/cat-monsters-horst.png" alt="" class="navbar-logo">
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -92,31 +127,31 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link" href="../index.html"> 
 <span class="menu-text">Overview</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./course-materials/calendar.html"> 
+    <a class="nav-link" href="../course-materials/calendar.html"> 
 <span class="menu-text">Schedule</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./course-materials/syllabus.html"> 
+    <a class="nav-link" href="../course-materials/syllabus.html"> 
 <span class="menu-text">Syllabus</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./infrastructure.html"> 
+    <a class="nav-link" href="../infrastructure.html"> 
 <span class="menu-text">Infrastructure</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./unit-1.html"> 
+    <a class="nav-link" href="../unit-1.html"> 
 <span class="menu-text">Unit 1 - Communication</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./unit-2.html" aria-current="page"> 
+    <a class="nav-link active" href="../unit-2.html" aria-current="page"> 
 <span class="menu-text">Unit 2 - Iteration</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./portfolio.html"> 
+    <a class="nav-link" href="../portfolio.html"> 
 <span class="menu-text">Portfolio</span></a>
   </li>  
 </ul>
@@ -138,7 +173,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./unit-2.html">Unit 2</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../labs/lab-6.html">Lab 6 - Spicy</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -152,37 +187,37 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./unit-2.html" class="sidebar-item-text sidebar-link active">
+  <a href="../unit-2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Unit 2</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./unit-2/writing-functions.html" class="sidebar-item-text sidebar-link">
+  <a href="../unit-2/writing-functions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Writing Functions in R</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./unit-2/efficient-code.html" class="sidebar-item-text sidebar-link">
+  <a href="../unit-2/efficient-code.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Writing Efficient Code</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./unit-2/iterating-functions.html" class="sidebar-item-text sidebar-link">
+  <a href="../unit-2/iterating-functions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Iterating Over Functions</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./labs/lab-6.html" class="sidebar-item-text sidebar-link">
+  <a href="../labs/lab-6.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Lab 6 - Spicy</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./labs/lab-6-alt.html" class="sidebar-item-text sidebar-link">
+  <a href="../labs/lab-6-alt.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lab 6 - Alternative</span></a>
   </div>
 </li>
@@ -191,15 +226,36 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#setting-the-stage" id="toc-setting-the-stage" class="nav-link active" data-scroll-target="#setting-the-stage">Setting the Stage</a></li>
+  <li><a href="#helper-functions" id="toc-helper-functions" class="nav-link" data-scroll-target="#helper-functions">Helper Functions</a>
+  <ul class="collapse">
+  <li><a href="#testing-your-function" id="toc-testing-your-function" class="nav-link" data-scroll-target="#testing-your-function">Testing Your Function!</a></li>
+  <li><a href="#testing-your-function-1" id="toc-testing-your-function-1" class="nav-link" data-scroll-target="#testing-your-function-1">Testing Your Function!</a></li>
+  </ul></li>
+  <li><a href="#primary-function" id="toc-primary-function" class="nav-link" data-scroll-target="#primary-function">Primary Function</a>
+  <ul class="collapse">
+  <li><a href="#testing-your-function-2" id="toc-testing-your-function-2" class="nav-link" data-scroll-target="#testing-your-function-2">Testing Your Function!</a></li>
+  </ul></li>
+  <li><a href="#iteration" id="toc-iteration" class="nav-link" data-scroll-target="#iteration">Iteration</a>
+  <ul class="collapse">
+  <li><a href="#parameters" id="toc-parameters" class="nav-link" data-scroll-target="#parameters">Parameters</a></li>
+  <li><a href="#iterating-over-the-parameters" id="toc-iterating-over-the-parameters" class="nav-link" data-scroll-target="#iterating-over-the-parameters">Iterating Over the Parameters</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/labs/lab-6.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Unit 2</h1>
+<h1 class="title">Lab 6 - Spicy</h1>
+<p class="subtitle lead">Performing Many Different Versions of an Analysis</p>
 </div>
 
 
@@ -216,10 +272,148 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>In this second unit, we will dig deeper into the ideas surrounding efficiency. We will start with a review of writing functions in R—creating both vector and data frame functions and learning how to write functions which incorporate “tidy evaluation.” Next, we will take these functions to the next step by considering the efficiency of the function—how many intermediate objects are created, what order are operations run, what functions are used internally? Alongside these considerations, we will also compare and contrast different methods for iterating over functions—<code>for</code> loops and the <code>purrr</code> family of functions. From the perspective of efficiency, we will consider why one would choose one tool over the other.</p>
-<p>After this review of efficiency, we will put our function writing an iteration to work! First we will explore hierarchical (JSON) data, iterating over multiple calls to an API. Next, we will explore extracting (scraping) data from a webpage, iterating over multiple webpages. Finally, we will use iteration to generate art from code.</p>
+<p>This assignment will challenge your function writing abilities. I’m not going to lie, these functions are difficult but well within your reach. I do, however, want to recognize that not everyone is interested in being a “virtuoso” with their function writing. So, there are two options for this week’s lab:</p>
+<ul>
+<li><strong>Option 1:</strong> Complete this lab assignment in search of virtuoso status with your function writing</li>
+<li><strong>Option 2:</strong> Complete one of the difficult functions (Exercise 1 or Exercise</li>
+</ul>
+<ol start="2" type="1">
+<li>and complete the “Alternative Lab 6”.</li>
+</ol>
+<section id="setting-the-stage" class="level1">
+<h1>Setting the Stage</h1>
+<p>My number one use case for writing functions and iteration / looping is to perform some exploration or modeling repeatedly for different “tweaked” versions. For example, our broad goal might be to fit a linear regression model to our data. However, there are often multiple choices that we have to make in practice:</p>
+<ul>
+<li>Keep missing values or fill them in (imputation)?</li>
+<li>Filter out outliers in one or more variables?</li>
+</ul>
+<p>We can map these choices to <strong>arguments</strong> in a custom model-fitting function:</p>
+<ul>
+<li><code>impute</code>: TRUE or FALSE</li>
+<li><code>remove_outliers</code>: TRUE or FALSE</li>
+</ul>
+<p>A function that implements the analysis and allows for variation in these choices:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>fit_model <span class="ot">&lt;-</span> <span class="cf">function</span>(df, impute, remove_outliers, mod) {</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (impute) {</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        df <span class="ot">&lt;-</span> <span class="fu">some_imputation_function</span>(df)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (remove_outliers) {</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        df <span class="ot">&lt;-</span> <span class="fu">function_for_removing_outliers</span>(df)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lm</span>(mod, <span class="at">data =</span> df)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="helper-functions" class="level1">
+<h1>Helper Functions</h1>
+<p><strong>Exercise 1:</strong> Write a function that removes outliers in a dataset. The user should be able to supply the dataset, the variables to remove outliers from, and a threshold on the number of SDs away from the mean used to define outliers. <em>Hint 1: You will need to calculate a z-score to filter the values!</em> <em>Hint 2: You might want to consider specifying a default value (e.g., 3) for <code>sd_thresh</code>.</em></p>
+<section id="testing-your-function" class="level2">
+<h2 class="anchored" data-anchor-id="testing-your-function">Testing Your Function!</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Testing how your function handles multiple input variables</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">remove_outliers</span>(diamonds, </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>                price, </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>                x, </span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>                y, </span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>                z)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="do">## Testing how your function handles an input that isn't numeric</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="fu">remove_outliers</span>(diamonds, </span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>                price, </span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>                color)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="do">## Testing how your function handles a non-default sd_thresh</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="fu">remove_outliers</span>(diamonds, </span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>                price,</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>                x, </span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>                y, </span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>                z, </span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>                <span class="at">sd_thresh =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Exercise 2:</strong> Write a function that imputes missing values for numeric variables in a dataset. The user should be able to supply the dataset, the variables to impute values for, and a function to use when imputing. <em>Hint 1: You will need to use <code>across()</code> to apply your function, since the user can input multiple variables.</em> <em>Hint 2: The <code>replace_na()</code> function is helpful here!</em></p>
+</section>
+<section id="testing-your-function-1" class="level2">
+<h2 class="anchored" data-anchor-id="testing-your-function-1">Testing Your Function!</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Testing how your function handles multiple input variables</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">impute_missing</span>(nycflights13<span class="sc">::</span>flights, </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>               arr_delay, </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>               dep_delay) </span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="do">## Testing how your function handles an input that isn't numeric</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">impute_missing</span>(nycflights13<span class="sc">::</span>flights, </span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>               arr_delay, </span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>               carrier)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="do">## Testing how your function handles a non-default impute_fun</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="fu">impute_missing</span>(nycflights13<span class="sc">::</span>flights, </span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>               arr_delay, </span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>               dep_delay, </span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>               <span class="at">impute_fun =</span> median)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="primary-function" class="level1">
+<h1>Primary Function</h1>
+<p><strong>Exercise 3:</strong> Write a <code>fit_model()</code> function that fits a specified linear regression model for a specified dataset. The function should:</p>
+<ul>
+<li>allow the user to specify if outliers should be removed (<code>TRUE</code> or <code>FALSE</code>)</li>
+<li>allow the user to specify if missing observations should be imputed (<code>TRUE</code> or <code>FALSE</code>)</li>
+</ul>
+<p>If either option is <code>TRUE</code>, your function should call your <code>remove_outliers()</code> or <code>impute_missing()</code> functions to modify the data <strong>before</strong> the regression model is fit.</p>
+<section id="testing-your-function-2" class="level2">
+<h2 class="anchored" data-anchor-id="testing-your-function-2">Testing Your Function!</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fit_model</span>(</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  diamonds,</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mod_formula =</span> price <span class="sc">~</span> carat <span class="sc">+</span> cut,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">remove_outliers =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">impute_missing =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  price, </span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  carat</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="iteration" class="level1">
+<h1>Iteration</h1>
+<p>In the <code>diamonds</code> dataset, we want to understand the relationship between <code>price</code> and size (<code>carat</code>). We want to explore variation along two choices:</p>
+<ol type="1">
+<li><p>The variables included in the model. We’ll explore 3 sets of variables:</p>
+<ul>
+<li>No further variables (just <code>price</code> and <code>carat</code>)</li>
+<li>Adjusting for <code>cut</code></li>
+<li>Adjusting for <code>cut</code> and <code>clarity</code></li>
+<li>Adjusting for <code>cut</code>, <code>clarity</code>, and <code>color</code></li>
+</ul></li>
+<li><p>Whether or not to impute missing values</p></li>
+<li><p>Whether or not to remove outliers in the <code>carat</code> variable (we’ll define outliers as cases whose <code>carat</code> is over 3 SDs away from the mean).</p></li>
+</ol>
+<section id="parameters" class="level2">
+<h2 class="anchored" data-anchor-id="parameters">Parameters</h2>
+<p>First, we need to define the set of parameters we want to iterate the <code>fit_model()</code> function over. The <code>tidyr</code> package has a useful function called <code>crossing()</code> that is useful for generating argument combinations. For each argument, we specify all possible values for that argument and <code>crossing()</code> generates all combinations. <em>Note that you can create a list of formula objects in R with <code>c(y ~ x1, y ~ x1 + x2)</code>.</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df_arg_combos <span class="ot">&lt;-</span> <span class="fu">crossing</span>(</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">impute =</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>),</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">remove_outliers =</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>), </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">mod =</span> <span class="fu">c</span>(y <span class="sc">~</span> x1, </span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>            y <span class="sc">~</span> x1 <span class="sc">+</span> x2)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>df_arg_combos</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Exercise 4:</strong> Use <code>crossing()</code> to create the data frame of argument combinations for our analyses.</p>
+</section>
+<section id="iterating-over-the-parameters" class="level2">
+<h2 class="anchored" data-anchor-id="iterating-over-the-parameters">Iterating Over the Parameters</h2>
+<p>We’ve arrived at the final step!</p>
+<p><strong>Exercise 5:</strong> Use <code>pmap()</code> from <code>purrr</code> to apply the <code>fit_model()</code> function to every combination of arguments from `diamonds.</p>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -788,10 +982,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="../unit-2/iterating-functions.html" class="pagination-link" aria-label="Iterating Over Functions">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Iterating Over Functions</span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./unit-2/writing-functions.html" class="pagination-link" aria-label="Writing Functions in R">
-        <span class="nav-page-text">Writing Functions in R</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../labs/lab-6-alt.html" class="pagination-link" aria-label="Lab 6 - Alternative">
+        <span class="nav-page-text">Lab 6 - Alternative</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -803,11 +1000,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/unit-2.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/labs/lab-6.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item">
-    <a class="nav-link" href="./LICENSE.md">
+    <a class="nav-link" href="../LICENSE.md">
 <p>License</p>
 </a>
   </li>  

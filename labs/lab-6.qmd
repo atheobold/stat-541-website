@@ -1,164 +1,222 @@
 ---
-title: "Lab 6"
-subtitle: "Writing Efficient Code"
+title: "Lab 6 - Spicy"
+subtitle: "Performing Many Different Versions of an Analysis"
 editor: source
+execute: 
+  eval: false
 ---
 
-# Writing Functions
+This assignment will challenge your function writing abilities. I'm not going 
+to lie, these functions are difficult but well within your reach. I do, however,
+want to recognize that not everyone is interested in being a "virtuoso" with 
+their function writing. So, there are two options for this week's lab:
 
-## Vector Functions
+- **Option 1:** Complete this lab assignment in search of virtuoso status with
+your function writing
+- **Option 2:** Complete one of the difficult functions (Exercise 1 or Exercise
+2) and complete the "Alternative Lab 6". 
 
-**Question 1:** The `rescale01()` function below performs a min-max scaling to 
-standardize a numeric vector, but infinite values are left unchanged. Rewrite
-`rescale01()` so that `-Inf` is mapped to 0, and `Inf` is mapped to 1?
-*Hint: This seems like a great place for `case_when()`!
+# Setting the Stage
+
+My number one use case for writing functions and iteration / looping is to
+perform some exploration or modeling repeatedly for different "tweaked"
+versions. For example, our broad goal might be to fit a linear regression model
+to our data. However, there are often multiple choices that we have to make in
+practice:
+
+- Keep missing values or fill them in (imputation)? 
+- Filter out outliers in one or more variables?
+
+We can map these choices to **arguments** in a custom model-fitting function:
+
+- `impute`: TRUE or FALSE
+- `remove_outliers`: TRUE or FALSE
+
+A function that implements the analysis and allows for variation in these 
+choices:
 
 ```{r}
-#| label: question-1
+#| echo: true
+#| eval: false
+#| label: example-code-to-motivate-function
 
-rescale01 <- function(x) {
-  rng <- range(x, na.rm = TRUE, finite = TRUE)
-  (x - rng[1]) / (rng[2] - rng[1])
+fit_model <- function(df, impute, remove_outliers, mod) {
+    if (impute) {
+        df <- some_imputation_function(df)
+    }
+    
+    if (remove_outliers) {
+        df <- function_for_removing_outliers(df)
+    }
+    
+    lm(mod, data = df)
 }
 ```
 
-**Question 2:** Write a function that accepts a vector of birthdates and 
-computes the age of each person in years.
+# Helper Functions
+
+**Exercise 1:** Write a function that removes outliers in a dataset. The user
+should be able to supply the dataset, the variables to remove outliers from, and
+a threshold on the number of SDs away from the mean used to define outliers. 
+*Hint 1: You will need to calculate a z-score to filter the values!*
+*Hint 2: You might want to consider specifying a default value (e.g., 3) for `sd_thresh`.*
 
 ```{r}
-#| label: question-2
+#| label: exercise-1
 
 ```
 
-**Question 3:** Write a function that computes the variance and skewness of a
-numeric vector. Feel free to look up the definitions on Wikipedia or elsewhere!
+## Testing Your Function! 
 
 ```{r}
-#| label: question-3
+#| label: exercise-1-test
+#| error: true
+
+## Testing how your function handles multiple input variables
+remove_outliers(diamonds, 
+                price, 
+                x, 
+                y, 
+                z)
+
+## Testing how your function handles an input that isn't numeric
+remove_outliers(diamonds, 
+                price, 
+                color)
+
+## Testing how your function handles a non-default sd_thresh
+remove_outliers(diamonds, 
+                price,
+                x, 
+                y, 
+                z, 
+                sd_thresh = 2)
+```
+
+**Exercise 2:** Write a function that imputes missing values for numeric 
+variables in a dataset. The user should be able to supply the dataset, the 
+variables to impute values for, and a function to use when imputing. 
+*Hint 1: You will need to use `across()` to apply your function, since the user can input multiple variables.*
+*Hint 2: The `replace_na()` function is helpful here!*
+
+```{r}
+#| label: exercise-2
+
 
 ```
 
-**Question 4:** Write a function called `both_na()` which takes two vectors of
-the same length and returns the number of positions that have an `NA` in both
-vectors.
-
-## Data Frame Functions
-
-For Questions 5 - 9 you will write different functions which work with data 
-similar to the `nycflights13` data. 
-
-**Question 5:** Write a `filter_severe()` function that finds all flights that
-were cancelled (i.e. `is.na(arr_time)`) or delayed by more than an hour.
+## Testing Your Function! 
 
 ```{r}
-#| label: question-5
+#| label: exercise-2-test
+#| error: true
+
+## Testing how your function handles multiple input variables
+impute_missing(nycflights13::flights, 
+               arr_delay, 
+               dep_delay) 
+
+## Testing how your function handles an input that isn't numeric
+impute_missing(nycflights13::flights, 
+               arr_delay, 
+               carrier)
+
+## Testing how your function handles a non-default impute_fun
+impute_missing(nycflights13::flights, 
+               arr_delay, 
+               dep_delay, 
+               impute_fun = median)
+```
+
+# Primary Function
+
+**Exercise 3:** Write a `fit_model()` function that fits a specified linear
+regression model for a specified dataset. The function should:
+
+- allow the user to specify if outliers should be removed (`TRUE` or `FALSE`)
+- allow the user to specify if missing observations should be imputed
+(`TRUE` or `FALSE`)
+
+If either option is `TRUE`, your function should call your `remove_outliers()`
+or `impute_missing()` functions to modify the data **before** the regression 
+model is fit. 
+
+```{r}
+#| label: exercise-3
+
 
 ```
 
-**Question 6:** Write a `summarize_severe()` function that counts the number of 
-cancelled flights and the number of flights delayed by more than an hour.
+## Testing Your Function! 
 
 ```{r}
-#| label: question-6
+#| label: exercise-3-test
 
-```
-
-**Question 7:** Modify your `filter_severe()` function to allow the user to 
-supply the number of hours that should be used to filter the flights that were
-cancelled or delayed. 
-
-```{r}
-#| label: question-7
-
-```
-
-**Question 8:** Write a `summarize_weather()` function that summarizes the
-weather to compute the minimum, mean, and maximum, of a user supplied variable. 
-
-```{r}
-#| label: question-8
-
-```
-
-**Question 9:** Write a `standardize_time()` function that converts the user
-supplied variable that uses clock time (e.g., `dep_time`, `arr_time`, etc.) into
-a decimal time (i.e. hours + (minutes / 60)).
-
-```{r}
-#| label: question-9
-
-```
-
-
-## Plotting Functions
-
-Build up a rich plotting function by incrementally implementing each of the steps below:
-
-1.  Draw a scatterplot given dataset and `x` and `y` variables.
-
-2.  Add a line of best fit (i.e. a linear model with no standard errors).
-
-3.  Add a title.
-
-# Iteration
-
-### Saving plots
-
-We can take the same basic approach to create many plots.
-Let's first make a function that draws the plot we want:
-
-```{r}
-#| fig-alt: |
-#|   Histogram of carats of diamonds from the by_clarity dataset, ranging from 
-#|   0 to 5 carats. The distribution is unimodal and right skewed with a peak 
-#|   around 1 carat.
-
-carat_histogram <- function(df) {
-  ggplot(df, aes(x = carat)) + geom_histogram(binwidth = 0.1)  
-}
-
-carat_histogram(by_clarity$data[[1]])
-```
-
-Now we can use `map()` to create a list of many plots[^iteration-7] and their eventual file paths:
-
-[^iteration-7]: You can print `by_clarity$plot` to get a crude animation --- you'll get one plot for each element of `plots`.
-    NOTE: this didn't happen for me.
-
-```{r}
-by_clarity <- by_clarity |> 
-  mutate(
-    plot = map(data, carat_histogram),
-    path = str_glue("clarity-{clarity}.png")
-  )
-```
-
-Then use `walk2()` with `ggsave()` to save each plot:
-
-```{r}
-walk2(
-  by_clarity$path,
-  by_clarity$plot,
-  \(path, plot) ggsave(path, plot, width = 6, height = 6)
+fit_model(
+  diamonds,
+  mod_formula = price ~ carat + cut,
+  remove_outliers = TRUE,
+  impute_missing = TRUE,
+  price, 
+  carat
 )
 ```
 
-This is shorthand for:
+# Iteration
+
+In the `diamonds` dataset, we want to understand the relationship between
+`price` and size (`carat`). We want to explore variation along two choices:
+
+1. The variables included in the model. We'll explore 3 sets of variables:
+    - No further variables (just `price` and `carat`)
+    - Adjusting for `cut`
+    - Adjusting for `cut` and `clarity`
+    - Adjusting for `cut`, `clarity`, and `color`
+
+2. Whether or not to impute missing values
+
+3. Whether or not to remove outliers in the `carat` variable (we'll define
+outliers as cases whose `carat` is over 3 SDs away from the mean).
+
+## Parameters
+
+First, we need to define the set of parameters we want to iterate the
+`fit_model()` function over. The `tidyr` package has a useful function called
+`crossing()` that is useful for generating argument combinations. For each
+argument, we specify all possible values for that argument and `crossing()` 
+generates all combinations. 
+*Note that you can create a list of formula objects in R with `c(y ~ x1, y ~ x1 + x2)`.*
 
 ```{r}
+#| label: example-crossing-arguments
 #| eval: false
-ggsave(by_clarity$path[[1]], by_clarity$plot[[1]], width = 6, height = 6)
-ggsave(by_clarity$path[[2]], by_clarity$plot[[2]], width = 6, height = 6)
-ggsave(by_clarity$path[[3]], by_clarity$plot[[3]], width = 6, height = 6)
-...
-ggsave(by_clarity$path[[8]], by_clarity$plot[[8]], width = 6, height = 6)
+
+df_arg_combos <- crossing(
+    impute = c(TRUE, FALSE),
+    remove_outliers = c(TRUE, FALSE), 
+    mod = c(y ~ x1, 
+            y ~ x1 + x2)
+)
+df_arg_combos
 ```
+
+**Exercise 4:** Use `crossing()` to create the data frame of argument
+combinations for our analyses. 
 
 ```{r}
-#| include: false
-unlink(by_clarity$path)
+#| label: exercise-4
+
 ```
 
-# Contributing to the R for Data Science Community!
+## Iterating Over the Parameters
 
-https://github.com/mine-cetinkaya-rundel/r4ds-solutions
+We've arrived at the final step! 
+
+**Exercise 5:** Use `pmap()` from `purrr` to apply the `fit_model()` function to every combination of arguments from `diamonds.
+
+```{r}
+#| label: exercise-5
+
+
+```
+
