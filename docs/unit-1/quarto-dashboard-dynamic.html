@@ -246,7 +246,7 @@ ul.task-list li input[type="checkbox"] {
 <p>This week is different from the previous weeks in that you get to choose which tool you want to explore when creating interactive content on your dashboard. There are two options:</p>
 <ol type="1">
 <li>Shiny</li>
-<li>webR (and Observable JavaScript)</li>
+<li>Quarto Live (webR and Observable JavaScript)</li>
 </ol>
 <p>Either tool will allow you to make interactive content, but the way that you go about making the content differs (pretty substantially). Since you may not have heard about or explored either of these tools I would strongly recommend poking around the resources below before making your decision!</p>
 <section id="making-interactive-content-with-shiny" class="level1">
@@ -259,6 +259,19 @@ ul.task-list li input[type="checkbox"] {
 <p>Quick vignette: <a href="https://www.tidyverse.org/blog/2024/10/quarto-live-0-1-1/" class="uri">https://www.tidyverse.org/blog/2024/10/quarto-live-0-1-1/</a></p>
 <p>Full Quarto Live documentation: <a href="https://r-wasm.github.io/quarto-live/" class="uri">https://r-wasm.github.io/quarto-live/</a></p>
 <p>Example webR dashboard: <a href="https://r-wasm.github.io/quarto-live/interactive/dashboards.html" class="uri">https://r-wasm.github.io/quarto-live/interactive/dashboards.html</a></p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Incompatible <code>format</code> options
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Quarto live requires you to use <code>format: live-html</code> which differs from the <code>live-dashboard</code> format you used last week. So, if you want to integrate webR into your dashboard from last week, you will need to rethink how to migrate your dashboard into an HTML file.</p>
+</div>
+</div>
 
 
 </section>

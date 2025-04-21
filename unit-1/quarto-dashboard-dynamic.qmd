@@ -11,7 +11,7 @@ tool you want to explore when creating interactive content on your dashboard.
 There are two options:
 
 1. Shiny
-2. webR (and Observable JavaScript)
+2. Quarto Live (webR and Observable JavaScript)
 
 Either tool will allow you to make interactive content, but the way that you 
 go about making the content differs (pretty substantially). Since you may not 
@@ -31,3 +31,12 @@ Quick vignette: <https://www.tidyverse.org/blog/2024/10/quarto-live-0-1-1/>
 Full Quarto Live documentation: <https://r-wasm.github.io/quarto-live/>
 
 Example webR dashboard: <https://r-wasm.github.io/quarto-live/interactive/dashboards.html> 
+
+::: {.callout-warning}
+# Incompatible `format` options
+
+Quarto live requires you to use `format: live-html` which differs from the 
+`live-dashboard` format you used last week. So, if you want to integrate webR
+into your dashboard from last week, you will need to rethink how to migrate
+your dashboard into an HTML file. 
+:::
