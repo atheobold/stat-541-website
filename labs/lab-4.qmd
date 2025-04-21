@@ -46,7 +46,7 @@ the user needs to interact your code box. Consider the following:
 - what "skeleton" code you want to provide
 - what instructions / details would help the user modify the code you provided
 - what messages / warnings might you want to provide if the user inputs 
-something you didn't expect
+something you didn't expect (the [*exercise grading* section gives some tips on this](https://r-wasm.github.io/quarto-live/exercises/grading.html)!)
 :::
 :::
 
