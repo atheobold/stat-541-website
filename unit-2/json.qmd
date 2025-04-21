@@ -1,129 +1,232 @@
 ---
-title: "Week 4: JSON Data"
+title: "Hierarchical Data"
 format: html
 editor: source
 execute: 
   echo: false
 ---
 
-<!-- https://r4ds.hadley.nz/rectangling.html -->
-
 ```{r}
 #| label: setup
 #| include: false
 
-source("../scripts/window_dressing.R")
-
 library(tidyverse)
-library(flair)
-library(lubridate)
-library(gganimate)
+library(jsonlite)
 ```
 
-```{r}
-#| label: summary-table-of-activities
-#| results: asis
+# Tabular Data
 
-make_summary_table(vid_time = "12 min", 
-                   reading_time = "15 min", 
-                   work_time = "60 min", 
-                   canvas_activities = 1)
-```
-
-```{r}
-#| label: extra-resources
-#| results: asis
-
-extra_rec("")
-```
-
--   The GitHub page for [`rvest`](https://github.com/tidyverse/rvest). Be sure to check out the vignettes and other documentation.
--   In-depth (for the scope of our course) [crash course in JSON](https://www.youtube.com/watch?v=wI1CWzNtE-M)
-
-## Tabular Data
-
-It's likely that a huge portion of the datasets you've worked with in your life thus far are very well structured and organized to the point of being **tabular**. That is, the dataset consists of a single table with rows and columns. If you're not familiar with the concept of **tidy data** I suggest you check out this [`tidyr` vignette](https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html) on what it means for a dataset to be "tidy." Most of your datasets have likely even been tidy:
+It's likely that a huge portion of the datasets you've worked with in your life
+thus far are very well structured and organized to the point of being
+**tabular**. That is, the dataset consists of a single table with rows and
+columns. If you're not familiar with the concept of **tidy data** I suggest you
+check out this [`tidyr` vignette](https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html)
+on what it means for a dataset to be "tidy." Most of your datasets have likely
+even been tidy:
 
 -   Each variable forms a column
 -   Each observation forms a row
 
-Almost everyone's experiences beyond this probably involved taking multiple **tidy** datasets and combining them in some way, but the overall dataset still fit into this tabular structure. These often came in the form of TXT, CSV, Excel, or TSV files.
+Almost everyone's experiences beyond this probably involved taking multiple
+**tidy** datasets and combining them in some way, but the overall dataset still
+fit into this tabular structure. These often came in the form of TXT, CSV,
+Excel, or TSV files.
 
-Our world is rich with data and a great deal of it doesn't come in nice, neat tables...BUT a lot of it is still extremely structured and well organized.
+Our world is rich with data and a great deal of it doesn't come in nice, neat
+tables...BUT a lot of it is still extremely structured and well organized.
 
 ## Structured, but Non-Tabular Data
 
-You've likely already noticed, via your work with `leaflet`, there is another very popular data format called "JSON". JSON is short for **J**ava**S**cript **O**bject **N**otation and is a syntax for storing and exchanging data...but data in a much broader sense than we're used to thinking about.
+You've likely already noticed, via your work with `leaflet`, there is another
+very popular data format called "JSON". JSON is short for **J**ava**S**cript
+**O**bject **N**otation and is a syntax for storing and exchanging data...but
+data in a much broader sense than we're used to thinking about.
 
-In the middle of a statistics-related course when I hear the word "data" my mind instinctively envisions something tabular with which we could do some sort of visualization or analysis with. However, in the broadest sense, the word "data" really just describes pieces of information...which encapsulates everything from movie theater schedules when you look up showtimes on a website to what your cell phone *uses* as part of your "data plan."
+In the middle of a statistics-related course when I hear the word "data" my mind
+instinctively envisions something tabular with which we could do some sort of
+visualization or analysis with. However, in the broadest sense, the word "data"
+really just describes pieces of information...which encapsulates everything from
+movie theater schedules when you look up showtimes on a website to what your
+cell phone *uses* as part of your "data plan."
 
-While the website for your favorite movie theater may not have had your visualization and analysis plans in mind, their data may still be of interest to us. Many companies and organizations have built tools that allow access to their data in a more streamlined way, and JSON has become a ubiquitous format for many of these data sources to use.
+While the website for your favorite movie theater may not have had your
+visualization and analysis plans in mind, their data may still be of interest
+to us. Many companies and organizations have built tools that allow access to
+their data in a more streamlined way, and JSON has become a ubiquitous format
+for many of these data sources to use.
+
+# Hierarchical Data
+
+One of the reasons the JSON format is so important and useful is because it can
+accommodate very complex types and shapes of data. So while it may not always be
+workable into a tabular form, it still maintains a high degree of structure that
+we can exploit!
+
+## Required Reading: [*R for Data Science*, Chapter 23](https://r4ds.hadley.nz/rectangling.html)
+
+::: {.callout-note}
+# Only read Sections 1-4 for now!
+:::
+
+## Check-in: Unnesting
+
+1. What happens when you use `unnest_wider()` with unnamed list-columns like 
+`df2`? 
+
+(a) What argument is now necessary? 
+
+<!-- ! Can't unnest elements with missing names. -->
+<!-- ℹ Supply `names_sep` to generate automatic names. -->
+
+(b) How does `unnest_wider()` reconcile columns with different lengths?
 
 ```{r}
-#| label: required-video-json
-#| results: asis
+#| include: false
+#| label: code-for-q1
 
-req_vid("What is JSON?", url = 'https://www.youtube.com/watch?v=JuFdz8f-cT4', 
-        embed = '<iframe width="400" height="225" style="width: 400px; height: 225px;" src="https://www.youtube.com/embed/JuFdz8f-cT4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>')
+df2 <- tribble(
+  ~x, ~y,
+  1, list(11, 12, 13),
+  2, list(21),
+  3, list(31, 32),
+)
+
+unnest_wider(df2, col = y, names_sep = "_")
+
 ```
 
-One of the reasons the JSON format is so important and useful is because it can accommodate very complex types and shapes of data. So while it may not always be workable into a tabular form, it still maintains a high degree of structure that we can exploit!
+2. From time-to-time you encounter data frames with multiple list-columns with
+aligned values. For example, in the following data frame, the values of `y` and
+`z` are aligned (i.e. `y` and `z` will always have the same length within a row,
+and the first value of `y` corresponds to the first value of `z`). 
 
 ```{r}
-#| label: required-reading-json
-#| results: asis
+#| include: false
+#| label: code-for-q2
 
-req_read("Short JSON Introduction", url = "https://www.w3schools.com/whatis/whatis_json.asp")
+df4 <- tribble(
+  ~x, ~y, ~z,
+  "a", list("y-a-1", "y-a-2"), list("z-a-1", "z-a-2"),
+  "b", list("y-b-1", "y-b-2", "y-b-3"), list("z-b-1", "z-b-2", "z-b-3")
+)
+
 ```
+
+(a) What happens if you apply two `unnest_longer()` calls to this data frame? 
 
 ```{r}
-#| label: check-in-json-1
-#| results: asis
+#| include: false
+#| label: code-for-q2-a
 
-checkin("JSON, Part 1")
+unnest_longer(df4, col = y) %>% 
+  unnest_longer(col = z)
 ```
 
-a)  Objects are held in \_\_\_\_\_.
+(b) How can you preserve the relationship between x and y? *Hint: Carefully
+read the documentation*
+
+```{r}
+#| include: false
+#| label: code-for-q2-b
+
+unnest_longer(df4, col = c(y, z))
+```
+
+# JSON Data
+
+## Required Reading: [*R for Data Science*, Chapter 23](https://r4ds.hadley.nz/rectangling.html)
+
+::: {.callout-note}
+# Now read Sections 5 & 6! 
+:::
+
+## Check-in: JSON, pt. 1
+
+1. Objects are held in \_\_\_\_\_.
 
 -   parentheses
 -   double quotes
 -   square brackets
 -   curly braces
 
-b)  While it may seem tedious compared to our usual tabular forms of data, JSON data is easy to read because it \_\_\_\_\_.
+2.  While it may seem tedious compared to our usual tabular forms of data, JSON
+data is easy to read because it \_\_\_\_\_.
 
--   comes in name/value pairs
+-   comes in name / value pairs
 -   is separated by "-----"
 -   comes in table / name/value triplets
 
-<!-- Add questions from jsonlight R package -->
+3.  Create rectangular versions of `df_col` and `df_row` (shown below). 
 
-<!-- https://cran.r-project.org/web/packages/tidyjson/vignettes/introduction-to-tidyjson.html -->
+```{r}
+#| eval: false
+#| echo: true
+#| label: code-for-q3
 
-### Working with JSON Data
+json_col <- parse_json('
+  {
+    "x": ["a", "x", "z"],
+    "y": [10, null, 3]
+  }
+')
 
-Several packages exist for working with JSON data in R, such as `rjson`, `rjsonio`, and `jsonlite`. These packages automatically transform JSON data into nested R lists or complex data frames. However, working with these complex objects can be difficult.
+json_row <- parse_json('
+  [
+    {"x": "a", "y": 10},
+    {"x": "x", "y": null},
+    {"x": "z", "y": 3}
+  ]
+')
 
-The `tidyjson` package takes a different approach to structuring JSON data into tidy data frames. Similar to `tidyr`, `tidyjson` builds a grammar for manipulating JSON into a tidy table structure.
+df_col <- tibble(json = list(json_col)) 
+
+df_row <- tibble(json = json_row)
+
+```
+
+```{r}
+#| eval: false
+#| echo: false
+#| label: solution-for-q3
+
+df_col %>% 
+  unnest_wider(col = json) %>% 
+  unnest_longer(col = c(x, y))
+
+df_row %>% 
+  unnest_wider(col = json)
+```
+
+# Working with JSON Data
+
+The chapter covers a few functions from the `jsonlite` package, but there are 
+several other packages for working with JSON data in R (e.g., `rjson`, 
+`rjsonio`). These packages automatically transform JSON data into nested R
+lists or complex data frames. However, working with these complex objects can be
+difficult.
+
+The `tidyjson` package takes a different approach to structuring JSON data into
+tidy data frames. Similar to `tidyr`, `tidyjson` builds a grammar for
+manipulating JSON into a tidy table structure.
 
 `tidyjson` is based on the following principles:
 
 -   Work on a single JSON document, or on a collection of related documents
--   Create pipelines with the pipe operator (`%>%`), producing code that can be read from left to right
--   Guarantee the structure of the data produced, even if the input JSON structure changes (with the exception of `spread_all()`)
+-   Create pipelines with the pipe operator (`%>%`), producing code that can be
+read from left to right
+-   Guarantee the structure of the data produced, even if the input JSON
+structure changes (with the exception of `spread_all()`)
 -   Work with arbitrarily nested arrays or objects
 -   Handle 'ragged' arrays and / or objects (varying lengths by document)
 -   Ensure edge cases are handled correctly (especially empty data)
--   Integrate seamlessly with `dplyr`, allowing `tbl_json` objects to pipe in and out of `dplyr` verbs where reasonable
+-   Integrate seamlessly with `dplyr`, allowing `tbl_json` objects to pipe in
+and out of `dplyr` verbs where reasonable
 
-```{r}
-#| label: check-in-json-2
-#| results: asis
+## Check-in: JSON, pt. 2
 
-checkin("JSON, Part 2")
-```
-
-Let's use the `companies` JSON dataset from the **tidyjson** package to explore tools from the **tidyjson** package. This exploration parallels the `worldbank` examples from the [**tidyjson** vignette](https://cran.r-project.org/web/packages/tidyjson/vignettes/introduction-to-tidyjson.html).
+Let's use the `companies` JSON dataset from the **tidyjson** package to explore
+tools from the **tidyjson** package. This exploration parallels the `worldbank`
+examples from the [**tidyjson** vignette](https://cran.r-project.org/web/packages/tidyjson/vignettes/introduction-to-tidyjson.html).
 
 **Step 1** -- Use `spread_all()` to spread the values of a JSON object
 
@@ -133,16 +236,17 @@ Let's use the `companies` JSON dataset from the **tidyjson** package to explore 
 
 library(tidyjson)
 companies_tidy <- spread_all(companies)
-
 ```
 
-1.  When you use the `spread_all()` function on the `companies` dataset, how many columns are created?
+5.  When you use the `spread_all()` function on the `companies` dataset, how
+many columns are created?
 
 <!-- `r ncol(companies_tidy)` -->
 
 **Step 2** -- Find the values that were not able to be spread
 
-To identify the names of an object, their type, and frequency we use the following pipeline:
+To identify the names of an object, their type, and frequency we use the
+following pipeline:
 
 ```{r}
 #| eval: false
@@ -155,9 +259,15 @@ name_of_data %>%
   count(name, type)
 ```
 
-The `gather_object()` function collapses a JSON object into name-value pairs, producing a `tbl_json` object. The `json_types()` function then inspects the JSON associated with each row of the `tbl_json` object, and adds a new column (`"type"`) that identifies the type according to the [JSON standard](http://json.org/). We can then `count()` the number of occurances of each `name`, `type` combination to understand how many rows / observations contained these values.
+The `gather_object()` function collapses a JSON object into name-value pairs,
+producing a `tbl_json` object. The `json_types()` function then inspects the
+JSON associated with each row of the `tbl_json` object, and adds a new column
+(`"type"`) that identifies the type according to the
+[JSON standard](http://json.org/). We can then `count()` the number of
+occurrences of each `name`, `type` combination to understand how many rows / 
+observations contained these values.
 
-2.  How many different values are included in the `companies` dataset?
+6.  How many different values are included in the `companies` dataset?
 
 ```{r}
 #| label: unique-values-in-dataset
@@ -169,9 +279,11 @@ companies_values <- companies %>%
   count(name, type)
 ```
 
-Now that we know the name of **every** value in the `companies` dataset, we can inspect how many of these columns were not captured when we used `spread-all()`.
+Now that we know the name of **every** value in the `companies` dataset, we can
+inspect how many of these columns were not captured when we used `spread-all()`.
 
-3.  How many arrays from the `companies` dataset were not spread into new columns?
+7.  How many arrays from the `companies` dataset were not spread into new
+columns?
 
 ```{r}
 #| label: values-in-data-not-spread
@@ -179,14 +291,16 @@ Now that we know the name of **every** value in the `companies` dataset, we can 
 
 companies_values %>% 
   filter(
-    !name %in% colnames(companies_tidy)
+    ! name %in% colnames(companies_tidy)
       ) %>% 
   filter(name != "_id") 
 ```
 
 **Step 3** -- Manually spread the problem values
 
-Now that we know the names of the values that were not spread into columns, we can wrangle specific values to capture their values. Let's do this with the `acquisitions` value.
+Now that we know the names of the values that were not spread into columns, we
+can wrangle specific values to capture their values. Let's do this with the
+`acquisitions` value.
 
 We do this with the following pipeline:
 
@@ -201,9 +315,15 @@ name_of_dataset %>%
   spread_all()
 ```
 
-The `enter_object()` function allows you to navigate a specific value of the JSON data by referencing its name. `gather_array()` then collapses a JSON array into index-value pairs, creating a new column `array.index` to store the index of the array, and storing values in the 'JSON' attribute for further tidyjson manipulation.
+The `enter_object()` function allows you to navigate a specific value of the
+JSON data by referencing its name. `gather_array()` then collapses a JSON array
+into index-value pairs, creating a new column `array.index` to store the index
+of the array, and storing values in the 'JSON' attribute for further tidyjson
+manipulation.
 
-4.  Using this pipeline on the `acquisitions` array of the `companies` dataset, what values are stored in this array? i.e., what are the names of the new columns that appear in the spread dataset?
+8.  Using this pipeline on the `acquisitions` array of the `companies` dataset,
+what values are stored in this array? i.e., what are the names of the new
+columns that appear in the spread dataset?
 
 ```{r}
 #| label: spreading-acquisitions
@@ -217,7 +337,8 @@ companies %>%
 
 **Step 4** -- Combining everything together
 
-By combining with our initial top-level `spread_all()`, we can aggregate the sale price of companies by `category_code` and the currency it was sold in.
+By combining with our initial top-level `spread_all()`, we can aggregate the
+sale price of companies by `category_code` and the currency it was sold in.
 
 ```{r}
 #| label: mean-sale-price-for-each-category 
@@ -260,7 +381,9 @@ companies %>%
 
 **Step 5** -- Scaling to multiple columns
 
-This is a powerful process, but you might be able to see how we don't necessarily want to do this process repeatedly for every value `spread_all()` was not able to parse.
+This is a powerful process, but you might be able to see how we don't
+necessarily want to do this process repeatedly for every value `spread_all()`
+was not able to parse.
 
 ::: callout-warning
 # Do you see a way you could use iteration to complete this task?
@@ -297,3 +420,9 @@ thing1 <- map(.x = values_to_map[c(1, 2)],
 
 reduce(thing1, bind_cols)
 ```
+
+<!-- ## Extra Resources -->
+
+<!-- -   The GitHub page for [`rvest`](https://github.com/tidyverse/rvest).  -->
+<!--     * Be sure to check out the vignettes and other documentation! -->
+<!-- -   In-depth (for the scope of our course) [crash course in JSON](https://www.youtube.com/watch?v=wI1CWzNtE-M) -->
