@@ -9,7 +9,11 @@ dashboard into an interactive dashboard using either Shiny or webR.
 
 ## Dashboard Requirements
 
-The dashboard you create **must** have the following:
+::: columns
+::: {.column width="47%"}
+**If you created a Shiny dashboard**
+
+Your dashboard **must** have the following:
 
 - at least one opportunity for user input via a slide bar
 - at least one opportunity for user input via check boxes 
@@ -18,6 +22,33 @@ These interactive features are expected to be used to:
 
 - update at least one visualization
 - update at least one of your "quick information" cards
+
+:::
+
+::: {.column width="3%"}
+:::
+
+::: {.column width="50%"}
+**If you created a webR dashboard**
+
+Your dashboard **must** have the following:
+
+- a code chunk box that allows the user to interact with code used for your
+dashboard
+- instructions on how to modify the code
+
+You can incorporate this code box to modify your visualization or to modify a 
+table. 
+
+You will need to put your educator hat on when making the instructions for how 
+the user needs to interact your code box. Consider the following:
+
+- what "skeleton" code you want to provide
+- what instructions / details would help the user modify the code you provided
+- what messages / warnings might you want to provide if the user inputs 
+something you didn't expect
+:::
+:::
 
 ::: {.callout-tip}
 # Interactive Table 
