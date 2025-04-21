@@ -5,7 +5,6 @@ project:
     - "*.qmd"
     - "!/unit-1/other-plots.qmd"
     - "!/portfolio/reflection-template.qmd"
-    - "!/unit-2/json.qmd"
     - "!/unit-2/web-scraping.qmd"
   resources: 
     - portfolio/reflection-template.qmd
@@ -98,8 +97,7 @@ website:
         - href: unit-2/iterating-functions.qmd
         - href: labs/lab-6.qmd
         - href: labs/lab-6-alt.qmd
-        # - href: unit-2/json-data.qmd
-        # - href: unit-2/sql.qmd
+        - href: unit-2/json.qmd
         # - href: unit-2/web-scraping.qmd
         # - href: unit-2/generative-art.qmd
     
