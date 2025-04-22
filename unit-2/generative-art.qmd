@@ -13,7 +13,20 @@ creating different types of generative art.
 
 Work through ["Session 1"](https://art-from-code.netlify.app/day-1/session-1/) of Danielle's workshop materials. By the end of this tutorial you should:
 
-- 
+- create a piece of art using the `mpg` data set 
+- use the `polar_art()` function to generate a piece of art
+- modify the `polar_art()` function to change the appearance of your art
+- use the `sample_canva()` function to generate a piece of art
+- try writing a `sample_named_colours()` function that generates a random
+palette of `n` colors from (`colours(distinct = TRUE)`)
+- see what type of art you can make using only the `sample_canva()`,
+`sample_data()` and `polar_styled_plot()` functions
+
+::: {.callout-tip}
+# Source Code for Functions
+
+The "materials" folder Danielle refers to can be found here: <https://github.com/rstudio-conf-2022/art-from-code>
+:::
 
 # Exploring 
 
