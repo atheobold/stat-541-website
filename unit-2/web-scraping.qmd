@@ -1,5 +1,5 @@
 ---
-title: "Week 6 -- Web Scraping"
+title: "Web Scraping"
 editor: source
 execute: 
   echo: false

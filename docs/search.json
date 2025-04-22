@@ -1192,89 +1192,89 @@
   {
     "objectID": "unit-2/web-scraping.html",
     "href": "unit-2/web-scraping.html",
-    "title": "Week 6 – Web Scraping",
+    "title": "Web Scraping",
     "section": "",
     "text": "After this lesson, you should be able to:\n\nUse CSS Selectors and the Selector Gadget tool to locate data of interest within a webpage\nUse the html_elements() and html_text() functions within the rvest packages to scrape data from webpage using CSS selectors",
     "crumbs": [
       "Unit 2 - Iteration",
-      "Week 6 -- Web Scraping"
+      "Web Scraping"
     ]
   },
   {
     "objectID": "unit-2/web-scraping.html#scraping-ethics",
     "href": "unit-2/web-scraping.html#scraping-ethics",
-    "title": "Week 6 – Web Scraping",
+    "title": "Web Scraping",
     "section": "Scraping ethics",
     "text": "Scraping ethics\n\nrobots.txt\nrobots.txt is a file that some websites will publish to clarify what can and cannot be scraped and other constraints about scraping. When a website publishes this file, this we need to comply with the information in it for moral and legal reasons.\nWe will look through the information in this tutorial and apply this to the NIH robots.txt file.\nFrom our investigation of the NIH robots.txt, we learn:\n\nUser-agent: *: Anyone is allowed to scrape\nCrawl-delay: 2: Need to wait 2 seconds between each page scraped\nNo Visit-time entry: no restrictions on time of day that scraping is allowed\nNo Request-rate entry: no restrictions on simultaneous requests\nNo mention of ?page=, news-events, news-releases, or https://science.education.nih.gov/ in the Disallow sections. (This is what we want to scrape today.)\n\n\n\nFurther considerations\nThe article Ethics in Web Scraping describes some good principles to ensure that we are valuing the labor that website owners invested to provide data and creating good from the information we do scrape.",
     "crumbs": [
       "Unit 2 - Iteration",
-      "Week 6 -- Web Scraping"
+      "Web Scraping"
     ]
   },
   {
     "objectID": "unit-2/web-scraping.html#finding-css-selectors",
     "href": "unit-2/web-scraping.html#finding-css-selectors",
-    "title": "Week 6 – Web Scraping",
+    "title": "Web Scraping",
     "section": "Finding CSS Selectors",
     "text": "Finding CSS Selectors\nIn order to gather information from a webpage, we must learn the language used to identify patterns of specific information. For example, on the NIH News Releases page, we can see that the data is represented in a consistent pattern of image + title + abstract.\nWe will identify data in a web page using a pattern matching language called CSS Selectors that can refer to specific patterns in HTML, the language used to write web pages.\nFor example:\n\nSelecting by tag:\n\n\"a\" selects all hyperlinks in a webpage (“a” represents “anchor” links in HTML)\n\"p\" selects all paragraph elements\n\nSelecting by ID and class:\n\n\".description\" selects all elements with class equal to “description”\n\nThe . at the beginning is what signifies class selection.\nThis is one of the most common CSS selectors for scraping because in HTML, the class attribute is extremely commonly used to format webpage elements. (Any number of HTML elements can have the same class, which is not true for the id attribute.)\n\n\"#mainTitle\" selects the SINGLE element with id equal to “mainTitle”\n\nThe # at the beginning is what signifies id selection.\n\n\n\n&lt;p class=\"title\"&gt;Title of resource 1&lt;/p&gt;\n&lt;p class=\"description\"&gt;Description of resource 1&lt;/p&gt;\n\n&lt;p class=\"title\"&gt;Title of resource 2&lt;/p&gt;\n&lt;p class=\"description\"&gt;Description of resource 2&lt;/p&gt;\n\n\n\n\n\n\nWarning\n\n\n\nWebsites change often! So if you are going to scrape a lot of data, it is probably worthwhile to save and date a copy of the website. Otherwise, you may return after some time and your scraping code will include all of the wrong CSS selectors.\n\n\nAlthough you can learn how to use CSS Selectors by hand, we will use a shortcut by installing the Selector Gadget tool.\n\nThere is a version available for Chrome–add it to Chrome via the Chome Web Store.\n\nMake sure to pin the extension to the menu bar. (Click the 3 dots &gt; Extensions &gt; Manage extensions. Click the “Details” button under SelectorGadget and toggle the “Pin to toolbar” option.)\n\nThere is also a version that can be saved as a bookmark in the browser–see here.",
     "crumbs": [
       "Unit 2 - Iteration",
-      "Week 6 -- Web Scraping"
+      "Web Scraping"
     ]
   },
   {
     "objectID": "unit-2/web-scraping.html#required-video-selector-gadget-tutorial-video",
     "href": "unit-2/web-scraping.html#required-video-selector-gadget-tutorial-video",
-    "title": "Week 6 – Web Scraping",
+    "title": "Web Scraping",
     "section": "Required Video: Selector Gadget Tutorial Video",
     "text": "Required Video: Selector Gadget Tutorial Video",
     "crumbs": [
       "Unit 2 - Iteration",
-      "Week 6 -- Web Scraping"
+      "Web Scraping"
     ]
   },
   {
     "objectID": "unit-2/web-scraping.html#check-in-webscraping",
     "href": "unit-2/web-scraping.html#check-in-webscraping",
-    "title": "Week 6 – Web Scraping",
+    "title": "Web Scraping",
     "section": "Check-in: Webscraping",
     "text": "Check-in: Webscraping\nHead over to the NIH News Releases page. Click the Selector Gadget extension icon or bookmark button. As you mouse over the webpage, different parts will be highlighted in orange.\n\nWhat CSS selector would you use to obtain the title of each article?\n\n\n\nWhat CSS selector would you use to obtain the publication date of each article?\n\n\n\nWhat CSS selector would you use to obtain the article abstract paragraph (which will also include the publication date)?",
     "crumbs": [
       "Unit 2 - Iteration",
-      "Week 6 -- Web Scraping"
+      "Web Scraping"
     ]
   },
   {
     "objectID": "unit-2/web-scraping.html#retrieving-data-using-rvest-and-css-selectors",
     "href": "unit-2/web-scraping.html#retrieving-data-using-rvest-and-css-selectors",
-    "title": "Week 6 – Web Scraping",
+    "title": "Web Scraping",
     "section": "Retrieving Data Using rvest and CSS Selectors",
     "text": "Retrieving Data Using rvest and CSS Selectors\nNow that we have identified CSS selectors for the information we need, let’s fetch the data using the rvest package.\n\nlibrary(rvest)\n\nnih &lt;- read_html(\"https://www.nih.gov/news-events/news-releases\")\n\nOnce the webpage is loaded, we can retrieve data using the CSS selectors we specified earlier. The following code retrieves the article titles:\n\n\n[1] \"Annual Report to the Nation: Cancer deaths continue to decline\"                             \n[2] \"Repurposing a blood pressure drug may prevent vision loss in inherited blinding diseases\"   \n[3] \"Scientists map unprecedented detail of connections and visual perception in the mouse brain\"\n[4] \"Twins grow more slowly in early pregnancy than previously thought\"                          \n[5] \"AI screening for opioid use disorder associated with fewer hospital readmissions\"           \n[6] \"Blood pressure patterns in early pregnancy tied to hypertension risk up to 14 years later\"",
     "crumbs": [
       "Unit 2 - Iteration",
-      "Week 6 -- Web Scraping"
+      "Web Scraping"
     ]
   },
   {
     "objectID": "unit-2/web-scraping.html#iteration",
     "href": "unit-2/web-scraping.html#iteration",
-    "title": "Week 6 – Web Scraping",
+    "title": "Web Scraping",
     "section": "Iteration",
     "text": "Iteration\nOur goal is to get article titles, publication dates, and abstract text for news releases across several pages of results. Before doing any coding, let’s plan our approach!\n\nWhat functions will you write?\n\nWe probably need a function to grab the text from the page.\nWe can then use this function to grab different parts of an HTML page and piece them together\n\nWhat arguments will they have?\n\nThe function grabbing text should have two inputs, (1) the page and (2) the CSS selector to use\nThe function scraping the page should probably only take one input: the page\n\nHow will you use your functions?\n\nThese functions need to be iterated! We would need to call the function to scrape a page once for each page we want to scrape.",
     "crumbs": [
       "Unit 2 - Iteration",
-      "Week 6 -- Web Scraping"
+      "Web Scraping"
     ]
   },
   {
     "objectID": "unit-2/web-scraping.html#check-in-webscraping-1",
     "href": "unit-2/web-scraping.html#check-in-webscraping-1",
-    "title": "Week 6 – Web Scraping",
+    "title": "Web Scraping",
     "section": "Check-in: Webscraping",
     "text": "Check-in: Webscraping\nLet’s carry out this plan to get the article title, publication date, and abstract text for the first five pages of news releases in a single data frame. You will need to write at least one function, and you will need iteration—either a for loop or the appropriate map_() functions.\nAdvice:\n\nMouse over the page buttons at the very bottom of the news home page to see what the URLs look like.\nThe abstract should not have the publication date–use stringr and regular expressions to remove the publication date.\nInclude Sys.sleep(2) in your function to respect the Crawl-delay: 2 in the NIH robots.txt file.\nRecall that bind_rows() from dplyr takes a list of data frames and stacks them on top of each other.\n\n\n\nSolution\n\nUsing a for-loop:\nUsing purrr::map():",
     "crumbs": [
       "Unit 2 - Iteration",
-      "Week 6 -- Web Scraping"
+      "Web Scraping"
     ]
   },
   {
