@@ -64,6 +64,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../unit-2/api.html" rel="next">
+<link href="../labs/lab-6-alt.html" rel="prev">
 <link href="../images/cat-monsters-horst.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -107,7 +109,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </head>
 
-<body class="nav-fixed">
+<body class="nav-sidebar floating nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -145,7 +147,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Unit 1 - Communication</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../unit-2.html"> 
+    <a class="nav-link active" href="../unit-2.html" aria-current="page"> 
 <span class="menu-text">Unit 2 - Iteration</span></a>
   </li>  
   <li class="nav-item">
@@ -166,10 +168,75 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
       </div> <!-- /container-fluid -->
     </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../unit-2/json.html">Hierarchical Data</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unit-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Unit 2</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unit-2/writing-functions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Writing Functions in R</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unit-2/efficient-code.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Writing Efficient Code</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unit-2/iterating-functions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Iterating Over Functions</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/lab-6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 6 - Spicy</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/lab-6-alt.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 6 - Alternative</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unit-2/json.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Hierarchical Data</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unit-2/api.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Application Programming Interfaces (APIs)</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -182,12 +249,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#hierarchical-data" id="toc-hierarchical-data" class="nav-link" data-scroll-target="#hierarchical-data">Hierarchical Data</a>
   <ul class="collapse">
-  <li><a href="#required-reading-r-for-data-science-chapter-23" id="toc-required-reading-r-for-data-science-chapter-23" class="nav-link" data-scroll-target="#required-reading-r-for-data-science-chapter-23">Required Reading: <em>R for Data Science</em>, Chapter 23</a></li>
+  <li><a href="#required-reading-r-for-data-science-chapter-23" id="toc-required-reading-r-for-data-science-chapter-23" class="nav-link" data-scroll-target="#required-reading-r-for-data-science-chapter-23">📖 Required Reading: <em>R for Data Science</em>, Chapter 23</a></li>
   <li><a href="#check-in-unnesting" id="toc-check-in-unnesting" class="nav-link" data-scroll-target="#check-in-unnesting">Check-in: Unnesting</a></li>
   </ul></li>
   <li><a href="#json-data" id="toc-json-data" class="nav-link" data-scroll-target="#json-data">JSON Data</a>
   <ul class="collapse">
-  <li><a href="#required-reading-r-for-data-science-chapter-23-1" id="toc-required-reading-r-for-data-science-chapter-23-1" class="nav-link" data-scroll-target="#required-reading-r-for-data-science-chapter-23-1">Required Reading: <em>R for Data Science</em>, Chapter 23</a></li>
+  <li><a href="#required-reading-r-for-data-science-chapter-23-1" id="toc-required-reading-r-for-data-science-chapter-23-1" class="nav-link" data-scroll-target="#required-reading-r-for-data-science-chapter-23-1">📖 Required Reading: <em>R for Data Science</em>, Chapter 23</a></li>
   <li><a href="#check-in-json-pt.-1" id="toc-check-in-json-pt.-1" class="nav-link" data-scroll-target="#check-in-json-pt.-1">Check-in: JSON, pt.&nbsp;1</a></li>
   </ul></li>
   <li><a href="#working-with-json-data" id="toc-working-with-json-data" class="nav-link" data-scroll-target="#working-with-json-data">Working with JSON Data</a>
@@ -239,7 +306,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>Hierarchical Data</h1>
 <p>One of the reasons the JSON format is so important and useful is because it can accommodate very complex types and shapes of data. So while it may not always be workable into a tabular form, it still maintains a high degree of structure that we can exploit!</p>
 <section id="required-reading-r-for-data-science-chapter-23" class="level2">
-<h2 class="anchored" data-anchor-id="required-reading-r-for-data-science-chapter-23">Required Reading: <a href="https://r4ds.hadley.nz/rectangling.html"><em>R for Data Science</em>, Chapter 23</a></h2>
+<h2 class="anchored" data-anchor-id="required-reading-r-for-data-science-chapter-23">📖 Required Reading: <a href="https://r4ds.hadley.nz/rectangling.html"><em>R for Data Science</em>, Chapter 23</a></h2>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -279,7 +346,7 @@ Only read Sections 1-4 for now!
 <section id="json-data" class="level1">
 <h1>JSON Data</h1>
 <section id="required-reading-r-for-data-science-chapter-23-1" class="level2">
-<h2 class="anchored" data-anchor-id="required-reading-r-for-data-science-chapter-23-1">Required Reading: <a href="https://r4ds.hadley.nz/rectangling.html"><em>R for Data Science</em>, Chapter 23</a></h2>
+<h2 class="anchored" data-anchor-id="required-reading-r-for-data-science-chapter-23-1">📖 Required Reading: <a href="https://r4ds.hadley.nz/rectangling.html"><em>R for Data Science</em>, Chapter 23</a></h2>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -425,23 +492,23 @@ Now read Sections 5 &amp; 6!
 <span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>                 <span class="at">max_price =</span> <span class="fu">md</span>(<span class="st">"**Max Company Sale Price**"</span>)</span>
 <span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>                 )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="briznlwiln" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#briznlwiln table {
+<div id="trrjcgciqd" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#trrjcgciqd table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#briznlwiln thead, #briznlwiln tbody, #briznlwiln tfoot, #briznlwiln tr, #briznlwiln td, #briznlwiln th {
+#trrjcgciqd thead, #trrjcgciqd tbody, #trrjcgciqd tfoot, #trrjcgciqd tr, #trrjcgciqd td, #trrjcgciqd th {
   border-style: none;
 }
 
-#briznlwiln p {
+#trrjcgciqd p {
   margin: 0;
   padding: 0;
 }
 
-#briznlwiln .gt_table {
+#trrjcgciqd .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -467,12 +534,12 @@ Now read Sections 5 &amp; 6!
   border-left-color: #D3D3D3;
 }
 
-#briznlwiln .gt_caption {
+#trrjcgciqd .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#briznlwiln .gt_title {
+#trrjcgciqd .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -484,7 +551,7 @@ Now read Sections 5 &amp; 6!
   border-bottom-width: 0;
 }
 
-#briznlwiln .gt_subtitle {
+#trrjcgciqd .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -496,7 +563,7 @@ Now read Sections 5 &amp; 6!
   border-top-width: 0;
 }
 
-#briznlwiln .gt_heading {
+#trrjcgciqd .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -508,13 +575,13 @@ Now read Sections 5 &amp; 6!
   border-right-color: #D3D3D3;
 }
 
-#briznlwiln .gt_bottom_border {
+#trrjcgciqd .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#briznlwiln .gt_col_headings {
+#trrjcgciqd .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -529,7 +596,7 @@ Now read Sections 5 &amp; 6!
   border-right-color: #D3D3D3;
 }
 
-#briznlwiln .gt_col_heading {
+#trrjcgciqd .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -549,7 +616,7 @@ Now read Sections 5 &amp; 6!
   overflow-x: hidden;
 }
 
-#briznlwiln .gt_column_spanner_outer {
+#trrjcgciqd .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -561,15 +628,15 @@ Now read Sections 5 &amp; 6!
   padding-right: 4px;
 }
 
-#briznlwiln .gt_column_spanner_outer:first-child {
+#trrjcgciqd .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#briznlwiln .gt_column_spanner_outer:last-child {
+#trrjcgciqd .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#briznlwiln .gt_column_spanner {
+#trrjcgciqd .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -581,11 +648,11 @@ Now read Sections 5 &amp; 6!
   width: 100%;
 }
 
-#briznlwiln .gt_spanner_row {
+#trrjcgciqd .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#briznlwiln .gt_group_heading {
+#trrjcgciqd .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -611,7 +678,7 @@ Now read Sections 5 &amp; 6!
   text-align: left;
 }
 
-#briznlwiln .gt_empty_group_heading {
+#trrjcgciqd .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -626,15 +693,15 @@ Now read Sections 5 &amp; 6!
   vertical-align: middle;
 }
 
-#briznlwiln .gt_from_md > :first-child {
+#trrjcgciqd .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#briznlwiln .gt_from_md > :last-child {
+#trrjcgciqd .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#briznlwiln .gt_row {
+#trrjcgciqd .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -653,7 +720,7 @@ Now read Sections 5 &amp; 6!
   overflow-x: hidden;
 }
 
-#briznlwiln .gt_stub {
+#trrjcgciqd .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -666,7 +733,7 @@ Now read Sections 5 &amp; 6!
   padding-right: 5px;
 }
 
-#briznlwiln .gt_stub_row_group {
+#trrjcgciqd .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -680,15 +747,15 @@ Now read Sections 5 &amp; 6!
   vertical-align: top;
 }
 
-#briznlwiln .gt_row_group_first td {
+#trrjcgciqd .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#briznlwiln .gt_row_group_first th {
+#trrjcgciqd .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#briznlwiln .gt_summary_row {
+#trrjcgciqd .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -698,16 +765,16 @@ Now read Sections 5 &amp; 6!
   padding-right: 5px;
 }
 
-#briznlwiln .gt_first_summary_row {
+#trrjcgciqd .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#briznlwiln .gt_first_summary_row.thick {
+#trrjcgciqd .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#briznlwiln .gt_last_summary_row {
+#trrjcgciqd .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -717,7 +784,7 @@ Now read Sections 5 &amp; 6!
   border-bottom-color: #D3D3D3;
 }
 
-#briznlwiln .gt_grand_summary_row {
+#trrjcgciqd .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -727,7 +794,7 @@ Now read Sections 5 &amp; 6!
   padding-right: 5px;
 }
 
-#briznlwiln .gt_first_grand_summary_row {
+#trrjcgciqd .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -737,7 +804,7 @@ Now read Sections 5 &amp; 6!
   border-top-color: #D3D3D3;
 }
 
-#briznlwiln .gt_last_grand_summary_row_top {
+#trrjcgciqd .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -747,11 +814,11 @@ Now read Sections 5 &amp; 6!
   border-bottom-color: #D3D3D3;
 }
 
-#briznlwiln .gt_striped {
+#trrjcgciqd .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#briznlwiln .gt_table_body {
+#trrjcgciqd .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -760,7 +827,7 @@ Now read Sections 5 &amp; 6!
   border-bottom-color: #D3D3D3;
 }
 
-#briznlwiln .gt_footnotes {
+#trrjcgciqd .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -774,7 +841,7 @@ Now read Sections 5 &amp; 6!
   border-right-color: #D3D3D3;
 }
 
-#briznlwiln .gt_footnote {
+#trrjcgciqd .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -783,7 +850,7 @@ Now read Sections 5 &amp; 6!
   padding-right: 5px;
 }
 
-#briznlwiln .gt_sourcenotes {
+#trrjcgciqd .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -797,7 +864,7 @@ Now read Sections 5 &amp; 6!
   border-right-color: #D3D3D3;
 }
 
-#briznlwiln .gt_sourcenote {
+#trrjcgciqd .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -805,72 +872,72 @@ Now read Sections 5 &amp; 6!
   padding-right: 5px;
 }
 
-#briznlwiln .gt_left {
+#trrjcgciqd .gt_left {
   text-align: left;
 }
 
-#briznlwiln .gt_center {
+#trrjcgciqd .gt_center {
   text-align: center;
 }
 
-#briznlwiln .gt_right {
+#trrjcgciqd .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#briznlwiln .gt_font_normal {
+#trrjcgciqd .gt_font_normal {
   font-weight: normal;
 }
 
-#briznlwiln .gt_font_bold {
+#trrjcgciqd .gt_font_bold {
   font-weight: bold;
 }
 
-#briznlwiln .gt_font_italic {
+#trrjcgciqd .gt_font_italic {
   font-style: italic;
 }
 
-#briznlwiln .gt_super {
+#trrjcgciqd .gt_super {
   font-size: 65%;
 }
 
-#briznlwiln .gt_footnote_marks {
+#trrjcgciqd .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#briznlwiln .gt_asterisk {
+#trrjcgciqd .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#briznlwiln .gt_indent_1 {
+#trrjcgciqd .gt_indent_1 {
   text-indent: 5px;
 }
 
-#briznlwiln .gt_indent_2 {
+#trrjcgciqd .gt_indent_2 {
   text-indent: 10px;
 }
 
-#briznlwiln .gt_indent_3 {
+#trrjcgciqd .gt_indent_3 {
   text-indent: 15px;
 }
 
-#briznlwiln .gt_indent_4 {
+#trrjcgciqd .gt_indent_4 {
   text-indent: 20px;
 }
 
-#briznlwiln .gt_indent_5 {
+#trrjcgciqd .gt_indent_5 {
   text-indent: 25px;
 }
 
-#briznlwiln .katex-display {
+#trrjcgciqd .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#briznlwiln div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#trrjcgciqd div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1549,6 +1616,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../labs/lab-6-alt.html" class="pagination-link" aria-label="Lab 6 - Alternative">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Lab 6 - Alternative</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../unit-2/api.html" class="pagination-link" aria-label="Application Programming Interfaces (APIs)">
+        <span class="nav-page-text">Application Programming Interfaces (APIs)</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">

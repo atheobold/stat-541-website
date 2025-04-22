@@ -62,7 +62,7 @@ accommodate very complex types and shapes of data. So while it may not always be
 workable into a tabular form, it still maintains a high degree of structure that
 we can exploit!
 
-## Required Reading: [*R for Data Science*, Chapter 23](https://r4ds.hadley.nz/rectangling.html)
+## 📖 Required Reading: [*R for Data Science*, Chapter 23](https://r4ds.hadley.nz/rectangling.html)
 
 ::: {.callout-note}
 # Only read Sections 1-4 for now!
@@ -134,7 +134,7 @@ unnest_longer(df4, col = c(y, z))
 
 # JSON Data
 
-## Required Reading: [*R for Data Science*, Chapter 23](https://r4ds.hadley.nz/rectangling.html)
+## 📖 Required Reading: [*R for Data Science*, Chapter 23](https://r4ds.hadley.nz/rectangling.html)
 
 ::: {.callout-note}
 # Now read Sections 5 & 6! 

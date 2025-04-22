@@ -98,6 +98,8 @@ website:
         - href: labs/lab-6.qmd
         - href: labs/lab-6-alt.qmd
         - href: unit-2/json.qmd
+        - href: unit-2/api.qmd
+        - href: labs/lab-7.qmd
         # - href: unit-2/web-scraping.qmd
         # - href: unit-2/generative-art.qmd
     
