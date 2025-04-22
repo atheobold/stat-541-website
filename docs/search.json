@@ -930,7 +930,7 @@
     "href": "labs/lab-4.html#submission",
     "title": "Lab 4",
     "section": "Submission",
-    "text": "Submission\nYou are required to submit both the link to your GitHub repository containing your source code and a link to your published dashboard. You are expected to publish your dashboard through Quarto Pub, a free publishing service for static content created with Quarto.",
+    "text": "Submission\nYou are required to submit both the link to your GitHub repository containing your source code and a link to your published dashboard.\nIf you created an interactive dashboard with Shiny\nYou will need to publish your dashboard through shinyapps.io, a free publishing service for content created with Shiny.\nIf you created an interactive dashboard with webR\nYou can publish your dashboard the same way as last week, using Quarto Pub!",
     "crumbs": [
       "Unit 1 - Communication",
       "Lab 4"
