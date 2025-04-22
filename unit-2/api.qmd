@@ -1,0 +1,85 @@
+---
+title: "Application Programming Interfaces (APIs)"
+editor: source
+---
+
+Now that we've talked about the JSON format for data files, it's time we talked about one of the primary vehicles for them: APIs.
+
+## 🎥 Required Video: [What is an API?](https://www.youtube.com/watch?v=s7wmiS2mSXY)
+
+::: {.callout-tip}
+This is the tip of the iceberg when it comes to APIs, but it will suffice to enable a lot of cool things for us. The video above used some nice examples like the restaurant and travel services, but there are APIs for accessing all kinds of data out there...like Facebook, Twitter, Google Maps, etc.
+:::
+
+For our class we're not interested in **creating** APIs, but mostly **using** them to access data that we otherwise couldn't get our hands on...at least not as easily.
+
+## 📖 Required Reading: [R API Tutorial](https://www.dataquest.io/blog/r-api-tutorial/)
+
+::: callout-warning
+# Wrong URL
+
+The tutorial references the wrong link to access the API on the number of people in space. The correct link is: <http://api.open-notify.org/astros.json>
+:::
+
+## Check-in: APIs
+
+1.  What two packages did the tutorial make use of?
+
+-   rvest and jsonlite
+-   httr and jsonlite
+-   httr and rvest
+-   httr and tidyjson
+-   XML and rvest
+
+2.  What type of request will we likely start with when getting data from an API?
+
+-   `PULL()`
+-   `GIMME()`
+-   `GET()`
+-   `SUMMON()`
+
+3.  If `GET()` successfully requested information from the API, what `status` should you see in the response object?
+
+4.  How many people are currently aboard the International Space Station?
+
+```{r}
+#| label: space-station
+#| eval: false
+
+library(httr)
+library(tidyjson)
+library(jsonlite)
+library(tidyverse)
+
+res <- GET("http://api.open-notify.org/astros.json")
+
+## Using jsonlite
+space <- res$content %>% 
+  rawToChar() %>% 
+  fromJSON()
+
+## Using tidyjson
+json_tbl <- res$content %>% 
+  rawToChar() %>% 
+  as.tbl_json()
+
+json_tbl %>% 
+  spread_all() %>% 
+  enter_object("people") %>% 
+  gather_array() %>%       # if it's a JSON array
+  spread_all() %>% 
+  select(name)
+
+## Using unnest_longer & unnest_wider
+space <- res$content %>% 
+  rawToChar() %>% 
+  fromJSON()
+
+list(space) %>%
+  tibble(data = .) %>%
+  unnest_wider(data) %>%        
+  unnest_longer(people) %>%     
+  unnest_wider(people) %>% 
+  filter(craft == "ISS")
+```
+
