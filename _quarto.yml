@@ -101,7 +101,8 @@ website:
         - href: labs/lab-7.qmd
         - href: unit-2/web-scraping.qmd
         - href: labs/lab-8.qmd
-        # - href: unit-2/generative-art.qmd
+        - href: unit-2/generative-art.qmd
+        - href: labs/lab-9.qmd
     
 format:
   html:

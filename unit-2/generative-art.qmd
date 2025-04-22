@@ -1,0 +1,32 @@
+---
+title: "Generative Art"
+editor: source
+---
+
+This week we are going to explore creating art from code. There is no better 
+person to learn generative art from than 
+[Danielle Navarro](https://djnavarro.net/). We are going to 
+use Danielle's [Art from Code workshop materials](https://art-from-code.netlify.app/) to learn techniques for
+creating different types of generative art. 
+
+# Making Art from Code
+
+Work through ["Session 1"](https://art-from-code.netlify.app/day-1/session-1/) of Danielle's workshop materials. By the end of this tutorial you should:
+
+- 
+
+# Exploring 
+
+For our next stage, I want you to choose ***at least one*** additional 
+technique to explore. The technique you choose will likely be the technique 
+you use to create your art for [Lab 9](../labs/lab-9.qmd), so think about 
+what kind of art you want to make! If you're not sure what kind of art you want to make, here is [a gallery of art](https://art.djnavarro.net/gallery/) Danielle has created with these techniques. 
+
+***Choose at least one of the following:***
+
+- [Spatial Noise](https://art-from-code.netlify.app/day-1/session-2/)
+- [Polygons](https://art-from-code.netlify.app/day-1/session-3/)
+- [Shading Tricks](https://art-from-code.netlify.app/day-1/session-4/)
+- [Iterated Function Systems](https://art-from-code.netlify.app/day-2/session-1/)
+- [Tiles and Tesselations](https://art-from-code.netlify.app/day-2/session-2/)
+- [Pixel Filters](https://art-from-code.netlify.app/day-2/session-3/)

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Unit 2 – Advanced R</title>
+<title>Lab 9 – Advanced R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,26 +23,26 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./unit-2/writing-functions.html" rel="next">
-<link href="./images/cat-monsters-horst.png" rel="icon" type="image/png">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../unit-2/generative-art.html" rel="prev">
+<link href="../images/cat-monsters-horst.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -81,8 +81,8 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    <img src="./images/cat-monsters-horst.png" alt="" class="navbar-logo">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../images/cat-monsters-horst.png" alt="" class="navbar-logo">
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -92,31 +92,31 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link" href="../index.html"> 
 <span class="menu-text">Overview</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./course-materials/calendar.html"> 
+    <a class="nav-link" href="../course-materials/calendar.html"> 
 <span class="menu-text">Schedule</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./course-materials/syllabus.html"> 
+    <a class="nav-link" href="../course-materials/syllabus.html"> 
 <span class="menu-text">Syllabus</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./infrastructure.html"> 
+    <a class="nav-link" href="../infrastructure.html"> 
 <span class="menu-text">Infrastructure</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./unit-1.html"> 
+    <a class="nav-link" href="../unit-1.html"> 
 <span class="menu-text">Unit 1 - Communication</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./unit-2.html" aria-current="page"> 
+    <a class="nav-link active" href="../unit-2.html" aria-current="page"> 
 <span class="menu-text">Unit 2 - Iteration</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./portfolio.html"> 
+    <a class="nav-link" href="../portfolio.html"> 
 <span class="menu-text">Portfolio</span></a>
   </li>  
 </ul>
@@ -138,7 +138,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./unit-2.html">Unit 2</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../labs/lab-9.html">Lab 9</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -152,79 +152,79 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./unit-2.html" class="sidebar-item-text sidebar-link active">
+  <a href="../unit-2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Unit 2</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./unit-2/writing-functions.html" class="sidebar-item-text sidebar-link">
+  <a href="../unit-2/writing-functions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Writing Functions in R</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./unit-2/efficient-code.html" class="sidebar-item-text sidebar-link">
+  <a href="../unit-2/efficient-code.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Writing Efficient Code</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./unit-2/iterating-functions.html" class="sidebar-item-text sidebar-link">
+  <a href="../unit-2/iterating-functions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Iterating Over Functions</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./labs/lab-6.html" class="sidebar-item-text sidebar-link">
+  <a href="../labs/lab-6.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lab 6 - Spicy</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./labs/lab-6-alt.html" class="sidebar-item-text sidebar-link">
+  <a href="../labs/lab-6-alt.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lab 6 - Alternative</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./unit-2/json.html" class="sidebar-item-text sidebar-link">
+  <a href="../unit-2/json.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Hierarchical Data</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./unit-2/api.html" class="sidebar-item-text sidebar-link">
+  <a href="../unit-2/api.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Application Programming Interfaces (APIs)</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./labs/lab-7.html" class="sidebar-item-text sidebar-link">
+  <a href="../labs/lab-7.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lab 7</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./unit-2/web-scraping.html" class="sidebar-item-text sidebar-link">
+  <a href="../unit-2/web-scraping.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Web Scraping</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./labs/lab-8.html" class="sidebar-item-text sidebar-link">
+  <a href="../labs/lab-8.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lab 8</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./unit-2/generative-art.html" class="sidebar-item-text sidebar-link">
+  <a href="../unit-2/generative-art.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Generative Art</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./labs/lab-9.html" class="sidebar-item-text sidebar-link">
+  <a href="../labs/lab-9.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Lab 9</span></a>
   </div>
 </li>
@@ -241,7 +241,8 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Unit 2</h1>
+<h1 class="title">Lab 9</h1>
+<p class="subtitle lead">Art Gallery</p>
 </div>
 
 
@@ -258,8 +259,18 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>In this second unit, we will dig deeper into the ideas surrounding efficiency. We will start with a review of writing functions in R—creating both vector and data frame functions and learning how to write functions which incorporate “tidy evaluation.” Next, we will take these functions to the next step by considering the efficiency of the function—how many intermediate objects are created, what order are operations run, what functions are used internally? Alongside these considerations, we will also compare and contrast different methods for iterating over functions—<code>for</code> loops and the <code>purrr</code> family of functions. From the perspective of efficiency, we will consider why one would choose one tool over the other.</p>
-<p>After this review of efficiency, we will put our function writing an iteration to work! First we will explore hierarchical (JSON) data, iterating over multiple calls to an API. Next, we will explore extracting (scraping) data from a webpage, iterating over multiple webpages. Finally, we will use iteration to generate art from code.</p>
+<p>This lab is individual, but you are still encouraged to work and discuss with your peers.</p>
+<p>For this lab, you will submit two pieces of art:</p>
+<ul>
+<li>One piece must be made using ordinary plotting functions on data. (similar to the art made in the first reading)</li>
+<li>One piece must be completely generative. You may use packages from the readings for this, but of course, do not simply turn in the default results of a single function. :)</li>
+</ul>
+<p>Both art pieces must also include:</p>
+<ul>
+<li>A title</li>
+<li>A museum-style description. Feel free to be overly dramatic with this, if you want to - it doesn’t need to involve any true art theory.</li>
+<li>A description of the code choices and how they influenced the appearance of the piece. For example, you might say, “By setting the number of recursions to 100, we repeat the pattern 100 times in the space of the image.”</li>
+</ul>
 
 
 
@@ -830,11 +841,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="../unit-2/generative-art.html" class="pagination-link" aria-label="Generative Art">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Generative Art</span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./unit-2/writing-functions.html" class="pagination-link" aria-label="Writing Functions in R">
-        <span class="nav-page-text">Writing Functions in R</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
@@ -845,11 +856,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/unit-2.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></div>
+    <div class="toc-actions"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/labs/lab-9.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item">
-    <a class="nav-link" href="./LICENSE.md">
+    <a class="nav-link" href="../LICENSE.md">
 <p>License</p>
 </a>
   </li>  
