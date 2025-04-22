@@ -4,7 +4,9 @@ subtitle: "Cheese Gromit!"
 editor: source
 ---
 
-> **Goal:** Scrape information from <https://www.cheese.com> to obtain a dataset of characteristics about different cheeses, and gain deeper insight into your coding process. 🪤
+> **Goal:** Scrape information from <https://www.cheese.com> to obtain a dataset
+> of characteristics about different cheeses, and gain deeper insight into your
+> coding process. 🪤
 
 **Part 1:** Locate and examine the `robots.txt` file for this website. Summarize
 what you learn from it.
@@ -16,7 +18,8 @@ this function works with a small example.
 used [ChatGPT](https://chat.openai.com/chat) to start the process of scraping
 cheese information with the following prompt:
 
-> Write R code using the rvest package that allows me to scrape cheese information from cheese.com.
+> Write R code using the rvest package that allows me to scrape cheese
+> information from cheese.com.
 
 Fully document your process of checking this code. Record any observations you
 make about where ChatGPT is useful / not useful.
@@ -82,6 +85,6 @@ obtain the following detailed information:
 between page queries.)
 
 **Part 6:** Evaluate the code that you wrote in terms of **efficiency**. To
-what extent do your function(s) adhere to the [principles for writing good functions]()?
-To what extent are your [functions efficient]()? To what extent is your 
-[iteration of these functions efficient]()? 
+what extent do your function(s) adhere to the **principles for writing good functions**?
+To what extent are your **functions efficient**? To what extent is your 
+**iteration of these functions efficient**? 

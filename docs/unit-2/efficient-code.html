@@ -239,6 +239,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Lab 7</span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unit-2/web-scraping.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 6 – Web Scraping</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/lab-8.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 8</span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -371,7 +383,7 @@ $ age        &lt;dbl&gt; 86, 83, 81, 79, 78, 78, 78, 77, 76, 76, 75, 74, 74, 73,
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">toc</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.448 sec elapsed</code></pre>
+<pre><code>0.543 sec elapsed</code></pre>
 </div>
 </div>
 <p>These are all three reasonable things to do, and they can’t be done in the same pipeline. But wait - we just made R do the process of subsetting to only Senators three separate times!</p>
@@ -383,7 +395,7 @@ $ age        &lt;dbl&gt; 86, 83, 81, 79, 78, 78, 78, 77, 76, 76, 75, 74, 74, 73,
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">toc</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.034 sec elapsed</code></pre>
+<pre><code>0.033 sec elapsed</code></pre>
 </div>
 </div>
 <p>Instead, how about we filter the data once, save it into an object, and call on that object:</p>
@@ -405,7 +417,7 @@ $ age        &lt;dbl&gt; 86, 83, 81, 79, 78, 78, 78, 77, 76, 76, 75, 74, 74, 73,
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">toc</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.237 sec elapsed</code></pre>
+<pre><code>0.274 sec elapsed</code></pre>
 </div>
 </div>
 <p>That is <strong>half</strong> the run time! Yes, we are dealing with minute increments of time (less than a second), but hopefully you could see how this might scale to larger calcuations.</p>
@@ -507,8 +519,8 @@ Why choose <code>map()</code> instead of <code>apply()</code>?
 <div class="cell-output cell-output-stdout">
 <pre><code>Unit: microseconds
                     expr min   lq mean median   uq   max neval
- do_stuff_allocate(1000)  27   30   73     34   42  3386   100
-   do_stuff_tackon(1000) 833 1098 2421   1540 1742 53795   100</code></pre>
+ do_stuff_allocate(1000)  28   30   66     32   39  3032   100
+   do_stuff_tackon(1000) 828 1016 1752   1493 1745 15112   100</code></pre>
 </div>
 </div>
 </section>

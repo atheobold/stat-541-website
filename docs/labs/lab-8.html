@@ -64,6 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../unit-2/web-scraping.html" rel="prev">
 <link href="../images/cat-monsters-horst.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -107,7 +108,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </head>
 
-<body class="nav-fixed">
+<body class="nav-sidebar floating nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -145,7 +146,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Unit 1 - Communication</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../unit-2.html"> 
+    <a class="nav-link active" href="../unit-2.html" aria-current="page"> 
 <span class="menu-text">Unit 2 - Iteration</span></a>
   </li>  
   <li class="nav-item">
@@ -166,10 +167,93 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
       </div> <!-- /container-fluid -->
     </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../labs/lab-8.html">Lab 8</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unit-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Unit 2</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unit-2/writing-functions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Writing Functions in R</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unit-2/efficient-code.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Writing Efficient Code</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unit-2/iterating-functions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Iterating Over Functions</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/lab-6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 6 - Spicy</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/lab-6-alt.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 6 - Alternative</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unit-2/json.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Hierarchical Data</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unit-2/api.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Application Programming Interfaces (APIs)</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/lab-7.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 7</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unit-2/web-scraping.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 6 – Web Scraping</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/lab-8.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Lab 8</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
         
@@ -253,7 +337,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>flavour</li>
 </ul>
 <p>(Just 10 to avoid overtaxing the website! Continue adding a 1 second pause between page queries.)</p>
-<p><strong>Part 6:</strong> Evaluate the code that you wrote in terms of <strong>efficiency</strong>. To what extent do your function(s) adhere to the <a href="">principles for writing good functions</a>? To what extent are your <a href="">functions efficient</a>? To what extent is your <a href="">iteration of these functions efficient</a>?</p>
+<p><strong>Part 6:</strong> Evaluate the code that you wrote in terms of <strong>efficiency</strong>. To what extent do your function(s) adhere to the <strong>principles for writing good functions</strong>? To what extent are your <strong>functions efficient</strong>? To what extent is your <strong>iteration of these functions efficient</strong>?</p>
 
 
 
@@ -822,6 +906,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../unit-2/web-scraping.html" class="pagination-link" aria-label="Week 6 -- Web Scraping">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Week 6 – Web Scraping</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
