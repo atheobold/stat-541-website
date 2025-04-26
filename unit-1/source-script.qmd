@@ -1,0 +1,9 @@
+---
+title: "Moving Your Pre-Processing to an External Script"
+editor: source
+---
+
+<!-- next time include infomation about how to move data pre-processing to a  -->
+<!-- separate R script, write cleaned data to a csv, and read in the cleaned data -->
+
+<!-- this will need a better / more specific folder structure! -->
