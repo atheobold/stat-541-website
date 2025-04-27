@@ -1,0 +1,81 @@
+---
+title: "Collaborative Version Control"
+editor: source
+---
+
+Alright! You've now spent six weeks cultivating good version control practices
+when working on your own, so let's spice it up. For the next two weeks (Week 7
+& Week 8) you will be collaborating with a partner to complete the weekly lab
+assignment. 
+
+When collaborating with others, it is a bad idea for everyone in the team to 
+push directly to the main branch. This can cause major headaches! Instead, 
+many say pull requests are the "best practice" for suggesting changes in a 
+collaborative document. So, let's learn about pull requests! 
+
+## Branches 
+
+The linchpin of pull requests are branches! 
+
+### 📖 Required Reading: [*Happy Git and GitHub for the useR*, Chapter 22 (Branches)](https://happygitwithr.com/git-branches)
+
+Now that we have the foundation, let's learn about pull requests. 
+
+## Pull Requests
+
+As with many things, there are several ways to create pull requests. Personally,
+I am a fan of the functions from the [**usethis** R package](), which I will 
+plug as a resource. If, however, you would prefer to create and maintain your
+pull requests using other tools (e.g., terminal, GitHub Desktop), you are 
+more than welcome! 
+
+### 📖 Recommended Reading: [Pull Request Helpers from the **usethis** Package](https://usethis.r-lib.org/articles/pr-functions.html#whats-a-pull-request)
+
+### 📖 Recommended Reading: [About Pull Requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+
+### Workflow
+
+Regardless of the tool you are using to create your pull requests, I would 
+strongly recommend you implement the following collaborative workflow:
+
+1. One teammate forks the repository
+2. This teammate should then [add their partner as a collaboator to the GitHub repository](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-access-to-your-personal-repositories/inviting-collaborators-to-a-personal-repository)
+3. Both partners clone the repo locally
+4. Make a game plan of how each of you will be working on the assignment
+5. **Before you make any changes** create a branch
+
+::: {.callout-important}
+# Good Branch Names
+
+Each of your branches should have a meaningful name. Similar to committing 
+often, I would recommend making **lots** of branches while you are working, 
+where each branch represents a module of code (smaller, self-contained). 
+:::
+
+6. Now you can start making changes
+7. Once you're done with the changes you want to make for that module, open a
+pull request
+8. Let your partner know you opened a pull request (they'll get an email from
+GitHub)
+9. Your partner merges in your changes **if there are no merge conflicts** and
+closes your pull request
+10. You delete the branch associated with that pull request
+
+Now go back to step 5 to start your next change!
+
+## Pull Request Practice
+
+Now that you've learned the ropes, let's try making a simple pull request. 
+
+Here is a toy repository I made containing a class poem: 
+<https://github.com/STAT-541/class-poem>
+
+Even though I have not added each of you as contributors to the repo, you 
+**can** still make a pull request. 
+
+Starting at Step 3, clone the repo locally, initialize a branch, make a change
+to the class poem, and open a pull request with your change. 
+
+I'll add the best change to this year's poem! 
+
+
