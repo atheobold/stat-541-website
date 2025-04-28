@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Lab 6 - Alternative – Advanced R</title>
+<title>Collaborative Version Control – Advanced R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -64,8 +30,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../unit-2/json.html" rel="next">
-<link href="../labs/lab-6.html" rel="prev">
+<link href="../labs/lab-7.html" rel="next">
+<link href="../unit-2/api.html" rel="prev">
 <link href="../images/cat-monsters-horst.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -173,7 +139,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../labs/lab-6-alt.html">Lab 6 - Alternative</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../unit-2/pull-requests.html">Collaborative Version Control</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -217,7 +183,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/lab-6-alt.html" class="sidebar-item-text sidebar-link active">
+  <a href="../labs/lab-6-alt.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lab 6 - Alternative</span></a>
   </div>
 </li>
@@ -235,7 +201,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../unit-2/pull-requests.html" class="sidebar-item-text sidebar-link">
+  <a href="../unit-2/pull-requests.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Collaborative Version Control</span></a>
   </div>
 </li>
@@ -279,23 +245,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#vector-functions" id="toc-vector-functions" class="nav-link active" data-scroll-target="#vector-functions">Vector Functions</a>
+  <li><a href="#branches" id="toc-branches" class="nav-link active" data-scroll-target="#branches">Branches</a>
   <ul class="collapse">
-  <li><a href="#data-frame-functions" id="toc-data-frame-functions" class="nav-link" data-scroll-target="#data-frame-functions">Data Frame Functions</a></li>
+  <li><a href="#required-reading-happy-git-and-github-for-the-user-chapter-22-branches" id="toc-required-reading-happy-git-and-github-for-the-user-chapter-22-branches" class="nav-link" data-scroll-target="#required-reading-happy-git-and-github-for-the-user-chapter-22-branches">📖 Required Reading: <em>Happy Git and GitHub for the useR</em>, Chapter 22 (Branches)</a></li>
   </ul></li>
-  <li><a href="#plotting-functions" id="toc-plotting-functions" class="nav-link" data-scroll-target="#plotting-functions">Plotting Functions</a></li>
-  <li><a href="#iteration" id="toc-iteration" class="nav-link" data-scroll-target="#iteration">Iteration</a></li>
-  <li><a href="#contributing-to-the-r-for-data-science-community" id="toc-contributing-to-the-r-for-data-science-community" class="nav-link" data-scroll-target="#contributing-to-the-r-for-data-science-community">Contributing to the R for Data Science Community!</a></li>
+  <li><a href="#pull-requests" id="toc-pull-requests" class="nav-link" data-scroll-target="#pull-requests">Pull Requests</a>
+  <ul class="collapse">
+  <li><a href="#recommended-reading-pull-request-helpers-from-the-usethis-package" id="toc-recommended-reading-pull-request-helpers-from-the-usethis-package" class="nav-link" data-scroll-target="#recommended-reading-pull-request-helpers-from-the-usethis-package">📖 Recommended Reading: Pull Request Helpers from the <strong>usethis</strong> Package</a></li>
+  <li><a href="#recommended-reading-about-pull-requests" id="toc-recommended-reading-about-pull-requests" class="nav-link" data-scroll-target="#recommended-reading-about-pull-requests">📖 Recommended Reading: About Pull Requests</a></li>
+  <li><a href="#workflow" id="toc-workflow" class="nav-link" data-scroll-target="#workflow">Workflow</a></li>
+  </ul></li>
+  <li><a href="#pull-request-practice" id="toc-pull-request-practice" class="nav-link" data-scroll-target="#pull-request-practice">Pull Request Practice</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/labs/lab-6-alt.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/unit-2/pull-requests.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Lab 6 - Alternative</h1>
-<p class="subtitle lead">Contributing to R for Data Science</p>
+<h1 class="title">Collaborative Version Control</h1>
 </div>
 
 
@@ -312,51 +281,65 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>The exercises from the functions below were pulled from the newest version of <a href="https://r4ds.hadley.nz/"><em>R for Data Science</em></a>. Specifically, from Chapters 25 and 26. For this “alternative” lab you will complete the exercises from the textbook, with the option of submitting a pull request to the <a href="https://github.com/mine-cetinkaya-rundel/r4ds-solutions/">repository for the textbook solutions</a>.</p>
-<section id="vector-functions" class="level1">
-<h1>Vector Functions</h1>
-<p><strong>Question 1:</strong> The <code>rescale01()</code> function below performs a min-max scaling to standardize a numeric vector, but infinite values are left unchanged. Rewrite <code>rescale01()</code> so that <code>-Inf</code> is mapped to 0, and <code>Inf</code> is mapped to 1? *Hint: This seems like a great place for <code>case_when()</code>!</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>rescale01 <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  rng <span class="ot">&lt;-</span> <span class="fu">range</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>, <span class="at">finite =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  (x <span class="sc">-</span> rng[<span class="dv">1</span>]) <span class="sc">/</span> (rng[<span class="dv">2</span>] <span class="sc">-</span> rng[<span class="dv">1</span>])</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Alright! You’ve now spent six weeks cultivating good version control practices when working on your own, so let’s spice it up. For the next two weeks (Week 7 &amp; Week 8) you will be collaborating with a partner to complete the weekly lab assignment.</p>
+<p>When collaborating with others, it is a bad idea for everyone in the team to push directly to the main branch. This can cause major headaches! Instead, many say pull requests are the “best practice” for suggesting changes in a collaborative document. So, let’s learn about pull requests!</p>
+<section id="branches" class="level2">
+<h2 class="anchored" data-anchor-id="branches">Branches</h2>
+<p>The linchpin of pull requests are branches!</p>
+<section id="required-reading-happy-git-and-github-for-the-user-chapter-22-branches" class="level3">
+<h3 class="anchored" data-anchor-id="required-reading-happy-git-and-github-for-the-user-chapter-22-branches">📖 Required Reading: <a href="https://happygitwithr.com/git-branches"><em>Happy Git and GitHub for the useR</em>, Chapter 22 (Branches)</a></h3>
+<p>Now that we have the foundation, let’s learn about pull requests.</p>
+</section>
+</section>
+<section id="pull-requests" class="level2">
+<h2 class="anchored" data-anchor-id="pull-requests">Pull Requests</h2>
+<p>As with many things, there are several ways to create pull requests. Personally, I am a fan of the functions from the <a href=""><strong>usethis</strong> R package</a>, which I will plug as a resource. If, however, you would prefer to create and maintain your pull requests using other tools (e.g., terminal, GitHub Desktop), you are more than welcome!</p>
+<section id="recommended-reading-pull-request-helpers-from-the-usethis-package" class="level3">
+<h3 class="anchored" data-anchor-id="recommended-reading-pull-request-helpers-from-the-usethis-package">📖 Recommended Reading: <a href="https://usethis.r-lib.org/articles/pr-functions.html#whats-a-pull-request">Pull Request Helpers from the <strong>usethis</strong> Package</a></h3>
+</section>
+<section id="recommended-reading-about-pull-requests" class="level3">
+<h3 class="anchored" data-anchor-id="recommended-reading-about-pull-requests">📖 Recommended Reading: <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">About Pull Requests</a></h3>
+</section>
+<section id="workflow" class="level3">
+<h3 class="anchored" data-anchor-id="workflow">Workflow</h3>
+<p>Regardless of the tool you are using to create your pull requests, I would strongly recommend you implement the following collaborative workflow:</p>
+<ol type="1">
+<li>One teammate forks the repository</li>
+<li>This teammate should then <a href="https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-access-to-your-personal-repositories/inviting-collaborators-to-a-personal-repository">add their partner as a collaboator to the GitHub repository</a></li>
+<li>Both partners clone the repo locally</li>
+<li>Make a game plan of how each of you will be working on the assignment</li>
+<li><strong>Before you make any changes</strong> create a branch</li>
+</ol>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<p><strong>Question 2:</strong> Write a function that accepts a vector of birthdates and computes the age of each person in years.</p>
-<p><strong>Question 3:</strong> Write a function that computes the variance and skewness of a numeric vector. Feel free to look up the definitions on Wikipedia or elsewhere!</p>
-<p><strong>Question 4:</strong> Write a function called <code>both_na()</code> which takes two vectors of the same length and returns the number of positions that have an <code>NA</code> in both vectors.</p>
-<section id="data-frame-functions" class="level2">
-<h2 class="anchored" data-anchor-id="data-frame-functions">Data Frame Functions</h2>
-<p><strong>Question 5:</strong> Insert the data frame function you wrote from Lab 6 (either Exercise 1 or Exercise 2).</p>
-<p>For Questions 6 - 10 you will write different functions which work with data similar to the <code>nycflights13</code> data.</p>
-<p><strong>Question 6:</strong> Write a <code>filter_severe()</code> function that finds all flights that were cancelled (i.e.&nbsp;<code>is.na(arr_time)</code>) or delayed by more than an hour.</p>
-<p><strong>Question 7:</strong> Write a <code>summarize_severe()</code> function that counts the number of cancelled flights and the number of flights delayed by more than an hour.</p>
-<p><strong>Question 8:</strong> Modify your <code>filter_severe()</code> function to allow the user to supply the number of hours that should be used to filter the flights that were cancelled or delayed.</p>
-<p><strong>Question 9:</strong> Write a <code>summarize_weather()</code> function that summarizes the weather to compute the minimum, mean, and maximum, of a user supplied variable.</p>
-<p><strong>Question 10:</strong> Write a <code>standardize_time()</code> function that converts the user supplied variable that uses clock time (e.g., <code>dep_time</code>, <code>arr_time</code>, etc.) into a decimal time (i.e.&nbsp;hours + (minutes / 60)).</p>
+<div class="callout-title-container flex-fill">
+Good Branch Names
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Each of your branches should have a meaningful name. Similar to committing often, I would recommend making <strong>lots</strong> of branches while you are working, where each branch represents a module of code (smaller, self-contained).</p>
+</div>
+</div>
+<ol start="6" type="1">
+<li>Now you can start making changes</li>
+<li>Once you’re done with the changes you want to make for that module, open a pull request</li>
+<li>Let your partner know you opened a pull request (they’ll get an email from GitHub)</li>
+<li>Your partner merges in your changes <strong>if there are no merge conflicts</strong> and closes your pull request</li>
+<li>You delete the branch associated with that pull request</li>
+</ol>
+<p>Now go back to step 5 to start your next change!</p>
 </section>
 </section>
-<section id="plotting-functions" class="level1">
-<h1>Plotting Functions</h1>
-<p>You might want to read over the <a href="https://r4ds.hadley.nz/functions.html#plot-functions">Plot Functions section of <em>R for Data Science</em></a></p>
-<p><strong>Question 11:</strong> Build a <code>sorted_bars()</code> function which:</p>
-<ul>
-<li>takes a data frame and a variable as inputs and returns a <strong>vertical</strong> bar chart</li>
-<li>sorts the bars in decreasing order (largest to smallest)</li>
-<li>adds a title that includes the context of the variable being plotted</li>
-</ul>
-<p><em>Hint 1: The <code>fct_infreq()</code> and <code>fct_rev()</code> functions from the forcats package will be helpful for sorting the bars!</em> <em>Hint 2: The <code>englue()</code> function from the rlang package will be helpful for adding a variable’s name into the plot title!</em></p>
-</section>
-<section id="iteration" class="level1">
-<h1>Iteration</h1>
-<p>Alright, now let’s take our plotting function and iterate it!</p>
-<p><strong>Question 12:</strong> Make a sorted barplot for every character variable in the <code>mpg</code> dataset (built into <code>ggplot2</code>).</p>
-</section>
-<section id="contributing-to-the-r-for-data-science-community" class="level1">
-<h1>Contributing to the R for Data Science Community!</h1>
-<p>The functions you wrote for exercises 1-10 came from <em>R for Data Science</em>. You could consider making a pull request to the repository for the solutions!</p>
-<p><a href="https://github.com/mine-cetinkaya-rundel/r4ds-solutions" class="uri">https://github.com/mine-cetinkaya-rundel/r4ds-solutions</a></p>
-<p>To learn more about how to make a pull request I would suggest this article: <a href="https://usethis.r-lib.org/articles/pr-functions.html" class="uri">https://usethis.r-lib.org/articles/pr-functions.html</a></p>
+<section id="pull-request-practice" class="level2">
+<h2 class="anchored" data-anchor-id="pull-request-practice">Pull Request Practice</h2>
+<p>Now that you’ve learned the ropes, let’s try making a simple pull request.</p>
+<p>Here is a toy repository I made containing a class poem: <a href="https://github.com/STAT-541/class-poem" class="uri">https://github.com/STAT-541/class-poem</a></p>
+<p>Even though I have not added each of you as contributors to the repo, you <strong>can</strong> still make a pull request.</p>
+<p>Starting at Step 3, clone the repo locally, initialize a branch, make a change to the class poem, and open a pull request with your change.</p>
+<p>I’ll add the best change to this year’s poem!</p>
 
 
 </section>
@@ -928,13 +911,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../labs/lab-6.html" class="pagination-link" aria-label="Lab 6 - Spicy">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Lab 6 - Spicy</span>
+      <a href="../unit-2/api.html" class="pagination-link" aria-label="Application Programming Interfaces (APIs)">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Application Programming Interfaces (APIs)</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../unit-2/json.html" class="pagination-link" aria-label="Hierarchical Data">
-        <span class="nav-page-text">Hierarchical Data</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../labs/lab-7.html" class="pagination-link" aria-label="Lab 7">
+        <span class="nav-page-text">Lab 7</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -946,7 +929,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/labs/lab-6-alt.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/unit-2/pull-requests.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item">
