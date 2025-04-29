@@ -693,9 +693,7 @@ portfolio_levels %>%
 portfolio_levels %>%
   mutate(
     Category = str_extract(Objective, "[A-Z]{2,4}"),
-    Level = case_when(Level == 1 ~ "Novice", 
-                      Level == 2 ~ "Proficient",
-                      Level == 3 ~ "Virtuoso")
+    Level = num_to_cat_levels(Level)
   ) %>%
   ggplot(mapping = aes(x = Level,
                        y = after_stat(count / sum(count))
