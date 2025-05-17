@@ -169,6 +169,7 @@ specified earlier. The following code retrieves the article titles:
 
 ```{r}
 #| label:  html_elements_text
+#| echo: true
 
 # Retrieve titles of articles
 article_titles <- nih %>%
@@ -222,6 +223,7 @@ stacks them on top of each other.
 
 ```{r}
 #| label: ex_solns_fcts
+#| echo: true
 
 # Helper function to reduce html_elements() %>% html_text() code duplication
 get_text_from_page <- function(page, css_selector) {
@@ -262,6 +264,7 @@ Using a for-loop:
 ```{r}
 #| eval: false
 #| label: ex_solns_for-loop
+#| echo: true
 
 # Create an empty list for the first five pages
 pages <- vector("list", length = 5)
@@ -286,6 +289,7 @@ Using `purrr::map()`:
 ```{r}
 #| eval: false
 #| label:  ex_solns_map
+#| echo: true
 
 # Create a character vector of URLs for the first 5 pages
 base_url <- "https://www.nih.gov/news-events/news-releases"
