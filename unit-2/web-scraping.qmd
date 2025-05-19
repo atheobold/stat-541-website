@@ -63,7 +63,7 @@ we want to scrape today.)
 
 ### Further considerations
 
-The article [Ethics in Web Scraping](https://towardsdatascience.com/ethics-in-web-scraping-b96b18136f01) 
+The article [Ethics in Web Scraping](https://carpentry.library.ucsb.edu/2022-05-12-ucsb-webscraping/06-Ethics-Legality-Webscraping/index.html) 
 describes some good principles to ensure that we are valuing the labor that 
 website owners invested to provide data and creating good from the information
 we do scrape.
