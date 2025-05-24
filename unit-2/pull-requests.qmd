@@ -3,6 +3,11 @@ title: "Collaborative Version Control"
 editor: source
 ---
 
+<!-- Need to change the workflow, since they can't use the usethis functions if  -->
+<!-- the fork MY repo. They need to have their own repo to be able to fork, and  -->
+<!-- do pull requests from a branch! -->
+
+
 Alright! You've now spent six weeks cultivating good version control practices
 when working on your own, so let's spice it up. For the next two weeks (Week 7
 & Week 8) you will be collaborating with a partner to complete the weekly lab
