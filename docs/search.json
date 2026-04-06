@@ -367,7 +367,7 @@
     "href": "unit-1/iterating-functions.html#initial-object-size",
     "title": "Iterating Over Functions",
     "section": "Initial Object Size",
-    "text": "Initial Object Size\n\n\n\nNotice that we initialized char_storage, num_storage, and list_storage to all be the same length as our iteration vector (seq_len(3)). Technically, this wasn’t necessary. We could have been much lazier when we initialized these objects: list_storage &lt;- NA. Why didn’t we do this?\nWhen you don’t initialize an object as a specific size (e.g., length = 3) then at every stage of the for() loop R needs to append a new index to that object. This really slows down your for() loop!\nHere is a comparison of the run time between two functions that both store the index of the iteration. The first function (do_stuff_allocate) sets the initial object size (vector(length = reps)) before the loop is run. The second function (do_stuff_tackon) does not set an initial object size and instead initializes results as a vector of length 1 (results &lt;- NA).\n\ndo_stuff_allocate &lt;- function(reps) {\n  results &lt;- vector(length = reps)\n  for (i in seq_len(reps)) {\n    results[i] &lt;- i\n  }\n  return(results)\n}\n\ndo_stuff_tackon &lt;- function(reps) {\n   results &lt;- NA\n  for (i in seq_len(reps)) {\n    results &lt;- c(results, i)\n  }\n  return(results)\n}\n\nLet’s see how these two functions compare in their run time:\n\n\n\n\n\n\nStatistic\ndo_stuff_allocate\ndo_stuff_tackon\n\n\n\nmin\n18,584 µs\n522,501 µs\n\n\nmean\n35,766 µs\n782,604 µs\n\n\nmedian\n21,876 µs\n579,772 µs\n\n\nmax\n1,425,084 µs\n4,888,668 µs\n\n\n\n\n\n\nLesson: You should always initialize your object as the size you want it to be.\n\n\n\n\n\n\nCheck-inCheck In\n\n\n\n\nWrite a for()-loop that prints the even numbers from 1:20.\nCan you produce the same output with the seq() function?\n\n\nWrite a for()-loop that iterates over the month.name vector (built-in to base R) and stores a character vector of output containing strings like “Month 1: January”, “Month 2: February”.\nCan you produce the same output with str_c() only?\n\n\nWrite a for()-loop that store the class() (type) of every column in the mpg data frame.",
+    "text": "Initial Object Size\n\n\n\nNotice that we initialized char_storage, num_storage, and list_storage to all be the same length as our iteration vector (seq_len(3)). Technically, this wasn’t necessary. We could have been much lazier when we initialized these objects: list_storage &lt;- NA. Why didn’t we do this?\nWhen you don’t initialize an object as a specific size (e.g., length = 3) then at every stage of the for() loop R needs to append a new index to that object. This really slows down your for() loop!\nHere is a comparison of the run time between two functions that both store the index of the iteration. The first function (do_stuff_allocate) sets the initial object size (vector(length = reps)) before the loop is run. The second function (do_stuff_tackon) does not set an initial object size and instead initializes results as a vector of length 1 (results &lt;- NA).\n\ndo_stuff_allocate &lt;- function(reps) {\n  results &lt;- vector(length = reps)\n  for (i in seq_len(reps)) {\n    results[i] &lt;- i\n  }\n  return(results)\n}\n\ndo_stuff_tackon &lt;- function(reps) {\n   results &lt;- NA\n  for (i in seq_len(reps)) {\n    results &lt;- c(results, i)\n  }\n  return(results)\n}\n\nLet’s see how these two functions compare in their run time:\n\n\n\n\n\n\nStatistic\ndo_stuff_allocate\ndo_stuff_tackon\n\n\n\nmin\n18,459 µs\n494,876 µs\n\n\nmean\n35,467 µs\n801,818 µs\n\n\nmedian\n21,126 µs\n574,605 µs\n\n\nmax\n1,424,251 µs\n5,215,667 µs\n\n\n\n\n\n\nLesson: You should always initialize your object as the size you want it to be.\n\n\n\n\n\n\nCheck-inCheck In\n\n\n\n\nWrite a for()-loop that prints the even numbers from 1:20.\nCan you produce the same output with the seq() function?\n\n\nWrite a for()-loop that iterates over the month.name vector (built-in to base R) and stores a character vector of output containing strings like “Month 1: January”, “Month 2: February”.\nCan you produce the same output with str_c() only?\n\n\nWrite a for()-loop that store the class() (type) of every column in the mpg data frame.",
     "crumbs": [
       "Unit 1 - Complex Analyses",
       "Iterating Over Functions"
@@ -433,7 +433,7 @@
     "href": "unit-1/efficient-code.html#avoid-for-loops",
     "title": "Writing More Efficient Code",
     "section": "Avoid for-loops",
-    "text": "Avoid for-loops\nfor()-loops are deathly slow in R. If you absolutely must iterate over a process, rely on the map() or apply() function families. These functions offer the same versatility of a for()-loop but are (1) more human readable, and (2) much faster because they are written in C.\n\n\n\n\n\n\nNoteWhy choose map() instead of apply()?\n\n\n\nThe map() and apply() functions will typically be close to the same speed, so the largest argument in favor of the map() family of functions are their consistent syntax, and their consistent object output.\nThe map() function always returns a list and the map_XXX() variants always return a vector of a specified data type. Whereas, apply() returns a vector or a list, lapply() returns a list, and sapply() returns a vector or a matrix.\n\n\nHere is a motivating example demonstrating the difference in run time between two functions:\n\na function which loops over every column in a data frame to extract the data type of that column\na function which uses map_chr() to apply the class() function to every column of a data frame\n\n\nloop_func &lt;- function(df){\n  \n  # initialize the type object\n  type &lt;- rep(NA, ncol(df))\n  \n  for(i in seq_len(ncol(df))) {\n    \n    # store the class of the ith column of df into the ith entry of type \n    type[i] &lt;- class(df[,i])\n  }\n  \n  return(type)\n}\n\nmap_func &lt;- function(df){\n  \n  type &lt;- map_chr(df, class)\n  \n  return(type)\n\n  }\n\nOkay, now that we’ve made these two functions, let’s see how they compare in their run time. Below, we’ve made a simple albeit large dataframe. The dataframe has five rows and 100,000 columns and the element of every column is a vector of 1s.\n\ndat &lt;- as.data.frame(\n  matrix(1,\n         nrow = 5,\n         ncol = 100000)\n  )\n\nLet’s use tic() and toc() again to compare the run time for these two functions:\n\n\n\ntic()\nloop_func(dat)\n\n\ntoc()\n\n8.07 sec elapsed\n\n\n\n\n\n\ntic()\nmap_func(dat)\n\n\ntoc()\n\n0.52 sec elapsed\n\n\n\n\nLooking at the output, we see substantial differences in the run time of these two functions. The loop function took about 3.5 seconds whereas the map function took less than half a second.\n\n\n\n\n\n\nCheck-inCheck In\n\n\n\n\nWhy might we prefer using map() functions instead of writing a for() loop?\n\n\n\nmap() automatically makes the code run faster in all cases.\n\nmap() makes code more readable, concise, and often faster.\n\nmap() can only be used with numeric data, unlike loops.\n\nmap() replaces all possible uses of loops in programming.\n\n\nWhich map() function should be used in place of this for() loop?\n\n\nnumbers &lt;- c(4, 9, 16, 25)\n\nresults &lt;- vector(\"numeric\", length(numbers))\n\nfor (i in seq_along(numbers)) {\n  results[i] &lt;- sqrt(numbers[i])\n}\n\n\nmap()\nmap_dbl()\nmap_chr()\nwalk()",
+    "text": "Avoid for-loops\nfor()-loops are deathly slow in R. If you absolutely must iterate over a process, rely on the map() or apply() function families. These functions offer the same versatility of a for()-loop but are (1) more human readable, and (2) much faster because they are written in C.\n\n\n\n\n\n\nNoteWhy choose map() instead of apply()?\n\n\n\nThe map() and apply() functions will typically be close to the same speed, so the largest argument in favor of the map() family of functions are their consistent syntax, and their consistent object output.\nThe map() function always returns a list and the map_XXX() variants always return a vector of a specified data type. Whereas, apply() returns a vector or a list, lapply() returns a list, and sapply() returns a vector or a matrix.\n\n\nHere is a motivating example demonstrating the difference in run time between two functions:\n\na function which loops over every column in a data frame to extract the data type of that column\na function which uses map_chr() to apply the class() function to every column of a data frame\n\n\nloop_func &lt;- function(df){\n  \n  # initialize the type object\n  type &lt;- rep(NA, ncol(df))\n  \n  for(i in seq_len(ncol(df))) {\n    \n    # store the class of the ith column of df into the ith entry of type \n    type[i] &lt;- class(df[,i])\n  }\n  \n  return(type)\n}\n\nmap_func &lt;- function(df){\n  \n  type &lt;- map_chr(df, class)\n  \n  return(type)\n\n  }\n\nOkay, now that we’ve made these two functions, let’s see how they compare in their run time. Below, we’ve made a simple albeit large dataframe. The dataframe has five rows and 100,000 columns and the element of every column is a vector of 1s.\n\ndat &lt;- as.data.frame(\n  matrix(1,\n         nrow = 5,\n         ncol = 100000)\n  )\n\nLet’s use tic() and toc() again to compare the run time for these two functions:\n\n\n\ntic()\nloop_func(dat)\n\n\ntoc()\n\n7.685 sec elapsed\n\n\n\n\n\n\ntic()\nmap_func(dat)\n\n\ntoc()\n\n0.51 sec elapsed\n\n\n\n\nLooking at the output, we see substantial differences in the run time of these two functions. The loop function took about 3.5 seconds whereas the map function took less than half a second.\n\n\n\n\n\n\nCheck-inCheck In\n\n\n\n\nWhy might we prefer using map() functions instead of writing a for() loop?\n\n\n\nmap() automatically makes the code run faster in all cases.\n\nmap() makes code more readable, concise, and often faster.\n\nmap() can only be used with numeric data, unlike loops.\n\nmap() replaces all possible uses of loops in programming.\n\n\nWhich map() function should be used in place of this for() loop?\n\n\nnumbers &lt;- c(4, 9, 16, 25)\n\nresults &lt;- vector(\"numeric\", length(numbers))\n\nfor (i in seq_along(numbers)) {\n  results[i] &lt;- sqrt(numbers[i])\n}\n\n\nmap()\nmap_dbl()\nmap_chr()\nwalk()",
     "crumbs": [
       "Unit 1 - Complex Analyses",
       "Writing More Efficient Code"
@@ -805,7 +805,7 @@
     "href": "project/example-project-olympics/week-1.html#introduction",
     "title": "Project Checkpoint 1 - Example",
     "section": "Introduction",
-    "text": "Introduction\nMy dataset is the Olympics data from TidyTuesday. This dataset shows all the Olympic athletes ever, and gives information about their sport, the country they are from, whether they won a medal, etc.\nThe data comes from a Kaggle dataset created by user RGriffin, who scraped the data from www.sports-reference.com in May 2018.\nHere are a few rows of the dataset:\n\ntuesdata &lt;- tidytuesdayR::tt_load('2024-08-06')\n\ntuesdata$olympics |&gt; \n  dplyr::sample_n(6)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nid\nname\nsex\nage\nheight\nweight\nteam\nnoc\ngames\nyear\nseason\ncity\nsport\nevent\nmedal\n\n\n\n59068\nOmer Khalifa\nM\n27\n174\n64\nSudan\nSUD\n1984 Summer\n1984\nSummer\nLos Angeles\nAthletics\nAthletics Men’s 800 metres\nNA\n\n\n23961\nDaniele Crosta\nM\n30\n180\n70\nItaly\nITA\n2000 Summer\n2000\nSummer\nSydney\nFencing\nFencing Men’s Foil, Team\nBronze\n\n\n19050\nSarah Louise Catherwood (-Jackson)\nF\n16\n177\nNA\nNew Zealand\nNZL\n1996 Summer\n1996\nSummer\nAtlanta\nSwimming\nSwimming Women’s 4 x 200 metres Freestyle Relay\nNA\n\n\n824\nLuke Kendall Adams\nM\n31\n189\n70\nAustralia\nAUS\n2008 Summer\n2008\nSummer\nBeijing\nAthletics\nAthletics Men’s 50 kilometres Walk\nNA\n\n\n35149\nAnja Fichtel-Mauritz (-Koper)\nF\n20\n175\n62\nWest Germany\nFRG\n1988 Summer\n1988\nSummer\nSeoul\nFencing\nFencing Women’s Foil, Team\nGold\n\n\n47981\nAlejandro Hernndez Julia\nM\n22\n180\n76\nMexico\nMEX\n2000 Summer\n2000\nSummer\nSydney\nTennis\nTennis Men’s Doubles\nNA\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nGood:\n\nThis description explains who created the data, from where, and when. It provides links to the sources so the reader can find them.\nIt somewhat explains what information is in the dataset; i.e., information about athletes, as opposed to scheduling information or other details.\nShowing a random small snippet of the dataset is typically useful, to get a feel for what it looks like.\n\nBad:\n\nThis is lacking in the “why” and “how” of the data creation. It is important to know what motivated the creation and sharing of a dataset, as well as the specific process that the creator used to assemble it.\nThis description is unclear about the observational units, i.e., what each row represents. (It is not true that each row is a unique athlete!)\nThis description could give much more detail on the observed variables present, such as how they were measured and what a typical value looks like.\n\n\n\nData Cleaning\nThis data was cleaned by using janitor to reformat column names.\nThe user RGriffin who scraped the data also checked for misentered data in the columns Name, Gender, Height, and Weight.\n\n\n\n\n\n\nNote\n\n\n\nGood:\n\nWe did not just look at the Tidy Tuesday cleaning and call it a day! We followed the path of the data creation to figure out what other cleaning and wrangling took place.\n\nBad:\n\nWe were not specific enough about the cleaning done by RGriffin. What did they alter in those columns and why? What other anomalies did they look for?",
+    "text": "Introduction\nMy dataset is the Olympics data from TidyTuesday. This dataset shows all the Olympic athletes ever, and gives information about their sport, the country they are from, whether they won a medal, etc.\nThe data comes from a Kaggle dataset created by user RGriffin, who scraped the data from www.sports-reference.com in May 2018.\nHere are a few rows of the dataset:\n\ntuesdata &lt;- tidytuesdayR::tt_load('2024-08-06')\n\ntuesdata$olympics |&gt; \n  dplyr::sample_n(6)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nid\nname\nsex\nage\nheight\nweight\nteam\nnoc\ngames\nyear\nseason\ncity\nsport\nevent\nmedal\n\n\n\n55521\nMarshall Lawrence Johnston\nM\n22\n177\n81\nCanada\nCAN\n1964 Winter\n1964\nWinter\nInnsbruck\nIce Hockey\nIce Hockey Men’s Ice Hockey\nNA\n\n\n90209\nTomoko Owada\nF\n23\n155\n58\nJapan\nJPN\n1964 Summer\n1964\nSummer\nTokyo\nFencing\nFencing Women’s Foil, Individual\nNA\n\n\n118437\nTang Xuezhong\nM\n19\n175\n71\nChina\nCHN\n1988 Summer\n1988\nSummer\nSeoul\nCycling\nCycling Men’s Road Race, Individual\nNA\n\n\n76814\nPaul Jules Maujean\nM\n34\nNA\nNA\nFrance\nFRA\n1920 Summer\n1920\nSummer\nAntwerpen\nShooting\nShooting Men’s Free Pistol, 50 metres, Team\nNA\n\n\n103009\nEhsan Rouzbahani\nM\n24\n178\n74\nIran\nIRI\n2012 Summer\n2012\nSummer\nLondon\nBoxing\nBoxing Men’s Light-Heavyweight\nNA\n\n\n90439\nDaniel Iulian Pcioianu\nM\n27\n189\n90\nRomania\nROU\n1998 Winter\n1998\nWinter\nNagano\nBobsleigh\nBobsleigh Men’s Four\nNA\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nGood:\n\nThis description explains who created the data, from where, and when. It provides links to the sources so the reader can find them.\nIt somewhat explains what information is in the dataset; i.e., information about athletes, as opposed to scheduling information or other details.\nShowing a random small snippet of the dataset is typically useful, to get a feel for what it looks like.\n\nBad:\n\nThis is lacking in the “why” and “how” of the data creation. It is important to know what motivated the creation and sharing of a dataset, as well as the specific process that the creator used to assemble it.\nThis description is unclear about the observational units, i.e., what each row represents. (It is not true that each row is a unique athlete!)\nThis description could give much more detail on the observed variables present, such as how they were measured and what a typical value looks like.\n\n\n\nData Cleaning\nThis data was cleaned by using janitor to reformat column names.\nThe user RGriffin who scraped the data also checked for misentered data in the columns Name, Gender, Height, and Weight.\n\n\n\n\n\n\nNote\n\n\n\nGood:\n\nWe did not just look at the Tidy Tuesday cleaning and call it a day! We followed the path of the data creation to figure out what other cleaning and wrangling took place.\n\nBad:\n\nWe were not specific enough about the cleaning done by RGriffin. What did they alter in those columns and why? What other anomalies did they look for?",
     "crumbs": [
       "Projects",
       "*Week 1: Example Project*"
@@ -865,6 +865,62 @@
       "Unit 3 - Package Development",
       "Week 9: In-Class Activity"
     ]
+  },
+  {
+    "objectID": "practice-activities/week-7.html",
+    "href": "practice-activities/week-7.html",
+    "title": "Practice Activity Week 7",
+    "section": "",
+    "text": "This week we’re going to explore an interactive dashboard made by a previous STAT 541 student! Nicholas Soares works for the Morro Bay National Estuary Program, and created this “State of the Bay” dashboard:\nhttps://mbnep-state-of-the-bay.shinyapps.io/data_dashboard/\nWe’re going to explore how interactivity is used throughout the dashboard, so we recommend you have both the source file and the public dashboard opened up!"
+  },
+  {
+    "objectID": "practice-activities/week-7.html#accessing-the-practice-activity",
+    "href": "practice-activities/week-7.html#accessing-the-practice-activity",
+    "title": "Practice Activity Week 7",
+    "section": "Accessing the Practice Activity",
+    "text": "Accessing the Practice Activity\nDownload the materials for the activity here: pa-7.zip\nThis .zip folder contains:\n\nthe Quarto file (pa-7.qmd)\nthe source file for creating the interactive dashboard (morro-bay-estuary-dash.qmd)\n\n\n\n\n\n\n\nImportant\n\n\n\nBe sure to save the files inside your Week 7 folder of your STAT 431 (or 541) folder!"
+  },
+  {
+    "objectID": "practice-activities/week-7.html#overview",
+    "href": "practice-activities/week-7.html#overview",
+    "title": "Practice Activity Week 7",
+    "section": "Overview",
+    "text": "Overview\n\nIn the word cloud card, where do the options for “Pick your favorite:” come from?\nWhat function is used to update the word cloud based on the option input by the user?"
+  },
+  {
+    "objectID": "practice-activities/week-7.html#creek-health",
+    "href": "practice-activities/week-7.html#creek-health",
+    "title": "Practice Activity Week 7",
+    "section": "Creek Health",
+    "text": "Creek Health\n\nWhere is the creek_analyte input object used? Specifically, how is this object used?\nWhat font family are the labels for the creek segments?\nWhere is information for the creek segment clicked on in the leaflet map stored?"
+  },
+  {
+    "objectID": "practice-activities/week-7.html#bacteria",
+    "href": "practice-activities/week-7.html#bacteria",
+    "title": "Practice Activity Week 7",
+    "section": "Bacteria",
+    "text": "Bacteria\n\nWhat function was used to add a message about the transformations above the buttons for “Select Transformation”?\nWhat values do the radio buttons take on?\nAre are the plotting data adjusted based on the radio button that is selected?"
+  },
+  {
+    "objectID": "practice-activities/week-7.html#phytoplankton",
+    "href": "practice-activities/week-7.html#phytoplankton",
+    "title": "Practice Activity Week 7",
+    "section": "Phytoplankton",
+    "text": "Phytoplankton\n\nWhat function is used to allow the user to select the dates that should be visualized in the plot?\nHow are these dates stored? Specifically, are they stored individually? As a vector of inputs? As a list?"
+  },
+  {
+    "objectID": "practice-activities/week-7.html#shore-birds",
+    "href": "practice-activities/week-7.html#shore-birds",
+    "title": "Practice Activity Week 7",
+    "section": "Shore Birds",
+    "text": "Shore Birds\n\nWhich two zones produce two composition plots (an individual plot and a combined plot) when clicked on?\nWhat color palette is used for the filled barplot?"
+  },
+  {
+    "objectID": "practice-activities/week-7.html#bay-fish",
+    "href": "practice-activities/week-7.html#bay-fish",
+    "title": "Practice Activity Week 7",
+    "section": "Bay Fish",
+    "text": "Bay Fish\n\nThe \"Bay pipefish\" is in a different position depending on the habitat that was selected (i.e., it is third for Shoreline, second to last for Tidal Flat, and third to last for Open Channel). How does the ordering of the fish species change based on the habitat input?\nWhat color palette is used for the filled barplot?"
   },
   {
     "objectID": "practice-activities/week-5.html",
@@ -1748,11 +1804,22 @@
     ]
   },
   {
-    "objectID": "project/example-project-olympics/week-2.html#by-the-end-of-the-week-your-updated-report-should-contain",
-    "href": "project/example-project-olympics/week-2.html#by-the-end-of-the-week-your-updated-report-should-contain",
-    "title": "Project Checkpoint 2",
-    "section": "By the end of the week, your updated report should contain:",
-    "text": "By the end of the week, your updated report should contain:\n\nTwo data summaries that use existing (unmodified) columns in the data\n\nAt least one of these summaries need to be produced with a custom function.\nAt least one of these summaries need to include iteration (either inside or outside of a function).\n\nTwo data summaries that modify columns from the original data\n\nAt least one of these summaries need to be produced with a custom function.\nAt least one of these summaries need to include iteration (either inside or outside of a function).\n\nSummary tables that at a minimum have:\n\nFormatted values (e.g., decimals, percentages, currencies)\nBoldface headers\nCaptions\n\n\n\n\n\n\n\n\nImportant\n\n\n\nYour report should contain at least two custom functions (to produce data summaries), and at least two places where iteration was used.",
+    "objectID": "project/example-project-olympics/week-2.html#athlete-gender-proportions-annually",
+    "href": "project/example-project-olympics/week-2.html#athlete-gender-proportions-annually",
+    "title": "Project Checkpoint 2 - Example",
+    "section": "Athlete gender proportions annually",
+    "text": "Athlete gender proportions annually\nNew column: ratio of female to male athletes\nDoes not require iteration or custom function.\n\ngender_props &lt;- olympics |&gt;\n  group_by(year, games, team) |&gt;\n  summarize(\n    count_male_athletes = sum(sex == \"M\", na.rm = TRUE),\n    count_female_athletes = sum(sex == \"F\", na.rm = TRUE),\n    .groups = \"drop\"\n  ) |&gt;\n  mutate(\n    prop_female = count_female_athletes/(count_female_athletes + count_male_athletes)\n  )\n\ngender_props |&gt;\n  group_by(year) |&gt;\n  summarize(\n    avg_prop_female = mean(prop_female, na.rm = TRUE)\n  )\n\n\n\n\nyear\navg_prop_female\n\n\n\n1896\n0.0000000\n\n\n1900\n0.0098180\n\n\n1904\n0.0065137\n\n\n1906\n0.0245990\n\n\n1908\n0.0132723\n\n\n1912\n0.0228359\n\n\n1920\n0.0685532\n\n\n1924\n0.0819500\n\n\n1928\n0.0438497\n\n\n1932\n0.0976862\n\n\n1936\n0.0549354\n\n\n1948\n0.0519928\n\n\n1952\n0.0805067\n\n\n1956\n0.0742879\n\n\n1960\n0.0980245\n\n\n1964\n0.0857484\n\n\n1968\n0.1288126\n\n\n1972\n0.1203428\n\n\n1976\n0.1664529\n\n\n1980\n0.1644709\n\n\n1984\n0.1547719\n\n\n1988\n0.1758988\n\n\n1992\n0.2239043\n\n\n1994\n0.2463595\n\n\n1996\n0.2916848\n\n\n1998\n0.2429780\n\n\n2000\n0.3895312\n\n\n2002\n0.2732094\n\n\n2004\n0.3951849\n\n\n2006\n0.3260694\n\n\n2008\n0.4271925\n\n\n2010\n0.3368809\n\n\n2012\n0.4291633\n\n\n2014\n0.2958796\n\n\n2016\n0.4341882\n\n\n\n\n\n\nAs we probably expected, the proportion of female athletes has gone up with time!\n\n\n\n\n\n\nNote\n\n\n\nIdeas to take this further:\n\nCorrect for team sports having more athletes.\nThink about how to handle anomalies in the country team names, e.g. “USSR” vs. “Russia”.\nLimit the data to one or two countries and compare them.\nUse gt() to color the table in a way that tells the story of patterns over time.",
+    "crumbs": [
+      "Projects",
+      "*Week 2: Example Project*"
+    ]
+  },
+  {
+    "objectID": "project/example-project-olympics/week-2.html#female-medals-by-country",
+    "href": "project/example-project-olympics/week-2.html#female-medals-by-country",
+    "title": "Project Checkpoint 2 - Example",
+    "section": "Female medals by country",
+    "text": "Female medals by country\nNo new columns\nRequires custom function and iteration\n\n# Function to count medals but not overcount team sports\n\nnum_female_gold &lt;- function(country) {\n  \n  female_medals &lt;- olympics |&gt;\n    filter(team == country,\n           sex == \"F\") |&gt;\n    distinct(games, event, medal) |&gt;\n    pull(medal)\n  \n  \n  sum(female_medals == \"Gold\", na.rm = TRUE)\n  \n}\n\n\nolympics |&gt;\n  distinct(team) |&gt;\n  mutate(\n    n_f_gold = map_dbl(team, num_female_gold)\n  ) |&gt;\n  slice_max(n_f_gold, n = 10)\n\n\n\n\nteam\nn_f_gold\n\n\n\nUnited States\n300\n\n\nChina\n125\n\n\nSoviet Union\n124\n\n\nGermany\n103\n\n\nEast Germany\n94\n\n\nRussia\n82\n\n\nAustralia\n64\n\n\nNetherlands\n61\n\n\nRomania\n58\n\n\nGreat Britain\n56\n\n\n\n\n\n\nThis follows about the same patterns as overall medals, but maybe if we compare to male gold counts we would find some standout countries. For example, Romania is on this Top 10 but probably not in the overall counts.\n\n\n\n\n\n\nNote\n\n\n\nIdeas to take this further:\n\nCollect counts for silver and bronze medals as well, not just gold.\nCollect a ratio of female to male medals, to get a sense of which countries have a disproportionately low number of female medal winners.\nCollect this data over time as well to look for countries that evolve.\n(This actually could have been done in a pipeline! But, the function approach makes it easier to incorporate some of the upgrades above.)",
     "crumbs": [
       "Projects",
       "*Week 2: Example Project*"
@@ -2506,125 +2573,5 @@
       "Unit 3 - Package Development",
       "Code Speed"
     ]
-  },
-  {
-    "objectID": "project/example-project-olympics/week-2.html#athlete-gender-proportions-annually",
-    "href": "project/example-project-olympics/week-2.html#athlete-gender-proportions-annually",
-    "title": "Project Checkpoint 2 - Example",
-    "section": "Athlete gender proportions annually",
-    "text": "Athlete gender proportions annually\nNew column: ratio of female to male athletes\nDoes not require iteration or custom function.\n\ngender_props &lt;- olympics |&gt;\n  group_by(year, games, team) |&gt;\n  summarize(\n    count_male_athletes = sum(sex == \"M\", na.rm = TRUE),\n    count_female_athletes = sum(sex == \"F\", na.rm = TRUE),\n    .groups = \"drop\"\n  ) |&gt;\n  mutate(\n    prop_female = count_female_athletes/(count_female_athletes + count_male_athletes)\n  )\n\ngender_props |&gt;\n  group_by(year) |&gt;\n  summarize(\n    avg_prop_female = mean(prop_female, na.rm = TRUE)\n  )\n\n\n\n\nyear\navg_prop_female\n\n\n\n1896\n0.0000000\n\n\n1900\n0.0098180\n\n\n1904\n0.0065137\n\n\n1906\n0.0245990\n\n\n1908\n0.0132723\n\n\n1912\n0.0228359\n\n\n1920\n0.0685532\n\n\n1924\n0.0819500\n\n\n1928\n0.0438497\n\n\n1932\n0.0976862\n\n\n1936\n0.0549354\n\n\n1948\n0.0519928\n\n\n1952\n0.0805067\n\n\n1956\n0.0742879\n\n\n1960\n0.0980245\n\n\n1964\n0.0857484\n\n\n1968\n0.1288126\n\n\n1972\n0.1203428\n\n\n1976\n0.1664529\n\n\n1980\n0.1644709\n\n\n1984\n0.1547719\n\n\n1988\n0.1758988\n\n\n1992\n0.2239043\n\n\n1994\n0.2463595\n\n\n1996\n0.2916848\n\n\n1998\n0.2429780\n\n\n2000\n0.3895312\n\n\n2002\n0.2732094\n\n\n2004\n0.3951849\n\n\n2006\n0.3260694\n\n\n2008\n0.4271925\n\n\n2010\n0.3368809\n\n\n2012\n0.4291633\n\n\n2014\n0.2958796\n\n\n2016\n0.4341882\n\n\n\n\n\n\nAs we probably expected, the proportion of female athletes has gone up with time!\n\n\n\n\n\n\nNote\n\n\n\nIdeas to take this further:\n\nCorrect for team sports having more athletes.\nThink about how to handle anomalies in the country team names, e.g. “USSR” vs. “Russia”.\nLimit the data to one or two countries and compare them.\nUse gt() to color the table in a way that tells the story of patterns over time.",
-    "crumbs": [
-      "Projects",
-      "*Week 2: Example Project*"
-    ]
-  },
-  {
-    "objectID": "project/example-project-olympics/week-2.html#female-medals-by-country",
-    "href": "project/example-project-olympics/week-2.html#female-medals-by-country",
-    "title": "Project Checkpoint 2 - Example",
-    "section": "Female medals by country",
-    "text": "Female medals by country\nNo new columns\nRequires custom function and iteration\n\n# Function to count medals but not overcount team sports\n\nnum_female_gold &lt;- function(country) {\n  \n  female_medals &lt;- olympics |&gt;\n    filter(team == country,\n           sex == \"F\") |&gt;\n    distinct(games, event, medal) |&gt;\n    pull(medal)\n  \n  \n  sum(female_medals == \"Gold\", na.rm = TRUE)\n  \n}\n\n\nolympics |&gt;\n  distinct(team) |&gt;\n  mutate(\n    n_f_gold = map_dbl(team, num_female_gold)\n  ) |&gt;\n  slice_max(n_f_gold, n = 10)\n\n\n\n\nteam\nn_f_gold\n\n\n\nUnited States\n300\n\n\nChina\n125\n\n\nSoviet Union\n124\n\n\nGermany\n103\n\n\nEast Germany\n94\n\n\nRussia\n82\n\n\nAustralia\n64\n\n\nNetherlands\n61\n\n\nRomania\n58\n\n\nGreat Britain\n56\n\n\n\n\n\n\nThis follows about the same patterns as overall medals, but maybe if we compare to male gold counts we would find some standout countries. For example, Romania is on this Top 10 but probably not in the overall counts.\n\n\n\n\n\n\nNote\n\n\n\nIdeas to take this further:\n\nCollect counts for silver and bronze medals as well, not just gold.\nCollect a ratio of female to male medals, to get a sense of which countries have a disproportionately low number of female medal winners.\nCollect this data over time as well to look for countries that evolve.\n(This actually could have been done in a pipeline! But, the function approach makes it easier to incorporate some of the upgrades above.)",
-    "crumbs": [
-      "Projects",
-      "*Week 2: Example Project*"
-    ]
-  },
-  {
-    "objectID": "exams/reading-quizzes/generate_question_banks.html",
-    "href": "exams/reading-quizzes/generate_question_banks.html",
-    "title": "make q banks",
-    "section": "",
-    "text": "library(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.2.0     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.2     ✔ tibble    3.3.0\n✔ lubridate 1.9.4     ✔ tidyr     1.3.1\n✔ purrr     1.0.4     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\n\n\nextract_check_ins &lt;- function(path) {\n  \n   # Read file\n  lines &lt;- readLines(path, warn = FALSE)\n  \n  # Find check ins\n  starts &lt;- lines |&gt;\n    str_detect(\"callout-check-in\") |&gt;\n    which()\n  \n  # Find all div ends\n  ends &lt;- lines |&gt; str_detect(\":::\") |&gt; which()\n  \n  \n  # Find closest div ends to the callout start\n  ends_actual &lt;- map_dbl(starts, ~min(ends[ends &gt; .x]))\n  \n  # yoink out all check ins\n  map2(starts, ends_actual, ~lines[(.x+1):(.y-1)])\n}\n\nNote to self, loop this for all weeks or whatever.\n\nw1_files &lt;- c(\"writing-functions.qmd\", \"iterating-functions.qmd\", \"efficient-code.qmd\")\nw1_paths &lt;- map_chr(w1_files, ~here::here(\"unit-1\", .x))\n\nres &lt;- list()\n\nfor (i in 1:length(w1_paths)) {\n  \n  path &lt;- w1_paths[i]\n  name &lt;- w1_files[i] |&gt; str_remove(\"\\\\.qmd\")\n  name_divider &lt;- paste0(\"-----------------\", name, \"-------------------\")\n  \n  res &lt;- c(res, name_divider, extract_check_ins(path))\n}\n\nres |&gt;\n  map(~str_c(.x, collapse = \"\\n\")) |&gt;\n  str_c(collapse = \"\\n\\n\") |&gt;\n  writeLines(here::here(\"exams\", \"reading-quizzes\", \"week-2\", \"question_bank.txt\"))"
-  },
-  {
-    "objectID": "exams/reading-quizzes/week-2/week-2-quiz.html",
-    "href": "exams/reading-quizzes/week-2/week-2-quiz.html",
-    "title": "Reading Quiz: Week 2",
-    "section": "",
-    "text": "Consider the function:\n\nadd_or_subtract &lt;- function(first_num, \n                            second_num = 2, \n                            type = \"add\") {\n  \n  if (type == \"add\") {\n    first_num + second_num\n  } else if (type == \"subtract\") {\n    first_num - second_num\n  } else {\n    stop(\"Please choose `add` or `subtract` as the type.\")\n  }\n  \n}\n\nWhat will be returned by this function call?\n\nadd_or_subtract(5, 6, type = \"multiply\")\n\n\n\n1\n-1\n30\nAn error defined in the function add_or_subtract()\n\nAn error defined in a different function, that is called from inside add_or_subtract()"
-  },
-  {
-    "objectID": "exams/reading-quizzes/week-2/week-2-quiz.html#q1",
-    "href": "exams/reading-quizzes/week-2/week-2-quiz.html#q1",
-    "title": "Reading Quiz: Week 2",
-    "section": "",
-    "text": "Consider the function:\n\nadd_or_subtract &lt;- function(first_num, \n                            second_num = 2, \n                            type = \"add\") {\n  \n  if (type == \"add\") {\n    first_num + second_num\n  } else if (type == \"subtract\") {\n    first_num - second_num\n  } else {\n    stop(\"Please choose `add` or `subtract` as the type.\")\n  }\n  \n}\n\nWhat will be returned by this function call?\n\nadd_or_subtract(5, 6, type = \"multiply\")\n\n\n\n1\n-1\n30\nAn error defined in the function add_or_subtract()\n\nAn error defined in a different function, that is called from inside add_or_subtract()"
-  },
-  {
-    "objectID": "exams/reading-quizzes/week-2/week-2-quiz.html#q2",
-    "href": "exams/reading-quizzes/week-2/week-2-quiz.html#q2",
-    "title": "Reading Quiz: Week 2",
-    "section": "Q2",
-    "text": "Q2\nFill in the blanks in the code below, which produces a table indicating whether a given column is numeric.\n\ndiamonds |&gt; \n  map______(.f = __________)\n\n\n\n  carat     cut   color clarity   depth   table   price       x       y       z \n   TRUE   FALSE   FALSE   FALSE    TRUE    TRUE    TRUE    TRUE    TRUE    TRUE \n\n\n\n\nFirst blank:\n\nint\npurrr\nchr\nlgl\n2\n\n\nSecond blank:\n\nis.numeric\nis.numeric()\nis.numeric(x)\nfunction(x) x == is.numeric"
-  },
-  {
-    "objectID": "exams/reading-quizzes/week-2/week-2-quiz.html#q3",
-    "href": "exams/reading-quizzes/week-2/week-2-quiz.html#q3",
-    "title": "Reading Quiz: Week 2",
-    "section": "Q3",
-    "text": "Q3\nWhy does the code below produce an error?\n\nx &lt;- c(1, 2, 3, 4, 16, 25)\n\nf &lt;- function(x) {\n  if (x &gt; 0) x else 0\n}\n\nf(x)\n\n\nBecause the function f() is missing a return() statement, so R throws an error.\nBecause if() only works with numeric values, and x is treated as a list.\nBecause if() can only evaluate a single TRUE/FALSE value, but x &gt; 0 returns a vector.\nBecause the function argument x has the same name as the global variable x, causing a naming conflict."
-  },
-  {
-    "objectID": "exams/reading-quizzes/week-2/week-2-quiz.html#q4---stat-541-only",
-    "href": "exams/reading-quizzes/week-2/week-2-quiz.html#q4---stat-541-only",
-    "title": "Reading Quiz: Week 2",
-    "section": "Q4 - Stat 541 only",
-    "text": "Q4 - Stat 541 only\nIn R, when exactly does the evaluation of a function argument occur?\n\n\nImmediately when the function is called\nOnly if and when the argument’s value is actually used within the function body\nWhen the function is compiled\nOnly after all other arguments have been evaluated"
-  },
-  {
-    "objectID": "practice-activities/week-7.html",
-    "href": "practice-activities/week-7.html",
-    "title": "Practice Activity Week 7",
-    "section": "",
-    "text": "This week we’re going to explore an interactive dashboard made by a previous STAT 541 student! Nicholas Soares works for the Morro Bay National Estuary Program, and created this “State of the Bay” dashboard:\nhttps://mbnep-state-of-the-bay.shinyapps.io/data_dashboard/\nWe’re going to explore how interactivity is used throughout the dashboard, so we recommend you have both the source file and the public dashboard opened up!"
-  },
-  {
-    "objectID": "practice-activities/week-7.html#accessing-the-practice-activity",
-    "href": "practice-activities/week-7.html#accessing-the-practice-activity",
-    "title": "Practice Activity Week 7",
-    "section": "Accessing the Practice Activity",
-    "text": "Accessing the Practice Activity\nDownload the materials for the activity here: pa-7.zip\nThis .zip folder contains:\n\nthe Quarto file (pa-7.qmd)\nthe source file for creating the interactive dashboard (morro-bay-estuary-dash.qmd)\n\n\n\n\n\n\n\nImportant\n\n\n\nBe sure to save the files inside your Week 7 folder of your STAT 431 (or 541) folder!"
-  },
-  {
-    "objectID": "practice-activities/week-7.html#overview",
-    "href": "practice-activities/week-7.html#overview",
-    "title": "Practice Activity Week 7",
-    "section": "Overview",
-    "text": "Overview\n\nIn the word cloud card, where do the options for “Pick your favorite:” come from?\nWhat function is used to update the word cloud based on the option input by the user?"
-  },
-  {
-    "objectID": "practice-activities/week-7.html#creek-health",
-    "href": "practice-activities/week-7.html#creek-health",
-    "title": "Practice Activity Week 7",
-    "section": "Creek Health",
-    "text": "Creek Health\n\nWhere is the creek_analyte input object used? Specifically, how is this object used?\nWhat font family are the labels for the creek segments?\nWhere is information for the creek segment clicked on in the leaflet map stored?"
-  },
-  {
-    "objectID": "practice-activities/week-7.html#bacteria",
-    "href": "practice-activities/week-7.html#bacteria",
-    "title": "Practice Activity Week 7",
-    "section": "Bacteria",
-    "text": "Bacteria\n\nWhat function was used to add a message about the transformations above the buttons for “Select Transformation”?\nWhat values do the radio buttons take on?\nAre are the plotting data adjusted based on the radio button that is selected?"
-  },
-  {
-    "objectID": "practice-activities/week-7.html#phytoplankton",
-    "href": "practice-activities/week-7.html#phytoplankton",
-    "title": "Practice Activity Week 7",
-    "section": "Phytoplankton",
-    "text": "Phytoplankton\n\nWhat function is used to allow the user to select the dates that should be visualized in the plot?\nHow are these dates stored? Specifically, are they stored individually? As a vector of inputs? As a list?"
-  },
-  {
-    "objectID": "practice-activities/week-7.html#shore-birds",
-    "href": "practice-activities/week-7.html#shore-birds",
-    "title": "Practice Activity Week 7",
-    "section": "Shore Birds",
-    "text": "Shore Birds\n\nWhich two zones produce two composition plots (an individual plot and a combined plot) when clicked on?\nWhat color palette is used for the filled barplot?"
-  },
-  {
-    "objectID": "practice-activities/week-7.html#bay-fish",
-    "href": "practice-activities/week-7.html#bay-fish",
-    "title": "Practice Activity Week 7",
-    "section": "Bay Fish",
-    "text": "Bay Fish\n\nThe \"Bay pipefish\" is in a different position depending on the habitat that was selected (i.e., it is third for Shoreline, second to last for Tidal Flat, and third to last for Open Channel). How does the ordering of the fish species change based on the habitat input?\nWhat color palette is used for the filled barplot?"
   }
 ]
