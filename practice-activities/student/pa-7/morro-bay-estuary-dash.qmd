@@ -1,0 +1,1490 @@
+---
+title: "State of the Bay 2026"
+format: 
+  dashboard: 
+    orientation: columns
+    nav-buttons:
+      - icon: link-45deg
+        href: https://www.mbnep.org/
+        target: _blank
+      - icon: facebook
+        href: https://www.facebook.com/mbestuary
+        target: _blank
+      - icon: linkedin
+        href: https://www.linkedin.com/company/morro-bay-national-estuary-program
+        target: _blank
+      - icon: instagram
+        href: https://www.instagram.com/morrobaynep/
+        target: _blank
+    theme: 
+      - sandstone
+      - style/datadashboard.scss
+logo: images/MBNEP_horizontal_blue.png
+server: shiny
+editor: visual
+---
+
+```{r}
+#| context: setup
+#| label: load-packages
+#| message: false
+library(tidyverse)
+library(gt)
+library(gtExtras)
+library(readxl)
+library(RColorBrewer)
+library(leaflet)
+library(sf)
+library(scales)
+library(fontawesome)
+library(htmltools)
+library(shiny)
+library(bslib)
+library(shinyBS)
+library(gridExtra)
+library(bsicons)
+library(ggwordcloud)
+library(googlesheets4)
+
+# Functions for plotting CSCI scores
+source("data/csci_functions.R")
+
+# Connect to Google Cloud (used for storing word cloud selections in Google Sheets)
+gs4_auth(path = "<<insert json file here>>")
+```
+
+```{r}
+#| context: data
+#| label: prep-data
+#| message: false
+#| warning: false
+
+# Word cloud with persistent user input
+cloud <- read_sheet("<<insert Google sheet id here>>")
+cloud_select <- unique(cloud$Word)
+
+# Load MEQ Scores
+meq_do <- read_xlsx("data/Final_MEQ.xlsx", sheet = "DO")
+meq_bac <- read_xlsx("data/Final_MEQ.xlsx", sheet = "Bac")
+
+# Load Full datasets
+full_do <- read_xlsx("data/Full_Datasets.xlsx", sheet = "DO")
+full_do$Date <- as.Date(full_do$Date)
+full_do <- mutate(full_do, Month = format(Date, "%b"))
+full_do$Month <- factor(full_do$Month, levels = month.abb)
+
+full_bac <- read_xlsx("data/Full_Datasets.xlsx", sheet = "Bac")
+full_bac <- mutate(full_bac, Sqrt = sqrt(Entero), Log = log10(Entero))
+
+habs <- read_xlsx("data/HAB_2yrs.xlsx")
+habs[ , 6:7] <- apply(habs[ , 6:7], 2, as.numeric)
+habs$Date <- as.Date(habs$Date)
+habs <- mutate(habs, 
+               Dinoflagellates = Akashiwo + Dinophysis + Lingulodinium + 
+                 Prorocentrum + Tripos + Margalefidinium + 
+                 Gymnodinium + Other_Dino,
+               Diatoms = `Pseudo-nitzschia delicatissima` + 
+                 `Pseudo-nitzschia seriata` + Other_Diatom)
+
+shorebird <- read_xlsx("data/Shorebird_Sum.xlsx")
+
+bay.fish <- read_xlsx("data/BayFish_PieCharts.xlsx")
+bay.fish$Eelgrass <- factor(bay.fish$Eelgrass, 
+                            levels = c("Low", "Medium", "High"))
+
+# Load shorebird sites
+
+bird_sf <- read_sf("data/MBSS_SamplingUnits/MBSS_SamplingUnitsPolygon.shp")
+bird_zone <- st_drop_geometry(bird_sf[ , c(2, 3)])
+colnames(bird_zone)[1] <- c("SamplingUnitName")
+shorebird <- left_join(shorebird, bird_zone)
+bird_sf <- bird_sf[-16, ] # removing combination of sites 6 and 7
+bird67 <- shorebird %>%
+  filter(FullName == "Morro Bay 0607")
+
+# Watershed and creek segments
+
+watershed_sf <- read_sf("data/new creeks watershed 2022/Watershed_2022.shp")
+watershed_sf <- st_transform(watershed_sf, 4326)
+meq_no3 <- read.csv("data/nitrate_scores.csv")
+creek_seg <- st_read(dsn = "data/csci/default.gdb", 
+                     layer = "CSCI2024", quiet = T)
+creek_seg <- st_transform(creek_seg, 4326)
+creek_seg <- creek_seg %>%
+  select(GNIS_NAME, CSCI_AVG_24, Shape)
+creek_seg <- left_join(creek_seg, meq_no3)
+
+# Hard-coded color palettes for CSCI and nitrate scores
+
+csci_pal <- c("#FFFF00", "#00B050", "#FF9900", "#FFFF00",
+               "#C1BFBF", "#00B050", "#C00000", "#FFFF00",
+               "#00B050", "#FFFF00", "#C1BFBF")
+no3_pal <- c(rep("#00B050", 2), "#C00000", "#00B050", "#C00000",
+             "#00B050", "#C1BFBF", rep("#00B050", 2), "#C00000", "#C1BFBF")
+
+# Load data for plotting CSCI scores
+
+csci <- read_xlsx("data/CSCI_score.xlsx")
+csci <- as.data.frame(apply(csci, 2, as.numeric))
+
+```
+
+# Overview
+
+## Left Column - Anniversary Logo
+
+::: card
+<img src="images/Elfin_Forest_View.png" class="img-fluid card-img-top"/>
+
+<br>
+
+In 2025, the Morro Bay National Estuary Program celebrated 30 years of protecting and restoring Morro Bay! To share the results of the latest monitoring, restoration, and research efforts in the watershed, every three years the Estuary Program creates a State of the Bay environmental report card. This dashboard is a supplement to our printed and [online versions of the report](https://www.mbnep.org/state-of-the-bay-2026/){target="_blank"}, where interested users can interact directly with the data. Social media links are available in the top right corner if you’d like to stay in touch and receive notifications for our latest events.
+
+Before exiting the dashboard, please take a moment to participate in our survey by choosing your favorite thing about Morro Bay from a list of popular activities, places, and animals that exemplify our estuary. To submit a response, use the drop-down menu to the right and click *Add to Word Cloud*. If you’re passionate about multiple options, feel free to submit more than one!
+
+**Data Disclaimer: The datasets used in this dashboard are informational and not intended to be used for regulatory or decision-making activities.**
+:::
+
+## Right Column - SOTB
+
+```{r}
+#| content: sidebar
+#| label: word-cloud
+#| message: false
+#| warning: false
+
+card(
+  card_header(
+    tooltip(
+      "What is your favorite thing about the Morro Bay estuary?",
+      "Choose your favorite thing about the Morro Bay estuary from the drop-down menu and submit it to the wordcloud using the button at the bottom of the page. The size of words within the wordcloud are proportional to the number of times they've been chosen."
+    )
+  ),
+  selectInput('word', "Pick your favorite:", choices = cloud_select),
+  plotOutput("cloud"),
+  actionButton('submit', 'Add to Word Cloud')
+)
+
+```
+
+# Creek Health
+
+## Left Column - Scores and Descriptions {.tabset}
+
+### Creek Segment Details
+
+```{r}
+#| expandable: false
+
+selectInput('creek_analyte', 'Select Analyte to View on Map', 
+            c("Nitrate MEQ Scores", "CSCI Scores"))
+
+plotOutput("clicked_plot")
+
+tableOutput("clicked_info")
+```
+
+### MEQ Scoring
+
+It can be challenging to analyze data collected over time and create a score for the waterbody’s relative health. We utilized a method called **Magnitude Exceedance Quotient (MEQ)**. This metric takes into account the magnitude of each measurement relative to a threshold (the level protective of human health or aquatic life) and the proportion of samples exceeding the threshold. The California State Water Resources Control Board created this method to scale water quality data so it fits within a traditional grading scheme (where A is Excellent and F is Very Poor). The MEQ grading system is displayed below. [Visit this site](https://www.waterboards.ca.gov/water_issues/programs/swamp/docs/workplans/rb3_methods_paper.pdf){target="_blank"} to learn more.
+
+![MEQ grade scale](images/MEQ-grades.jpg){width="300px" height="200px"}
+
+### CSCI Scoring
+
+We utilize biotic data to help us understand creek health. We conduct bioassessment monitoring each year, which involves collecting benthic macroinvertebrates from the creeks. These are basically insects that are visible to the naked eye that live in our creeks. To analyze the complex datasets that arrive from these samples, we use the **California Stream Condition Index (CSCI)** to calculate a score of creek health. This tool is based on the concept that certain invertebrates have a higher sensitivity to poor creek conditions than others. When a creek has fewer sensitive species than a similar creek, it is likely due to altered conditions that have created a less healthy ecosystem. For more information on CSCI, [take a look at this fact sheet](https://www.waterboards.ca.gov/water_issues/programs/swamp/bioassessment/docs/csci_factsheet.pdf){target="_blank"} provided by the CA Water Board.
+
+![CSCI score ranges and associated categories, adapted from Rehn et al, 2015.](images/CSCI-grades.jpg){width="500px" height="200px"}
+
+## Right Column - Map
+
+```{r}
+#| label: no3-map
+#| title: "Morro Bay Watershed Nitrate and CSCI Scores"
+#| message: false
+#| warning: false
+
+# Interactive map to switch between nitrates and CSCI scores
+
+leafletOutput("creek_map")
+
+```
+
+# Bacteria
+
+## Column - Photo and Graph
+
+### Top Row - Photo {height="50%"}
+
+::: card
+<img src="images/bac_sample.jpg" class="img-fluid card-img-top"/>
+
+Morro Bay is a popular recreation destination for tourists and residents. In order to safely paddle, sail, and kayak, the bay waters must be clean. The Estuary Program and our volunteers conduct monthly bacteria monitoring at eight shoreline sites. We collect water samples and test for *Enterococcus* bacteria, which can be an indicator of fecal contamination. You can hover over the sites on the map to [view MEQ scores for each site]{title="Magnitude Exceedance Quotient - see overview in Creek Health tab"} and change the parameters of the plot to view results from the full time series (2005 - 2024).
+
+We’ve summarized the data in different ways to better visualize the results. Bacteria concentrations within the bay are generally low, hence the relatively high MEQ scores, but concentrations can reach very high levels following storm events. Because the difference in high and low bacteria concentrations can be quite large, it can be difficult to view trends on a plot. Using a square-root or logarithmic transformation rescales the results so trends are easier to see.
+
+[Click here](https://www.mbnep.org/is-morro-bay-safe-for-swimming-2026/){target="_blank"} to learn more about the Estuary Program's bacteria monitoring efforts and other ways we determine if the bay is safe for swimming.
+:::
+
+### Bottom Row {height="50%"}
+
+```{r}
+#| content: card-sidebar
+
+selectInput('site', 'Select Site', 
+            c("Coleman Beach", "Tidelands Park", "Windy Cove",
+              "State Park Marina", "Pasadena Point", "Baywood Pier",
+              "Cuesta Inlet", "Shark Inlet"))
+
+tooltip(
+  radioButtons('radio', 'Select Transformation', 
+             choices = list("Raw Data" = 1, 
+                            "Square Root" = 2,
+                            "Logarithmic" = 3),
+             selected = 1),
+  "A square root transformation compresses larger values more than smaller values, bringing the outliers closer to the bulk of our data. The logarithmic transformation results in stronger compression of larger values, while spreading out smaller values to reveal their variability more clearly.",
+  placement = "top"
+)
+
+```
+
+```{r}
+#| label: bac-graph
+#| message: false
+#| warning: false
+
+plotOutput('plot')
+
+```
+
+## Column - Leaflet Map
+
+```{r}
+#| label: bac-map
+#| title: "Morro Bay Bacteria Monitoring Sites"
+#| message: false
+#| warning: false
+
+meq_bac$Report <- factor(meq_bac$Report, levels = c("A", "B", "C", "D", "F")) 
+
+# Establish color palette based on MEQ score
+bacPalette <- colorFactor(
+  palette = c("#00B050", "#00B050", "#FFFF00", "#FF9900", "#C00000"),
+  domain = meq_bac$Report,
+  levels = c("A", "B", "C", "D", "F")
+)
+
+# Make descriptive popups for each site
+bacText <- paste(
+  meq_bac$Name, " (", meq_bac$Site, ")", "<br/>",
+  "Letter Grade: ", meq_bac$Report, "<br/>",
+  "MEQ Score: ", round(meq_bac$`2026`, 0), "<br/>",
+  sep = ""
+) %>%
+  lapply(htmltools::HTML)
+
+# Construct interactive leaflet map
+bacMap <- leaflet(meq_bac) %>% 
+  addTiles(urlTemplate = "https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}") %>% 
+  addCircleMarkers(
+    label = bacText,
+    radius = 15,
+    labelOptions = labelOptions(
+      style = list(
+        "color" = "blue",
+        "font-family" = "DM Sans",
+        "font-size" = "14px",
+        "font-weight" = "bold"
+      )
+    ),
+    color = ~bacPalette(Report),
+    stroke = FALSE, fillOpacity = 0.8
+  ) %>%
+  addLabelOnlyMarkers(
+    lng = meq_bac$Long,
+    lat = meq_bac$Lat,
+    label = meq_bac$Site,
+    labelOptions = labelOptions(
+      noHide = T,
+      textOnly = T,
+      direction = "center",
+      style = list(
+        "color" = "white",
+        "font-family" = "DM Sans",
+        "font-size" = "12px"
+      )
+    )
+  ) %>%
+  addLegend(pal = bacPalette,
+            values = ~Report,
+            title = "MEQ Score")
+bacMap
+
+```
+
+# Oxygen
+
+## Column - Photo and Graph
+
+### Top Row {height="50%"}
+
+::: card
+<img src="images/dawn_patrol.jpg" class="img-fluid card-img-top"/>
+
+Dissolved oxygen levels in the bay waters are a quick and easy way to assess bay health. Our dedicated team of “Dawn Patrol” volunteers head out on the bay in the early hours of the morning to collect water quality measurements. You can hover over the sites on the map to [view MEQ scores for each site]{title="Magnitude Exceedance Quotient - see overview in Creek Health tab"} and change the timeframe of the plot below to view results from the full time series (2003 - 2024). The scatterplot displays all readings as individual points, while the boxplots have data grouped by month to visualize seasonal trends.
+
+What seasonal trend do you notice when exploring the boxplots? Is this trend consistent across the sample sites? For more information on the seasonality of dissolved oxygen in Morro Bay, check out our [latest Bay Health Memo](https://library.mbnep.org/wp-content/uploads/2025/08/Morro-Bay-Estuary-Health-WY2024.pdf){target="_blank"}.
+
+[Click here](https://www.mbnep.org/is-morro-bay-safe-for-swimming-2026/){target="_blank"} to learn more about the Estuary Program's dissolved oxygen monitoring efforts and how we determine if the creeks and bay are clean enough for aquatic life.
+:::
+
+### Bottom Row {height="50%"}
+
+```{r}
+#| content: card-sidebar
+
+selectInput('site_DO', 'Select Site', 
+            c("Tidelands Park", "State Park Marina", 
+              "North of Pasadena Point", "Pasadena Point", 
+              "Cuesta Channel", "Cuesta Inlet", "Shark Inlet"))
+
+radioButtons('radio_DO', 'Select Timeframe', 
+             choices = list("Full Time Series" = 1, 
+                            "Seasonal Trends" = 2),
+             selected = 1)
+
+```
+
+```{r}
+#| label: do-graph
+#| message: false
+#| warning: false
+
+plotOutput('plot_DO')
+
+```
+
+## Column - DO Map
+
+```{r}
+#| label: do-map
+#| title: "Morro Bay Dissolved Oxygen Monitoring Sites"
+#| message: false
+#| warning: false
+
+meq_do$Report <- factor(meq_do$Report, levels = c("A", "B", "C", "D", "F"))
+
+# Establish color palette based on MEQ score
+doPalette <- colorFactor(
+  palette = c("#00B050", "#00B050", "#FFFF00", "#FF9900", "#F01E2C"), 
+  domain = meq_do$Report,
+  levels = c("A", "B", "C", "D", "F")
+)
+
+# Make descriptive popups for each site
+doText <- paste(
+  meq_do$Name, " (", meq_do$Site, ")", "<br/>",
+  "Letter Grade: ", meq_do$Report, "<br/>",
+  "MEQ Score: ", round(meq_do$`2026`, 0), "<br/>",
+  sep = ""
+) %>%
+  lapply(htmltools::HTML)
+
+# Construct interactive leaflet map
+doMap <- leaflet(meq_do) %>% 
+  addTiles(urlTemplate = "https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}") %>% 
+    addCircleMarkers(
+    label = doText,
+    radius = 15,
+    labelOptions = labelOptions(
+      style = list(
+        "color" = "blue",
+        "font-family" = "Arial",
+        "font-size" = "14px",
+        "font-weight" = "bold"
+      )
+    ),
+    color = ~doPalette(Report),
+    stroke = FALSE, fillOpacity = 0.8
+  ) %>%
+    addLabelOnlyMarkers(
+    lng = meq_do$Long,
+    lat = meq_do$Lat,
+    label = meq_do$Site,
+    labelOptions = labelOptions(
+      noHide = T,
+      textOnly = T,
+      direction = "center",
+      style = list(
+        "color" = "black",
+        "font-family" = "DM Sans",
+        "font-size" = "12px"
+      )
+    )
+  ) %>%
+  addLegend(pal = doPalette,
+            values = ~Report,
+            title = "MEQ Score")
+doMap
+
+```
+
+# Phytoplankton
+
+## Column - Plankton Gallery
+
+### Top Row - Project Details {height="40%"}
+
+::: {.card title = "About Phytoplankton Monitoring"}
+
+Phytoplankton are microscopic, single-celled algae that can convert sunlight and carbon dioxide into carbohydrates and oxygen, just like plants do on land. Phytoplankton produce 80% of the oxygen we breathe and serve as the base of the marine food web. Don’t let their small size fool you, as they are essential to the health of our oceans and estuaries.
+
+While phytoplankton offer many ecological benefits, certain species can produce toxins that are harmful to humans and wildlife. In some cases, large blooms of these toxin-producing algae can form. These Harmful Algal Bloom (HABs) events, commonly referred to as “red tides,” have been linked to marine mammal strandings, fish kills, and shellfish aquaculture die-offs.
+
+Research on Morro Bay phytoplankton was started in 2023 as an extension of the [California Harmful Algal Bloom Monitoring and Alert Program (CalHABMAP)](https://calhabmap.org/){target="_blank"}. Prior to this, the closest sampling station was at the Cal Poly Pier in Port SLO. Currently, Estuary Program volunteers collect samples each week from front bay and back bay locations, and Cal Poly students from Dr. Alexis Pasulka’s [Plankton Ecology and Coastal Oceanography lab](https://pasulkalab.com/research){target="_blank"} analyze the samples under a microscope.
+
+The graph on this page displays results from the first two years of monitoring, and the tabs below display HAB-forming species that researchers keep an eye out for.
+
+[Click here](https://www.mbnep.org/is-the-bay-clean-enough-to-support-commercial-shellfish-farming-2026/){target="_blank"} to learn more about Cal Poly's phytoplankton monitoring efforts and how it ties in with commercial shellfish farming in the bay. :::
+
+### Bottom Row {.tabset height="60%"}
+
+#### Phytoplankton Groups
+
+Our monitoring project tracks two groups of phytoplankton: **diatoms** and **dinoflagellates**.
+
+-   **Diatoms** are encased in glass-like, silica-based cell walls called *frustules*. They grow well when cold nutrient-rich waters flow into the bay during the spring coastal upwelling season.
+-   **Dinoflagellates** are typically covered in cellulose-based plates for protection, although there are some exceptions. Unlike diatoms that are at the mercy of ocean currents, dinoflagellates have *flagella*, which are whip-like tails that allow them to move on their own. Dinoflagellates grow well when warmer waters flow into the bay in the late summer and early fall.
+
+#### Akashiwo
+
+```{r}
+#| expandable: false
+
+div(class = "d-flex flex-row align-items-start gap-3 flex-nowrap w-100",
+  img(src = "images/akashiwo_sanguinea_zoom.png",
+      class = "img-fluid rounded",
+      style = "width: 250px; height: auto; flex: 0 0 auto;"
+      ),
+  div(
+      style = "flex: 1 1 auto; min-width: 20;",
+      HTML(
+        "<p><i>Akashiwo sanguinea</i></p>
+        <ul>
+        <li>Phytoplankton type: <b>Dinoflagellate</b></li>
+        <li>Blooms linked to <a href=https://drive.google.com/file/d/1nhlyGhUbwyPKYk7OHrPyAlLOZIdMUC9r/view target=_blank> shellfish die-offs</a> and <a href=https://www.int-res.com/abstracts/meps/v579/meps12253 target=_blank> seabird mortality</a></li>
+        <li>While not known to produce toxins directly harmful to humans, it produces toxic compounds that can harm other organisms</li>
+        </ul>"
+    )
+  )
+)
+```
+
+#### Alexandrium
+
+```{r}
+#| expandable: false
+
+div(class = "d-flex flex-row align-items-start gap-3 flex-nowrap w-100",
+  img(src = "images/alexandrium_zoom.jpg",
+      class = "img-fluid rounded",
+      style = "width: 250px; height: auto; flex: 0 0 auto;"
+      ),
+  div(
+      style = "flex: 1 1 auto; min-width: 20;",
+      HTML(
+        "<p><i>Alexandrium</i></p>
+        <ul>
+        <li>Phytoplankton type: <b>Dinoflagellate</b></li>
+        <li>Certain species produce neurotoxins called saxitoxins that cause <a href=https://hab.whoi.edu/species/species-by-name/alexandrium/ target=_blank> Paralytic Shellfish Poisoning (PSP)</a> in humans and wildlife</li>
+        <li>Toxin monitoring in California conducted by the <a href=https://www.cdph.ca.gov/Programs/CEH/DRSEM/Pages/EMB/Shellfish/Marine-Biotoxin-Monitoring-Program.aspx target=_blank> Department of Public Health (CDPH)</a></li>
+        </ul>"
+    )
+  )
+)
+```
+
+#### Dinophysis
+
+```{r}
+#| expandable: false
+
+div(class = "d-flex flex-row align-items-start gap-3 flex-nowrap w-100",
+  img(src = "images/dinophysis_caudata_zoom.png",
+      class = "img-fluid rounded",
+      style = "width: 250px; height: auto; flex: 0 0 auto;"
+      ),
+  div(
+      style = "flex: 1 1 auto; min-width: 20;",
+      HTML(
+        "<p><i>Dinophysis</i></p>
+        <ul>
+        <li>Phytoplankton type: <b>Dinoflagellate</b></li>
+        <li>Some species cause Diarrhetic Shellfish Poisoning (DSP) in humans due to the <a href=https://www.acs.org/molecule-of-the-week/archive/o/okadaic-acid.html target=_blank> production of okadaic acid</a></li>
+        <li>DSP can cause severe abdominal pain and gastrointestinal distress but is not typically fatal</li>
+        </ul>"
+    )
+  )
+)
+```
+
+#### Gymnodinium
+
+```{r}
+#| expandable: false
+
+div(class = "d-flex flex-row align-items-start gap-3 flex-nowrap w-100",
+  img(src = "images/Gymnodinium_gracile.jpg",
+      class = "img-fluid rounded",
+      style = "width: 250px; height: auto; flex: 0 0 auto;"
+      ),
+  div(
+      style = "flex: 1 1 auto; min-width: 20;",
+      HTML(
+        "<p><i>Gymnodinium</i></p>
+        <ul>
+        <li>Phytoplankton type: <b>Dinoflagellate</b></li>
+        <li><a href=http://oceandatacenter.ucsc.edu/PhytoGallery/Dinoflagellates/gymnodinium.html target=_blank> Some species produce saxitoxins,</a> which are the same neurotoxins made by <i>Alexandrium</i></li>
+        <li><i>Gymnodinium</i>, as well as <i>Akashiwo</i> and <i>Margalefidinium</i>, are considered unarmored, meaning they lack the cellulose plates found in other dinoflagellate species</li>
+        </ul>"
+    )
+  )
+)
+```
+
+#### Lingulodinium
+
+```{r}
+#| expandable: false
+
+div(class = "d-flex flex-row align-items-start gap-3 flex-nowrap w-100",
+  img(src = "images/L_poly_cyst.png",
+      class = "img-fluid rounded",
+      style = "width: 250px; height: auto; flex: 0 0 auto;"
+      ),
+  div(
+      style = "flex: 1 1 auto; min-width: 20;",
+      HTML(
+        "<p><i>Lingulodinium polyedra</i></p>
+        <ul>
+        <li>Phytoplankton type: <b>Dinoflagellate</b></li>
+        <li><a href=https://www.tandfonline.com/doi/abs/10.2989/18142320609504186 target=_blank> Known to produce yessotoxin (YTX)</a> that can build up in shellfish tissue and cause mass mortality events</li>
+        <li><a href=https://www.youtube.com/watch?v=7tPKqeN2qos target=_blank> Forms bioluminescent blooms</a> along Southern California beaches</li>
+        </ul>"
+    )
+  )
+)
+```
+
+#### Margalefidinium
+
+```{r}
+#| expandable: false
+
+div(class = "d-flex flex-row align-items-start gap-3 flex-nowrap w-100",
+  img(src = "images/Margalefidinium_fixed.jpg",
+      class = "img-fluid rounded",
+      style = "width: 250px; height: auto; flex: 0 0 auto;"
+      ),
+  div(
+      style = "flex: 1 1 auto; min-width: 20;",
+      HTML(
+        "<p><i>Margalefidinium</i></p>
+        <ul>
+        <li>Phytoplankton type: <b>Dinoflagellate</b></li>
+        <li>Associated with fish kills and shellfish mortality in coastal regions around the world due to the production of toxic chemicals</li>
+        <li>Like many other dinoflagellates, <i>Margalefidinium</i> can enter a <a href=https://coastalscience.noaa.gov/news/understanding-blooms-of-dinoflagellate-margalefidinium-polykrikoides-in-chesapeake-bay/ target=_blank> resting cyst stage during unfavorable conditions,</a> allowing it to persist in a dormant state</li>
+        </ul>"
+    )
+  )
+)
+```
+
+#### Prorocentrum
+
+```{r}
+#| expandable: false
+
+div(class = "d-flex flex-row align-items-start gap-3 flex-nowrap w-100",
+  img(src = "images/Prorocentrum_micans.jpg",
+      class = "img-fluid rounded",
+      style = "width: 250px; height: auto; flex: 0 0 auto;"
+      ),
+  div(
+      style = "flex: 1 1 auto; min-width: 20;",
+      HTML(
+        "<p><i>Prorocentrum</i></p>
+        <ul>
+        <li>Phytoplankton type: <b>Dinoflagellate</b></li>
+        <li>Much like <i>Dinophysis</i>, certain species are associated with Diarrhetic Shellfish Poisoning (DSP) in humans</li>
+        <li>Large blooms are common in California, but most of the <i>Prorocentrum</i> species found locally <a href=https://calhabmap.org/prorocentrum-spp target=_blank> are not known toxin producers</a></li>
+        </ul>"
+    )
+  )
+)
+```
+
+#### Pseudo-nitzschia
+
+```{r}
+#| expandable: false
+
+div(class = "d-flex flex-row align-items-start gap-3 flex-nowrap w-100",
+  img(src = "images/pn_delicatissima_group.jpg",
+      class = "img-fluid rounded",
+      style = "width: 250px; height: auto; flex: 0 0 auto;"
+      ),
+  div(
+      style = "flex: 1 1 auto; min-width: 20;",
+      HTML(
+        "<p><i>Pseudo-nitzschia</i></p>
+        <ul>
+        <li>Phytoplankton type: <b>Diatom</b></li>
+        <li>Produces domoic acid, which causes Amnesic Shellfish Poisoning (ASP) in humans and has been <a href=https://www.marinemammalcenter.org/science-conservation/research-library/domoic-acid-toxicosis target=_blank> linked to marine mammal strandings</a></li>
+        <li>Typically categorized into <i>seriata</i> (large) and <i>delicatissima</i> (small) size classes, with the larger class containing more toxin-producers</li>
+        <li><a href=https://www.cdph.ca.gov/Programs/CEH/DRSEM/Pages/EMB/Shellfish/Domoic-Acid.aspx target=_blank> CDPH closely monitors domoic acid concentrations,</a> and will initiate fishery and aquaculture closures if detected above established thresholds</li>
+        </ul>"
+    )
+  )
+)
+```
+
+#### Tripos
+
+```{r}
+#| expandable: false
+
+div(class = "d-flex flex-row align-items-start gap-3 flex-nowrap w-100",
+  img(src = "images/ceratium_azoricum_zoom.png",
+      class = "img-fluid rounded",
+      style = "width: 250px; height: auto; flex: 0 0 auto;"
+      ),
+  div(
+      style = "flex: 1 1 auto; min-width: 20;",
+      HTML(
+        "<p><i>Tripos</i></p>
+        <ul>
+        <li>Phytoplankton type: <b>Dinoflagellate</b></li>
+        <li>Not known to produce toxins, but can form large blooms that result in oxygen depletion</li>
+        <li>The genus <i>Tripos</i> is composed of numerous marine species, but was formerly a part of the genus <i>Ceratium</i>, which now refers solely to freshwater species with similar morphology</li>
+        </ul>"
+    )
+  )
+)
+```
+
+## Column - HAB Graph
+
+```{r}
+#| content: card-toolbar
+
+selectInput('site_HAB', "Select Data", 
+            c("Temperature", "Chlorophyll", "Diatoms", "Dinoflagellates",
+              "Total Phytoplankton", "Akashiwo", "Alexandrium", 
+              "Dinophysis", "Gymnodinium", "Lingulodinium", "Margalefidinium", 
+              "Prorocentrum", "Pseudo-nitzschia delicatissima",
+              "Pseudo-nitzschia seriata", "Tripos")
+            )
+
+tags$style(HTML("
+      .shiny-date-range-input .input-daterange {
+        display: flex !important;
+        flex-direction: row !important;
+        gap: 8px;  /* space between inputs */
+      }
+      .shiny-date-range-input .form-control {
+        width: 120px;  /* set width of each box */
+      }
+    "))
+
+dateRangeInput("dates", label = "Date Range",
+               start = min(habs$Date), end = max(habs$Date),
+               min = "2023-01-01", max = "2025-01-01")
+
+```
+
+```{r}
+#| label: hab-graph
+#| message: false
+#| warning: false
+
+plotOutput('plot_HAB')
+
+```
+
+# Shorebirds
+
+```{r}
+#| label: bird-map
+#| title: "Shorebird Survey Zones"
+#| message: false
+#| warning: false
+
+leafletOutput('bird_map')
+
+```
+
+## Column - Bird Graphs
+
+### Top Row {height="60%"}
+
+```{r}
+#| label: bird_graph
+#| message: false
+#| warning: false
+
+card(
+  card_header(
+    tooltip(
+      "Shorebird Composition",
+      "In certain years, zones 6 and 7 were surveyed as a single unit."
+    )
+  ),
+  plotOutput('bird_plot')
+)
+
+```
+
+### Bottom Row {.tabset height="40%"}
+
+::: {.card title = "Project Description"}
+
+Bird populations can be an important indicator of ecosystem health. [Point Blue Conservation Science](https://migratoryshorebirdproject.org/pfss/){target="_blank"} and the [Morro Coast Audobon Society](https://www.morrocoastaudubon.org/p/mcas-shorebird-monitoring-program.html){target="_blank"} have conducted shorebird surveys since 1988. The surveys take place annually in November or December, when shorebird population distributions are relatively stable. The bay and immediate surrounding areas are split into fifteen different zones for these surveys. Twelve of the zones are located within the estuary, two are situated along Morro strand, and one stretches across the ocean-facing side of the sandspit. The species composition and abundance of birds changes depending on the habitat present within these zones. Select zones from the map to view how bird populations have changed in Morro Bay. You can also view the next tab to relate species codes listed in the graph legend to species names. If you'd like to view results from the Migratory Shorebird Project spanning North America and South America, [you can visit their interactive map.](https://migratoryshorebirdproject.org/explore-data/interactive-map/){target="_blank"}
+
+[Click here](https://www.mbnep.org/are-bird-populations-that-depend-on-the-bay-and-surrounding-lands-stable-2026/){target="_blank"} to learn more about bird monitoring efforts within the watershed and the stability of local bird populations. :::
+
+::: {.card title = "Bird Species Codes"}
+
+```{r}
+#| label: bird-table
+#| message: false
+#| warning: false
+
+bird.tab <- shorebird %>%
+  filter(NewCd != "Other") %>%
+  select(BirdCd, CommonName, ScientificName) %>%
+  arrange(BirdCd)
+
+bird.tib <- tibble(`Species Code` = unique(bird.tab$BirdCd),
+                   `Common Name` = unique(bird.tab$CommonName),
+                   `Scientific Name` = unique(bird.tab$ScientificName))
+
+bird.tib %>% 
+  gt() %>% 
+  cols_align(align="left") %>%
+  gt_theme_guardian()
+```
+
+:::
+
+# Bay Fish
+
+## Left Column
+
+```{r}
+#| content: card-toolbar
+#| title: "Fish Composition by Eelgrass Condition and Habitat Type"
+
+selectInput('site_fish', 'Select Habitat', 
+            c("Shoreline", "Tidal Flat", "Open Channel"),
+            width = "300px")
+```
+
+```{r}
+#| label: fish-graph
+#| message: false
+#| warning: false
+
+plotOutput('plot_fish')
+
+```
+
+## Right Column - Fish Gallery
+
+### Top Row - Project Description {height="40%"}
+
+::: {.card title="How Eelgrass Impacts Fish Populations"}
+Morro Bay’s eelgrass beds serve as essential habitat for many fish species. Some fish spend their entire lives within eelgrass beds, while others utilize the shelter they provide as a nursery before venturing outside the estuary. During times of low eelgrass abundance, the bay’s fish community composition was impacted by the loss, as was observed in fish surveys from 2016 to 2017. Fish species that do not rely on eelgrass and are considered habitat generalists tend to dominate during times of low eelgrass abundance. Conversely, with the recent resurgence of eelgrass to unprecedented acreage, our latest round of fish surveys in 2023 to 2024 documented a recovery in fish that are eelgrass habitat specialists. The images below depict some of the fish species found during these surveys.
+
+When exploring the stacked bar chart to the left, see if you can tell which fish species are eelgrass specialists and which are habitat generalists by comparing their relative composition in low eelgrass abundance and high eelgrass abundance states. For more information, [check out this recent blog](https://www.mbnep.org/2025/03/14/field-updates-fish-response-to-eelgrass-recovery-in-morro-bay/){target="_blank"} post summarizing the Bay Fisheries project.
+
+[Click here](https://www.mbnep.org/does-morro-bay-support-healthy-eelgrass-beds-2026/){target="_blank"} to learn more about research efforts focused on eelgrass beds and the organisms that rely on them.
+:::
+
+### Bottom Row {.tabset height="60%"}
+
+::: {.card title = "Arrow goby"}
+
+```{r}
+# fig_cap is a custom built fxn located within csci_functions.R
+
+fig_cap("images/Arrow_goby.jpg", "500px", "Arrow goby",
+        "Clevelandia ios")
+```
+
+:::
+
+::: {.card title = "Bay pipefish"}
+
+```{r}
+
+fig_cap("images/Bay_pipefish.png", "500px", "Bay pipefish",
+        "Syngnathus californiensis")
+```
+
+:::
+
+::: {.card title = "Black surfperch"}
+
+```{r}
+
+fig_cap("images/Black_surfperch.png", "500px", "Black surfperch",
+        "Embiotoca jacksoni")
+```
+
+:::
+
+::: {.card title = "Cabezon"}
+
+```{r}
+
+fig_cap("images/Cabezon.jpg", "400px", "Cabezon",
+        "Scorpaenichthys marmoratus")
+```
+
+:::
+
+::: {.card title = "CA Halibut"}
+
+```{r}
+
+fig_cap("images/CA_halibut.jpg", "450px", "California halibut",
+        "Paralichthys californicus")
+```
+
+:::
+
+::: {.card title = "CA Killifish"}
+
+```{r}
+
+fig_cap("images/CA_killifish.jpg", "450px", "California killifish",
+        "Fundulus parvipinnis")
+```
+
+:::
+
+::: {.card title = "CA Lizardfish"}
+
+```{r}
+
+fig_cap("images/CA_Lizardfish.jpg", "500px", "California lizardfish",
+        "Synodus lucioceps")
+```
+
+:::
+
+::: {.card title = "Giant Kelpfish"}
+
+```{r}
+
+fig_cap("images/Giant_kelpfish.png", "500px", "Giant kelpfish",
+        "Heterostichus rostratus")
+```
+
+:::
+
+::: {.card title = "Rockfish"}
+
+```{r}
+
+fig_cap("images/Rockfish_species_3.jpg", "500px", "Copper rockfish",
+        "Sebastes caurinus")
+```
+
+:::
+
+::: {.card title = "Opaleye"}
+
+```{r}
+
+fig_cap("images/opaleye.jpg", "400px", "Opaleye",
+        "Girella nigricans")
+```
+
+:::
+
+::: {.card title = "Speckled sanddab"}
+
+```{r}
+
+fig_cap("images/speckled_sanddab.jpg", "400px", "Speckled sanddab",
+        "Citharichthys stigmaeus")
+```
+
+:::
+
+::: {.card title = "Staghorn Sculpin"}
+
+```{r}
+
+fig_cap("images/Staghorn_sculpin.jpg", "400px", "Staghorn sculpin",
+        "Leptocottus armatus")
+```
+
+:::
+
+::: {.card title = "Starry Flounder"}
+
+```{r}
+
+fig_cap("images/Stary_flounder.jpg", "400px", "Starry flounder",
+        "Platichthys stellatus")
+```
+
+:::
+
+::: {.card title = "Striped kelpfish"}
+
+```{r}
+
+fig_cap("images/Striped_kelpfish.jpg", "450px", "Striped kelpfish",
+        "Gibbonsia metzi")
+```
+
+:::
+
+::: {.card title = "Three Spine Stickleback"}
+
+```{r}
+
+fig_cap("images/three-spine_stickleback.jpg", "450px", "Three-spine stickleback",
+        "Gasterosteus aculeatus")
+```
+
+:::
+
+# Downloads
+
+## Left Column
+
+### Top Row - Disclaimer {height="65%"}
+
+::: {.card title = "Continue Exploring with Downloadable Datasets"}
+
+The datasets used in this dashboard are the cumulative work of many organizations. The data is informational and not intended to be used for regulatory or decision-making activities. While every effort has been made to ensure accuracy, the Estuary Program and its partners assume no responsibility for errors and omissions, even if advised of the possibility of such damage.
+
+To access additional data generated by the Estuary Program, and other organizations monitoring California's water bodies, you can visit the State Water Board's [California Environmental Data Exchange Network (CEDEN)](https://ceden.org/index.shtml) data system.
+
+If you'd like to explore the raw data used to make the interactive plots in this dashboard, you can select datasets from the list below and download the files directly.
+
+:::
+
+### Bottom Row - Downloads
+
+```{r}
+#| label: upload-file
+#| message: false
+#| warning: false
+
+selectInput('data_select', 'Select Dataset to Download', 
+            c("Bacteria", "Oxygen", "Shorebirds", "Bay Fish"),
+            width = "300px")
+
+downloadButton('data_download', "Download Selected Data")
+
+```
+
+## Right Column
+
+<img src="images/Morro_Bay_30_Year_Logo_2-2.png" class="img-fluid card-img-top mx-auto d-block" style="width:450px; height:550px;"/>
+
+[This project has been funded wholly or in part by the United States Environmental Protection Agency under assistance agreements CE-98T25101 and 4T-98T47301 to the Bay Foundation of Morro Bay. The contents of this document do not necessarily reflect the views and policies of the Environmental Protection Agency, nor does the EPA endorse trade names or recommend the use of commercial products mentioned in this document.]{style="font-size: 10px;"}
+
+```{r}
+#| context: server
+#| message: false
+#| warning: false
+
+# Word cloud with user input
+set.seed(42)
+
+cloudSubmit <- eventReactive(input$submit, {
+  df <- tibble(Word = input$word, Count = 1)
+  sheet_append("<<insert Google sheet id here>>", df)
+  cloud_sub <- read_sheet("<<insert Google sheet id here>>")
+  cloud_sub
+})
+
+output$cloud <- renderPlot({
+  if(input$submit == 0){
+    cloud_data <- cloud %>%
+      group_by(Word) %>%
+      summarize(Sum = sum(Count))
+  } else{
+    cloud_data <- cloudSubmit() %>%
+      group_by(Word) %>%
+      summarize(Sum = sum(Count))
+  }
+  
+  p <- ggplot(cloud_data, aes(label = Word, size = Sum,
+                  color = factor(sample.int(nrow(cloud_data), nrow(cloud_data), replace = F))
+                  )
+       ) +
+  geom_text_wordcloud() +
+  scale_size_area(max_size = 12) +
+  theme_minimal() +
+  theme(plot.title = element_text(hjust = 0.5))
+  
+  p
+})
+
+# Dataset for bacteria plot
+
+dataset <- reactive({
+  plot_data <- full_bac
+  plot_data <- filter(plot_data, SiteName == input$site)
+  if(input$radio == 1){
+    plot_data <- plot_data[ , c("Site", "Date", "Entero")]
+  } 
+  if(input$radio == 2){
+    plot_data <- plot_data[ , c("Site", "Date", "Sqrt")]
+  }
+  if(input$radio == 3){
+    plot_data <- plot_data[ , c("Site", "Date", "Log")]
+  }
+  colnames(plot_data) <- c("Site", "Date", "Var")
+  plot_data
+})
+
+# Reactive bacteria plot
+
+output$plot <- renderPlot({
+  p <- ggplot(dataset(), aes(x = Date, y = Var)) +
+    geom_point() +
+    geom_smooth(se = F) +
+    theme_bw() +
+    theme(text = element_text(size = 15))
+  
+  if(input$radio == 1){
+    p <- p + geom_hline(yintercept = 110, 
+                        color = "red", 
+                        linetype = "dashed") +
+      labs(x = NULL, y = "Enterococcus Concentration")
+  }
+  
+  if(input$radio == 2){
+    p <- p + geom_hline(yintercept = sqrt(110), 
+                        color = "red", 
+                        linetype = "dashed") +
+      labs(x = NULL, y = "Sqrt(Enterococcus Conc.)")
+  }
+  
+  if(input$radio == 3){
+    p <- p + geom_hline(yintercept = log10(110), 
+                        color = "red", 
+                        linetype = "dashed") +
+      labs(x = NULL, y = "Log(Enterococcus Conc.)")
+  }
+  
+  p
+  
+})
+
+# Dataset for DO plot
+
+dataset_DO <- reactive({
+  plot_DO <- full_do
+  plot_DO <- filter(plot_DO, SiteName == input$site_DO)
+  plot_DO
+})
+
+# Reactive DO plot
+
+output$plot_DO <- renderPlot({
+  p <- ggplot() +
+    labs(x = NULL, y = "Dissolved Oxygen (mg/L)") +
+    theme_bw() +
+    theme(text = element_text(size = 15))
+  p
+  
+  if(input$radio_DO == 1) {
+    p <- p + geom_point(data = dataset_DO(), aes(Date, DO)) +
+      geom_smooth(data = dataset_DO(), aes(Date, DO), se = F) +
+      geom_hline(yintercept = 7, color = "red", linetype = "dashed")
+  }
+  
+  if(input$radio_DO == 2) {
+    p <- p + geom_boxplot(data = dataset_DO(), aes(Month, DO)) +
+      geom_hline(yintercept = 7, color = "red", linetype = "dashed")
+  }
+  
+  p
+
+})
+
+# Prevent inverted dates in plankton plot
+
+observeEvent(input$dates, {
+  start <- input$dates[1]
+  end <- input$dates[2]
+  
+  if(is.na(start)) {
+    start <- "2023-01-01"
+  }
+  
+  if(is.na(end)) {
+    end <- "2025-01-01"
+  }
+
+  if(start > end) {
+    start <- input$dates[2]
+    end <- input$dates[1] 
+  }
+  
+  updateDateRangeInput(
+    session,
+    "dates",
+    start = start,
+    end = end
+  )
+  }
+)
+
+# Dataset for Plankton Plot
+
+dataset_HAB <- reactive({
+  plot_HAB <- habs %>%
+    select(Site, Date, input$site_HAB) %>%
+    filter(Date >= input$dates[1] & Date <= input$dates[2])
+  colnames(plot_HAB)[3] <- "Var" 
+  plot_HAB
+})
+
+# Reactive Plankton Plot
+
+output$plot_HAB <- renderPlot({
+
+    p <- ggplot(dataset_HAB(), aes(Date, Var, color = Site)) +
+      geom_line() +
+      theme_bw() +
+      theme(text = element_text(size = 15))
+  
+    if(input$site_HAB == "Temperature") {
+      p <- p + labs(title = paste(input$site_HAB, "at Morro Bay Sample Sites"), 
+              y = paste(input$site_HAB, "(deg C)"))
+    } else if (input$site_HAB == "Chlorophyll") {
+      p <- p + labs(title = paste(input$site_HAB, "at Morro Bay Sample Sites"), 
+              y = paste(input$site_HAB, "(ug/L)"))
+    } else {
+      p <- p + labs(title = paste(input$site_HAB, "at Morro Bay Sample Sites"), 
+                y = paste(input$site_HAB, "(cells/L)"))
+    }
+  
+p
+  
+})
+
+# Interactive Shorebird survey map
+
+output$bird_map <- renderLeaflet({
+  b <- leaflet() %>% 
+  addTiles(urlTemplate = "https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}") %>%
+  addPolygons(
+    data = bird_sf,
+    layerId = ~FullName,
+    color = "white",
+    opacity = 1,
+    weight = 1,
+    fillColor = ~colorRampPalette(brewer.pal(8, "Dark2"))(15),
+    fillOpacity = 0.5,
+    label = ~FullName,
+    labelOptions = labelOptions(
+      style = list(
+        "color" = "blue",
+        "font-family" = "Arial",
+        "font-size" = "14px",
+        "font-weight" = "bold"
+      )
+    ),
+       highlightOptions = highlightOptions(weight = 3,
+                                        bringToFront = T) 
+  )
+      
+    b
+})
+
+# Reactive plot based on shorebird polygon selection
+
+output$bird_plot <- renderPlot({
+  
+  bp <- ggplot(shorebird, aes(EventDate, TrueTotal, fill = NewCd)) +
+    geom_bar(stat = "identity") +
+    scale_fill_brewer(palette = "Dark2") +
+    labs(x = NULL, y = "Bird Count",
+         fill = "SpeciesCode", title = "All Survey Zones - Select a Zone from the Map") +
+    theme_bw() +
+    theme(text = element_text(size = 15))
+  
+  if(!is.null(input$bird_map_shape_click)) {
+    zone_click <- input$bird_map_shape_click
+    zone_data <- shorebird[shorebird$FullName == zone_click$id, ]
+    
+    if(zone_click$id == "Morro Bay 06" | zone_click$id == "Morro Bay 07") {
+      
+      # displaying data from combo zone if 6 or 7 are selected
+      
+      bp1 <- ggplot(zone_data, aes(EventDate, TrueTotal, fill = NewCd)) +
+        geom_bar(stat = "identity") +
+        scale_fill_brewer(palette = "Dark2") +
+        labs(x = NULL, y = "Bird Count", 
+            fill = "Species Code", title = zone_data$FullName[1]) +
+        theme_bw() +
+        theme(text = element_text(size = 15))
+      
+      bp2 <- ggplot(bird67, aes(EventDate, TrueTotal, fill = NewCd)) +
+        geom_bar(stat = "identity") +
+        scale_fill_brewer(palette = "Dark2") +
+        labs(x = NULL, y = "Bird Count", 
+            fill = "Species Code", title = "Morro Bay Zones 6 and 7 Combined") +
+        theme_bw() +
+        theme(text = element_text(size = 15))
+      
+      bp <- grid.arrange(bp1, bp2, ncol = 1)
+    } else {
+      bp <- ggplot(zone_data, aes(EventDate, TrueTotal, fill = NewCd)) +
+        geom_bar(stat = "identity") +
+        scale_fill_brewer(palette = "Dark2") +
+        labs(x = NULL, y = "Bird Count", 
+            fill = "Species Code", title = zone_data$FullName[1]) +
+        theme_bw() +
+        theme(text = element_text(size = 15))
+    }
+  } 
+  
+  bp
+})
+
+# Color palette selection for Creek Health Leaflet Map
+
+map_pal <- reactive({
+  if(input$creek_analyte == "Nitrate MEQ Scores"){
+    pal <- no3_pal
+    csci_pal <- csci_pal
+  }
+  if(input$creek_analyte == "CSCI Scores"){
+    pal <- csci_pal
+    no3_pal <- no3_pal
+  }
+  pal
+})
+
+# Interactive Creek Health leaflet map
+
+output$creek_map <- renderLeaflet({
+  m <- leaflet() %>% 
+  addTiles(urlTemplate = "https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}") %>%
+  addPolygons(
+    data = watershed_sf,
+    color = "white",
+    fill = F,
+    opacity = 1
+  ) %>%
+  addPolygons(
+    data = creek_seg,
+    layerId = ~GNIS_NAME,
+    fillColor = ~map_pal(),
+    color = ~map_pal(), fillOpacity = 1,
+    label = ~GNIS_NAME,
+    labelOptions = labelOptions(
+      style = list(
+        "color" = "blue",
+        "font-family" = "Arial",
+        "font-size" = "14px",
+        "font-weight" = "bold"
+      )
+    ),
+    highlightOptions = highlightOptions(weight = 3,
+                                        color = "white",
+                                        bringToFront = T) 
+  )
+  m
+})
+
+# Creek health data table output for clicked features
+
+output$clicked_info <- renderTable({
+  seg_click <- input$creek_map_shape_click
+  row <- creek_seg[creek_seg$GNIS_NAME == seg_click$id, ]
+  if(nrow(row) == 0) {
+    n <- tibble(`Explore the Creek Map` = "Click a creek segment to see scores...")
+  } else {
+    sel <- st_drop_geometry(row)
+    tsel <- t(sel)
+    n <- tsel %>%
+      as_tibble() %>%
+      mutate(Description = c("Creek Segment Name", "Average CSCI Score", 
+                             "CSCI Score Description", "Nitrate MEQ Score (All Data)", 
+                             "Nitrate MEQ Grade", "Nitrate Sample Size", 
+                             "Nitrate MEQ (Pre-2014 Data)", "Nitrate MEQ (Post-2014 Data)", 
+                             "MEQ Difference Before/After 2014"), 
+             .before = 1)
+    colnames(n)[2] <- "Segment Info"
+  }
+  n
+})
+
+# Nitrate barplots and CSCI time series
+
+output$clicked_plot <- renderPlot({
+  seg_click <- input$creek_map_shape_click
+  
+  if(input$creek_analyte == "Nitrate MEQ Scores"){
+    
+    dt <- creek_seg[creek_seg$GNIS_NAME == seg_click$id, 
+                    c("GNIS_NAME", "NITRATE_PRE", "NITRATE_POST")]
+    dt <- st_drop_geometry(dt)
+    d.tib <- tibble(Time = c("Pre-2014", "Post-2014"),
+                    Nitrate = c(dt[1, 2], dt[1, 3]),
+                    Nitrate_char = as.character(c(dt[1, 2], dt[1, 3])))
+    d.tib$Time <- factor(d.tib$Time, levels = c("Pre-2014", "Post-2014"))
+    d.tib <- mutate(d.tib, Nitrate_0 = replace_na(Nitrate, 0),
+                    Nitrate_lab = replace(Nitrate_char, is.na(Nitrate_char), "No Data"))
+    
+    p <- ggplot(d.tib, aes(Time, Nitrate_0, fill = Time)) +
+      geom_bar(stat = "identity") +
+      geom_text(aes(label = Nitrate_lab), vjust = -0.5) +
+      scale_y_continuous(limits = c(0, 100)) +
+      labs(x = NULL, y = "Nitrate MEQ Score", title = "") +
+      theme_bw() +
+      theme(text = element_text(size = 15))
+    
+  }
+  
+  if(input$creek_analyte == "CSCI Scores"){
+    
+    empty <- tibble(x = 1, y = 1, text = "Not Enough CSCI Scores to Display")
+    alt <- tibble(Alt = seg_click$id)
+    
+    if(length(seg_click$id) >= 1) {
+      if(seg_click$id %in% colnames(csci)){
+        dt <- csci[ , c("Year", seg_click$id)]
+        p <- plot_csci(dt)
+      
+      } else {
+        p <- ggplot(empty) +
+          geom_text(aes(x, y, label = text)) +
+          labs(x = NULL, y = NULL, title = "") +
+          theme_bw() +
+          theme(legend.position = "none",
+              text = element_text(size = 15))
+      } 
+    } else {
+      p <- ggplot(empty) +
+          geom_text(aes(x, y, label = text)) +
+          labs(x = NULL, y = NULL) +
+          theme_bw() +
+          theme(legend.position = "none",
+              text = element_text(size = 15))
+    }
+    
+    p
+  }
+  
+  p
+  
+})
+
+# Dataset for Bay Fish plot
+
+dataset_fish <- reactive({
+  plot_fish <- bay.fish %>%
+    filter(Habitat == input$site_fish)
+  
+  if(plot_fish[1, 1] == "Shoreline"){
+    plot_fish$Species <- factor(plot_fish$Species, 
+                            levels = c("Anchovy", "Arrow goby", "Bay pipefish",
+                                       "CA killifish", "Shiner perch",
+                                       "Staghorn sculpin", "Speckled sanddab",
+                                       "Topsmelt silverside", "Other"))
+  }
+  
+  if(plot_fish[1, 1] == "Tidal Flat"){
+    plot_fish$Species <- factor(plot_fish$Species, 
+                                levels = c("Speckled sanddab", "Arrow goby",
+                                       "Shiner perch", "Staghorn sculpin",
+                                       "English sole", "Bay pipefish", "Other"))
+                                
+  } 
+  
+  if(plot_fish[1, 1] == "Open Channel"){
+    plot_fish$Species <- factor(plot_fish$Species, 
+                                levels = c("Topsmelt silverside", "Tubesnout",
+                                       "Speckled sanddab", "Shiner perch",
+                                       "Anchovy", "Staghorn sculpin", 
+                                       "English sole", "Bay pipefish",
+                                       "CA lizardfish", "Other"))
+  }
+  
+  plot_fish
+})
+
+# Reactive plot of bay fisheries
+
+output$plot_fish <- renderPlot({
+  fp <- ggplot(dataset_fish(), aes(Eelgrass, Percent, fill = Species)) +
+    geom_bar(stat = "identity") +
+    scale_fill_brewer(palette = "Paired") +
+    labs(y = "Percent of Composition (%)", x = "Eelgrass Abundance", 
+        title = paste("Species Composition in", input$site_fish, "Habitat")) +
+    theme_bw() +
+    theme(plot.title = element_text(hjust = 0.5),
+          text = element_text(size = 15))
+  fp
+})
+
+# Handling downloads
+
+dataset_select <- reactive({
+  if(input$data_select == "Bacteria") {
+    dwnld <- full_bac
+    colnames(dwnld) <- c("Site Code", "Site Name", "Date", 
+                         "Enterococcus Concentration (MPN/100mL)",
+                         "Sqrt Entero Concentration (MPN/100mL)",
+                         "Log Entero Concentration (MPN/100mL)")
+  } else if(input$data_select == "Oxygen") {
+    dwnld <- full_do
+    colnames(dwnld) <- c("Date", "Site Code", "Site Name",
+                         "DO Concentration (mg/L)", "Month")
+  } else if(input$data_select == "Shorebirds") {
+    dwnld <- shorebird %>%
+      select(-c(ObservationNote, Researcher, OtherObserversNames,
+                OtherObserversCount, ReplaceCd))
+    colnames(dwnld)[11] <- "BirdCount_RecalculatedFromGroupedIDs"
+    colnames(dwnld)[12] <- "BirdCd_ForPlot"
+    colnames(dwnld)[13] <- "SamplingUnitName_Full"
+  } else if (input$data_select == "Bay Fish") {
+    dwnld <- bay.fish %>%
+      mutate(DateRange = case_when(
+        Eelgrass == "Low" ~ "2016-2017",
+        Eelgrass == "Medium" ~ "2006-2008",
+        Eelgrass == "High" ~ "2023-2024"
+      ))
+  }
+  
+  dwnld
+})
+
+# Include disclaimer statement in downloads
+
+output$data_download <- downloadHandler(
+  filename = "MBNEP_Data_Download.csv",
+  content = function(file) {
+    writeLines("DISCLAIMER: The data is informational and not intended to be used for regulatory or decision-making activities.", con = file)
+    
+    write.table(dataset_select(), file = file, sep = ",",
+                row.names = FALSE, col.names = TRUE, append = TRUE)
+  }
+)
+
+```

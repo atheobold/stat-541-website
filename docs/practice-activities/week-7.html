@@ -310,8 +310,20 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#accessing-the-practice-activity" id="toc-accessing-the-practice-activity" class="nav-link active" data-scroll-target="#accessing-the-practice-activity">Accessing the Practice Activity</a></li>
+  <li><a href="#overview" id="toc-overview" class="nav-link" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#creek-health" id="toc-creek-health" class="nav-link" data-scroll-target="#creek-health">Creek Health</a></li>
+  <li><a href="#bacteria" id="toc-bacteria" class="nav-link" data-scroll-target="#bacteria">Bacteria</a></li>
+  <li><a href="#phytoplankton" id="toc-phytoplankton" class="nav-link" data-scroll-target="#phytoplankton">Phytoplankton</a></li>
+  <li><a href="#shore-birds" id="toc-shore-birds" class="nav-link" data-scroll-target="#shore-birds">Shore Birds</a></li>
+  <li><a href="#bay-fish" id="toc-bay-fish" class="nav-link" data-scroll-target="#bay-fish">Bay Fish</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/practice-activities/week-7.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -336,12 +348,77 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<!-- Nick's dashboard: https://nasoares.shinyapps.io/lab-4/ -->
-<!-- Source code: https://github.com/nasoares/lab-4/blob/main/wellcome_dashboard.qmd -->
-<!-- Alisa's dashboard: https://alisa-krasilnikov.shinyapps.io/lab-4/ -->
-<!-- Source code: https://github.com/Alisa-Krasilnikov/lab-4/blob/main/lab-4.qmd -->
+<p>This week we’re going to explore an interactive dashboard made by a previous STAT 541 student! Nicholas Soares works for the Morro Bay National Estuary Program, and created this “State of the Bay” dashboard:</p>
+<p><a href="https://mbnep-state-of-the-bay.shinyapps.io/data_dashboard/" class="uri">https://mbnep-state-of-the-bay.shinyapps.io/data_dashboard/</a></p>
+<p>We’re going to explore how interactivity is used throughout the dashboard, so we recommend you have <strong>both</strong> the source file and the public dashboard opened up!</p>
+<section id="accessing-the-practice-activity" class="level2">
+<h2 class="anchored" data-anchor-id="accessing-the-practice-activity">Accessing the Practice Activity</h2>
+<p>Download the materials for the activity here: <a href="student/pa-7.zip" download=""><code>pa-7.zip</code></a></p>
+<p>This <code>.zip</code> folder contains:</p>
+<ol type="1">
+<li>the Quarto file (<code>pa-7.qmd</code>)</li>
+<li>the source file for creating the interactive dashboard (<code>morro-bay-estuary-dash.qmd</code>)</li>
+</ol>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Be sure to save the files inside your Week 7 folder of your STAT 431 (or 541) folder!</p>
+</div>
+</div>
+</section>
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<ol type="1">
+<li><p>In the word cloud card, where do the options for “Pick your favorite:” come from?</p></li>
+<li><p>What function is used to update the word cloud based on the option input by the user?</p></li>
+</ol>
+</section>
+<section id="creek-health" class="level2">
+<h2 class="anchored" data-anchor-id="creek-health">Creek Health</h2>
+<ol start="3" type="1">
+<li><p>Where is the <code>creek_analyte</code> input object used? Specifically, how is this object used?</p></li>
+<li><p>What font family are the labels for the creek segments?</p></li>
+<li><p>Where is information for the creek segment clicked on in the <code>leaflet</code> map stored?</p></li>
+</ol>
+</section>
+<section id="bacteria" class="level2">
+<h2 class="anchored" data-anchor-id="bacteria">Bacteria</h2>
+<ol start="6" type="1">
+<li><p>What function was used to add a message about the transformations above the buttons for “Select Transformation”?</p></li>
+<li><p>What values do the radio buttons take on?</p></li>
+<li><p>Are are the plotting data adjusted based on the radio button that is selected?</p></li>
+</ol>
+</section>
+<section id="phytoplankton" class="level2">
+<h2 class="anchored" data-anchor-id="phytoplankton">Phytoplankton</h2>
+<ol start="9" type="1">
+<li><p>What function is used to allow the user to select the dates that should be visualized in the plot?</p></li>
+<li><p>How are these dates stored? Specifically, are they stored individually? As a vector of inputs? As a list?</p></li>
+</ol>
+</section>
+<section id="shore-birds" class="level2">
+<h2 class="anchored" data-anchor-id="shore-birds">Shore Birds</h2>
+<ol start="11" type="1">
+<li><p>Which two zones produce <strong>two</strong> composition plots (an individual plot and a combined plot) when clicked on?</p></li>
+<li><p>What color palette is used for the filled barplot?</p></li>
+</ol>
+</section>
+<section id="bay-fish" class="level2">
+<h2 class="anchored" data-anchor-id="bay-fish">Bay Fish</h2>
+<ol start="13" type="1">
+<li><p>The <code>"Bay pipefish"</code> is in a different position depending on the habitat that was selected (i.e., it is third for <code>Shoreline</code>, second to last for <code>Tidal Flat</code>, and third to last for <code>Open Channel</code>). How does the ordering of the fish species change based on the habitat input?</p></li>
+<li><p>What color palette is used for the filled barplot?</p></li>
+</ol>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -765,7 +842,7 @@ ul.task-list li input[type="checkbox"] {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/practice-activities/week-7.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/practice-activities/week-7.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item">
