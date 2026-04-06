@@ -149,8 +149,8 @@ website:
         - text: "Week 6: In-Class Activity"
           href: practice-activities/week-6.qmd
         - href: unit-2/quarto-dashboard-dynamic.qmd
-        #- text: "Week 7: In-Class Activity"
-        #  href: practice-activities/week-7.qmd
+        - text: "Week 7: In-Class Activity"
+          href: practice-activities/week-7.qmd
 
     - id: unit-3
       title: "Unit 3"

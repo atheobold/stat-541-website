@@ -871,56 +871,88 @@
     "href": "practice-activities/week-7.html",
     "title": "Practice Activity Week 7",
     "section": "",
-    "text": "This week we’re going to explore an interactive dashboard made by a previous STAT 541 student! Nicholas Soares works for the Morro Bay National Estuary Program, and created this “State of the Bay” dashboard:\nhttps://mbnep-state-of-the-bay.shinyapps.io/data_dashboard/\nWe’re going to explore how interactivity is used throughout the dashboard, so we recommend you have both the source file and the public dashboard opened up!"
+    "text": "This week we’re going to explore an interactive dashboard made by a previous STAT 541 student! Nicholas Soares works for the Morro Bay National Estuary Program, and created this “State of the Bay” dashboard:\nhttps://mbnep-state-of-the-bay.shinyapps.io/data_dashboard/\nWe’re going to explore how interactivity is used throughout the dashboard, so we recommend you have both the source file and the public dashboard opened up!",
+    "crumbs": [
+      "Unit 2 - Professional Deliverables",
+      "Week 7: In-Class Activity"
+    ]
   },
   {
     "objectID": "practice-activities/week-7.html#accessing-the-practice-activity",
     "href": "practice-activities/week-7.html#accessing-the-practice-activity",
     "title": "Practice Activity Week 7",
     "section": "Accessing the Practice Activity",
-    "text": "Accessing the Practice Activity\nDownload the materials for the activity here: pa-7.zip\nThis .zip folder contains:\n\nthe Quarto file (pa-7.qmd)\nthe source file for creating the interactive dashboard (morro-bay-estuary-dash.qmd)\n\n\n\n\n\n\n\nImportant\n\n\n\nBe sure to save the files inside your Week 7 folder of your STAT 431 (or 541) folder!"
+    "text": "Accessing the Practice Activity\nDownload the materials for the activity here: pa-7.zip\nThis .zip folder contains:\n\nthe Quarto file (pa-7.qmd)\nthe source file for creating the interactive dashboard (morro-bay-estuary-dash.qmd)\n\n\n\n\n\n\n\nImportant\n\n\n\nBe sure to save the files inside your Week 7 folder of your STAT 431 (or 541) folder!",
+    "crumbs": [
+      "Unit 2 - Professional Deliverables",
+      "Week 7: In-Class Activity"
+    ]
   },
   {
     "objectID": "practice-activities/week-7.html#overview",
     "href": "practice-activities/week-7.html#overview",
     "title": "Practice Activity Week 7",
     "section": "Overview",
-    "text": "Overview\n\nIn the word cloud card, where do the options for “Pick your favorite:” come from?\nWhat function is used to update the word cloud based on the option input by the user?"
+    "text": "Overview\n\nIn the word cloud card, where do the options for “Pick your favorite:” come from?\nWhat function is used to update the word cloud based on the option input by the user?",
+    "crumbs": [
+      "Unit 2 - Professional Deliverables",
+      "Week 7: In-Class Activity"
+    ]
   },
   {
     "objectID": "practice-activities/week-7.html#creek-health",
     "href": "practice-activities/week-7.html#creek-health",
     "title": "Practice Activity Week 7",
     "section": "Creek Health",
-    "text": "Creek Health\n\nWhere is the creek_analyte input object used? Specifically, how is this object used?\nWhat font family are the labels for the creek segments?\nWhere is information for the creek segment clicked on in the leaflet map stored?"
+    "text": "Creek Health\n\nWhere is the creek_analyte input object used? Specifically, how is this object used?\nWhat font family are the labels for the creek segments?\nWhere is information for the creek segment clicked on in the leaflet map stored?",
+    "crumbs": [
+      "Unit 2 - Professional Deliverables",
+      "Week 7: In-Class Activity"
+    ]
   },
   {
     "objectID": "practice-activities/week-7.html#bacteria",
     "href": "practice-activities/week-7.html#bacteria",
     "title": "Practice Activity Week 7",
     "section": "Bacteria",
-    "text": "Bacteria\n\nWhat function was used to add a message about the transformations above the buttons for “Select Transformation”?\nWhat values do the radio buttons take on?\nAre are the plotting data adjusted based on the radio button that is selected?"
+    "text": "Bacteria\n\nWhat function was used to add a message about the transformations above the buttons for “Select Transformation”?\nWhat values do the radio buttons take on?\nAre are the plotting data adjusted based on the radio button that is selected?",
+    "crumbs": [
+      "Unit 2 - Professional Deliverables",
+      "Week 7: In-Class Activity"
+    ]
   },
   {
     "objectID": "practice-activities/week-7.html#phytoplankton",
     "href": "practice-activities/week-7.html#phytoplankton",
     "title": "Practice Activity Week 7",
     "section": "Phytoplankton",
-    "text": "Phytoplankton\n\nWhat function is used to allow the user to select the dates that should be visualized in the plot?\nHow are these dates stored? Specifically, are they stored individually? As a vector of inputs? As a list?"
+    "text": "Phytoplankton\n\nWhat function is used to allow the user to select the dates that should be visualized in the plot?\nHow are these dates stored? Specifically, are they stored individually? As a vector of inputs? As a list?",
+    "crumbs": [
+      "Unit 2 - Professional Deliverables",
+      "Week 7: In-Class Activity"
+    ]
   },
   {
     "objectID": "practice-activities/week-7.html#shore-birds",
     "href": "practice-activities/week-7.html#shore-birds",
     "title": "Practice Activity Week 7",
     "section": "Shore Birds",
-    "text": "Shore Birds\n\nWhich two zones produce two composition plots (an individual plot and a combined plot) when clicked on?\nWhat color palette is used for the filled barplot?"
+    "text": "Shore Birds\n\nWhich two zones produce two composition plots (an individual plot and a combined plot) when clicked on?\nWhat color palette is used for the filled barplot?",
+    "crumbs": [
+      "Unit 2 - Professional Deliverables",
+      "Week 7: In-Class Activity"
+    ]
   },
   {
     "objectID": "practice-activities/week-7.html#bay-fish",
     "href": "practice-activities/week-7.html#bay-fish",
     "title": "Practice Activity Week 7",
     "section": "Bay Fish",
-    "text": "Bay Fish\n\nThe \"Bay pipefish\" is in a different position depending on the habitat that was selected (i.e., it is third for Shoreline, second to last for Tidal Flat, and third to last for Open Channel). How does the ordering of the fish species change based on the habitat input?\nWhat color palette is used for the filled barplot?"
+    "text": "Bay Fish\n\nThe \"Bay pipefish\" is in a different position depending on the habitat that was selected (i.e., it is third for Shoreline, second to last for Tidal Flat, and third to last for Open Channel). How does the ordering of the fish species change based on the habitat input?\nWhat color palette is used for the filled barplot?",
+    "crumbs": [
+      "Unit 2 - Professional Deliverables",
+      "Week 7: In-Class Activity"
+    ]
   },
   {
     "objectID": "practice-activities/week-5.html",
