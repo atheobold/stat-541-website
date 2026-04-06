@@ -23,12 +23,14 @@ data
     * **At least one** of these summaries need to include iteration (either 
     inside or outside of a function).
 
--   Summary tables that *at a minimum* have:
+
+- **Stat 541 only:** Summary tables must *at a minimum* have:
     * Formatted values (e.g., decimals, percentages, currencies)
     * Boldface headers
     * Captions
+    
 
 ::: {.callout-important}
-Your report should contain **at least two** custom functions (to produce 
+In total, your report should contain **at least two** custom functions (to produce 
 data summaries), and **at least two** places where iteration was used.
 :::

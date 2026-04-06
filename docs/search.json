@@ -1739,9 +1739,9 @@
   {
     "objectID": "project/example-project-olympics/week-2.html",
     "href": "project/example-project-olympics/week-2.html",
-    "title": "Project Checkpoint 2",
+    "title": "Project Checkpoint 2 - Example",
     "section": "",
-    "text": "Now that you have explored your dataset and posed research questions about these data, this week we are focused on producing summary statistics that could be used to also address your research question. These summary statistics will allow you to apply your function writing and iteration skills!",
+    "text": "Note\n\n\n\nNote that this example document provides only two examples of data summaries; your project step requires a total of four.\nAlthough the instructions don’t explicitly say to interpret your results, you should definitely make some notes for yourself about what you learn from these data summaries, to help inform your subsequent steps.\nlibrary(tidyverse)\nSince you are building on your previous report, your dataset introduction and description from last week should still be present in your file! I have omitted this here for simplicity.",
     "crumbs": [
       "Projects",
       "*Week 2: Example Project*"
@@ -1963,7 +1963,7 @@
     "href": "project/week-2.html#by-the-end-of-the-week-your-updated-report-should-contain",
     "title": "Project Checkpoint 2",
     "section": "By the end of the week, your updated report should contain:",
-    "text": "By the end of the week, your updated report should contain:\n\nTwo data summaries that use existing (unmodified) columns in the data\n\nAt least one of these summaries need to be produced with a custom function.\nAt least one of these summaries need to include iteration (either inside or outside of a function).\n\nTwo data summaries that modify columns from the original data\n\nAt least one of these summaries need to be produced with a custom function.\nAt least one of these summaries need to include iteration (either inside or outside of a function).\n\nSummary tables that at a minimum have:\n\nFormatted values (e.g., decimals, percentages, currencies)\nBoldface headers\nCaptions\n\n\n\n\n\n\n\n\nImportant\n\n\n\nYour report should contain at least two custom functions (to produce data summaries), and at least two places where iteration was used.",
+    "text": "By the end of the week, your updated report should contain:\n\nTwo data summaries that use existing (unmodified) columns in the data\n\nAt least one of these summaries need to be produced with a custom function.\nAt least one of these summaries need to include iteration (either inside or outside of a function).\n\nTwo data summaries that modify columns from the original data\n\nAt least one of these summaries need to be produced with a custom function.\nAt least one of these summaries need to include iteration (either inside or outside of a function).\n\nStat 541 only: Summary tables must at a minimum have:\n\nFormatted values (e.g., decimals, percentages, currencies)\nBoldface headers\nCaptions\n\n\n\n\n\n\n\n\nImportant\n\n\n\nIn total, your report should contain at least two custom functions (to produce data summaries), and at least two places where iteration was used.",
     "crumbs": [
       "Projects",
       "Week 2: Data Summary Functions"
@@ -2506,5 +2506,69 @@
       "Unit 3 - Package Development",
       "Code Speed"
     ]
+  },
+  {
+    "objectID": "project/example-project-olympics/week-2.html#athlete-gender-proportions-annually",
+    "href": "project/example-project-olympics/week-2.html#athlete-gender-proportions-annually",
+    "title": "Project Checkpoint 2 - Example",
+    "section": "Athlete gender proportions annually",
+    "text": "Athlete gender proportions annually\nNew column: ratio of female to male athletes\nDoes not require iteration or custom function.\n\ngender_props &lt;- olympics |&gt;\n  group_by(year, games, team) |&gt;\n  summarize(\n    count_male_athletes = sum(sex == \"M\", na.rm = TRUE),\n    count_female_athletes = sum(sex == \"F\", na.rm = TRUE),\n    .groups = \"drop\"\n  ) |&gt;\n  mutate(\n    prop_female = count_female_athletes/(count_female_athletes + count_male_athletes)\n  )\n\ngender_props |&gt;\n  group_by(year) |&gt;\n  summarize(\n    avg_prop_female = mean(prop_female, na.rm = TRUE)\n  )\n\n\n\n\nyear\navg_prop_female\n\n\n\n1896\n0.0000000\n\n\n1900\n0.0098180\n\n\n1904\n0.0065137\n\n\n1906\n0.0245990\n\n\n1908\n0.0132723\n\n\n1912\n0.0228359\n\n\n1920\n0.0685532\n\n\n1924\n0.0819500\n\n\n1928\n0.0438497\n\n\n1932\n0.0976862\n\n\n1936\n0.0549354\n\n\n1948\n0.0519928\n\n\n1952\n0.0805067\n\n\n1956\n0.0742879\n\n\n1960\n0.0980245\n\n\n1964\n0.0857484\n\n\n1968\n0.1288126\n\n\n1972\n0.1203428\n\n\n1976\n0.1664529\n\n\n1980\n0.1644709\n\n\n1984\n0.1547719\n\n\n1988\n0.1758988\n\n\n1992\n0.2239043\n\n\n1994\n0.2463595\n\n\n1996\n0.2916848\n\n\n1998\n0.2429780\n\n\n2000\n0.3895312\n\n\n2002\n0.2732094\n\n\n2004\n0.3951849\n\n\n2006\n0.3260694\n\n\n2008\n0.4271925\n\n\n2010\n0.3368809\n\n\n2012\n0.4291633\n\n\n2014\n0.2958796\n\n\n2016\n0.4341882\n\n\n\n\n\n\nAs we probably expected, the proportion of female athletes has gone up with time!\n\n\n\n\n\n\nNote\n\n\n\nIdeas to take this further:\n\nCorrect for team sports having more athletes.\nThink about how to handle anomalies in the country team names, e.g. “USSR” vs. “Russia”.\nLimit the data to one or two countries and compare them.\nUse gt() to color the table in a way that tells the story of patterns over time.",
+    "crumbs": [
+      "Projects",
+      "*Week 2: Example Project*"
+    ]
+  },
+  {
+    "objectID": "project/example-project-olympics/week-2.html#female-medals-by-country",
+    "href": "project/example-project-olympics/week-2.html#female-medals-by-country",
+    "title": "Project Checkpoint 2 - Example",
+    "section": "Female medals by country",
+    "text": "Female medals by country\nNo new columns\nRequires custom function and iteration\n\n# Function to count medals but not overcount team sports\n\nnum_female_gold &lt;- function(country) {\n  \n  female_medals &lt;- olympics |&gt;\n    filter(team == country,\n           sex == \"F\") |&gt;\n    distinct(games, event, medal) |&gt;\n    pull(medal)\n  \n  \n  sum(female_medals == \"Gold\", na.rm = TRUE)\n  \n}\n\n\nolympics |&gt;\n  distinct(team) |&gt;\n  mutate(\n    n_f_gold = map_dbl(team, num_female_gold)\n  ) |&gt;\n  slice_max(n_f_gold, n = 10)\n\n\n\n\nteam\nn_f_gold\n\n\n\nUnited States\n300\n\n\nChina\n125\n\n\nSoviet Union\n124\n\n\nGermany\n103\n\n\nEast Germany\n94\n\n\nRussia\n82\n\n\nAustralia\n64\n\n\nNetherlands\n61\n\n\nRomania\n58\n\n\nGreat Britain\n56\n\n\n\n\n\n\nThis follows about the same patterns as overall medals, but maybe if we compare to male gold counts we would find some standout countries. For example, Romania is on this Top 10 but probably not in the overall counts.\n\n\n\n\n\n\nNote\n\n\n\nIdeas to take this further:\n\nCollect counts for silver and bronze medals as well, not just gold.\nCollect a ratio of female to male medals, to get a sense of which countries have a disproportionately low number of female medal winners.\nCollect this data over time as well to look for countries that evolve.\n(This actually could have been done in a pipeline! But, the function approach makes it easier to incorporate some of the upgrades above.)",
+    "crumbs": [
+      "Projects",
+      "*Week 2: Example Project*"
+    ]
+  },
+  {
+    "objectID": "exams/reading-quizzes/generate_question_banks.html",
+    "href": "exams/reading-quizzes/generate_question_banks.html",
+    "title": "make q banks",
+    "section": "",
+    "text": "library(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.2.0     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.2     ✔ tibble    3.3.0\n✔ lubridate 1.9.4     ✔ tidyr     1.3.1\n✔ purrr     1.0.4     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\n\n\nextract_check_ins &lt;- function(path) {\n  \n   # Read file\n  lines &lt;- readLines(path, warn = FALSE)\n  \n  # Find check ins\n  starts &lt;- lines |&gt;\n    str_detect(\"callout-check-in\") |&gt;\n    which()\n  \n  # Find all div ends\n  ends &lt;- lines |&gt; str_detect(\":::\") |&gt; which()\n  \n  \n  # Find closest div ends to the callout start\n  ends_actual &lt;- map_dbl(starts, ~min(ends[ends &gt; .x]))\n  \n  # yoink out all check ins\n  map2(starts, ends_actual, ~lines[(.x+1):(.y-1)])\n}\n\nNote to self, loop this for all weeks or whatever.\n\nw1_files &lt;- c(\"writing-functions.qmd\", \"iterating-functions.qmd\", \"efficient-code.qmd\")\nw1_paths &lt;- map_chr(w1_files, ~here::here(\"unit-1\", .x))\n\nres &lt;- list()\n\nfor (i in 1:length(w1_paths)) {\n  \n  path &lt;- w1_paths[i]\n  name &lt;- w1_files[i] |&gt; str_remove(\"\\\\.qmd\")\n  name_divider &lt;- paste0(\"-----------------\", name, \"-------------------\")\n  \n  res &lt;- c(res, name_divider, extract_check_ins(path))\n}\n\nres |&gt;\n  map(~str_c(.x, collapse = \"\\n\")) |&gt;\n  str_c(collapse = \"\\n\\n\") |&gt;\n  writeLines(here::here(\"exams\", \"reading-quizzes\", \"week-2\", \"question_bank.txt\"))"
+  },
+  {
+    "objectID": "exams/reading-quizzes/week-2/week-2-quiz.html",
+    "href": "exams/reading-quizzes/week-2/week-2-quiz.html",
+    "title": "Reading Quiz: Week 2",
+    "section": "",
+    "text": "Consider the function:\n\nadd_or_subtract &lt;- function(first_num, \n                            second_num = 2, \n                            type = \"add\") {\n  \n  if (type == \"add\") {\n    first_num + second_num\n  } else if (type == \"subtract\") {\n    first_num - second_num\n  } else {\n    stop(\"Please choose `add` or `subtract` as the type.\")\n  }\n  \n}\n\nWhat will be returned by this function call?\n\nadd_or_subtract(5, 6, type = \"multiply\")\n\n\n\n1\n-1\n30\nAn error defined in the function add_or_subtract()\n\nAn error defined in a different function, that is called from inside add_or_subtract()"
+  },
+  {
+    "objectID": "exams/reading-quizzes/week-2/week-2-quiz.html#q1",
+    "href": "exams/reading-quizzes/week-2/week-2-quiz.html#q1",
+    "title": "Reading Quiz: Week 2",
+    "section": "",
+    "text": "Consider the function:\n\nadd_or_subtract &lt;- function(first_num, \n                            second_num = 2, \n                            type = \"add\") {\n  \n  if (type == \"add\") {\n    first_num + second_num\n  } else if (type == \"subtract\") {\n    first_num - second_num\n  } else {\n    stop(\"Please choose `add` or `subtract` as the type.\")\n  }\n  \n}\n\nWhat will be returned by this function call?\n\nadd_or_subtract(5, 6, type = \"multiply\")\n\n\n\n1\n-1\n30\nAn error defined in the function add_or_subtract()\n\nAn error defined in a different function, that is called from inside add_or_subtract()"
+  },
+  {
+    "objectID": "exams/reading-quizzes/week-2/week-2-quiz.html#q2",
+    "href": "exams/reading-quizzes/week-2/week-2-quiz.html#q2",
+    "title": "Reading Quiz: Week 2",
+    "section": "Q2",
+    "text": "Q2\nFill in the blanks in the code below, which produces a table indicating whether a given column is numeric.\n\ndiamonds |&gt; \n  map______(.f = __________)\n\n\n\n  carat     cut   color clarity   depth   table   price       x       y       z \n   TRUE   FALSE   FALSE   FALSE    TRUE    TRUE    TRUE    TRUE    TRUE    TRUE \n\n\n\n\nFirst blank:\n\nint\npurrr\nchr\nlgl\n2\n\n\nSecond blank:\n\nis.numeric\nis.numeric()\nis.numeric(x)\nfunction(x) x == is.numeric"
+  },
+  {
+    "objectID": "exams/reading-quizzes/week-2/week-2-quiz.html#q3",
+    "href": "exams/reading-quizzes/week-2/week-2-quiz.html#q3",
+    "title": "Reading Quiz: Week 2",
+    "section": "Q3",
+    "text": "Q3\nWhy does the code below produce an error?\n\nx &lt;- c(1, 2, 3, 4, 16, 25)\n\nf &lt;- function(x) {\n  if (x &gt; 0) x else 0\n}\n\nf(x)\n\n\nBecause the function f() is missing a return() statement, so R throws an error.\nBecause if() only works with numeric values, and x is treated as a list.\nBecause if() can only evaluate a single TRUE/FALSE value, but x &gt; 0 returns a vector.\nBecause the function argument x has the same name as the global variable x, causing a naming conflict."
+  },
+  {
+    "objectID": "exams/reading-quizzes/week-2/week-2-quiz.html#q4---stat-541-only",
+    "href": "exams/reading-quizzes/week-2/week-2-quiz.html#q4---stat-541-only",
+    "title": "Reading Quiz: Week 2",
+    "section": "Q4 - Stat 541 only",
+    "text": "Q4 - Stat 541 only\nIn R, when exactly does the evaluation of a function argument occur?\n\n\nImmediately when the function is called\nOnly if and when the argument’s value is actually used within the function body\nWhen the function is compiled\nOnly after all other arguments have been evaluated"
   }
 ]

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Project Checkpoint 5 – Advanced R</title>
+<title>STAT 331 Review – Advanced R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,33 +23,32 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<link href="../../project/week-6.html" rel="next">
-<link href="../../project/week-5.html" rel="prev">
-<link href="../../images/cat-monsters-horst.png" rel="icon" type="image/png">
-<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b651517ce65839d647a86e2780455cfb.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-63767328852000e01d7c9d44355c1f36.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-5f858a84010510139e49c405efe9b486.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-63767328852000e01d7c9d44355c1f36.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
-<script src="../../site_libs/quarto-contrib/flourish-0.0.1/injectFlourishes.js"></script>
-<script src="../../site_libs/quarto-contrib/flourish-0.0.1/flourish.js"></script>
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./1810-review/setup-workflow.html" rel="next">
+<link href="./images/cat-monsters-horst.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b651517ce65839d647a86e2780455cfb.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-63767328852000e01d7c9d44355c1f36.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-5f858a84010510139e49c405efe9b486.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-63767328852000e01d7c9d44355c1f36.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/flourish-0.0.1/injectFlourishes.js"></script>
+<script src="site_libs/quarto-contrib/flourish-0.0.1/flourish.js"></script>
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -250,9 +249,9 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../../images/cat-monsters-horst.png" alt="" class="navbar-logo light-content">
-    <img src="../../images/cat-monsters-horst.png" alt="" class="navbar-logo dark-content">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    <img src="./images/cat-monsters-horst.png" alt="" class="navbar-logo light-content">
+    <img src="./images/cat-monsters-horst.png" alt="" class="navbar-logo dark-content">
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -262,35 +261,35 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="../../index.html" aria-current="page"> 
+    <a class="nav-link active" href="./index.html" aria-current="page"> 
 <span class="menu-text">Overview</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../course-materials/calendar.html"> 
+    <a class="nav-link" href="./course-materials/calendar.html"> 
 <span class="menu-text">Schedule</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../course-materials/syllabus.html"> 
+    <a class="nav-link" href="./course-materials/syllabus.html"> 
 <span class="menu-text">Syllabus</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../1810-review.html"> 
+    <a class="nav-link" href="./1810-review.html"> 
 <span class="menu-text">STAT 331 Review</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../unit-1.html"> 
+    <a class="nav-link" href="./unit-1.html"> 
 <span class="menu-text">Unit 1 - Complex Analyses</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../unit-2.html"> 
+    <a class="nav-link" href="./unit-2.html"> 
 <span class="menu-text">Unit 2 - Professional Deliverables</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../unit-3.html"> 
+    <a class="nav-link" href="./unit-3.html"> 
 <span class="menu-text">Unit 3 - Package Development</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../project.html"> 
+    <a class="nav-link" href="./project.html"> 
 <span class="menu-text">Projects</span></a>
   </li>  
 </ul>
@@ -312,7 +311,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../project/example-project-olympics/week-5.html"><em>Week 5: Example Project</em></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./1810-review.html">STAT 331 Review</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -323,123 +322,57 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="../../index.html" class="sidebar-logo-link">
+      <a href="./index.html" class="sidebar-logo-link">
       </a>
       </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../project.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Projects</span></a>
+  <a href="./1810-review.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">STAT 331 Review</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../project/week-0.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 0: Choose a Dataset</span></a>
+  <a href="./1810-review/setup-workflow.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Installing / Updating R &amp; RStudio</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../group-stuff/contract.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Group Collaboration Expectations</span></a>
+  <a href="./1810-review/ggplot-review.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><code>ggplot</code> Review</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../project/week-1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 1: Making a Game Plan</span></a>
+  <a href="./1810-review/dplyr-review.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><code>dplyr</code> Review</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../project/example-project-olympics/week-1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><em>Week 1: Example Project</em></span></a>
+  <a href="./1810-review/tidyr-review.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Joins and Transformations Review</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../project/week-2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 2: Data Summary Functions</span></a>
+  <a href="./1810-review/quarto-review.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Quarto Review</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../project/example-project-olympics/week-2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><em>Week 2: Example Project</em></span></a>
+  <a href="./1810-review/setup-version-control.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Version Control with Git and GitHub</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../project/week-3.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 3: Acquiring New Data</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../project/example-project-olympics/week-3.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><em>Week 3: Example Project</em></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../project/week-4.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 4: Advanced Visualizations</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../project/example-project-olympics/week-4.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><em>Week 4: Example Project</em></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../project/project-1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Project 1 Final Deliverable</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../project/week-5.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 5: First Draft Dashboard</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../project/example-project-olympics/week-5.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><em>Week 5: Example Project</em></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../project/week-6.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 6: Dynamic Plots &amp; Country Data</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../project/example-project-olympics/week-6.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><em>Week 6: Example Project</em></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../project/week-7.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 7: Interactive Dashboard</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../project/example-project-olympics/week-7.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><em>Week 7: Example Project</em></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../project/project-2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Project 2 Final Deliverable</span></a>
+  <a href="./practice-activities/week-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 1 In-Class Activity</span></a>
   </div>
 </li>
     </ul>
@@ -447,17 +380,8 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#your-one-page-dashboard-should-include-the-following-structural-elements" id="toc-your-one-page-dashboard-should-include-the-following-structural-elements" class="nav-link active" data-scroll-target="#your-one-page-dashboard-should-include-the-following-structural-elements">Your (one-page) dashboard should include the following structural elements:</a>
-  <ul class="collapse">
-  <li><a href="#expectations" id="toc-expectations" class="nav-link" data-scroll-target="#expectations">Expectations</a></li>
-  </ul></li>
-  </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/project/example-project-olympics/week-5.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -465,7 +389,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Project Checkpoint 5</h1>
+<h1 class="title">STAT 331 Review</h1>
 </div>
 
 
@@ -482,24 +406,22 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>For this first check-in, your goal is to create the foundational structure (“shell”) of your Quarto dashboard. This dashboard will evolve over the next several weeks, so think of this as setting up a clean, organized framework that you can easily build on later.</p>
-<p>For this checkpoint, your group will transform the written report from Project 1 into a Quarto dashboard format. You do not need to fully redesign or perfect your content yet—focus on structure and organization.</p>
-<section id="your-one-page-dashboard-should-include-the-following-structural-elements" class="level2">
-<h2 class="anchored" data-anchor-id="your-one-page-dashboard-should-include-the-following-structural-elements">Your (one-page) dashboard should include the following structural elements:</h2>
-<ul>
-<li><p>A navigation logo in the navbar (e.g., a simple logo representing your project theme)</p></li>
-<li><p>Social/contact icons in the navbar or footer (e.g., LinkedIn, Instagram, Twitter/X, email, etc.)</p></li>
-<li><p>A non-default theme (choose a Bootswatch theme or customize one)</p></li>
-<li><p>At least two tabsets (on the same page)</p></li>
-</ul>
-<section id="expectations" class="level3">
-<h3 class="anchored" data-anchor-id="expectations">Expectations</h3>
-<p>Content from Project 1 should be meaningfully reorganized into dashboard form (not just copied and pasted). Visual polish is not the focus yet, but organization and usability are.</p>
-<p>Think of this checkpoint as building the structure of a house—making sure the rooms exist and are arranged well. In later checkpoints, we will refine visuals, add interactivity, and improve design.</p>
+<p>In this first week, we will start with a review of concepts from <em>Introduction to Statistical Computing in R</em>—data visualizations with <strong>ggplot2</strong>, data wrangling with <strong>dplyr</strong> and <strong>tidyr</strong>. We will use reviewing creating reproducible documents with Quarto and using R projects as an opportunity to introduce you to version control with git and GitHub.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>It is possible that you might not need to review every topic from this section. To gauge your understanding, at the beginning of each section there are “check-in” questions assessing your knowledge on a particular topic. If you can easily answer these questions, you can feel free to skip this review topic. If, however, the answers to some questions are not obvious, we have provided readings and / or videos to review the necessary concepts.</p>
+</div>
+</div>
 
 
-</section>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -917,13 +839,10 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../project/week-5.html" class="pagination-link" aria-label="Week 5: First Draft Dashboard">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Week 5: First Draft Dashboard</span>
-      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../project/week-6.html" class="pagination-link" aria-label="Week 6: Dynamic Plots &amp; Country Data">
-        <span class="nav-page-text">Week 6: Dynamic Plots &amp; Country Data</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./1810-review/setup-workflow.html" class="pagination-link" aria-label="Installing / Updating R &amp; RStudio">
+        <span class="nav-page-text">Installing / Updating R &amp; RStudio</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -935,11 +854,11 @@ ul.task-list li input[type="checkbox"] {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/project/example-project-olympics/week-5.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></div>
+    <div class="toc-actions"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/1810-review.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item">
-    <a class="nav-link" href="../../LICENSE.md">
+    <a class="nav-link" href="./LICENSE.md">
 <p>License</p>
 </a>
   </li>  

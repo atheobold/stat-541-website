@@ -1,34 +1,165 @@
 ---
-title: "Project Checkpoint 2"
-editor: source
+title: "Project Checkpoint 2 - Example"
+format:
+  html:
+    df-print: kable
+execute:
+  message: false
+  warning: false
 ---
 
-Now that you have explored your dataset and posed research questions about 
-these data, this week we are focused on producing summary statistics that 
-could be used to also address your research question. These summary statistics
-will allow you to apply your function writing and iteration skills! 
+:::{.callout-note}
+Note that this example document provides only two examples of data summaries; 
+your project step requires a total of four.
 
-## By the end of the week, your updated report should contain:
-
--   **Two** data summaries that use existing (unmodified) columns in the data
-    * **At least one** of these summaries need to be produced with a custom
-    function. 
-    * **At least one** of these summaries need to include iteration (either 
-    inside or outside of a function).
-    
--   **Two** data summaries that modify columns from the original 
-data
-    * **At least one** of these summaries need to be produced with a custom
-    function. 
-    * **At least one** of these summaries need to include iteration (either 
-    inside or outside of a function).
-
--   Summary tables that *at a minimum* have:
-    * Formatted values (e.g., decimals, percentages, currencies)
-    * Boldface headers
-    * Captions
-
-::: {.callout-important}
-Your report should contain **at least two** custom functions (to produce 
-data summaries), and **at least two** places where iteration was used.
+Although the instructions don't explicitly say to interpret your results, you
+should definitely make some notes for yourself about what you learn from these
+data summaries, to help inform your subsequent steps.
 :::
+
+```{r}
+library(tidyverse)
+```
+
+
+*Since you are building on your previous report, your dataset introduction and
+description from last week should still be present in your file!  I have omitted
+this here for simplicity.*
+
+```{r}
+#| include: false
+#| echo: true
+
+tuesdata <- tidytuesdayR::tt_load('2024-08-06')
+
+olympics <- tuesdata$olympics
+```
+
+
+## Athlete gender proportions annually
+
+New column: ratio of female to male athletes
+
+Does *not* require iteration or custom function.
+
+```{r}
+gender_props <- olympics |>
+  group_by(year, games, team) |>
+  summarize(
+    count_male_athletes = sum(sex == "M", na.rm = TRUE),
+    count_female_athletes = sum(sex == "F", na.rm = TRUE),
+    .groups = "drop"
+  ) |>
+  mutate(
+    prop_female = count_female_athletes/(count_female_athletes + count_male_athletes)
+  )
+
+gender_props |>
+  group_by(year) |>
+  summarize(
+    avg_prop_female = mean(prop_female, na.rm = TRUE)
+  )
+```
+
+As we probably expected, the proportion of female athletes has gone up with time!
+
+:::{.callout-note}
+
+Ideas to take this further:
+
+* Correct for team sports having more athletes.
+
+* Think about how to handle anomalies in the country team names, e.g. "USSR" vs.
+"Russia".
+
+* Limit the data to one or two countries and compare them.
+
+* Use `gt()` to color the table in a way that tells the story of patterns over 
+time.
+
+:::
+
+## Female medals by country
+
+*No new columns*
+
+*Requires custom function and iteration*
+
+```{r}
+# Function to count medals but not overcount team sports
+
+num_female_gold <- function(country) {
+  
+  female_medals <- olympics |>
+    filter(team == country,
+           sex == "F") |>
+    distinct(games, event, medal) |>
+    pull(medal)
+  
+  
+  sum(female_medals == "Gold", na.rm = TRUE)
+  
+}
+```
+
+
+```{r}
+olympics |>
+  distinct(team) |>
+  mutate(
+    n_f_gold = map_dbl(team, num_female_gold)
+  ) |>
+  slice_max(n_f_gold, n = 10)
+```
+
+This follows about the same patterns as overall medals, but maybe if we compare
+to male gold counts we would find some standout countries.  For example, 
+Romania is on this Top 10 but probably not in the overall counts.
+
+:::{.callout-note}
+
+Ideas to take this further:
+
+* Collect counts for silver and bronze medals as well, not just gold.
+
+* Collect a ratio of female to male medals, to get a sense of which countries have
+a *disproportionately low* number of female medal winners.
+
+* Collect this data over time as well to look for countries that evolve.
+
+* (This actually *could* have been done in a pipeline!  But, the function approach
+makes it easier to incorporate some of the upgrades above.)
+:::
+
+
+
+
+<!-- Now that you have explored your dataset and posed research questions about  -->
+<!-- these data, this week we are focused on producing summary statistics that  -->
+<!-- could be used to also address your research question. These summary statistics -->
+<!-- will allow you to apply your function writing and iteration skills!  -->
+
+<!-- ## By the end of the week, your updated report should contain: -->
+
+<!-- -   **Two** data summaries that use existing (unmodified) columns in the data -->
+<!--     * **At least one** of these summaries need to be produced with a custom -->
+<!--     function.  -->
+<!--     * **At least one** of these summaries need to include iteration (either  -->
+<!--     inside or outside of a function). -->
+
+<!-- -   **Two** data summaries that modify columns from the original  -->
+<!-- data -->
+<!--     * **At least one** of these summaries need to be produced with a custom -->
+<!--     function.  -->
+<!--     * **At least one** of these summaries need to include iteration (either  -->
+<!--     inside or outside of a function). -->
+
+<!-- -   Summary tables that *at a minimum* have: -->
+<!--     * Formatted values (e.g., decimals, percentages, currencies) -->
+<!--     * Boldface headers -->
+<!--     * Captions -->
+
+<!-- ::: {.callout-important} -->
+<!-- Your report should contain **at least two** custom functions (to produce  -->
+<!-- data summaries), and **at least two** places where iteration was used. -->
+<!-- ::: -->
