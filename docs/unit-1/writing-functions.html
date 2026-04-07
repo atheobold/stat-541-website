@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.26">
-
+<meta name="generator" content="quarto-1.8.24">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-
 <title>Writing Functions in R – Advanced R</title>
 <style>
 code{white-space: pre-wrap;}
@@ -20,8 +17,42 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
-
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
@@ -40,17 +71,16 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b758ccaa5987ceb1b75504551e579abf.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b651517ce65839d647a86e2780455cfb.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-63767328852000e01d7c9d44355c1f36.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/bootstrap/bootstrap-dark-5f858a84010510139e49c405efe9b486.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="../site_libs/bootstrap/bootstrap-63767328852000e01d7c9d44355c1f36.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script src="../site_libs/quarto-contrib/flourish-0.0.1/injectFlourishes.js"></script>
-<script src="../site_libs/quarto-contrib/flourish-0.0.1/flourish.js"></script>
-<script id="quarto-search-options" type="application/json">{
+<script src="../site_libs/quarto-contrib/flourish-0.0.1/flourish.js"></script><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -77,10 +107,7 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-
-
 </head>
-
 <body class="nav-sidebar floating nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
@@ -246,14 +273,10 @@ ul.task-list li input[type="checkbox"] {
   </script>
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
-      <div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../images/cat-monsters-horst.png" alt="" class="navbar-logo light-content">
-    <img src="../images/cat-monsters-horst.png" alt="" class="navbar-logo dark-content">
-    </a>
+    <img src="../images/cat-monsters-horst.png" alt="" class="navbar-logo light-content"><img src="../images/cat-monsters-horst.png" alt="" class="navbar-logo dark-content"></a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
@@ -261,8 +284,8 @@ ul.task-list li input[type="checkbox"] {
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
+<li class="nav-item">
+    <a class="nav-link active" href="../index.html" aria-current="page"> 
 <span class="menu-text">Overview</span></a>
   </li>  
   <li class="nav-item">
@@ -278,7 +301,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">STAT 331 Review</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../unit-1.html" aria-current="page"> 
+    <a class="nav-link" href="../unit-1.html"> 
 <span class="menu-text">Unit 1 - Complex Analyses</span></a>
   </li>  
   <li class="nav-item">
@@ -294,21 +317,19 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Projects</span></a>
   </li>  
 </ul>
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item compact">
+<ul class="navbar-nav navbar-nav-scroll ms-auto">
+<li class="nav-item compact">
     <a class="nav-link" href="https://github.com/atheobold/stat-541-website"> <i class="bi bi-github" role="img" aria-label="GitHub">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
 </ul>
-          </div> <!-- /navcollapse -->
+</div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
       </div> <!-- /container-fluid -->
-    </nav>
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
+    </nav><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
@@ -316,15 +337,15 @@ ul.task-list li input[type="checkbox"] {
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
-  </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="../index.html" class="sidebar-logo-link">
+      </a>
+      </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../unit-1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Unit 1</span></a>
@@ -397,35 +418,32 @@ ul.task-list li input[type="checkbox"] {
   </div>
 </li>
     </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#basics-of-functions" id="toc-basics-of-functions" class="nav-link active" data-scroll-target="#basics-of-functions">Basics of Functions</a>
+<li>
+<a href="#basics-of-functions" id="toc-basics-of-functions" class="nav-link active" data-scroll-target="#basics-of-functions">Basics of Functions</a>
   <ul class="collapse">
-  <li><a href="#anatomy-of-a-function" id="toc-anatomy-of-a-function" class="nav-link" data-scroll-target="#anatomy-of-a-function">Anatomy of a Function</a></li>
+<li><a href="#anatomy-of-a-function" id="toc-anatomy-of-a-function" class="nav-link" data-scroll-target="#anatomy-of-a-function">Anatomy of a Function</a></li>
   <li><a href="#good-function-design" id="toc-good-function-design" class="nav-link" data-scroll-target="#good-function-design">Good Function Design</a></li>
-  </ul></li>
-  <li><a href="#debugging-functions" id="toc-debugging-functions" class="nav-link" data-scroll-target="#debugging-functions">Debugging Functions</a>
+  </ul>
+</li>
+  <li>
+<a href="#debugging-functions" id="toc-debugging-functions" class="nav-link" data-scroll-target="#debugging-functions">Debugging Functions</a>
   <ul class="collapse">
-  <li><a href="#objects-of-type-closure" id="toc-objects-of-type-closure" class="nav-link" data-scroll-target="#objects-of-type-closure">Objects of Type Closure</a></li>
+<li><a href="#objects-of-type-closure" id="toc-objects-of-type-closure" class="nav-link" data-scroll-target="#objects-of-type-closure">Objects of Type Closure</a></li>
   <li><a href="#lazy-evaluation" id="toc-lazy-evaluation" class="nav-link" data-scroll-target="#lazy-evaluation">Lazy Evaluation</a></li>
   <li><a href="#non-standard-evaluation-and-tunneling" id="toc-non-standard-evaluation-and-tunneling" class="nav-link" data-scroll-target="#non-standard-evaluation-and-tunneling">Non-Standard Evaluation and Tunneling</a></li>
-  </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/unit-1/writing-functions.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></nav>
+</li>
+  </ul><div class="toc-actions"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/unit-1/writing-functions.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
 <h1 class="title">Writing Functions in R</h1>
 </div>
 
@@ -440,10 +458,7 @@ ul.task-list li input[type="checkbox"] {
   
 
 
-</header>
-
-
-<div class="callout callout-style-default callout-tip callout-titled">
+</header><div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -457,13 +472,7 @@ ul.task-list li input[type="checkbox"] {
 <p>It’s not critical for you to sit in front of a computer when listening to these talks, so I might recommend going on a walk and listening to one! The weather is too nice to sit in front of a computer all day!</p>
 </div>
 </div>
-<pre class="{r}"><code>#| label: setup
-#| include: false
-
-library(tidyverse)
-library(palmerpenguins)</code></pre>
-<section id="basics-of-functions" class="level1">
-<h1>Basics of Functions</h1>
+<section id="basics-of-functions" class="level1"><h1>Basics of Functions</h1>
 <p>If you do not recall the basics of writing functions, or if you want a quick refresher, feel free to read the section from <em>R for Data Science</em> or watch the video below:</p>
 <div class="callout callout-style-default callout-learn-more callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -477,12 +486,12 @@ library(palmerpenguins)</code></pre>
 <div class="callout-body-container callout-body">
 <div class="columns">
 <div class="column" style="width:40%;">
-<p><br></p>
+<p></p>
 <p><a href="https://r4ds.hadley.nz/functions.html#vector-functions"><em>R for Data Science</em> Chapter 25, Section 2: Vector Functions</a></p>
 </div><div class="column" style="width:5%;">
 
 </div><div class="column" style="width:55%;">
-<p><br></p>
+<p></p>
 <div class="youtube-video-container">
 <div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/zA5eVuUMM8U?si=AlTQG1N79B48UjT_" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 </div>
@@ -490,42 +499,36 @@ library(palmerpenguins)</code></pre>
 </div>
 </div>
 </div>
-<section id="anatomy-of-a-function" class="level3">
-<h3 class="anchored" data-anchor-id="anatomy-of-a-function">Anatomy of a Function</h3>
+<section id="anatomy-of-a-function" class="level3"><h3 class="anchored" data-anchor-id="anatomy-of-a-function">Anatomy of a Function</h3>
 <p>Let’s establish some vocabulary moving forward. Consider the very simple function below:</p>
-<pre class="{r}"><code>#| label: addtwo
-#| echo: true
-
-add_or_subtract &lt;- function(first_num, 
-                            second_num = 2, 
-                            type = "add") {
-  
-  if (type == "add") {
-    first_num + second_num
-  } else if (type == "subtract") {
-    first_num - second_num
-  } else {
-    stop("Please choose `add` or `subtract` as the type.")
-  }
-  
-}
-  </code></pre>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">add_or_subtract</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">first_num</span>, </span>
+<span>                            <span class="va">second_num</span> <span class="op">=</span> <span class="fl">2</span>, </span>
+<span>                            <span class="va">type</span> <span class="op">=</span> <span class="st">"add"</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  </span>
+<span>  <span class="kw">if</span> <span class="op">(</span><span class="va">type</span> <span class="op">==</span> <span class="st">"add"</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="va">first_num</span> <span class="op">+</span> <span class="va">second_num</span></span>
+<span>  <span class="op">}</span> <span class="kw">else</span> <span class="kw">if</span> <span class="op">(</span><span class="va">type</span> <span class="op">==</span> <span class="st">"subtract"</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="va">first_num</span> <span class="op">-</span> <span class="va">second_num</span></span>
+<span>  <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
+<span>    <span class="kw"><a href="https://rdrr.io/r/base/stop.html">stop</a></span><span class="op">(</span><span class="st">"Please choose `add` or `subtract` as the type."</span><span class="op">)</span></span>
+<span>  <span class="op">}</span></span>
+<span>  </span>
+<span><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 <ul>
 <li><p>The <strong>function name</strong> is chosen by whoever writes the function: <code>add_or_subtract()</code></p></li>
 <li><p>The <strong>required arguments</strong> are the ones for which no default value is supplied: <code>first_num</code></p></li>
 <li><p>The <strong>optional arguments</strong> are the ones for which a default value is supplied: <code>second_num = 2</code>, <code>type = "add"</code></p></li>
 <li><p>The <strong>body of the function</strong> is all the code inside the definition (between the beginning <code>{</code> and closing <code>}</code>) . This code will be run in the <strong>environment of the function</strong>, rather than in the<strong>global environment</strong>. This means that code in the body of the function does <em>not</em> have the power to alter anything outside the function<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p></li>
 </ul>
-<!-- -->
-<ul>
+<!-- --><ul>
 <li>The <strong>return values</strong> of the function are the possible objects that get returned: <code>first_num + second_num</code> (for <code>type = "add"</code>) or <code>first_num - second_num</code> (for <code>type = "subtract"</code>).</li>
 </ul>
 <p>When we use a function in code, this is referred to as a <strong>function call</strong>.</p>
-<pre class="{r}"><code>#| eval: false
-#| echo: true
-#| label: example-function-call
-
-add_or_subtract(1, 2)</code></pre>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">add_or_subtract</span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 <div class="callout callout-style-default callout-check-in callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -539,40 +542,37 @@ add_or_subtract(1, 2)</code></pre>
 <ol type="1">
 <li>What will be returned by each of the following?</li>
 </ol>
-<!-- -->
-<ol type="a">
+<!-- --><ol type="a">
 <li>1</li>
 <li>-1</li>
 <li>30</li>
-<li>An error defined in the function <code>add_or_subtract()</code></li>
-<li>An error defined in a different function, that is called from inside <code>add_or_subtract()</code></li>
+<li>An error defined in the function <code>add_or_subtract()</code>
+</li>
+<li>An error defined in a different function, that is called from inside <code>add_or_subtract()</code>
+</li>
 </ol>
-<pre class="{r}"><code>#| echo: true
-#| eval: false
-#| label: function-errors
-
-add_or_subtract(5, 6, type = "subtract")
-
-add_or_subtract("orange")
-
-add_or_subtract(5, 6, type = "multiply")
-
-add_or_subtract("orange", type = "multiply")</code></pre>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">add_or_subtract</span><span class="op">(</span><span class="fl">5</span>, <span class="fl">6</span>, type <span class="op">=</span> <span class="st">"subtract"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">add_or_subtract</span><span class="op">(</span><span class="st">"orange"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">add_or_subtract</span><span class="op">(</span><span class="fl">5</span>, <span class="fl">6</span>, type <span class="op">=</span> <span class="st">"multiply"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">add_or_subtract</span><span class="op">(</span><span class="st">"orange"</span>, type <span class="op">=</span> <span class="st">"multiply"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 <ol start="2" type="1">
 <li>Consider the following code:</li>
 </ol>
-<pre class="{r}"><code>#| echo: true
-#| eval: false
-#| label: global-environment
-
-first_num &lt;- 5
-second_num &lt;- 3
-
-result &lt;- 8
-
-result &lt;- add_or_subtract(first_num, second_num = 4)
-
-result_2 &lt;- add_or_subtract(first_num)</code></pre>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">first_num</span> <span class="op">&lt;-</span> <span class="fl">5</span></span>
+<span><span class="va">second_num</span> <span class="op">&lt;-</span> <span class="fl">3</span></span>
+<span></span>
+<span><span class="va">result</span> <span class="op">&lt;-</span> <span class="fl">8</span></span>
+<span></span>
+<span><span class="va">result</span> <span class="op">&lt;-</span> <span class="fu">add_or_subtract</span><span class="op">(</span><span class="va">first_num</span>, second_num <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">result_2</span> <span class="op">&lt;-</span> <span class="fu">add_or_subtract</span><span class="op">(</span><span class="va">first_num</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 <p>In your Global Environment, what is the value of…</p>
 <ol type="a">
 <li><code>first_num</code></li>
@@ -582,9 +582,7 @@ result_2 &lt;- add_or_subtract(first_num)</code></pre>
 </ol>
 </div>
 </div>
-</section>
-<section id="good-function-design" class="level2">
-<h2 class="anchored" data-anchor-id="good-function-design">Good Function Design</h2>
+</section><section id="good-function-design" class="level2"><h2 class="anchored" data-anchor-id="good-function-design">Good Function Design</h2>
 <p>Most likely, you have so far only written functions for your own convenience. (Or for assignments, of course!) We are now going to be designing functions for <em>other people</em> to use and possibly even edit them. This means we need to put some thought into the <em>design</em> of the function.</p>
 <div class="callout callout-style-default callout-required-video callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -615,25 +613,30 @@ result_2 &lt;- add_or_subtract(first_num)</code></pre>
 <li>Your function name should describe what it does, and usually involves a verb.</li>
 <li>Your argument names should be simple and / or descriptive.</li>
 <li>Names of variables in the body of the function should be descriptive.</li>
-</ul></li>
+</ul>
+</li>
 <li>Output should be <strong>very predictable</strong>
 <ul>
 <li>Your function should always <em>return</em> the same object type, no matter what input it gets.</li>
 <li>Your function should expect certain objects or object types as <em>input</em>, and give errors when it does not get them.</li>
 <li>Your function should give errors or warnings for common mistakes.</li>
 <li>Default values of arguments should only be used when there is a clear common choice.</li>
-</ul></li>
+</ul>
+</li>
 <li>The body of the function should be <strong>easy to read</strong>.
 <ul>
 <li>Code should use <a href="https://style.tidyverse.org/">good style principles</a>.</li>
 <li>There should be occasional comments to explain the purpose of the steps.</li>
 <li>Complicated steps, or steps that are repeated many times, should be written into <strong>separate functions</strong> (sometimes called <em>helper functions</em>).</li>
-</ul></li>
+</ul>
+</li>
 <li>Functions should be <strong>self-contained</strong>.
 <ul>
 <li>They should not rely on any information besides what is given as input. <em>(Relying on other functions</em> is fine, though!)</li>
-<li>They should not alter the Global Environment. <em>(Do not put <code>library()</code> or <code>install()</code> statements inside functions!)</em></li>
-</ul></li>
+<li>They should not alter the Global Environment. <em>(Do not put <code><a href="https://rdrr.io/r/base/library.html">library()</a></code> or <code>install()</code> statements inside functions!)</em>
+</li>
+</ul>
+</li>
 </ol>
 <div class="callout callout-style-default callout-check-in callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -648,22 +651,20 @@ result_2 &lt;- add_or_subtract(first_num)</code></pre>
 <ol start="3" type="1">
 <li>Identify the relevant issues for the following function:</li>
 </ol>
-<pre class="{r}"><code>#| eval: false
-#| echo: true
-
-doStuff &lt;- function(x) {
-  if (is.numeric(x)) {
-    y &lt;&lt;- x + 1  
-    return(y)    
-  } else if (is.character(x)) {
-    result &lt;&lt;- list(msg = paste("Hello", x)) 
-    return(result)
-  } else {
-    warning("Unsupported input type")
-    return(NULL)
-  }
-}
-</code></pre>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">doStuff</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/numeric.html">is.numeric</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="va">y</span> <span class="op">&lt;&lt;-</span> <span class="va">x</span> <span class="op">+</span> <span class="fl">1</span>  </span>
+<span>    <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span>    </span>
+<span>  <span class="op">}</span> <span class="kw">else</span> <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/character.html">is.character</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="va">result</span> <span class="op">&lt;&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>msg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"Hello"</span>, <span class="va">x</span><span class="op">)</span><span class="op">)</span> </span>
+<span>    <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">result</span><span class="op">)</span></span>
+<span>  <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
+<span>    <span class="kw"><a href="https://rdrr.io/r/base/warning.html">warning</a></span><span class="op">(</span><span class="st">"Unsupported input type"</span><span class="op">)</span></span>
+<span>    <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="cn">NULL</span><span class="op">)</span></span>
+<span>  <span class="op">}</span></span>
+<span><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 <ul>
 <li>the body of the function does not follow good style principles</li>
 <li>the argument names are not descriptive</li>
@@ -675,10 +676,7 @@ doStuff &lt;- function(x) {
 </ul>
 </div>
 </div>
-</section>
-</section>
-<section id="debugging-functions" class="level1">
-<h1>Debugging Functions</h1>
+</section></section><section id="debugging-functions" class="level1"><h1>Debugging Functions</h1>
 <div class="columns">
 <div class="column" style="width:40%;">
 <p>Suppose you’ve done it: You’ve written the most glorious, beautiful, well-designed function of all time. It’s many lines long, and it relies on several sub-functions. You run it and it doesn’t work.</p>
@@ -719,61 +717,64 @@ doStuff &lt;- function(x) {
 <ol start="4" type="1">
 <li>What does using the <code>traceback</code> approach to debugging <strong>NOT</strong> tell you?</li>
 </ol>
-<!-- -->
-<ol type="a">
+<!-- --><ol type="a">
 <li>The function call that triggered the error.</li>
 <li>The sub-function where the error actually occurred.</li>
 <li>The value of the argument or object that caused the error.</li>
 <li>The text of the full error message.</li>
 </ol>
-<!-- -->
-<ol start="5" type="1">
-<li>Which of the following is <strong>NOT</strong> a disadvantage of using <code>browser()</code>?</li>
+<!-- --><ol start="5" type="1">
+<li>Which of the following is <strong>NOT</strong> a disadvantage of using <code><a href="https://rdrr.io/r/base/browser.html">browser()</a></code>?</li>
 </ol>
-<!-- -->
-<ol type="a">
+<!-- --><ol type="a">
 <li>You can’t insert it into existing functions.</li>
 <li>You can’t view variables in the function environment when it is running.</li>
 <li>You have to remember to take it out of your code when you are done with it.</li>
 <li>You have to run your code line-by-line until you find the error.</li>
 </ol>
-<!-- -->
-<ol start="6" type="1">
-<li>What is the most fun pronunciation of <code>debugonce()</code></li>
+<!-- --><ol start="6" type="1">
+<li>What is the most fun pronunciation of <code><a href="https://rdrr.io/r/base/debug.html">debugonce()</a></code>
+</li>
 </ol>
-<!-- -->
-<ol type="a">
+<!-- --><ol type="a">
 <li>“Debug Once”</li>
 <li>“Debut Gonky”</li>
 <li>“Debugoncé” like “Beyoncé”</li>
 </ol>
 </div>
 </div>
-<section id="objects-of-type-closure" class="level2">
-<h2 class="anchored" data-anchor-id="objects-of-type-closure">Objects of Type Closure</h2>
+<section id="objects-of-type-closure" class="level2"><h2 class="anchored" data-anchor-id="objects-of-type-closure">Objects of Type Closure</h2>
 <p>In R, functions are <strong>objects</strong>. That is, creating a function is not fundamentally different from creating a vector or a data frame.</p>
 <p>Here we store the vector <code>1, 2, 3</code> in the object named <code>a</code>:</p>
-<pre class="{r}"><code>#| label: creating-objects
-#| echo: true
-
-a &lt;- 1:3
-
-a</code></pre>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">a</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span></span>
+<span></span>
+<span><span class="va">a</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1 2 3</code></pre>
+</div>
+</div>
 <p>Here we store the procedure “add one plus one” in the object named <code>a</code>:</p>
-<pre class="{r}"><code>#| echo: true
-#| label: creating-functions
-
-a &lt;- function(){
-  1 + 1
-}
-
-a</code></pre>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">a</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span><span class="op">{</span></span>
+<span>  <span class="fl">1</span> <span class="op">+</span> <span class="fl">1</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="va">a</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>function () 
+{
+    1 + 1
+}</code></pre>
+</div>
+</div>
 <p>For some strange reason, there is a specific term in R for “an object that is a function”—<strong>closure</strong>. Have you ever gotten this error?</p>
-<pre class="{r}"><code>#| echo: true
-#| error: true
-#| label: object-of-type-closure
-
-a[1]</code></pre>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">a</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in a[1]: object of type 'closure' is not subsettable</code></pre>
+</div>
+</div>
 <p>I bet you have! What happened here is that we tried to take a subset of the vector <code>a</code>. But <code>a</code> is a function, not a vector, so this doesn’t work! If you’ve encounter this error in the wild, it’s probably because you tried to reference a non-existent object. However, you used an object name that happens to also be an existing function.</p>
 <div class="callout callout-style-default callout-check-in callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -788,46 +789,45 @@ a[1]</code></pre>
 <ol start="7" type="1">
 <li>What is the most likely cause of the error message <code>Error in x[1] : object of type 'closure'</code> is not subsettable?</li>
 </ol>
-<!-- -->
-<ol type="a">
-<li>Trying to access an element of a list using parentheses <code>()</code> instead of square brackets <code>[]</code></li>
+<!-- --><ol type="a">
+<li>Trying to access an element of a list using parentheses <code>()</code> instead of square brackets <code>[]</code>
+</li>
 <li>Attempting to subset a numeric vector using the wrong index type</li>
 <li>Trying to extract an element from a function using square bracket notation</li>
 <li>Passing a missing argument to a function</li>
 </ol>
 </div>
 </div>
-</section>
-<section id="lazy-evaluation" class="level2">
-<h2 class="anchored" data-anchor-id="lazy-evaluation">Lazy Evaluation</h2>
+</section><section id="lazy-evaluation" class="level2"><h2 class="anchored" data-anchor-id="lazy-evaluation">Lazy Evaluation</h2>
 <div class="stat541">
 
 </div>
 <p>Like most people, R’s goal is to avoid doing any unnecessary work. When you “give” a value to an argument of a function, R does a quick check to make sure you haven’t done anything too crazy, like forgotten a parenthesis. Then it says, “Yep, looks like R code to me!” and moves on with its life. Only when that argument is <em>actually used</em> does R try to run the code.</p>
 <p>Consider the following obvious problem:</p>
-<pre class="{r}"><code>#| error: true
-#| echo: true
-#| label: mean-of-orange
-#| warning: true
-
-mean('orange')</code></pre>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="st">'orange'</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in mean.default("orange"): argument is not numeric or logical:
+returning NA</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] NA</code></pre>
+</div>
+</div>
 <p>Now consider the following function:</p>
-<pre class="{r}"><code>#| label: silly-function
-#| echo: true
-
-silly_function &lt;- function(x) {
-  
-  cat("I am silly!")
-  
-}</code></pre>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">silly_function</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"I am silly!"</span><span class="op">)</span></span>
+<span>  </span>
+<span><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 <p>What do you think will happen when we run:</p>
-<pre class="{r}"><code>#| echo: true
-#| eval: false
-#| label: adding-in-problematic-function
-
-silly_function(
-  x = mean("orange")
-  )</code></pre>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">silly_function</span><span class="op">(</span></span>
+<span>  x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="st">"orange"</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 <p>Seems like it should be an error, right? But wait! Try it out for yourself.</p>
 <p>The function <code>silly_function()</code> doesn’t use the <code>x</code> argument. Thus, R was “lazy”, and never even bothered to try to run <code>mean("orange")</code> - so we never get an error. 🙀</p>
 <div class="callout callout-style-default callout-check-in callout-titled">
@@ -843,8 +843,7 @@ silly_function(
 <ol start="8" type="1">
 <li>In R, when exactly does the evaluation of a function argument occur?</li>
 </ol>
-<!-- -->
-<ol type="a">
+<!-- --><ol type="a">
 <li>Immediately when the function is called</li>
 <li>Only if and when the argument’s value is actually used within the function body</li>
 <li>When the function is compiled</li>
@@ -852,33 +851,33 @@ silly_function(
 </ol>
 </div>
 </div>
-</section>
-<section id="non-standard-evaluation-and-tunneling" class="level2">
-<h2 class="anchored" data-anchor-id="non-standard-evaluation-and-tunneling">Non-Standard Evaluation and Tunneling</h2>
+</section><section id="non-standard-evaluation-and-tunneling" class="level2"><h2 class="anchored" data-anchor-id="non-standard-evaluation-and-tunneling">Non-Standard Evaluation and Tunneling</h2>
 <div class="stat541">
 
 </div>
 <p>Suppose you want to write a function that takes a dataset, a categorical variable, and a quantitative variable; and returns the means by group.</p>
 <p>You might think to yourself, “Easy!” and write something like this:</p>
-<pre class="{r}"><code>#| echo: true
-#| label: no-tunneling-function
-
-means_by_group &lt;- function(dataset, cat_var, quant_var) {
-  
-  dataset %&gt;%
-    group_by(cat_var) %&gt;%
-    summarize(means = mean(quant_var, 
-                           na.rm = TRUE)
-              )
-}</code></pre>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">means_by_group</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">dataset</span>, <span class="va">cat_var</span>, <span class="va">quant_var</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  </span>
+<span>  <span class="va">dataset</span> <span class="op">%&gt;%</span></span>
+<span>    <span class="fu">group_by</span><span class="op">(</span><span class="va">cat_var</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>    <span class="fu">summarize</span><span class="op">(</span>means <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">quant_var</span>, </span>
+<span>                           na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span>              <span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 <p>Okay, let’s run it!</p>
-<pre class="{r}"><code>#| echo: true
-#| error: true
-#| label: no-tunneling-function-error
-
-means_by_group(penguins, 
-               cat_var = species, 
-               quant_var = bill_length_mm)</code></pre>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">means_by_group</span><span class="op">(</span><span class="va">penguins</span>, </span>
+<span>               cat_var <span class="op">=</span> <span class="va">species</span>, </span>
+<span>               quant_var <span class="op">=</span> <span class="va">bill_length_mm</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in `group_by()`:
+! Must group by variables found in `.data`.
+✖ Column `cat_var` is not found.</code></pre>
+</div>
+</div>
 <p>Dagnabbit! The function tried to group the data by a variable named <code>cat_var</code> - but the dataset <code>penguins</code> doesn’t have any variables named <code>cat_var</code>!</p>
 <p>What happened here is that the function <code>group_by()</code> uses <strong>non-standard evaluation</strong>. This means it has a very special type of input called <strong>unquoted</strong>. Notice that we say <code>group_by(species)</code> not <code>group_by("species")</code> - there are no quotation marks, because <code>species</code> is a variable name, not a string. In the <code>means_by_group()</code> function, R sees the unquoted variable <code>cat_var</code>, and tries to use it as an input in <code>group_by()</code>, not realizing that we <em>actually</em> meant to pass along the variable name <code>species</code> into the function.</p>
 <div class="callout callout-style-default callout-required-reading callout-titled">
@@ -895,19 +894,18 @@ means_by_group(penguins,
 </div>
 </div>
 <p>To solve this conundrum, we use a trick called <strong>tunneling</strong> to “force” the unquoted name <code>species</code> through to the function <code>group_by()</code>. It looks like this:</p>
-<pre class="{r}"><code>#| echo: true
-#| label: function-with-tunneling
-
-means_by_group &lt;- function(dataset, cat_var, quant_var) {
-  
-  dataset %&gt;%
-    group_by({{cat_var}}) %&gt;%
-    summarize(
-      means = mean({{quant_var}})
-              )
-  
-  
-}</code></pre>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">means_by_group</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">dataset</span>, <span class="va">cat_var</span>, <span class="va">quant_var</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  </span>
+<span>  <span class="va">dataset</span> <span class="op">%&gt;%</span></span>
+<span>    <span class="fu">group_by</span><span class="op">(</span><span class="op">{</span><span class="op">{</span><span class="va">cat_var</span><span class="op">}</span><span class="op">}</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>    <span class="fu">summarize</span><span class="op">(</span></span>
+<span>      means <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="op">{</span><span class="op">{</span><span class="va">quant_var</span><span class="op">}</span><span class="op">}</span><span class="op">)</span></span>
+<span>              <span class="op">)</span></span>
+<span>  </span>
+<span>  </span>
+<span><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -922,40 +920,63 @@ means_by_group &lt;- function(dataset, cat_var, quant_var) {
 </div>
 </div>
 <p>Now everything works!</p>
-<pre class="{r}"><code>#| echo: true
-#| label: function-with-tunneling-success
-
-means_by_group(penguins, 
-               cat_var = species, 
-               quant_var = bill_length_mm
-               )</code></pre>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">means_by_group</span><span class="op">(</span><span class="va">penguins</span>, </span>
+<span>               cat_var <span class="op">=</span> <span class="va">species</span>, </span>
+<span>               quant_var <span class="op">=</span> <span class="va">bill_length_mm</span></span>
+<span>               <span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 2
+  species   means
+  &lt;fct&gt;     &lt;dbl&gt;
+1 Adelie     NA  
+2 Chinstrap  48.8
+3 Gentoo     NA  </code></pre>
+</div>
+</div>
 <p>Okay, now let’s group by both <code>species</code> and <code>sex</code>:</p>
-<pre class="{r}"><code>#| error: true
-#| echo: true
-#| label: multiple-cat-vars-error
-
-means_by_group(penguins, 
-               cat_var = c(species, sex), 
-               quant_var = bill_length_mm)</code></pre>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">means_by_group</span><span class="op">(</span><span class="va">penguins</span>, </span>
+<span>               cat_var <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">species</span>, <span class="va">sex</span><span class="op">)</span>, </span>
+<span>               quant_var <span class="op">=</span> <span class="va">bill_length_mm</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in `group_by()`:
+ℹ In argument: `c(species, sex)`.
+Caused by error:
+! `c(species, sex)` must be size 344 or 1, not 688.</code></pre>
+</div>
+</div>
 <p>Oh no! What now?! When <code>c(species, sex)</code> is put inside <code>{{ c(species, sex) }}</code> within the function, R is actually running the code inside <code>{{ }}</code>. This combines the columns for those two variables into one long vector. What we really meant by <code>c(species, sex)</code> is “group by <strong>both</strong> <code>species</code> <strong>and</strong> <code>sex</code>.”</p>
 <p>To fix this, we need the <code>pick()</code> function to get R to see <code>{{ group_var }}</code> as a list of separate variables (like the way <code>select()</code> works).</p>
-<pre class="{r}"><code>#| label: group-means-multiple-cat-vars
-#| echo: true
-
-means_by_group &lt;- function(df, cat_var, quant_var) {
-    df %&gt;%
-        group_by(pick({{ cat_var }})) %&gt;%
-        summarize(mean = mean({{ quant_var }})
-                  )
-}</code></pre>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">means_by_group</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">df</span>, <span class="va">cat_var</span>, <span class="va">quant_var</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="va">df</span> <span class="op">%&gt;%</span></span>
+<span>        <span class="fu">group_by</span><span class="op">(</span><span class="fu">pick</span><span class="op">(</span><span class="op">{</span><span class="op">{</span> <span class="va">cat_var</span> <span class="op">}</span><span class="op">}</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>        <span class="fu">summarize</span><span class="op">(</span>mean <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="op">{</span><span class="op">{</span> <span class="va">quant_var</span> <span class="op">}</span><span class="op">}</span><span class="op">)</span></span>
+<span>                  <span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 <p>Now it’s back to working!</p>
-<pre class="{r}"><code>#| echo: true
-#| label: function-with-multiple-cat-success
-
-means_by_group(penguins, 
-               cat_var = c(species, sex), 
-               quant_var = bill_length_mm
-               )</code></pre>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">means_by_group</span><span class="op">(</span><span class="va">penguins</span>, </span>
+<span>               cat_var <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">species</span>, <span class="va">sex</span><span class="op">)</span>, </span>
+<span>               quant_var <span class="op">=</span> <span class="va">bill_length_mm</span></span>
+<span>               <span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 8 × 3
+# Groups:   species [3]
+  species   sex     mean
+  &lt;fct&gt;     &lt;fct&gt;  &lt;dbl&gt;
+1 Adelie    female  37.3
+2 Adelie    male    40.4
+3 Adelie    &lt;NA&gt;    NA  
+4 Chinstrap female  46.6
+5 Chinstrap male    51.1
+6 Gentoo    female  45.6
+7 Gentoo    male    49.5
+8 Gentoo    &lt;NA&gt;    NA  </code></pre>
+</div>
+</div>
 <div class="callout callout-style-default callout-check-in callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -967,23 +988,16 @@ means_by_group(penguins,
 </div>
 <div class="callout-body-container callout-body">
 <ol start="9" type="1">
-<li>Create a new version of <code>dplyr::count()</code> that also shows proportions instead of just sample sizes. The function should be able to handle counting by multiple categorical variables.</li>
+<li>Create a new version of <code><a href="https://dplyr.tidyverse.org/reference/count.html">dplyr::count()</a></code> that also shows proportions instead of just sample sizes. The function should be able to handle counting by multiple categorical variables.</li>
 </ol>
 </div>
 </div>
 
 
-</section>
-</section>
-
-
-<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
-
+</section></section><div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 <ol>
 <li id="fn1"><p>There are ways to cheat your way around this, but <strong>we will avoid them</strong>!<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section></div></main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</ol></section></div></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
     if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -1395,9 +1409,7 @@ means_by_group(penguins,
       }
     }
   });
-  </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
+  </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
       <a href="../unit-1.html" class="pagination-link" aria-label="Unit 1">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Unit 1</span>
       </a>          
@@ -1409,8 +1421,7 @@ means_by_group(penguins,
   </div>
 </nav>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
+<footer class="footer"><div class="nav-footer">
     <div class="nav-footer-left">
 <p>This page is built with ❤️ by Drs. Kelly Bodwin &amp; Allison Theobold and also <a href="https://quarto.org/">Quarto</a>.</p>
 </div>   
@@ -1419,17 +1430,15 @@ means_by_group(penguins,
     <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/unit-1/writing-functions.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
-    <li class="nav-item">
+<li class="nav-item">
     <a class="nav-link" href="../LICENSE.md">
 <p>License</p>
 </a>
   </li>  
 </ul>
-    </div>
+</div>
   </div>
 </footer>
-
-
 
 
 </body></html>

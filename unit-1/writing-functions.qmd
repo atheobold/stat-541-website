@@ -1,8 +1,6 @@
 ---
 title: "Writing Functions in R"
 editor: source
-markdown: 
-  wrap: 72
 execute: 
   echo: false
   warning: false
