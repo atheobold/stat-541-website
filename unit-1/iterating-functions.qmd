@@ -453,7 +453,7 @@ whether the pattern was detected in the string. Let's use this to see how the
 map2_lgl(
   .x = string_data$string,
   .y = string_data$pattern,
-  .f = ~ str_detect(.x, .y)
+  .f = str_detect
 )
 ```
 
@@ -472,7 +472,7 @@ string_data |>
   map2_lgl(
     .x = string,
     .y = pattern,
-    .f = ~ str_detect(.x, .y)
+    .f = str_detect
     )
 ```
 This error is because the pipe operator is inputting the entire `string_data`
@@ -491,7 +491,7 @@ string_data |>
   mutate(found = map2_lgl(
     .x = string,
     .y = pattern,
-    .f = ~ str_detect(.x, .y)
+    .f = str_detect
     )
   )
 
@@ -588,7 +588,7 @@ string_data <- tibble(
 map2_chr(
   string_data$first,
   string_data$second,
-  ~ str_c(.x, .y, sep = " ")
+  function(x, y) str_c(x, y, sep = " ")
 )
 ```
 
