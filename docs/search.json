@@ -2605,5 +2605,61 @@
       "Unit 3 - Package Development",
       "Code Speed"
     ]
+  },
+  {
+    "objectID": "slides/04-ai-code-style.html#universal-principles",
+    "href": "slides/04-ai-code-style.html#universal-principles",
+    "title": "Week 2 - Day 2",
+    "section": "Universal Principles",
+    "text": "Universal Principles\n\nSpaces before and after = (e.g., mean = mean(x))\nSpaces after commas (e.g., aes(x = hwy, y = cty))\nNo line of code should be over 80 characters long.\n\nIf your line is longer than 80 characters, you should use new lines (returns) to break up your code.\nThe contents should be indented by two spaces.\n\n\n\n\n\n\n\n\nLet’s demo how to get a line at 80 characters!"
+  },
+  {
+    "objectID": "slides/04-ai-code-style.html#ggplot-code",
+    "href": "slides/04-ai-code-style.html#ggplot-code",
+    "title": "Week 2 - Day 2",
+    "section": "ggplot Code",
+    "text": "ggplot Code\nIt is good practice to put each geom and aes on a new line.\n\nBadGood\n\n\n\n\nggplot(data = mpg, mapping = aes(x = cty, y = hwy, color = class)) + geom_point() + theme_bw() + labs(x = \"City (mpg)\", y = \"Highway (mpg)\")\n\n\n\n\n\n\nggplot(data = mpg, \n       mapping = aes(x = cty, y = hwy, color = class)) + \n  geom_point() + \n  theme_bw() + \n  labs(x = \"City (mpg)\", y = \"Highway (mpg)\")"
+  },
+  {
+    "objectID": "slides/04-ai-code-style.html#dplyr-code",
+    "href": "slides/04-ai-code-style.html#dplyr-code",
+    "title": "Week 2 - Day 2",
+    "section": "dplyr Code",
+    "text": "dplyr Code\nIt is good practice to have a new line after every pipe.\n\nBadGood\n\n\n\n\nmpg |&gt;\n  summarise(mean_hwy = mean(hwy), mean_cty = mean(cty), mean_displ = mean(displ), .by = manufacturer)\n\nmpg |&gt; summarize(across(where(is.numeric), mean), .by = manufacturer) |&gt;\npivot_longer(!manufacturer, names_to = \"measure\", values_to = \"value\") |&gt;\narrange(value)\n\n\n\n\n\n\nmpg |&gt;\n  summarise(\n    mean_hwy = mean(hwy), \n    mean_cty = mean(cty), \n    mean_displ = mean(displ), \n    .by = manufacturer\n    )\n\nmpg |&gt; \n  summarize(\n    across(where(is.numeric), mean), .by = manufacturer\n    ) |&gt;\n  pivot_longer(!manufacturer, names_to = \"measure\", values_to = \"value\") |&gt;\n  arrange(value)"
+  },
+  {
+    "objectID": "slides/04-ai-code-style.html#why-use-the-pipe",
+    "href": "slides/04-ai-code-style.html#why-use-the-pipe",
+    "title": "Week 2 - Day 2",
+    "section": "Why use the pipe?",
+    "text": "Why use the pipe?\nThe pipe is a powerful way to make your code more readable by passing the output of one funtion as the input of the next function.\nNo more nested functions!\n\n## Good\nmap(diamonds, summ_stats) |&gt; \n  bind_rows(.id = \"id\")\n\n## Bad\nbind_rows(map(diamonds, summ_stats),\n          .id = \"id\")"
+  },
+  {
+    "objectID": "slides/04-ai-code-style.html#which-pipe-to-use",
+    "href": "slides/04-ai-code-style.html#which-pipe-to-use",
+    "title": "Week 2 - Day 2",
+    "section": "Which pipe to use?",
+    "text": "Which pipe to use?\nAs of R 4.3.0, the base pipe (|&gt;) provides all the features from magrittr (%&gt;%) that we recommend using.\n\n\n\n\n\n\nLet’s demo how to get the base pipe as the default!"
+  },
+  {
+    "objectID": "slides/04-ai-code-style.html#saving-intermediate-objects",
+    "href": "slides/04-ai-code-style.html#saving-intermediate-objects",
+    "title": "Week 2 - Day 2",
+    "section": "Saving Intermediate Objects",
+    "text": "Saving Intermediate Objects\nObjects should only be saved if they are needed to be refereced later!\n\nBadGood\n\n\n\n\nsumm_stats &lt;- function(x){\n  if(is.numeric(x)){\n    mean = mean(x)\n    median = median(x)\n    sd = sd(x)\n    iqr = IQR(x)\n    summary &lt;- tibble(Mean = mean, \n                      Median = median,\n                      SD = sd,\n                      IQR = iqr)\n    return(summary)\n  } else if (is.factor(x) || is.character(x)) {\n    num_levels = n_distinct(x)\n    summary &lt;- tibble(`Number of Levels` = num_levels)\n    return(summary)\n  } else {\n    warning(\"Unsupported input type\")\n    return(NULL)\n  }\n}\n\n\n\n\n\n\nsumm_df &lt;- function(dataframe){\n  if(is.data.frame(dataframe)){\n    \n    dataframe |&gt;\n      map(summ_stats) |&gt;\n      bind_rows(.id = \"variable\") |&gt;\n      pivot_longer(\n        cols = -variable,\n        names_to = \"statistic\",\n        values_to = \"value\") |&gt;\n      pivot_wider(\n        names_from = variable,\n        values_from = value)\n    \n  } else {\n    warning(\"Input is not a dataframe\")\n  }\n}"
+  },
+  {
+    "objectID": "slides/04-ai-code-style.html#good-3",
+    "href": "slides/04-ai-code-style.html#good-3",
+    "title": "Week 2 - Day 2",
+    "section": "Good",
+    "text": "Good\n\nsumm_df &lt;- function(dataframe){\n  if(is.data.frame(dataframe)){\n    \n    dataframe |&gt;\n    map(summ_stats) |&gt;\n    bind_rows(.id = \"variable\") |&gt;\n    pivot_longer(\n      cols = -variable,\n      names_to = \"statistic\",\n      values_to = \"value\") |&gt;\n    pivot_wider(\n      names_from = variable,\n      values_from = value)\n    \n  } else {\n    warning(\"Input is not a dataframe\")\n  }\n}"
+  },
+  {
+    "objectID": "slides/04-ai-code-style.html#good-2",
+    "href": "slides/04-ai-code-style.html#good-2",
+    "title": "Week 2 - Day 2",
+    "section": "Good",
+    "text": "Good\n\nsumm_df &lt;- function(dataframe){\n  if(is.data.frame(dataframe)){\n    \n    dataframe |&gt;\n    map(summ_stats) |&gt;\n    bind_rows(.id = \"variable\") |&gt;\n    pivot_longer(\n      cols = -variable,\n      names_to = \"statistic\",\n      values_to = \"value\") |&gt;\n    pivot_wider(\n      names_from = variable,\n      values_from = value)\n    \n  } else {\n    warning(\"Input is not a dataframe\")\n  }\n}"
   }
 ]
