@@ -115,6 +115,9 @@ Specifically, use the `mutate()` and `recode_values()` to change the `drv`
 variable to have the following descriptive levels: `front`, `rear`,
 `four wheel`. 
 
+*Hint: The `recode_values()` function was added to `dplyr` version 1.2.0. If
+you don't see this function you need to update your version of `dplyr`!*
+
 ```{r}
 #| label: descriptive-drive-variable
 
