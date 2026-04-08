@@ -463,7 +463,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
    
   <ul>
-<li><a href="#athlete-gender-proportions-annually" id="toc-athlete-gender-proportions-annually" class="nav-link active" data-scroll-target="#athlete-gender-proportions-annually">Athlete gender proportions annually</a></li>
+<li><a href="#athlete-sex-proportions-annually" id="toc-athlete-sex-proportions-annually" class="nav-link active" data-scroll-target="#athlete-sex-proportions-annually">Athlete sex proportions annually</a></li>
   <li><a href="#female-medals-by-country" id="toc-female-medals-by-country" class="nav-link" data-scroll-target="#female-medals-by-country">Female medals by country</a></li>
   </ul><div class="toc-actions"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/project/example-project-olympics/week-2.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></nav>
     </div>
@@ -501,7 +501,7 @@ Note
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><em>Since you are building on your previous report, your dataset introduction and description from last week should still be present in your file! I have omitted this here for simplicity.</em></p>
-<section id="athlete-gender-proportions-annually" class="level2"><h2 class="anchored" data-anchor-id="athlete-gender-proportions-annually">Athlete gender proportions annually</h2>
+<section id="athlete-sex-proportions-annually" class="level2"><h2 class="anchored" data-anchor-id="athlete-sex-proportions-annually">Athlete sex proportions annually</h2>
 <p>New column: ratio of female to male athletes</p>
 <p>Does <em>not</em> require iteration or custom function.</p>
 <div class="cell">
@@ -520,154 +520,603 @@ Note
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">year</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span></span>
 <span>    avg_prop_female <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">prop_female</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span>  <span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span>  <span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">gt</span><span class="fu">::</span><span class="fu"><a href="https://gt.rstudio.com/reference/gt.html">gt</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div class="kable-table">
-<table class="caption-top table table-sm table-striped small">
-<thead><tr class="header">
-<th style="text-align: right;">year</th>
-<th style="text-align: right;">avg_prop_female</th>
+<div id="slrfiioknx" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#slrfiioknx table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#slrfiioknx thead, #slrfiioknx tbody, #slrfiioknx tfoot, #slrfiioknx tr, #slrfiioknx td, #slrfiioknx th {
+  border-style: none;
+}
+
+#slrfiioknx p {
+  margin: 0;
+  padding: 0;
+}
+
+#slrfiioknx .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#slrfiioknx .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#slrfiioknx .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#slrfiioknx .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#slrfiioknx .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#slrfiioknx .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#slrfiioknx .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#slrfiioknx .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#slrfiioknx .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#slrfiioknx .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#slrfiioknx .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#slrfiioknx .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#slrfiioknx .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#slrfiioknx .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#slrfiioknx .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#slrfiioknx .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#slrfiioknx .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#slrfiioknx .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#slrfiioknx .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#slrfiioknx .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#slrfiioknx .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#slrfiioknx .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#slrfiioknx .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#slrfiioknx .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#slrfiioknx .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#slrfiioknx .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#slrfiioknx .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#slrfiioknx .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#slrfiioknx .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#slrfiioknx .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#slrfiioknx .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#slrfiioknx .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#slrfiioknx .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#slrfiioknx .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#slrfiioknx .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#slrfiioknx .gt_left {
+  text-align: left;
+}
+
+#slrfiioknx .gt_center {
+  text-align: center;
+}
+
+#slrfiioknx .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#slrfiioknx .gt_font_normal {
+  font-weight: normal;
+}
+
+#slrfiioknx .gt_font_bold {
+  font-weight: bold;
+}
+
+#slrfiioknx .gt_font_italic {
+  font-style: italic;
+}
+
+#slrfiioknx .gt_super {
+  font-size: 65%;
+}
+
+#slrfiioknx .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#slrfiioknx .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#slrfiioknx .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#slrfiioknx .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#slrfiioknx .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#slrfiioknx .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#slrfiioknx .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#slrfiioknx .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#slrfiioknx div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
+<thead><tr class="gt_col_headings header">
+<th id="year" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">year</th>
+<th id="avg_prop_female" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">avg_prop_female</th>
 </tr></thead>
-<tbody>
+<tbody class="gt_table_body">
 <tr class="odd">
-<td style="text-align: right;">1896</td>
-<td style="text-align: right;">0.0000000</td>
+<td class="gt_row gt_right" headers="year">1896</td>
+<td class="gt_row gt_right" headers="avg_prop_female">0.000000000</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">1900</td>
-<td style="text-align: right;">0.0098180</td>
+<td class="gt_row gt_right" headers="year">1900</td>
+<td class="gt_row gt_right" headers="avg_prop_female">0.009817973</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">1904</td>
-<td style="text-align: right;">0.0065137</td>
+<td class="gt_row gt_right" headers="year">1904</td>
+<td class="gt_row gt_right" headers="avg_prop_female">0.006513681</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">1906</td>
-<td style="text-align: right;">0.0245990</td>
+<td class="gt_row gt_right" headers="year">1906</td>
+<td class="gt_row gt_right" headers="avg_prop_female">0.024598963</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">1908</td>
-<td style="text-align: right;">0.0132723</td>
+<td class="gt_row gt_right" headers="year">1908</td>
+<td class="gt_row gt_right" headers="avg_prop_female">0.013272334</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">1912</td>
-<td style="text-align: right;">0.0228359</td>
+<td class="gt_row gt_right" headers="year">1912</td>
+<td class="gt_row gt_right" headers="avg_prop_female">0.022835916</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">1920</td>
-<td style="text-align: right;">0.0685532</td>
+<td class="gt_row gt_right" headers="year">1920</td>
+<td class="gt_row gt_right" headers="avg_prop_female">0.068553244</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">1924</td>
-<td style="text-align: right;">0.0819500</td>
+<td class="gt_row gt_right" headers="year">1924</td>
+<td class="gt_row gt_right" headers="avg_prop_female">0.081949971</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">1928</td>
-<td style="text-align: right;">0.0438497</td>
+<td class="gt_row gt_right" headers="year">1928</td>
+<td class="gt_row gt_right" headers="avg_prop_female">0.043849748</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">1932</td>
-<td style="text-align: right;">0.0976862</td>
+<td class="gt_row gt_right" headers="year">1932</td>
+<td class="gt_row gt_right" headers="avg_prop_female">0.097686199</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">1936</td>
-<td style="text-align: right;">0.0549354</td>
+<td class="gt_row gt_right" headers="year">1936</td>
+<td class="gt_row gt_right" headers="avg_prop_female">0.054935364</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">1948</td>
-<td style="text-align: right;">0.0519928</td>
+<td class="gt_row gt_right" headers="year">1948</td>
+<td class="gt_row gt_right" headers="avg_prop_female">0.051992839</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">1952</td>
-<td style="text-align: right;">0.0805067</td>
+<td class="gt_row gt_right" headers="year">1952</td>
+<td class="gt_row gt_right" headers="avg_prop_female">0.080506697</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">1956</td>
-<td style="text-align: right;">0.0742879</td>
+<td class="gt_row gt_right" headers="year">1956</td>
+<td class="gt_row gt_right" headers="avg_prop_female">0.074287903</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">1960</td>
-<td style="text-align: right;">0.0980245</td>
+<td class="gt_row gt_right" headers="year">1960</td>
+<td class="gt_row gt_right" headers="avg_prop_female">0.098024523</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">1964</td>
-<td style="text-align: right;">0.0857484</td>
+<td class="gt_row gt_right" headers="year">1964</td>
+<td class="gt_row gt_right" headers="avg_prop_female">0.085748426</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">1968</td>
-<td style="text-align: right;">0.1288126</td>
+<td class="gt_row gt_right" headers="year">1968</td>
+<td class="gt_row gt_right" headers="avg_prop_female">0.128812638</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">1972</td>
-<td style="text-align: right;">0.1203428</td>
+<td class="gt_row gt_right" headers="year">1972</td>
+<td class="gt_row gt_right" headers="avg_prop_female">0.120342792</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">1976</td>
-<td style="text-align: right;">0.1664529</td>
+<td class="gt_row gt_right" headers="year">1976</td>
+<td class="gt_row gt_right" headers="avg_prop_female">0.166452916</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">1980</td>
-<td style="text-align: right;">0.1644709</td>
+<td class="gt_row gt_right" headers="year">1980</td>
+<td class="gt_row gt_right" headers="avg_prop_female">0.164470918</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">1984</td>
-<td style="text-align: right;">0.1547719</td>
+<td class="gt_row gt_right" headers="year">1984</td>
+<td class="gt_row gt_right" headers="avg_prop_female">0.154771927</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">1988</td>
-<td style="text-align: right;">0.1758988</td>
+<td class="gt_row gt_right" headers="year">1988</td>
+<td class="gt_row gt_right" headers="avg_prop_female">0.175898833</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">1992</td>
-<td style="text-align: right;">0.2239043</td>
+<td class="gt_row gt_right" headers="year">1992</td>
+<td class="gt_row gt_right" headers="avg_prop_female">0.223904286</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">1994</td>
-<td style="text-align: right;">0.2463595</td>
+<td class="gt_row gt_right" headers="year">1994</td>
+<td class="gt_row gt_right" headers="avg_prop_female">0.246359511</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">1996</td>
-<td style="text-align: right;">0.2916848</td>
+<td class="gt_row gt_right" headers="year">1996</td>
+<td class="gt_row gt_right" headers="avg_prop_female">0.291684774</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">1998</td>
-<td style="text-align: right;">0.2429780</td>
+<td class="gt_row gt_right" headers="year">1998</td>
+<td class="gt_row gt_right" headers="avg_prop_female">0.242977985</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">2000</td>
-<td style="text-align: right;">0.3895312</td>
+<td class="gt_row gt_right" headers="year">2000</td>
+<td class="gt_row gt_right" headers="avg_prop_female">0.389531239</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">2002</td>
-<td style="text-align: right;">0.2732094</td>
+<td class="gt_row gt_right" headers="year">2002</td>
+<td class="gt_row gt_right" headers="avg_prop_female">0.273209448</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">2004</td>
-<td style="text-align: right;">0.3951849</td>
+<td class="gt_row gt_right" headers="year">2004</td>
+<td class="gt_row gt_right" headers="avg_prop_female">0.395184916</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">2006</td>
-<td style="text-align: right;">0.3260694</td>
+<td class="gt_row gt_right" headers="year">2006</td>
+<td class="gt_row gt_right" headers="avg_prop_female">0.326069434</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">2008</td>
-<td style="text-align: right;">0.4271925</td>
+<td class="gt_row gt_right" headers="year">2008</td>
+<td class="gt_row gt_right" headers="avg_prop_female">0.427192545</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">2010</td>
-<td style="text-align: right;">0.3368809</td>
+<td class="gt_row gt_right" headers="year">2010</td>
+<td class="gt_row gt_right" headers="avg_prop_female">0.336880907</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">2012</td>
-<td style="text-align: right;">0.4291633</td>
+<td class="gt_row gt_right" headers="year">2012</td>
+<td class="gt_row gt_right" headers="avg_prop_female">0.429163254</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">2014</td>
-<td style="text-align: right;">0.2958796</td>
+<td class="gt_row gt_right" headers="year">2014</td>
+<td class="gt_row gt_right" headers="avg_prop_female">0.295879556</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">2016</td>
-<td style="text-align: right;">0.4341882</td>
+<td class="gt_row gt_right" headers="year">2016</td>
+<td class="gt_row gt_right" headers="avg_prop_female">0.434188173</td>
 </tr>
 </tbody>
 </table>
@@ -681,16 +1130,33 @@ Note
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+<span class="screen-reader-only">Note</span>Ideas to take this further:
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Ideas to take this further:</p>
 <ul>
 <li><p>Correct for team sports having more athletes.</p></li>
-<li><p>Think about how to handle anomalies in the country team names, e.g.&nbsp;“USSR” vs. “Russia”.</p></li>
+<li><p>Think about how to handle anomalies in the country team names, e.g.&nbsp;“USSR” vs.&nbsp;“Russia”.</p></li>
 <li><p>Limit the data to one or two countries and compare them.</p></li>
-<li><p>Use <code>gt()</code> to color the table in a way that tells the story of patterns over time.</p></li>
+</ul>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Table Improvements
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Give columns more descriptive labels</li>
+<li>Boldface column titles</li>
+<li>Format the percentage column to be percentages!</li>
+<li>Give the table a caption</li>
+<li>Color the table in a way that tells the story of patterns over time.</li>
 </ul>
 </div>
 </div>
@@ -720,57 +1186,20 @@ Note
 <span>    n_f_gold <span class="op">=</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map_dbl</a></span><span class="op">(</span><span class="va">team</span>, <span class="va">num_female_gold</span><span class="op">)</span></span>
 <span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_max</a></span><span class="op">(</span><span class="va">n_f_gold</span>, n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div class="kable-table">
-<table class="caption-top table table-sm table-striped small">
-<thead><tr class="header">
-<th style="text-align: left;">team</th>
-<th style="text-align: right;">n_f_gold</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">United States</td>
-<td style="text-align: right;">300</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">China</td>
-<td style="text-align: right;">125</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Soviet Union</td>
-<td style="text-align: right;">124</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Germany</td>
-<td style="text-align: right;">103</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">East Germany</td>
-<td style="text-align: right;">94</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Russia</td>
-<td style="text-align: right;">82</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Australia</td>
-<td style="text-align: right;">64</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Netherlands</td>
-<td style="text-align: right;">61</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Romania</td>
-<td style="text-align: right;">58</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Great Britain</td>
-<td style="text-align: right;">56</td>
-</tr>
-</tbody>
-</table>
-</div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 × 2
+   team          n_f_gold
+   &lt;chr&gt;            &lt;dbl&gt;
+ 1 United States      300
+ 2 China              125
+ 3 Soviet Union       124
+ 4 Germany            103
+ 5 East Germany        94
+ 6 Russia              82
+ 7 Australia           64
+ 8 Netherlands         61
+ 9 Romania             58
+10 Great Britain       56</code></pre>
 </div>
 </div>
 <p>This follows about the same patterns as overall medals, but maybe if we compare to male gold counts we would find some standout countries. For example, Romania is on this Top 10 but probably not in the overall counts.</p>
@@ -793,30 +1222,24 @@ Note
 </ul>
 </div>
 </div>
-<!-- Now that you have explored your dataset and posed research questions about  -->
-<!-- these data, this week we are focused on producing summary statistics that  -->
-<!-- could be used to also address your research question. These summary statistics -->
-<!-- will allow you to apply your function writing and iteration skills!  -->
-<!-- ## By the end of the week, your updated report should contain: -->
-<!-- -   **Two** data summaries that use existing (unmodified) columns in the data -->
-<!--     * **At least one** of these summaries need to be produced with a custom -->
-<!--     function.  -->
-<!--     * **At least one** of these summaries need to include iteration (either  -->
-<!--     inside or outside of a function). -->
-<!-- -   **Two** data summaries that modify columns from the original  -->
-<!-- data -->
-<!--     * **At least one** of these summaries need to be produced with a custom -->
-<!--     function.  -->
-<!--     * **At least one** of these summaries need to include iteration (either  -->
-<!--     inside or outside of a function). -->
-<!-- -   Summary tables that *at a minimum* have: -->
-<!--     * Formatted values (e.g., decimals, percentages, currencies) -->
-<!--     * Boldface headers -->
-<!--     * Captions -->
-<!-- ::: {.callout-important} -->
-<!-- Your report should contain **at least two** custom functions (to produce  -->
-<!-- data summaries), and **at least two** places where iteration was used. -->
-<!-- ::: -->
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Table Improvements
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Give columns more descriptive labels</li>
+<li>Boldface column titles</li>
+<li>Give the table a caption</li>
+<li>Color the table in a way that draws people’s eyes to locations you want to highlight.</li>
+</ul>
+</div>
+</div>
 
 
 </section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">

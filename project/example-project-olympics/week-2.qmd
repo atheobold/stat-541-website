@@ -1,30 +1,22 @@
 ---
 title: "Project Checkpoint 2 - Example"
-format:
-  html:
-    df-print: kable
+format: html
 execute:
   message: false
   warning: false
 ---
 
-:::{.callout-note}
-Note that this example document provides only two examples of data summaries; 
-your project step requires a total of four.
+::: callout-note
+Note that this example document provides only two examples of data summaries; your project step requires a total of four.
 
-Although the instructions don't explicitly say to interpret your results, you
-should definitely make some notes for yourself about what you learn from these
-data summaries, to help inform your subsequent steps.
+Although the instructions don't explicitly say to interpret your results, you should definitely make some notes for yourself about what you learn from these data summaries, to help inform your subsequent steps.
 :::
 
 ```{r}
 library(tidyverse)
 ```
 
-
-*Since you are building on your previous report, your dataset introduction and
-description from last week should still be present in your file!  I have omitted
-this here for simplicity.*
+*Since you are building on your previous report, your dataset introduction and description from last week should still be present in your file! I have omitted this here for simplicity.*
 
 ```{r}
 #| include: false
@@ -35,8 +27,7 @@ tuesdata <- tidytuesdayR::tt_load('2024-08-06')
 olympics <- tuesdata$olympics
 ```
 
-
-## Athlete gender proportions annually
+## Athlete sex proportions annually
 
 New column: ratio of female to male athletes
 
@@ -58,25 +49,51 @@ gender_props |>
   group_by(year) |>
   summarize(
     avg_prop_female = mean(prop_female, na.rm = TRUE)
-  )
+  ) |> 
+  gt::gt()
 ```
 
 As we probably expected, the proportion of female athletes has gone up with time!
 
-:::{.callout-note}
+```{r}
+#| echo: false
+#| eval: false
+#| label: allison-code-approach
 
-Ideas to take this further:
+olympics |>
+  # I don't like using sex == "F" inside a summarize, I would prefer to add a 
+  # group and count
+  group_by(year, games, team, sex) |>
+  count() |> 
+  ungroup() |> 
+  pivot_wider(names_from = sex, 
+              values_from = n, 
+              names_prefix = "count_") |> 
+  mutate(
+    prop_F = count_F/(count_F + count_M)
+  )
+```
 
-* Correct for team sports having more athletes.
 
-* Think about how to handle anomalies in the country team names, e.g. "USSR" vs.
-"Russia".
+::: callout-note
+## Ideas to take this further:
 
-* Limit the data to one or two countries and compare them.
+-   Correct for team sports having more athletes.
 
-* Use `gt()` to color the table in a way that tells the story of patterns over 
-time.
+-   Think about how to handle anomalies in the country team names, e.g. "USSR"
+vs. "Russia".
 
+-   Limit the data to one or two countries and compare them.
+:::
+
+::: {.callout-important}
+# Table Improvements
+
+-   Give columns more descriptive labels
+-   Boldface column titles
+-   Format the percentage column to be percentages!
+-   Give the table a caption
+-   Color the table in a way that tells the story of patterns over time.
 :::
 
 ## Female medals by country
@@ -102,7 +119,6 @@ num_female_gold <- function(country) {
 }
 ```
 
-
 ```{r}
 olympics |>
   distinct(team) |>
@@ -112,54 +128,25 @@ olympics |>
   slice_max(n_f_gold, n = 10)
 ```
 
-This follows about the same patterns as overall medals, but maybe if we compare
-to male gold counts we would find some standout countries.  For example, 
-Romania is on this Top 10 but probably not in the overall counts.
+This follows about the same patterns as overall medals, but maybe if we compare to male gold counts we would find some standout countries. For example, Romania is on this Top 10 but probably not in the overall counts.
 
-:::{.callout-note}
-
+::: callout-note
 Ideas to take this further:
 
-* Collect counts for silver and bronze medals as well, not just gold.
+-   Collect counts for silver and bronze medals as well, not just gold.
 
-* Collect a ratio of female to male medals, to get a sense of which countries have
-a *disproportionately low* number of female medal winners.
+-   Collect a ratio of female to male medals, to get a sense of which countries have a *disproportionately low* number of female medal winners.
 
-* Collect this data over time as well to look for countries that evolve.
+-   Collect this data over time as well to look for countries that evolve.
 
-* (This actually *could* have been done in a pipeline!  But, the function approach
-makes it easier to incorporate some of the upgrades above.)
+-   (This actually *could* have been done in a pipeline! But, the function approach makes it easier to incorporate some of the upgrades above.)
 :::
 
+::: {.callout-important}
+# Table Improvements
 
-
-
-<!-- Now that you have explored your dataset and posed research questions about  -->
-<!-- these data, this week we are focused on producing summary statistics that  -->
-<!-- could be used to also address your research question. These summary statistics -->
-<!-- will allow you to apply your function writing and iteration skills!  -->
-
-<!-- ## By the end of the week, your updated report should contain: -->
-
-<!-- -   **Two** data summaries that use existing (unmodified) columns in the data -->
-<!--     * **At least one** of these summaries need to be produced with a custom -->
-<!--     function.  -->
-<!--     * **At least one** of these summaries need to include iteration (either  -->
-<!--     inside or outside of a function). -->
-
-<!-- -   **Two** data summaries that modify columns from the original  -->
-<!-- data -->
-<!--     * **At least one** of these summaries need to be produced with a custom -->
-<!--     function.  -->
-<!--     * **At least one** of these summaries need to include iteration (either  -->
-<!--     inside or outside of a function). -->
-
-<!-- -   Summary tables that *at a minimum* have: -->
-<!--     * Formatted values (e.g., decimals, percentages, currencies) -->
-<!--     * Boldface headers -->
-<!--     * Captions -->
-
-<!-- ::: {.callout-important} -->
-<!-- Your report should contain **at least two** custom functions (to produce  -->
-<!-- data summaries), and **at least two** places where iteration was used. -->
-<!-- ::: -->
+-   Give columns more descriptive labels
+-   Boldface column titles
+-   Give the table a caption
+-   Color the table in a way that draws people's eyes to locations you want to highlight.
+:::
