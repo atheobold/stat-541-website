@@ -34,7 +34,7 @@ summ_stats(diamonds$color)
 
 3. Use `map()` to apply your `summ_stats()` function to every column in the 
 `diamonds` dataset. 
-*Hint 1: Look up the `bind_rows()` documentation from dplyr to combine summary statistics for all quantitative variables into one data frame.*
+*Hint 1: Look up the `bind_rows()` documentation from dplyr to combine summary statistics for all the variables into one data frame.*
 *Hint 2: The `.id` argument will be especially helpful in adding the variable names!*
 
 

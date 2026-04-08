@@ -45,7 +45,7 @@ summ_stats(diamonds$color)
 `diamonds` dataset. 
 
 *Hint: Look up the `bind_rows()` documentation from dplyr to combine summary
-statistics for all quantitative variables into one data frame. The `.id`
+statistics for all the variables into one data frame. The `.id`
 argument will be especially helpful in adding the variable names!*
 
 ## Data Transformation

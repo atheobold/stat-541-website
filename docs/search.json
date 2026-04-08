@@ -1698,7 +1698,7 @@
     "href": "practice-activities/week-2.html#iterating-functions",
     "title": "Practice Activity Week 2",
     "section": "Iterating Functions",
-    "text": "Iterating Functions\n\nUse map() to apply your summ_stats() function to every column in the diamonds dataset.\n\nHint: Look up the bind_rows() documentation from dplyr to combine summary statistics for all quantitative variables into one data frame. The .id argument will be especially helpful in adding the variable names!",
+    "text": "Iterating Functions\n\nUse map() to apply your summ_stats() function to every column in the diamonds dataset.\n\nHint: Look up the bind_rows() documentation from dplyr to combine summary statistics for all the variables into one data frame. The .id argument will be especially helpful in adding the variable names!",
     "crumbs": [
       "Unit 1 - Complex Analyses",
       "Week 2: In-Class Activity"
