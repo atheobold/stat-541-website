@@ -9,9 +9,9 @@ editor: source
 input and produces the following output:
 
 - for **numeric variables**: returns the mean, median, standard deviation, and
-IQR as a data frame
+IQR as a dataframe (or tibble)
 - for **categorical variables**: returns the number of levels (categories) of
-the variable
+the variable as a dataframe (or tibble)
 
 *Hint:* You can use `tibble()` to create the data frame.
     * Example: `tibble(a = 1:2, b = 2:3)` creates a data frame with variables

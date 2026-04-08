@@ -1687,7 +1687,7 @@
     "href": "practice-activities/week-2.html#writing-functions",
     "title": "Practice Activity Week 2",
     "section": "Writing Functions",
-    "text": "Writing Functions\n\nWrite a function called summ_stats() that takes a vector x as input and produces the following output:\n\n\nfor numeric variables: returns the mean, median, standard deviation, and IQR as a data frame\nfor categorical variables: returns the number of levels (categories) of the variable\n\nHint: You can use tibble() to create the data frame. For example, tibble(a = 1:2, b = 2:3) creates a data frame with variables a and b.\n\nConfirm that your function works on each type of variable by running the code below.\n\n\nsumm_stats(diamonds$carat)\n\nsumm_stats(diamonds$color)",
+    "text": "Writing Functions\n\nWrite a function called summ_stats() that takes a vector x as input and produces the following output:\n\n\nfor numeric variables: returns the mean, median, standard deviation, and IQR as a dataframe\nfor categorical variables: returns the number of levels (categories) of the variable as a dataframe\n\nHint: You can use tibble() to create the data frame. For example, tibble(a = 1:2, b = 2:3) creates a data frame with variables a and b.\n\nConfirm that your function works on each type of variable by running the code below.\n\n\nsumm_stats(diamonds$carat)\n\nsumm_stats(diamonds$color)",
     "crumbs": [
       "Unit 1 - Complex Analyses",
       "Week 2: In-Class Activity"

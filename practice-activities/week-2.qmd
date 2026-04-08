@@ -23,9 +23,9 @@ Be sure to save the file inside your Week 2 folder of your STAT 431 (or 541) fol
 produces the following output:
 
 -   for **numeric variables**: returns the mean, median, standard deviation, and
-IQR as a data frame
+IQR as a dataframe
 -   for **categorical variables**: returns the number of levels (categories) of
-the variable
+the variable as a dataframe
 
 *Hint:* You can use `tibble()` to create the data frame. For example, 
 `tibble(a = 1:2, b = 2:3)` creates a data frame with variables `a` and `b`.
