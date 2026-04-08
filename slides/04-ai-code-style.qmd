@@ -1,0 +1,280 @@
+---
+title: "Week 2 - Day 2"
+format: 
+  revealjs:
+    theme: [style.scss, simple]
+    auto-stretch: false
+editor: source
+---
+
+# What is my job?
+
+::: {.small}
+> Most professors were often deeply antagonistic toward, even scornful of,
+any approach to learning emerging from a philosophical standpaint emphasizing
+the union of mind, body, and spirit, rather than the separation of these 
+elements. Like many of the students I now teach, I was often told by powerful
+academics that I was misguided to seek such a perspective in the academy.
+Throughout my student years I felt deep inner anguish. Memory of that pain
+returns as I listen to students express the concern that they will not succeed
+in academic professions if they want to be well, if they eschew dysfunctional
+behavior or participation in coercive hierarchies. These students are often
+fearful, as I was, that there are no spaces in the academy where the will to be
+self-actualized can be affirmed.
+
+bell hooks, *Teaching to Transgress*
+:::
+
+<!--  Indeed, the objectification of the teacher -->
+<!-- within bourgeois educational structures seemed to denigrate -->
+<!-- notions o f wholeness and uphold the idea of a mind/body split, -->
+<!-- one that promotes and supports compartrnentalization. -->
+
+# How do I want my classroom to look?
+
+> Any classroom that employs a holistic model of learning will also be a
+> place where teachers grow, and are empowered by the process.
+
+
+# How are you doing?
+
+</br>
+
+> How are you feeling today? Write down at least one emotion you are feeling
+today, this morning, this week. 
+
+# How are you caring for yourself?
+
+</br>
+
+> In what ways are you supporting your own personal fufillment, outside of the
+> academy?
+
+# What are you feeling with respect to AI?
+
+</br>
+
+> What pressures do you feel with regard to using AI?
+>
+> What dilemmas do you feel with respect to using AI?
+
+# The Environment & AI
+
+::: {.centered}
+![](images/04-lake-mead.png){fig-alt="An image of the 'bathtub rings' around Lake Mead. The rings are the white rocks directly above the waterline, which are a substantially different color than the brown and red hills above them. The white rocks mark the previous water line of Lake Mead, which has been dwindling due to climate change and usage of the Colorado River." width=70%}
+:::
+
+# Code Style
+
+In general, we will use the [tidyverse style guide](https://style.tidyverse.org/)
+for guidance on how to format our code. 
+
+. . .
+
+Good code formatting makes it easier for others to read your code! Since you
+will be collaborating with others throughout the course, it is important to
+write code that is easy to understand!
+
+## Universal Principles
+
+- Spaces before and after `=` (e.g., `mean = mean(x)`)
+- Spaces after commas (e.g., `aes(x = hwy, y = cty)`)
+- No line of code should be over 80 characters long.
+    + If your line is longer than 80 characters, you should use new lines 
+    (returns) to break up your code. 
+    + The contents should be indented by two spaces.
+
+::: {.callout-important}
+# Let's demo how to get a line at 80 characters!
+:::
+
+## `ggplot` Code
+
+It is good practice to put each `geom` and `aes` on a new line.
+
+::: panel-tabset
+
+### Bad
+
+::: {.small}
+```{r}
+#| echo: true
+#| eval: false
+#| label: poorly-formatted-ggplot-code
+#| code-line-numbers: false
+
+ggplot(data = mpg, mapping = aes(x = cty, y = hwy, color = class)) + geom_point() + theme_bw() + labs(x = "City (mpg)", y = "Highway (mpg)")
+```
+:::
+
+### Good
+
+::: {.small}
+```{r}
+#| echo: true
+#| eval: false
+#| label: better-formatted-ggplot-code
+#| code-line-numbers: false
+
+ggplot(data = mpg, 
+       mapping = aes(x = cty, y = hwy, color = class)) + 
+  geom_point() + 
+  theme_bw() + 
+  labs(x = "City (mpg)", y = "Highway (mpg)")
+```
+:::
+:::
+
+## `dplyr` Code
+
+It is good practice to have a new line after every pipe.
+
+::: panel-tabset
+
+### Bad
+
+::: {.small}
+```{r}
+#| echo: true
+#| eval: false
+#| label: poorly-formatted-dplyr-code
+#| code-line-numbers: false
+
+mpg |>
+  summarise(mean_hwy = mean(hwy), mean_cty = mean(cty), mean_displ = mean(displ), .by = manufacturer)
+
+mpg |> summarize(across(where(is.numeric), mean), .by = manufacturer) |>
+pivot_longer(!manufacturer, names_to = "measure", values_to = "value") |>
+arrange(value)
+```
+:::
+
+### Good
+
+::: {.small}
+```{r}
+#| echo: true
+#| eval: false
+#| label: better-formatted-dplyr-code
+#| code-line-numbers: false
+
+mpg |>
+  summarise(
+    mean_hwy = mean(hwy), 
+    mean_cty = mean(cty), 
+    mean_displ = mean(displ), 
+    .by = manufacturer
+    )
+
+mpg |> 
+  summarize(
+    across(where(is.numeric), mean), .by = manufacturer
+    ) |>
+  pivot_longer(!manufacturer, names_to = "measure", values_to = "value") |>
+  arrange(value)
+```
+:::
+:::
+
+## Why use the pipe?
+
+The pipe is a powerful way to make your code more readable by passing the output
+of one funtion as the input of the next function. 
+
+**No more nested functions!**
+
+```{r}
+#| echo: true
+#| eval: false
+#| code-line-numbers: false
+
+## Good
+map(diamonds, summ_stats) |> 
+  bind_rows(.id = "id")
+
+## Bad
+bind_rows(map(diamonds, summ_stats),
+          .id = "id")
+```
+
+## Which pipe to use?
+
+As of R 4.3.0, the base pipe (`|>`) provides all the features from magrittr 
+(`%>%`) that we recommend using.
+
+::: {.callout-important}
+# Let's demo how to get the base pipe as the default!
+:::
+
+## Saving Intermediate Objects
+
+Objects should only be saved if they are needed to be refereced later!
+
+::: panel-tabset
+
+### Bad
+
+::: {.small}
+```{r}
+#| echo: true
+#| eval: false
+#| label: lots-of-objects
+#| code-line-numbers: false
+#| code-overflow: scroll
+
+summ_stats <- function(x){
+  if(is.numeric(x)){
+    mean = mean(x)
+    median = median(x)
+    sd = sd(x)
+    iqr = IQR(x)
+    summary <- tibble(Mean = mean, 
+                      Median = median,
+                      SD = sd,
+                      IQR = iqr)
+    return(summary)
+  } else if (is.factor(x) || is.character(x)) {
+    num_levels = n_distinct(x)
+    summary <- tibble(`Number of Levels` = num_levels)
+    return(summary)
+  } else {
+    warning("Unsupported input type")
+    return(NULL)
+  }
+}
+```
+:::
+
+### Good
+
+::: {.small}
+```{r}
+#| echo: true
+#| eval: false
+#| label: no-objects
+#| code-line-numbers: false
+#| code-overflow: scroll
+
+summ_df <- function(dataframe){
+  if(is.data.frame(dataframe)){
+    
+    dataframe |>
+      map(summ_stats) |>
+      bind_rows(.id = "variable") |>
+      pivot_longer(
+        cols = -variable,
+        names_to = "statistic",
+        values_to = "value") |>
+      pivot_wider(
+        names_from = variable,
+        values_from = value)
+    
+  } else {
+    warning("Input is not a dataframe")
+  }
+}
+
+```
+:::
+:::
+
