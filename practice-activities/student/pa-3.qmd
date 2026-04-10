@@ -98,6 +98,7 @@ Parse this column into a data-time object using the `ymd_hms()` function from
 
 4. Our final step is to isolate the pass time for NYC. Use the `pull()` function
 to extract the parsed data-time column you made in the last question. 
+**Can you collapse _all_ the steps into _one_ pipeline?**
 
 ```{r}
 #| label: pull-date-nyc
@@ -142,7 +143,8 @@ cities <- tibble(
 latitude and longitude coordinates. Using your code from Questions 1 though 4, 
 create a `get_pass_time()` function which outputs the pass time for a given
 location. 
-*Hint: Your function should take __two__ arguments: latitude and longitude.*
+*Hint 1: Your function should take __two__ arguments: latitude and longitude.*
+*Hint 2: Think about how many objects you need to save!*
 
 ```{r}
 #| label: pass-time-function
