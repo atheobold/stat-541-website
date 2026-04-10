@@ -140,7 +140,7 @@ cities <- tibble(
 
 5. Our first step is to write a function that gets the pass time for *any* 
 latitude and longitude coordinates. Using your code from Questions 1 though 4, 
-create a `get_pass-time()` function which outputs the pass time for a given
+create a `get_pass_time()` function which outputs the pass time for a given
 location. 
 *Hint: Your function should take __two__ arguments: latitude and longitude.*
 
