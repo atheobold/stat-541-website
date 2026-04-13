@@ -5,7 +5,6 @@ embed-resources: true
 editor: source
 execute: 
   echo: true
-  eval: false
   error: true
 ---
 
