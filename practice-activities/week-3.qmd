@@ -218,3 +218,12 @@ table based on the cities where the ISS will pass next.
 
 
 ```
+
+## Rendering Your HTML
+
+As you are likely aware, the API maxes out at 10 queries per minute. So, it will
+be impossible to render your HTML document without modifications (since you 
+query the API 30 times!). 
+
+To render your HTML file, set `#| eval: false` for the code chunks associated 
+with Question 6 and Question 8. 

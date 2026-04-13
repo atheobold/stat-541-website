@@ -427,6 +427,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
 <li><a href="#getting-the-pass-times-for-one-city" id="toc-getting-the-pass-times-for-one-city" class="nav-link" data-scroll-target="#getting-the-pass-times-for-one-city">Getting the Pass Times for <em>One</em> City</a></li>
   <li><a href="#getting-the-pass-times-for-every-city" id="toc-getting-the-pass-times-for-every-city" class="nav-link" data-scroll-target="#getting-the-pass-times-for-every-city">Getting the Pass Times for <em>Every</em> City</a></li>
+  <li><a href="#rendering-your-html" id="toc-rendering-your-html" class="nav-link" data-scroll-target="#rendering-your-html">Rendering Your HTML</a></li>
   </ul>
 </li>
   </ul><div class="toc-actions"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/practice-activities/week-3.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></nav>
@@ -631,6 +632,9 @@ Important
 <li>Add each city’s pass times to the original <code>cities</code> dataframe. Arrange the table based on the cities where the ISS will pass next.</li>
 </ol>
 <p><em>Hint: The <code>city_passes</code> object is a list which you will need to unpack. The <code><a href="https://tidyr.tidyverse.org/reference/unnest.html">unnest()</a></code> will be helpful here!</em></p>
+</section><section id="rendering-your-html" class="level2"><h2 class="anchored" data-anchor-id="rendering-your-html">Rendering Your HTML</h2>
+<p>As you are likely aware, the API maxes out at 10 queries per minute. So, it will be impossible to render your HTML document without modifications (since you query the API 30 times!).</p>
+<p>To render your HTML file, set <code>#| eval: false</code> for the code chunks associated with Question 6 and Question 8.</p>
 
 
 </section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
