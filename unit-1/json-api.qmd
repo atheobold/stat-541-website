@@ -3,6 +3,16 @@ title: "JSON Data & APIs"
 editor: source
 ---
 
+<!-- NEED TO ADD: -->
+<!-- Grabbing content from an API query with $content -->
+<!-- Using these functions: -->
+<!-- - rawToChar() -->
+<!-- - as.tbl_json() -->
+<!-- - fromJSON()  -->
+
+<!-- Discussion of why you would want to use tools from jsonlite or tidyjson instead -->
+<!-- of unnest_wider or unnest_longer -->
+
 ```{r}
 #| echo: false
 #| message: false
