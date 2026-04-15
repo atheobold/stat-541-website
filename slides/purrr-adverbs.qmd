@@ -18,7 +18,7 @@ library(tidyverse)
 
 * In tidyverse, an adverb *modifies* a function.
 
-* Syntax example:
+* Syntax example: Notice that parentheses are around `mean` not around `mean(1:10)`
 
 ```{r}
 #| eval: false
@@ -49,8 +49,8 @@ safely(mean)(1:10)
 ```{r}
 #| error: true
 #| echo: true
-mean("a")
-safely(mean)("a")
+mean("a" + 1)
+safely(mean)("a" + 1)
 ```
 
 ## `safely()`
