@@ -1,0 +1,75 @@
+---
+title: "Adverbs with `purrr`"
+format: 
+  revealjs:
+    theme: [style.scss, simple]
+    auto-stretch: false
+editor: source
+---
+
+```{r}
+library(tidyverse)
+```
+
+
+## What is an adverb?
+
+* In English, an adverb *modifies* a verb, e.g. "He ate" vs "He ate **loudly**".  
+
+* In tidyverse, an adverb *modifies* a function.
+
+* Syntax example:
+
+```{r}
+#| eval: false
+#| echo: true
+safely(mean)(1:10)
+```
+
+## `safely()`
+
+* The `safely()` adverb allows a function to run and return an error without breaking the code.
+
+* It causes the function to return two objects:
+    + `result`: containing whatever the function would normally return; or, `NULL` if there was an error.
+    + `error`: TRUE or FALSE and the error message
+    
+    
+## `safely()`
+
+```{r}
+#| error: true
+#| echo: true
+mean(1:10)
+safely(mean)(1:10)
+```
+
+## `safely()`
+
+```{r}
+#| error: true
+#| echo: true
+mean("a")
+safely(mean)("a")
+```
+
+## `safely()`
+
+* `safely()` is particularly useful for webscraping and API calls
+
+* Use it when you aren't sure if your `GET` or `fromJSON` or similar function is going to succeed.
+
+* Then, check the `$error` object to determine if you should return an `NA` or actual results.
+
+* Remember to access the `$result` object when you need the actual results!
+
+
+## Other handy adverbs:
+
+* `possibly()`: Same as to `safely()`, but you can have it return `NA` or similar as a result if the function errors.
+
+* `quietly()`: Keeps messages from printing, but still stores them.
+
+* `insistently()`: Retries a function multiple times if it fails, allowing you to wrap unstable operations (e.g., API requests) to work reliably.
+
+* `slowly()`: Forces a function to pause between executions, useful for rate-limiting calls.
