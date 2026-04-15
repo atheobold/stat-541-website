@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.8.24">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>Project Checkpoint 3 – Advanced R</title>
+<title>Project Checkpoint 2 - Example – Advanced R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -61,8 +61,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../project/week-4.html" rel="next">
-<link href="../../project/week-3.html" rel="prev">
+<link href="../../project/week-3.html" rel="next">
+<link href="../../project/week-2.html" rel="prev">
 <link href="../../images/cat-monsters-horst.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -333,7 +333,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../project/example-project-olympics/week-3.html"><em>Week 3: Example Project</em></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../project/example-project-olympics/week-2.html"><em>Week 2: Example Project</em></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -383,7 +383,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../project/example-project-olympics/week-2.html" class="sidebar-item-text sidebar-link">
+  <a href="../../project/example-project-olympics/week-2.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><em>Week 2: Example Project</em></span></a>
   </div>
 </li>
@@ -395,7 +395,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../project/example-project-olympics/week-3.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../project/example-project-olympics/week-3.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><em>Week 3: Example Project</em></span></a>
   </div>
 </li>
@@ -467,13 +467,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
    
   <ul>
-<li><a href="#setup" id="toc-setup" class="nav-link active" data-scroll-target="#setup">Setup</a></li>
-  <li><a href="#new-data-from-api" id="toc-new-data-from-api" class="nav-link" data-scroll-target="#new-data-from-api">New data from API</a></li>
-  </ul><div class="toc-actions"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/project/example-project-olympics/week-3.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></nav>
+<li><a href="#athlete-sex-proportions-annually" id="toc-athlete-sex-proportions-annually" class="nav-link active" data-scroll-target="#athlete-sex-proportions-annually">Athlete sex proportions annually</a></li>
+  <li><a href="#female-medals-by-country" id="toc-female-medals-by-country" class="nav-link" data-scroll-target="#female-medals-by-country">Female medals by country</a></li>
+  </ul><div class="toc-actions"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/project/example-project-olympics/week-2.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
-<h1 class="title">Project Checkpoint 3</h1>
+<h1 class="title">Project Checkpoint 2 - Example</h1>
 </div>
 
 
@@ -487,19 +487,690 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 
-</header><div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://httr.r-lib.org/">httr</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/colearendt/tidyjson">tidyjson</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://jeroen.r-universe.dev/jsonlite">jsonlite</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://glue.tidyverse.org/">glue</a></span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</header><div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<section id="setup" class="level2"><h2 class="anchored" data-anchor-id="setup">Setup</h2>
-<p>For simplicity here, I will study only the top 10 countries in terms of female medals. This code is from last week’s project step.</p>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Note that this example document provides only two examples of data summaries; your project step requires a total of four.</p>
+<p>Although the instructions don’t explicitly say to interpret your results, you should definitely make some notes for yourself about what you learn from these data summaries, to help inform your subsequent steps.</p>
+</div>
+</div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Function to count medals but not overcount team sports</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><em>Since you are building on your previous report, your dataset introduction and description from last week should still be present in your file! I have omitted this here for simplicity.</em></p>
+<section id="athlete-sex-proportions-annually" class="level2"><h2 class="anchored" data-anchor-id="athlete-sex-proportions-annually">Athlete sex proportions annually</h2>
+<p>New column: ratio of female to male athletes</p>
+<p>Does <em>not</em> require iteration or custom function.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">gender_props</span> <span class="op">&lt;-</span> <span class="va">olympics</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">games</span>, <span class="va">team</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span></span>
+<span>    count_male_athletes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">sex</span> <span class="op">==</span> <span class="st">"M"</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>    count_female_athletes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">sex</span> <span class="op">==</span> <span class="st">"F"</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>    .groups <span class="op">=</span> <span class="st">"drop"</span></span>
+<span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
+<span>    prop_female <span class="op">=</span> <span class="va">count_female_athletes</span><span class="op">/</span><span class="op">(</span><span class="va">count_female_athletes</span> <span class="op">+</span> <span class="va">count_male_athletes</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span>
 <span></span>
-<span><span class="va">num_female_medals</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">country</span><span class="op">)</span> <span class="op">{</span></span>
+<span><span class="va">gender_props</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">year</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span></span>
+<span>    avg_prop_female <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">prop_female</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span>  <span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">gt</span><span class="fu">::</span><span class="fu"><a href="https://gt.rstudio.com/reference/gt.html">gt</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div id="wfmziuzmqg" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#wfmziuzmqg table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#wfmziuzmqg thead, #wfmziuzmqg tbody, #wfmziuzmqg tfoot, #wfmziuzmqg tr, #wfmziuzmqg td, #wfmziuzmqg th {
+  border-style: none;
+}
+
+#wfmziuzmqg p {
+  margin: 0;
+  padding: 0;
+}
+
+#wfmziuzmqg .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#wfmziuzmqg .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#wfmziuzmqg .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#wfmziuzmqg .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#wfmziuzmqg .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#wfmziuzmqg .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#wfmziuzmqg .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#wfmziuzmqg .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#wfmziuzmqg .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#wfmziuzmqg .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#wfmziuzmqg .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#wfmziuzmqg .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#wfmziuzmqg .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#wfmziuzmqg .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#wfmziuzmqg .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#wfmziuzmqg .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#wfmziuzmqg .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#wfmziuzmqg .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#wfmziuzmqg .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wfmziuzmqg .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#wfmziuzmqg .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#wfmziuzmqg .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#wfmziuzmqg .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wfmziuzmqg .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#wfmziuzmqg .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#wfmziuzmqg .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#wfmziuzmqg .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wfmziuzmqg .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#wfmziuzmqg .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#wfmziuzmqg .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#wfmziuzmqg .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#wfmziuzmqg .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#wfmziuzmqg .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wfmziuzmqg .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#wfmziuzmqg .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wfmziuzmqg .gt_left {
+  text-align: left;
+}
+
+#wfmziuzmqg .gt_center {
+  text-align: center;
+}
+
+#wfmziuzmqg .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#wfmziuzmqg .gt_font_normal {
+  font-weight: normal;
+}
+
+#wfmziuzmqg .gt_font_bold {
+  font-weight: bold;
+}
+
+#wfmziuzmqg .gt_font_italic {
+  font-style: italic;
+}
+
+#wfmziuzmqg .gt_super {
+  font-size: 65%;
+}
+
+#wfmziuzmqg .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#wfmziuzmqg .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#wfmziuzmqg .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#wfmziuzmqg .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#wfmziuzmqg .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#wfmziuzmqg .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#wfmziuzmqg .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#wfmziuzmqg .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#wfmziuzmqg div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
+<thead><tr class="gt_col_headings header">
+<th id="year" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">year</th>
+<th id="avg_prop_female" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">avg_prop_female</th>
+</tr></thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_right" headers="year">1896</td>
+<td class="gt_row gt_right" headers="avg_prop_female">0.000000000</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="year">1900</td>
+<td class="gt_row gt_right" headers="avg_prop_female">0.009817973</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="year">1904</td>
+<td class="gt_row gt_right" headers="avg_prop_female">0.006513681</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="year">1906</td>
+<td class="gt_row gt_right" headers="avg_prop_female">0.024598963</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="year">1908</td>
+<td class="gt_row gt_right" headers="avg_prop_female">0.013272334</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="year">1912</td>
+<td class="gt_row gt_right" headers="avg_prop_female">0.022835916</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="year">1920</td>
+<td class="gt_row gt_right" headers="avg_prop_female">0.068553244</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="year">1924</td>
+<td class="gt_row gt_right" headers="avg_prop_female">0.081949971</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="year">1928</td>
+<td class="gt_row gt_right" headers="avg_prop_female">0.043849748</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="year">1932</td>
+<td class="gt_row gt_right" headers="avg_prop_female">0.097686199</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="year">1936</td>
+<td class="gt_row gt_right" headers="avg_prop_female">0.054935364</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="year">1948</td>
+<td class="gt_row gt_right" headers="avg_prop_female">0.051992839</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="year">1952</td>
+<td class="gt_row gt_right" headers="avg_prop_female">0.080506697</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="year">1956</td>
+<td class="gt_row gt_right" headers="avg_prop_female">0.074287903</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="year">1960</td>
+<td class="gt_row gt_right" headers="avg_prop_female">0.098024523</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="year">1964</td>
+<td class="gt_row gt_right" headers="avg_prop_female">0.085748426</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="year">1968</td>
+<td class="gt_row gt_right" headers="avg_prop_female">0.128812638</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="year">1972</td>
+<td class="gt_row gt_right" headers="avg_prop_female">0.120342792</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="year">1976</td>
+<td class="gt_row gt_right" headers="avg_prop_female">0.166452916</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="year">1980</td>
+<td class="gt_row gt_right" headers="avg_prop_female">0.164470918</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="year">1984</td>
+<td class="gt_row gt_right" headers="avg_prop_female">0.154771927</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="year">1988</td>
+<td class="gt_row gt_right" headers="avg_prop_female">0.175898833</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="year">1992</td>
+<td class="gt_row gt_right" headers="avg_prop_female">0.223904286</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="year">1994</td>
+<td class="gt_row gt_right" headers="avg_prop_female">0.246359511</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="year">1996</td>
+<td class="gt_row gt_right" headers="avg_prop_female">0.291684774</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="year">1998</td>
+<td class="gt_row gt_right" headers="avg_prop_female">0.242977985</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="year">2000</td>
+<td class="gt_row gt_right" headers="avg_prop_female">0.389531239</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="year">2002</td>
+<td class="gt_row gt_right" headers="avg_prop_female">0.273209448</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="year">2004</td>
+<td class="gt_row gt_right" headers="avg_prop_female">0.395184916</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="year">2006</td>
+<td class="gt_row gt_right" headers="avg_prop_female">0.326069434</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="year">2008</td>
+<td class="gt_row gt_right" headers="avg_prop_female">0.427192545</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="year">2010</td>
+<td class="gt_row gt_right" headers="avg_prop_female">0.336880907</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="year">2012</td>
+<td class="gt_row gt_right" headers="avg_prop_female">0.429163254</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="year">2014</td>
+<td class="gt_row gt_right" headers="avg_prop_female">0.295879556</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="year">2016</td>
+<td class="gt_row gt_right" headers="avg_prop_female">0.434188173</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>As we probably expected, the proportion of female athletes has gone up with time!</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Ideas to take this further:
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><p>Correct for team sports having more athletes.</p></li>
+<li><p>Think about how to handle anomalies in the country team names, e.g.&nbsp;“USSR” vs.&nbsp;“Russia”.</p></li>
+<li><p>Limit the data to one or two countries and compare them.</p></li>
+</ul>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Table Improvements
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Give columns more descriptive labels</li>
+<li>Boldface column titles</li>
+<li>Format the percentage column to be percentages!</li>
+<li>Give the table a caption</li>
+<li>Color the table in a way that tells the story of patterns over time.</li>
+</ul>
+</div>
+</div>
+</section><section id="female-medals-by-country" class="level2"><h2 class="anchored" data-anchor-id="female-medals-by-country">Female medals by country</h2>
+<p><em>No new columns</em></p>
+<p><em>Requires custom function and iteration</em></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Function to count medals but not overcount team sports</span></span>
+<span></span>
+<span><span class="va">num_female_gold</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">country</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  </span>
 <span>  <span class="va">female_medals</span> <span class="op">&lt;-</span> <span class="va">olympics</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">team</span> <span class="op">==</span> <span class="va">country</span>,</span>
@@ -508,264 +1179,71 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">medal</span><span class="op">)</span></span>
 <span>  </span>
 <span>  </span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">female_medals</span><span class="op">)</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">female_medals</span> <span class="op">==</span> <span class="st">"Gold"</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span>  </span>
 <span><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">top_countries</span> <span class="op">&lt;-</span> <span class="va">olympics</span> <span class="op">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">olympics</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct</a></span><span class="op">(</span><span class="va">team</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
-<span>    n_f_medals <span class="op">=</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map_dbl</a></span><span class="op">(</span><span class="va">team</span>, <span class="va">num_female_medals</span><span class="op">)</span></span>
+<span>    n_f_gold <span class="op">=</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map_dbl</a></span><span class="op">(</span><span class="va">team</span>, <span class="va">num_female_gold</span><span class="op">)</span></span>
 <span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_max</a></span><span class="op">(</span><span class="va">n_f_medals</span>, n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">team</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">top_countries</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1] "United States" "Germany"       "Soviet Union"  "China"        
- [5] "Russia"        "East Germany"  "Great Britain" "Australia"    
- [9] "Canada"        "Netherlands"  </code></pre>
-</div>
-</div>
-</section><section id="new-data-from-api" class="level2"><h2 class="anchored" data-anchor-id="new-data-from-api">New data from API</h2>
-<p><em>I’m choosing to use the API-Ninjas API for country populations. This API requires an account and API key. In the code that you see below, I have replaced hidden the line that stores my API key, so that it is not publicly shared.</em></p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">get_population</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">country</span>, <span class="va">key</span> <span class="op">=</span> <span class="va">my_key</span><span class="op">)</span></span>
-<span>  <span class="op">{</span></span>
-<span>  </span>
-<span>  <span class="va">url</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://glue.tidyverse.org/reference/glue.html">glue</a></span><span class="op">(</span><span class="st">"https://api.api-ninjas.com/v1/population?country={country};X-Api-Key={key}"</span><span class="op">)</span></span>
-<span>  <span class="va">my_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/safely.html">safely</a></span><span class="op">(</span><span class="va">fromJSON</span><span class="op">)</span><span class="op">(</span><span class="va">url</span><span class="op">)</span></span>
-<span>  </span>
-<span>  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html">is.null</a></span><span class="op">(</span><span class="va">my_data</span><span class="op">$</span><span class="va">result</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>    <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="cn">NA</span><span class="op">)</span></span>
-<span>  <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
-<span>    <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">my_data</span><span class="op">$</span><span class="va">result</span><span class="op">$</span><span class="va">historical_population</span><span class="op">)</span></span>
-<span>  <span class="op">}</span></span>
-<span><span class="op">}</span></span>
-<span></span>
-<span><span class="fu">get_population</span><span class="op">(</span><span class="st">"Japan"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>   year population yearly_change_percentage yearly_change migrants median_age
-1  2024  123753041                    -0.50       -617906   153357       49.4
-2  2023  124370947                    -0.50       -626631   175003       49.0
-3  2022  124997578                    -0.54       -681760   175003       48.5
-4  2020  126304543                    -0.31       -394881    42001       47.7
-5  2015  127275872                    -0.14       -181881   168896       45.8
-6  2010  128185275                     0.04         54389   131860       44.2
-7  2005  127913330                     0.14        177108   113017       42.6
-8  2000  127027789                     0.21        271025    23468       40.8
-9  1995  125672665                     0.37        454580    87714       39.0
-10 1990  123399765                     0.42        513520   124582       36.9
-11 1985  120832163                     0.41        494681  -141323       34.5
-12 1980  118358756                     0.87       1007512   -92314       31.7
-13 1975  113321196                     1.21       1321766      107       29.7
-14 1970  106712368                     1.12       1159270    33731       28.3
-15 1965  100916019                     0.92        903253   -50667       26.6
-16 1960   96399754                     0.85        794855  -150371       24.7
-17 1955   92425478                     1.35       1196440   -95975       22.7
-   fertility_rate density urban_population_pct urban_population
-1            1.22     339                 92.9        114979260
-2            1.21     341                 92.7        115292289
-3            1.26     343                 92.5        115583843
-4            1.30     346                 91.9        116099672
-5            1.42     349                 91.9        116944428
-6            1.36     352                 91.1        116741034
-7            1.25     351                 86.3        110340709
-8            1.35     348                 79.0        100303716
-9            1.41     345                 78.5         98593178
-10           1.51     338                 78.0         96298507
-11           1.74     331                 77.4         93507944
-12           1.74     325                 75.8         89755553
-13           1.92     311                 75.1         85121987
-14           2.04     293                 70.7         75417163
-15           2.09     277                 66.2         66812422
-16           1.98     264                 61.5         59269408
-17           2.35     254                 56.3         52005319
-   percentage_of_world_population rank
-1                            1.52   12
-2                            1.54   12
-3                            1.56   12
-4                            1.60   11
-5                            1.70   10
-6                            1.83   10
-7                            1.94   10
-8                            2.06    9
-9                            2.18    8
-10                           2.32    7
-11                           2.48    7
-12                           2.66    7
-13                           2.78    6
-14                           2.89    6
-15                           3.03    5
-16                           3.20    5
-17                           3.37    5</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">get_population</span><span class="op">(</span><span class="st">"United States"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in open.connection(con, "rb"): URL
-'https://api.api-ninjas.com/v1/population?country=United
-States;X-Api-Key=1ekT3dWHWPDuwhNECaYVFxJqyiEDVZo6HJqPh9xF': status was 'URL
-using bad/illegal format or missing URL'</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] NA</code></pre>
-</div>
-</div>
-<p>Since “United States” has a space in it, it isn’t being searched properly by the API URL. After some investigation on the API site and experimentation, I see that I can use country abbreviations instead.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">top_countries</span> <span class="op">&lt;-</span> <span class="va">olympics</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct</a></span><span class="op">(</span><span class="va">team</span>, <span class="va">noc</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
-<span>    n_f_medals <span class="op">=</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map_dbl</a></span><span class="op">(</span><span class="va">team</span>, <span class="va">num_female_medals</span><span class="op">)</span></span>
-<span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_max</a></span><span class="op">(</span><span class="va">n_f_medals</span>, n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">noc</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">top_countries</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1] "USA" "GER" "URS" "CHN" "RUS" "GDR" "GBR" "AUS" "CAN" "NED"</code></pre>
-</div>
-</div>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data_list</span> <span class="op">&lt;-</span> <span class="va">top_countries</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map</a></span><span class="op">(</span><span class="va">get_population</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Check for ones that didn't work</span></span>
-<span><span class="va">data_list</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0</code></pre>
-</div>
-</div>
-<p>Now let’s make this a tibble so we can join it to our original data:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pop_df</span> <span class="op">&lt;-</span> <span class="va">data_list</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://rlang.r-lib.org/reference/set_names.html">set_names</a></span><span class="op">(</span><span class="va">top_countries</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind_rows.html">bind_rows</a></span><span class="op">(</span></span>
-<span>    .id <span class="op">=</span> <span class="st">"noc"</span></span>
-<span>  <span class="op">)</span> </span>
-<span></span>
-<span><span class="va">pop_df</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  noc year population yearly_change_percentage yearly_change migrants
-1 USA 2024  345426571                     0.57       1949236  1286132
-2 USA 2023  343477335                     0.57       1943289  1322668
-3 USA 2022  341534046                     0.40       1372605  1319009
-4 USA 2020  339436159                     0.49       1646092   329769
-5 USA 2015  326126497                     0.95       3012741  1722127
-6 USA 2010  311062790                     1.02       3069225  1594453
-  median_age fertility_rate density urban_population_pct urban_population
-1       38.3           1.62      38                 82.4        284698234
-2       38.0           1.62      38                 82.1        281984165
-3       37.7           1.67      37                 81.8        279286931
-4       37.2           1.62      37                 80.7        273975139
-5       36.4           1.83      36                 80.1        261287811
-6       35.9           1.92      34                 80.1        249297076
-  percentage_of_world_population rank
-1                           4.23    3
-2                           4.24    3
-3                           4.26    3
-4                           4.30    3
-5                           4.37    3
-6                           4.43    3</code></pre>
-</div>
-</div>
-<p>Now, we join the datasets:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">olymp_top</span> <span class="op">&lt;-</span> <span class="va">olympics</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">noc</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="va">top_countries</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">pop_df</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Joining with `by = join_by(noc, year)`</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">olymp_top</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 26
-     id name      sex     age height weight team  noc   games  year season city 
-  &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;
-1     1 A Dijiang M        24    180     80 China CHN   1992…  1992 Summer Barc…
-2     2 A Lamusi  M        23    170     60 China CHN   2012…  2012 Summer Lond…
-3     5 Christin… F        21    185     82 Neth… NED   1988…  1988 Winter Calg…
-4     5 Christin… F        21    185     82 Neth… NED   1988…  1988 Winter Calg…
-5     5 Christin… F        25    185     82 Neth… NED   1992…  1992 Winter Albe…
-6     5 Christin… F        25    185     82 Neth… NED   1992…  1992 Winter Albe…
-# ℹ 14 more variables: sport &lt;chr&gt;, event &lt;chr&gt;, medal &lt;chr&gt;, population &lt;int&gt;,
-#   yearly_change_percentage &lt;dbl&gt;, yearly_change &lt;dbl&gt;, migrants &lt;dbl&gt;,
-#   median_age &lt;dbl&gt;, fertility_rate &lt;dbl&gt;, density &lt;int&gt;,
-#   urban_population_pct &lt;dbl&gt;, urban_population &lt;int&gt;,
-#   percentage_of_world_population &lt;dbl&gt;, rank &lt;int&gt;</code></pre>
-</div>
-</div>
-<p>Note: There are a lot of NAs because the population data doesn’t go as far back in time as the olympic data!</p>
-<p>Finally, we use our new information to produce an interesting summary:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">olymp_top</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span></span>
-<span>    n_gold <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">medal</span> <span class="op">==</span> <span class="st">"Gold"</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
-<span>    population <span class="op">=</span> <span class="va">population</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>,</span>
-<span>    .by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">noc</span>, <span class="va">sex</span>, <span class="va">year</span><span class="op">)</span></span>
-<span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
-<span>    n_gold_pp <span class="op">=</span> <span class="va">n_gold</span><span class="op">/</span><span class="va">population</span></span>
-<span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">sex</span> <span class="op">==</span> <span class="st">"F"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">noc</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span></span>
-<span>    n_gold_pp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">n_gold_pp</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">n_gold_pp</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_max</a></span><span class="op">(</span><span class="va">n_f_gold</span>, n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 10 × 2
-   noc   n_gold_pp
-   &lt;chr&gt;     &lt;dbl&gt;
- 1 URS     2.69e-5
- 2 GER     1.48e-7
- 3 NED     1.34e-7
- 4 AUS     9.38e-8
- 5 USA     7.26e-8
- 6 CAN     5.59e-8
- 7 GBR     1.75e-8
- 8 CHN     5.92e-9
- 9 GDR    NA      
-10 RUS    NA      </code></pre>
+   team          n_f_gold
+   &lt;chr&gt;            &lt;dbl&gt;
+ 1 United States      300
+ 2 China              125
+ 3 Soviet Union       124
+ 4 Germany            103
+ 5 East Germany        94
+ 6 Russia              82
+ 7 Australia           64
+ 8 Netherlands         61
+ 9 Romania             58
+10 Great Britain       56</code></pre>
 </div>
 </div>
-<!-- ## New data from webscraping -->
-<!-- ```{r} -->
-<!-- ``` -->
-<!-- Now that you have explored your original dataset and produced data summaries addressing your primary research questions, it is time to integrate new country-level data. -->
-<!-- ## By the end of the week, your updated report should contain: -->
-<!-- -   **two** new country-level data sources -->
-<!--     -   Stat 431: One of these must be acquired using APIs or webscraping -->
-<!--     -   Stat 541: One of these must be acquired using APIs, the other using webscraping. -->
-<!-- -   descriptions of each of the new datasets -->
-<!-- -   a "meta" dataset containing **all** the acquired data (joined together) -->
-<!-- -   **at least two** data summaries OR visualizations incorporating the additional country-level data -->
-<!-- ## Stat 541 Only -->
-<!-- -   your **webscraped** data must come from a multi-paged source, so that iteration is used to gather all the data -->
-<!-- ::: callout-warning -->
-<!-- **Warning!** Most APIs require you to make an account to access them, to prevent too much automated data collection. *Some* APIs also charge a fee to use - you should *not* use any of these for this class. -->
-<!-- ::: -->
-<!-- ## Helpful Links -->
-<!-- Here are some sources for country-level data that you may use if you so choose. -->
-<!-- *These are just to get you started. You are not obligated to use these, and we cannot guarantee that they will all be functional, free, or useful.* -->
-<!-- ### Tabular and/or Scrapable Data -->
-<!-- -   [World Happiness Report](https://www.worldhappiness.report/data-sharing/) -->
-<!-- -   [NOAA Climate Data](https://www.ncei.noaa.gov/cdo-web/) -->
-<!-- -   [BEA Employment Data](https://www.bea.gov/data/employment/employment-county-metro-and-other-areas) -->
-<!-- -   [WorldBank Development Indicator Data](https://databank.worldbank.org/id/f1ddbc94) -->
-<!-- -   [Wikipedia - Temperatures](https://en.wikipedia.org/wiki/List_of_countries_by_average_yearly_temperature) -->
-<!-- -   [Wikipedia - Populations](https://en.wikipedia.org/wiki/List_of_countries_and_dependencies_by_population) -->
-<!-- -   [Wikipedia - Many demographics](https://en.wikipedia.org/wiki/Demographics_of_the_world) -->
-<!-- ### APIs -->
-<!-- -   [Currency, flags, capitals](https://restcountries.com/) -->
-<!-- -   [Demographics and financial data](https://api-ninjas.com/api/country) -->
-<!-- -   [WorldBank Data API](https://documents.worldbank.org/en/publication/documents-reports/api) -->
-<!-- ::: callout-note -->
-<!-- Much of the data we have relied on for years - such as NOAA and BEA data listed above - are no longer being collected and made available, due to US Government cuts to these public statistics services. Other data sources that result from independent academic research at US institutions are rapidly dwindling as well, also due to cuts to this funding.\ -->
-<!-- \ -->
-<!-- Although these data sources may eventually be restored, or replaced with data from alternative agencies, we will never be able to go back and fill the gap for these lost years. -->
-<!-- ::: -->
+<p>This follows about the same patterns as overall medals, but maybe if we compare to male gold counts we would find some standout countries. For example, Romania is on this Top 10 but probably not in the overall counts.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Ideas to take this further:</p>
+<ul>
+<li><p>Collect counts for silver and bronze medals as well, not just gold.</p></li>
+<li><p>Collect a ratio of female to male medals, to get a sense of which countries have a <em>disproportionately low</em> number of female medal winners.</p></li>
+<li><p>Collect this data over time as well to look for countries that evolve.</p></li>
+<li><p>(This actually <em>could</em> have been done in a pipeline! But, the function approach makes it easier to incorporate some of the upgrades above.)</p></li>
+</ul>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Table Improvements
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Give columns more descriptive labels</li>
+<li>Boldface column titles</li>
+<li>Give the table a caption</li>
+<li>Color the table in a way that draws people’s eyes to locations you want to highlight.</li>
+</ul>
+</div>
+</div>
 
 
 </section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
@@ -1181,13 +1659,13 @@ using bad/illegal format or missing URL'</code></pre>
     }
   });
   </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="../../project/week-3.html" class="pagination-link" aria-label="Week 3: Acquiring New Data">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Week 3: Acquiring New Data</span>
+      <a href="../../project/week-2.html" class="pagination-link" aria-label="Week 2: Data Summary Functions">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Week 2: Data Summary Functions</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../project/week-4.html" class="pagination-link" aria-label="Week 4: Advanced Visualizations">
-        <span class="nav-page-text">Week 4: Advanced Visualizations</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../project/week-3.html" class="pagination-link" aria-label="Week 3: Acquiring New Data">
+        <span class="nav-page-text">Week 3: Acquiring New Data</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1198,7 +1676,7 @@ using bad/illegal format or missing URL'</code></pre>
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/project/example-project-olympics/week-3.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/project/example-project-olympics/week-2.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
 <li class="nav-item">

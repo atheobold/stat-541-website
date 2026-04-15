@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.8.24">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>Project Checkpoint 3 – Advanced R</title>
+
+
+<title>Project Checkpoint 7 – Advanced R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -17,42 +20,8 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
+
 
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
@@ -61,8 +30,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../project/week-4.html" rel="next">
-<link href="../../project/week-3.html" rel="prev">
+<link href="../../project/project-2.html" rel="next">
+<link href="../../project/week-7.html" rel="prev">
 <link href="../../images/cat-monsters-horst.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -80,7 +49,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/bootstrap/bootstrap-dark-5f858a84010510139e49c405efe9b486.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="../../site_libs/bootstrap/bootstrap-63767328852000e01d7c9d44355c1f36.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script src="../../site_libs/quarto-contrib/flourish-0.0.1/injectFlourishes.js"></script>
-<script src="../../site_libs/quarto-contrib/flourish-0.0.1/flourish.js"></script><script id="quarto-search-options" type="application/json">{
+<script src="../../site_libs/quarto-contrib/flourish-0.0.1/flourish.js"></script>
+<script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -107,7 +77,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+
+
 </head>
+
 <body class="nav-sidebar floating nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
@@ -273,10 +246,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </script>
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="../../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../../images/cat-monsters-horst.png" alt="" class="navbar-logo light-content"><img src="../../images/cat-monsters-horst.png" alt="" class="navbar-logo dark-content"></a>
+    <img src="../../images/cat-monsters-horst.png" alt="" class="navbar-logo light-content">
+    <img src="../../images/cat-monsters-horst.png" alt="" class="navbar-logo dark-content">
+    </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
@@ -284,7 +261,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-<li class="nav-item">
+  <li class="nav-item">
     <a class="nav-link active" href="../../index.html" aria-current="page"> 
 <span class="menu-text">Overview</span></a>
   </li>  
@@ -317,35 +294,41 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Projects</span></a>
   </li>  
 </ul>
-<ul class="navbar-nav navbar-nav-scroll ms-auto">
-<li class="nav-item compact">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
     <a class="nav-link" href="https://github.com/atheobold/stat-541-website"> <i class="bi bi-github" role="img" aria-label="GitHub">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
 </ul>
-</div> <!-- /navcollapse -->
+          </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
       </div> <!-- /container-fluid -->
-    </nav><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../project/example-project-olympics/week-3.html"><em>Week 3: Example Project</em></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../project/example-project-olympics/week-7.html"><em>Week 7: Example Project</em></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
-  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="../../index.html" class="sidebar-logo-link">
       </a>
       </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-<li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../project.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Projects</span></a>
@@ -395,7 +378,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../project/example-project-olympics/week-3.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../project/example-project-olympics/week-3.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><em>Week 3: Example Project</em></span></a>
   </div>
 </li>
@@ -449,7 +432,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../project/example-project-olympics/week-7.html" class="sidebar-item-text sidebar-link">
+  <a href="../../project/example-project-olympics/week-7.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><em>Week 7: Example Project</em></span></a>
   </div>
 </li>
@@ -460,20 +443,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
     </ul>
-</div>
-</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
    
   <ul>
-<li><a href="#setup" id="toc-setup" class="nav-link active" data-scroll-target="#setup">Setup</a></li>
-  <li><a href="#new-data-from-api" id="toc-new-data-from-api" class="nav-link" data-scroll-target="#new-data-from-api">New data from API</a></li>
-  </ul><div class="toc-actions"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/project/example-project-olympics/week-3.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></nav>
+  <li><a href="#for-this-checkpoint-your-dashboard-must-include" id="toc-for-this-checkpoint-your-dashboard-must-include" class="nav-link active" data-scroll-target="#for-this-checkpoint-your-dashboard-must-include">For this checkpoint, your dashboard must include:</a></li>
+  <li><a href="#looking-ahead" id="toc-looking-ahead" class="nav-link" data-scroll-target="#looking-ahead">Looking Ahead</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/project/example-project-olympics/week-7.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
-<h1 class="title">Project Checkpoint 3</h1>
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Project Checkpoint 7</h1>
 </div>
 
 
@@ -487,288 +477,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 
-</header><div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://httr.r-lib.org/">httr</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/colearendt/tidyjson">tidyjson</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://jeroen.r-universe.dev/jsonlite">jsonlite</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://glue.tidyverse.org/">glue</a></span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<section id="setup" class="level2"><h2 class="anchored" data-anchor-id="setup">Setup</h2>
-<p>For simplicity here, I will study only the top 10 countries in terms of female medals. This code is from last week’s project step.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Function to count medals but not overcount team sports</span></span>
-<span></span>
-<span><span class="va">num_female_medals</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">country</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  </span>
-<span>  <span class="va">female_medals</span> <span class="op">&lt;-</span> <span class="va">olympics</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">team</span> <span class="op">==</span> <span class="va">country</span>,</span>
-<span>           <span class="va">sex</span> <span class="op">==</span> <span class="st">"F"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct</a></span><span class="op">(</span><span class="va">games</span>, <span class="va">event</span>, <span class="va">medal</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">medal</span><span class="op">)</span></span>
-<span>  </span>
-<span>  </span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">female_medals</span><span class="op">)</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span>  </span>
-<span><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">top_countries</span> <span class="op">&lt;-</span> <span class="va">olympics</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct</a></span><span class="op">(</span><span class="va">team</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
-<span>    n_f_medals <span class="op">=</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map_dbl</a></span><span class="op">(</span><span class="va">team</span>, <span class="va">num_female_medals</span><span class="op">)</span></span>
-<span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_max</a></span><span class="op">(</span><span class="va">n_f_medals</span>, n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">team</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">top_countries</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1] "United States" "Germany"       "Soviet Union"  "China"        
- [5] "Russia"        "East Germany"  "Great Britain" "Australia"    
- [9] "Canada"        "Netherlands"  </code></pre>
-</div>
-</div>
-</section><section id="new-data-from-api" class="level2"><h2 class="anchored" data-anchor-id="new-data-from-api">New data from API</h2>
-<p><em>I’m choosing to use the API-Ninjas API for country populations. This API requires an account and API key. In the code that you see below, I have replaced hidden the line that stores my API key, so that it is not publicly shared.</em></p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">get_population</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">country</span>, <span class="va">key</span> <span class="op">=</span> <span class="va">my_key</span><span class="op">)</span></span>
-<span>  <span class="op">{</span></span>
-<span>  </span>
-<span>  <span class="va">url</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://glue.tidyverse.org/reference/glue.html">glue</a></span><span class="op">(</span><span class="st">"https://api.api-ninjas.com/v1/population?country={country};X-Api-Key={key}"</span><span class="op">)</span></span>
-<span>  <span class="va">my_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/safely.html">safely</a></span><span class="op">(</span><span class="va">fromJSON</span><span class="op">)</span><span class="op">(</span><span class="va">url</span><span class="op">)</span></span>
-<span>  </span>
-<span>  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html">is.null</a></span><span class="op">(</span><span class="va">my_data</span><span class="op">$</span><span class="va">result</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>    <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="cn">NA</span><span class="op">)</span></span>
-<span>  <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
-<span>    <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">my_data</span><span class="op">$</span><span class="va">result</span><span class="op">$</span><span class="va">historical_population</span><span class="op">)</span></span>
-<span>  <span class="op">}</span></span>
-<span><span class="op">}</span></span>
-<span></span>
-<span><span class="fu">get_population</span><span class="op">(</span><span class="st">"Japan"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>   year population yearly_change_percentage yearly_change migrants median_age
-1  2024  123753041                    -0.50       -617906   153357       49.4
-2  2023  124370947                    -0.50       -626631   175003       49.0
-3  2022  124997578                    -0.54       -681760   175003       48.5
-4  2020  126304543                    -0.31       -394881    42001       47.7
-5  2015  127275872                    -0.14       -181881   168896       45.8
-6  2010  128185275                     0.04         54389   131860       44.2
-7  2005  127913330                     0.14        177108   113017       42.6
-8  2000  127027789                     0.21        271025    23468       40.8
-9  1995  125672665                     0.37        454580    87714       39.0
-10 1990  123399765                     0.42        513520   124582       36.9
-11 1985  120832163                     0.41        494681  -141323       34.5
-12 1980  118358756                     0.87       1007512   -92314       31.7
-13 1975  113321196                     1.21       1321766      107       29.7
-14 1970  106712368                     1.12       1159270    33731       28.3
-15 1965  100916019                     0.92        903253   -50667       26.6
-16 1960   96399754                     0.85        794855  -150371       24.7
-17 1955   92425478                     1.35       1196440   -95975       22.7
-   fertility_rate density urban_population_pct urban_population
-1            1.22     339                 92.9        114979260
-2            1.21     341                 92.7        115292289
-3            1.26     343                 92.5        115583843
-4            1.30     346                 91.9        116099672
-5            1.42     349                 91.9        116944428
-6            1.36     352                 91.1        116741034
-7            1.25     351                 86.3        110340709
-8            1.35     348                 79.0        100303716
-9            1.41     345                 78.5         98593178
-10           1.51     338                 78.0         96298507
-11           1.74     331                 77.4         93507944
-12           1.74     325                 75.8         89755553
-13           1.92     311                 75.1         85121987
-14           2.04     293                 70.7         75417163
-15           2.09     277                 66.2         66812422
-16           1.98     264                 61.5         59269408
-17           2.35     254                 56.3         52005319
-   percentage_of_world_population rank
-1                            1.52   12
-2                            1.54   12
-3                            1.56   12
-4                            1.60   11
-5                            1.70   10
-6                            1.83   10
-7                            1.94   10
-8                            2.06    9
-9                            2.18    8
-10                           2.32    7
-11                           2.48    7
-12                           2.66    7
-13                           2.78    6
-14                           2.89    6
-15                           3.03    5
-16                           3.20    5
-17                           3.37    5</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">get_population</span><span class="op">(</span><span class="st">"United States"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in open.connection(con, "rb"): URL
-'https://api.api-ninjas.com/v1/population?country=United
-States;X-Api-Key=1ekT3dWHWPDuwhNECaYVFxJqyiEDVZo6HJqPh9xF': status was 'URL
-using bad/illegal format or missing URL'</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] NA</code></pre>
-</div>
-</div>
-<p>Since “United States” has a space in it, it isn’t being searched properly by the API URL. After some investigation on the API site and experimentation, I see that I can use country abbreviations instead.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">top_countries</span> <span class="op">&lt;-</span> <span class="va">olympics</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct</a></span><span class="op">(</span><span class="va">team</span>, <span class="va">noc</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
-<span>    n_f_medals <span class="op">=</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map_dbl</a></span><span class="op">(</span><span class="va">team</span>, <span class="va">num_female_medals</span><span class="op">)</span></span>
-<span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_max</a></span><span class="op">(</span><span class="va">n_f_medals</span>, n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">noc</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">top_countries</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1] "USA" "GER" "URS" "CHN" "RUS" "GDR" "GBR" "AUS" "CAN" "NED"</code></pre>
-</div>
-</div>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data_list</span> <span class="op">&lt;-</span> <span class="va">top_countries</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map</a></span><span class="op">(</span><span class="va">get_population</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Check for ones that didn't work</span></span>
-<span><span class="va">data_list</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0</code></pre>
-</div>
-</div>
-<p>Now let’s make this a tibble so we can join it to our original data:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pop_df</span> <span class="op">&lt;-</span> <span class="va">data_list</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://rlang.r-lib.org/reference/set_names.html">set_names</a></span><span class="op">(</span><span class="va">top_countries</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind_rows.html">bind_rows</a></span><span class="op">(</span></span>
-<span>    .id <span class="op">=</span> <span class="st">"noc"</span></span>
-<span>  <span class="op">)</span> </span>
-<span></span>
-<span><span class="va">pop_df</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  noc year population yearly_change_percentage yearly_change migrants
-1 USA 2024  345426571                     0.57       1949236  1286132
-2 USA 2023  343477335                     0.57       1943289  1322668
-3 USA 2022  341534046                     0.40       1372605  1319009
-4 USA 2020  339436159                     0.49       1646092   329769
-5 USA 2015  326126497                     0.95       3012741  1722127
-6 USA 2010  311062790                     1.02       3069225  1594453
-  median_age fertility_rate density urban_population_pct urban_population
-1       38.3           1.62      38                 82.4        284698234
-2       38.0           1.62      38                 82.1        281984165
-3       37.7           1.67      37                 81.8        279286931
-4       37.2           1.62      37                 80.7        273975139
-5       36.4           1.83      36                 80.1        261287811
-6       35.9           1.92      34                 80.1        249297076
-  percentage_of_world_population rank
-1                           4.23    3
-2                           4.24    3
-3                           4.26    3
-4                           4.30    3
-5                           4.37    3
-6                           4.43    3</code></pre>
-</div>
-</div>
-<p>Now, we join the datasets:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">olymp_top</span> <span class="op">&lt;-</span> <span class="va">olympics</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">noc</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="va">top_countries</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">pop_df</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Joining with `by = join_by(noc, year)`</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">olymp_top</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 26
-     id name      sex     age height weight team  noc   games  year season city 
-  &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;
-1     1 A Dijiang M        24    180     80 China CHN   1992…  1992 Summer Barc…
-2     2 A Lamusi  M        23    170     60 China CHN   2012…  2012 Summer Lond…
-3     5 Christin… F        21    185     82 Neth… NED   1988…  1988 Winter Calg…
-4     5 Christin… F        21    185     82 Neth… NED   1988…  1988 Winter Calg…
-5     5 Christin… F        25    185     82 Neth… NED   1992…  1992 Winter Albe…
-6     5 Christin… F        25    185     82 Neth… NED   1992…  1992 Winter Albe…
-# ℹ 14 more variables: sport &lt;chr&gt;, event &lt;chr&gt;, medal &lt;chr&gt;, population &lt;int&gt;,
-#   yearly_change_percentage &lt;dbl&gt;, yearly_change &lt;dbl&gt;, migrants &lt;dbl&gt;,
-#   median_age &lt;dbl&gt;, fertility_rate &lt;dbl&gt;, density &lt;int&gt;,
-#   urban_population_pct &lt;dbl&gt;, urban_population &lt;int&gt;,
-#   percentage_of_world_population &lt;dbl&gt;, rank &lt;int&gt;</code></pre>
-</div>
-</div>
-<p>Note: There are a lot of NAs because the population data doesn’t go as far back in time as the olympic data!</p>
-<p>Finally, we use our new information to produce an interesting summary:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">olymp_top</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span></span>
-<span>    n_gold <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">medal</span> <span class="op">==</span> <span class="st">"Gold"</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
-<span>    population <span class="op">=</span> <span class="va">population</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>,</span>
-<span>    .by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">noc</span>, <span class="va">sex</span>, <span class="va">year</span><span class="op">)</span></span>
-<span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
-<span>    n_gold_pp <span class="op">=</span> <span class="va">n_gold</span><span class="op">/</span><span class="va">population</span></span>
-<span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">sex</span> <span class="op">==</span> <span class="st">"F"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">noc</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span></span>
-<span>    n_gold_pp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">n_gold_pp</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">n_gold_pp</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 10 × 2
-   noc   n_gold_pp
-   &lt;chr&gt;     &lt;dbl&gt;
- 1 URS     2.69e-5
- 2 GER     1.48e-7
- 3 NED     1.34e-7
- 4 AUS     9.38e-8
- 5 USA     7.26e-8
- 6 CAN     5.59e-8
- 7 GBR     1.75e-8
- 8 CHN     5.92e-9
- 9 GDR    NA      
-10 RUS    NA      </code></pre>
-</div>
-</div>
-<!-- ## New data from webscraping -->
-<!-- ```{r} -->
-<!-- ``` -->
-<!-- Now that you have explored your original dataset and produced data summaries addressing your primary research questions, it is time to integrate new country-level data. -->
-<!-- ## By the end of the week, your updated report should contain: -->
-<!-- -   **two** new country-level data sources -->
-<!--     -   Stat 431: One of these must be acquired using APIs or webscraping -->
-<!--     -   Stat 541: One of these must be acquired using APIs, the other using webscraping. -->
-<!-- -   descriptions of each of the new datasets -->
-<!-- -   a "meta" dataset containing **all** the acquired data (joined together) -->
-<!-- -   **at least two** data summaries OR visualizations incorporating the additional country-level data -->
-<!-- ## Stat 541 Only -->
-<!-- -   your **webscraped** data must come from a multi-paged source, so that iteration is used to gather all the data -->
-<!-- ::: callout-warning -->
-<!-- **Warning!** Most APIs require you to make an account to access them, to prevent too much automated data collection. *Some* APIs also charge a fee to use - you should *not* use any of these for this class. -->
-<!-- ::: -->
-<!-- ## Helpful Links -->
-<!-- Here are some sources for country-level data that you may use if you so choose. -->
-<!-- *These are just to get you started. You are not obligated to use these, and we cannot guarantee that they will all be functional, free, or useful.* -->
-<!-- ### Tabular and/or Scrapable Data -->
-<!-- -   [World Happiness Report](https://www.worldhappiness.report/data-sharing/) -->
-<!-- -   [NOAA Climate Data](https://www.ncei.noaa.gov/cdo-web/) -->
-<!-- -   [BEA Employment Data](https://www.bea.gov/data/employment/employment-county-metro-and-other-areas) -->
-<!-- -   [WorldBank Development Indicator Data](https://databank.worldbank.org/id/f1ddbc94) -->
-<!-- -   [Wikipedia - Temperatures](https://en.wikipedia.org/wiki/List_of_countries_by_average_yearly_temperature) -->
-<!-- -   [Wikipedia - Populations](https://en.wikipedia.org/wiki/List_of_countries_and_dependencies_by_population) -->
-<!-- -   [Wikipedia - Many demographics](https://en.wikipedia.org/wiki/Demographics_of_the_world) -->
-<!-- ### APIs -->
-<!-- -   [Currency, flags, capitals](https://restcountries.com/) -->
-<!-- -   [Demographics and financial data](https://api-ninjas.com/api/country) -->
-<!-- -   [WorldBank Data API](https://documents.worldbank.org/en/publication/documents-reports/api) -->
-<!-- ::: callout-note -->
-<!-- Much of the data we have relied on for years - such as NOAA and BEA data listed above - are no longer being collected and made available, due to US Government cuts to these public statistics services. Other data sources that result from independent academic research at US institutions are rapidly dwindling as well, also due to cuts to this funding.\ -->
-<!-- \ -->
-<!-- Although these data sources may eventually be restored, or replaced with data from alternative agencies, we will never be able to go back and fill the gap for these lost years. -->
-<!-- ::: -->
+</header>
 
 
-</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+<p>In this checkpoint, you will extend your dashboard by incorporating reactive functionality using Shiny. The goal is to successfully implement at least one user input that dynamically updates a table or visualization.</p>
+<section id="for-this-checkpoint-your-dashboard-must-include" class="level2">
+<h2 class="anchored" data-anchor-id="for-this-checkpoint-your-dashboard-must-include">For this checkpoint, your dashboard must include:</h2>
+<ul>
+<li><p><strong>At least one</strong> Shiny input control (e.g., slider, checkbox group, dropdown menu).</p></li>
+<li><p>At least one reactive output (a table or visualization) that updates in response to the input.</p></li>
+</ul>
+<p>Your reactive element should meaningfully affect the displayed data (e.g., filtering by year, selecting categories, adjusting a threshold).</p>
+</section>
+<section id="looking-ahead" class="level2">
+<h2 class="anchored" data-anchor-id="looking-ahead">Looking Ahead</h2>
+<p>This checkpoint focuses on establishing a working reactive structure. In the final submission, you will expand this to include:</p>
+<ul>
+<li><p>At least one slider input</p></li>
+<li><p>At least one checkbox input</p></li>
+<li><p>Reactive updates affecting at least one table or visualization</p></li>
+</ul>
+<p>Think of this checkpoint as building the framework for interactivity. The final submission will expand and refine what you build this week.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
     if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -1180,36 +915,41 @@ using bad/illegal format or missing URL'</code></pre>
       }
     }
   });
-  </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="../../project/week-3.html" class="pagination-link" aria-label="Week 3: Acquiring New Data">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Week 3: Acquiring New Data</span>
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../project/week-7.html" class="pagination-link" aria-label="Week 7: Interactive Dashboard">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Week 7: Interactive Dashboard</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../project/week-4.html" class="pagination-link" aria-label="Week 4: Advanced Visualizations">
-        <span class="nav-page-text">Week 4: Advanced Visualizations</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../project/project-2.html" class="pagination-link" aria-label="Project 2 Final Deliverable">
+        <span class="nav-page-text">Project 2 Final Deliverable</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
-<footer class="footer"><div class="nav-footer">
+<footer class="footer">
+  <div class="nav-footer">
     <div class="nav-footer-left">
 <p>This page is built with ❤️ by Drs. Kelly Bodwin &amp; Allison Theobold and also <a href="https://quarto.org/">Quarto</a>.</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/project/example-project-olympics/week-3.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/project/example-project-olympics/week-7.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
-<li class="nav-item">
+    <li class="nav-item">
     <a class="nav-link" href="../../LICENSE.md">
 <p>License</p>
 </a>
   </li>  
 </ul>
-</div>
+    </div>
   </div>
 </footer>
+
+
 
 
 </body></html>
