@@ -1,5 +1,6 @@
 ---
 title: "Project Checkpoint 3"
+editor: source
 ---
 
 Now that you have explored your original dataset and produced data summaries addressing your primary research questions, it is time to integrate new country-level data.
@@ -23,7 +24,7 @@ Now that you have explored your original dataset and produced data summaries add
 -   your **webscraped** data must come from a multi-paged source, so that iteration is used to gather all the data
 
 ::: callout-warning
-**Warning!** Most APIs require you to make an account to access them, to prevent too much automated data collection. *Some* APIs also charge a fee to use - you should *not* use any of these for this class.
+**Warning!** Most APIs require you to make an account to access them to prevent too much automated data collection. *Some* APIs also charge a fee to use. You **should not** use any paid APIs for this class!
 :::
 
 ## Helpful Links
@@ -57,7 +58,7 @@ Here are some sources for country-level data that you may use if you so choose.
 -   [WorldBank Data API](https://documents.worldbank.org/en/publication/documents-reports/api)
 
 ::: callout-note
-Much of the data we have relied on for years - such as NOAA and BEA data listed above - are no longer being collected and made available, due to US Government cuts to these public statistics services. Other data sources that result from independent academic research at US institutions are rapidly dwindling as well, also due to cuts to this funding.\
-\
+Much of the data we have relied on for years - such as NOAA and BEA data listed above - are no longer being collected and made available, due to US Government cuts to these public statistics services. Other data sources that result from independent academic research at US institutions are rapidly dwindling as well, also due to cuts to this funding.
+
 Although these data sources may eventually be restored, or replaced with data from alternative agencies, we will never be able to go back and fill the gap for these lost years.
 :::

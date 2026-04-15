@@ -2114,7 +2114,7 @@
     "href": "project/week-3.html#stat-541-only",
     "title": "Project Checkpoint 3",
     "section": "Stat 541 Only",
-    "text": "Stat 541 Only\n\nyour webscraped data must come from a multi-paged source, so that iteration is used to gather all the data\n\n\n\n\n\n\n\nWarning\n\n\n\nWarning! Most APIs require you to make an account to access them, to prevent too much automated data collection. Some APIs also charge a fee to use - you should not use any of these for this class.",
+    "text": "Stat 541 Only\n\nyour webscraped data must come from a multi-paged source, so that iteration is used to gather all the data\n\n\n\n\n\n\n\nWarning\n\n\n\nWarning! Most APIs require you to make an account to access them to prevent too much automated data collection. Some APIs also charge a fee to use. You should not use any paid APIs for this class!",
     "crumbs": [
       "Projects",
       "Week 3: Acquiring New Data"
@@ -2125,7 +2125,7 @@
     "href": "project/week-3.html#helpful-links",
     "title": "Project Checkpoint 3",
     "section": "Helpful Links",
-    "text": "Helpful Links\nHere are some sources for country-level data that you may use if you so choose.\nThese are just to get you started. You are not obligated to use these, and we cannot guarantee that they will all be functional, free, or useful.\n\nTabular and/or Scrapable Data\n\nWorld Happiness Report\nNOAA Climate Data\nBEA Employment Data\nWorldBank Development Indicator Data\nWikipedia - Temperatures\nWikipedia - Populations\nWikipedia - Many demographics\n\n\n\nAPIs\n\nCurrency, flags, capitals\nDemographics and financial data\nWorldBank Data API\n\n\n\n\n\n\n\nNote\n\n\n\nMuch of the data we have relied on for years - such as NOAA and BEA data listed above - are no longer being collected and made available, due to US Government cuts to these public statistics services. Other data sources that result from independent academic research at US institutions are rapidly dwindling as well, also due to cuts to this funding.\n\nAlthough these data sources may eventually be restored, or replaced with data from alternative agencies, we will never be able to go back and fill the gap for these lost years.",
+    "text": "Helpful Links\nHere are some sources for country-level data that you may use if you so choose.\nThese are just to get you started. You are not obligated to use these, and we cannot guarantee that they will all be functional, free, or useful.\n\nTabular and/or Scrapable Data\n\nWorld Happiness Report\nNOAA Climate Data\nBEA Employment Data\nWorldBank Development Indicator Data\nWikipedia - Temperatures\nWikipedia - Populations\nWikipedia - Many demographics\n\n\n\nAPIs\n\nCurrency, flags, capitals\nDemographics and financial data\nWorldBank Data API\n\n\n\n\n\n\n\nNote\n\n\n\nMuch of the data we have relied on for years - such as NOAA and BEA data listed above - are no longer being collected and made available, due to US Government cuts to these public statistics services. Other data sources that result from independent academic research at US institutions are rapidly dwindling as well, also due to cuts to this funding.\nAlthough these data sources may eventually be restored, or replaced with data from alternative agencies, we will never be able to go back and fill the gap for these lost years.",
     "crumbs": [
       "Projects",
       "Week 3: Acquiring New Data"
