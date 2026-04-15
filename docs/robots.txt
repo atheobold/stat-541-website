@@ -1,0 +1,1 @@
+Sitemap: https://github.com/atheobold/stat-541-website/sitemap.xml

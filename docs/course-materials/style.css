@@ -1,0 +1,7 @@
+.gt_row_group a {
+  text-decoration: none;
+}
+
+.gt_row_group a:hover {
+  text-decoration: underline;
+}

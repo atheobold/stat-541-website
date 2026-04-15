@@ -1,0 +1,196 @@
+---
+title: "Practice Activity Week 4"
+format: html
+embed-resources: true
+editor: source
+---
+
+```{r}
+#| message: false
+#| warning: false
+
+library(tidyverse)
+```
+
+# Roundabouts
+
+This week, our activity will explore how roundabouts are used around the world!
+You might not be as big of a fan of roundabouts as Dr. T, but these data allow 
+us to investigate a fun and unique visualization
+technique---[a Stankey diagram](https://en.wikipedia.org/wiki/Sankey_diagram).
+
+A Stankey diagram visualizes data **flows**. Specifically, the visual models the
+movement from one state to another. We are going to use a Stankey plot to 
+visualize how traffic intersections are transformed into various types of 
+roundabouts. 
+
+## The `roundabouts` Package
+
+The [`roundabouts` R package](https://github.com/EmilHvitfeldt/roundabouts) 
+provides a simple way to interact with the 
+[Roundabouts Database](https://roundabouts.kittelson.com/). You likely do not
+have the package installed on your computer, so the first step is to install
+the package:
+
+```{r}
+#| eval: false
+#| label: install-roundabouts
+
+pak::pak("emilhvitfeldt/roundabouts")
+```
+
+The `roundabouts` dataframe that is included in the package has an `address`
+variable which is a bit untidy. Below is some data cleaning code that will 
+clean the `address` variable, and create three new variables: `town_city`, 
+`county_area`, and `state_region`. 
+
+```{r}
+#| label: roundabouts-data-cleaning
+#| message: false
+#| warning: false
+
+library(roundabouts)
+
+roundabouts_clean <- roundabouts |>
+  mutate(
+    # Step 1: Remove strange <![CDATA[ tags from the beginning of the address field
+    address = stringr::str_remove(address, stringr::fixed("<![CDATA[")), 
+    # Step 2: Remove strang ]]> tags from the end of the address field
+    address = stringr::str_remove(address, stringr::fixed("]]>")),
+    # Step 3: Isolate the country at the end of the string between the ( ) symbols
+    country = stringr::str_extract(address, "\\([^)]+\\)$"),
+    # Step 4: Remove the brackets surrounding the country name
+    country = stringr::str_remove_all(country, "[\\(\\)]"), 
+    # Step 5: Remove the country from the address field
+    address2 = stringr::str_remove(address, "\\s*\\([^)]+\\)$")) |>
+  # Step 6: Separate address into town, county, state by comma
+  separate(address2, 
+                  into = c("town_city", "county_area", "state_region"), 
+                  sep = ",") |> 
+  # Step 7: Fix one instance of California instead of CA
+  mutate(state_region = str_trim(state_region, side = "both"), 
+         state_region = fct_recode(state_region, 
+                                   "CA" = "California")
+         ) |> 
+  # Step 8: Remove companies from states
+  filter(! str_detect(state_region, pattern = "Co.")) |> 
+  # Step 9: Grab columns we will be using
+  select(town_city, county_area, state_region, country, 
+         year_completed, type, previous_control_type, control_type)
+
+```
+
+## Creating a Region Variable
+
+Alright, we now have the `country` of each roundabout, but that seems to 
+fine grain for our analysis. If we're interested in how roundabouts are used
+around the world, it seems like a `region` variable might be a better fit. 
+
+1. Create a new `continent` column in the dataset, which classifies each 
+`country` into one of the five major continents---Americas, Europe, Asia, 
+Oceania, Africa.
+
+The `countrycode()` function from the `countrycode` package will be helpful
+here! Here is an example of how you can use this function to obtain the 
+continent of a given country:
+
+```{r}
+#| label: continent-demo
+#| eval: false
+
+countrycode::countrycode("Brazil",
+            origin = "country.name",
+            destination = "continent")
+```
+
+```{r}
+#| label: add-continent-column
+
+```
+
+2. You should have gotten a message about **1** matching error. Meaning, there
+was one specific country that  couldn't find the name for. **Modify your previous code to manually classify the continent of this country.**
+
+## Exploring Roundabouts
+
+Let's explore the data a bit before we jump into visualizing these data. 
+
+3. What countries have the most roundabouts (in these data)? The fewest
+roundabouts?
+
+```{r}
+#| label: country-total-roundabouts
+
+```
+
+4. In these data, what types of roundabouts are most common?
+
+```{r}
+#| label: common-types
+
+```
+
+5. How does the distribution of types differ by continent?
+
+```{r}
+#| label: types-by-continent
+
+```
+
+6. We've seen a lot of traffic calming circles showing up around SLO. What
+states in the US have the largest proportion of traffic calming circles?
+
+```{r}
+#| label: prop-calming-circle-in-US
+
+```
+
+# The `ggalluvial` Package
+
+Now that we have the data ready, let's explore making Stankey plots with the 
+[`ggalluvial` R package](https://corybrunson.github.io/ggalluvial/). 
+
+We are interested in visualizing how roundabouts are incorporated into traffic
+intersections. To do this, we will visualize the *flow* from the previous
+intersection type to the type of roundabout that was added, to the final 
+intersection (control) type. 
+
+Let's start by creating the data `gglluvial` requires for plotting. 
+
+7. Create a table of frequencies of previous intersection types, current
+intersection types, and roundabouts. Let's focus on intersections (both old and
+new) where the type was known (not labeled as `"Unknown"`).
+
+```{r}
+#| label: ggalluvial-summaries
+
+```
+
+8. Now create the Stankey plot using the data you made above! Your axes should 
+be previous control type and the current control type, and the colors should be
+associated with the type of roundabout. *Hint: You might find the 
+
+```{r}
+#| label: stankey-plot
+
+library(ggalluvial)
+
+```
+
+9. Now that you have a working solution, let's make the strata labels easy to
+read. Look over this [reference article](https://corybrunson.github.io/ggalluvial/articles/labels.html) on 
+different ways to label the strata for each axis. Implement your favorite 
+method! 
+
+```{r}
+#| label: better-strata-labels
+
+```
+
+10. Final touches! Let's add some custom colors and an informative plot title!
+*Each of the axes in your plot should have a title as well!*
+
+```{r}
+#| label: final-touches
+
+```

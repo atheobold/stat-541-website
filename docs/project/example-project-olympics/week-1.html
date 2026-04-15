@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.8.24">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>Project Checkpoint 2 - Example – Advanced R</title>
+<title>Project Checkpoint 1 - Example – Advanced R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -61,8 +61,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../project/week-3.html" rel="next">
-<link href="../../project/week-2.html" rel="prev">
+<link href="../../project/week-2.html" rel="next">
+<link href="../../project/week-1.html" rel="prev">
 <link href="../../images/cat-monsters-horst.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -333,7 +333,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../project/example-project-olympics/week-2.html"><em>Week 2: Example Project</em></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../project/example-project-olympics/week-1.html"><em>Week 1: Example Project</em></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -371,7 +371,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../project/example-project-olympics/week-1.html" class="sidebar-item-text sidebar-link">
+  <a href="../../project/example-project-olympics/week-1.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><em>Week 1: Example Project</em></span></a>
   </div>
 </li>
@@ -383,7 +383,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../project/example-project-olympics/week-2.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../project/example-project-olympics/week-2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><em>Week 2: Example Project</em></span></a>
   </div>
 </li>
@@ -467,13 +467,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
    
   <ul>
-<li><a href="#athlete-sex-proportions-annually" id="toc-athlete-sex-proportions-annually" class="nav-link active" data-scroll-target="#athlete-sex-proportions-annually">Athlete sex proportions annually</a></li>
-  <li><a href="#female-medals-by-country" id="toc-female-medals-by-country" class="nav-link" data-scroll-target="#female-medals-by-country">Female medals by country</a></li>
-  </ul><div class="toc-actions"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/project/example-project-olympics/week-2.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></nav>
+<li>
+<a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
+  <ul class="collapse">
+<li><a href="#data-cleaning" id="toc-data-cleaning" class="nav-link" data-scroll-target="#data-cleaning">Data Cleaning</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#explorations" id="toc-explorations" class="nav-link" data-scroll-target="#explorations">Explorations</a>
+  <ul class="collapse">
+<li><a href="#rq-1-olympic-success-by-country" id="toc-rq-1-olympic-success-by-country" class="nav-link" data-scroll-target="#rq-1-olympic-success-by-country">RQ 1: Olympic success by country</a></li>
+  <li><a href="#rq-2-sex-over-time" id="toc-rq-2-sex-over-time" class="nav-link" data-scroll-target="#rq-2-sex-over-time">RQ 2: Sex over time</a></li>
+  <li><a href="#rq-3-olympic-success-corrected-by-population" id="toc-rq-3-olympic-success-corrected-by-population" class="nav-link" data-scroll-target="#rq-3-olympic-success-corrected-by-population">RQ 3: Olympic success corrected by population</a></li>
+  <li><a href="#rq-4-correlation-between-female-wins-and-education" id="toc-rq-4-correlation-between-female-wins-and-education" class="nav-link" data-scroll-target="#rq-4-correlation-between-female-wins-and-education">RQ 4: Correlation between female wins and education</a></li>
+  </ul>
+</li>
+  <li><a href="#visualizations" id="toc-visualizations" class="nav-link" data-scroll-target="#visualizations">Visualizations</a></li>
+  </ul><div class="toc-actions"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/project/example-project-olympics/week-1.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
-<h1 class="title">Project Checkpoint 2 - Example</h1>
+<h1 class="title">Project Checkpoint 1 - Example</h1>
 </div>
 
 
@@ -497,716 +511,163 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Note that this example document provides only two examples of data summaries; your project step requires a total of four.</p>
-<p>Although the instructions don’t explicitly say to interpret your results, you should definitely make some notes for yourself about what you learn from these data summaries, to help inform your subsequent steps.</p>
+<p>This is a minimal example representing “passing” or ‘C’ level work, to give you a baseline for how to proceed. ‘B’ or ‘A’ level work will require a more thoughtful and thorough description of the data and cleaning, deeper or more complex research questions, and/or more polished visualization sketches. Some notes about areas for improvement are included in the callouts below.</p>
 </div>
 </div>
+<section id="introduction" class="level2"><h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>My dataset is <a href="https://github.com/rfordatascience/tidytuesday/blob/main/data/2021/2021-07-27/readme.md">the Olympics data from TidyTuesday</a>. This dataset shows all the Olympic athletes ever, and gives information about their sport, the country they are from, whether they won a medal, etc.</p>
+<p>The data comes from a <a href="https://www.kaggle.com/datasets/heesoo37/120-years-of-olympic-history-athletes-and-results/">Kaggle dataset</a> created by user RGriffin, who scraped the data from www.sports-reference.com in May 2018.</p>
+<p>Here are a few rows of the dataset:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p><em>Since you are building on your previous report, your dataset introduction and description from last week should still be present in your file! I have omitted this here for simplicity.</em></p>
-<section id="athlete-sex-proportions-annually" class="level2"><h2 class="anchored" data-anchor-id="athlete-sex-proportions-annually">Athlete sex proportions annually</h2>
-<p>New column: ratio of female to male athletes</p>
-<p>Does <em>not</em> require iteration or custom function.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">gender_props</span> <span class="op">&lt;-</span> <span class="va">olympics</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">games</span>, <span class="va">team</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span></span>
-<span>    count_male_athletes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">sex</span> <span class="op">==</span> <span class="st">"M"</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
-<span>    count_female_athletes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">sex</span> <span class="op">==</span> <span class="st">"F"</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
-<span>    .groups <span class="op">=</span> <span class="st">"drop"</span></span>
-<span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
-<span>    prop_female <span class="op">=</span> <span class="va">count_female_athletes</span><span class="op">/</span><span class="op">(</span><span class="va">count_female_athletes</span> <span class="op">+</span> <span class="va">count_male_athletes</span><span class="op">)</span></span>
-<span>  <span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tuesdata</span> <span class="op">&lt;-</span> <span class="fu">tidytuesdayR</span><span class="fu">::</span><span class="fu"><a href="https://dslc-io.github.io/tidytuesdayR/reference/tt_load.html">tt_load</a></span><span class="op">(</span><span class="st">'2024-08-06'</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">gender_props</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">year</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span></span>
-<span>    avg_prop_female <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">prop_female</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span>  <span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu">gt</span><span class="fu">::</span><span class="fu"><a href="https://gt.rstudio.com/reference/gt.html">gt</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="va">tuesdata</span><span class="op">$</span><span class="va">olympics</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/sample_n.html">sample_n</a></span><span class="op">(</span><span class="fl">6</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div id="wfmziuzmqg" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#wfmziuzmqg table {
-  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-#wfmziuzmqg thead, #wfmziuzmqg tbody, #wfmziuzmqg tfoot, #wfmziuzmqg tr, #wfmziuzmqg td, #wfmziuzmqg th {
-  border-style: none;
-}
-
-#wfmziuzmqg p {
-  margin: 0;
-  padding: 0;
-}
-
-#wfmziuzmqg .gt_table {
-  display: table;
-  border-collapse: collapse;
-  line-height: normal;
-  margin-left: auto;
-  margin-right: auto;
-  color: #333333;
-  font-size: 16px;
-  font-weight: normal;
-  font-style: normal;
-  background-color: #FFFFFF;
-  width: auto;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #A8A8A8;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #A8A8A8;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-}
-
-#wfmziuzmqg .gt_caption {
-  padding-top: 4px;
-  padding-bottom: 4px;
-}
-
-#wfmziuzmqg .gt_title {
-  color: #333333;
-  font-size: 125%;
-  font-weight: initial;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-color: #FFFFFF;
-  border-bottom-width: 0;
-}
-
-#wfmziuzmqg .gt_subtitle {
-  color: #333333;
-  font-size: 85%;
-  font-weight: initial;
-  padding-top: 3px;
-  padding-bottom: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-color: #FFFFFF;
-  border-top-width: 0;
-}
-
-#wfmziuzmqg .gt_heading {
-  background-color: #FFFFFF;
-  text-align: center;
-  border-bottom-color: #FFFFFF;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#wfmziuzmqg .gt_bottom_border {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#wfmziuzmqg .gt_col_headings {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#wfmziuzmqg .gt_col_heading {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 6px;
-  padding-left: 5px;
-  padding-right: 5px;
-  overflow-x: hidden;
-}
-
-#wfmziuzmqg .gt_column_spanner_outer {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-left: 4px;
-  padding-right: 4px;
-}
-
-#wfmziuzmqg .gt_column_spanner_outer:first-child {
-  padding-left: 0;
-}
-
-#wfmziuzmqg .gt_column_spanner_outer:last-child {
-  padding-right: 0;
-}
-
-#wfmziuzmqg .gt_column_spanner {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  overflow-x: hidden;
-  display: inline-block;
-  width: 100%;
-}
-
-#wfmziuzmqg .gt_spanner_row {
-  border-bottom-style: hidden;
-}
-
-#wfmziuzmqg .gt_group_heading {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  text-align: left;
-}
-
-#wfmziuzmqg .gt_empty_group_heading {
-  padding: 0.5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: middle;
-}
-
-#wfmziuzmqg .gt_from_md > :first-child {
-  margin-top: 0;
-}
-
-#wfmziuzmqg .gt_from_md > :last-child {
-  margin-bottom: 0;
-}
-
-#wfmziuzmqg .gt_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin: 10px;
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  overflow-x: hidden;
-}
-
-#wfmziuzmqg .gt_stub {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#wfmziuzmqg .gt_stub_row_group {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-  vertical-align: top;
-}
-
-#wfmziuzmqg .gt_row_group_first td {
-  border-top-width: 2px;
-}
-
-#wfmziuzmqg .gt_row_group_first th {
-  border-top-width: 2px;
-}
-
-#wfmziuzmqg .gt_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#wfmziuzmqg .gt_first_summary_row {
-  border-top-style: solid;
-  border-top-color: #D3D3D3;
-}
-
-#wfmziuzmqg .gt_first_summary_row.thick {
-  border-top-width: 2px;
-}
-
-#wfmziuzmqg .gt_last_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#wfmziuzmqg .gt_grand_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#wfmziuzmqg .gt_first_grand_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-style: double;
-  border-top-width: 6px;
-  border-top-color: #D3D3D3;
-}
-
-#wfmziuzmqg .gt_last_grand_summary_row_top {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: double;
-  border-bottom-width: 6px;
-  border-bottom-color: #D3D3D3;
-}
-
-#wfmziuzmqg .gt_striped {
-  background-color: rgba(128, 128, 128, 0.05);
-}
-
-#wfmziuzmqg .gt_table_body {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#wfmziuzmqg .gt_footnotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#wfmziuzmqg .gt_footnote {
-  margin: 0px;
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#wfmziuzmqg .gt_sourcenotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#wfmziuzmqg .gt_sourcenote {
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#wfmziuzmqg .gt_left {
-  text-align: left;
-}
-
-#wfmziuzmqg .gt_center {
-  text-align: center;
-}
-
-#wfmziuzmqg .gt_right {
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-}
-
-#wfmziuzmqg .gt_font_normal {
-  font-weight: normal;
-}
-
-#wfmziuzmqg .gt_font_bold {
-  font-weight: bold;
-}
-
-#wfmziuzmqg .gt_font_italic {
-  font-style: italic;
-}
-
-#wfmziuzmqg .gt_super {
-  font-size: 65%;
-}
-
-#wfmziuzmqg .gt_footnote_marks {
-  font-size: 75%;
-  vertical-align: 0.4em;
-  position: initial;
-}
-
-#wfmziuzmqg .gt_asterisk {
-  font-size: 100%;
-  vertical-align: 0;
-}
-
-#wfmziuzmqg .gt_indent_1 {
-  text-indent: 5px;
-}
-
-#wfmziuzmqg .gt_indent_2 {
-  text-indent: 10px;
-}
-
-#wfmziuzmqg .gt_indent_3 {
-  text-indent: 15px;
-}
-
-#wfmziuzmqg .gt_indent_4 {
-  text-indent: 20px;
-}
-
-#wfmziuzmqg .gt_indent_5 {
-  text-indent: 25px;
-}
-
-#wfmziuzmqg .katex-display {
-  display: inline-flex !important;
-  margin-bottom: 0.75em !important;
-}
-
-#wfmziuzmqg div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
-  height: 0px !important;
-}
-</style>
-<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
-<thead><tr class="gt_col_headings header">
-<th id="year" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">year</th>
-<th id="avg_prop_female" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">avg_prop_female</th>
+<div class="kable-table">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 3%">
+<col style="width: 18%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 3%">
+<col style="width: 3%">
+<col style="width: 8%">
+<col style="width: 2%">
+<col style="width: 6%">
+<col style="width: 2%">
+<col style="width: 3%">
+<col style="width: 6%">
+<col style="width: 9%">
+<col style="width: 23%">
+<col style="width: 3%">
+</colgroup>
+<thead><tr class="header">
+<th style="text-align: right;">id</th>
+<th style="text-align: left;">name</th>
+<th style="text-align: left;">sex</th>
+<th style="text-align: right;">age</th>
+<th style="text-align: right;">height</th>
+<th style="text-align: right;">weight</th>
+<th style="text-align: left;">team</th>
+<th style="text-align: left;">noc</th>
+<th style="text-align: left;">games</th>
+<th style="text-align: right;">year</th>
+<th style="text-align: left;">season</th>
+<th style="text-align: left;">city</th>
+<th style="text-align: left;">sport</th>
+<th style="text-align: left;">event</th>
+<th style="text-align: left;">medal</th>
 </tr></thead>
-<tbody class="gt_table_body">
+<tbody>
 <tr class="odd">
-<td class="gt_row gt_right" headers="year">1896</td>
-<td class="gt_row gt_right" headers="avg_prop_female">0.000000000</td>
+<td style="text-align: right;">3229</td>
+<td style="text-align: left;">Gyula Alvics</td>
+<td style="text-align: left;">M</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: right;">186</td>
+<td style="text-align: right;">91</td>
+<td style="text-align: left;">Hungary</td>
+<td style="text-align: left;">HUN</td>
+<td style="text-align: left;">1988 Summer</td>
+<td style="text-align: right;">1988</td>
+<td style="text-align: left;">Summer</td>
+<td style="text-align: left;">Seoul</td>
+<td style="text-align: left;">Boxing</td>
+<td style="text-align: left;">Boxing Men’s Heavyweight</td>
+<td style="text-align: left;">NA</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_right" headers="year">1900</td>
-<td class="gt_row gt_right" headers="avg_prop_female">0.009817973</td>
+<td style="text-align: right;">31516</td>
+<td style="text-align: left;">Alfred Frederik “Fred” Eefting</td>
+<td style="text-align: left;">M</td>
+<td style="text-align: right;">21</td>
+<td style="text-align: right;">183</td>
+<td style="text-align: right;">94</td>
+<td style="text-align: left;">Netherlands</td>
+<td style="text-align: left;">NED</td>
+<td style="text-align: left;">1980 Summer</td>
+<td style="text-align: right;">1980</td>
+<td style="text-align: left;">Summer</td>
+<td style="text-align: left;">Moskva</td>
+<td style="text-align: left;">Swimming</td>
+<td style="text-align: left;">Swimming Men’s 200 metres Backstroke</td>
+<td style="text-align: left;">NA</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_right" headers="year">1904</td>
-<td class="gt_row gt_right" headers="avg_prop_female">0.006513681</td>
+<td style="text-align: right;">35269</td>
+<td style="text-align: left;">Solenne Nadge Figus (-Saint Marie)</td>
+<td style="text-align: left;">F</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">178</td>
+<td style="text-align: right;">59</td>
+<td style="text-align: left;">France</td>
+<td style="text-align: left;">FRA</td>
+<td style="text-align: left;">2004 Summer</td>
+<td style="text-align: right;">2004</td>
+<td style="text-align: left;">Summer</td>
+<td style="text-align: left;">Athina</td>
+<td style="text-align: left;">Swimming</td>
+<td style="text-align: left;">Swimming Women’s 200 metres Freestyle</td>
+<td style="text-align: left;">Bronze</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_right" headers="year">1906</td>
-<td class="gt_row gt_right" headers="avg_prop_female">0.024598963</td>
+<td style="text-align: right;">36759</td>
+<td style="text-align: left;">Robert Frank</td>
+<td style="text-align: left;">M</td>
+<td style="text-align: right;">34</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">Switzerland</td>
+<td style="text-align: left;">SUI</td>
+<td style="text-align: left;">1936 Summer</td>
+<td style="text-align: right;">1936</td>
+<td style="text-align: left;">Summer</td>
+<td style="text-align: left;">Berlin</td>
+<td style="text-align: left;">Art Competitions</td>
+<td style="text-align: left;">Art Competitions Mixed Sculpturing, Reliefs</td>
+<td style="text-align: left;">NA</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_right" headers="year">1908</td>
-<td class="gt_row gt_right" headers="avg_prop_female">0.013272334</td>
+<td style="text-align: right;">80591</td>
+<td style="text-align: left;">Aiko Miyamura</td>
+<td style="text-align: left;">F</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">173</td>
+<td style="text-align: right;">60</td>
+<td style="text-align: left;">Japan-1</td>
+<td style="text-align: left;">JPN</td>
+<td style="text-align: left;">1996 Summer</td>
+<td style="text-align: right;">1996</td>
+<td style="text-align: left;">Summer</td>
+<td style="text-align: left;">Atlanta</td>
+<td style="text-align: left;">Badminton</td>
+<td style="text-align: left;">Badminton Women’s Doubles</td>
+<td style="text-align: left;">NA</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_right" headers="year">1912</td>
-<td class="gt_row gt_right" headers="avg_prop_female">0.022835916</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_right" headers="year">1920</td>
-<td class="gt_row gt_right" headers="avg_prop_female">0.068553244</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_right" headers="year">1924</td>
-<td class="gt_row gt_right" headers="avg_prop_female">0.081949971</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_right" headers="year">1928</td>
-<td class="gt_row gt_right" headers="avg_prop_female">0.043849748</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_right" headers="year">1932</td>
-<td class="gt_row gt_right" headers="avg_prop_female">0.097686199</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_right" headers="year">1936</td>
-<td class="gt_row gt_right" headers="avg_prop_female">0.054935364</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_right" headers="year">1948</td>
-<td class="gt_row gt_right" headers="avg_prop_female">0.051992839</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_right" headers="year">1952</td>
-<td class="gt_row gt_right" headers="avg_prop_female">0.080506697</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_right" headers="year">1956</td>
-<td class="gt_row gt_right" headers="avg_prop_female">0.074287903</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_right" headers="year">1960</td>
-<td class="gt_row gt_right" headers="avg_prop_female">0.098024523</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_right" headers="year">1964</td>
-<td class="gt_row gt_right" headers="avg_prop_female">0.085748426</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_right" headers="year">1968</td>
-<td class="gt_row gt_right" headers="avg_prop_female">0.128812638</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_right" headers="year">1972</td>
-<td class="gt_row gt_right" headers="avg_prop_female">0.120342792</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_right" headers="year">1976</td>
-<td class="gt_row gt_right" headers="avg_prop_female">0.166452916</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_right" headers="year">1980</td>
-<td class="gt_row gt_right" headers="avg_prop_female">0.164470918</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_right" headers="year">1984</td>
-<td class="gt_row gt_right" headers="avg_prop_female">0.154771927</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_right" headers="year">1988</td>
-<td class="gt_row gt_right" headers="avg_prop_female">0.175898833</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_right" headers="year">1992</td>
-<td class="gt_row gt_right" headers="avg_prop_female">0.223904286</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_right" headers="year">1994</td>
-<td class="gt_row gt_right" headers="avg_prop_female">0.246359511</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_right" headers="year">1996</td>
-<td class="gt_row gt_right" headers="avg_prop_female">0.291684774</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_right" headers="year">1998</td>
-<td class="gt_row gt_right" headers="avg_prop_female">0.242977985</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_right" headers="year">2000</td>
-<td class="gt_row gt_right" headers="avg_prop_female">0.389531239</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_right" headers="year">2002</td>
-<td class="gt_row gt_right" headers="avg_prop_female">0.273209448</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_right" headers="year">2004</td>
-<td class="gt_row gt_right" headers="avg_prop_female">0.395184916</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_right" headers="year">2006</td>
-<td class="gt_row gt_right" headers="avg_prop_female">0.326069434</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_right" headers="year">2008</td>
-<td class="gt_row gt_right" headers="avg_prop_female">0.427192545</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_right" headers="year">2010</td>
-<td class="gt_row gt_right" headers="avg_prop_female">0.336880907</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_right" headers="year">2012</td>
-<td class="gt_row gt_right" headers="avg_prop_female">0.429163254</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_right" headers="year">2014</td>
-<td class="gt_row gt_right" headers="avg_prop_female">0.295879556</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_right" headers="year">2016</td>
-<td class="gt_row gt_right" headers="avg_prop_female">0.434188173</td>
+<td style="text-align: right;">20202</td>
+<td style="text-align: left;">Chen Hsiu-Hsiung</td>
+<td style="text-align: left;">M</td>
+<td style="text-align: right;">32</td>
+<td style="text-align: right;">169</td>
+<td style="text-align: right;">70</td>
+<td style="text-align: left;">Chinese Taipei</td>
+<td style="text-align: left;">TPE</td>
+<td style="text-align: left;">1968 Summer</td>
+<td style="text-align: right;">1968</td>
+<td style="text-align: left;">Summer</td>
+<td style="text-align: left;">Mexico City</td>
+<td style="text-align: left;">Sailing</td>
+<td style="text-align: left;">Sailing Mixed Three Person Keelboat</td>
+<td style="text-align: left;">NA</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 </div>
-<p>As we probably expected, the proportion of female athletes has gone up with time!</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Ideas to take this further:
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ul>
-<li><p>Correct for team sports having more athletes.</p></li>
-<li><p>Think about how to handle anomalies in the country team names, e.g.&nbsp;“USSR” vs.&nbsp;“Russia”.</p></li>
-<li><p>Limit the data to one or two countries and compare them.</p></li>
-</ul>
-</div>
-</div>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>Table Improvements
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ul>
-<li>Give columns more descriptive labels</li>
-<li>Boldface column titles</li>
-<li>Format the percentage column to be percentages!</li>
-<li>Give the table a caption</li>
-<li>Color the table in a way that tells the story of patterns over time.</li>
-</ul>
-</div>
-</div>
-</section><section id="female-medals-by-country" class="level2"><h2 class="anchored" data-anchor-id="female-medals-by-country">Female medals by country</h2>
-<p><em>No new columns</em></p>
-<p><em>Requires custom function and iteration</em></p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Function to count medals but not overcount team sports</span></span>
-<span></span>
-<span><span class="va">num_female_gold</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">country</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  </span>
-<span>  <span class="va">female_medals</span> <span class="op">&lt;-</span> <span class="va">olympics</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">team</span> <span class="op">==</span> <span class="va">country</span>,</span>
-<span>           <span class="va">sex</span> <span class="op">==</span> <span class="st">"F"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct</a></span><span class="op">(</span><span class="va">games</span>, <span class="va">event</span>, <span class="va">medal</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">medal</span><span class="op">)</span></span>
-<span>  </span>
-<span>  </span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">female_medals</span> <span class="op">==</span> <span class="st">"Gold"</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span>  </span>
-<span><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">olympics</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct</a></span><span class="op">(</span><span class="va">team</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
-<span>    n_f_gold <span class="op">=</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map_dbl</a></span><span class="op">(</span><span class="va">team</span>, <span class="va">num_female_gold</span><span class="op">)</span></span>
-<span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_max</a></span><span class="op">(</span><span class="va">n_f_gold</span>, n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 10 × 2
-   team          n_f_gold
-   &lt;chr&gt;            &lt;dbl&gt;
- 1 United States      300
- 2 China              125
- 3 Soviet Union       124
- 4 Germany            103
- 5 East Germany        94
- 6 Russia              82
- 7 Australia           64
- 8 Netherlands         61
- 9 Romania             58
-10 Great Britain       56</code></pre>
-</div>
-</div>
-<p>This follows about the same patterns as overall medals, but maybe if we compare to male gold counts we would find some standout countries. For example, Romania is on this Top 10 but probably not in the overall counts.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1217,30 +678,114 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Ideas to take this further:</p>
+<p>Good:</p>
 <ul>
-<li><p>Collect counts for silver and bronze medals as well, not just gold.</p></li>
-<li><p>Collect a ratio of female to male medals, to get a sense of which countries have a <em>disproportionately low</em> number of female medal winners.</p></li>
-<li><p>Collect this data over time as well to look for countries that evolve.</p></li>
-<li><p>(This actually <em>could</em> have been done in a pipeline! But, the function approach makes it easier to incorporate some of the upgrades above.)</p></li>
+<li><p>This description explains who created the data, from where, and when. It provides links to the sources so the reader can find them.</p></li>
+<li><p>It somewhat explains what information is in the dataset; i.e., information about athletes, as opposed to scheduling information or other details.</p></li>
+<li><p>Showing a random small snippet of the dataset is typically useful, to get a feel for what it looks like.</p></li>
+</ul>
+<p>Bad:</p>
+<ul>
+<li><p>This is lacking in the “why” and “how” of the data creation. It is important to know what motivated the creation and sharing of a dataset, as well as the specific process that the creator used to assemble it.</p></li>
+<li><p>This description is unclear about the <em>observational units</em>, i.e., what each row represents. (It is not true that each row is a unique athlete!)</p></li>
+<li><p>This description could give much more detail on the observed variables present, such as how they were measured and what a typical value looks like.</p></li>
 </ul>
 </div>
 </div>
-<div class="callout callout-style-default callout-important callout-titled">
+<section id="data-cleaning" class="level3"><h3 class="anchored" data-anchor-id="data-cleaning">Data Cleaning</h3>
+<p>This data was cleaned by using <code>janitor</code> to reformat column names.</p>
+<p>The user RGriffin who scraped the data also checked for misentered data in the columns <code>Name</code>, <code>Gender</code>, <code>Height</code>, and <code>Weight</code>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>Table Improvements
+Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
+<p><strong>Good:</strong></p>
 <ul>
-<li>Give columns more descriptive labels</li>
-<li>Boldface column titles</li>
-<li>Give the table a caption</li>
-<li>Color the table in a way that draws people’s eyes to locations you want to highlight.</li>
+<li>We did not just look at the Tidy Tuesday cleaning and call it a day! We followed the path of the data creation to figure out what other cleaning and wrangling took place.</li>
+</ul>
+<p><strong>Bad:</strong></p>
+<ul>
+<li>We were not specific enough about the cleaning done by RGriffin. What did they alter in those columns and why? What other anomalies did they look for?</li>
+</ul>
+</div>
+</div>
+</section></section><section id="explorations" class="level2"><h2 class="anchored" data-anchor-id="explorations">Explorations</h2>
+<section id="rq-1-olympic-success-by-country" class="level3"><h3 class="anchored" data-anchor-id="rq-1-olympic-success-by-country">RQ 1: Olympic success by country</h3>
+<p>Which countries win the most Gold, Silver, and Bronze medals?</p>
+</section><section id="rq-2-sex-over-time" class="level3"><h3 class="anchored" data-anchor-id="rq-2-sex-over-time">RQ 2: Sex over time</h3>
+<p>Are there a higher percentage of female sports over time?</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Good:</strong></p>
+<ul>
+<li>These two research questions are well-defined and answerable with the dataset.</li>
+</ul>
+<p><strong>Bad:</strong></p>
+<ul>
+<li>These are not particularly deep. “Which countries win the most?” is not going to provide a new insight beyond what most people already know, and I think we can expect from the outset that female sports have increased over time.</li>
+</ul>
+</div>
+</div>
+</section><section id="rq-3-olympic-success-corrected-by-population" class="level3"><h3 class="anchored" data-anchor-id="rq-3-olympic-success-corrected-by-population">RQ 3: Olympic success corrected by population</h3>
+<p>Which countries win disproportionately more medals compared to their population size?</p>
+<p>Additional Data: Populations of each country</p>
+</section><section id="rq-4-correlation-between-female-wins-and-education" class="level3"><h3 class="anchored" data-anchor-id="rq-4-correlation-between-female-wins-and-education">RQ 4: Correlation between female wins and education</h3>
+<p>Do countries with better support for education for women also tend to see more success in female sports categories?</p>
+<p>Additional Data: Education trends in each country</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Good:</strong></p>
+<ul>
+<li>Question 4 digs deeper into the relationships between a country’s culture and government; and outcomes at the Olympics. This is a good question.</li>
+</ul>
+<p><strong>Bad:</strong></p>
+<ul>
+<li>Question 3 is a bit less interesting - you might uncover 1 or 2 interesting countries that win disproportionately, but you aren’t telling a rich story.</li>
+</ul>
+</div>
+</div>
+</section></section><section id="visualizations" class="level2"><h2 class="anchored" data-anchor-id="visualizations">Visualizations</h2>
+<p><img src="images/example_plot_1.png" class="img-fluid" alt="Stacked bar chart comparing Olympic medal counts for three countries — USA, Russia, and China. Each bar is divided into three segments representing gold (yellow), silver (blue), and bronze (orange) medals. The USA has the most medals overall, followed by Russia, then China. Russia and China have notably fewer bronze medals compared to the USA."></p>
+<p><img src="images/example_plot_2.png" class="img-fluid" alt="Scatter plot showing the relationship between the percent of women with a high school degree or better (x-axis) and the number of gold medals won in women's sports (y-axis). Approximately 15 data points are scattered across the chart. A red trend line runs upward from left to right, indicating a weak positive correlation — countries where more women have at least a high school education tend to win slightly more gold medals in women's sports. The data points show considerable spread around the trend line."></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Good:</strong></p>
+<ul>
+<li>Plots are appropriate to data type and address RQs</li>
+</ul>
+<p><strong>Bad:</strong></p>
+<ul>
+<li>Not a lot of thought is put into these as far as good plot design, annotation and storytelling, etc.</li>
 </ul>
 </div>
 </div>
@@ -1659,13 +1204,13 @@ Note
     }
   });
   </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="../../project/week-2.html" class="pagination-link" aria-label="Week 2: Data Summary Functions">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Week 2: Data Summary Functions</span>
+      <a href="../../project/week-1.html" class="pagination-link" aria-label="Week 1: Making a Game Plan">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Week 1: Making a Game Plan</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../project/week-3.html" class="pagination-link" aria-label="Week 3: Acquiring New Data">
-        <span class="nav-page-text">Week 3: Acquiring New Data</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../project/week-2.html" class="pagination-link" aria-label="Week 2: Data Summary Functions">
+        <span class="nav-page-text">Week 2: Data Summary Functions</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1676,7 +1221,7 @@ Note
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/project/example-project-olympics/week-2.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/project/example-project-olympics/week-1.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
 <li class="nav-item">

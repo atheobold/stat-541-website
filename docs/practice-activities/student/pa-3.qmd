@@ -1,0 +1,213 @@
+---
+title: "Practice Activity Week 3"
+format: html
+embed-resources: true
+editor: source
+execute: 
+  echo: true
+  error: true
+---
+
+```{r}
+#| label: packages-setup
+#| message: false
+#| warning: false
+
+library(httr)
+library(tidyjson)
+library(jsonlite)
+library(tidyverse)
+```
+
+# Open-Notify API
+
+The Open-Notify APIs provides information on the International Space Station.
+Specifically, the API provides (1) the names of the astronauts currently 
+aboard the ISS, (2) the current location of the ISS, and (3) overhead pass
+predictions for the ISS. 
+
+For this activity, we are going to find the predicted time the ISS will pass
+by 10 major cities across the world and sort the pass times to see the path 
+of the ISS. 
+
+| City        | Country        | Latitude | Longitude |
+| ----------- | -------------- | -------- | --------- |
+| New York    | USA            | 40.7128  | -74.0060  |
+| Mexico City | Mexico         | 19.4326  | -99.1332  |
+| São Paulo   | Brazil         | -23.5505 | -46.6333  |
+| London      | United Kingdom | 51.5074  | -0.1278   |
+| Cairo       | Egypt          | 30.0444  | 31.2357   |
+| Nairobi     | Kenya          | -1.2921  | 36.8219   |
+| Mumbai      | India          | 19.0760  | 72.8777   |
+| Bangkok     | Thailand       | 13.7563  | 100.5018  |
+| Tokyo       | Japan          | 35.6762  | 139.6503  |
+| Sydney      | Australia      | -33.8688 | 151.2093  |
+
+## Getting the Pass Times for *One* City
+
+Inspecting the [satellite pass API homepage](https://g7vrd.co.uk/public-satellite-pass-rest-api), we can obtain the
+JSON data with the pass information for a given city using an address like the 
+following:
+<https://api.g7vrd.co.uk/v1/satellite-passes/25544/51.45/-2.5833.json?hours=18>
+
+In this web address, 
+
+- `25544` stands for the NORAD Catalog Number for the ISS. So, this number will
+**never** change for different cities. 
+- `51.45` is the latitude for the given location
+- `-2.5833` is the longitude for the given location
+- `?hours=18` tells the API how many hours you want to consider for the passes
+
+Let's give this a go! 
+
+1. Using the `base_url`, `lat` and `long` objects, obtain the ISS pass times for
+New York City. Save this object as `nyc`. 
+*Hint 1: The `glue()` function from the __glue__ package or the `str_c()` function from __stringr__ will be helpful here!*
+*Hint 2: What function do you use to get information from an API?*
+
+```{r}
+#| label: nyc-info
+
+base_url <- "https://api.g7vrd.co.uk/v1/satellite-passes/25544/"
+
+lat  <- 40.7128
+long <- -74.0060
+```
+
+2. Now that we have the JSON file for NYC, let's parse it into a tidy dataframe.
+Using functions from **jsonlite** or **tidyjson** convert the JSON file to a 
+dataframe. 
+*Hint: You might find it helpful to inspect the raw JSON file [here](https://api.g7vrd.co.uk/v1/satellite-passes/25544/40.7128/-74.006.json?hours=18).*
+
+```{r}
+#| label: extracting-nyc-passtime-info
+
+```
+
+3. The `start` column for the passtimes is what we are interested in, but
+currently this is formatted as a string (e.g., `"2026-02-26T05:23:21.257Z"`). 
+Parse this column into a data-time object using the `ymd_hms()` function from
+**lubridate**. 
+*Hint: The pass times for the ISS are reported in UTC (Coordinated Universal Time).* 
+
+```{r}
+#| label: parse-date-nyc
+
+```
+
+4. Our final step is to isolate the pass time for NYC. Use the `pull()` function
+to extract the parsed data-time column you made in the last question. 
+**Can you collapse _all_ the steps into _one_ pipeline?**
+
+```{r}
+#| label: pull-date-nyc
+
+```
+
+## Getting the Pass Times for *Every* City
+
+Now that we have worked out each step using *one* city, the next step is to 
+scale this process to **multiple** cities. We've created a tibble with ten 
+major cities across the world. Your goal is to acquire the pass time for each
+city.
+
+```{r}
+#| label: cities-to-map
+
+cities <- tibble(
+  city = c(
+    "New York", "Mexico City", "Sao Paulo", "London",
+    "Cairo", "Nairobi", "Mumbai", "Bangkok",
+    "Tokyo", "Sydney"
+  ),
+  country = c(
+    "USA", "Mexico", "Brazil", "United Kingdom",
+    "Egypt", "Kenya", "India", "Thailand",
+    "Japan", "Australia"
+  ),
+  latitude = c(
+    40.7128, 19.4326, -23.5505, 51.5074,
+    30.0444, -1.2921, 19.0760, 13.7563,
+    35.6762, -33.8688
+  ),
+  longitude = c(
+    -74.0060, -99.1332, -46.6333, -0.1278,
+    31.2357, 36.8219, 72.8777, 100.5018,
+    139.6503, 151.2093
+  )
+)
+```
+
+5. Our first step is to write a function that gets the pass time for *any* 
+latitude and longitude coordinates. Using your code from Questions 1 though 4, 
+create a `get_pass_time()` function which outputs the pass time for a given
+location. 
+*Hint 1: Your function should take __two__ arguments: latitude and longitude.*
+*Hint 2: Think about how many objects you need to save!*
+
+```{r}
+#| label: pass-time-function
+
+
+```
+
+6. Using `map2()` iterate your function over the `latitude` and `longitude` 
+columns of the `cities` dataframe. 
+*Hint: There are three arguments to `map2()`, `.x`, `.y`, and `.f`. You will need to specify each!*
+
+```{r}
+#| label: map-pass-times
+
+
+```
+
+Crap! It seems we got an error. Let's think through what might be happening. 
+
+7. How does your function handle cities without pass times? What can you add to
+the body of your function to handle this special case?
+
+```{r}
+#| label: pass-time-function-no-passes
+
+
+```
+
+8. Alright, let's try this again! Using `map2()` iterate your function over the
+`latitude` and `longitude` columns of the `cities` dataframe. 
+
+```{r}
+#| label: map-pass-times-take-2
+
+```
+
+9. Your `map()` should have been successful, but you should notice something 
+else happening. There are cities with **multiple** pass times! What can
+you add to the body of your function to grab the *first* pass time for cities
+with multiple pass times?
+
+```{r}
+#| label: pass-time-function-mult-passes
+
+```
+
+10. Alright, let's try this one last time! Using `map2()` iterate your function
+over the `latitude` and `longitude` columns of the `cities` dataframe. 
+**Save this object as `city_passes` so you don't get an error about exceeding 10 requests per minute.**
+
+```{r}
+#| label: map-pass-times-take-3
+
+city_passes <- 
+  
+```
+
+10. Add each city's pass times to the original `cities` dataframe. Arrange the
+table based on the cities where the ISS will pass next. 
+*Hint: The `city_passes` object is a list which you will need to unpack. The `unnest()` will be helpful here!* 
+
+```{r}
+#| label: cities-with-passtimes
+
+
+```
+

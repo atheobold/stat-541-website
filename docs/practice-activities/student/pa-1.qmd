@@ -1,0 +1,135 @@
+---
+title: "Practice Activity Week 1"
+format: html
+embed-resources: true
+editor: source
+code-tools: true
+---
+
+```{r}
+#| label: packages-setup
+
+library(tidyverse)
+```
+
+## Quarto
+
+First, let's make sure you know how to use Markdown formatting to style a Quarto
+document.
+
+1.  Make this text bold.
+
+2.  Make this text italicized.
+
+3.  Make these items into a bullet point list:
+
+Apples Bananas Potatoes
+
+4.  Edit the YAML to remove warning messages from being output in the rendered
+HTML file
+
+5.  Using code chunk options, make it so this chunk shows the code but not the
+output:
+
+```{r}
+#| label: simple-math
+
+2 + 2
+```
+
+6.  Using code chunk options, make it so the file can still render even though
+this chunk has an error
+
+```{r}
+#| label: code-with-error
+
+2 + a
+```
+
+## Data Visualization Review
+
+In this class, we will exclusively make visualizations using `ggplot2` and 
+packages developed to be compatible with `ggplot2`. If you are less familiar
+with plotting in `ggplot2` or it's been some time since you used this package, 
+I would strongly recommend referencing [resources from the data visualization section of this week's coursework](../1810-review/ggplot-review.qmd)!  
+
+The questions below (Questions 7-11) utilize the `mpg` data from the 
+`tidyverse` package.
+
+7.  Use side-by-side boxplots to visualize the distribution of `hwy` miles per
+gallon for each `manufacturer`. **The names of the manufacturers should be easily readable, and your axes should include any necessary information regarding the variables and their units!**
+
+```{r}
+#| label: side-by-side-boxplots
+
+```
+
+8. Use faceted scatterplots to visualize how the relationship between `hwy`
+mileage and `cty` mileage has changed over time. **Your axes should include any necessary information regarding the variables and their units!**
+
+```{r}
+#| label: faceted-scatterplots
+
+```
+
+## Data Wrangling Review
+
+In this class, we will exclusively make use of tools from the 
+`tidyverse` suite of packages to perform our data cleaning and wrangling
+operations. If you are less familiar with these packages or it's been some time
+since you used them, I would strongly recommend referencing the function 
+documentation!  
+
+For these problems, we will continue to work with the `mpg` data frame, 
+making various changes to the data to clean it up. 
+
+9. The `fl` variable describes the type of fuel for each car, with levels: `p`, 
+`r`, `e`, `d`, and `c`. Do some research into what each of these labels mean! 
+Then, use the `mutate()` and `if_else()` functions to create a new variable
+(`fuel_type`) with two levels: `petrol` (any car using petrolium-based gas) and
+`alternative energy` (any car not using petrolium-based gas). 
+
+```{r}
+#| label: creating-fuel-type-variable
+
+```
+
+10. The `drv` variable describes if the car has front drive (`f`), rear drive
+(`r`), or four wheel drive (`4`). Let's make better labels for these values! 
+Specifically, use the `mutate()` and `recode_values()` to change the `drv`
+variable to have the following descriptive levels: `front`, `rear`,
+`four wheel`. 
+
+```{r}
+#| label: descriptive-drive-variable
+
+```
+
+11. The `trans` variable contains two pieces of information, (1) the
+transmission style (`auto` or `manual`) and the specific type of transmission
+(e.g., `l5`, `m5`, `av`). Using the `separate_wider_delim()` function, create
+two new variables from `trans`, (1) `trans_type` containing the specific type of
+transmission of each car (e.g., `l5`), and (2) `trans_style` the style of the 
+transmission (e.g., `auto`). *Hint: You will need to deal with the stray parenthesis!* 
+
+```{r}
+#| label: separating-transmission-variables
+
+```
+
+## Getting to know your classmates
+
+12. Find someone who took Stat 331 from a different professor than you. Compare
+your experiences. Tell me their name and professor. List one or two things that
+you think you learned more about, and one or two things that they learned more
+about.
+
+13. Find someone in the class who **does not** share your birth month. Tell me
+their name and birthday, and use R to find out how many days apart your
+birthdays are.
+
+```{r}
+#| label: birthday-calculation
+
+```
+
