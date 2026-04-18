@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.24">
-
+<meta name="generator" content="quarto-1.8.26">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-
 <title>Project Checkpoint 3 – Advanced R</title>
 <style>
 code{white-space: pre-wrap;}
@@ -20,8 +17,42 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
-
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
@@ -40,17 +71,16 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b651517ce65839d647a86e2780455cfb.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b758ccaa5987ceb1b75504551e579abf.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-63767328852000e01d7c9d44355c1f36.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/bootstrap/bootstrap-dark-5f858a84010510139e49c405efe9b486.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="../site_libs/bootstrap/bootstrap-63767328852000e01d7c9d44355c1f36.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script src="../site_libs/quarto-contrib/flourish-0.0.1/injectFlourishes.js"></script>
-<script src="../site_libs/quarto-contrib/flourish-0.0.1/flourish.js"></script>
-<script id="quarto-search-options" type="application/json">{
+<script src="../site_libs/quarto-contrib/flourish-0.0.1/flourish.js"></script><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -77,10 +107,7 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-
-
 </head>
-
 <body class="nav-sidebar floating nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
@@ -246,14 +273,10 @@ ul.task-list li input[type="checkbox"] {
   </script>
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
-      <div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../images/cat-monsters-horst.png" alt="" class="navbar-logo light-content">
-    <img src="../images/cat-monsters-horst.png" alt="" class="navbar-logo dark-content">
-    </a>
+    <img src="../images/cat-monsters-horst.png" alt="" class="navbar-logo light-content"><img src="../images/cat-monsters-horst.png" alt="" class="navbar-logo dark-content"></a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
@@ -261,8 +284,8 @@ ul.task-list li input[type="checkbox"] {
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
-    <a class="nav-link active" href="../index.html" aria-current="page"> 
+<li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
 <span class="menu-text">Overview</span></a>
   </li>  
   <li class="nav-item">
@@ -290,25 +313,23 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Unit 3 - Package Development</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../project.html"> 
+    <a class="nav-link active" href="../project.html" aria-current="page"> 
 <span class="menu-text">Projects</span></a>
   </li>  
 </ul>
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item compact">
+<ul class="navbar-nav navbar-nav-scroll ms-auto">
+<li class="nav-item compact">
     <a class="nav-link" href="https://github.com/atheobold/stat-541-website"> <i class="bi bi-github" role="img" aria-label="GitHub">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
 </ul>
-          </div> <!-- /navcollapse -->
+</div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
       </div> <!-- /container-fluid -->
-    </nav>
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
+    </nav><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
@@ -316,19 +337,11 @@ ul.task-list li input[type="checkbox"] {
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
-  </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="../index.html" class="sidebar-logo-link">
-      </a>
-      </div>
-    <div class="sidebar-menu-container"> 
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../project.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Projects</span></a>
@@ -443,31 +456,30 @@ ul.task-list li input[type="checkbox"] {
   </div>
 </li>
     </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#by-the-end-of-the-week-your-updated-report-should-contain" id="toc-by-the-end-of-the-week-your-updated-report-should-contain" class="nav-link active" data-scroll-target="#by-the-end-of-the-week-your-updated-report-should-contain">By the end of the week, your updated report should contain:</a></li>
-  <li><a href="#stat-541-only" id="toc-stat-541-only" class="nav-link" data-scroll-target="#stat-541-only">Stat 541 Only</a></li>
-  <li><a href="#helpful-links" id="toc-helpful-links" class="nav-link" data-scroll-target="#helpful-links">Helpful Links</a>
+<li>
+<a href="#by-the-end-of-the-week-your-updated-report-should-contain" id="toc-by-the-end-of-the-week-your-updated-report-should-contain" class="nav-link active" data-scroll-target="#by-the-end-of-the-week-your-updated-report-should-contain">By the end of the week, your updated report should contain:</a>
   <ul class="collapse">
-  <li><a href="#tabular-andor-scrapable-data" id="toc-tabular-andor-scrapable-data" class="nav-link" data-scroll-target="#tabular-andor-scrapable-data">Tabular and/or Scrapable Data</a></li>
-  <li><a href="#apis" id="toc-apis" class="nav-link" data-scroll-target="#apis">APIs</a></li>
-  </ul></li>
+<li><a href="#stat-541-only" id="toc-stat-541-only" class="nav-link" data-scroll-target="#stat-541-only">Stat 541 Only</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/project/week-3.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></nav>
+</li>
+  <li>
+<a href="#helpful-links" id="toc-helpful-links" class="nav-link" data-scroll-target="#helpful-links">Helpful Links</a>
+  <ul class="collapse">
+<li><a href="#tabular-andor-scrapable-data" id="toc-tabular-andor-scrapable-data" class="nav-link" data-scroll-target="#tabular-andor-scrapable-data">Tabular and/or Scrapable Data</a></li>
+  <li><a href="#apis" id="toc-apis" class="nav-link" data-scroll-target="#apis">APIs</a></li>
+  </ul>
+</li>
+  </ul><div class="toc-actions"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/project/week-3.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
 <h1 class="title">Project Checkpoint 3</h1>
 </div>
 
@@ -482,28 +494,22 @@ ul.task-list li input[type="checkbox"] {
   
 
 
-</header>
-
-
-<p>Now that you have explored your original dataset and produced data summaries addressing your primary research questions, it is time to integrate new country-level data.</p>
-<section id="by-the-end-of-the-week-your-updated-report-should-contain" class="level2">
-<h2 class="anchored" data-anchor-id="by-the-end-of-the-week-your-updated-report-should-contain">By the end of the week, your updated report should contain:</h2>
+</header><p>Now that you have explored your original dataset and produced data summaries addressing your primary research questions, it is time to integrate new country-level data.</p>
+<section id="by-the-end-of-the-week-your-updated-report-should-contain" class="level2"><h2 class="anchored" data-anchor-id="by-the-end-of-the-week-your-updated-report-should-contain">By the end of the week, your updated report should contain:</h2>
 <ul>
-<li><p><strong>two</strong> new country-level data sources</p>
+<li>
+<p><strong>two</strong> new country-level data sources</p>
 <ul>
 <li><p>Stat 431: One of these must be acquired using APIs or webscraping</p></li>
-<li><p>Stat 541: One of these must be acquired using APIs, the other using webscraping.</p></li>
-</ul></li>
+<li><p>Stat 541: Both of these must be acquired using APIs or webscraping.</p></li>
+</ul>
+</li>
 <li><p>descriptions of each of the new datasets</p></li>
 <li><p>a “meta” dataset containing <strong>all</strong> the acquired data (joined together)</p></li>
 <li><p><strong>at least two</strong> data summaries OR visualizations incorporating the additional country-level data</p></li>
 </ul>
-</section>
-<section id="stat-541-only" class="level2">
-<h2 class="anchored" data-anchor-id="stat-541-only">Stat 541 Only</h2>
-<ul>
-<li>your <strong>webscraped</strong> data must come from a multi-paged source, so that iteration is used to gather all the data</li>
-</ul>
+<section id="stat-541-only" class="level3"><h3 class="anchored" data-anchor-id="stat-541-only">Stat 541 Only</h3>
+<p>At least one of your datasets (webscraped or API) must require iteration. Meaning, you must iterate over a set of inputs (e.g., countries, pages) to acquire a new dataset.</p>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -517,29 +523,52 @@ Warning
 <p><strong>Warning!</strong> Most APIs require you to make an account to access them to prevent too much automated data collection. <em>Some</em> APIs also charge a fee to use. You <strong>should not</strong> use any paid APIs for this class!</p>
 </div>
 </div>
-</section>
-<section id="helpful-links" class="level2">
-<h2 class="anchored" data-anchor-id="helpful-links">Helpful Links</h2>
+</section></section><section id="helpful-links" class="level2"><h2 class="anchored" data-anchor-id="helpful-links">Helpful Links</h2>
 <p>Here are some sources for country-level data that you may use if you so choose.</p>
-<p><em>These are just to get you started. You are not obligated to use these, and we cannot guarantee that they will all be functional, free, or useful.</em></p>
-<section id="tabular-andor-scrapable-data" class="level3">
-<h3 class="anchored" data-anchor-id="tabular-andor-scrapable-data">Tabular and/or Scrapable Data</h3>
+<p><em>These are just to get you started. You are not obligated to use these!</em></p>
+<section id="tabular-andor-scrapable-data" class="level3"><h3 class="anchored" data-anchor-id="tabular-andor-scrapable-data">Tabular and/or Scrapable Data</h3>
+<p>The key aspect to webscraping is the information you are scraping needs to be included in the static HTML. Meaning, the table / information <strong>cannot</strong> be rendered dynamically via JavaScript (like <a href="https://ourworldindata.org/grapher/global-vaccination-coverage?tab=table">this website</a>).</p>
+<p><strong>Wikipedia</strong> is an excellent source for scrapable data, as <strong>all</strong> the tables are static HTML tables. Here are some good places to look:</p>
 <ul>
-<li><p><a href="https://www.worldhappiness.report/data-sharing/">World Happiness Report</a></p></li>
-<li><p><a href="https://www.ncei.noaa.gov/cdo-web/">NOAA Climate Data</a></p></li>
-<li><p><a href="https://www.bea.gov/data/employment/employment-county-metro-and-other-areas">BEA Employment Data</a></p></li>
-<li><p><a href="https://databank.worldbank.org/id/f1ddbc94">WorldBank Development Indicator Data</a></p></li>
-<li><p><a href="https://en.wikipedia.org/wiki/List_of_countries_by_average_yearly_temperature">Wikipedia - Temperatures</a></p></li>
-<li><p><a href="https://en.wikipedia.org/wiki/List_of_countries_and_dependencies_by_population">Wikipedia - Populations</a></p></li>
-<li><p><a href="https://en.wikipedia.org/wiki/Demographics_of_the_world">Wikipedia - Many demographics</a></p></li>
+<li><p><a href="https://en.wikipedia.org/wiki/List_of_countries_by_average_yearly_temperature">Temperatures</a></p></li>
+<li><p><a href="https://en.wikipedia.org/wiki/List_of_countries_and_dependencies_by_population">Populations</a></p></li>
+<li><p><a href="https://en.wikipedia.org/wiki/List_of_countries_by_GDP_(nominal)">GDPs</a></p></li>
+<li><p><a href="https://en.wikipedia.org/wiki/Demographics_of_the_world">Other Demographics</a></p></li>
+<li><p><a href="https://www.worldometers.info/">Worldometers</a></p></li>
 </ul>
-</section>
-<section id="apis" class="level3">
-<h3 class="anchored" data-anchor-id="apis">APIs</h3>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>A Note on Web Scraping and User Agents
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>When scraping websites with <strong>rvest</strong>, you may encounter errors such as <code>"HTTP 403 Forbidden"</code> or receive empty results even when the page appears to have data. This often happens because the website is blocking automated requests that don’t identify themselves as a browser.</p>
+<p>To fix this, you can set a user agent — a string that tells the server what kind of client is making the request to mimic a real browser. In <strong>rvest</strong>, you can do this using the <code><a href="https://rvest.tidyverse.org/reference/session.html">session()</a></code> function with <strong>httr</strong>’s <code><a href="https://httr.r-lib.org/reference/user_agent.html">user_agent()</a></code>:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rvest.tidyverse.org/">rvest</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://httr.r-lib.org/">httr</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"https://www.example.com/data"</span></span>
+<span></span>
+<span><span class="va">session</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rvest.tidyverse.org/reference/session.html">session</a></span><span class="op">(</span><span class="va">url</span>, <span class="fu"><a href="https://httr.r-lib.org/reference/user_agent.html">user_agent</a></span><span class="op">(</span><span class="st">"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">my_table</span> <span class="op">&lt;-</span> <span class="va">session</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="http://xml2.r-lib.org/reference/read_xml.html">read_html</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_table.html">html_table</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Note that even with a user agent, some websites actively prohibit scraping in their Terms of Service. Always check a site’s terms before scraping, and be respectful of the site by avoiding rapid repeated requests that could overload their server!</p>
+</div>
+</div>
+</section><section id="apis" class="level3"><h3 class="anchored" data-anchor-id="apis">APIs</h3>
 <ul>
 <li><p><a href="https://restcountries.com/">Currency, flags, capitals</a></p></li>
 <li><p><a href="https://api-ninjas.com/api/country">Demographics and financial data</a></p></li>
 <li><p><a href="https://documents.worldbank.org/en/publication/documents-reports/api">WorldBank Data API</a></p></li>
+<li><p><a href="https://www.ncei.noaa.gov/cdo-web/webservices/v2">NOAA Climate Data</a></p></li>
 </ul>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -557,11 +586,7 @@ Note
 </div>
 
 
-</section>
-</section>
-
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
     if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -973,9 +998,7 @@ Note
       }
     }
   });
-  </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
+  </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
       <a href="../project/example-project-olympics/week-2.html" class="pagination-link" aria-label="*Week 2: Example Project*">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><em>Week 2: Example Project</em></span>
       </a>          
@@ -987,8 +1010,7 @@ Note
   </div>
 </nav>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
+<footer class="footer"><div class="nav-footer">
     <div class="nav-footer-left">
 <p>This page is built with ❤️ by Drs. Kelly Bodwin &amp; Allison Theobold and also <a href="https://quarto.org/">Quarto</a>.</p>
 </div>   
@@ -997,17 +1019,15 @@ Note
     <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/project/week-3.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
-    <li class="nav-item">
+<li class="nav-item">
     <a class="nav-link" href="../LICENSE.md">
 <p>License</p>
 </a>
   </li>  
 </ul>
-    </div>
+</div>
   </div>
 </footer>
-
-
 
 
 </body></html>

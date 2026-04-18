@@ -609,7 +609,7 @@
     "href": "project/week-3.html#by-the-end-of-the-week-your-updated-report-should-contain",
     "title": "Project Checkpoint 3",
     "section": "By the end of the week, your updated report should contain:",
-    "text": "By the end of the week, your updated report should contain:\n\ntwo new country-level data sources\n\nStat 431: One of these must be acquired using APIs or webscraping\nStat 541: One of these must be acquired using APIs, the other using webscraping.\n\ndescriptions of each of the new datasets\na “meta” dataset containing all the acquired data (joined together)\nat least two data summaries OR visualizations incorporating the additional country-level data",
+    "text": "By the end of the week, your updated report should contain:\n\n\ntwo new country-level data sources\n\nStat 431: One of these must be acquired using APIs or webscraping\nStat 541: Both of these must be acquired using APIs or webscraping.\n\n\ndescriptions of each of the new datasets\na “meta” dataset containing all the acquired data (joined together)\nat least two data summaries OR visualizations incorporating the additional country-level data\n\nStat 541 Only\nAt least one of your datasets (webscraped or API) must require iteration. Meaning, you must iterate over a set of inputs (e.g., countries, pages) to acquire a new dataset.\n\n\n\n\n\n\nWarning\n\n\n\nWarning! Most APIs require you to make an account to access them to prevent too much automated data collection. Some APIs also charge a fee to use. You should not use any paid APIs for this class!",
     "crumbs": [
       "Projects",
       "Week 3: Acquiring New Data"
@@ -631,7 +631,7 @@
     "href": "project/week-3.html#helpful-links",
     "title": "Project Checkpoint 3",
     "section": "Helpful Links",
-    "text": "Helpful Links\nHere are some sources for country-level data that you may use if you so choose.\nThese are just to get you started. You are not obligated to use these, and we cannot guarantee that they will all be functional, free, or useful.\n\nTabular and/or Scrapable Data\n\nWorld Happiness Report\nNOAA Climate Data\nBEA Employment Data\nWorldBank Development Indicator Data\nWikipedia - Temperatures\nWikipedia - Populations\nWikipedia - Many demographics\n\n\n\nAPIs\n\nCurrency, flags, capitals\nDemographics and financial data\nWorldBank Data API\n\n\n\n\n\n\n\nNote\n\n\n\nMuch of the data we have relied on for years - such as NOAA and BEA data listed above - are no longer being collected and made available, due to US Government cuts to these public statistics services. Other data sources that result from independent academic research at US institutions are rapidly dwindling as well, also due to cuts to this funding.\nAlthough these data sources may eventually be restored, or replaced with data from alternative agencies, we will never be able to go back and fill the gap for these lost years.",
+    "text": "Helpful Links\nHere are some sources for country-level data that you may use if you so choose.\nThese are just to get you started. You are not obligated to use these!\nTabular and/or Scrapable Data\nThe key aspect to webscraping is the information you are scraping needs to be included in the static HTML. Meaning, the table / information cannot be rendered dynamically via JavaScript (like this website).\nWikipedia is an excellent source for scrapable data, as all the tables are static HTML tables. Here are some good places to look:\n\nTemperatures\nPopulations\nGDPs\nOther Demographics\nWorldometers\n\n\n\n\n\n\n\nImportantA Note on Web Scraping and User Agents\n\n\n\nWhen scraping websites with rvest, you may encounter errors such as \"HTTP 403 Forbidden\" or receive empty results even when the page appears to have data. This often happens because the website is blocking automated requests that don’t identify themselves as a browser.\nTo fix this, you can set a user agent — a string that tells the server what kind of client is making the request to mimic a real browser. In rvest, you can do this using the session() function with httr’s user_agent():\n\nlibrary(rvest)\nlibrary(httr)\n\nurl &lt;- \"https://www.example.com/data\"\n\nsession &lt;- session(url, user_agent(\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36\"))\n\nmy_table &lt;- session %&gt;%\n  read_html() %&gt;%\n  html_table()\n\nNote that even with a user agent, some websites actively prohibit scraping in their Terms of Service. Always check a site’s terms before scraping, and be respectful of the site by avoiding rapid repeated requests that could overload their server!\n\n\nAPIs\n\nCurrency, flags, capitals\nDemographics and financial data\nWorldBank Data API\nNOAA Climate Data\n\n\n\n\n\n\n\nNote\n\n\n\nMuch of the data we have relied on for years - such as NOAA and BEA data listed above - are no longer being collected and made available, due to US Government cuts to these public statistics services. Other data sources that result from independent academic research at US institutions are rapidly dwindling as well, also due to cuts to this funding.\nAlthough these data sources may eventually be restored, or replaced with data from alternative agencies, we will never be able to go back and fill the gap for these lost years.",
     "crumbs": [
       "Projects",
       "Week 3: Acquiring New Data"
@@ -2288,42 +2288,42 @@
   {
     "objectID": "slides/purrr-adverbs.html#what-is-an-adverb",
     "href": "slides/purrr-adverbs.html#what-is-an-adverb",
-    "title": "Adverbs with purrr",
+    "title": "Adverbs with purrr\n",
     "section": "What is an adverb?",
     "text": "What is an adverb?\n\nIn English, an adverb modifies a verb, e.g. “He ate” vs “He ate loudly”.\nIn tidyverse, an adverb modifies a function.\nSyntax example: Notice that parentheses are around mean not around mean(1:10)\n\n\nsafely(mean)(1:10)"
   },
   {
     "objectID": "slides/purrr-adverbs.html#safely",
     "href": "slides/purrr-adverbs.html#safely",
-    "title": "Adverbs with purrr",
+    "title": "Adverbs with purrr\n",
     "section": "safely()",
-    "text": "safely()\n\nThe safely() adverb allows a function to run and return an error without breaking the code.\nIt causes the function to return two objects:\n\nresult: containing whatever the function would normally return; or, NULL if there was an error.\nerror: TRUE or FALSE and the error message"
+    "text": "safely()\n\nThe safely() adverb allows a function to run and return an error without breaking the code.\n\nIt causes the function to return two objects:\n\n\nresult: containing whatever the function would normally return; or, NULL if there was an error.\n\nerror: TRUE or FALSE and the error message"
   },
   {
     "objectID": "slides/purrr-adverbs.html#safely-1",
     "href": "slides/purrr-adverbs.html#safely-1",
-    "title": "Adverbs with purrr",
+    "title": "Adverbs with purrr\n",
     "section": "safely()",
     "text": "safely()\n\nmean(1:10)\n\n[1] 5.5\n\nsafely(mean)(1:10)\n\n$result\n[1] 5.5\n\n$error\nNULL"
   },
   {
     "objectID": "slides/purrr-adverbs.html#safely-2",
     "href": "slides/purrr-adverbs.html#safely-2",
-    "title": "Adverbs with purrr",
+    "title": "Adverbs with purrr\n",
     "section": "safely()",
-    "text": "safely()\n\nmean(\"a\" + 1)\n\nError in \"a\" + 1: non-numeric argument to binary operator\n\nsafely(mean)(\"a\" + 1)\n\n$result\nNULL\n\n$error\n&lt;simpleError in \"a\" + 1: non-numeric argument to binary operator&gt;"
+    "text": "safely()\n\nmean(\"a\" + 1)\n\nError in `\"a\" + 1`:\n! non-numeric argument to binary operator\n\nsafely(mean)(\"a\" + 1)\n\n$result\nNULL\n\n$error\n&lt;simpleError in \"a\" + 1: non-numeric argument to binary operator&gt;"
   },
   {
     "objectID": "slides/purrr-adverbs.html#safely-3",
     "href": "slides/purrr-adverbs.html#safely-3",
-    "title": "Adverbs with purrr",
+    "title": "Adverbs with purrr\n",
     "section": "safely()",
     "text": "safely()\n\nsafely() is particularly useful for webscraping and API calls\nUse it when you aren’t sure if your GET or fromJSON or similar function is going to succeed.\nThen, check the $error object to determine if you should return an NA or actual results.\nRemember to access the $result object when you need the actual results!"
   },
   {
     "objectID": "slides/purrr-adverbs.html#other-handy-adverbs",
     "href": "slides/purrr-adverbs.html#other-handy-adverbs",
-    "title": "Adverbs with purrr",
+    "title": "Adverbs with purrr\n",
     "section": "Other handy adverbs:",
     "text": "Other handy adverbs:\n\npossibly(): Same as to safely(), but you can have it return NA or similar as a result if the function errors.\nquietly(): Keeps messages from printing, but still stores them.\ninsistently(): Retries a function multiple times if it fails, allowing you to wrap unstable operations (e.g., API requests) to work reliably.\nslowly(): Forces a function to pause between executions, useful for rate-limiting calls."
   },
@@ -2711,5 +2711,12 @@
       "Unit 3 - Package Development",
       "Code Speed"
     ]
+  },
+  {
+    "objectID": "slides/purrr-adverbs.html",
+    "href": "slides/purrr-adverbs.html",
+    "title": "Adverbs with purrr\n",
+    "section": "",
+    "text": "library(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.2.0     ✔ readr     2.2.0\n✔ forcats   1.0.1     ✔ stringr   1.6.0\n✔ ggplot2   4.0.2     ✔ tibble    3.3.1\n✔ lubridate 1.9.5     ✔ tidyr     1.3.2\n✔ purrr     1.2.1     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors"
   }
 ]

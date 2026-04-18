@@ -11,7 +11,7 @@ Now that you have explored your original dataset and produced data summaries add
 
     -   Stat 431: One of these must be acquired using APIs or webscraping
 
-    -   Stat 541: One of these must be acquired using APIs, the other using webscraping.
+    -   Stat 541: Both of these must be acquired using APIs or webscraping. 
 
 -   descriptions of each of the new datasets
 
@@ -19,9 +19,10 @@ Now that you have explored your original dataset and produced data summaries add
 
 -   **at least two** data summaries OR visualizations incorporating the additional country-level data
 
-## Stat 541 Only
+### Stat 541 Only
 
--   your **webscraped** data must come from a multi-paged source, so that iteration is used to gather all the data
+At least one of your datasets (webscraped or API) must require iteration. Meaning, you must iterate over a set of inputs (e.g., countries, pages)
+to acquire a new dataset. 
 
 ::: callout-warning
 **Warning!** Most APIs require you to make an account to access them to prevent too much automated data collection. *Some* APIs also charge a fee to use. You **should not** use any paid APIs for this class!
@@ -31,23 +32,62 @@ Now that you have explored your original dataset and produced data summaries add
 
 Here are some sources for country-level data that you may use if you so choose.
 
-*These are just to get you started. You are not obligated to use these, and we cannot guarantee that they will all be functional, free, or useful.*
+*These are just to get you started. You are not obligated to use these!*
 
 ### Tabular and/or Scrapable Data
 
--   [World Happiness Report](https://www.worldhappiness.report/data-sharing/)
+The key aspect to webscraping is the information you are scraping needs
+to be included in the static HTML. Meaning, the table / information 
+**cannot** be rendered dynamically via JavaScript (like 
+[this website](https://ourworldindata.org/grapher/global-vaccination-coverage?tab=table)).
 
--   [NOAA Climate Data](https://www.ncei.noaa.gov/cdo-web/)
+**Wikipedia** is an excellent source for scrapable data, as **all** the 
+tables are static HTML tables. Here are some good places to look:
 
--   [BEA Employment Data](https://www.bea.gov/data/employment/employment-county-metro-and-other-areas)
+-   [Temperatures](https://en.wikipedia.org/wiki/List_of_countries_by_average_yearly_temperature)
 
--   [WorldBank Development Indicator Data](https://databank.worldbank.org/id/f1ddbc94)
+-   [Populations](https://en.wikipedia.org/wiki/List_of_countries_and_dependencies_by_population)
 
--   [Wikipedia - Temperatures](https://en.wikipedia.org/wiki/List_of_countries_by_average_yearly_temperature)
+-   [GDPs](https://en.wikipedia.org/wiki/List_of_countries_by_GDP_(nominal))
 
--   [Wikipedia - Populations](https://en.wikipedia.org/wiki/List_of_countries_and_dependencies_by_population)
+-   [Other Demographics](https://en.wikipedia.org/wiki/Demographics_of_the_world)
 
--   [Wikipedia - Many demographics](https://en.wikipedia.org/wiki/Demographics_of_the_world)
+
+- [Worldometers](https://www.worldometers.info/)
+
+::: {.callout-important}
+# A Note on Web Scraping and User Agents
+
+When scraping websites with **rvest**, you may encounter errors such as 
+`"HTTP 403 Forbidden"` or receive empty results even when the page appears to
+have data. This often happens because the website is blocking automated requests
+that don't identify themselves as a browser.
+
+To fix this, you can set a user agent — a string that tells the server what kind
+of client is making the request to mimic a real browser. In **rvest**, you can
+do this using the `session()` function with **httr**'s `user_agent()`:
+
+```{r}
+#| eval: false
+#| echo: true
+
+library(rvest)
+library(httr)
+
+url <- "https://www.example.com/data"
+
+session <- session(url, user_agent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"))
+
+my_table <- session %>%
+  read_html() %>%
+  html_table()
+```
+
+Note that even with a user agent, some websites actively prohibit scraping in 
+their Terms of Service. Always check a site's terms before scraping, and be
+respectful of the site by avoiding rapid repeated requests that could overload
+their server!
+:::
 
 ### APIs
 
@@ -56,6 +96,9 @@ Here are some sources for country-level data that you may use if you so choose.
 -   [Demographics and financial data](https://api-ninjas.com/api/country)
 
 -   [WorldBank Data API](https://documents.worldbank.org/en/publication/documents-reports/api)
+
+-   [NOAA Climate Data](https://www.ncei.noaa.gov/cdo-web/webservices/v2)
+
 
 ::: callout-note
 Much of the data we have relied on for years - such as NOAA and BEA data listed above - are no longer being collected and made available, due to US Government cuts to these public statistics services. Other data sources that result from independent academic research at US institutions are rapidly dwindling as well, also due to cuts to this funding.
