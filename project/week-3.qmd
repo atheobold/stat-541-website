@@ -34,7 +34,18 @@ Here are some sources for country-level data that you may use if you so choose.
 
 *These are just to get you started. You are not obligated to use these!*
 
-### Tabular and/or Scrapable Data
+### Tabular Data
+
+
+-   [World Happiness Report](https://www.worldhappiness.report/data-sharing/)
+
+-   [NOAA Climate Data](https://www.ncei.noaa.gov/cdo-web/)
+
+-   [BEA Employment Data](https://www.bea.gov/data/employment/employment-county-metro-and-other-areas)
+
+-   [WorldBank Development Indicator Data](https://databank.worldbank.org/id/f1ddbc94)
+
+### Scrapable Data
 
 The key aspect to webscraping is the information you are scraping needs
 to be included in the static HTML. Meaning, the table / information 
