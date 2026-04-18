@@ -123,16 +123,11 @@ countrycode::countrycode("Brazil",
 
 ```
 
-2. You should have gotten a message about **1** matching error. Meaning, there
-was one specific country that  couldn't find the name for. **Modify your code
-to manually classify the continent of this country.**
-
-
 ## Exploring Roundabouts
 
 Let's explore the data a bit before we jump into visualizing these data. 
 
-3. What countries have the most roundabouts (in these data)? The fewest
+2. What countries have the most roundabouts (in these data)? The fewest
 roundabouts?
 
 ```{r}
@@ -140,21 +135,22 @@ roundabouts?
 
 ```
 
-4. In these data, what types of roundabouts are most common?
+3. In these data, what types of roundabouts are most common?
+*Hint: Proportions are the easiest way to address this question!*
 
 ```{r}
 #| label: common-types
 
 ```
 
-5. How does the distribution of types differ by continent?
+4. How does the distribution of types differ by continent?
 
 ```{r}
 #| label: types-by-continent
 
 ```
 
-6. We've seen a lot of traffic calming circles showing up around SLO. What
+5. We've seen a lot of traffic calming circles showing up around SLO. What
 states in the US have the largest proportion of traffic calming circles?
 
 ```{r}
@@ -174,7 +170,7 @@ intersection (control) type.
 
 Let's start by creating the data `gglluvial` requires for plotting. 
 
-7. Create a table of frequencies of previous intersection types, current
+6. Create a table of frequencies of previous intersection types, current
 intersection types, and roundabouts. Let's focus on intersections (both old and
 new) where the type was known (not labeled as `"Unknown"`).
 
@@ -183,18 +179,17 @@ new) where the type was known (not labeled as `"Unknown"`).
 
 ```
 
-8. Now create the Stankey plot using the data you made above! Your axes should 
+7. Now create the Stankey plot using the data you made above! Your axes should 
 be previous control type and the current control type, and the colors should be
-associated with the type of roundabout. *Hint: You might find the 
+associated with the type of roundabout. *Hint: You might find the [ggalluvial reference page helpful](https://corybrunson.github.io/ggalluvial/)!*
 
 ```{r}
 #| label: stankey-plot
 
 ```
 
-9. Now that you have a working solution, let's make the strata labels easy to
-read. Look over this [reference article](https://corybrunson.github.io/ggalluvial/articles/labels.html) on 
-different ways to label the strata for each axis. Implement your favorite 
+8. Now that you have a working solution, let's make the strata labels easy to
+read. Look over this [reference article](https://corybrunson.github.io/ggalluvial/articles/labels.html) on different ways to label the strata for each axis. Implement your favorite 
 method! 
 
 ```{r}
@@ -202,7 +197,7 @@ method!
 
 ```
 
-10. Final touches! Let's add some custom colors and an informative plot title!
+9. Final touches! Let's add some custom colors and an informative plot title!
 *Each of the axes in your plot should have a title as well!*
 
 ```{r}
