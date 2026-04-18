@@ -1817,7 +1817,7 @@
     "href": "practice-activities/week-4.html#creating-a-region-variable",
     "title": "Practice Activity Week 4",
     "section": "Creating a Region Variable",
-    "text": "Creating a Region Variable\nAlright, we now have the country of each roundabout, but that seems to fine grain for our analysis. If we’re interested in how roundabouts are used around the world, it seems like a region variable might be a better fit.\n\nCreate a new continent column in the dataset, which classifies each country into one of the five major continents—Americas, Europe, Asia, Oceania, Africa.\n\nThe countrycode() function from the countrycode package will be helpful here! Here is an example of how you can use this function to obtain the continent of a given country:\n\ncountrycode::countrycode(\"Brazil\",\n            origin = \"country.name\",\n            destination = \"continent\")\n\n\nYou should have gotten a message about 1 matching error. Meaning, there was one specific country that couldn’t find the name for. Modify your code to manually classify the continent of this country.",
+    "text": "Creating a Region Variable\nAlright, we now have the country of each roundabout, but that seems to fine grain for our analysis. If we’re interested in how roundabouts are used around the world, it seems like a region variable might be a better fit.\n\nCreate a new continent column in the dataset, which classifies each country into one of the five major continents—Americas, Europe, Asia, Oceania, Africa.\n\nThe countrycode() function from the countrycode package will be helpful here! Here is an example of how you can use this function to obtain the continent of a given country:\n\ncountrycode::countrycode(\"Brazil\",\n            origin = \"country.name\",\n            destination = \"continent\")",
     "crumbs": [
       "Unit 1 - Complex Analyses",
       "Week 4: In-Class Activity"
@@ -1828,7 +1828,7 @@
     "href": "practice-activities/week-4.html#exploring-roundabouts",
     "title": "Practice Activity Week 4",
     "section": "Exploring Roundabouts",
-    "text": "Exploring Roundabouts\nLet’s explore the data a bit before we jump into visualizing these data.\n\nWhat countries have the most roundabouts (in these data)? The fewest roundabouts?\n\n\nIn these data, what types of roundabouts are most common?\n\n\nHow does the distribution of types differ by continent?\n\n\nWe’ve seen a lot of traffic calming circles showing up around SLO. What states in the US have the largest proportion of traffic calming circles?",
+    "text": "Exploring Roundabouts\nLet’s explore the data a bit before we jump into visualizing these data.\n\nWhat countries have the most roundabouts (in these data)? The fewest roundabouts?\n\n\nIn these data, what types of roundabouts are most common? Hint: Proportions are the easiest way to address this question!\n\n\n\nHow does the distribution of types differ by continent?\n\n\nWe’ve seen a lot of traffic calming circles showing up around SLO. What states in the US have the largest proportion of traffic calming circles?",
     "crumbs": [
       "Unit 1 - Complex Analyses",
       "Week 4: In-Class Activity"
