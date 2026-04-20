@@ -433,7 +433,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#exploring-roundabouts" id="toc-exploring-roundabouts" class="nav-link" data-scroll-target="#exploring-roundabouts">Exploring Roundabouts</a></li>
   </ul>
 </li>
-  <li><a href="#the-ggalluvial-package" id="toc-the-ggalluvial-package" class="nav-link" data-scroll-target="#the-ggalluvial-package">The <code>ggalluvial</code> Package</a></li>
+  <li>
+<a href="#the-ggalluvial-package" id="toc-the-ggalluvial-package" class="nav-link" data-scroll-target="#the-ggalluvial-package">The <code>ggalluvial</code> Package</a>
+  <ul class="collapse">
+<li><a href="#customizing-labels-required-for-541-optional-for-431" id="toc-customizing-labels-required-for-541-optional-for-431" class="nav-link" data-scroll-target="#customizing-labels-required-for-541-optional-for-431">Customizing Labels – Required for 541, Optional for 431</a></li>
+  <li><a href="#customizing-colors-required-for-both-541-and-431" id="toc-customizing-colors-required-for-both-541-and-431" class="nav-link" data-scroll-target="#customizing-colors-required-for-both-541-and-431">Customizing Colors – Required for Both 541 and 431</a></li>
+  </ul>
+</li>
   </ul><div class="toc-actions"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/practice-activities/week-4.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
@@ -471,8 +477,8 @@ Important
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section><section id="roundabouts" class="level1"><h1>Roundabouts</h1>
-<p>This week, our activity will explore how roundabouts are used around the world! You might not be as big of a fan of roundabouts as Dr.&nbsp;T, but these data allow us to investigate a fun and unique visualization technique—<a href="https://en.wikipedia.org/wiki/Sankey_diagram">a Stankey diagram</a>.</p>
-<p>A Stankey diagram visualizes data <strong>flows</strong>. Specifically, the visual models the movement from one state to another. We are going to use a Stankey plot to visualize how traffic intersections are transformed into various types of roundabouts.</p>
+<p>This week, our activity will explore how roundabouts are used around the world! You might not be as big of a fan of roundabouts as Dr.&nbsp;T, but these data allow us to investigate a fun and unique visualization technique—<a href="https://en.wikipedia.org/wiki/Sankey_diagram">a Sankey diagram</a>.</p>
+<p>A Sankey diagram visualizes data <strong>flows</strong>. Specifically, the visual models the movement from one state to another. We are going to use a Sankey plot to visualize how traffic intersections are transformed into various types of roundabouts.</p>
 <section id="the-roundabouts-package" class="level2"><h2 class="anchored" data-anchor-id="the-roundabouts-package">The <code>roundabouts</code> Package</h2>
 <p>The <a href="https://github.com/EmilHvitfeldt/roundabouts"><code>roundabouts</code> R package</a> provides a simple way to interact with the <a href="https://roundabouts.kittelson.com/">Roundabouts Database</a>. You likely do not have the package installed on your computer, so the first step is to install the package:</p>
 <div class="cell">
@@ -520,42 +526,42 @@ Important
 <span>            origin <span class="op">=</span> <span class="st">"country.name"</span>,</span>
 <span>            destination <span class="op">=</span> <span class="st">"continent"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<ol start="2" type="1">
-<li>You should have gotten a message about <strong>1</strong> matching error. Meaning, there was one specific country that couldn’t find the name for. <strong>Modify your code to manually classify the continent of this country.</strong>
-</li>
-</ol></section><section id="exploring-roundabouts" class="level2"><h2 class="anchored" data-anchor-id="exploring-roundabouts">Exploring Roundabouts</h2>
+</section><section id="exploring-roundabouts" class="level2"><h2 class="anchored" data-anchor-id="exploring-roundabouts">Exploring Roundabouts</h2>
 <p>Let’s explore the data a bit before we jump into visualizing these data.</p>
-<ol start="3" type="1">
+<ol start="2" type="1">
 <li>What countries have the most roundabouts (in these data)? The fewest roundabouts?</li>
 </ol>
-<ol start="4" type="1">
-<li>In these data, what types of roundabouts are most common?</li>
+<ol start="3" type="1">
+<li>In these data, what types of roundabouts are most common? <em>Hint: Proportions are the easiest way to address this question!</em>
+</li>
 </ol>
-<ol start="5" type="1">
+<ol start="4" type="1">
 <li>How does the distribution of types differ by continent?</li>
 </ol>
-<ol start="6" type="1">
+<ol start="5" type="1">
 <li>We’ve seen a lot of traffic calming circles showing up around SLO. What states in the US have the largest proportion of traffic calming circles?</li>
 </ol></section></section><section id="the-ggalluvial-package" class="level1"><h1>The <code>ggalluvial</code> Package</h1>
-<p>Now that we have the data ready, let’s explore making Stankey plots with the <a href="https://corybrunson.github.io/ggalluvial/"><code>ggalluvial</code> R package</a>.</p>
+<p>Now that we have the data ready, let’s explore making Sankey plots with the <a href="https://corybrunson.github.io/ggalluvial/"><code>ggalluvial</code> R package</a>.</p>
 <p>We are interested in visualizing how roundabouts are incorporated into traffic intersections. To do this, we will visualize the <em>flow</em> from the previous intersection type to the type of roundabout that was added, to the final intersection (control) type.</p>
 <p>Let’s start by creating the data <code>gglluvial</code> requires for plotting.</p>
-<ol start="7" type="1">
+<ol start="6" type="1">
 <li>Create a table of frequencies of previous intersection types, current intersection types, and roundabouts. Let’s focus on intersections (both old and new) where the type was known (not labeled as <code>"Unknown"</code>).</li>
 </ol>
+<ol start="7" type="1">
+<li>Now create the Sankey plot using the data you made above! Your axes should be previous control type and the current control type, and the colors should be associated with the type of roundabout. <em>Hint: You might find the <a href="https://corybrunson.github.io/ggalluvial/">ggalluvial reference page helpful</a>!</em>
+</li>
+</ol>
+<section id="customizing-labels-required-for-541-optional-for-431" class="level2"><h2 class="anchored" data-anchor-id="customizing-labels-required-for-541-optional-for-431">Customizing Labels – Required for 541, Optional for 431</h2>
 <ol start="8" type="1">
-<li>Now create the Stankey plot using the data you made above! Your axes should be previous control type and the current control type, and the colors should be associated with the type of roundabout. *Hint: You might find the</li>
-</ol>
-<ol start="9" type="1">
 <li>Now that you have a working solution, let’s make the strata labels easy to read. Look over this <a href="https://corybrunson.github.io/ggalluvial/articles/labels.html">reference article</a> on different ways to label the strata for each axis. Implement your favorite method!</li>
-</ol>
-<ol start="10" type="1">
+</ol></section><section id="customizing-colors-required-for-both-541-and-431" class="level2"><h2 class="anchored" data-anchor-id="customizing-colors-required-for-both-541-and-431">Customizing Colors – Required for Both 541 and 431</h2>
+<ol start="9" type="1">
 <li>Final touches! Let’s add some custom colors and an informative plot title! <em>Each of the axes in your plot should have a title as well!</em>
 </li>
 </ol>
 
 
-</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
     if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
