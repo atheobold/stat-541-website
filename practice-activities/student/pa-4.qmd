@@ -37,7 +37,8 @@ the package:
 #| label: install-roundabouts
 
 pak::pak("emilhvitfeldt/roundabouts")
-# remotes::install_github("emilhvitfeldt/roundabouts")  # alternative if pak isn't working
+# alternative if pak isn't working:
+# remotes::install_github("emilhvitfeldt/roundabouts") 
 ```
 
 The `roundabouts` dataframe that is included in the package has an `address`
@@ -137,7 +138,8 @@ roundabouts?
 ```
 
 5. We've seen a lot of traffic calming circles showing up around SLO. What
-states in the US have the largest proportion of traffic calming circles?
+states in the US have the largest proportion of their roundabouts in the form
+of traffic calming circles?
 
 ```{r}
 #| label: prop-calming-circle-in-US

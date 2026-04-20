@@ -2236,7 +2236,8 @@ vertical-align: -.125em;
 <p>The <a href="https://github.com/EmilHvitfeldt/roundabouts"><code>roundabouts</code> R package</a> provides a simple way to interact with the <a href="https://roundabouts.kittelson.com/">Roundabouts Database</a>. You likely do not have the package installed on your computer, so the first step is to install the package:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>pak<span class="sc">::</span><span class="fu">pak</span>(<span class="st">&quot;emilhvitfeldt/roundabouts&quot;</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># remotes::install_github(&quot;emilhvitfeldt/roundabouts&quot;)  # alternative if pak isn&#39;t working</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># alternative if pak isn&#39;t working:</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># remotes::install_github(&quot;emilhvitfeldt/roundabouts&quot;) </span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>The <code>roundabouts</code> dataframe that is included in the package has an <code>address</code> variable which is a bit untidy. Below is some data cleaning code that will clean the <code>address</code> variable, and create three new variables: <code>town_city</code>, <code>county_area</code>, and <code>state_region</code>.</p>
 <div class="cell">
@@ -2296,7 +2297,7 @@ vertical-align: -.125em;
 <li>How does the distribution of types differ by continent? <em>Hint: Proportions are the easiest way to address this question!</em></li>
 </ol>
 <ol start="5" type="1">
-<li>We’ve seen a lot of traffic calming circles showing up around SLO. What states in the US have the largest proportion of traffic calming circles?</li>
+<li>We’ve seen a lot of traffic calming circles showing up around SLO. What states in the US have the largest proportion of their roundabouts in the form of traffic calming circles?</li>
 </ol>
 </section>
 </section>
