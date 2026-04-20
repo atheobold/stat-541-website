@@ -32,10 +32,10 @@ library(tidyverse)
 This week, our activity will explore how roundabouts are used around the world!
 You might not be as big of a fan of roundabouts as Dr. T, but these data allow 
 us to investigate a fun and unique visualization
-technique---[a Stankey diagram](https://en.wikipedia.org/wiki/Sankey_diagram).
+technique---[a Sankey diagram](https://en.wikipedia.org/wiki/Sankey_diagram).
 
-A Stankey diagram visualizes data **flows**. Specifically, the visual models the
-movement from one state to another. We are going to use a Stankey plot to 
+A Sankey diagram visualizes data **flows**. Specifically, the visual models the
+movement from one state to another. We are going to use a Sankey plot to 
 visualize how traffic intersections are transformed into various types of 
 roundabouts. 
 
@@ -164,7 +164,7 @@ states in the US have the largest proportion of traffic calming circles?
 
 # The `ggalluvial` Package
 
-Now that we have the data ready, let's explore making Stankey plots with the 
+Now that we have the data ready, let's explore making Sankey plots with the 
 [`ggalluvial` R package](https://corybrunson.github.io/ggalluvial/). 
 
 We are interested in visualizing how roundabouts are incorporated into traffic
@@ -183,12 +183,12 @@ new) where the type was known (not labeled as `"Unknown"`).
 
 ```
 
-8. Now create the Stankey plot using the data you made above! Your axes should 
+8. Now create the Sankey plot using the data you made above! Your axes should 
 be previous control type and the current control type, and the colors should be
 associated with the type of roundabout. *Hint: You might find the 
 
 ```{r}
-#| label: stankey-plot
+#| label: sankey-plot
 
 ```
 
