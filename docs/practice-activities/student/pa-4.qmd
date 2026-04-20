@@ -164,6 +164,8 @@ new) where the type was known (not labeled as `"Unknown"`).
 
 ```
 
+## Customizing Labels -- Required for 541, Optional for 431
+
 7. Now create the Stankey plot using the data you made above! Your axes should 
 be previous control type and the current control type, and the colors should be
 associated with the type of roundabout. *Hint: You might find the [ggalluvial reference page helpful](https://corybrunson.github.io/ggalluvial/)!*
@@ -183,6 +185,8 @@ method!
 #| label: better-strata-labels
 
 ```
+
+## Customizing Colors -- Required for Both 541 and 431
 
 9. Final touches! Let's add some custom colors and an informative plot title!
 *Each of the axes in your plot should have a title as well!*

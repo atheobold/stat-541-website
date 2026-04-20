@@ -2718,5 +2718,27 @@
     "title": "Adverbs with purrr\n",
     "section": "",
     "text": "library(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.2.0     ✔ readr     2.2.0\n✔ forcats   1.0.1     ✔ stringr   1.6.0\n✔ ggplot2   4.0.2     ✔ tibble    3.3.1\n✔ lubridate 1.9.5     ✔ tidyr     1.3.2\n✔ purrr     1.2.1     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors"
+  },
+  {
+    "objectID": "practice-activities/week-4.html#customizing-labels-required-for-541-optional-for-431",
+    "href": "practice-activities/week-4.html#customizing-labels-required-for-541-optional-for-431",
+    "title": "Practice Activity Week 4",
+    "section": "Customizing Labels – Required for 541, Optional for 431",
+    "text": "Customizing Labels – Required for 541, Optional for 431\n\nNow that you have a working solution, let’s make the strata labels easy to read. Look over this reference article on different ways to label the strata for each axis. Implement your favorite method!",
+    "crumbs": [
+      "Unit 1 - Complex Analyses",
+      "Week 4: In-Class Activity"
+    ]
+  },
+  {
+    "objectID": "practice-activities/week-4.html#customizing-colors-required-for-both-541-and-431",
+    "href": "practice-activities/week-4.html#customizing-colors-required-for-both-541-and-431",
+    "title": "Practice Activity Week 4",
+    "section": "Customizing Colors – Required for Both 541 and 431",
+    "text": "Customizing Colors – Required for Both 541 and 431\n\nFinal touches! Let’s add some custom colors and an informative plot title! Each of the axes in your plot should have a title as well!",
+    "crumbs": [
+      "Unit 1 - Complex Analyses",
+      "Week 4: In-Class Activity"
+    ]
   }
 ]

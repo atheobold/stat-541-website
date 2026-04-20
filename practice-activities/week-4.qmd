@@ -188,6 +188,8 @@ associated with the type of roundabout. *Hint: You might find the [ggalluvial re
 
 ```
 
+## Customizing Labels -- Required for 541, Optional for 431
+
 8. Now that you have a working solution, let's make the strata labels easy to
 read. Look over this [reference article](https://corybrunson.github.io/ggalluvial/articles/labels.html) on different ways to label the strata for each axis. Implement your favorite 
 method! 
@@ -196,6 +198,8 @@ method!
 #| label: making-better-strata-labels
 
 ```
+
+## Customizing Colors -- Required for Both 541 and 431
 
 9. Final touches! Let's add some custom colors and an informative plot title!
 *Each of the axes in your plot should have a title as well!*
