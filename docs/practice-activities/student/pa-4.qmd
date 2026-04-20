@@ -37,6 +37,7 @@ the package:
 #| label: install-roundabouts
 
 pak::pak("emilhvitfeldt/roundabouts")
+# remotes::install_github("emilhvitfeldt/roundabouts")  # alternative if pak isn't working
 ```
 
 The `roundabouts` dataframe that is included in the package has an `address`
@@ -112,7 +113,7 @@ countrycode::countrycode("Brazil",
 
 Let's explore the data a bit before we jump into visualizing these data. 
 
-2. What countries have the most roundabouts (in these data)? The fewest
+2. What countries have the most roundabouts (of any type) in these data? The fewest
 roundabouts?
 
 ```{r}
