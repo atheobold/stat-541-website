@@ -167,7 +167,7 @@ new) where the type was known (not labeled as `"Unknown"`).
 
 ```
 
-## Customizing Labels -- Required for 541, Optional for 431
+
 
 7. Now create the Sankey plot using the data you made above! Your axes should 
 be previous control type and the current control type, and the colors should be
@@ -179,6 +179,8 @@ associated with the type of roundabout. *Hint: You might find the [ggalluvial re
 library(ggalluvial)
 
 ```
+
+## Customizing Labels -- Required for 541, Optional for 431
 
 8. Now that you have a working solution, let's make the strata labels easy to
 read. Look over this [reference article](https://corybrunson.github.io/ggalluvial/articles/labels.html) on different ways to label the strata for each axis. Implement your favorite 
