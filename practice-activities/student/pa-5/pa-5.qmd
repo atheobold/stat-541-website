@@ -2,7 +2,7 @@
 title: "Olympic Games"
 format: 
   dashboard:
-    orientation: columns
+    orientation: rows
 embed-resources: true
 logo: olympics-logo.svg
 logo-alt: "Olympics logo with multicolored circles."
