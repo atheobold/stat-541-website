@@ -2,7 +2,7 @@
 title: "Olympic Games"
 format: 
   dashboard:
-    orientation: rows
+    orientation: columns
 embed-resources: true
 logo: olympics-logo.svg
 logo-alt: "Olympics logo with multicolored circles."
@@ -72,6 +72,7 @@ olympics |>
 ```{r}
 #| label: medals-by-year
 #| title: Medals by year
+
 olympics |>
   count(year, medal) |>
   ggplot(aes(x = year, y = n, color = medal)) +
@@ -113,24 +114,18 @@ most_bronze <- olympics |>
 Most Golds:
 
 `{r} most_gold$n`
-
-`{r} most_gold$team`
 :::
 
 ::: {.valuebox icon="trophy" color="success"}
 Most Silver:
 
 `{r} most_silver$n`
-
-`{r} most_silver$team`
 :::
 
 ::: {.valuebox icon="award" color="danger"}
 Most Bronze:
 
 `{r} most_bronze$n`
-
-`{r} most_bronze$team`
 :::
 
 ## Medals by country
