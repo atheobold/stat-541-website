@@ -15,3 +15,4 @@ _site
 **/*.quarto_ipynb
 *solutions
 *exams
+.positai
