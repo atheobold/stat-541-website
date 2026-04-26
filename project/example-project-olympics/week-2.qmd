@@ -74,26 +74,24 @@ olympics |>
   )
 ```
 
-
 ::: callout-note
 ## Ideas to take this further:
 
--   Correct for team sports having more athletes.
+- Correct for team sports having more athletes.
 
--   Think about how to handle anomalies in the country team names, e.g. "USSR"
-vs. "Russia".
+- Think about how to handle anomalies in the country team names, e.g. "USSR" vs. "Russia".
 
--   Limit the data to one or two countries and compare them.
+- Limit the data to one or two countries and compare them.
 :::
 
-::: {.callout-important}
+::: callout-important
 # Table Improvements
 
--   Give columns more descriptive labels
--   Boldface column titles
--   Format the percentage column to be percentages!
--   Give the table a caption
--   Color the table in a way that tells the story of patterns over time.
+- Give columns more descriptive labels
+- Boldface column titles
+- Format the percentage column to be percentages!
+- Give the table a caption
+- Color the table in a way that tells the story of patterns over time.
 :::
 
 ## Female medals by country
@@ -133,20 +131,21 @@ This follows about the same patterns as overall medals, but maybe if we compare 
 ::: callout-note
 Ideas to take this further:
 
--   Collect counts for silver and bronze medals as well, not just gold.
+- Collect counts for silver and bronze medals as well, not just gold.
 
--   Collect a ratio of female to male medals, to get a sense of which countries have a *disproportionately low* number of female medal winners.
+- Collect a ratio of female to male medals, to get a sense of which countries have a *disproportionately low* number of female medal winners.
 
--   Collect this data over time as well to look for countries that evolve.
+- Collect this data over time as well to look for countries that evolve.
 
--   (This actually *could* have been done in a pipeline! But, the function approach makes it easier to incorporate some of the upgrades above.)
+- (This actually *could* have been done in a pipeline! But, the function approach makes it easier to incorporate some of the upgrades above.)
 :::
 
-::: {.callout-important}
+::: callout-important
 # Table Improvements
 
--   Give columns more descriptive labels
--   Boldface column titles
--   Give the table a caption
--   Color the table in a way that draws people's eyes to locations you want to highlight.
+- Give columns more descriptive labels
+- Boldface column titles
+- Give the table a caption
+- Color the table in a way that draws people's eyes to locations you want to highlight.
 :::
+

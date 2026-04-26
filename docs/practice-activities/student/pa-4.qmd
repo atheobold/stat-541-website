@@ -37,7 +37,8 @@ the package:
 #| label: install-roundabouts
 
 pak::pak("emilhvitfeldt/roundabouts")
-# remotes::install_github("emilhvitfeldt/roundabouts")  # alternative if pak isn't working
+# alternative if pak isn't working:
+# remotes::install_github("emilhvitfeldt/roundabouts") 
 ```
 
 The `roundabouts` dataframe that is included in the package has an `address`
@@ -137,7 +138,8 @@ roundabouts?
 ```
 
 5. We've seen a lot of traffic calming circles showing up around SLO. What
-states in the US have the largest proportion of traffic calming circles?
+states in the US have the largest proportion of their roundabouts in the form
+of traffic calming circles?
 
 ```{r}
 #| label: prop-calming-circle-in-US
@@ -165,7 +167,7 @@ new) where the type was known (not labeled as `"Unknown"`).
 
 ```
 
-## Customizing Labels -- Required for 541, Optional for 431
+
 
 7. Now create the Sankey plot using the data you made above! Your axes should 
 be previous control type and the current control type, and the colors should be
@@ -177,6 +179,8 @@ associated with the type of roundabout. *Hint: You might find the [ggalluvial re
 library(ggalluvial)
 
 ```
+
+## Customizing Labels -- Required for 541, Optional for 431
 
 8. Now that you have a working solution, let's make the strata labels easy to
 read. Look over this [reference article](https://corybrunson.github.io/ggalluvial/articles/labels.html) on different ways to label the strata for each axis. Implement your favorite 
