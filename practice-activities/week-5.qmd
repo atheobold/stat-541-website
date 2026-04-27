@@ -2,10 +2,6 @@
 title: "Practice Activity Week 5"
 format: html
 editor: source
-execute: 
-  echo: true
-  error: true
-  eval: false
 resources: 
   - student/pa-5.zip
 ---
