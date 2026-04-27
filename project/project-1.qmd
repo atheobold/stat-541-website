@@ -8,60 +8,98 @@ publication-ready report. The report will include an exploratory data analysis
 complete with styled visualizations and polished tables which address
 **at least two** research questions posed by your group.
 
-Along the way you will learn how to:
+## Weekly Checkpoints
 
-- write data summary functions,
-- iterate over those functions,
-- acquire data from APIs and webscraping, and
-- create professionally styled visualizations and tables.
+You will complete weekly checkpoints each of which will help you craft the 
+content for your final deliverable. 
+
+- In **Week 1** you will craft the potential research questions that will guide
+your analysis. 
+- In **Week 2** you will write data summary functions and iterate over those
+functions to create professionally styled summary tables. 
+- In **Week 3** you will acquire external data using APIs and webscraping. 
+- In **Week 4** you will create professionally styled visualizations using
+non-standard geometries.
 
 # Final Deliverable
 
-The final report you create _must_ have the following elements.
+Once you've completed all the checkpoints, the final step is to assemble your 
+project into a report that walks the reader through **two** of your research
+questions. 
 
-## Data Acquisition
+The final report you create **must** have the following sections. 
 
--   describes the context of the original data
--   acquire new country-level data using APIs and webscraping
--   joins new data with original data 
+## Data Context (20 points)
 
-## Research Questions
+In this section you walk the reader through **all** the data you will use for
+your analysis. As you have *multiple* datasets you will draw on, you should have
+*multiple* paragraphs describing each dataset. At a minimum you should address
+the following for each dataset:
 
--   addresses **at least two** research questions using the original data 
--   addresses **at least one** research question using the new (country-level)
-data
+- Who -- Who collected the data? If you do not know who collected the data, then
+be transparent about the information you know (e.g., who published the data).
 
-## Data Summaries & Visualizations
+- Where -- Where were the data collected i.e., what is the observational unit?
 
--   **at least three** data summaries which address the research questions 
-posed
-    * **at least one** of these summaries need to be produced with a custom
-    function. 
-    * **at least one** of these summaries need to include iteration (either 
-    inside or outside of a function).
+- When -- When were the data collected?
 
--   creates professionally formatted summary tables (for **all** data summaries)
-    * every table **must** have formatted values (e.g., decimals, percentages,
-    currencies), boldface headers, and captions, and 
-    * **at least one** table must incorporate additional styling (e.g., color, 
-    row group labels, spanner labels)
+- How -- How were the data collected?
+
+- Why -- Why were the data collected? i.e., why are these data of interest?
+
+## Research Questions (10 points)
+
+In this section, you will outline the **two** research questions that will guide
+your report. One question must be targeted toward the *original data* and one
+question must be targeted toward a *new dataset*. 
+
+Your research questions should be as clear and specific as possible, so it is
+easy for the reader to see how your findings address these questions. 
+
+## Data Summaries & Visualizations (50 points)
+
+This section contains summary tables and visualizations that address your 
+research question. **For each research question**, you are expected to have:
+
+- Two summary tables
+    * At least one summary table needs to be produced with a custom function
+    (from Week 2).
+    * At least one summary table needs to include iteration (from Week 2).
+
+- Two data visualizations
+    * At least one visualization must use a more complex geometry (from Week 4).
     
--   creates **two** professionally formatted visualizations
-    * every visualization **must** have alternative (alt) text, non-default
-    colors, a non-default theme, and clear labels
-    * **at least one** visualization must use a more complex geometry (e.g.,
-    `geom_segment()`, `geom_density_ridge()` `geom_ribbon()`, `geom_tile()`,
-    `geom_hex()`)
-    
-    
-## Data Model
+All summary tables must be professionally formatted. 
+    * Every table **must** have formatted values (e.g., decimals, percentages,
+    currencies), boldface headers, and captions.
+    * **At least one** table (out of four) must incorporate additional styling
+    (e.g., color, row group labels, spanner labels)
 
--   fits **one** statistical model addressing one of the research questions 
-posed
--   professionally formats the output of that model to communicate the results
-(must satisfy requirements for professionally formatted tables)
+All visualizations must be professionally formatted. 
+    * Every visualization **must** have non-default colors, a non-default theme,
+    clear labels, and an informative plot title.
+    * Every visualization must also have alternative (alt) text descriptions of
+    which can be read by a screen reader.
+    
+## Data Model (10 points)
 
-## Quarto Document
+In this section you must fit **one** statistical model addressing *one* of the
+research questions posed. The output of your model is expected to be 
+professionally formatted so the results are easily communicated to the reader.
+
+Either before or after your summary table, you are expected to communicate 
+the findings of your statistical model and connect them back to the research
+question which they address.
+
+::: {.callout-important}
+# One summary table
+
+If you chose to fit **multiple** statistical models (e.g., comparing different
+models), you are expected to collapse these multiple models into a *single* 
+summary table. 
+:::
+
+## Quarto Document (10 points)
 
 ::: columns
 ::: {.column width="55%"}

@@ -1992,7 +1992,7 @@
     "href": "project/project-1.html",
     "title": "Project 1 Final Deliverable",
     "section": "",
-    "text": "For this project, you and your group will collaborate to produce a stylized, publication-ready report. The report will include an exploratory data analysis complete with styled visualizations and polished tables which address at least two research questions posed by your group.\nAlong the way you will learn how to:",
+    "text": "For this project, you and your group will collaborate to produce a stylized, publication-ready report. The report will include an exploratory data analysis complete with styled visualizations and polished tables which address at least two research questions posed by your group.",
     "crumbs": [
       "Projects",
       "Project 1 Final Deliverable"
@@ -2721,6 +2721,72 @@
     "crumbs": [
       "Unit 3 - Package Development",
       "Code Speed"
+    ]
+  },
+  {
+    "objectID": "project/project-1.html#weekly-checkpoints",
+    "href": "project/project-1.html#weekly-checkpoints",
+    "title": "Project 1 Final Deliverable",
+    "section": "Weekly Checkpoints",
+    "text": "Weekly Checkpoints\nYou will complete weekly checkpoints each of which will help you craft the content for your final deliverable.\n\nIn Week 1 you will craft the potential research questions that will guide your analysis.\nIn Week 2 you will write data summary functions and iterate over those functions to create professionally styled summary tables.\nIn Week 3 you will acquire external data using APIs and webscraping.\nIn Week 4 you will create professionally styled visualizations using non-standard geometries.",
+    "crumbs": [
+      "Projects",
+      "Project 1 Final Deliverable"
+    ]
+  },
+  {
+    "objectID": "project/project-1.html#data-context-20-points",
+    "href": "project/project-1.html#data-context-20-points",
+    "title": "Project 1 Final Deliverable",
+    "section": "Data Context (20 points)",
+    "text": "Data Context (20 points)\nIn this section you walk the reader through all the data you will use for your analysis. As you have multiple datasets you will draw on, you should have multiple paragraphs describing each dataset. At a minimum you should address the following for each dataset:\n\nWho – Who collected the data? If you do not know who collected the data, then be transparent about the information you know (e.g., who published the data).\nWhere – Where were the data collected i.e., what is the observational unit?\nWhen – When were the data collected?\nHow – How were the data collected?\nWhy – Why were the data collected? i.e., why are these data of interest?",
+    "crumbs": [
+      "Projects",
+      "Project 1 Final Deliverable"
+    ]
+  },
+  {
+    "objectID": "project/project-1.html#research-questions-10-points",
+    "href": "project/project-1.html#research-questions-10-points",
+    "title": "Project 1 Final Deliverable",
+    "section": "Research Questions (10 points)",
+    "text": "Research Questions (10 points)\nIn this section, you will outline the two research questions that will guide your report. One question must be targeted toward the original data and one question must be targeted toward a new dataset.\nYour research questions should be as clear and specific as possible, so it is easy for the reader to see how your findings address these questions.",
+    "crumbs": [
+      "Projects",
+      "Project 1 Final Deliverable"
+    ]
+  },
+  {
+    "objectID": "project/project-1.html#data-summaries-visualizations-50-points",
+    "href": "project/project-1.html#data-summaries-visualizations-50-points",
+    "title": "Project 1 Final Deliverable",
+    "section": "Data Summaries & Visualizations (50 points)",
+    "text": "Data Summaries & Visualizations (50 points)\nThis section contains summary tables and visualizations that address your research question. For each research question, you are expected to have:\n\nTwo summary tables\n\nAt least one summary table needs to be produced with a custom function (from Week 2).\nAt least one summary table needs to include iteration (from Week 2).\n\nTwo data visualizations\n\nAt least one visualization must use a more complex geometry (from Week 4).\n\n\nAll summary tables must be professionally formatted. * Every table must have formatted values (e.g., decimals, percentages, currencies), boldface headers, and captions. * At least one table (out of four) must incorporate additional styling (e.g., color, row group labels, spanner labels)\nAll visualizations must be professionally formatted. * Every visualization must have non-default colors, a non-default theme, clear labels, and an informative plot title. * Every visualization must also have alternative (alt) text descriptions of which can be read by a screen reader.",
+    "crumbs": [
+      "Projects",
+      "Project 1 Final Deliverable"
+    ]
+  },
+  {
+    "objectID": "project/project-1.html#data-model-10-points",
+    "href": "project/project-1.html#data-model-10-points",
+    "title": "Project 1 Final Deliverable",
+    "section": "Data Model (10 points)",
+    "text": "Data Model (10 points)\nIn this section you must fit one statistical model addressing one of the research questions posed. The output of your model is expected to be professionally formatted so the results are easily communicated to the reader.\nEither before or after your summary table, you are expected to communicate the findings of your statistical model and connect them back to the research question which they address.\n\n\n\n\n\n\nImportantOne summary table\n\n\n\nIf you chose to fit multiple statistical models (e.g., comparing different models), you are expected to collapse these multiple models into a single summary table.",
+    "crumbs": [
+      "Projects",
+      "Project 1 Final Deliverable"
+    ]
+  },
+  {
+    "objectID": "project/project-1.html#quarto-document-10-points",
+    "href": "project/project-1.html#quarto-document-10-points",
+    "title": "Project 1 Final Deliverable",
+    "section": "Quarto Document (10 points)",
+    "text": "Quarto Document (10 points)\n\n\n\nuses a non-default theme\nuses headers and subheaders to delineate the sections\nuses table and figure numbers to reference findings\n\n\n\n\n\n\n\n\n\n\nWarningCoordinated Colors\n\n\n\nThe colors from the document theme you chose should match the colors in your plots and tables!",
+    "crumbs": [
+      "Projects",
+      "Project 1 Final Deliverable"
     ]
   }
 ]
