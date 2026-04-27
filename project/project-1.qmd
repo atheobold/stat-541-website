@@ -62,6 +62,7 @@ This section contains summary tables and visualizations that address your
 research question. **For each research question**, you are expected to have:
 
 - Two summary tables
+
     * At least one summary table needs to be produced with a custom function
     (from Week 2).
     * At least one summary table needs to include iteration (from Week 2).
@@ -70,15 +71,17 @@ research question. **For each research question**, you are expected to have:
     * At least one visualization must use a more complex geometry (from Week 4).
     
 All summary tables must be professionally formatted. 
-    * Every table **must** have formatted values (e.g., decimals, percentages,
+
+* Every table **must** have formatted values (e.g., decimals, percentages,
     currencies), boldface headers, and captions.
-    * **At least one** table (out of four) must incorporate additional styling
+* **At least one** table (out of four) must incorporate additional styling
     (e.g., color, row group labels, spanner labels)
 
 All visualizations must be professionally formatted. 
-    * Every visualization **must** have non-default colors, a non-default theme,
+
+* Every visualization **must** have non-default colors, a non-default theme,
     clear labels, and an informative plot title.
-    * Every visualization must also have alternative (alt) text descriptions of
+* Every visualization must also have alternative (alt) text descriptions of
     which can be read by a screen reader.
     
 ## Data Model (10 points)
