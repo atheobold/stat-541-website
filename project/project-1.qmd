@@ -83,11 +83,11 @@ plots and tables!
 :::
 :::
 
-# Peer Review
+<!-- # Peer Review -->
 
-In Week 4 your group will give (and receive) feedback to another group as it
-relates to the layout of the report and the visualizations / tables included
-in the report. 
+<!-- In Week 4 your group will give (and receive) feedback to another group as it -->
+<!-- relates to the layout of the report and the visualizations / tables included -->
+<!-- in the report.  -->
 
 # Submission
 
