@@ -181,7 +181,7 @@ olympics |>
     values_fill = 0
   ) |>
   mutate(Total = Bronze + Gold + Silver) |>
-  slice_min(n = 30, order_by = Gold) |>
+  slice_min(n = 30, order_by = Total) |>
   gt() |>
   data_color(
     columns = Gold,
