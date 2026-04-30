@@ -2783,7 +2783,7 @@
     "href": "project/project-1.html#quarto-document-10-points",
     "title": "Project 1 Final Deliverable",
     "section": "Quarto Document (10 points)",
-    "text": "Quarto Document (10 points)\n\n\n\nuses a non-default theme\nuses headers and subheaders to delineate the sections\nuses table and figure numbers to reference findings\n\n\n\n\n\n\n\n\n\n\nWarningCoordinated Colors\n\n\n\nThe colors from the document theme you chose should match the colors in your plots and tables!",
+    "text": "Quarto Document (10 points)\n\n\n\nuses a non-default theme\nuses headers and subheaders to delineate the sections\nuses table and figure numbers to reference findings\nuses code folding to keep the code invisible unless the reader wants to look at it\n\n\n\n\n\n\n\n\n\n\nWarningCoordinated Colors\n\n\n\nThe colors from the document theme you chose should match the colors in your plots and tables!",
     "crumbs": [
       "Projects",
       "Project 1 Final Deliverable"

@@ -109,6 +109,7 @@ summary table.
 -   uses a non-default theme
 -   uses headers and subheaders to delineate the sections
 -   uses table and figure numbers to reference findings
+-   uses [code folding](https://quarto.org/docs/output-formats/html-code.html#folding-code) to keep the code invisible unless the reader wants to look at it
 :::
 
 ::: {.column width="2%"}
