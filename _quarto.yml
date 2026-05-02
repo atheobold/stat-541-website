@@ -4,10 +4,7 @@ project:
   render:
     - "*.qmd"
     - "!/extensions"
-    - "!/portfolio (old)"
-    - "!/practice-activities/old-labs"
     - "!/practice-activities/student"
-    - "!/practice-activities/solutions"
 
 website:
   page-navigation: true
@@ -114,28 +111,30 @@ website:
           href: project/example-project-olympics/week-3.qmd
         - text: "Week 4: Advanced Visualizations"
           href: project/week-4.qmd
-        - text: "*Week 4: Example Project*"
-          href: project/example-project-olympics/week-4.qmd
+        # - text: "*Week 4: Example Project*"
+        #   href: project/example-project-olympics/week-4.qmd
         - text: Project 1 Final Deliverable
           href: project/project-1.qmd
         - text: "Week 5: First Draft Dashboard"
           href: project/week-5.qmd
-        - text: "*Week 5: Example Project*"
-          href: project/example-project-olympics/week-5.qmd
+        # - text: "*Week 5: Example Project*"
+        #   href: project/example-project-olympics/week-5.qmd
         - text: "Week 6: Dynamic Plots & Country Data"
           href: project/week-6.qmd
-        - text: "*Week 6: Example Project*"
-          href: project/example-project-olympics/week-6.qmd
+        # - text: "*Week 6: Example Project*"
+        #   href: project/example-project-olympics/week-6.qmd
         - text: "Week 7: Interactive Dashboard"
           href: project/week-7.qmd
-        - text: "*Week 7: Example Project*"
-          href: project/example-project-olympics/week-7.qmd
+        # - text: "*Week 7: Example Project*"
+        #   href: project/example-project-olympics/week-7.qmd
         - text: Project 2 Final Deliverable
           href: project/project-2.qmd
-        # - href: project/week-8.qmd
+        - text: "Week 8: Starter Package"
+          href: project/week-8.qmd
         # - href: project/week-9.qmd
         # - href: project/week-10.qmd
-        # - href: project/project-3.qmd
+        - text: Project 3 Final Deliverable
+          href: project/project-3.qmd
 
     - id: unit-2
       title: "Unit 2"

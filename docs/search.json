@@ -367,7 +367,7 @@
     "href": "unit-1/iterating-functions.html#initial-object-size",
     "title": "Iterating Over Functions",
     "section": "Initial Object Size",
-    "text": "Initial Object Size\n\n\n\nNotice that we initialized char_storage, num_storage, and list_storage to all be the same length as our iteration vector (seq_len(3)). Technically, this wasn’t necessary. We could have been much lazier when we initialized these objects: list_storage &lt;- NA. Why didn’t we do this?\nWhen you don’t initialize an object as a specific size (e.g., length = 3) then at every stage of the for() loop R needs to append a new index to that object. This really slows down your for() loop!\nHere is a comparison of the run time between two functions that both store the index of the iteration. The first function (do_stuff_allocate) sets the initial object size (vector(length = reps)) before the loop is run. The second function (do_stuff_tackon) does not set an initial object size and instead initializes results as a vector of length 1 (results &lt;- NA).\n\ndo_stuff_allocate &lt;- function(reps) {\n  results &lt;- vector(length = reps)\n  for (i in seq_len(reps)) {\n    results[i] &lt;- i\n  }\n  return(results)\n}\n\ndo_stuff_tackon &lt;- function(reps) {\n   results &lt;- NA\n  for (i in seq_len(reps)) {\n    results &lt;- c(results, i)\n  }\n  return(results)\n}\n\nLet’s see how these two functions compare in their run time:\n\n\n\n\n\n\nStatistic\ndo_stuff_allocate\ndo_stuff_tackon\n\n\n\nmin\n18,834 µs\n493,042 µs\n\n\nmean\n83,794 µs\n793,169 µs\n\n\nmedian\n21,626 µs\n582,042 µs\n\n\nmax\n4,413,042 µs\n5,983,667 µs\n\n\n\n\n\n\nLesson: You should always initialize your object as the size you want it to be.\n\n\n\n\n\n\nCheck-inCheck In\n\n\n\n\nWrite a for()-loop that prints the even numbers from 1:20.\nCan you produce the same output with the seq() function?\n\n\nWrite a for()-loop that iterates over the month.name vector (built-in to base R) and stores a character vector of output containing strings like “Month 1: January”, “Month 2: February”.\nCan you produce the same output with str_c() only?\n\n\nWrite a for()-loop that store the class() (type) of every column in the mpg data frame.",
+    "text": "Initial Object Size\n\n\n\nNotice that we initialized char_storage, num_storage, and list_storage to all be the same length as our iteration vector (seq_len(3)). Technically, this wasn’t necessary. We could have been much lazier when we initialized these objects: list_storage &lt;- NA. Why didn’t we do this?\nWhen you don’t initialize an object as a specific size (e.g., length = 3) then at every stage of the for() loop R needs to append a new index to that object. This really slows down your for() loop!\nHere is a comparison of the run time between two functions that both store the index of the iteration. The first function (do_stuff_allocate) sets the initial object size (vector(length = reps)) before the loop is run. The second function (do_stuff_tackon) does not set an initial object size and instead initializes results as a vector of length 1 (results &lt;- NA).\n\ndo_stuff_allocate &lt;- function(reps) {\n  results &lt;- vector(length = reps)\n  for (i in seq_len(reps)) {\n    results[i] &lt;- i\n  }\n  return(results)\n}\n\ndo_stuff_tackon &lt;- function(reps) {\n   results &lt;- NA\n  for (i in seq_len(reps)) {\n    results &lt;- c(results, i)\n  }\n  return(results)\n}\n\nLet’s see how these two functions compare in their run time:\n\n\n\n\n\n\nStatistic\ndo_stuff_allocate\ndo_stuff_tackon\n\n\n\nmin\n18,375 µs\n527,292 µs\n\n\nmean\n34,026 µs\n852,149 µs\n\n\nmedian\n20,418 µs\n593,459 µs\n\n\nmax\n1,312,584 µs\n6,063,126 µs\n\n\n\n\n\n\nLesson: You should always initialize your object as the size you want it to be.\n\n\n\n\n\n\nCheck-inCheck In\n\n\n\n\nWrite a for()-loop that prints the even numbers from 1:20.\nCan you produce the same output with the seq() function?\n\n\nWrite a for()-loop that iterates over the month.name vector (built-in to base R) and stores a character vector of output containing strings like “Month 1: January”, “Month 2: February”.\nCan you produce the same output with str_c() only?\n\n\nWrite a for()-loop that store the class() (type) of every column in the mpg data frame.",
     "crumbs": [
       "Unit 1 - Complex Analyses",
       "Iterating Over Functions"
@@ -433,7 +433,7 @@
     "href": "unit-1/efficient-code.html#avoid-for-loops",
     "title": "Writing More Efficient Code",
     "section": "Avoid for-loops",
-    "text": "Avoid for-loops\nfor()-loops are deathly slow in R. If you absolutely must iterate over a process, rely on the map() or apply() function families. These functions offer the same versatility of a for()-loop but are (1) more human readable, and (2) much faster because they are written in C.\n\n\n\n\n\n\nNoteWhy choose map() instead of apply()?\n\n\n\nThe map() and apply() functions will typically be close to the same speed, so the largest argument in favor of the map() family of functions are their consistent syntax, and their consistent object output.\nThe map() function always returns a list and the map_XXX() variants always return a vector of a specified data type. Whereas, apply() returns a vector or a list, lapply() returns a list, and sapply() returns a vector or a matrix.\n\n\nHere is a motivating example demonstrating the difference in run time between two functions:\n\na function which loops over every column in a data frame to extract the data type of that column\na function which uses map_chr() to apply the class() function to every column of a data frame\n\n\nloop_func &lt;- function(df){\n  \n  # initialize the type object\n  type &lt;- rep(NA, ncol(df))\n  \n  for(i in seq_len(ncol(df))) {\n    \n    # store the class of the ith column of df into the ith entry of type \n    type[i] &lt;- class(df[,i])\n  }\n  \n  return(type)\n}\n\nmap_func &lt;- function(df){\n  \n  type &lt;- map_chr(df, class)\n  \n  return(type)\n\n  }\n\nOkay, now that we’ve made these two functions, let’s see how they compare in their run time. Below, we’ve made a simple albeit large dataframe. The dataframe has five rows and 100,000 columns and the element of every column is a vector of 1s.\n\ndat &lt;- as.data.frame(\n  matrix(1,\n         nrow = 5,\n         ncol = 100000)\n  )\n\nLet’s use tic() and toc() again to compare the run time for these two functions:\n\n\n\ntic()\nloop_func(dat)\n\n\ntoc()\n\n7.612 sec elapsed\n\n\n\n\n\n\ntic()\nmap_func(dat)\n\n\ntoc()\n\n0.509 sec elapsed\n\n\n\n\nLooking at the output, we see substantial differences in the run time of these two functions. The loop function took about 3.5 seconds whereas the map function took less than half a second.\n\n\n\n\n\n\nCheck-inCheck In\n\n\n\n\nWhy might we prefer using map() functions instead of writing a for() loop?\n\n\n\nmap() automatically makes the code run faster in all cases.\n\nmap() makes code more readable, concise, and often faster.\n\nmap() can only be used with numeric data, unlike loops.\n\nmap() replaces all possible uses of loops in programming.\n\n\nWhich map() function should be used in place of this for() loop?\n\n\nnumbers &lt;- c(4, 9, 16, 25)\n\nresults &lt;- vector(\"numeric\", length(numbers))\n\nfor (i in seq_along(numbers)) {\n  results[i] &lt;- sqrt(numbers[i])\n}\n\n\nmap()\nmap_dbl()\nmap_chr()\nwalk()",
+    "text": "Avoid for-loops\nfor()-loops are deathly slow in R. If you absolutely must iterate over a process, rely on the map() or apply() function families. These functions offer the same versatility of a for()-loop but are (1) more human readable, and (2) much faster because they are written in C.\n\n\n\n\n\n\nNoteWhy choose map() instead of apply()?\n\n\n\nThe map() and apply() functions will typically be close to the same speed, so the largest argument in favor of the map() family of functions are their consistent syntax, and their consistent object output.\nThe map() function always returns a list and the map_XXX() variants always return a vector of a specified data type. Whereas, apply() returns a vector or a list, lapply() returns a list, and sapply() returns a vector or a matrix.\n\n\nHere is a motivating example demonstrating the difference in run time between two functions:\n\na function which loops over every column in a data frame to extract the data type of that column\na function which uses map_chr() to apply the class() function to every column of a data frame\n\n\nloop_func &lt;- function(df){\n  \n  # initialize the type object\n  type &lt;- rep(NA, ncol(df))\n  \n  for(i in seq_len(ncol(df))) {\n    \n    # store the class of the ith column of df into the ith entry of type \n    type[i] &lt;- class(df[,i])\n  }\n  \n  return(type)\n}\n\nmap_func &lt;- function(df){\n  \n  type &lt;- map_chr(df, class)\n  \n  return(type)\n\n  }\n\nOkay, now that we’ve made these two functions, let’s see how they compare in their run time. Below, we’ve made a simple albeit large dataframe. The dataframe has five rows and 100,000 columns and the element of every column is a vector of 1s.\n\ndat &lt;- as.data.frame(\n  matrix(1,\n         nrow = 5,\n         ncol = 100000)\n  )\n\nLet’s use tic() and toc() again to compare the run time for these two functions:\n\n\n\ntic()\nloop_func(dat)\n\n\ntoc()\n\n6.433 sec elapsed\n\n\n\n\n\n\ntic()\nmap_func(dat)\n\n\ntoc()\n\n0.525 sec elapsed\n\n\n\n\nLooking at the output, we see substantial differences in the run time of these two functions. The loop function took about 3.5 seconds whereas the map function took less than half a second.\n\n\n\n\n\n\nCheck-inCheck In\n\n\n\n\nWhy might we prefer using map() functions instead of writing a for() loop?\n\n\n\nmap() automatically makes the code run faster in all cases.\n\nmap() makes code more readable, concise, and often faster.\n\nmap() can only be used with numeric data, unlike loops.\n\nmap() replaces all possible uses of loops in programming.\n\n\nWhich map() function should be used in place of this for() loop?\n\n\nnumbers &lt;- c(4, 9, 16, 25)\n\nresults &lt;- vector(\"numeric\", length(numbers))\n\nfor (i in seq_along(numbers)) {\n  results[i] &lt;- sqrt(numbers[i])\n}\n\n\nmap()\nmap_dbl()\nmap_chr()\nwalk()",
     "crumbs": [
       "Unit 1 - Complex Analyses",
       "Writing More Efficient Code"
@@ -748,55 +748,35 @@
     "href": "project/example-project-olympics/week-7.html",
     "title": "Project Checkpoint 7",
     "section": "",
-    "text": "In this checkpoint, you will extend your dashboard by incorporating reactive functionality using Shiny. The goal is to successfully implement at least one user input that dynamically updates a table or visualization.",
-    "crumbs": [
-      "Projects",
-      "*Week 7: Example Project*"
-    ]
+    "text": "In this checkpoint, you will extend your dashboard by incorporating reactive functionality using Shiny. The goal is to successfully implement at least one user input that dynamically updates a table or visualization."
   },
   {
     "objectID": "project/example-project-olympics/week-7.html#for-this-checkpoint-your-dashboard-must-include",
     "href": "project/example-project-olympics/week-7.html#for-this-checkpoint-your-dashboard-must-include",
     "title": "Project Checkpoint 7",
     "section": "For this checkpoint, your dashboard must include:",
-    "text": "For this checkpoint, your dashboard must include:\n\nAt least one Shiny input control (e.g., slider, checkbox group, dropdown menu).\nAt least one reactive output (a table or visualization) that updates in response to the input.\n\nYour reactive element should meaningfully affect the displayed data (e.g., filtering by year, selecting categories, adjusting a threshold).",
-    "crumbs": [
-      "Projects",
-      "*Week 7: Example Project*"
-    ]
+    "text": "For this checkpoint, your dashboard must include:\n\nAt least one Shiny input control (e.g., slider, checkbox group, dropdown menu).\nAt least one reactive output (a table or visualization) that updates in response to the input.\n\nYour reactive element should meaningfully affect the displayed data (e.g., filtering by year, selecting categories, adjusting a threshold)."
   },
   {
     "objectID": "project/example-project-olympics/week-7.html#looking-ahead",
     "href": "project/example-project-olympics/week-7.html#looking-ahead",
     "title": "Project Checkpoint 7",
     "section": "Looking Ahead",
-    "text": "Looking Ahead\nThis checkpoint focuses on establishing a working reactive structure. In the final submission, you will expand this to include:\n\nAt least one slider input\nAt least one checkbox input\nReactive updates affecting at least one table or visualization\n\nThink of this checkpoint as building the framework for interactivity. The final submission will expand and refine what you build this week.",
-    "crumbs": [
-      "Projects",
-      "*Week 7: Example Project*"
-    ]
+    "text": "Looking Ahead\nThis checkpoint focuses on establishing a working reactive structure. In the final submission, you will expand this to include:\n\nAt least one slider input\nAt least one checkbox input\nReactive updates affecting at least one table or visualization\n\nThink of this checkpoint as building the framework for interactivity. The final submission will expand and refine what you build this week."
   },
   {
     "objectID": "project/example-project-olympics/week-5.html",
     "href": "project/example-project-olympics/week-5.html",
     "title": "Project Checkpoint 5",
     "section": "",
-    "text": "For this first check-in, your goal is to create the foundational structure (“shell”) of your Quarto dashboard. This dashboard will evolve over the next several weeks, so think of this as setting up a clean, organized framework that you can easily build on later.\nFor this checkpoint, your group will transform the written report from Project 1 into a Quarto dashboard format. You do not need to fully redesign or perfect your content yet—focus on structure and organization.",
-    "crumbs": [
-      "Projects",
-      "*Week 5: Example Project*"
-    ]
+    "text": "For this first check-in, your goal is to create the foundational structure (“shell”) of your Quarto dashboard. This dashboard will evolve over the next several weeks, so think of this as setting up a clean, organized framework that you can easily build on later.\nFor this checkpoint, your group will transform the written report from Project 1 into a Quarto dashboard format. You do not need to fully redesign or perfect your content yet—focus on structure and organization."
   },
   {
     "objectID": "project/example-project-olympics/week-5.html#your-one-page-dashboard-should-include-the-following-structural-elements",
     "href": "project/example-project-olympics/week-5.html#your-one-page-dashboard-should-include-the-following-structural-elements",
     "title": "Project Checkpoint 5",
     "section": "Your (one-page) dashboard should include the following structural elements:",
-    "text": "Your (one-page) dashboard should include the following structural elements:\n\nA navigation logo in the navbar (e.g., a simple logo representing your project theme)\nSocial/contact icons in the navbar or footer (e.g., LinkedIn, Instagram, Twitter/X, email, etc.)\nA non-default theme (choose a Bootswatch theme or customize one)\nAt least two tabsets (on the same page)\n\n\nExpectations\nContent from Project 1 should be meaningfully reorganized into dashboard form (not just copied and pasted). Visual polish is not the focus yet, but organization and usability are.\nThink of this checkpoint as building the structure of a house—making sure the rooms exist and are arranged well. In later checkpoints, we will refine visuals, add interactivity, and improve design.",
-    "crumbs": [
-      "Projects",
-      "*Week 5: Example Project*"
-    ]
+    "text": "Your (one-page) dashboard should include the following structural elements:\n\nA navigation logo in the navbar (e.g., a simple logo representing your project theme)\nSocial/contact icons in the navbar or footer (e.g., LinkedIn, Instagram, Twitter/X, email, etc.)\nA non-default theme (choose a Bootswatch theme or customize one)\nAt least two tabsets (on the same page)\n\n\nExpectations\nContent from Project 1 should be meaningfully reorganized into dashboard form (not just copied and pasted). Visual polish is not the focus yet, but organization and usability are.\nThink of this checkpoint as building the structure of a house—making sure the rooms exist and are arranged well. In later checkpoints, we will refine visuals, add interactivity, and improve design."
   },
   {
     "objectID": "project/example-project-olympics/week-3.html",
@@ -847,7 +827,7 @@
     "href": "project/example-project-olympics/week-1.html#introduction",
     "title": "Project Checkpoint 1 - Example",
     "section": "Introduction",
-    "text": "Introduction\nMy dataset is the Olympics data from TidyTuesday. This dataset shows all the Olympic athletes ever, and gives information about their sport, the country they are from, whether they won a medal, etc.\nThe data comes from a Kaggle dataset created by user RGriffin, who scraped the data from www.sports-reference.com in May 2018.\nHere are a few rows of the dataset:\n\ntuesdata &lt;- tidytuesdayR::tt_load('2024-08-06')\n\ntuesdata$olympics |&gt; \n  dplyr::sample_n(6)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nid\nname\nsex\nage\nheight\nweight\nteam\nnoc\ngames\nyear\nseason\ncity\nsport\nevent\nmedal\n\n\n\n117635\nRyszard Jan Szurkowski\nM\n30\n173\n75\nPoland\nPOL\n1976 Summer\n1976\nSummer\nMontreal\nCycling\nCycling Men’s Road Race, Individual\nNA\n\n\n47478\nMathew Glen Helm\nM\n19\n170\n62\nAustralia\nAUS\n2000 Summer\n2000\nSummer\nSydney\nDiving\nDiving Men’s Synchronized Platform\nNA\n\n\n59573\nHabib Ali Kiddie\nM\n30\n173\n60\nPakistan\nPAK\n1960 Summer\n1960\nSummer\nRoma\nHockey\nHockey Men’s Hockey\nGold\n\n\n10274\nRda Benzine\nM\n25\n180\n63\nAlgeria\nALG\n1996 Summer\n1996\nSummer\nAtlanta\nAthletics\nAthletics Men’s 5,000 metres\nNA\n\n\n92619\nDorthe Friis Pedersen (-Thanning)\nF\n26\n180\n75\nDenmark\nDEN\n2004 Summer\n2004\nSummer\nAthina\nRowing\nRowing Women’s Quadruple Sculls\nNA\n\n\n59740\nGraeme Killick\nM\n24\n178\n70\nCanada\nCAN\n2014 Winter\n2014\nWinter\nSochi\nCross Country Skiing\nCross Country Skiing Men’s 30 km Skiathlon\nNA\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nGood:\n\nThis description explains who created the data, from where, and when. It provides links to the sources so the reader can find them.\nIt somewhat explains what information is in the dataset; i.e., information about athletes, as opposed to scheduling information or other details.\nShowing a random small snippet of the dataset is typically useful, to get a feel for what it looks like.\n\nBad:\n\nThis is lacking in the “why” and “how” of the data creation. It is important to know what motivated the creation and sharing of a dataset, as well as the specific process that the creator used to assemble it.\nThis description is unclear about the observational units, i.e., what each row represents. (It is not true that each row is a unique athlete!)\nThis description could give much more detail on the observed variables present, such as how they were measured and what a typical value looks like.\n\n\n\nData Cleaning\nThis data was cleaned by using janitor to reformat column names.\nThe user RGriffin who scraped the data also checked for misentered data in the columns Name, Gender, Height, and Weight.\n\n\n\n\n\n\nNote\n\n\n\nGood:\n\nWe did not just look at the Tidy Tuesday cleaning and call it a day! We followed the path of the data creation to figure out what other cleaning and wrangling took place.\n\nBad:\n\nWe were not specific enough about the cleaning done by RGriffin. What did they alter in those columns and why? What other anomalies did they look for?",
+    "text": "Introduction\nMy dataset is the Olympics data from TidyTuesday. This dataset shows all the Olympic athletes ever, and gives information about their sport, the country they are from, whether they won a medal, etc.\nThe data comes from a Kaggle dataset created by user RGriffin, who scraped the data from www.sports-reference.com in May 2018.\nHere are a few rows of the dataset:\n\ntuesdata &lt;- tidytuesdayR::tt_load('2024-08-06')\n\ntuesdata$olympics |&gt; \n  dplyr::sample_n(6)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nid\nname\nsex\nage\nheight\nweight\nteam\nnoc\ngames\nyear\nseason\ncity\nsport\nevent\nmedal\n\n\n\n67447\nLarisa Yevgenyevna Lazutina (Ptitsyna-)\nF\n32\n167\n57\nRussia\nRUS\n1998 Winter\n1998\nWinter\nNagano\nCross Country Skiing\nCross Country Skiing Women’s 15 kilometres\nSilver\n\n\n84080\nMasaru Nagaoka\nM\n25\n171\n63\nJapan\nJPN\n1988 Winter\n1988\nWinter\nCalgary\nSki Jumping\nSki Jumping Men’s Large Hill, Team\nNA\n\n\n30226\nEnriqueta Corina Duarte Ibarra Garca\nF\n19\nNA\nNA\nArgentina\nARG\n1948 Summer\n1948\nSummer\nLondon\nSwimming\nSwimming Women’s 4 x 100 metres Freestyle Relay\nNA\n\n\n86875\nSara Maria Evelina Nordenstam\nF\n25\n169\n70\nNorway\nNOR\n2008 Summer\n2008\nSummer\nBeijing\nSwimming\nSwimming Women’s 200 metres Individual Medley\nNA\n\n\n22678\nPaul Joseph D. Conlin\nM\n25\n177\n79\nCanada\nCAN\n1968 Winter\n1968\nWinter\nGrenoble\nIce Hockey\nIce Hockey Men’s Ice Hockey\nBronze\n\n\n70795\nRoar Ljkelsy\nM\n25\n177\n56\nNorway\nNOR\n2002 Winter\n2002\nWinter\nSalt Lake City\nSki Jumping\nSki Jumping Men’s Large Hill, Individual\nNA\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nGood:\n\nThis description explains who created the data, from where, and when. It provides links to the sources so the reader can find them.\nIt somewhat explains what information is in the dataset; i.e., information about athletes, as opposed to scheduling information or other details.\nShowing a random small snippet of the dataset is typically useful, to get a feel for what it looks like.\n\nBad:\n\nThis is lacking in the “why” and “how” of the data creation. It is important to know what motivated the creation and sharing of a dataset, as well as the specific process that the creator used to assemble it.\nThis description is unclear about the observational units, i.e., what each row represents. (It is not true that each row is a unique athlete!)\nThis description could give much more detail on the observed variables present, such as how they were measured and what a typical value looks like.\n\n\n\nData Cleaning\nThis data was cleaned by using janitor to reformat column names.\nThe user RGriffin who scraped the data also checked for misentered data in the columns Name, Gender, Height, and Weight.\n\n\n\n\n\n\nNote\n\n\n\nGood:\n\nWe did not just look at the Tidy Tuesday cleaning and call it a day! We followed the path of the data creation to figure out what other cleaning and wrangling took place.\n\nBad:\n\nWe were not specific enough about the cleaning done by RGriffin. What did they alter in those columns and why? What other anomalies did they look for?",
     "crumbs": [
       "Projects",
       "*Week 1: Example Project*"
@@ -1937,55 +1917,35 @@
     "href": "project/example-project-olympics/week-4.html",
     "title": "Project Checkpoint 4",
     "section": "",
-    "text": "For the final step of the project, our goal is to create visualizations that use more complex geometries, fit a statistical model to address a research question, and report the findings of that model.",
-    "crumbs": [
-      "Projects",
-      "*Week 4: Example Project*"
-    ]
+    "text": "For the final step of the project, our goal is to create visualizations that use more complex geometries, fit a statistical model to address a research question, and report the findings of that model."
   },
   {
     "objectID": "project/example-project-olympics/week-4.html#by-the-end-of-the-week-your-updated-report-should-contain",
     "href": "project/example-project-olympics/week-4.html#by-the-end-of-the-week-your-updated-report-should-contain",
     "title": "Project Checkpoint 4",
     "section": "By the end of the week, your updated report should contain:",
-    "text": "By the end of the week, your updated report should contain:\n\ntwo professionally formatted visualizations\n\nevery visualization must have alternative (alt) text, non-default colors, a non-default theme, and clear labels\nat least one visualization must use a more complex geometry (e.g., geom_segment(), geom_density_ridge() geom_ribbon(), geom_tile(), geom_hex())\n\nfits one statistical model addressing one of the research questions posed\nprofessionally formats the output of that model to communicate the results\n\nFormatted values (e.g., decimals, percentages, currencies)\nBoldface headers\nCaptions",
-    "crumbs": [
-      "Projects",
-      "*Week 4: Example Project*"
-    ]
+    "text": "By the end of the week, your updated report should contain:\n\ntwo professionally formatted visualizations\n\nevery visualization must have alternative (alt) text, non-default colors, a non-default theme, and clear labels\nat least one visualization must use a more complex geometry (e.g., geom_segment(), geom_density_ridge() geom_ribbon(), geom_tile(), geom_hex())\n\nfits one statistical model addressing one of the research questions posed\nprofessionally formats the output of that model to communicate the results\n\nFormatted values (e.g., decimals, percentages, currencies)\nBoldface headers\nCaptions"
   },
   {
     "objectID": "project/example-project-olympics/week-6.html",
     "href": "project/example-project-olympics/week-6.html",
     "title": "Project Checkpoint 6",
     "section": "",
-    "text": "For this second check-in, you will build on the dashboard shell you created last week by adding interactivity and incorporating a new country-specific dataset. All additions should be integrated into your existing Quarto dashboard—this is not a new project, but a continuation and expansion of your current work.",
-    "crumbs": [
-      "Projects",
-      "*Week 6: Example Project*"
-    ]
+    "text": "For this second check-in, you will build on the dashboard shell you created last week by adding interactivity and incorporating a new country-specific dataset. All additions should be integrated into your existing Quarto dashboard—this is not a new project, but a continuation and expansion of your current work."
   },
   {
     "objectID": "project/example-project-olympics/week-6.html#data-on-a-specific-country",
     "href": "project/example-project-olympics/week-6.html#data-on-a-specific-country",
     "title": "Project Checkpoint 6",
     "section": "Data on a Specific Country",
-    "text": "Data on a Specific Country\nThis week, you will choose one country from your original dataset to acquire additional information on. The country you choose is required to meet *at least one of the following criteria:\n\nAn outlier\n\nA country that is unusually high or low or behaves differently than others in your dataset.\n\nA representative case\n\nA country that reflects the global or regional trend particularly well.\n\nA case of change\n\nA country that shows substantial change over time.\n\n\nBefore finalizing your country choice, verify that you can obtain additional country-specific data suitable for a dynamic visualization!",
-    "crumbs": [
-      "Projects",
-      "*Week 6: Example Project*"
-    ]
+    "text": "Data on a Specific Country\nThis week, you will choose one country from your original dataset to acquire additional information on. The country you choose is required to meet *at least one of the following criteria:\n\nAn outlier\n\nA country that is unusually high or low or behaves differently than others in your dataset.\n\nA representative case\n\nA country that reflects the global or regional trend particularly well.\n\nA case of change\n\nA country that shows substantial change over time.\n\n\nBefore finalizing your country choice, verify that you can obtain additional country-specific data suitable for a dynamic visualization!"
   },
   {
     "objectID": "project/example-project-olympics/week-6.html#for-this-checkpoint-your-group-should",
     "href": "project/example-project-olympics/week-6.html#for-this-checkpoint-your-group-should",
     "title": "Project Checkpoint 6",
     "section": "For this checkpoint, your group should:",
-    "text": "For this checkpoint, your group should:\nOn the main page:\n\nCreate a leaflet map visualizing information from your original dataset (from Project 1).\n\nThis map should be thoughtfully integrated into the existing structure of your dashboard. That might mean some reshuffling of last week’s dashboard!\n\n\nOn a (new) second page:\n\nAcquire and incorporate new country-specific data relevant to your project.\nInclude a short “Why this country?” section (2–3 sentences) on your dashboard.\nCreate at least one dynamic visualization (e.g., an animated plot or a plotly interactive graphic) using the new country-specific data.",
-    "crumbs": [
-      "Projects",
-      "*Week 6: Example Project*"
-    ]
+    "text": "For this checkpoint, your group should:\nOn the main page:\n\nCreate a leaflet map visualizing information from your original dataset (from Project 1).\n\nThis map should be thoughtfully integrated into the existing structure of your dashboard. That might mean some reshuffling of last week’s dashboard!\n\n\nOn a (new) second page:\n\nAcquire and incorporate new country-specific data relevant to your project.\nInclude a short “Why this country?” section (2–3 sentences) on your dashboard.\nCreate at least one dynamic visualization (e.g., an animated plot or a plotly interactive graphic) using the new country-specific data."
   },
   {
     "objectID": "project/project-1.html",
@@ -1999,55 +1959,66 @@
     ]
   },
   {
-    "objectID": "project/project-1.html#data-acquisition",
-    "href": "project/project-1.html#data-acquisition",
+    "objectID": "project/project-1.html#weekly-checkpoints",
+    "href": "project/project-1.html#weekly-checkpoints",
     "title": "Project 1 Final Deliverable",
-    "section": "Data Acquisition",
-    "text": "Data Acquisition\n\ndescribes the context of the original data\nacquire new country-level data using APIs and webscraping\njoins new data with original data",
+    "section": "Weekly Checkpoints",
+    "text": "Weekly Checkpoints\nYou will complete weekly checkpoints each of which will help you craft the content for your final deliverable.\n\nIn Week 1 you will craft the potential research questions that will guide your analysis.\nIn Week 2 you will write data summary functions and iterate over those functions to create professionally styled summary tables.\nIn Week 3 you will acquire external data using APIs and webscraping.\nIn Week 4 you will create professionally styled visualizations using non-standard geometries.",
     "crumbs": [
       "Projects",
       "Project 1 Final Deliverable"
     ]
   },
   {
-    "objectID": "project/project-1.html#research-questions",
-    "href": "project/project-1.html#research-questions",
+    "objectID": "project/project-1.html#data-context-20-points",
+    "href": "project/project-1.html#data-context-20-points",
     "title": "Project 1 Final Deliverable",
-    "section": "Research Questions",
-    "text": "Research Questions\n\naddresses at least two research questions using the original data\naddresses at least one research question using the new (country-level) data",
+    "section": "Data Context (20 points)",
+    "text": "Data Context (20 points)\nIn this section you walk the reader through all the data you will use for your analysis. As you have multiple datasets you will draw on, you should have multiple paragraphs describing each dataset. At a minimum you should address the following for each dataset:\n\nWho – Who collected the data? If you do not know who collected the data, then be transparent about the information you know (e.g., who published the data).\nWhere – Where were the data collected i.e., what is the observational unit?\nWhen – When were the data collected?\nHow – How were the data collected?\nWhy – Why were the data collected? i.e., why are these data of interest?",
     "crumbs": [
       "Projects",
       "Project 1 Final Deliverable"
     ]
   },
   {
-    "objectID": "project/project-1.html#data-summaries-visualizations",
-    "href": "project/project-1.html#data-summaries-visualizations",
+    "objectID": "project/project-1.html#research-questions-10-points",
+    "href": "project/project-1.html#research-questions-10-points",
     "title": "Project 1 Final Deliverable",
-    "section": "Data Summaries & Visualizations",
-    "text": "Data Summaries & Visualizations\n\nat least three data summaries which address the research questions posed\n\nat least one of these summaries need to be produced with a custom function.\nat least one of these summaries need to include iteration (either inside or outside of a function).\n\ncreates professionally formatted summary tables (for all data summaries)\n\nevery table must have formatted values (e.g., decimals, percentages, currencies), boldface headers, and captions, and\nat least one table must incorporate additional styling (e.g., color, row group labels, spanner labels)\n\ncreates two professionally formatted visualizations\n\nevery visualization must have alternative (alt) text, non-default colors, a non-default theme, and clear labels\nat least one visualization must use a more complex geometry (e.g., geom_segment(), geom_density_ridge() geom_ribbon(), geom_tile(), geom_hex())",
+    "section": "Research Questions (10 points)",
+    "text": "Research Questions (10 points)\nIn this section, you will outline the two research questions that will guide your report. One question must be targeted toward the original data and one question must be targeted toward a new dataset.\nYour research questions should be as clear and specific as possible, so it is easy for the reader to see how your findings address these questions.",
     "crumbs": [
       "Projects",
       "Project 1 Final Deliverable"
     ]
   },
   {
-    "objectID": "project/project-1.html#data-model",
-    "href": "project/project-1.html#data-model",
+    "objectID": "project/project-1.html#data-summaries-visualizations-50-points",
+    "href": "project/project-1.html#data-summaries-visualizations-50-points",
     "title": "Project 1 Final Deliverable",
-    "section": "Data Model",
-    "text": "Data Model\n\nfits one statistical model addressing one of the research questions posed\nprofessionally formats the output of that model to communicate the results (must satisfy requirements for professionally formatted tables)",
+    "section": "Data Summaries & Visualizations (50 points)",
+    "text": "Data Summaries & Visualizations (50 points)\nThis section contains summary tables and visualizations that address your research question. For each research question, you are expected to have:\n\nTwo summary tables\n\nAt least one summary table needs to be produced with a custom function (from Week 2).\nAt least one summary table needs to include iteration (from Week 2).\n\nTwo data visualizations\n\nAt least one visualization must use a more complex geometry (from Week 4).\n\n\nAll summary tables must be professionally formatted.\n\nEvery table must have formatted values (e.g., decimals, percentages, currencies), boldface headers, and captions.\nAt least one table (out of four) must incorporate additional styling (e.g., color, row group labels, spanner labels)\n\nAll visualizations must be professionally formatted.\n\nEvery visualization must have non-default colors, a non-default theme, clear labels, and an informative plot title.\nEvery visualization must also have alternative (alt) text descriptions of which can be read by a screen reader.",
     "crumbs": [
       "Projects",
       "Project 1 Final Deliverable"
     ]
   },
   {
-    "objectID": "project/project-1.html#quarto-document",
-    "href": "project/project-1.html#quarto-document",
+    "objectID": "project/project-1.html#data-model-10-points",
+    "href": "project/project-1.html#data-model-10-points",
     "title": "Project 1 Final Deliverable",
-    "section": "Quarto Document",
-    "text": "Quarto Document\n\n\n\nuses a non-default theme\nuses headers and subheaders to delineate the sections\nuses table and figure numbers to reference findings\n\n\n\n\n\n\n\n\n\n\nWarningCoordinated Colors\n\n\n\nThe colors from the document theme you chose should match the colors in your plots and tables!",
+    "section": "Data Model (10 points)",
+    "text": "Data Model (10 points)\nIn this section you must fit one statistical model addressing one of the research questions posed. The output of your model is expected to be professionally formatted so the results are easily communicated to the reader.\nEither before or after your summary table, you are expected to communicate the findings of your statistical model and connect them back to the research question which they address.\n\n\n\n\n\n\nImportantOne summary table\n\n\n\nIf you chose to fit multiple statistical models (e.g., comparing different models), you are expected to collapse these multiple models into a single summary table.",
+    "crumbs": [
+      "Projects",
+      "Project 1 Final Deliverable"
+    ]
+  },
+  {
+    "objectID": "project/project-1.html#quarto-document-10-points",
+    "href": "project/project-1.html#quarto-document-10-points",
+    "title": "Project 1 Final Deliverable",
+    "section": "Quarto Document (10 points)",
+    "text": "Quarto Document (10 points)\n\n\n\nuses a non-default theme\nuses headers and subheaders to delineate the sections\nuses table and figure numbers to reference findings\nuses code folding to keep the code invisible unless the reader wants to look at it\n\n\n\n\n\n\n\n\n\n\nWarningCoordinated Colors\n\n\n\nThe colors from the document theme you chose should match the colors in your plots and tables!",
     "crumbs": [
       "Projects",
       "Project 1 Final Deliverable"
@@ -2080,35 +2051,55 @@
     "href": "project/project-3.html",
     "title": "Project 3 Final Deliverable",
     "section": "",
-    "text": "The deliverable for this project is a fully developed R package, which contains functions to automate and streamline the data collection and analysis that you did in Units 1 and 2.\nAlong the way you will learn how to:"
+    "text": "The deliverable for this project is a fully developed R package, which contains functions to automate and streamline the data collection and analysis that you did in Units 1 and 2.\nAlong the way you will learn how to:",
+    "crumbs": [
+      "Projects",
+      "Project 3 Final Deliverable"
+    ]
   },
   {
     "objectID": "project/project-3.html#structure",
     "href": "project/project-3.html#structure",
     "title": "Project 3 Final Deliverable",
     "section": "Structure",
-    "text": "Structure\n\nPackage installs without errors or warnings using remotes::install_github(\"your-repo/your-package-name\")\nAll functions are fully documented in the roxygen2 style.\nAll functions have at least one associated unit test in the testthat format."
+    "text": "Structure\n\nPackage installs without errors or warnings using remotes::install_github(\"your-repo/your-package-name\")\nAll functions are fully documented in the roxygen2 style.\nAll functions have at least one associated unit test in the testthat format.",
+    "crumbs": [
+      "Projects",
+      "Project 3 Final Deliverable"
+    ]
   },
   {
     "objectID": "project/project-3.html#function-design",
     "href": "project/project-3.html#function-design",
     "title": "Project 3 Final Deliverable",
     "section": "Function Design",
-    "text": "Function Design\n\nPackage includes underlying helper functions that support primary functions.\nFunctions perform efficiently on moderately large data\nAt least one function uses data.table, arrow, and/or parallelization."
+    "text": "Function Design\n\nPackage includes underlying helper functions that support primary functions.\nFunctions perform efficiently on moderately large data\nAt least one function uses data.table, arrow, and/or parallelization.",
+    "crumbs": [
+      "Projects",
+      "Project 3 Final Deliverable"
+    ]
   },
   {
     "objectID": "project/project-3.html#content",
     "href": "project/project-3.html#content",
     "title": "Project 3 Final Deliverable",
     "section": "Content",
-    "text": "Content\nPackage must contain at least… - one data gathering function - one data cleaning/wrangling function - two data summarizing functions - two plotting functions - one statistical analysis function - one vignette describing package use"
+    "text": "Content\nPackage must contain at least… - one data gathering function - one data cleaning/wrangling function - two data summarizing functions - two plotting functions - one statistical analysis function - one vignette describing package use",
+    "crumbs": [
+      "Projects",
+      "Project 3 Final Deliverable"
+    ]
   },
   {
     "objectID": "project/project-3.html#stat-541-requirements",
     "href": "project/project-3.html#stat-541-requirements",
     "title": "Project 3 Final Deliverable",
     "section": "Stat 541 requirements",
-    "text": "Stat 541 requirements\nStat 541 packages must also… - contain at least one function that uses tidy eval - pass all CRAN checks - have at least 80% test coverage as measured by covr - include at least one speed and memory benchmarking test in a vignette"
+    "text": "Stat 541 requirements\nStat 541 packages must also… - contain at least one function that uses tidy eval - pass all CRAN checks - have at least 80% test coverage as measured by covr - include at least one speed and memory benchmarking test in a vignette",
+    "crumbs": [
+      "Projects",
+      "Project 3 Final Deliverable"
+    ]
   },
   {
     "objectID": "project/week-0.html",
@@ -2203,7 +2194,11 @@
     "href": "project/week-8.html",
     "title": "Project Checkpoint 8",
     "section": "",
-    "text": "This week, your goal is to create a minimal working package, that we will build on in the remainder of the course until you have a fully fleshed out data analysis package!\nThe first thing you’ll need is a name for your package. Get creative with this! There are a few common package styles:\n\n“old school” R tradition is to use a capital R in the package, e.g. RMySQL\nIn the early tidyverse days, packages were all lowercase and ended in an r, such as dplyr or tidyr.\nMore recently, folks often go for one-word puns that describe the package purpose, like lubridate or forcats.\n\nYou can do whatever you’d like with this - as long as the package has no special characters, does not start with a number, and relates in some way to the actual functionality or data context of the package.\nOnce you have a name,\n\nfollow the steps from the Week 8 Practice Activity to produce a package directory and publish it on GitHub.\nUpdate the DESCRIPTION file.\nWrite a function called load_data to load your original dataset into the package from the Tidy Tuesday link or using the tidytuesdayR package.\nWrite two functions for analyzing, visualizing, or summarizing your data.\n\nThe three functions in this starter package must use roxygen2 documentation; however, you do not have to write any testthat tests at this stage."
+    "text": "This week, your goal is to create a minimal working package, that we will build on in the remainder of the course until you have a fully fleshed out data analysis package!\nThe first thing you’ll need is a name for your package. Get creative with this! There are a few common package styles:\n\n“old school” R tradition is to use a capital R in the package, e.g. RMySQL\nIn the early tidyverse days, packages were all lowercase and ended in an r, such as dplyr or tidyr.\nMore recently, folks often go for one-word puns that describe the package purpose, like lubridate or forcats.\n\nYou can do whatever you’d like with this - as long as the package has no special characters, does not start with a number, and relates in some way to the actual functionality or data context of the package.\nOnce you have a name,\n\nfollow the steps from the Week 8 Practice Activity to produce a package directory and publish it on GitHub.\nUpdate the DESCRIPTION file.\nWrite a function called load_data to load your original dataset into the package from the Tidy Tuesday link or using the tidytuesdayR package.\nWrite two functions for analyzing, visualizing, or summarizing your data.\n\nThe three functions in this starter package must use roxygen2 documentation; however, you do not have to write any testthat tests at this stage.",
+    "crumbs": [
+      "Projects",
+      "Week 8: Starter Package"
+    ]
   },
   {
     "objectID": "slides/01-version-control.html#git-vs-github",
@@ -2721,72 +2716,6 @@
     "crumbs": [
       "Unit 3 - Package Development",
       "Code Speed"
-    ]
-  },
-  {
-    "objectID": "project/project-1.html#weekly-checkpoints",
-    "href": "project/project-1.html#weekly-checkpoints",
-    "title": "Project 1 Final Deliverable",
-    "section": "Weekly Checkpoints",
-    "text": "Weekly Checkpoints\nYou will complete weekly checkpoints each of which will help you craft the content for your final deliverable.\n\nIn Week 1 you will craft the potential research questions that will guide your analysis.\nIn Week 2 you will write data summary functions and iterate over those functions to create professionally styled summary tables.\nIn Week 3 you will acquire external data using APIs and webscraping.\nIn Week 4 you will create professionally styled visualizations using non-standard geometries.",
-    "crumbs": [
-      "Projects",
-      "Project 1 Final Deliverable"
-    ]
-  },
-  {
-    "objectID": "project/project-1.html#data-context-20-points",
-    "href": "project/project-1.html#data-context-20-points",
-    "title": "Project 1 Final Deliverable",
-    "section": "Data Context (20 points)",
-    "text": "Data Context (20 points)\nIn this section you walk the reader through all the data you will use for your analysis. As you have multiple datasets you will draw on, you should have multiple paragraphs describing each dataset. At a minimum you should address the following for each dataset:\n\nWho – Who collected the data? If you do not know who collected the data, then be transparent about the information you know (e.g., who published the data).\nWhere – Where were the data collected i.e., what is the observational unit?\nWhen – When were the data collected?\nHow – How were the data collected?\nWhy – Why were the data collected? i.e., why are these data of interest?",
-    "crumbs": [
-      "Projects",
-      "Project 1 Final Deliverable"
-    ]
-  },
-  {
-    "objectID": "project/project-1.html#research-questions-10-points",
-    "href": "project/project-1.html#research-questions-10-points",
-    "title": "Project 1 Final Deliverable",
-    "section": "Research Questions (10 points)",
-    "text": "Research Questions (10 points)\nIn this section, you will outline the two research questions that will guide your report. One question must be targeted toward the original data and one question must be targeted toward a new dataset.\nYour research questions should be as clear and specific as possible, so it is easy for the reader to see how your findings address these questions.",
-    "crumbs": [
-      "Projects",
-      "Project 1 Final Deliverable"
-    ]
-  },
-  {
-    "objectID": "project/project-1.html#data-summaries-visualizations-50-points",
-    "href": "project/project-1.html#data-summaries-visualizations-50-points",
-    "title": "Project 1 Final Deliverable",
-    "section": "Data Summaries & Visualizations (50 points)",
-    "text": "Data Summaries & Visualizations (50 points)\nThis section contains summary tables and visualizations that address your research question. For each research question, you are expected to have:\n\nTwo summary tables\n\nAt least one summary table needs to be produced with a custom function (from Week 2).\nAt least one summary table needs to include iteration (from Week 2).\n\nTwo data visualizations\n\nAt least one visualization must use a more complex geometry (from Week 4).\n\n\nAll summary tables must be professionally formatted.\n\nEvery table must have formatted values (e.g., decimals, percentages, currencies), boldface headers, and captions.\nAt least one table (out of four) must incorporate additional styling (e.g., color, row group labels, spanner labels)\n\nAll visualizations must be professionally formatted.\n\nEvery visualization must have non-default colors, a non-default theme, clear labels, and an informative plot title.\nEvery visualization must also have alternative (alt) text descriptions of which can be read by a screen reader.",
-    "crumbs": [
-      "Projects",
-      "Project 1 Final Deliverable"
-    ]
-  },
-  {
-    "objectID": "project/project-1.html#data-model-10-points",
-    "href": "project/project-1.html#data-model-10-points",
-    "title": "Project 1 Final Deliverable",
-    "section": "Data Model (10 points)",
-    "text": "Data Model (10 points)\nIn this section you must fit one statistical model addressing one of the research questions posed. The output of your model is expected to be professionally formatted so the results are easily communicated to the reader.\nEither before or after your summary table, you are expected to communicate the findings of your statistical model and connect them back to the research question which they address.\n\n\n\n\n\n\nImportantOne summary table\n\n\n\nIf you chose to fit multiple statistical models (e.g., comparing different models), you are expected to collapse these multiple models into a single summary table.",
-    "crumbs": [
-      "Projects",
-      "Project 1 Final Deliverable"
-    ]
-  },
-  {
-    "objectID": "project/project-1.html#quarto-document-10-points",
-    "href": "project/project-1.html#quarto-document-10-points",
-    "title": "Project 1 Final Deliverable",
-    "section": "Quarto Document (10 points)",
-    "text": "Quarto Document (10 points)\n\n\n\nuses a non-default theme\nuses headers and subheaders to delineate the sections\nuses table and figure numbers to reference findings\nuses code folding to keep the code invisible unless the reader wants to look at it\n\n\n\n\n\n\n\n\n\n\nWarningCoordinated Colors\n\n\n\nThe colors from the document theme you chose should match the colors in your plots and tables!",
-    "crumbs": [
-      "Projects",
-      "Project 1 Final Deliverable"
     ]
   }
 ]

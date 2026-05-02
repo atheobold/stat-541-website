@@ -478,11 +478,11 @@ Important
 <section id="the-roundabouts-package" class="level2"><h2 class="anchored" data-anchor-id="the-roundabouts-package">The <code>roundabouts</code> Package</h2>
 <p>The <a href="https://github.com/EmilHvitfeldt/roundabouts"><code>roundabouts</code> R package</a> provides a simple way to interact with the <a href="https://roundabouts.kittelson.com/">Roundabouts Database</a>. You likely do not have the package installed on your computer, so the first step is to install the package:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pak.html">pak</a></span><span class="op">(</span><span class="st">"emilhvitfeldt/roundabouts"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">pak</span><span class="fu">::</span><span class="fu">pak</span><span class="op">(</span><span class="st">"emilhvitfeldt/roundabouts"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>The <code>roundabouts</code> dataframe that is included in the package has an <code>address</code> variable which is a bit untidy. Below is some data cleaning code that will clean the <code>address</code> variable, and create three new variables: <code>town_city</code>, <code>county_area</code>, and <code>state_region</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/EmilHvitfeldt/roundabouts">roundabouts</a></span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">roundabouts</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">roundabouts_clean</span> <span class="op">&lt;-</span> <span class="va">roundabouts</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
@@ -518,7 +518,7 @@ Important
 </ol>
 <p>The <code>countrycode()</code> function from the <code>countrycode</code> package will be helpful here! Here is an example of how you can use this function to obtain the continent of a given country:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">countrycode</span><span class="fu">::</span><span class="fu"><a href="https://vincentarelbundock.github.io/countrycode/man/countrycode.html">countrycode</a></span><span class="op">(</span><span class="st">"Brazil"</span>,</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">countrycode</span><span class="fu">::</span><span class="fu">countrycode</span><span class="op">(</span><span class="st">"Brazil"</span>,</span>
 <span>            origin <span class="op">=</span> <span class="st">"country.name"</span>,</span>
 <span>            destination <span class="op">=</span> <span class="st">"continent"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>

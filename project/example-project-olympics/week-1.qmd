@@ -9,6 +9,10 @@ execute:
 editor: source
 ---
 
+<!-- ALLISON (note for next time we teach):  -->
+<!-- I'm not comfortable with an analysis that highlights "female" sports with the -->
+<!-- politics of sex testing and anti-trans athletes -->
+
 ::: callout-note
 This is a minimal example representing "passing" or 'C' level work, to give you a baseline for how to proceed. 'B' or 'A' level work will require a more thoughtful and thorough description of the data and cleaning, deeper or more complex research questions, and/or more polished visualization sketches. Some notes about areas for improvement are included in the callouts below.
 :::
