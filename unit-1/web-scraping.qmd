@@ -150,6 +150,7 @@ fetch the data using the `rvest` package.
 ```{r}
 #| label: read_html
 #| echo: true
+#| eval: false
 
 library(rvest)
 
@@ -174,6 +175,7 @@ the cheeses with store information will show up like this:
 
 ```{r}
 #| label: obtain-cheese-name
+#| eval: false
 
 cheeses %>%
   html_elements(".product-item") %>%
@@ -185,6 +187,9 @@ cheeses %>%
 **2. HTML**
 
 ```{r}
+#| label: obtain-cheese-url
+#| eval: false
+
 cheeses %>%
   html_elements(".product-item") %>%
   html_element("a") %>%
@@ -211,6 +216,9 @@ base url (https://www.cheese.com) to the beginning of the relative url. The
 **3. status of the image (exists or missing)**
 
 ```{r}
+#| label: obtain-cheese-image
+#| eval: false
+
 cheeses %>%
   html_elements(".product-item") %>%
   html_element("a img") %>%
@@ -477,6 +485,8 @@ bottom of the [first alphabetical page (per page = 100)](https://www.cheese.com/
 This method is a bit less error prone than manually typing `21`!
 
 ```{r}
+#| eval: false
+
 # A less error prone 
 total_pages <- cheeses %>%
   html_elements(".page-link:nth-child(10)") %>%
@@ -486,7 +496,7 @@ total_pages <- cheeses %>%
 **Fill in the code below to `map()` over _every_ page of cheese.**
 
 ```{r}
-#| label:  map-scrape
+#| label: map-scrape
 #| eval: false
 
 base_url <- "https://www.cheese.com/alphabetical/?per_page=100&page="
@@ -501,6 +511,7 @@ all_pages <- map(.x = ________,
 #| label:  map-scrape-soln
 #| echo: false
 #| cache: true
+#| eval: false
 
 base_url <- "https://www.cheese.com/alphabetical/?per_page=100&page="
 
@@ -522,6 +533,7 @@ on cheeses?
 ```{r}
 #| label: bind-lists
 #| echo: false
+#| eval: false
 
 all_cheeses <- bind_rows(all_pages)
 all_cheeses
