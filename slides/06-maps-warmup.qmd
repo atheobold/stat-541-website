@@ -1,5 +1,5 @@
 ---
-title: "Week 6 - Day 1"
+title: "Week 6 - Making Maps!"
 format: 
   revealjs:
     theme: [style.scss, simple]
@@ -7,5 +7,178 @@ format:
 editor: source
 ---
 
+```{r}
+library(tidyverse)
+```
 
 
+# Let's explore some different ways to make maps!
+
+# Option 1: Latitudes & Longitudes
+
+## California Counties
+
+```{r}
+#| echo: true
+#| code-line-numbers: false
+
+ca_counties <- map_data("county", "california")
+```
+
+::: {.midi}
+```{r}
+ca_counties
+```
+:::
+
+. . .
+
+Notice Alameda has **multiple** rows in these data! What do you think each
+unique `long` and `lat` correspond to?
+
+## How would you expect this plot to look?
+
+```{r}
+#| echo: true
+#| eval: false
+#| code-line-numbers: false
+
+ggplot(data = ca_counties, 
+       mapping = aes(long, lat)
+       ) + 
+  geom_point(size = 0.25)
+```
+
+. . .
+
+```{r}
+#| out-width: 80%
+#| fig-align: center
+
+ggplot(data = ca_counties, 
+       mapping = aes(long, lat)
+       ) + 
+  geom_point(size = 0.25) 
+```
+
+## That plot seems a bit off!
+
+::: {.midi}
+```{r}
+#| echo: true
+#| code-line-numbers: false
+#| out-width: 80%
+#| fig-align: center
+
+ggplot(data = ca_counties, 
+       mapping = aes(long, lat)
+       ) + 
+  geom_point(size = 0.25) +
+  coord_sf()
+```
+:::
+
+
+## Now suppose I used `geom_polygon()` instead
+
+How would you expect this plot to look?
+
+```{r}
+#| echo: true
+#| eval: false
+#| code-line-numbers: false
+
+ggplot(data = ca_counties, 
+       mapping = aes(long, lat, group = group)
+       ) +
+  geom_polygon(fill = "white", colour = "grey50") + 
+  coord_sf()
+
+```
+
+## Getting Shapes
+
+```{r}
+#| echo: false
+#| eval: true
+
+ggplot(data = ca_counties, 
+       mapping = aes(long, lat, group = group)
+       ) +
+  geom_polygon(fill = "white", colour = "grey50") + 
+  coord_sf()
+```
+
+# Option 2: Shape Files
+
+## The `tigris` Package
+
+```{r}
+#| echo: true
+#| eval: false
+#| code-line-numbers: false
+
+library(tigris)
+
+ca_counties <- tigris::counties(state = "california")
+```
+
+</br>
+
+::: {.midi}
+```{r}
+#| eval: true
+#| echo: false
+
+# Because tigris leaves a message everytime the code is run!
+ca_counties <- tigris::counties(state = "california", progress_bar = FALSE)
+
+ca_counties |> 
+  glimpse()
+```
+:::
+
+## Using Shape Files
+
+::: {.midi}
+```{r}
+#| label: shapes-with-coord-sf
+#| echo: true
+#| code-line-numbers: false
+#| out-width: 80%
+
+ggplot(data = ca_counties) +
+  geom_sf(fill = "white", 
+          color = "grey25", 
+          linewidth = 0.1) +
+  theme_void()
+```
+:::
+
+## Why not use `leaflet`?
+
+```{r}
+#| label: convert-data-for-leaflet
+#| echo: false
+
+library(sf)
+ca_counties <- st_transform(ca_counties, 4326)
+```
+
+::: {.midi}
+```{r}
+#| echo: true
+#| code-line-numbers: false
+#| output-location: column
+
+library(leaflet)
+
+leaflet(ca_counties) %>%
+  addPolygons(
+    fillColor = "white",
+    fillOpacity = 1,
+    color = "grey25",
+    weight = 0.1
+  )
+```
+:::

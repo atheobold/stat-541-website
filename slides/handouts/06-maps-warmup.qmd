@@ -1,0 +1,97 @@
+---
+title: "Practice Activity 6 Warm-up"
+format: docx
+---
+
+```{r}
+library(tidyverse)
+```
+
+# Option 1: Latitudes & Longitudes
+
+## California Counties
+
+Notice Alameda has **multiple** rows in these data! What do you think each 
+unique `long` and `lat` correspond to?
+
+## How would you expect this plot to look? Draw it out!
+
+```{r}
+#| echo: true
+#| eval: false
+#| code-line-numbers: false
+
+ggplot(data = ca_counties, 
+       mapping = aes(long, lat)
+       ) + 
+  geom_point(size = 0.25)
+```
+
+## What did we need to add to the code to get the plot to look like a map?
+
+```{r}
+#| echo: false
+#| eval: false
+
+ggplot(data = ca_counties, 
+       mapping = aes(long, lat)
+       ) + 
+  geom_point(size = 0.25) +
+  coord_sf()
+```
+
+## Now suppose I used `geom_polygon()` instead.
+
+How would you expect this plot to look? Draw it out!
+
+```{r}
+#| echo: true
+#| eval: false
+#| code-line-numbers: false
+
+ggplot(data = ca_counties, 
+       mapping = aes(long, lat, group = group)
+       ) +
+  geom_polygon(fill = "white", colour = "grey50") + 
+  coord_sf()
+
+```
+
+# Option 2: Shape Files
+
+## The `tigris` Package
+
+```{r}
+#| echo: true
+#| eval: false
+#| code-line-numbers: false
+
+library(tigris)
+
+ca_counties <- tigris::counties(state = "california")
+```
+
+## Using Shape Files
+
+::: midi
+```{r}
+#| label: shapes-with-coord-sf
+#| echo: true
+#| eval: false
+#| code-line-numbers: false
+
+ggplot(data = ca_counties) +
+  geom_sf(fill = "white", 
+          color = "grey25", 
+          linewidth = 0.1) +
+  theme_void()
+```
+:::
+
+## Why not use `leaflet`?
+
+| When to use `ggplot` to make a map | When to use `leaflet` to make a map |
+|------------------------------------|---------------------------------------|
+|                                    |                                       |
+|                                    |                                       |
+|                                    |                                       |
