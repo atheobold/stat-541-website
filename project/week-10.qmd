@@ -1,0 +1,11 @@
+---
+title: "Project 3, Checkpoint 3"
+---
+
+## Data storage
+
+
+
+## Speedier functions
+
+Realistically, it's likely that most of your

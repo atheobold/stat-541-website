@@ -21,37 +21,52 @@ The package you create _must_ have the following elements:
 
 -   Package installs without errors or warnings using 
 `remotes::install_github("your-repo/your-package-name")`
+
 -   All functions are fully documented in the `roxygen2` style.
+
 -   All functions have at least one associated unit test in the `testthat` format.
 
 
 ## Function Design
+
 -   Package includes underlying helper functions that support primary functions.
+
 -   Functions perform efficiently on moderately large data
+
 -   At least one function uses `data.table`, `arrow`, and/or parallelization.
 
 ## Content
 
 *Package must contain at least...*
+
 -   one data gathering function
+
 -   one data cleaning/wrangling function
+
 -   two data summarizing functions
+
 -   two plotting functions
+
 -   one statistical analysis function
+
 -   one vignette describing package use
 
 ## Stat 541 requirements
 
 *Stat 541 packages must also...*
+
 -   contain at least one function that uses tidy eval
+
 -   pass all CRAN checks
+
 -   have at least 80% test coverage as measured by `covr`
+
 -   include at least one speed and memory benchmarking test in a vignette
 
 
 # Peer Review
 
-In Week 9 your group will give (and receive) feedback to another group on their
+In Week 10 your group will give (and receive) feedback to another group on their
 preliminary package setup.  Your goal is to test the user-friendliness of the functions
 and to find places where the functions break.
 
