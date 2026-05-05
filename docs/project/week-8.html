@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.26">
-
+<meta name="generator" content="quarto-1.8.24">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-
 <title>Project Checkpoint 8 – Advanced R</title>
 <style>
 code{white-space: pre-wrap;}
@@ -20,8 +17,42 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
-
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
@@ -40,17 +71,16 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b758ccaa5987ceb1b75504551e579abf.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b651517ce65839d647a86e2780455cfb.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-63767328852000e01d7c9d44355c1f36.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/bootstrap/bootstrap-dark-5f858a84010510139e49c405efe9b486.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="../site_libs/bootstrap/bootstrap-63767328852000e01d7c9d44355c1f36.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script src="../site_libs/quarto-contrib/flourish-0.0.1/injectFlourishes.js"></script>
-<script src="../site_libs/quarto-contrib/flourish-0.0.1/flourish.js"></script>
-<script id="quarto-search-options" type="application/json">{
+<script src="../site_libs/quarto-contrib/flourish-0.0.1/flourish.js"></script><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -77,10 +107,7 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-
-
 </head>
-
 <body class="nav-sidebar floating nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
@@ -246,14 +273,10 @@ ul.task-list li input[type="checkbox"] {
   </script>
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
-      <div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../images/cat-monsters-horst.png" alt="" class="navbar-logo light-content">
-    <img src="../images/cat-monsters-horst.png" alt="" class="navbar-logo dark-content">
-    </a>
+    <img src="../images/cat-monsters-horst.png" alt="" class="navbar-logo light-content"><img src="../images/cat-monsters-horst.png" alt="" class="navbar-logo dark-content"></a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
@@ -261,8 +284,8 @@ ul.task-list li input[type="checkbox"] {
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
+<li class="nav-item">
+    <a class="nav-link active" href="../index.html" aria-current="page"> 
 <span class="menu-text">Overview</span></a>
   </li>  
   <li class="nav-item">
@@ -290,25 +313,23 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Unit 3 - Package Development</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../project.html" aria-current="page"> 
+    <a class="nav-link" href="../project.html"> 
 <span class="menu-text">Projects</span></a>
   </li>  
 </ul>
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item compact">
+<ul class="navbar-nav navbar-nav-scroll ms-auto">
+<li class="nav-item compact">
     <a class="nav-link" href="https://github.com/atheobold/stat-541-website"> <i class="bi bi-github" role="img" aria-label="GitHub">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
 </ul>
-          </div> <!-- /navcollapse -->
+</div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
       </div> <!-- /container-fluid -->
-    </nav>
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
+    </nav><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
@@ -316,15 +337,15 @@ ul.task-list li input[type="checkbox"] {
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
-  </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="../index.html" class="sidebar-logo-link">
+      </a>
+      </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../project.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Projects</span></a>
@@ -427,19 +448,21 @@ ul.task-list li input[type="checkbox"] {
   </div>
 </li>
     </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
+   
+  <ul>
+<li><a href="#name-your-package" id="toc-name-your-package" class="nav-link active" data-scroll-target="#name-your-package">Name your package</a></li>
+  <li><a href="#prepare-the-empty-package-structure" id="toc-prepare-the-empty-package-structure" class="nav-link" data-scroll-target="#prepare-the-empty-package-structure">Prepare the empty package structure</a></li>
+  <li><a href="#make-a-plan" id="toc-make-a-plan" class="nav-link" data-scroll-target="#make-a-plan">Make a plan</a></li>
+  <li><a href="#build-it" id="toc-build-it" class="nav-link" data-scroll-target="#build-it">Build It!</a></li>
+  </ul><div class="toc-actions"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/project/week-8.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
 <h1 class="title">Project Checkpoint 8</h1>
 </div>
 
@@ -454,10 +477,9 @@ ul.task-list li input[type="checkbox"] {
   
 
 
-</header>
-
-
-<p>This week, your goal is to create a minimal working package, that we will build on in the remainder of the course until you have a fully fleshed out data analysis package!</p>
+</header><p>This week, your goal is to create a minimal working package, that we will build on in the remainder of the course until you have a fully fleshed out data analysis package!</p>
+<p><em>Note: Each team member should have their own copy of the package directory on GitHub. This can be a separate copy, or if you prefer, you can <strong>fork</strong> a teammate’s directory.</em></p>
+<section id="name-your-package" class="level3"><h3 class="anchored" data-anchor-id="name-your-package">Name your package</h3>
 <p>The first thing you’ll need is a name for your package. Get creative with this! There are a few common package styles:</p>
 <ul>
 <li><p>“old school” R tradition is to use a capital R in the package, e.g.&nbsp;<code>RMySQL</code></p></li>
@@ -465,19 +487,31 @@ ul.task-list li input[type="checkbox"] {
 <li><p>More recently, folks often go for one-word puns that describe the package purpose, like <code>lubridate</code> or <code>forcats</code>.</p></li>
 </ul>
 <p>You can do whatever you’d like with this - as long as the package has no special characters, does not start with a number, and relates in some way to the actual functionality or data context of the package.</p>
+</section><section id="prepare-the-empty-package-structure" class="level3"><h3 class="anchored" data-anchor-id="prepare-the-empty-package-structure">Prepare the empty package structure</h3>
 <p>Once you have a name,</p>
 <ol type="1">
-<li><p>follow the steps from the Week 8 Practice Activity to produce a package directory and publish it on GitHub.</p></li>
+<li><p>Follow the steps from the Week 8 Practice Activity to produce a package directory (with no functions in it yet!) and publish it on GitHub.</p></li>
 <li><p>Update the <code>DESCRIPTION</code> file.</p></li>
 <li><p>Write a function called <code>load_data</code> to load your original dataset into the package from the Tidy Tuesday link or using the <code>tidytuesdayR</code> package.</p></li>
-<li><p>Write two functions for analyzing, visualizing, or summarizing your data.</p></li>
 </ol>
-<p>The three functions in this starter package must use <code>roxygen2</code> documentation; however, you do <strong>not</strong> have to write any <code>testthat</code> tests at this stage.</p>
+<p>The <code>load_data</code> function must use <code>roxygen2</code> documentation; however, you do <strong>not</strong> have to write any <code>testthat</code> tests at this stage.</p>
+</section><section id="make-a-plan" class="level3"><h3 class="anchored" data-anchor-id="make-a-plan">Make a plan</h3>
+<p>When designing a package, it is helpful to write down “aspirational” code - lines of code that you <em>wish</em> would work, that you can build towards as you develop your functions.</p>
+<p>Think about the code in your Projects 1 and 2. Which parts do you wish you had a shortcut function for?</p>
+<p>Run <code>use_this::use_vignette("main-functions")</code>. Then, open the new folder named <em>vignette</em> in your package folder. You should see a file called <code>main-functions.Rmd</code>. Change the name to <code>main-functions.qmd</code>. Open this quarto file.</p>
+<p>In <code>main-functions.qmd</code>, write three code chunks with functions that you <em>plan</em> to make, and a brief description of what they do. For example,</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">plot_olympic_golds</span><span class="op">(</span><span class="va">olympic_data</span>, <span class="st">"United States"</span>, min_year <span class="op">=</span> <span class="fl">2000</span>, by_gender <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<blockquote class="blockquote">
+<p>This should make a line plot showing how many gold medals were won by the United States every year since 2000. There should be one line for the Men’s category and one for the Women’s category.</p>
+</blockquote>
+<p>At least one of these should be a <strong>plot</strong> and at least one should be a <strong>summary calculation</strong>.</p>
+</section><section id="build-it" class="level3"><h3 class="anchored" data-anchor-id="build-it">Build It!</h3>
+<p>Even though your package has nothing in it yet, make sure to <em>document</em> (Ctrl/Cmd-shift-D) and <em>build</em> (Ctrl/Cmd-shift-B) it before you push to GitHub.</p>
 
 
-
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
     if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -889,9 +923,7 @@ ul.task-list li input[type="checkbox"] {
       }
     }
   });
-  </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
+  </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
       <a href="../project/project-2.html" class="pagination-link" aria-label="Project 2 Final Deliverable">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Project 2 Final Deliverable</span>
       </a>          
@@ -903,27 +935,24 @@ ul.task-list li input[type="checkbox"] {
   </div>
 </nav>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
+<footer class="footer"><div class="nav-footer">
     <div class="nav-footer-left">
 <p>This page is built with ❤️ by Drs. Kelly Bodwin &amp; Allison Theobold and also <a href="https://quarto.org/">Quarto</a>.</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/project/week-8.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/project/week-8.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
-    <li class="nav-item">
+<li class="nav-item">
     <a class="nav-link" href="../LICENSE.md">
 <p>License</p>
 </a>
   </li>  
 </ul>
-    </div>
+</div>
   </div>
 </footer>
-
-
 
 
 </body></html>

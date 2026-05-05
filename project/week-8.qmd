@@ -2,39 +2,54 @@
 title: "Project Checkpoint 8"
 ---
 
-This week, your goal is to create a minimal working package, that we will build
-on in the remainder of the course until you have a fully fleshed out data analysis
-package!
+This week, your goal is to create a minimal working package, that we will build on in the remainder of the course until you have a fully fleshed out data analysis package!
 
-The first thing you'll need is a name for your package.  Get creative with this!
-There are a few common package styles:
+*Note: Each team member should have their own copy of the package directory on GitHub. This can be a separate copy, or if you prefer, you can **fork** a teammate's directory.*
 
-* "old school" R tradition is to use a capital R in the package, e.g. `RMySQL`
+### Name your package
 
-* In the early tidyverse days, packages were all lowercase and ended in an r, 
-such as `dplyr` or `tidyr`.
+The first thing you'll need is a name for your package. Get creative with this! There are a few common package styles:
 
-* More recently, folks often go for one-word puns that describe the package
-purpose, like `lubridate` or `forcats`.
+-   "old school" R tradition is to use a capital R in the package, e.g. `RMySQL`
 
-You can do whatever you'd like with this - as long as the package has no special
-characters, does not start with a number, and relates in some way to the actual
-functionality or data context of the package.
+-   In the early tidyverse days, packages were all lowercase and ended in an r, such as `dplyr` or `tidyr`.
 
+-   More recently, folks often go for one-word puns that describe the package purpose, like `lubridate` or `forcats`.
 
-Once you have a name, 
+You can do whatever you'd like with this - as long as the package has no special characters, does not start with a number, and relates in some way to the actual functionality or data context of the package.
 
-1. follow the steps from the Week 8 Practice Activity to produce
-a package directory and publish it on GitHub.  
+### Prepare the empty package structure
 
-2. Update the `DESCRIPTION` file.
+Once you have a name,
 
-3. Write a function called `load_data` to load your original dataset into the 
-package from the Tidy Tuesday link or using the `tidytuesdayR` package.
+1.  Follow the steps from the Week 8 Practice Activity to produce a package directory (with no functions in it yet!) and publish it on GitHub.
 
-4. Write two functions for analyzing, visualizing, or summarizing your data.
+2.  Update the `DESCRIPTION` file.
 
+3.  Write a function called `load_data` to load your original dataset into the package from the Tidy Tuesday link or using the `tidytuesdayR` package.
 
-The three functions in this starter package must use `roxygen2` documentation; 
-however, you do **not** have to write any `testthat` tests at this stage.
+The `load_data` function must use `roxygen2` documentation; however, you do **not** have to write any `testthat` tests at this stage.
 
+### Make a plan
+
+When designing a package, it is helpful to write down "aspirational" code - lines of code that you *wish* would work, that you can build towards as you develop your functions.
+
+Think about the code in your Projects 1 and 2. Which parts do you wish you had a shortcut function for?
+
+Run `use_this::use_vignette("main-functions")`. Then, open the new folder named *vignette* in your package folder. You should see a file called `main-functions.Rmd`. Change the name to `main-functions.qmd`. Open this quarto file.
+
+In `main-functions.qmd`, write three code chunks with functions that you *plan* to make, and a brief description of what they do. For example,
+
+```{r}
+#| eval: false
+
+plot_olympic_golds(olympic_data, "United States", min_year = 2000, by_gender = TRUE)
+```
+
+> This should make a line plot showing how many gold medals were won by the United States every year since 2000. There should be one line for the Men's category and one for the Women's category.
+
+At least one of these should be a **plot** and at least one should be a **summary calculation**.
+
+### Build It!
+
+Even though your package has nothing in it yet, make sure to *document* (Ctrl/Cmd-shift-D) and *build* (Ctrl/Cmd-shift-B) it before you push to GitHub.

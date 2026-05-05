@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.8.24">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-
-<title>Unit 3 – Advanced R</title>
+<title>Project 3, Checkpoint 2 – Advanced R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,36 +17,68 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
-
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./unit-3/package-structure.html" rel="next">
-<link href="./images/cat-monsters-horst.png" rel="icon" type="image/png">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b651517ce65839d647a86e2780455cfb.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-63767328852000e01d7c9d44355c1f36.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-5f858a84010510139e49c405efe9b486.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-63767328852000e01d7c9d44355c1f36.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
-<script src="site_libs/quarto-contrib/flourish-0.0.1/injectFlourishes.js"></script>
-<script src="site_libs/quarto-contrib/flourish-0.0.1/flourish.js"></script>
-<script id="quarto-search-options" type="application/json">{
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../images/cat-monsters-horst.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b651517ce65839d647a86e2780455cfb.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-63767328852000e01d7c9d44355c1f36.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-5f858a84010510139e49c405efe9b486.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-63767328852000e01d7c9d44355c1f36.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/flourish-0.0.1/injectFlourishes.js"></script>
+<script src="../site_libs/quarto-contrib/flourish-0.0.1/flourish.js"></script><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -76,11 +105,8 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-
-
 </head>
-
-<body class="nav-sidebar floating nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -245,14 +271,10 @@ ul.task-list li input[type="checkbox"] {
   </script>
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
-      <div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    <img src="./images/cat-monsters-horst.png" alt="" class="navbar-logo light-content">
-    <img src="./images/cat-monsters-horst.png" alt="" class="navbar-logo dark-content">
-    </a>
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../images/cat-monsters-horst.png" alt="" class="navbar-logo light-content"><img src="../images/cat-monsters-horst.png" alt="" class="navbar-logo dark-content"></a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
@@ -260,136 +282,68 @@ ul.task-list li input[type="checkbox"] {
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+<li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
 <span class="menu-text">Overview</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./course-materials/calendar.html"> 
+    <a class="nav-link" href="../course-materials/calendar.html"> 
 <span class="menu-text">Schedule</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./course-materials/syllabus.html"> 
+    <a class="nav-link" href="../course-materials/syllabus.html"> 
 <span class="menu-text">Syllabus</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./1810-review.html"> 
+    <a class="nav-link" href="../1810-review.html"> 
 <span class="menu-text">STAT 331 Review</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./unit-1.html"> 
+    <a class="nav-link" href="../unit-1.html"> 
 <span class="menu-text">Unit 1 - Complex Analyses</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./unit-2.html"> 
+    <a class="nav-link" href="../unit-2.html"> 
 <span class="menu-text">Unit 2 - Professional Deliverables</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./unit-3.html"> 
+    <a class="nav-link" href="../unit-3.html"> 
 <span class="menu-text">Unit 3 - Package Development</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./project.html"> 
+    <a class="nav-link" href="../project.html"> 
 <span class="menu-text">Projects</span></a>
   </li>  
 </ul>
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item compact">
+<ul class="navbar-nav navbar-nav-scroll ms-auto">
+<li class="nav-item compact">
     <a class="nav-link" href="https://github.com/atheobold/stat-541-website"> <i class="bi bi-github" role="img" aria-label="GitHub">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
 </ul>
-          </div> <!-- /navcollapse -->
+</div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
       </div> <!-- /container-fluid -->
-    </nav>
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./unit-3.html">Unit 3</a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
-    </div>
-  </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+    </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="./index.html" class="sidebar-logo-link">
-      </a>
-      </div>
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./unit-3.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Unit 3</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./unit-3/package-structure.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">R Packages</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./practice-activities/week-8.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 8: In-Class Activity</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./unit-3/unit-testing.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Testing Package Code</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./unit-3/debugging.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Debugging Package Code</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./practice-activities/week-9.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 9: In-Class Activity</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./unit-3/speed.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Code Speed</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./practice-activities/week-10.qmd" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 10: In-Class Activity</span></a>
-  </div>
-</li>
-    </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
+   
+  <ul>
+<li><a href="#set-up-basic-structure" id="toc-set-up-basic-structure" class="nav-link active" data-scroll-target="#set-up-basic-structure">Set up basic structure</a></li>
+  <li><a href="#create-the-tests" id="toc-create-the-tests" class="nav-link" data-scroll-target="#create-the-tests">Create the tests</a></li>
+  <li><a href="#write-the-functions" id="toc-write-the-functions" class="nav-link" data-scroll-target="#write-the-functions">Write the functions</a></li>
+  <li><a href="#refactor-your-functions" id="toc-refactor-your-functions" class="nav-link" data-scroll-target="#refactor-your-functions">Refactor your functions</a></li>
+  <li><a href="#document-build-test" id="toc-document-build-test" class="nav-link" data-scroll-target="#document-build-test">Document, build, test!</a></li>
+  </ul><div class="toc-actions"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/project/week-9.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Unit 3</h1>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<h1 class="title">Project 3, Checkpoint 2</h1>
 </div>
 
 
@@ -403,17 +357,117 @@ ul.task-list li input[type="checkbox"] {
   
 
 
-</header>
+</header><p>Now it’s time to fill out the functions in your package.</p>
+<section id="set-up-basic-structure" class="level3"><h3 class="anchored" data-anchor-id="set-up-basic-structure">Set up basic structure</h3>
+<p>Choose two of the “aspirational” code chunks from Project 3, Checkpoint 1 - one plot, and one summary.</p>
+<p>Run <code>use_this::use_r("some-name")</code> to create a new <code>.R</code> file for each function, choosing a name for the file that relates to the name of the function. Then run <code>use_this::use_test("some-name")</code> with the same file name to create the corresponding test.</p>
+<p>In the files <code>some-name.R</code>, fill out the <code>roxygen2</code> style documentation according to how you plan for the function to work.</p>
+</section><section id="create-the-tests" class="level3"><h3 class="anchored" data-anchor-id="create-the-tests">Create the tests</h3>
+<p>Creating the tests before the functions exist??? Yes!</p>
+<p>You’ve written “aspirational” code - so you already know what you want to have happen when your functions are run. Let’s formalize this <em>first</em>, so that as we construct the functions, we can easily test them.</p>
+<p>In the file <code>tests/testthat/test-some-name.R</code>, edit the code of the unit test.</p>
+<p>If your output is a plot, it’s hard to check specifics of the plot, but you’ll still want to make sure a plot was actually created. Your test will probably look something like this:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">test_that</span><span class="op">(</span><span class="st">"plot gold medals works"</span>, <span class="op">{</span></span>
+<span>  <span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu">load_data</span><span class="op">(</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="va">gold_plot_simple</span> <span class="op">&lt;-</span> <span class="fu">plot_olympic_golds</span><span class="op">(</span><span class="va">olympic_data</span>, <span class="st">"United States"</span><span class="op">)</span></span>
+<span>  <span class="va">gold_plot_year</span> <span class="op">&lt;-</span> <span class="fu">plot_olympic_golds</span><span class="op">(</span><span class="va">olympic_data</span>, <span class="st">"United States"</span>, min_year <span class="op">=</span> <span class="fl">2000</span><span class="op">)</span></span>
+<span>  <span class="va">gold_plot_gender</span> <span class="op">&lt;-</span> <span class="fu">plot_olympic_golds</span><span class="op">(</span><span class="va">olympic_data</span>, <span class="st">"United States"</span>, by_gender <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="fu">expect_s3_class</span><span class="op">(</span><span class="va">gold_plot_simple</span>, <span class="st">"ggplot"</span><span class="op">)</span></span>
+<span>  <span class="fu">expect_s3_class</span><span class="op">(</span><span class="va">gold_plot_year</span>, <span class="st">"ggplot"</span><span class="op">)</span></span>
+<span>  <span class="fu">expect_s3_class</span><span class="op">(</span><span class="va">gold_plot_gender</span>, <span class="st">"ggplot"</span><span class="op">)</span></span>
+<span><span class="op">}</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>If your output is summary calculations, you’ll want to also check the values themselves, by computing them outside the function and comparing. Your test will probably look like this:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">test_that</span><span class="op">(</span><span class="st">"summarize medals works"</span>, <span class="op">{</span></span>
+<span>  <span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu">load_data</span><span class="op">(</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="va">result</span> <span class="op">&lt;-</span> <span class="fu">medal_summary</span><span class="op">(</span><span class="va">dat</span>,                                country <span class="op">=</span> <span class="st">"United States"</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="co"># Check object type</span></span>
+<span>  <span class="fu">expect_s3_class</span><span class="op">(</span><span class="va">result</span>, <span class="st">"tibble"</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="co"># Check expected column names</span></span>
+<span>  <span class="fu">expect_equal</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">result</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Gold"</span>, <span class="st">"Silver"</span>, <span class="st">"Bronze"</span><span class="op">)</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="co"># Check expected values</span></span>
+<span>  <span class="fu">expect_equal</span><span class="op">(</span><span class="va">result</span><span class="op">$</span><span class="va">Gold</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, <span class="fl">2474</span><span class="op">)</span></span>
+<span>  <span class="fu">expect_equal</span><span class="op">(</span><span class="va">result</span><span class="op">$</span><span class="va">Silver</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, <span class="fl">1512</span><span class="op">)</span></span>
+<span>  <span class="fu">expect_equal</span><span class="op">(</span><span class="va">result</span><span class="op">$</span><span class="va">Bronze</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, <span class="fl">1233</span><span class="op">)</span></span>
+<span><span class="op">}</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class=".callout-note">
+<p><em>How did I know the numbers to expect? I ran code on my data and looked at it!</em></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tuesdata</span> <span class="op">&lt;-</span> <span class="fu">tidytuesdayR</span><span class="fu">::</span><span class="fu"><a href="https://dslc-io.github.io/tidytuesdayR/reference/tt_load.html">tt_load</a></span><span class="op">(</span><span class="st">'2024-08-06'</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>---- Compiling #TidyTuesday Information for 2024-08-06 ----
+--- There is 1 file available ---
 
 
-<p>In this unit, you’ll bundle your code from the quarter so far into a formal R package that will streamline and document your data collection, cleaning, and analysis. We’ll start with some simple example R packages, to learn what makes something a true <em>package</em>, and what tools exist to help you out in the development workflow.</p>
-<p>Then, we will dig deeper into good code development practices. You’ll learn to write good, through unit tests for your functions, both in and out of the package formal. Then we’ll revisit <em>debugging</em> and introduce more strategies for finding problems in your code.</p>
-<p>Finally, you’ll think more deeply about the speed and memory demands of the code you write. We’ll learn about <em>benchmarking</em> to find out where in your code a slowdown occurs, and we’ll learn a few very modern packages and coding techniques for faster code.</p>
+── Downloading files ───────────────────────────────────────────────────────────
+
+  1 of 1: "olympics.csv"</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="va">tuesdata</span><span class="op">$</span><span class="va">olympics</span></span>
+<span></span>
+<span><span class="va">dat</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">team</span> <span class="op">==</span> <span class="st">"United States"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span></span>
+<span>      Gold <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">medal</span> <span class="op">==</span> <span class="st">"Gold"</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>      Silver <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">medal</span> <span class="op">==</span> <span class="st">"Silver"</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>      Bronze <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">medal</span> <span class="op">==</span> <span class="st">"Bronze"</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span>    <span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 3
+   Gold Silver Bronze
+  &lt;int&gt;  &lt;int&gt;  &lt;int&gt;
+1  2474   1512   1233</code></pre>
+</div>
+</div>
+<p>At first this might seem silly - you’re running the exact code from <em>inside</em> your function to get the <strong>expected result</strong> and then comparing it to what the function <em>actually</em> produces.</p>
+<p>But this approach “locks down” the correct output, so that if you make the function more complicated in the future, you’ll still be checking that it works correctly.</p>
+</div>
+</section><section id="write-the-functions" class="level3"><h3 class="anchored" data-anchor-id="write-the-functions">Write the functions</h3>
+<p>Now it’s time to fill out your actual function code!</p>
+<p>Since these functions are meant to be shortcuts for code you already wrote, you can begin by simply copying that code into the function body. Then, you’ll need to <em>generalize</em> the function for different inputs and outputs.</p>
+<p>Don’t forget to <em>validate</em> your function inputs!</p>
+<div class=".callout-warning">
+<p>It can be challenging to write functions with <strong>unquoted</strong> variable names in them. For example,</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dat</span> <span class="op">|&gt;</span> <span class="fu">select</span><span class="op">(</span><span class="va">team</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>will work but</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">select_team</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">dat</span>, <span class="va">team</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">dat</span> <span class="op">|&gt;</span> <span class="fu">select</span><span class="op">(</span><span class="va">team</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>will not.</p>
+<p><strong>Stat 541 students</strong> should review <a href="https://atheobold.github.io/advanced-R-website/unit-1/writing-functions.html#non-standard-evaluation-and-tunneling">the Unit 1 material about non-standard evaluation</a>.</p>
+<p><strong>Stat 431 students</strong>, you may always take variable names as <em>string</em> input. Then use <code>.data[[var_name]]</code> wherever you used to have the name of the variable, e.g.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">select_team</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">dat</span>, <span class="va">team</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">dat</span> <span class="op">|&gt;</span> <span class="fu">select</span><span class="op">(</span><span class="va">.data</span><span class="op">[[</span><span class="va">team</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</section><section id="refactor-your-functions" class="level3"><h3 class="anchored" data-anchor-id="refactor-your-functions">Refactor your functions</h3>
+<p>Look for some steps in your functions where something is repeated, or might be repeated in the future. Some examples might include:</p>
+<ul>
+<li><p>Loading and immediately filtering your data.</p></li>
+<li><p>Validating function input</p></li>
+<li><p>Computing frequently used summary statistics.</p></li>
+</ul>
+<p>Create a new helper function for at least one of these steps, and include this function (and its documentation and tests!) in your package.</p>
+</section><section id="document-build-test" class="level3"><h3 class="anchored" data-anchor-id="document-build-test">Document, build, test!</h3>
+<p>Make sure to re-document, re-build, and re-test your package before you do your final push to GitHub!</p>
 
 
-
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
     if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -826,37 +880,25 @@ ul.task-list li input[type="checkbox"] {
     }
   });
   </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="./unit-3/package-structure.html" class="pagination-link" aria-label="R Packages">
-        <span class="nav-page-text">R Packages</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
+<footer class="footer"><div class="nav-footer">
     <div class="nav-footer-left">
 <p>This page is built with ❤️ by Drs. Kelly Bodwin &amp; Allison Theobold and also <a href="https://quarto.org/">Quarto</a>.</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/unit-3.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/project/week-9.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
-    <li class="nav-item">
-    <a class="nav-link" href="./LICENSE.md">
+<li class="nav-item">
+    <a class="nav-link" href="../LICENSE.md">
 <p>License</p>
 </a>
   </li>  
 </ul>
-    </div>
+</div>
   </div>
 </footer>
-
-
 
 
 </body></html>
