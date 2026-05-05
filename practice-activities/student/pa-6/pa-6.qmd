@@ -42,7 +42,7 @@ named `county_map`.
 2. Using `ggplot()`, generate a map of the US counties. Have the fill color for
 each county be white and the outline color be a dark grey. Use cartesian
 coordinates.
-*Hint: `geom_sf()` and `coord_sf()` will be helpful here!*
+*Hint: `geom_sf()` will be helpful here!*
 
 ```{r}
 #| label: question-2
