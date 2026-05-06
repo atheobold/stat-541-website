@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.24">
+<meta name="generator" content="quarto-1.8.26">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>R Packages – Advanced R</title>
 <style>
@@ -71,9 +71,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b651517ce65839d647a86e2780455cfb.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b758ccaa5987ceb1b75504551e579abf.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-63767328852000e01d7c9d44355c1f36.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
@@ -285,7 +285,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
 <li class="nav-item">
-    <a class="nav-link active" href="../index.html" aria-current="page"> 
+    <a class="nav-link" href="../index.html"> 
 <span class="menu-text">Overview</span></a>
   </li>  
   <li class="nav-item">
@@ -309,7 +309,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Unit 2 - Professional Deliverables</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../unit-3.html"> 
+    <a class="nav-link active" href="../unit-3.html" aria-current="page"> 
 <span class="menu-text">Unit 3 - Package Development</span></a>
   </li>  
   <li class="nav-item">
@@ -339,11 +339,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </div>
   </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="../index.html" class="sidebar-logo-link">
-      </a>
-      </div>
-    <div class="sidebar-menu-container"> 
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
@@ -483,7 +479,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Now, we could go through the tedious process of <em>forking</em> the repository, then all the steps after that to get it open in your local computer’s RStudio.</p>
 <p>Instead, let’s do all these steps in one with <code>usethis</code>. Open up a new RStudio session, load the <code>usethis</code> package, and then run:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/create_from_github.html">create_from_github</a></span><span class="op">(</span><span class="st">"Cal-Poly-Advanced-R/meangirls"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">usethis</span><span class="fu">::</span><span class="fu">create_from_github</span><span class="op">(</span><span class="st">"Cal-Poly-Advanced-R/meangirls"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>A lot of output will print out.</p>
 <p>Here’s what this does:</p>
@@ -501,7 +497,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
 <li><p>Opens a new instance of RStudio in the <code>meangirls</code> R project.</p></li>
 </ul>
-<p>It is also possible to do this steps without <code><a href="https://usethis.r-lib.org/reference/create_from_github.html">usethis::create_from_github</a></code>, if you prefer.</p>
+<p>It is also possible to do this steps without <code>usethis::create_from_github</code>, if you prefer.</p>
 <ol type="1">
 <li><p>On GitHub, navigate to <a href="https://github.com/Cal-Poly-Advanced-R/meangirls">the package repo</a> and click “Fork”.</p></li>
 <li><p>Using GitHub Desktop (or your preferred method), clone your new forked package to your local machine.</p></li>
@@ -514,7 +510,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>It’s time to fix the <code>give_candygrams()</code> function so that it includes extra messages. But first, we need to make a <strong>branch</strong> of our repo, so that when we change the code, it is carefully tracked separately.</p>
 <p>In your console, type:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/pull-requests.html">pr_init</a></span><span class="op">(</span><span class="st">"fix-candygrams"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">usethis</span><span class="fu">::</span><span class="fu">pr_init</span><span class="op">(</span><span class="st">"fix-candygrams"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>This will switch you to a new branch.</p>
 <p><img src="images/see_branch.png" class="img-fluid"></p>
@@ -524,7 +520,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>When you are satisfied with your change, <strong>commit your changes</strong> to Git.</p>
 <p>Then run in the console:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/pull-requests.html">pr_push</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">usethis</span><span class="fu">::</span><span class="fu">pr_push</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>This will magically pop up a Pull Request window! Complete the Pull Request if you wish.</p>
 </section><section id="testing-the-package" class="level3"><h3 class="anchored" data-anchor-id="testing-the-package">Testing the package</h3>
@@ -534,7 +530,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><img src="images/run_tests.gif" class="img-fluid"></p>
 <p>Oh no! One of the unit tests failed.</p>
 <p>In the folder <code>tests/testthat</code>, find the appropriate test file. Figure out how the actual output was different from the expected output.</p>
-<p>Start a new pull request branch using <code><a href="https://usethis.r-lib.org/reference/pull-requests.html">usethis::pr_init()</a></code>, as you did above. Track down the error, and make changes to the function. Keep trying until alltests succeed.</p>
+<p>Start a new pull request branch using <code>usethis::pr_init()</code>, as you did above. Track down the error, and make changes to the function. Keep trying until alltests succeed.</p>
 </section><section id="make-a-major-contribution" class="level3"><h3 class="anchored" data-anchor-id="make-a-major-contribution">Make a major contribution</h3>
 <p>When handing out candygrams, <a href="https://www.youtube.com/embed/nnjWmz4lB2U">Santa has a whole classroom of students to announce</a>.</p>
 <p>It would be tedious to have to call the <code>give_candygrams()</code> function once for each student. Instead, it would be convenient to have a vector of student names and a vector of candygram counts, and run a single function like so:</p>

@@ -11,8 +11,7 @@ library(tidyverse)
 
 ## California Counties
 
-Notice Alameda has **multiple** rows in these data! What do you think each 
-unique `long` and `lat` correspond to?
+Notice Alameda has **multiple** rows in these data! What do you think each unique `long` and `lat` correspond to?
 
 ## How would you expect this plot to look? Draw it out!
 
@@ -91,7 +90,7 @@ ggplot(data = ca_counties) +
 ## Why not use `leaflet`?
 
 | When to use `ggplot` to make a map | When to use `leaflet` to make a map |
-|------------------------------------|---------------------------------------|
-|                                    |                                       |
-|                                    |                                       |
-|                                    |                                       |
+|------------------------------------|-------------------------------------|
+|                                    |                                     |
+|                                    |                                     |
+|                                    |                                     |
