@@ -18,17 +18,11 @@ Before finalizing your country choice, verify that you can obtain additional cou
 
 **On the main page:**
 
-- Create a `leaflet` map visualizing information from your original dataset
-(from Project 1).
-- This map should be thoughtfully integrated into the existing structure of
-your dashboard. 
-
 Now that you have your report turned into a dashboard, it is time to *cut down*
-the content! 
+the content!
 
 - The content included in the main page should focus on **one** research
-question. Meaning, you need to choose one of your two questions to focus on! 
-- The leaflet map you make should address the research question you choose!
+question. Meaning, you need to choose one of your two questions to focus on!
 
 **On a (new) second page:**
 
@@ -36,28 +30,33 @@ question. Meaning, you need to choose one of your two questions to focus on!
 
 - Include a short "Why this country?" section (2–3 sentences) on your dashboard.
 
-- Create at least one dynamic visualization (e.g., an animated plot or a `plotly` interactive graphic) using the new country-specific data.
+**Integrate Dynamic Visualizations**
+
+- Create one dynamic visualization (e.g., an animated plot or a
+`plotly` interactive graphic)
+- Create one `leaflet` map 
+
+One plot should be made for the original data (on the main page) and one plot
+should be made for the new country-specific data. You get to choose which plot
+is best suited for each context!
 
 **Think about formatting / structure:**
 
-The content in your dashboard should be organized in a way that is easy for
-the reader to view. 
+The content in your dashboard should be organized in a way that is easy for the reader to view.
 
-For tabsets: 
+For tabsets:
 
-- It should be *obvious* that the reader can click on them! 
-- More than three tabsets gets overwhelming! 
-- Sufficient space should be given to the tabsets, so their titles appear
-horizontally. 
+- It should be *obvious* that the reader can click on them!
+- More than three tabsets gets overwhelming!
+- Sufficient space should be given to the tabsets, so their titles appear horizontally.
 
 For plots:
 
-- Sufficient space should be given to the plot! 
-- The text on the plot should be legible without needing to zoom in or squint. 
-- The colors on the plot should coordinate with the colors of the dashboard 
-theme.
+- Sufficient space should be given to the plot!
+- The text on the plot should be legible without needing to zoom in or squint.
+- The colors on the plot should coordinate with the colors of the dashboard theme.
 
 For text descriptions:
 
 - Keep these short and easy to read!
-- Highlight key words or findings to bring them out. 
+- Highlight key words or findings to bring them out.
