@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.26">
+<meta name="generator" content="quarto-1.8.24">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>JSON Data &amp; APIs – Advanced R</title>
 <style>
@@ -71,9 +71,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b758ccaa5987ceb1b75504551e579abf.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b651517ce65839d647a86e2780455cfb.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-63767328852000e01d7c9d44355c1f36.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
@@ -285,7 +285,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
 <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
+    <a class="nav-link active" href="../index.html" aria-current="page"> 
 <span class="menu-text">Overview</span></a>
   </li>  
   <li class="nav-item">
@@ -301,7 +301,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">STAT 331 Review</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../unit-1.html" aria-current="page"> 
+    <a class="nav-link" href="../unit-1.html"> 
 <span class="menu-text">Unit 1 - Complex Analyses</span></a>
   </li>  
   <li class="nav-item">
@@ -339,7 +339,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </div>
   </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="sidebar-menu-container"> 
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="../index.html" class="sidebar-logo-link">
+      </a>
+      </div>
+    <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
@@ -619,23 +623,23 @@ Caused by error:
 <p><strong>In both cases, your unnested data should look like this:</strong></p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="arqwuswmwz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#arqwuswmwz table {
+<div id="mbhxcgjvul" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#mbhxcgjvul table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#arqwuswmwz thead, #arqwuswmwz tbody, #arqwuswmwz tfoot, #arqwuswmwz tr, #arqwuswmwz td, #arqwuswmwz th {
+#mbhxcgjvul thead, #mbhxcgjvul tbody, #mbhxcgjvul tfoot, #mbhxcgjvul tr, #mbhxcgjvul td, #mbhxcgjvul th {
   border-style: none;
 }
 
-#arqwuswmwz p {
+#mbhxcgjvul p {
   margin: 0;
   padding: 0;
 }
 
-#arqwuswmwz .gt_table {
+#mbhxcgjvul .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -661,12 +665,12 @@ Caused by error:
   border-left-color: #D3D3D3;
 }
 
-#arqwuswmwz .gt_caption {
+#mbhxcgjvul .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#arqwuswmwz .gt_title {
+#mbhxcgjvul .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -678,7 +682,7 @@ Caused by error:
   border-bottom-width: 0;
 }
 
-#arqwuswmwz .gt_subtitle {
+#mbhxcgjvul .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -690,7 +694,7 @@ Caused by error:
   border-top-width: 0;
 }
 
-#arqwuswmwz .gt_heading {
+#mbhxcgjvul .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -702,13 +706,13 @@ Caused by error:
   border-right-color: #D3D3D3;
 }
 
-#arqwuswmwz .gt_bottom_border {
+#mbhxcgjvul .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#arqwuswmwz .gt_col_headings {
+#mbhxcgjvul .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -723,7 +727,7 @@ Caused by error:
   border-right-color: #D3D3D3;
 }
 
-#arqwuswmwz .gt_col_heading {
+#mbhxcgjvul .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -743,7 +747,7 @@ Caused by error:
   overflow-x: hidden;
 }
 
-#arqwuswmwz .gt_column_spanner_outer {
+#mbhxcgjvul .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -755,15 +759,15 @@ Caused by error:
   padding-right: 4px;
 }
 
-#arqwuswmwz .gt_column_spanner_outer:first-child {
+#mbhxcgjvul .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#arqwuswmwz .gt_column_spanner_outer:last-child {
+#mbhxcgjvul .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#arqwuswmwz .gt_column_spanner {
+#mbhxcgjvul .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -775,11 +779,11 @@ Caused by error:
   width: 100%;
 }
 
-#arqwuswmwz .gt_spanner_row {
+#mbhxcgjvul .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#arqwuswmwz .gt_group_heading {
+#mbhxcgjvul .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -805,7 +809,7 @@ Caused by error:
   text-align: left;
 }
 
-#arqwuswmwz .gt_empty_group_heading {
+#mbhxcgjvul .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -820,15 +824,15 @@ Caused by error:
   vertical-align: middle;
 }
 
-#arqwuswmwz .gt_from_md > :first-child {
+#mbhxcgjvul .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#arqwuswmwz .gt_from_md > :last-child {
+#mbhxcgjvul .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#arqwuswmwz .gt_row {
+#mbhxcgjvul .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -847,7 +851,7 @@ Caused by error:
   overflow-x: hidden;
 }
 
-#arqwuswmwz .gt_stub {
+#mbhxcgjvul .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -860,7 +864,7 @@ Caused by error:
   padding-right: 5px;
 }
 
-#arqwuswmwz .gt_stub_row_group {
+#mbhxcgjvul .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -874,15 +878,15 @@ Caused by error:
   vertical-align: top;
 }
 
-#arqwuswmwz .gt_row_group_first td {
+#mbhxcgjvul .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#arqwuswmwz .gt_row_group_first th {
+#mbhxcgjvul .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#arqwuswmwz .gt_summary_row {
+#mbhxcgjvul .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -892,16 +896,16 @@ Caused by error:
   padding-right: 5px;
 }
 
-#arqwuswmwz .gt_first_summary_row {
+#mbhxcgjvul .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#arqwuswmwz .gt_first_summary_row.thick {
+#mbhxcgjvul .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#arqwuswmwz .gt_last_summary_row {
+#mbhxcgjvul .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -911,7 +915,7 @@ Caused by error:
   border-bottom-color: #D3D3D3;
 }
 
-#arqwuswmwz .gt_grand_summary_row {
+#mbhxcgjvul .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -921,7 +925,7 @@ Caused by error:
   padding-right: 5px;
 }
 
-#arqwuswmwz .gt_first_grand_summary_row {
+#mbhxcgjvul .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -931,7 +935,7 @@ Caused by error:
   border-top-color: #D3D3D3;
 }
 
-#arqwuswmwz .gt_last_grand_summary_row_top {
+#mbhxcgjvul .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -941,11 +945,11 @@ Caused by error:
   border-bottom-color: #D3D3D3;
 }
 
-#arqwuswmwz .gt_striped {
+#mbhxcgjvul .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#arqwuswmwz .gt_table_body {
+#mbhxcgjvul .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -954,7 +958,7 @@ Caused by error:
   border-bottom-color: #D3D3D3;
 }
 
-#arqwuswmwz .gt_footnotes {
+#mbhxcgjvul .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -968,7 +972,7 @@ Caused by error:
   border-right-color: #D3D3D3;
 }
 
-#arqwuswmwz .gt_footnote {
+#mbhxcgjvul .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -977,7 +981,7 @@ Caused by error:
   padding-right: 5px;
 }
 
-#arqwuswmwz .gt_sourcenotes {
+#mbhxcgjvul .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -991,7 +995,7 @@ Caused by error:
   border-right-color: #D3D3D3;
 }
 
-#arqwuswmwz .gt_sourcenote {
+#mbhxcgjvul .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -999,72 +1003,72 @@ Caused by error:
   padding-right: 5px;
 }
 
-#arqwuswmwz .gt_left {
+#mbhxcgjvul .gt_left {
   text-align: left;
 }
 
-#arqwuswmwz .gt_center {
+#mbhxcgjvul .gt_center {
   text-align: center;
 }
 
-#arqwuswmwz .gt_right {
+#mbhxcgjvul .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#arqwuswmwz .gt_font_normal {
+#mbhxcgjvul .gt_font_normal {
   font-weight: normal;
 }
 
-#arqwuswmwz .gt_font_bold {
+#mbhxcgjvul .gt_font_bold {
   font-weight: bold;
 }
 
-#arqwuswmwz .gt_font_italic {
+#mbhxcgjvul .gt_font_italic {
   font-style: italic;
 }
 
-#arqwuswmwz .gt_super {
+#mbhxcgjvul .gt_super {
   font-size: 65%;
 }
 
-#arqwuswmwz .gt_footnote_marks {
+#mbhxcgjvul .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#arqwuswmwz .gt_asterisk {
+#mbhxcgjvul .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#arqwuswmwz .gt_indent_1 {
+#mbhxcgjvul .gt_indent_1 {
   text-indent: 5px;
 }
 
-#arqwuswmwz .gt_indent_2 {
+#mbhxcgjvul .gt_indent_2 {
   text-indent: 10px;
 }
 
-#arqwuswmwz .gt_indent_3 {
+#mbhxcgjvul .gt_indent_3 {
   text-indent: 15px;
 }
 
-#arqwuswmwz .gt_indent_4 {
+#mbhxcgjvul .gt_indent_4 {
   text-indent: 20px;
 }
 
-#arqwuswmwz .gt_indent_5 {
+#mbhxcgjvul .gt_indent_5 {
   text-indent: 25px;
 }
 
-#arqwuswmwz .katex-display {
+#mbhxcgjvul .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#arqwuswmwz div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#mbhxcgjvul div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1284,23 +1288,23 @@ Caused by error:
 <span>             max_price <span class="op">=</span> <span class="fu"><a href="https://gt.rstudio.com/reference/md.html">md</a></span><span class="op">(</span><span class="st">"**Max Company Sale Price**"</span><span class="op">)</span></span>
 <span>             <span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div id="eizxxibimv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#eizxxibimv table {
+<div id="mkrkurfenp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#mkrkurfenp table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#eizxxibimv thead, #eizxxibimv tbody, #eizxxibimv tfoot, #eizxxibimv tr, #eizxxibimv td, #eizxxibimv th {
+#mkrkurfenp thead, #mkrkurfenp tbody, #mkrkurfenp tfoot, #mkrkurfenp tr, #mkrkurfenp td, #mkrkurfenp th {
   border-style: none;
 }
 
-#eizxxibimv p {
+#mkrkurfenp p {
   margin: 0;
   padding: 0;
 }
 
-#eizxxibimv .gt_table {
+#mkrkurfenp .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1326,12 +1330,12 @@ Caused by error:
   border-left-color: #D3D3D3;
 }
 
-#eizxxibimv .gt_caption {
+#mkrkurfenp .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#eizxxibimv .gt_title {
+#mkrkurfenp .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1343,7 +1347,7 @@ Caused by error:
   border-bottom-width: 0;
 }
 
-#eizxxibimv .gt_subtitle {
+#mkrkurfenp .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1355,7 +1359,7 @@ Caused by error:
   border-top-width: 0;
 }
 
-#eizxxibimv .gt_heading {
+#mkrkurfenp .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1367,13 +1371,13 @@ Caused by error:
   border-right-color: #D3D3D3;
 }
 
-#eizxxibimv .gt_bottom_border {
+#mkrkurfenp .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#eizxxibimv .gt_col_headings {
+#mkrkurfenp .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1388,7 +1392,7 @@ Caused by error:
   border-right-color: #D3D3D3;
 }
 
-#eizxxibimv .gt_col_heading {
+#mkrkurfenp .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1408,7 +1412,7 @@ Caused by error:
   overflow-x: hidden;
 }
 
-#eizxxibimv .gt_column_spanner_outer {
+#mkrkurfenp .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1420,15 +1424,15 @@ Caused by error:
   padding-right: 4px;
 }
 
-#eizxxibimv .gt_column_spanner_outer:first-child {
+#mkrkurfenp .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#eizxxibimv .gt_column_spanner_outer:last-child {
+#mkrkurfenp .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#eizxxibimv .gt_column_spanner {
+#mkrkurfenp .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1440,11 +1444,11 @@ Caused by error:
   width: 100%;
 }
 
-#eizxxibimv .gt_spanner_row {
+#mkrkurfenp .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#eizxxibimv .gt_group_heading {
+#mkrkurfenp .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1470,7 +1474,7 @@ Caused by error:
   text-align: left;
 }
 
-#eizxxibimv .gt_empty_group_heading {
+#mkrkurfenp .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1485,15 +1489,15 @@ Caused by error:
   vertical-align: middle;
 }
 
-#eizxxibimv .gt_from_md > :first-child {
+#mkrkurfenp .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#eizxxibimv .gt_from_md > :last-child {
+#mkrkurfenp .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#eizxxibimv .gt_row {
+#mkrkurfenp .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1512,7 +1516,7 @@ Caused by error:
   overflow-x: hidden;
 }
 
-#eizxxibimv .gt_stub {
+#mkrkurfenp .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1525,7 +1529,7 @@ Caused by error:
   padding-right: 5px;
 }
 
-#eizxxibimv .gt_stub_row_group {
+#mkrkurfenp .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1539,15 +1543,15 @@ Caused by error:
   vertical-align: top;
 }
 
-#eizxxibimv .gt_row_group_first td {
+#mkrkurfenp .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#eizxxibimv .gt_row_group_first th {
+#mkrkurfenp .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#eizxxibimv .gt_summary_row {
+#mkrkurfenp .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1557,16 +1561,16 @@ Caused by error:
   padding-right: 5px;
 }
 
-#eizxxibimv .gt_first_summary_row {
+#mkrkurfenp .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#eizxxibimv .gt_first_summary_row.thick {
+#mkrkurfenp .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#eizxxibimv .gt_last_summary_row {
+#mkrkurfenp .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1576,7 +1580,7 @@ Caused by error:
   border-bottom-color: #D3D3D3;
 }
 
-#eizxxibimv .gt_grand_summary_row {
+#mkrkurfenp .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1586,7 +1590,7 @@ Caused by error:
   padding-right: 5px;
 }
 
-#eizxxibimv .gt_first_grand_summary_row {
+#mkrkurfenp .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1596,7 +1600,7 @@ Caused by error:
   border-top-color: #D3D3D3;
 }
 
-#eizxxibimv .gt_last_grand_summary_row_top {
+#mkrkurfenp .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1606,11 +1610,11 @@ Caused by error:
   border-bottom-color: #D3D3D3;
 }
 
-#eizxxibimv .gt_striped {
+#mkrkurfenp .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#eizxxibimv .gt_table_body {
+#mkrkurfenp .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1619,7 +1623,7 @@ Caused by error:
   border-bottom-color: #D3D3D3;
 }
 
-#eizxxibimv .gt_footnotes {
+#mkrkurfenp .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1633,7 +1637,7 @@ Caused by error:
   border-right-color: #D3D3D3;
 }
 
-#eizxxibimv .gt_footnote {
+#mkrkurfenp .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1642,7 +1646,7 @@ Caused by error:
   padding-right: 5px;
 }
 
-#eizxxibimv .gt_sourcenotes {
+#mkrkurfenp .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1656,7 +1660,7 @@ Caused by error:
   border-right-color: #D3D3D3;
 }
 
-#eizxxibimv .gt_sourcenote {
+#mkrkurfenp .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1664,72 +1668,72 @@ Caused by error:
   padding-right: 5px;
 }
 
-#eizxxibimv .gt_left {
+#mkrkurfenp .gt_left {
   text-align: left;
 }
 
-#eizxxibimv .gt_center {
+#mkrkurfenp .gt_center {
   text-align: center;
 }
 
-#eizxxibimv .gt_right {
+#mkrkurfenp .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#eizxxibimv .gt_font_normal {
+#mkrkurfenp .gt_font_normal {
   font-weight: normal;
 }
 
-#eizxxibimv .gt_font_bold {
+#mkrkurfenp .gt_font_bold {
   font-weight: bold;
 }
 
-#eizxxibimv .gt_font_italic {
+#mkrkurfenp .gt_font_italic {
   font-style: italic;
 }
 
-#eizxxibimv .gt_super {
+#mkrkurfenp .gt_super {
   font-size: 65%;
 }
 
-#eizxxibimv .gt_footnote_marks {
+#mkrkurfenp .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#eizxxibimv .gt_asterisk {
+#mkrkurfenp .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#eizxxibimv .gt_indent_1 {
+#mkrkurfenp .gt_indent_1 {
   text-indent: 5px;
 }
 
-#eizxxibimv .gt_indent_2 {
+#mkrkurfenp .gt_indent_2 {
   text-indent: 10px;
 }
 
-#eizxxibimv .gt_indent_3 {
+#mkrkurfenp .gt_indent_3 {
   text-indent: 15px;
 }
 
-#eizxxibimv .gt_indent_4 {
+#mkrkurfenp .gt_indent_4 {
   text-indent: 20px;
 }
 
-#eizxxibimv .gt_indent_5 {
+#mkrkurfenp .gt_indent_5 {
   text-indent: 25px;
 }
 
-#eizxxibimv .katex-display {
+#mkrkurfenp .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#eizxxibimv div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#mkrkurfenp div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>

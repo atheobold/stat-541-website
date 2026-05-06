@@ -2,11 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://github.com/atheobold/stat-541-website/unit-3/unit-testing.html</loc>
-    <lastmod>2026-05-05T21:55:55.277Z</lastmod>
+    <lastmod>2026-05-06T22:19:17.926Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/atheobold/stat-541-website/unit-3/package-structure.html</loc>
-    <lastmod>2026-05-05T21:55:55.277Z</lastmod>
+    <lastmod>2026-05-05T05:29:50.117Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/atheobold/stat-541-website/unit-3.html</loc>
@@ -14,31 +14,31 @@
   </url>
   <url>
     <loc>https://github.com/atheobold/stat-541-website/unit-2/quarto-dashboard-dynamic.html</loc>
-    <lastmod>2026-03-28T13:35:10.135Z</lastmod>
+    <lastmod>2026-04-15T22:33:27.950Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/atheobold/stat-541-website/unit-2/ggplot-extensions.html</loc>
-    <lastmod>2026-03-18T23:52:25.940Z</lastmod>
+    <lastmod>2026-04-15T22:33:27.949Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/atheobold/stat-541-website/unit-1/writing-functions.html</loc>
-    <lastmod>2026-04-08T14:34:32.877Z</lastmod>
+    <lastmod>2026-04-15T22:33:27.948Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/atheobold/stat-541-website/unit-1/styled-plots.html</loc>
-    <lastmod>2026-03-28T21:36:03.584Z</lastmod>
+    <lastmod>2026-04-15T22:33:27.947Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/atheobold/stat-541-website/unit-1/iterating-functions.html</loc>
-    <lastmod>2026-04-06T21:40:31.873Z</lastmod>
+    <lastmod>2026-04-15T22:33:27.947Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/atheobold/stat-541-website/unit-1/efficient-code.html</loc>
-    <lastmod>2026-03-19T00:21:19.042Z</lastmod>
+    <lastmod>2026-04-15T22:33:27.943Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/atheobold/stat-541-website/unit-1.html</loc>
-    <lastmod>2026-02-09T14:34:31.540Z</lastmod>
+    <lastmod>2026-04-15T22:33:27.942Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/atheobold/stat-541-website/slides/06-maps-warmup.html</loc>
@@ -50,43 +50,47 @@
   </url>
   <url>
     <loc>https://github.com/atheobold/stat-541-website/set-up/setup-discord.html</loc>
-    <lastmod>2025-04-24T19:29:42.648Z</lastmod>
+    <lastmod>2026-04-15T22:33:27.937Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/atheobold/stat-541-website/project/week-7.html</loc>
-    <lastmod>2026-03-19T00:04:00.427Z</lastmod>
+    <loc>https://github.com/atheobold/stat-541-website/project/week-8.html</loc>
+    <lastmod>2026-05-05T17:44:51.577Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/atheobold/stat-541-website/project/week-5.html</loc>
-    <lastmod>2026-03-03T14:45:19.863Z</lastmod>
+    <loc>https://github.com/atheobold/stat-541-website/project/week-6.html</loc>
+    <lastmod>2026-05-06T22:18:35.843Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/atheobold/stat-541-website/project/week-3.html</loc>
-    <lastmod>2026-04-18T18:36:00.361Z</lastmod>
+    <loc>https://github.com/atheobold/stat-541-website/project/week-4.html</loc>
+    <lastmod>2026-04-15T22:33:27.936Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/atheobold/stat-541-website/project/week-2.html</loc>
+    <lastmod>2026-04-15T22:33:27.935Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/atheobold/stat-541-website/project/week-1.html</loc>
-    <lastmod>2026-03-30T13:32:51.870Z</lastmod>
+    <lastmod>2026-04-15T22:33:27.935Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/atheobold/stat-541-website/project/rubrics/grading-rubric.html</loc>
-    <lastmod>2026-03-04T15:18:43.601Z</lastmod>
+    <lastmod>2026-04-15T22:33:27.935Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/atheobold/stat-541-website/project/project-2.html</loc>
-    <lastmod>2026-03-19T00:04:32.316Z</lastmod>
+    <lastmod>2026-04-15T22:33:27.935Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/atheobold/stat-541-website/project/example-project-olympics/week-7.html</loc>
-    <lastmod>2026-03-25T09:16:12.132Z</lastmod>
+    <lastmod>2026-04-15T22:33:27.933Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/atheobold/stat-541-website/project/example-project-olympics/week-5.html</loc>
-    <lastmod>2026-03-25T09:16:12.132Z</lastmod>
+    <lastmod>2026-04-15T22:33:27.933Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/atheobold/stat-541-website/project/example-project-olympics/week-3.html</loc>
-    <lastmod>2026-04-18T15:47:41.626Z</lastmod>
+    <lastmod>2026-04-15T22:33:27.933Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/atheobold/stat-541-website/project/example-project-olympics/week-1.html</loc>
@@ -94,11 +98,11 @@
   </url>
   <url>
     <loc>https://github.com/atheobold/stat-541-website/practice-activities/week-9.html</loc>
-    <lastmod>2026-05-05T21:55:55.276Z</lastmod>
+    <lastmod>2026-05-05T17:10:04.243Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/atheobold/stat-541-website/practice-activities/week-7.html</loc>
-    <lastmod>2026-04-06T14:09:10.821Z</lastmod>
+    <lastmod>2026-04-15T22:33:27.931Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/atheobold/stat-541-website/practice-activities/week-5.html</loc>
@@ -106,47 +110,47 @@
   </url>
   <url>
     <loc>https://github.com/atheobold/stat-541-website/practice-activities/week-3.html</loc>
-    <lastmod>2026-04-13T23:21:09.981Z</lastmod>
+    <lastmod>2026-04-15T22:33:27.931Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/atheobold/stat-541-website/practice-activities/week-1.html</loc>
-    <lastmod>2026-04-08T20:22:10.932Z</lastmod>
+    <lastmod>2026-04-15T22:33:27.930Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/atheobold/stat-541-website/group-stuff/instructor-action.html</loc>
-    <lastmod>2026-03-04T15:09:37.969Z</lastmod>
+    <lastmod>2026-04-15T22:33:27.827Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/atheobold/stat-541-website/course-materials/syllabus.html</loc>
-    <lastmod>2026-03-28T22:37:39.478Z</lastmod>
+    <lastmod>2026-04-15T22:33:27.713Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/atheobold/stat-541-website/1810-review/tidyr-review.html</loc>
-    <lastmod>2026-03-25T09:18:32.937Z</lastmod>
+    <lastmod>2026-04-15T22:33:27.682Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/atheobold/stat-541-website/1810-review/setup-version-control.html</loc>
-    <lastmod>2026-03-29T14:24:04.151Z</lastmod>
+    <lastmod>2026-04-15T22:33:27.682Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/atheobold/stat-541-website/1810-review/ggplot-review.html</loc>
-    <lastmod>2026-03-25T09:17:51.313Z</lastmod>
+    <lastmod>2026-04-15T22:33:27.676Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/atheobold/stat-541-website/1810-review.html</loc>
-    <lastmod>2026-03-19T00:05:12.987Z</lastmod>
+    <lastmod>2026-04-15T22:33:27.675Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/atheobold/stat-541-website/1810-review/dplyr-review.html</loc>
-    <lastmod>2026-03-23T08:17:41.520Z</lastmod>
+    <lastmod>2026-04-15T22:33:27.676Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/atheobold/stat-541-website/1810-review/quarto-review.html</loc>
-    <lastmod>2026-03-25T09:22:59.773Z</lastmod>
+    <lastmod>2026-04-15T22:33:27.682Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/atheobold/stat-541-website/1810-review/setup-workflow.html</loc>
-    <lastmod>2026-03-25T09:18:19.101Z</lastmod>
+    <lastmod>2026-04-15T22:33:27.682Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/atheobold/stat-541-website/course-materials/calendar.html</loc>
@@ -154,23 +158,23 @@
   </url>
   <url>
     <loc>https://github.com/atheobold/stat-541-website/group-stuff/contract.html</loc>
-    <lastmod>2026-03-04T15:52:04.577Z</lastmod>
+    <lastmod>2026-04-15T22:33:27.826Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/atheobold/stat-541-website/index.html</loc>
-    <lastmod>2026-03-25T06:51:48.569Z</lastmod>
+    <lastmod>2026-04-15T22:33:27.863Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/atheobold/stat-541-website/practice-activities/week-2.html</loc>
-    <lastmod>2026-04-08T14:37:36.902Z</lastmod>
+    <lastmod>2026-04-15T22:33:27.931Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/atheobold/stat-541-website/practice-activities/week-4.html</loc>
-    <lastmod>2026-04-20T19:26:44.093Z</lastmod>
+    <lastmod>2026-04-20T05:02:59.875Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/atheobold/stat-541-website/practice-activities/week-6.html</loc>
-    <lastmod>2026-03-28T13:52:19.230Z</lastmod>
+    <lastmod>2026-04-15T22:33:27.931Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/atheobold/stat-541-website/practice-activities/week-8.html</loc>
@@ -178,7 +182,7 @@
   </url>
   <url>
     <loc>https://github.com/atheobold/stat-541-website/project.html</loc>
-    <lastmod>2026-03-17T17:50:00.415Z</lastmod>
+    <lastmod>2026-04-15T22:33:27.931Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/atheobold/stat-541-website/project/example-project-olympics/week-2.html</loc>
@@ -186,11 +190,11 @@
   </url>
   <url>
     <loc>https://github.com/atheobold/stat-541-website/project/example-project-olympics/week-4.html</loc>
-    <lastmod>2026-03-25T09:16:12.132Z</lastmod>
+    <lastmod>2026-04-15T22:33:27.933Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/atheobold/stat-541-website/project/example-project-olympics/week-6.html</loc>
-    <lastmod>2026-03-25T09:16:12.132Z</lastmod>
+    <lastmod>2026-04-15T22:33:27.933Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/atheobold/stat-541-website/project/project-1.html</loc>
@@ -198,31 +202,35 @@
   </url>
   <url>
     <loc>https://github.com/atheobold/stat-541-website/project/project-3.html</loc>
-    <lastmod>2026-05-05T21:55:55.276Z</lastmod>
+    <lastmod>2026-05-05T17:12:09.869Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/atheobold/stat-541-website/project/week-0.html</loc>
-    <lastmod>2026-03-30T12:12:42.580Z</lastmod>
+    <lastmod>2026-04-15T22:33:27.935Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/atheobold/stat-541-website/project/week-2.html</loc>
-    <lastmod>2026-04-06T12:47:37.182Z</lastmod>
+    <loc>https://github.com/atheobold/stat-541-website/project/week-10.html</loc>
+    <lastmod>2026-05-05T21:00:15.643Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/atheobold/stat-541-website/project/week-4.html</loc>
-    <lastmod>2026-03-03T14:42:58.933Z</lastmod>
+    <loc>https://github.com/atheobold/stat-541-website/project/week-3.html</loc>
+    <lastmod>2026-04-18T17:38:46.500Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/atheobold/stat-541-website/project/week-6.html</loc>
-    <lastmod>2026-05-06T18:25:25.104Z</lastmod>
+    <loc>https://github.com/atheobold/stat-541-website/project/week-5.html</loc>
+    <lastmod>2026-04-15T22:33:27.936Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/atheobold/stat-541-website/project/week-8.html</loc>
-    <lastmod>2026-05-05T21:55:55.277Z</lastmod>
+    <loc>https://github.com/atheobold/stat-541-website/project/week-7.html</loc>
+    <lastmod>2026-04-15T22:33:27.936Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/atheobold/stat-541-website/project/week-9.html</loc>
+    <lastmod>2026-05-05T20:54:32.087Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/atheobold/stat-541-website/slides/01-version-control.html</loc>
-    <lastmod>2026-03-30T13:51:41.592Z</lastmod>
+    <lastmod>2026-04-15T22:33:27.937Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/atheobold/stat-541-website/slides/03-purrr-adverbs.html</loc>
@@ -230,15 +238,15 @@
   </url>
   <url>
     <loc>https://github.com/atheobold/stat-541-website/unit-1/alt-geoms.html</loc>
-    <lastmod>2026-03-25T09:23:23.276Z</lastmod>
+    <lastmod>2026-04-15T22:33:27.943Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/atheobold/stat-541-website/unit-1/formatting-tables.html</loc>
-    <lastmod>2026-03-25T09:21:12.497Z</lastmod>
+    <lastmod>2026-04-15T22:33:27.944Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/atheobold/stat-541-website/unit-1/json-api.html</loc>
-    <lastmod>2026-04-14T01:01:26.425Z</lastmod>
+    <lastmod>2026-04-15T22:33:27.947Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/atheobold/stat-541-website/unit-1/web-scraping.html</loc>
@@ -246,15 +254,15 @@
   </url>
   <url>
     <loc>https://github.com/atheobold/stat-541-website/unit-2.html</loc>
-    <lastmod>2026-03-03T15:10:01.913Z</lastmod>
+    <lastmod>2026-04-15T22:33:27.948Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/atheobold/stat-541-website/unit-2/ggplot-leaflet.html</loc>
-    <lastmod>2026-03-25T09:21:27.900Z</lastmod>
+    <lastmod>2026-04-15T22:33:27.949Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/atheobold/stat-541-website/unit-2/quarto-dashboard-static.html</loc>
-    <lastmod>2026-04-05T23:10:33.058Z</lastmod>
+    <lastmod>2026-04-15T22:33:27.950Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/atheobold/stat-541-website/unit-3/debugging.html</loc>
@@ -262,18 +270,6 @@
   </url>
   <url>
     <loc>https://github.com/atheobold/stat-541-website/unit-3/speed.html</loc>
-    <lastmod>2026-03-28T22:37:39.523Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/atheobold/stat-541-website/slides/handouts/06-maps-warmup.html</loc>
-    <lastmod>2026-05-05T17:59:46.414Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/atheobold/stat-541-website/project/week-9.html</loc>
-    <lastmod>2026-05-05T21:55:55.277Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/atheobold/stat-541-website/project/week-10.html</loc>
-    <lastmod>2026-05-05T21:55:55.276Z</lastmod>
+    <lastmod>2026-04-15T22:33:27.952Z</lastmod>
   </url>
 </urlset>

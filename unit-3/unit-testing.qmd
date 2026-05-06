@@ -135,3 +135,22 @@ Which of the following is **not** a reason to have good test coverage in a packa
 
 * It gives users some examples of how your functions should be used.
 :::
+
+## Debugging for developers
+
+## Common types of bugs
+
+1.  Typos and Misspellings
+
+2.  Syntax Errors
+
+3.  Problems with package dependencies
+
+4.  Mismatched data types or structures
+
+5.  Incorrect computations
+
+6.  Misunderstanding of data meaning
+
+::: stat541
+:::

@@ -129,10 +129,10 @@ website:
         #   href: project/example-project-olympics/week-7.qmd
         - text: Project 2 Final Deliverable
           href: project/project-2.qmd
-        - text: "Week 8: Starter Package"
+        - text: "Week 8: Package Plans"
           href: project/week-8.qmd
-        # - href: project/week-9.qmd
-        # - href: project/week-10.qmd
+        - text: "Week 9: Build a Package"
+          href: project/week-9.qmd
         - text: Project 3 Final Deliverable
           href: project/project-3.qmd
 
@@ -155,11 +155,11 @@ website:
       title: "Unit 3"
       contents:
         - href: unit-3.qmd
-        - href: unit-3/package-structure.qmd
         - text: "Week 8: In-Class Activity"
           href: practice-activities/week-8.qmd
+        - href: unit-3/package-structure.qmd
         - href: unit-3/unit-testing.qmd
-        - href: unit-3/debugging.qmd
+        #- href: unit-3/debugging.qmd
         - text: "Week 9: In-Class Activity"
           href: practice-activities/week-9.qmd
         - href: unit-3/speed.qmd
