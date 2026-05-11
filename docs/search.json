@@ -2793,7 +2793,7 @@
     "href": "unit-3/speed.html",
     "title": "Code Speed",
     "section": "",
-    "text": "Fortunately, we stand on the shoulders of giants. Many skilled computer scientists have put a lot of time and effort into writing R functions that run as fast as possible.\nTo speed up the code, without deep knowledge of computer algorithms and inner workings, you can sometimes come up with clever ways to avoid these pitfalls.\nFirst, though: as you start thinking about writing faster code, you’ll need a way to check whether your improvements actually sped up the code.",
+    "text": "Now that we are producing a package, we expect that our functions will be used again and again. If these functions run slowly, that can become quite frustrating for the user!\nFortunately, we stand on the shoulders of giants. Many skilled computer scientists have put a lot of time and effort into writing R functions that run as fast as possible. Even without deep knowledge of computer algorithms and inner workings, we can still usually rework our code to make use of these existing tricks and tools.",
     "crumbs": [
       "Unit 3 - Package Development",
       "Code Speed"
@@ -2815,7 +2815,7 @@
     "href": "unit-3/speed.html#optional-super-advanced-mode",
     "title": "Code Speed",
     "section": "Optional: Super advanced mode",
-    "text": "Optional: Super advanced mode\nThe following are some suggestions of ways you can level-up your code speed. These are outside the scope of this class, but you are welcome to explore them!\n\nDive deep into the R efficiency rabbit hole…\nParallelize your computations\nMake your code run in C++ with Rcpp\nLearn to use recursion\n\nLearn more about memory allocation and garbage collecting in R.",
+    "text": "Optional: Super advanced mode\nThe following are some suggestions of ways you can level-up your code speed. These are outside the scope of this class, but you are welcome to explore them!\n\nCreate SQL-style databases with duckdb\nDive deep into the R efficiency rabbit hole…\nMake your code run in C++ with Rcpp\nLearn to use recursion\n\nLearn more about memory allocation and garbage collecting in R.",
     "crumbs": [
       "Unit 3 - Package Development",
       "Code Speed"
@@ -2869,5 +2869,49 @@
     "title": "Project 3, Checkpoint 3",
     "section": "Submission",
     "text": "Submission\nTurn in an html file that contains:\n\nSpeed tests on at least three of your functions.\nA very brief overview of what you changed in a slow function.\nSpeed tests on the new _fast version of the function."
+  },
+  {
+    "objectID": "unit-3/speed.html#tip-only-improve-what-needs-improving",
+    "href": "unit-3/speed.html#tip-only-improve-what-needs-improving",
+    "title": "Code Speed",
+    "section": "Tip: Only improve what needs improving",
+    "text": "Tip: Only improve what needs improving\n\n“We should forget about small efficiencies, say about 97% of the time: premature optimization is the root of all evil. Yet we should not pass up our opportunities in that critical 3%. A good programmer will not be lulled into complacency by such reasoning, [they] will be wise to look carefully at the critical code; but only after that code has been identified.” — Donald Knuth.\n\nSpeed and computational efficiency are important, but there can be a trade off. If you make a small speed improvement, but your code becomes overly complex, confusing, or difficult to edit and test it’s not worth it!\nAlso, consider your time and energy as the programmer. Suppose you have a function that takes 30-minutes to run. It relies on a subfunction that takes 30-seconds to run. Should you really spend your efforts making the subfunction take only 10-seconds?\n\n\n\n\n\n\nWarning\n\n\n\nThe speed of code execution is very dependent on the hardware and software of the computer it is running on, and can also be affected by how many other programs the computer is running at the same time.\nYou might get very different speed results than others around you, or even different results on different tries!\nHowever, the relative speed of various approaches should be the same - faster code will be faster on all computers.\n\n\n\n\n\n\n\n\nCheck-inCheck In\n\n\n\n\nHere are two ways to compute the square root of a vector. Which is faster? Use profiling/benchmarking to test your answers!\n\n\nx ^ (1 / 2)\nexp(log(x) / 2)\n\n\nWhy is mean(x) slower than sum(x)/length(x)?\n\n\n\nsum() is vectorized, while mean() is not.\nA mean is a smaller number than a sum, so it needs less memory.\n\nmean() calculates the mean twice just in case.\n\nmean() was written in an old version of R.\n\nmean() includes some extra steps to check the validity of the input.",
+    "crumbs": [
+      "Unit 3 - Package Development",
+      "Code Speed"
+    ]
+  },
+  {
+    "objectID": "unit-3/speed.html#optimal-data-wrangling-with-data.table",
+    "href": "unit-3/speed.html#optimal-data-wrangling-with-data.table",
+    "title": "Code Speed",
+    "section": "Optimal data wrangling with data.table\n",
+    "text": "Optimal data wrangling with data.table\n\nFor speeding up work with data frames, while still running your code entirely within R, no package is better than data.table! This package was created in 2006 by Matt Dowle, for the sole purpose of performing common data wrangling tasks with the absolute most optimal algorithms.\nBecause the design is meant to mimic Base R style, data.table uses very different syntax from dplyr. Watch the following video for a quick introduction.\n\n\n\n\n\n\n\nImportant\n\n\n\nBlog post with many side-by-side examples of data.table and dplyr code\ndata.table cheatsheet\n\n\nLuckily, because dplyr is so well-known, we have a nice trick for writing dplyr syntax to run data.table code: the dtplyr package. To use this package, simply load library(dtplyr), convert your dataset into a data.table object using the as_data_table() function, and then write ordinary dplyr code. Your code will automatically be translated into data.table code (if possible) before executing.\nFor many data scientists, the functionality of dtplyr is sufficient. However, as an R programmer it is worth knowing the basics of data.table syntax, both to be able to read code written by others, and because many of the speedy algorithms of data.table do not have a dplyr equivalent.\n\n\n\n\n\n\nCheck-inCheck In\n\n\n\n\nHere is some dplyr code. Re-write it in data.table syntax.\n\n\npenguins %&gt;%\n  group_by(species) %&gt;%\n  summarize(mean_bill = mean(bill_length_mm))\n\n\nUsing either the tictoc or microbenchmark packages, perform a speed test to see which code is faster and by how much.",
+    "crumbs": [
+      "Unit 3 - Package Development",
+      "Code Speed"
+    ]
+  },
+  {
+    "objectID": "unit-3/speed.html#parallelizing",
+    "href": "unit-3/speed.html#parallelizing",
+    "title": "Code Speed",
+    "section": "Parallelizing",
+    "text": "Parallelizing\nOften in data analysis, you are performing repeated calculations, such as computing summary statistics for many columns of a dataset at once.\nIn these cases, there is no reason you need to go in any particular order - in fact, you could have one computer calculate summaries for half the columns at the same time that another computer calculates summaries for the other half. This is the idea behind parallelization: the computer is told to “split” its computing power up and do all the calculations simultaneously.\n\n\n\n\n\n\nWarning\n\n\n\nThe number of parallel processes a computer can run depends on its internal hardware. You may not be able to “split” your computer’s work up into as many different simultaneous processes as someone else.\n\n\nThere are many tools for parallelizing in R, of different levels of complexity. For our purposes, you probably won’t need more than furrr. This package converts your purrr::map() iterations into parallel processes.\n\n\n\n\n\n\nRequired-readingRequired Reading\n\n\n\nOverview of furrr\n\n\n\n\n\n\n\n\nCheck-inCheck In\n\n\n\n\nWhen data is scraped from the web, you often have repeated processes, such as scraping each of many identical pages. Why would it be a bad idea to parallelize webscraping code?\n\n\nIt is important to get the pages in order to keep track of what you’ve done.\nIf you get an error on one page you have to start at the beginning.\nSimultaneous scraping is likely to violate the rate limits from robots.txt\nIt is impossible to access two different web pages at the same time.\n\n\nHere is some iteration code. What would you change to make it run in parallel?\n\n\nsumm_stats &lt;- function(column) {\n  \n  tibble(\n    mean = mean(column, na.rm = TRUE),\n    median = median(column, na.rm = TRUE),\n    sd = sd(column, na.rm = TRUE)\n  )\n  \n}\n\npenguins |&gt; \n  select(where(is.numeric)) |&gt;\n  map(.f = summ_stats) |&gt;\n  bind_rows()",
+    "crumbs": [
+      "Unit 3 - Package Development",
+      "Code Speed"
+    ]
+  },
+  {
+    "objectID": "unit-3/speed.html#efficient-data-storage-with-arrow-and-parquet",
+    "href": "unit-3/speed.html#efficient-data-storage-with-arrow-and-parquet",
+    "title": "Code Speed",
+    "section": "Efficient data storage with arrow and parquet\n",
+    "text": "Efficient data storage with arrow and parquet\n\nIn some data settings, the slowdown is not an analysis at all - it’s loading the dataset into R. When a .csv file is very large, the read_csv() function can take an extremely long time to run.\nEnter parquet files, one of the most magical advancements in data science in recent years. This file type stores data in extremely clever ways, going far beyond simple comma-separated text like in a .csv.\nEven for a small dataset like palmerpenguins, the .parquet file containing the exact same information is less than half the size!\n\nwrite_csv(penguins, \"penguins.csv\")\narrow::write_parquet(penguins, \"penguins.parquet\")\n\n\nThe arrow package is designed to help read and write parquet files. (It also provides a number of other helpful speed-ups, but we’ll focus just on the parquet elements for now.)\n\n\n\n\n\n\nRequired-readingRequired Reading\n\n\n\narrow cheatsheet\n\n\n\n\n\n\n\n\nCheck-inCheck In\n\n\n\n\nRun the following code to download a medium sized dataset from the nycflights13 package as both a csv and parquet.\n\n\nlibrary(nycflights13)\nlibrary(arrow)\n\nwrite_csv(flights, \"flights.csv\")\nwrite_parquet(flights, \"flights.parquet\")\n\nHow much smaller was the parquet file compared to the csv?\n\nUse profiling to test the speed of reading the csv with read_csv, reading the csv with the data.table function fread, and reading the parquet file with arrow.\n\n\n\nData storage in packages\nWhen you are working with data files on your computer, you can simply read and write them in parquet format as above.\nWhen you want to include data with an R package, your process depends on the size. For very small data, you can include a .Rdata file that loads automatically with the package.\n\nusethis::use_data(penguins)\n\nHowever, when the data is large, this approach is not recommended - the resulting file will be require a lot of storage space, which might prevent it from being accepted on GitHub.\nInstead, another option is to create an inst folder in your package repository. This folder is meant to contain any and all items that you want to be downloaded when users download your package. Inside the inst folder, you can make a folder called extdata (“external data”). Put any parquet or csv data files in there.\nThen, users (or, your functions) can read the data from the package source with:\n\npath &lt;- system.file(\"extdata\", \"my_data.csv\", package = \"myPackage\")\ndata &lt;- read.csv(path)\n\nCombining this structure with parquet files is a good way to add smaller data objects to a package!",
+    "crumbs": [
+      "Unit 3 - Package Development",
+      "Code Speed"
+    ]
   }
 ]

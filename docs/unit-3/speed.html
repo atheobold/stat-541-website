@@ -353,20 +353,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../practice-activities/week-8.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 8: In-Class Activity</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="../unit-3/package-structure.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">R Packages</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../practice-activities/week-8.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 8: In-Class Activity</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../unit-3/unit-testing.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Testing Package Code</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../unit-3/debugging.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Debugging Package Code</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -396,15 +402,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
 <li>
-<a href="#use-faster-existing-functions" id="toc-use-faster-existing-functions" class="nav-link active" data-scroll-target="#use-faster-existing-functions">Use faster existing functions</a>
+<a href="#find-the-slowdowns" id="toc-find-the-slowdowns" class="nav-link active" data-scroll-target="#find-the-slowdowns">Find the slowdowns</a>
   <ul class="collapse">
-<li><a href="#data.table" id="toc-data.table" class="nav-link" data-scroll-target="#data.table"><code>data.table</code></a></li>
+<li><a href="#tip-only-improve-what-needs-improving" id="toc-tip-only-improve-what-needs-improving" class="nav-link" data-scroll-target="#tip-only-improve-what-needs-improving">Tip: Only improve what needs improving</a></li>
   </ul>
 </li>
   <li>
-<a href="#tip-3-only-improve-what-needs-improving" id="toc-tip-3-only-improve-what-needs-improving" class="nav-link" data-scroll-target="#tip-3-only-improve-what-needs-improving">Tip 3: Only improve what needs improving</a>
+<a href="#tricks-to-speed-up-analyses" id="toc-tricks-to-speed-up-analyses" class="nav-link" data-scroll-target="#tricks-to-speed-up-analyses">Tricks to speed up analyses</a>
   <ul class="collapse">
-<li><a href="#optional-super-advanced-mode" id="toc-optional-super-advanced-mode" class="nav-link" data-scroll-target="#optional-super-advanced-mode">Optional: Super advanced mode</a></li>
+<li><a href="#optimal-data-wrangling-with-data.table" id="toc-optimal-data-wrangling-with-data.table" class="nav-link" data-scroll-target="#optimal-data-wrangling-with-data.table">Optimal data wrangling with <code>data.table</code></a></li>
+  <li><a href="#parallelizing" id="toc-parallelizing" class="nav-link" data-scroll-target="#parallelizing">Parallelizing</a></li>
+  <li>
+<a href="#efficient-data-storage-with-arrow-and-parquet" id="toc-efficient-data-storage-with-arrow-and-parquet" class="nav-link" data-scroll-target="#efficient-data-storage-with-arrow-and-parquet">Efficient data storage with <code>arrow</code> and <em>parquet</em></a>
+  <ul class="collapse">
+<li><a href="#data-storage-in-packages" id="toc-data-storage-in-packages" class="nav-link" data-scroll-target="#data-storage-in-packages">Data storage in packages</a></li>
+  </ul>
+</li>
+  <li><a href="#optional-super-advanced-mode" id="toc-optional-super-advanced-mode" class="nav-link" data-scroll-target="#optional-super-advanced-mode">Optional: Super advanced mode</a></li>
   </ul>
 </li>
   </ul><div class="toc-actions"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/unit-3/speed.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></nav>
@@ -425,9 +439,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 
-</header><p>Fortunately, we stand on the shoulders of giants. Many skilled computer scientists have put a lot of time and effort into writing R functions that run as fast as possible.</p>
-<p>To speed up the code, without deep knowledge of computer algorithms and inner workings, you can sometimes come up with clever ways to avoid these pitfalls.</p>
-<p>First, though: as you start thinking about writing faster code, you’ll need a way to check whether your improvements actually sped up the code.</p>
+</header><p>Now that we are producing a package, we expect that our functions will be used again and again. If these functions run slowly, that can become quite frustrating for the user!</p>
+<p>Fortunately, we stand on the shoulders of giants. Many skilled computer scientists have put a lot of time and effort into writing R functions that run as fast as possible. Even without deep knowledge of computer algorithms and inner workings, we can still usually rework our code to make use of these existing tricks and tools.</p>
+<section id="find-the-slowdowns" class="level1"><h1>Find the slowdowns</h1>
+<p>We’ll first need to find where the slow moments are in the code. This process - finding where exactly code slows down - is called <em>profiling</em>.</p>
+<p>At its most basic level, profiling simply involves running small pieces of your code and timing how long they take.</p>
 <div class="callout callout-style-default callout-required-reading callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -464,102 +480,51 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><em>Stat 541 Only</em> <a href="https://lobstr.r-lib.org/reference/obj_size.html"><code>lobstr::obj_size()</code></a></p>
+<p><strong>Stat 541 Only</strong></p>
+<p>In your work, you will most likely “profile” manually, by <code>tictoc</code>-ing bits of your code and so forth, not by the fancier methods used by professional programmers.</p>
+<p>However, you should have an awareness of the major tools for more formally measuring coded performance. Skim the following readings - don’t get too deep in the weeds! - to see how this process works for full-time developers.</p>
+<p><a href="https://lobstr.r-lib.org/reference/obj_size.html"><code>lobstr::obj_size()</code></a> <a href="http://adv-r.had.co.nz/Profiling.html#profiling">Profiling</a> <a href="https://adv-r.hadley.nz/perf-measure.html">Measuring Performance</a></p>
 </div>
 </div>
-<section id="use-faster-existing-functions" class="level1"><h1>Use faster existing functions</h1>
-<p>Because R has so many packages, there are often many functions to perform the same task. Not all functions are created equal!</p>
-<section id="data.table" class="level2"><h2 class="anchored" data-anchor-id="data.table"><code>data.table</code></h2>
-<p>For speeding up work with data frames, no package is better than <code>data.table</code>!</p>
-<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/uueVddWwbkk" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
-<div class="callout callout-style-default callout-required-reading callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Required-reading</span>Required Reading
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><a href="https://pbs.twimg.com/media/Dwoq0ZQXQAE5lJt.jpg">data.table cheatsheet</a></p>
-</div>
-</div>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>Check-in: Efficiency
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ol start="2" type="1">
-<li>Here is some <code>dplyr</code> code. Re-write it in <code>data.table</code> syntax.</li>
-</ol>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">congress_age</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">state</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">summarize</span><span class="op">(</span>mean_age <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">age</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<ol start="3" type="1">
-<li>Using either the <code>tictoc</code> or <code>microbenchmark</code> packages perform a speed test to see which code is faster, and by how much.</li>
-</ol>
-</div>
-</div>
-</section></section><section id="tip-3-only-improve-what-needs-improving" class="level1"><h1>Tip 3: Only improve what needs improving</h1>
+<section id="tip-only-improve-what-needs-improving" class="level2"><h2 class="anchored" data-anchor-id="tip-only-improve-what-needs-improving">Tip: Only improve what needs improving</h2>
 <blockquote class="blockquote">
 <p>“We should forget about small efficiencies, say about 97% of the time: premature optimization is the root of all evil. Yet we should not pass up our opportunities in that critical 3%. A good programmer will not be lulled into complacency by such reasoning, [they] will be wise to look carefully at the critical code; but only after that code has been identified.” — Donald Knuth.</p>
 </blockquote>
 <p>Speed and computational efficiency are important, but there can be a trade off. If you make a small speed improvement, but your code becomes overly complex, confusing, or difficult to edit and test it’s not worth it!</p>
 <p>Also, consider your time and energy as the programmer. Suppose you have a function that takes 30-minutes to run. It relies on a subfunction that takes 30-seconds to run. Should you really spend your efforts making the subfunction take only 10-seconds?</p>
-<p>The art of finding the slow bits of your code where you can make the most improvement is called <strong>profiling</strong>.</p>
-<section id="required-reading-profiling" class="level4"><h4 class="anchored" data-anchor-id="required-reading-profiling">📖 Required Reading: <a href="http://adv-r.had.co.nz/Profiling.html#profiling">Profiling</a>
-</h4>
-</section><section id="recommended-reading-measuring-performance" class="level4"><h4 class="anchored" data-anchor-id="recommended-reading-measuring-performance">📖 Recommended Reading: <a href="https://adv-r.hadley.nz/perf-measure.html">Measuring Performance</a>
-</h4>
-<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Skimming is sufficient!
+Warning
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>For this reading, I strongly encourage you to skim. The code aspects are mostly more complicated that we expect in this class; but the general overview of the principles behind speeding up code is helpful.</p>
-<p>In your work, you will most likely “profile” manually, by <code>tictoc</code>-ing bits of your code and so forth, not by these fancy methods.</p>
+<p>The speed of code execution is very dependent on the hardware and software of the computer it is running on, and can also be affected by how many other programs the computer is running at the same time.</p>
+<p>You might get very different speed results than others around you, or even different results on different tries!</p>
+<p>However, the <em>relative</em> speed of various approaches should be the same - faster code will be faster on <em>all</em> computers.</p>
 </div>
 </div>
-<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout callout-style-default callout-check-in callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>Check-in: Efficiency
+<span class="screen-reader-only">Check-in</span>Check In
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<ol start="4" type="1">
-<li>Why is <code><a href="https://rdrr.io/r/base/lapply.html">vapply()</a></code> faster than <code><a href="https://rdrr.io/r/base/lapply.html">sapply()</a></code>?</li>
-</ol>
-<!-- --><ol type="a">
-<li>It specifies the output type.</li>
-<li>It specifies the input type.</li>
-<li>It performs fewer safety checks.</li>
-<li>It performs fewer iterations.</li>
-</ol>
-<!-- --><ol start="5" type="1">
-<li>Here are two other ways to compute the square root of a vector. Which is faster? fastest? Use microbenchmarking to test your answers!</li>
+<ol type="1">
+<li>Here are two ways to compute the square root of a vector. Which is faster? Use profiling/benchmarking to test your answers!</li>
 </ol>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">^</span> <span class="op">(</span><span class="fl">1</span> <span class="op">/</span> <span class="fl">2</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">^</span> <span class="op">(</span><span class="fl">1</span> <span class="op">/</span> <span class="fl">2</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">/</span> <span class="fl">2</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<ol start="6" type="1">
+<ol start="2" type="1">
 <li>Why is <code>mean(x)</code> slower than <code>sum(x)/length(x)</code>?</li>
 </ol>
 <!-- --><ol type="a">
@@ -570,14 +535,201 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> calculates the mean twice just in case.</li>
 <li>
 <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> was written in an old version of R.</li>
+<li>
+<code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> includes some extra steps to check the validity of the input.</li>
 </ol>
 </div>
 </div>
-</section><section id="optional-super-advanced-mode" class="level2"><h2 class="anchored" data-anchor-id="optional-super-advanced-mode">Optional: Super advanced mode</h2>
+</section></section><section id="tricks-to-speed-up-analyses" class="level1"><h1>Tricks to speed up analyses</h1>
+<p>Once we’ve found some places our code moves slowly, it’s time to look for ways to make it better. We will explore three major ways to speed up data-centric code that do not require deep computer programming experience.</p>
+<ol type="1">
+<li><p>More optimized data manipulation.</p></li>
+<li><p>Parallelizing repeated calculations.</p></li>
+<li><p>Storing datasets more efficiently.</p></li>
+</ol>
+<section id="optimal-data-wrangling-with-data.table" class="level2"><h2 class="anchored" data-anchor-id="optimal-data-wrangling-with-data.table">Optimal data wrangling with <code>data.table</code>
+</h2>
+<p>For speeding up work with data frames, while still running your code entirely within R, no package is better than <code>data.table</code>! This package was created in 2006 by Matt Dowle, for the sole purpose of performing common data wrangling tasks with the absolute most optimal algorithms.</p>
+<p>Because the design is meant to mimic Base R style, <code>data.table</code> uses <em>very</em> different syntax from <code>dplyr</code>. Watch the following video for a quick introduction.</p>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/uueVddWwbkk" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><a href="https://rdatatable-community.github.io/The-Raft/posts/2025-07-06-common_operations_datatable_and_dplyr-albert_rapp/">Blog post with many side-by-side examples of <code>data.table</code> and <code>dplyr</code> code</a></p>
+<p><a href="https://pbs.twimg.com/media/Dwoq0ZQXQAE5lJt.jpg">data.table cheatsheet</a></p>
+</div>
+</div>
+<p>Luckily, because <code>dplyr</code> is so well-known, we have a nice trick for writing <code>dplyr</code> syntax to run <code>data.table</code> code: the <code>dtplyr</code> package. To use this package, simply load <code><a href="https://dtplyr.tidyverse.org">library(dtplyr)</a></code>, convert your dataset into a <code>data.table</code> object using the <code>as_data_table()</code> function, and then write ordinary <code>dplyr</code> code. Your code will automatically be translated into <code>data.table</code> code (if possible) before executing.</p>
+<p>For many data scientists, the functionality of <code>dtplyr</code> is sufficient. However, as an R programmer it is worth knowing the basics of <code>data.table</code> syntax, both to be able to read code written by others, and because many of the speedy algorithms of <code>data.table</code> do not have a <code>dplyr</code> equivalent.</p>
+<div class="callout callout-style-default callout-check-in callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Check-in</span>Check In
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>Here is some <code>dplyr</code> code. Re-write it in <code>data.table</code> syntax.</li>
+</ol>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">penguins</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">species</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">summarize</span><span class="op">(</span>mean_bill <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">bill_length_mm</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<ol start="2" type="1">
+<li>Using either the <code>tictoc</code> or <code>microbenchmark</code> packages, perform a speed test to see which code is faster and by how much.</li>
+</ol>
+</div>
+</div>
+</section><section id="parallelizing" class="level2"><h2 class="anchored" data-anchor-id="parallelizing">Parallelizing</h2>
+<p>Often in data analysis, you are performing repeated calculations, such as computing summary statistics for many columns of a dataset at once.</p>
+<p>In these cases, there is no reason you need to go in any particular order - in fact, you could have one computer calculate summaries for half the columns at the same time that another computer calculates summaries for the other half. This is the idea behind <strong>parallelization</strong>: the computer is told to “split” its computing power up and do all the calculations simultaneously.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The number of parallel processes a computer can run depends on its internal hardware. You may not be able to “split” your computer’s work up into as many different simultaneous processes as someone else.</p>
+</div>
+</div>
+<p>There are many tools for parallelizing in R, of different levels of complexity. For our purposes, you probably won’t need more than <code>furrr</code>. This package converts your <code><a href="https://purrr.tidyverse.org/reference/map.html">purrr::map()</a></code> iterations into parallel processes.</p>
+<div class="callout callout-style-default callout-required-reading callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Required-reading</span>Required Reading
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><a href="https://furrr.futureverse.org/">Overview of <code>furrr</code></a></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-check-in callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Check-in</span>Check In
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>When data is scraped from the web, you often have repeated processes, such as scraping each of many identical pages. Why would it be a bad idea to parallelize webscraping code?</li>
+</ol>
+<ol type="a">
+<li><p>It is important to get the pages in order to keep track of what you’ve done.</p></li>
+<li><p>If you get an error on one page you have to start at the beginning.</p></li>
+<li><p>Simultaneous scraping is likely to violate the rate limits from <code>robots.txt</code></p></li>
+<li><p>It is impossible to access two different web pages at the same time.</p></li>
+</ol>
+<ol start="2" type="1">
+<li>Here is some iteration code. What would you change to make it run in parallel?</li>
+</ol>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">summ_stats</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">column</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  </span>
+<span>  <span class="fu">tibble</span><span class="op">(</span></span>
+<span>    mean <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">column</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>    median <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">column</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>    sd <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">column</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span>
+<span>  </span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="va">penguins</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">select</span><span class="op">(</span><span class="fu">where</span><span class="op">(</span><span class="va">is.numeric</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">map</span><span class="op">(</span>.f <span class="op">=</span> <span class="va">summ_stats</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">bind_rows</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+</section><section id="efficient-data-storage-with-arrow-and-parquet" class="level2"><h2 class="anchored" data-anchor-id="efficient-data-storage-with-arrow-and-parquet">Efficient data storage with <code>arrow</code> and <em>parquet</em>
+</h2>
+<p>In some data settings, the slowdown is not an analysis at all - it’s loading the dataset into R. When a <code>.csv</code> file is very large, the <code>read_csv()</code> function can take an extremely long time to run.</p>
+<p>Enter <em>parquet</em> files, one of the most magical advancements in data science in recent years. This file type stores data in extremely clever ways, going far beyond simple comma-separated text like in a <code>.csv</code>.</p>
+<p>Even for a small dataset like <code>palmerpenguins</code>, the <code>.parquet</code> file containing the <em>exact same information</em> is less than <strong>half</strong> the size!</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">write_csv</span><span class="op">(</span><span class="va">penguins</span>, <span class="st">"penguins.csv"</span><span class="op">)</span></span>
+<span><span class="fu">arrow</span><span class="fu">::</span><span class="fu"><a href="https://arrow.apache.org/docs/r/reference/write_parquet.html">write_parquet</a></span><span class="op">(</span><span class="va">penguins</span>, <span class="st">"penguins.parquet"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><img src="./images/penguins_sizes.png" class="img-fluid"></p>
+<p>The <code>arrow</code> package is designed to help read and write parquet files. (It also provides a number of other helpful speed-ups, but we’ll focus just on the parquet elements for now.)</p>
+<div class="callout callout-style-default callout-required-reading callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Required-reading</span>Required Reading
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><a href="https://github.com/apache/arrow/blob/main/r/cheatsheet/arrow-cheatsheet.pdf"><code>arrow</code> cheatsheet</a></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-check-in callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Check-in</span>Check In
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>Run the following code to download a medium sized dataset from the <code>nycflights13</code> package as both a csv and parquet.</li>
+</ol>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/hadley/nycflights13">nycflights13</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/apache/arrow/">arrow</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">write_csv</span><span class="op">(</span><span class="va">flights</span>, <span class="st">"flights.csv"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://arrow.apache.org/docs/r/reference/write_parquet.html">write_parquet</a></span><span class="op">(</span><span class="va">flights</span>, <span class="st">"flights.parquet"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>How much smaller was the parquet file compared to the csv?</p>
+<ol start="2" type="1">
+<li>Use profiling to test the speed of reading the csv with <code>read_csv</code>, reading the csv with the <code>data.table</code> function <code>fread</code>, and reading the parquet file with <code>arrow</code>.</li>
+</ol>
+</div>
+</div>
+<section id="data-storage-in-packages" class="level3"><h3 class="anchored" data-anchor-id="data-storage-in-packages">Data storage in packages</h3>
+<p>When you are working with data files on your computer, you can simply read and write them in <em>parquet</em> format as above.</p>
+<p>When you want to include data with an R package, your process depends on the size. For very small data, you can include a <code>.Rdata</code> file that loads automatically with the package.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/use_data.html">use_data</a></span><span class="op">(</span><span class="va">penguins</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>However, when the data is large, this approach is not recommended - the resulting file will be require a lot of storage space, which might prevent it from being accepted on GitHub.</p>
+<p>Instead, another option is to create an <code>inst</code> folder in your package repository. This folder is meant to contain any and all items that you want to be downloaded when users download your package. Inside the <code>inst</code> folder, you can make a folder called <code>extdata</code> (“external data”). Put any parquet or csv data files in there.</p>
+<p>Then, users (or, your functions) can read the data from the package source with:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">path</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"my_data.csv"</span>, package <span class="op">=</span> <span class="st">"myPackage"</span><span class="op">)</span></span>
+<span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="va">path</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Combining this structure with parquet files is a good way to add smaller data objects to a package!</p>
+</section></section><section id="optional-super-advanced-mode" class="level2"><h2 class="anchored" data-anchor-id="optional-super-advanced-mode">Optional: Super advanced mode</h2>
 <p>The following are some suggestions of ways you can level-up your code speed. These are outside the scope of this class, but you are welcome to explore them!</p>
 <ul>
+<li><a href="https://borkar.substack.com/p/r-workflows-with-duckdb">Create SQL-style databases with <code>duckdb</code></a></li>
 <li><a href="https://csgillespie.github.io/efficientR/">Dive deep into the R efficiency rabbit hole…</a></li>
-<li><a href="http://zevross.com/blog/2019/02/12/dramatically-speed-up-your-r-purrr-functions-with-the-furrr-package/">Parallelize your computations</a></li>
 <li><a href="http://adv-r.had.co.nz/Rcpp.html#rcpp">Make your code run in C++ with Rcpp</a></li>
 <li>Learn to use <a href="https://techvidvan.com/tutorials/recursion-in-r/">recursion</a>
 </li>
