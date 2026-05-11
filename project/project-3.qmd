@@ -15,7 +15,7 @@ Along the way you will learn how to:
 
 # Final Deliverable
 
-The package you create _must_ have the following elements:
+The package you create _must_ have the following elements.
 
 ## Structure 
 
@@ -39,7 +39,7 @@ The package you create _must_ have the following elements:
 
 *Package must contain at least...*
 
--   one data gathering function
+-   one data gathering function via API or webscraping
 
 -   one data cleaning/wrangling function
 
