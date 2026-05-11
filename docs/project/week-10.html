@@ -315,8 +315,9 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#data-storage" id="toc-data-storage" class="nav-link active" data-scroll-target="#data-storage">Data storage</a></li>
+  <li><a href="#data-management" id="toc-data-management" class="nav-link active" data-scroll-target="#data-management">Data management</a></li>
   <li><a href="#speedier-functions" id="toc-speedier-functions" class="nav-link" data-scroll-target="#speedier-functions">Speedier functions</a></li>
+  <li><a href="#submission" id="toc-submission" class="nav-link" data-scroll-target="#submission">Submission</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/project/week-10.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></nav>
     </div>
@@ -343,12 +344,45 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="data-storage" class="level2">
-<h2 class="anchored" data-anchor-id="data-storage">Data storage</h2>
+<section id="data-management" class="level2">
+<h2 class="anchored" data-anchor-id="data-management">Data management</h2>
+<p>In Unit 1, you gathered new data from an external source via an API or webscraping.</p>
+<p>Including this data in your package presents two challenges that you must address:</p>
+<section id="file-size" class="level4">
+<h4 class="anchored" data-anchor-id="file-size">1. File size</h4>
+<p>This data might be so large that it cannot be stored on GitHub or submitted to CRAN. To solve this, rewrite your <code>load_data</code> function so that instead of loading the original dataset from the TidyTuesday package, it loads your full merged dataset from a <em>parquet</em> file that you place in the <code>inst/</code> folder of your package.</p>
+</section>
+<section id="data-gathering-updates" class="level4">
+<h4 class="anchored" data-anchor-id="data-gathering-updates">2. Data gathering updates</h4>
+<p>Users may want to re-gather the external data themselves, to update it to the current time period.</p>
+<p>Write a function called <code>gather_data</code> that runs your API pull or webscraping. If you are doing an API pull, the API key should be provided as an input to the function - your personal API key should never appear!</p>
+</section>
 </section>
 <section id="speedier-functions" class="level2">
 <h2 class="anchored" data-anchor-id="speedier-functions">Speedier functions</h2>
-<p>Realistically, it’s likely that most of your</p>
+<p>Realistically, it’s likely that most of your functions in this package are so fast that there isn’t much need to speed them up. However, for the sake of completeness, you need to make sure your package is optimized.</p>
+<section id="speed-testing" class="level4">
+<h4 class="anchored" data-anchor-id="speed-testing">1. Speed testing</h4>
+<p>Use <code>tictoc()</code> or <code>bench::mark()</code> to speed test all the functions in your package, except for the data loading and gathering ones. Identify where the slowest ones are.</p>
+</section>
+<section id="faster-code" class="level4">
+<h4 class="anchored" data-anchor-id="faster-code">2. Faster code</h4>
+<p>Choose one of your slower functions. Make a copy of it named <code>[name]_fast</code>. Then, alter the code to speed it up in <strong>one</strong> of the following ways:</p>
+<ol type="1">
+<li><p>Replace a piece of your <code>dplyr</code> or Base R style data wrangling with <code>data.table</code> code.</p></li>
+<li><p>Include parallelization with <code>furrr</code>.</p></li>
+<li><p>Come up with an <em>algorithmic</em> improvement to your code that makes it faster.</p></li>
+</ol>
+</section>
+</section>
+<section id="submission" class="level2">
+<h2 class="anchored" data-anchor-id="submission">Submission</h2>
+<p>Turn in an html file that contains:</p>
+<ol type="1">
+<li><p>Speed tests on at least three of your functions.</p></li>
+<li><p>A very brief overview of what you changed in a slow function.</p></li>
+<li><p>Speed tests on the new <code>_fast</code> version of the function.</p></li>
+</ol>
 
 
 </section>

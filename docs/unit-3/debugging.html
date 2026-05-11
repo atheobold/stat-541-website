@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.8.24">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-
 <title>Debugging Package Code – Advanced R</title>
 <style>
 code{white-space: pre-wrap;}
@@ -20,8 +17,42 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
-
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
@@ -47,8 +78,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/bootstrap/bootstrap-dark-5f858a84010510139e49c405efe9b486.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="../site_libs/bootstrap/bootstrap-63767328852000e01d7c9d44355c1f36.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script src="../site_libs/quarto-contrib/flourish-0.0.1/injectFlourishes.js"></script>
-<script src="../site_libs/quarto-contrib/flourish-0.0.1/flourish.js"></script>
-<script id="quarto-search-options" type="application/json">{
+<script src="../site_libs/quarto-contrib/flourish-0.0.1/flourish.js"></script><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -75,10 +105,7 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-
-
 </head>
-
 <body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
@@ -244,14 +271,10 @@ ul.task-list li input[type="checkbox"] {
   </script>
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
-      <div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../images/cat-monsters-horst.png" alt="" class="navbar-logo light-content">
-    <img src="../images/cat-monsters-horst.png" alt="" class="navbar-logo dark-content">
-    </a>
+    <img src="../images/cat-monsters-horst.png" alt="" class="navbar-logo light-content"><img src="../images/cat-monsters-horst.png" alt="" class="navbar-logo dark-content"></a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
@@ -259,7 +282,7 @@ ul.task-list li input[type="checkbox"] {
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
+<li class="nav-item">
     <a class="nav-link" href="../index.html"> 
 <span class="menu-text">Overview</span></a>
   </li>  
@@ -292,40 +315,42 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Projects</span></a>
   </li>  
 </ul>
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item compact">
+<ul class="navbar-nav navbar-nav-scroll ms-auto">
+<li class="nav-item compact">
     <a class="nav-link" href="https://github.com/atheobold/stat-541-website"> <i class="bi bi-github" role="img" aria-label="GitHub">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
 </ul>
-          </div> <!-- /navcollapse -->
+</div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
       </div> <!-- /container-fluid -->
-    </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+    </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#debugging-strategies-revisited" id="toc-debugging-strategies-revisited" class="nav-link active" data-scroll-target="#debugging-strategies-revisited">Debugging strategies revisited</a></li>
-  <li><a href="#common-types-of-bugs" id="toc-common-types-of-bugs" class="nav-link" data-scroll-target="#common-types-of-bugs">Common types of bugs</a></li>
+<li>
+<a href="#what-went-wrong" id="toc-what-went-wrong" class="nav-link active" data-scroll-target="#what-went-wrong">What went wrong?</a>
+  <ul class="collapse">
+<li><a href="#the-reprex-package" id="toc-the-reprex-package" class="nav-link" data-scroll-target="#the-reprex-package">The <code>reprex</code> package</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/unit-3/debugging.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></nav>
+</li>
+  <li><a href="#where-is-the-problem" id="toc-where-is-the-problem" class="nav-link" data-scroll-target="#where-is-the-problem">Where is the problem?</a></li>
+  <li>
+<a href="#why-isnt-it-working" id="toc-why-isnt-it-working" class="nav-link" data-scroll-target="#why-isnt-it-working">Why isn’t it working?</a>
+  <ul class="collapse">
+<li><a href="#mismatched-data-types-or-structures" id="toc-mismatched-data-types-or-structures" class="nav-link" data-scroll-target="#mismatched-data-types-or-structures">Mismatched data types or structures</a></li>
+  </ul>
+</li>
+  </ul><div class="toc-actions"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/unit-3/debugging.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
 <h1 class="title">Debugging Package Code</h1>
 </div>
 
@@ -340,31 +365,298 @@ ul.task-list li input[type="checkbox"] {
   
 
 
-</header>
-
-
-<section id="debugging-strategies-revisited" class="level2">
-<h2 class="anchored" data-anchor-id="debugging-strategies-revisited">Debugging strategies revisited</h2>
-</section>
-<section id="common-types-of-bugs" class="level2">
-<h2 class="anchored" data-anchor-id="common-types-of-bugs">Common types of bugs</h2>
+</header><p>Now that you are writing your code into a package, you have a lot of custom functions to keep track of! You’ve probably developed some good strategies and habits for fixing bugs in your code, but now it’s time to get a bit more structured with your troubleshooting.</p>
+<p>If something in your code isn’t working as expected, your job is to figure out the following, in order:</p>
 <ol type="1">
-<li><p>Typos and Misspellings</p></li>
-<li><p>Syntax Errors</p></li>
-<li><p>Problems with package dependencies</p></li>
-<li><p>Mismatched data types or structures</p></li>
-<li><p>Incorrect computations</p></li>
-<li><p>Misunderstanding of data meaning</p></li>
+<li><p><strong>What</strong> went wrong: How exactly are the results different from what you anticipated?</p></li>
+<li><p><strong>Where</strong> is the problem: What function caused the problem? Where exactly inside that function did it happen?</p></li>
+<li><p><strong>Why</strong> is it not working: What do you need to change to make it better?</p></li>
 </ol>
+<p>Let’s go over some strategies and tools for the three steps.</p>
+<section id="what-went-wrong" class="level2"><h2 class="anchored" data-anchor-id="what-went-wrong">What went wrong?</h2>
+<p>If you’ve made it to this point, you already know something is wrong! This is why <strong>unit tests</strong> are so critical: they can help you spot moments where your output was not what you expected.</p>
+<p>Before you begin debugging, figure out exactly what flagged the problem: what output did you <em>expect</em> and what output did you <em>see</em>?</p>
+<p>Next, try to <strong>reproduce</strong> the error. Find or create a small, self-contained piece of code that shows the problem happening. This is called a <em>reproducible example</em>.</p>
+<section id="the-reprex-package" class="level3"><h3 class="anchored" data-anchor-id="the-reprex-package">The <code>reprex</code> package</h3>
 <div class="stat541">
 
 </div>
+<p>Reproducible examples are so important to open-source collaboration, the <code>tidyverse</code> contains a package specifically to help people create and share them.</p>
+<p><strong>Read this vignette:</strong> https://reprex.tidyverse.org/articles/learn-reprex.html</p>
+</section></section><section id="where-is-the-problem" class="level2"><h2 class="anchored" data-anchor-id="where-is-the-problem">Where is the problem?</h2>
+<p>Now that you found something going wrong, we need to track down the exact line of code that’s causing the problem.</p>
+<p>Sometimes, you need to go no further than <em>actually reading the error message</em>!</p>
+<p>Although error messages can be unclear at times, they are still your best first line of defense. If the error message provides a snippet of code after the words <code>Error in</code>, this is of course where you should look!</p>
+<section id="interactive-debugging" class="level4"><h4 class="anchored" data-anchor-id="interactive-debugging">Interactive debugging</h4>
+<p>If you can’t find the error from the message alone, your best bet is <em>interactive debugging</em>, where you run your code step by step until you find the problem.</p>
+<p>For code outside a function, it is easy to run step by step. Inside a function, though, you need additional tools. We recommend starting with <code><a href="https://rdrr.io/r/base/debug.html">debugonce()</a></code>.</p>
+<p>When you call <code>debugonce([function_name])</code>, it prepares to start debugging the next time you trigger that function. When you do call the prepared function, you will be taken into the <em>environment</em> of that function, where you can examine object values and run code line-by-line.</p>
+<p>Try running the following to practice interacting with the debugger.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_vec</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/debug.html">debugonce</a></span><span class="op">(</span><span class="va">mean</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">my_vec</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>In your <em>console</em> you can hit “Enter” to step through the function until the moment it breaks. In your <em>environment</em> you can see the value of the argument <code>x</code> that was received when we passed in <code>my_vec</code>.</p>
+<div class="callout callout-style-default callout-check-in callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Check-in</span>Check In
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The following code triggers an error. Oh no!</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in `var()`:
+! is.atomic(x) is not TRUE</code></pre>
+</div>
+</div>
+<ol type="a">
+<li><p>Use the error message to identify the function <em>inside of</em> the <code><a href="https://rdrr.io/r/stats/sd.html">sd()</a></code> function where the error actually occurs.</p></li>
+<li><p>Use <code>debugonce(var)</code> to find the exact line of code in the <em>var</em> function where the error is triggered.</p></li>
+</ol>
+</div>
+</div>
+</section></section><section id="why-isnt-it-working" class="level2"><h2 class="anchored" data-anchor-id="why-isnt-it-working">Why isn’t it working?</h2>
+<p>Once you find <em>where</em> the problem is, your last task is to figure out how to fix it!</p>
+<p>Have you ever spent way too long looking for complicated solutions to a coding problem, only to realize you’d spelled one word wrong? If so, you aren’t alone!</p>
+<p><img src="./images/nasser_junior-misspelled.jpeg" class="img-fluid"></p>
+<p>Let’s think through some common types of bugs you can look for, before you get in the weeds on more complicated solutions.</p>
+<section id="typos-and-misspellings" class="level4"><h4 class="anchored" data-anchor-id="typos-and-misspellings">Typos and Misspellings</h4>
+<p>R, unfortunately, doesn’t speak English. It has no ability to realize that when you wrote <code>fitler</code>, you of course meant <code>filter</code>; or that your dataset <code>Dat</code> is the same as <code>dat</code>.</p>
+<p>The most common error you’ll get when you’ve simply mistyped something is <strong>object not found</strong>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># find the mean of the numbers 1 to 10</span></span>
+<span><span class="fu">Mean</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in `Mean()`:
+! could not find function "Mean"</code></pre>
+</div>
+</div>
+<p>Typically, these kind of bugs are easy to fix; simply find the <em>not found</em> part in your code and figure out the correct spelling. Where this can get hairy is if a different function <em>does</em> exist under the incorrect name.</p>
+<p>Consider, for example, the functions <code><a href="https://rdrr.io/r/base/MathFun.html">sqrt()</a></code> (“square root”) and <code><a href="https://rdrr.io/r/base/sort.html">sort()</a></code> (“sort in order”). These will both run without error, but if you meant to use one and accidentally wrote the other, it’ll be hard to track down. For these types of bugs, you’ll probably need some of the deeper techniques later in this chapter.</p>
+</section><section id="problems-with-package-dependencies" class="level4"><h4 class="anchored" data-anchor-id="problems-with-package-dependencies">Problems with package dependencies</h4>
+<p>Another reason that a function might be <em>not found</em> is that you have not loaded the <em>library</em> that provides it.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">inv.logit</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in `inv.logit()`:
+! could not find function "inv.logit"</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">boot</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/boot/man/inv.logit.html">inv.logit</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 0.7310586 0.8807971 0.9525741 0.9820138 0.9933071 0.9975274 0.9990889
+ [8] 0.9996646 0.9998766 0.9999546</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In a Quarto document, you need to use <code><a href="https://rdrr.io/r/base/library.html">library()</a></code> to declare all your packages at the start of the document. You may have a library loaded in your <em>RStudio environment</em>, so everything appears to work, but when you render your notebook the function is no longer found.</p>
+<p>Similarly, in an R package, your functions need to <em>import</em> anything you use from other packages. This can be done in <code>roxygen2</code> style documentation with</p>
+<pre><code>#' @importFrom boot inv.logit</code></pre>
+</div>
+</div>
+</section><section id="syntax-errors" class="level4"><h4 class="anchored" data-anchor-id="syntax-errors">Syntax Errors</h4>
+<p>In addition to typos in the words of your code, you might accidentally leave out important punctuation. This is called a <strong>syntax error</strong>.</p>
+<p>One common R error message for syntax errors is <em>unexpected symbol</em> - this tells you that the code parser got confused when it didn’t see the comma, pipe, or other symbol it expected.</p>
+<p>In the below example, the code expected a <code>,</code> but found <code>na.rm</code> instead.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span> <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in parse(text = input): &lt;text&gt;:1:11: unexpected symbol
+1: mean(1:10 na.rm
+              ^</code></pre>
+</div>
+</div>
+<p>Another common error message is <em>incomplete expression</em>, which typically tells you that you left your code unfinished - perhaps a missing parenthesis or a pipe with no next step.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in parse(text = input): &lt;text&gt;:2:0: unexpected end of input
+1: mean(1:10
+   ^</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">|&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in parse(text = input): &lt;text&gt;:2:0: unexpected end of input
+1: penguins |&gt;
+   ^</code></pre>
+</div>
+</div>
+<p>Much like misspellings, syntax errors are <em>usually</em> easy to find and fix. Simply find the code piece that the error message points out, and look for misformatted punctuation.</p>
+</section><section id="mismatched-data-types-or-structures" class="level3"><h3 class="anchored" data-anchor-id="mismatched-data-types-or-structures">Mismatched data types or structures</h3>
+<p>As a human, the following objects might seem to contain the exact same information:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">obj1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">4</span>, <span class="fl">5</span><span class="op">)</span></span>
+<span><span class="va">obj2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">3.0</span>, <span class="fl">4.0</span>, <span class="fl">5.0</span><span class="op">)</span></span>
+<span><span class="va">obj3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">4</span>, <span class="fl">5</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>To a computer, though, they are three different object types <em>and</em> three different object structures. Watch what happens when we try to take the mean of the numbers (3,4,5) using these objects:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">obj1</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">obj2</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in mean.default(obj2): argument is not numeric or logical: returning NA</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] NA</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">obj3</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in mean.default(obj3): argument is not numeric or logical: returning NA</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] NA</code></pre>
+</div>
+</div>
+<p><code>obj1</code> succeeds, because it has the <em>type</em> (numeric) and <em>structure</em> (vector) that the function <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> is designed to accept.</p>
+<p><code>obj2</code> fails - even though the data is <em>numeric</em>, the structure is a <em>list</em> and <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> is not designed for that.</p>
+<p><code>obj3</code> fails - even though the structure is a <em>vector</em>, the data type is a <em>factor</em> rather than numeric.</p>
+<p>When debugging, keep an eye out for moments where you may have given a function an input object of the wrong type or structure. This can sometimes come about because you misunderstand the type or structure that is <em>returned</em> by another function, and you pass it along.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Sometimes you can <em>coerce</em> an object into the right type or structure, by telling R to “force” the change. For example, we can use <code><a href="https://rdrr.io/r/base/unlist.html">unlist()</a></code> to turn our <code>obj2</code> into a vector:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unlist.html">unlist</a></span><span class="op">(</span><span class="va">obj2</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4</code></pre>
+</div>
+</div>
+<p>However, this is not always a magic fix. Consider using <code><a href="https://rdrr.io/r/base/numeric.html">as.numeric()</a></code> to convert our <code>obj3</code> from a factor to a number:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">obj3</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2</code></pre>
+</div>
+</div>
+<p>Yikes! This is the wrong answer! What happened here is that R stores <em>factors</em> as integers - a <code>1</code> stands in for the first category, a <code>2</code> for the second. It doesn’t matter if those categories are “3,4,5” or “a,b,c”; they will still be stored as numbers <code>1,2,3</code>. So, forcing this object to be numeric doesn’t “read” the category names of <code>"3"</code>, <code>"4"</code>, and <code>"5"</code> - it pulls out the index numbers <code>1</code>, <code>2</code> and <code>3</code>!</p>
+</div>
+</div>
+<section id="incorrect-computations" class="level4"><h4 class="anchored" data-anchor-id="incorrect-computations">Incorrect computations</h4>
+<p>Once we start getting into bugs that don’t throw an error message, it gets much harder to do quick checks. It’s always possible that you’ve accidentally written your function to do something different than you intended, but the output still looks plausible.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">add_two</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">x</span> <span class="op">+</span> <span class="fl">3</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="fu">add_two</span><span class="op">(</span><span class="fl">5</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 8</code></pre>
+</div>
+</div>
+<p>This is why writing <strong>unit tests</strong> is so important!</p>
+</section><section id="misunderstanding-of-data-meaning" class="level4"><h4 class="anchored" data-anchor-id="misunderstanding-of-data-meaning">Misunderstanding of data meaning</h4>
+<p>A final category of bug to look for, especially in programming for Data Science, is a procedure being applied that doesn’t make sense for the <em>data context</em>.</p>
+<p>For example, suppose you are studying the three penguin species in the <code>palmerpenguins</code> dataset, and you write this data cleaning code:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">penguins</span> <span class="op">&lt;-</span> <span class="va">penguins</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span></span>
+<span>    species_numeric <span class="op">=</span> <span class="fu">case_when</span><span class="op">(</span></span>
+<span>      <span class="va">species</span> <span class="op">==</span> <span class="st">"Adelie"</span> <span class="op">~</span> <span class="fl">1</span>,</span>
+<span>      <span class="va">species</span> <span class="op">==</span> <span class="st">"Chinstrap"</span> <span class="op">~</span> <span class="fl">2</span>,</span>
+<span>      <span class="va">species</span> <span class="op">==</span> <span class="st">"Gentoo"</span> <span class="op">~</span> <span class="fl">3</span></span>
+<span>    <span class="op">)</span></span>
+<span>  <span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Although this code is correctly written and does what you intended, it is not at all appropriate to change a categorical variable to arbitrary numbers! If you were to fit models, perform statistical tests, or visualize data using this new numeric variable, you would be in danger of false data conclusions.</p>
+<p>Remember that you, as the R programmer, are responsible for making good data choices in your code.</p>
+<div class="callout callout-style-default callout-check-in callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Check-in</span>Check In
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For each of the following errors (using nonsense function names), state what kind of bug you would look for first.</p>
+<ol type="a">
+<li>
+</li></ol>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">to_divide</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">15</span>, <span class="fl">5</span><span class="op">)</span></span>
+<span><span class="fu">divide</span><span class="op">(</span><span class="va">to_divide</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in `x[1] / x[2]`:
+! non-numeric argument to binary operator</code></pre>
+</div>
+</div>
+<ol start="2" type="a">
+<li>
+</li></ol>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb35"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">multiplie</span><span class="op">(</span><span class="fl">3</span>, <span class="fl">5</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in `multiplie()`:
+! could not find function "multiplie"</code></pre>
+</div>
+</div>
+<ol start="3" type="a">
+<li>
+</li></ol>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb37"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">square_root</span><span class="op">(</span><span class="fl">49</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in `square_root()`:
+! could not find function "square_root"</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Additional helpful reading
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>https://r-statistics.co/R-Debugging.html</p>
+<p>https://srvanderplas.github.io/stat-computing-r-python/part-gen-prog/06-debugging.html</p>
+</div>
+</div>
+<!-- ::: stat541 -->
+<!-- ::: -->
+<!-- ## Scope -->
 
 
-</section>
-
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</section></section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
     if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -778,8 +1070,7 @@ ul.task-list li input[type="checkbox"] {
   });
   </script>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
+<footer class="footer"><div class="nav-footer">
     <div class="nav-footer-left">
 <p>This page is built with ❤️ by Drs. Kelly Bodwin &amp; Allison Theobold and also <a href="https://quarto.org/">Quarto</a>.</p>
 </div>   
@@ -788,17 +1079,15 @@ ul.task-list li input[type="checkbox"] {
     <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/unit-3/debugging.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
-    <li class="nav-item">
+<li class="nav-item">
     <a class="nav-link" href="../LICENSE.md">
 <p>License</p>
 </a>
   </li>  
 </ul>
-    </div>
+</div>
   </div>
 </footer>
-
-
 
 
 </body></html>

@@ -155,11 +155,11 @@ website:
       title: "Unit 3"
       contents:
         - href: unit-3.qmd
+        - href: unit-3/package-structure.qmd
         - text: "Week 8: In-Class Activity"
           href: practice-activities/week-8.qmd
-        - href: unit-3/package-structure.qmd
         - href: unit-3/unit-testing.qmd
-        #- href: unit-3/debugging.qmd
+        - href: unit-3/debugging.qmd
         - text: "Week 9: In-Class Activity"
           href: practice-activities/week-9.qmd
         - href: unit-3/speed.qmd
