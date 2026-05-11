@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.8.24">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>Project Checkpoint 1 - Example – Advanced R</title>
+<title>Practice Activity 10: Speed it up! – Advanced R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -54,33 +54,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<link href="../../project/week-2.html" rel="next">
-<link href="../../project/week-1.html" rel="prev">
-<link href="../../images/cat-monsters-horst.png" rel="icon" type="image/png">
-<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b651517ce65839d647a86e2780455cfb.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-63767328852000e01d7c9d44355c1f36.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-5f858a84010510139e49c405efe9b486.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-63767328852000e01d7c9d44355c1f36.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
-<script src="../../site_libs/quarto-contrib/flourish-0.0.1/injectFlourishes.js"></script>
-<script src="../../site_libs/quarto-contrib/flourish-0.0.1/flourish.js"></script><script id="quarto-search-options" type="application/json">{
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../unit-3/speed.html" rel="prev">
+<link href="../images/cat-monsters-horst.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b651517ce65839d647a86e2780455cfb.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-63767328852000e01d7c9d44355c1f36.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-5f858a84010510139e49c405efe9b486.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-63767328852000e01d7c9d44355c1f36.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/flourish-0.0.1/injectFlourishes.js"></script>
+<script src="../site_libs/quarto-contrib/flourish-0.0.1/flourish.js"></script><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -275,8 +274,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../../images/cat-monsters-horst.png" alt="" class="navbar-logo light-content"><img src="../../images/cat-monsters-horst.png" alt="" class="navbar-logo dark-content"></a>
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../images/cat-monsters-horst.png" alt="" class="navbar-logo light-content"><img src="../images/cat-monsters-horst.png" alt="" class="navbar-logo dark-content"></a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
@@ -285,35 +284,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
 <li class="nav-item">
-    <a class="nav-link active" href="../../index.html" aria-current="page"> 
+    <a class="nav-link active" href="../index.html" aria-current="page"> 
 <span class="menu-text">Overview</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../course-materials/calendar.html"> 
+    <a class="nav-link" href="../course-materials/calendar.html"> 
 <span class="menu-text">Schedule</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../course-materials/syllabus.html"> 
+    <a class="nav-link" href="../course-materials/syllabus.html"> 
 <span class="menu-text">Syllabus</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../1810-review.html"> 
+    <a class="nav-link" href="../1810-review.html"> 
 <span class="menu-text">STAT 331 Review</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../unit-1.html"> 
+    <a class="nav-link" href="../unit-1.html"> 
 <span class="menu-text">Unit 1 - Complex Analyses</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../unit-2.html"> 
+    <a class="nav-link" href="../unit-2.html"> 
 <span class="menu-text">Unit 2 - Professional Deliverables</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../unit-3.html"> 
+    <a class="nav-link" href="../unit-3.html"> 
 <span class="menu-text">Unit 3 - Package Development</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../project.html"> 
+    <a class="nav-link" href="../project.html"> 
 <span class="menu-text">Projects</span></a>
   </li>  
 </ul>
@@ -333,124 +332,64 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../project/example-project-olympics/week-1.html"><em>Week 1: Example Project</em></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../practice-activities/week-10.html">Week 10: In-Class Activity</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
   </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="../../index.html" class="sidebar-logo-link">
+      <a href="../index.html" class="sidebar-logo-link">
       </a>
       </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../project.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Projects</span></a>
+  <a href="../unit-3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Unit 3</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../project/week-0.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 0: Choose a Dataset</span></a>
+  <a href="../unit-3/package-structure.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">R Packages</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../group-stuff/contract.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Group Collaboration Expectations</span></a>
+  <a href="../practice-activities/week-8.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 8: In-Class Activity</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../project/week-1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 1: Making a Game Plan</span></a>
+  <a href="../unit-3/unit-testing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Testing Package Code</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../project/example-project-olympics/week-1.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><em>Week 1: Example Project</em></span></a>
+  <a href="../unit-3/debugging.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Debugging Package Code</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../project/week-2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 2: Data Summary Functions</span></a>
+  <a href="../practice-activities/week-9.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 9: In-Class Activity</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../project/example-project-olympics/week-2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><em>Week 2: Example Project</em></span></a>
+  <a href="../unit-3/speed.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Code Speed</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../project/week-3.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 3: Acquiring New Data</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../project/example-project-olympics/week-3.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><em>Week 3: Example Project</em></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../project/week-4.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 4: Advanced Visualizations</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../project/project-1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Project 1 Final Deliverable</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../project/week-5.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 5: First Draft Dashboard</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../project/week-6.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 6: Dynamic Plots &amp; Country Data</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../project/week-7.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 7: Interactive Dashboard</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../project/project-2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Project 2 Final Deliverable</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../project/week-8.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 8: Package Plans</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../project/week-9.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 9: Build a Package</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../project/project-3.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Project 3 Final Deliverable</span></a>
+  <a href="../practice-activities/week-10.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Week 10: In-Class Activity</span></a>
   </div>
 </li>
     </ul>
@@ -461,27 +400,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
    
   <ul>
-<li>
-<a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
-  <ul class="collapse">
-<li><a href="#data-cleaning" id="toc-data-cleaning" class="nav-link" data-scroll-target="#data-cleaning">Data Cleaning</a></li>
-  </ul>
-</li>
-  <li>
-<a href="#explorations" id="toc-explorations" class="nav-link" data-scroll-target="#explorations">Explorations</a>
-  <ul class="collapse">
-<li><a href="#rq-1-olympic-success-by-country" id="toc-rq-1-olympic-success-by-country" class="nav-link" data-scroll-target="#rq-1-olympic-success-by-country">RQ 1: Olympic success by country</a></li>
-  <li><a href="#rq-2-sex-over-time" id="toc-rq-2-sex-over-time" class="nav-link" data-scroll-target="#rq-2-sex-over-time">RQ 2: Sex over time</a></li>
-  <li><a href="#rq-3-olympic-success-corrected-by-population" id="toc-rq-3-olympic-success-corrected-by-population" class="nav-link" data-scroll-target="#rq-3-olympic-success-corrected-by-population">RQ 3: Olympic success corrected by population</a></li>
-  <li><a href="#rq-4-correlation-between-female-wins-and-education" id="toc-rq-4-correlation-between-female-wins-and-education" class="nav-link" data-scroll-target="#rq-4-correlation-between-female-wins-and-education">RQ 4: Correlation between female wins and education</a></li>
-  </ul>
-</li>
-  <li><a href="#visualizations" id="toc-visualizations" class="nav-link" data-scroll-target="#visualizations">Visualizations</a></li>
-  </ul><div class="toc-actions"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/project/example-project-olympics/week-1.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></nav>
+<li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions">Instructions</a></li>
+  <li><a href="#scoring" id="toc-scoring" class="nav-link" data-scroll-target="#scoring">Scoring</a></li>
+  </ul><div class="toc-actions"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/practice-activities/week-10.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
-<h1 class="title">Project Checkpoint 1 - Example</h1>
+<h1 class="title">Practice Activity 10: Speed it up!</h1>
 </div>
 
 
@@ -495,294 +420,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 
-</header><!-- ALLISON (note for next time we teach):  --><!-- I'm not comfortable with an analysis that highlights "female" sports with the --><!-- politics of sex testing and anti-trans athletes --><div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>This is a minimal example representing “passing” or ‘C’ level work, to give you a baseline for how to proceed. ‘B’ or ‘A’ level work will require a more thoughtful and thorough description of the data and cleaning, deeper or more complex research questions, and/or more polished visualization sketches. Some notes about areas for improvement are included in the callouts below.</p>
-</div>
-</div>
-<section id="introduction" class="level2"><h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>My dataset is <a href="https://github.com/rfordatascience/tidytuesday/blob/main/data/2021/2021-07-27/readme.md">the Olympics data from TidyTuesday</a>. This dataset shows all the Olympic athletes ever, and gives information about their sport, the country they are from, whether they won a medal, etc.</p>
-<p>The data comes from a <a href="https://www.kaggle.com/datasets/heesoo37/120-years-of-olympic-history-athletes-and-results/">Kaggle dataset</a> created by user RGriffin, who scraped the data from www.sports-reference.com in May 2018.</p>
-<p>Here are a few rows of the dataset:</p>
+</header><p>This week’s practice activity is a code speed challenge! It is <strong>optional</strong> and provides a chance for <strong>extra credit</strong>. You may work with <em>one partner from outside your project group</em> if you wish.</p>
+<section id="instructions" class="level2"><h2 class="anchored" data-anchor-id="instructions">Instructions</h2>
+<p>The R package <code>slowpoke</code>, located at <a href="https://github.com/Cal-Poly-Advanced-R/slowpoke">Cal-Poly-Advanced-R/slowpoke</a> is designed to analyze a dataset of information about pokemon cards, taken from <a href="https://www.kaggle.com/datasets/adampq/pokemon-tcg-all-cards-1999-2023?select=pokemon-tcg-data-master+1999-2023.csv">this Kaggle page</a>.</p>
+<p>Alas, some of the functions are slower than they need to be!</p>
+<p><em>Fork</em> the package repository, then make any edits you choose to the package. There are <em>not</em> any intentional hidden bugs in the code; only slow implementation choices.</p>
+</section><section id="scoring" class="level2"><h2 class="anchored" data-anchor-id="scoring">Scoring</h2>
+<p>Turn in a link to your repository. I will install your package and speed test the following code:</p>
+<p><em>I do not recommend running this code until you’ve made some speed-up changes to the package!</em></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tuesdata</span> <span class="op">&lt;-</span> <span class="fu">tidytuesdayR</span><span class="fu">::</span><span class="fu"><a href="https://dslc-io.github.io/tidytuesdayR/reference/tt_load.html">tt_load</a></span><span class="op">(</span><span class="st">'2024-08-06'</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_favorite_pokes</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Slowpoke"</span>, <span class="st">"Bulbasaur"</span>, <span class="st">"Oddish"</span>, <span class="st">"wooper"</span>, <span class="st">"Zapdos"</span>, <span class="st">"Mimikyu"</span>, <span class="st">"Togepi"</span>, <span class="st">"Weepinbell"</span>, <span class="st">"slowpoke"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">tuesdata</span><span class="op">$</span><span class="va">olympics</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/sample_n.html">sample_n</a></span><span class="op">(</span><span class="fl">6</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div class="kable-table">
-<table class="caption-top table table-sm table-striped small">
-<colgroup>
-<col style="width: 4%">
-<col style="width: 12%">
-<col style="width: 2%">
-<col style="width: 2%">
-<col style="width: 4%">
-<col style="width: 4%">
-<col style="width: 7%">
-<col style="width: 2%">
-<col style="width: 7%">
-<col style="width: 3%">
-<col style="width: 4%">
-<col style="width: 7%">
-<col style="width: 8%">
-<col style="width: 25%">
-<col style="width: 3%">
-</colgroup>
-<thead><tr class="header">
-<th style="text-align: right;">id</th>
-<th style="text-align: left;">name</th>
-<th style="text-align: left;">sex</th>
-<th style="text-align: right;">age</th>
-<th style="text-align: right;">height</th>
-<th style="text-align: right;">weight</th>
-<th style="text-align: left;">team</th>
-<th style="text-align: left;">noc</th>
-<th style="text-align: left;">games</th>
-<th style="text-align: right;">year</th>
-<th style="text-align: left;">season</th>
-<th style="text-align: left;">city</th>
-<th style="text-align: left;">sport</th>
-<th style="text-align: left;">event</th>
-<th style="text-align: left;">medal</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;">121595</td>
-<td style="text-align: left;">Colomn Trabado Prez</td>
-<td style="text-align: left;">M</td>
-<td style="text-align: right;">22</td>
-<td style="text-align: right;">182</td>
-<td style="text-align: right;">71</td>
-<td style="text-align: left;">Spain</td>
-<td style="text-align: left;">ESP</td>
-<td style="text-align: left;">1980 Summer</td>
-<td style="text-align: right;">1980</td>
-<td style="text-align: left;">Summer</td>
-<td style="text-align: left;">Moskva</td>
-<td style="text-align: left;">Athletics</td>
-<td style="text-align: left;">Athletics Men’s 800 metres</td>
-<td style="text-align: left;">NA</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">96218</td>
-<td style="text-align: left;">Valentina Popovov</td>
-<td style="text-align: left;">F</td>
-<td style="text-align: right;">31</td>
-<td style="text-align: right;">170</td>
-<td style="text-align: right;">61</td>
-<td style="text-align: left;">Unified Team</td>
-<td style="text-align: left;">EUN</td>
-<td style="text-align: left;">1992 Summer</td>
-<td style="text-align: right;">1992</td>
-<td style="text-align: left;">Summer</td>
-<td style="text-align: left;">Barcelona</td>
-<td style="text-align: left;">Table Tennis</td>
-<td style="text-align: left;">Table Tennis Women’s Singles</td>
-<td style="text-align: left;">NA</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">45571</td>
-<td style="text-align: left;">Halvard Hanevold</td>
-<td style="text-align: left;">M</td>
-<td style="text-align: right;">36</td>
-<td style="text-align: right;">181</td>
-<td style="text-align: right;">75</td>
-<td style="text-align: left;">Norway</td>
-<td style="text-align: left;">NOR</td>
-<td style="text-align: left;">2006 Winter</td>
-<td style="text-align: right;">2006</td>
-<td style="text-align: left;">Winter</td>
-<td style="text-align: left;">Torino</td>
-<td style="text-align: left;">Biathlon</td>
-<td style="text-align: left;">Biathlon Men’s 12.5 kilometres Pursuit</td>
-<td style="text-align: left;">NA</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">63725</td>
-<td style="text-align: left;">Yep Gerardus Kramer</td>
-<td style="text-align: left;">M</td>
-<td style="text-align: right;">22</td>
-<td style="text-align: right;">178</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: left;">Netherlands</td>
-<td style="text-align: left;">NED</td>
-<td style="text-align: left;">1980 Winter</td>
-<td style="text-align: right;">1980</td>
-<td style="text-align: left;">Winter</td>
-<td style="text-align: left;">Lake Placid</td>
-<td style="text-align: left;">Speed Skating</td>
-<td style="text-align: left;">Speed Skating Men’s 10,000 metres</td>
-<td style="text-align: left;">NA</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">129374</td>
-<td style="text-align: left;">Hermann Weinbuch</td>
-<td style="text-align: left;">M</td>
-<td style="text-align: right;">19</td>
-<td style="text-align: right;">178</td>
-<td style="text-align: right;">69</td>
-<td style="text-align: left;">West Germany</td>
-<td style="text-align: left;">FRG</td>
-<td style="text-align: left;">1980 Winter</td>
-<td style="text-align: right;">1980</td>
-<td style="text-align: left;">Winter</td>
-<td style="text-align: left;">Lake Placid</td>
-<td style="text-align: left;">Ski Jumping</td>
-<td style="text-align: left;">Ski Jumping Men’s Large Hill, Individual</td>
-<td style="text-align: left;">NA</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">34452</td>
-<td style="text-align: left;">Norbert Fehr</td>
-<td style="text-align: left;">M</td>
-<td style="text-align: right;">27</td>
-<td style="text-align: right;">174</td>
-<td style="text-align: right;">90</td>
-<td style="text-align: left;">Germany</td>
-<td style="text-align: left;">GER</td>
-<td style="text-align: left;">1964 Summer</td>
-<td style="text-align: right;">1964</td>
-<td style="text-align: left;">Summer</td>
-<td style="text-align: left;">Tokyo</td>
-<td style="text-align: left;">Weightlifting</td>
-<td style="text-align: left;">Weightlifting Men’s Middle-Heavyweight</td>
-<td style="text-align: left;">NA</td>
-</tr>
-</tbody>
-</table>
+<span><span class="fu">find_many_pokes</span><span class="op">(</span><span class="va">my_favorite_pokes</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">rarity_by_release</span><span class="op">(</span><span class="va">series</span><span class="op">)</span></span>
+<span><span class="fu">rarity_by_release</span><span class="op">(</span><span class="va">artist</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Good:</p>
-<ul>
-<li><p>This description explains who created the data, from where, and when. It provides links to the sources so the reader can find them.</p></li>
-<li><p>It somewhat explains what information is in the dataset; i.e., information about athletes, as opposed to scheduling information or other details.</p></li>
-<li><p>Showing a random small snippet of the dataset is typically useful, to get a feel for what it looks like.</p></li>
-</ul>
-<p>Bad:</p>
-<ul>
-<li><p>This is lacking in the “why” and “how” of the data creation. It is important to know what motivated the creation and sharing of a dataset, as well as the specific process that the creator used to assemble it.</p></li>
-<li><p>This description is unclear about the <em>observational units</em>, i.e., what each row represents. (It is not true that each row is a unique athlete!)</p></li>
-<li><p>This description could give much more detail on the observed variables present, such as how they were measured and what a typical value looks like.</p></li>
-</ul>
-</div>
-</div>
-<section id="data-cleaning" class="level3"><h3 class="anchored" data-anchor-id="data-cleaning">Data Cleaning</h3>
-<p>This data was cleaned by using <code>janitor</code> to reformat column names.</p>
-<p>The user RGriffin who scraped the data also checked for misentered data in the columns <code>Name</code>, <code>Gender</code>, <code>Height</code>, and <code>Weight</code>.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><strong>Good:</strong></p>
-<ul>
-<li>We did not just look at the Tidy Tuesday cleaning and call it a day! We followed the path of the data creation to figure out what other cleaning and wrangling took place.</li>
-</ul>
-<p><strong>Bad:</strong></p>
-<ul>
-<li>We were not specific enough about the cleaning done by RGriffin. What did they alter in those columns and why? What other anomalies did they look for?</li>
-</ul>
-</div>
-</div>
-</section></section><section id="explorations" class="level2"><h2 class="anchored" data-anchor-id="explorations">Explorations</h2>
-<section id="rq-1-olympic-success-by-country" class="level3"><h3 class="anchored" data-anchor-id="rq-1-olympic-success-by-country">RQ 1: Olympic success by country</h3>
-<p>Which countries win the most Gold, Silver, and Bronze medals?</p>
-</section><section id="rq-2-sex-over-time" class="level3"><h3 class="anchored" data-anchor-id="rq-2-sex-over-time">RQ 2: Sex over time</h3>
-<p>Are there a higher percentage of female sports over time?</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><strong>Good:</strong></p>
-<ul>
-<li>These two research questions are well-defined and answerable with the dataset.</li>
-</ul>
-<p><strong>Bad:</strong></p>
-<ul>
-<li>These are not particularly deep. “Which countries win the most?” is not going to provide a new insight beyond what most people already know, and I think we can expect from the outset that female sports have increased over time.</li>
-</ul>
-</div>
-</div>
-</section><section id="rq-3-olympic-success-corrected-by-population" class="level3"><h3 class="anchored" data-anchor-id="rq-3-olympic-success-corrected-by-population">RQ 3: Olympic success corrected by population</h3>
-<p>Which countries win disproportionately more medals compared to their population size?</p>
-<p>Additional Data: Populations of each country</p>
-</section><section id="rq-4-correlation-between-female-wins-and-education" class="level3"><h3 class="anchored" data-anchor-id="rq-4-correlation-between-female-wins-and-education">RQ 4: Correlation between female wins and education</h3>
-<p>Do countries with better support for education for women also tend to see more success in female sports categories?</p>
-<p>Additional Data: Education trends in each country</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><strong>Good:</strong></p>
-<ul>
-<li>Question 4 digs deeper into the relationships between a country’s culture and government; and outcomes at the Olympics. This is a good question.</li>
-</ul>
-<p><strong>Bad:</strong></p>
-<ul>
-<li>Question 3 is a bit less interesting - you might uncover 1 or 2 interesting countries that win disproportionately, but you aren’t telling a rich story.</li>
-</ul>
-</div>
-</div>
-</section></section><section id="visualizations" class="level2"><h2 class="anchored" data-anchor-id="visualizations">Visualizations</h2>
-<p><img src="images/example_plot_1.png" class="img-fluid" alt="Stacked bar chart comparing Olympic medal counts for three countries — USA, Russia, and China. Each bar is divided into three segments representing gold (yellow), silver (blue), and bronze (orange) medals. The USA has the most medals overall, followed by Russia, then China. Russia and China have notably fewer bronze medals compared to the USA."></p>
-<p><img src="images/example_plot_2.png" class="img-fluid" alt="Scatter plot showing the relationship between the percent of women with a high school degree or better (x-axis) and the number of gold medals won in women's sports (y-axis). Approximately 15 data points are scattered across the chart. A red trend line runs upward from left to right, indicating a weak positive correlation — countries where more women have at least a high school education tend to win slightly more gold medals in women's sports. The data points show considerable spread around the trend line."></p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><strong>Good:</strong></p>
-<ul>
-<li>Plots are appropriate to data type and address RQs</li>
-</ul>
-<p><strong>Bad:</strong></p>
-<ul>
-<li>Not a lot of thought is put into these as far as good plot design, annotation and storytelling, etc.</li>
-</ul>
-</div>
-</div>
+<p><strong>5 extra credit points for:</strong> Any submissions that are (a) installable packages and (b) faster than the original, even by a little bit.</p>
+<p><strong>5 additional extra credit points for:</strong> The top three fastest submissions in each class, as tested by the professor.</p>
 
 
 </section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
@@ -1198,14 +853,11 @@ Note
     }
   });
   </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="../../project/week-1.html" class="pagination-link" aria-label="Week 1: Making a Game Plan">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Week 1: Making a Game Plan</span>
+      <a href="../unit-3/speed.html" class="pagination-link" aria-label="Code Speed">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Code Speed</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../project/week-2.html" class="pagination-link" aria-label="Week 2: Data Summary Functions">
-        <span class="nav-page-text">Week 2: Data Summary Functions</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
@@ -1215,11 +867,11 @@ Note
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/project/example-project-olympics/week-1.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/practice-activities/week-10.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
 <li class="nav-item">
-    <a class="nav-link" href="../../LICENSE.md">
+    <a class="nav-link" href="../LICENSE.md">
 <p>License</p>
 </a>
   </li>  

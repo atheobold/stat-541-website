@@ -1,0 +1,42 @@
+---
+title: "Practice Activity 10: Speed it up!"
+format: html
+editor: source
+execute: 
+  echo: true
+  error: true
+  eval: false
+---
+
+This week's practice activity is a code speed challenge!  It is **optional** and provides a chance for **extra credit**.  You may work with *one partner from outside your project group* if you wish.
+
+## Instructions
+
+The R package `slowpoke`, located at [Cal-Poly-Advanced-R/slowpoke](https://github.com/Cal-Poly-Advanced-R/slowpoke) is designed to analyze a dataset of information about pokemon cards, taken from [this Kaggle page](https://www.kaggle.com/datasets/adampq/pokemon-tcg-all-cards-1999-2023?select=pokemon-tcg-data-master+1999-2023.csv). 
+
+Alas, some of the functions are slower than they need to be!
+
+*Fork* the package repository, then make any edits you choose to the package.  There are *not* any intentional hidden bugs in the code; only slow implementation choices.
+
+
+
+## Scoring
+
+Turn in a link to your repository.  I will install your package and speed test the following code:
+
+*I do not recommend running this code until you've made some speed-up changes to the package!*
+
+```{r}
+#| eval: false
+
+my_favorite_pokes <- c("Slowpoke", "Bulbasaur", "Oddish", "wooper", "Zapdos", "Mimikyu", "Togepi", "Weepinbell", "slowpoke")
+
+find_many_pokes(my_favorite_pokes)
+
+rarity_by_release(series)
+rarity_by_release(artist)
+```
+
+**5 extra credit points for:** Any submissions that are (a) installable packages and (b) faster than the original, even by a little bit.
+
+**5 additional extra credit points for:** The top three fastest submissions in each class, as tested by the professor.

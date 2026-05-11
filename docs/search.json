@@ -33,28 +33,6 @@
     ]
   },
   {
-    "objectID": "unit-3/unit-testing.html#debugging-for-developers",
-    "href": "unit-3/unit-testing.html#debugging-for-developers",
-    "title": "Testing Package Code",
-    "section": "Debugging for developers",
-    "text": "Debugging for developers",
-    "crumbs": [
-      "Unit 3 - Package Development",
-      "Testing Package Code"
-    ]
-  },
-  {
-    "objectID": "unit-3/unit-testing.html#common-types-of-bugs",
-    "href": "unit-3/unit-testing.html#common-types-of-bugs",
-    "title": "Testing Package Code",
-    "section": "Common types of bugs",
-    "text": "Common types of bugs\n\nTypos and Misspellings\nSyntax Errors\nProblems with package dependencies\nMismatched data types or structures\nIncorrect computations\nMisunderstanding of data meaning",
-    "crumbs": [
-      "Unit 3 - Package Development",
-      "Testing Package Code"
-    ]
-  },
-  {
     "objectID": "unit-3/package-structure.html",
     "href": "unit-3/package-structure.html",
     "title": "R Packages",
@@ -389,7 +367,7 @@
     "href": "unit-1/iterating-functions.html#initial-object-size",
     "title": "Iterating Over Functions",
     "section": "Initial Object Size",
-    "text": "Initial Object Size\n\n\n\nNotice that we initialized char_storage, num_storage, and list_storage to all be the same length as our iteration vector (seq_len(3)). Technically, this wasn’t necessary. We could have been much lazier when we initialized these objects: list_storage &lt;- NA. Why didn’t we do this?\nWhen you don’t initialize an object as a specific size (e.g., length = 3) then at every stage of the for() loop R needs to append a new index to that object. This really slows down your for() loop!\nHere is a comparison of the run time between two functions that both store the index of the iteration. The first function (do_stuff_allocate) sets the initial object size (vector(length = reps)) before the loop is run. The second function (do_stuff_tackon) does not set an initial object size and instead initializes results as a vector of length 1 (results &lt;- NA).\n\ndo_stuff_allocate &lt;- function(reps) {\n  results &lt;- vector(length = reps)\n  for (i in seq_len(reps)) {\n    results[i] &lt;- i\n  }\n  return(results)\n}\n\ndo_stuff_tackon &lt;- function(reps) {\n   results &lt;- NA\n  for (i in seq_len(reps)) {\n    results &lt;- c(results, i)\n  }\n  return(results)\n}\n\nLet’s see how these two functions compare in their run time:\n\n\n\n\n\n\nStatistic\ndo_stuff_allocate\ndo_stuff_tackon\n\n\n\nmin\n14,719 µs\n434,887 µs\n\n\nmean\n28,688 µs\n736,014 µs\n\n\nmedian\n17,179 µs\n555,386 µs\n\n\nmax\n1,116,184 µs\n8,075,237 µs\n\n\n\n\n\n\nLesson: You should always initialize your object as the size you want it to be.\n\n\n\n\n\n\nCheck-inCheck In\n\n\n\n\nWrite a for()-loop that prints the even numbers from 1:20.\nCan you produce the same output with the seq() function?\n\n\nWrite a for()-loop that iterates over the month.name vector (built-in to base R) and stores a character vector of output containing strings like “Month 1: January”, “Month 2: February”.\nCan you produce the same output with str_c() only?\n\n\nWrite a for()-loop that store the class() (type) of every column in the mpg data frame.",
+    "text": "Initial Object Size\n\n\n\nNotice that we initialized char_storage, num_storage, and list_storage to all be the same length as our iteration vector (seq_len(3)). Technically, this wasn’t necessary. We could have been much lazier when we initialized these objects: list_storage &lt;- NA. Why didn’t we do this?\nWhen you don’t initialize an object as a specific size (e.g., length = 3) then at every stage of the for() loop R needs to append a new index to that object. This really slows down your for() loop!\nHere is a comparison of the run time between two functions that both store the index of the iteration. The first function (do_stuff_allocate) sets the initial object size (vector(length = reps)) before the loop is run. The second function (do_stuff_tackon) does not set an initial object size and instead initializes results as a vector of length 1 (results &lt;- NA).\n\ndo_stuff_allocate &lt;- function(reps) {\n  results &lt;- vector(length = reps)\n  for (i in seq_len(reps)) {\n    results[i] &lt;- i\n  }\n  return(results)\n}\n\ndo_stuff_tackon &lt;- function(reps) {\n   results &lt;- NA\n  for (i in seq_len(reps)) {\n    results &lt;- c(results, i)\n  }\n  return(results)\n}\n\nLet’s see how these two functions compare in their run time:\n\n\n\n\n\n\nStatistic\ndo_stuff_allocate\ndo_stuff_tackon\n\n\n\nmin\n15,129 µs\n424,596 µs\n\n\nmean\n31,251 µs\n730,642 µs\n\n\nmedian\n17,015 µs\n505,243 µs\n\n\nmax\n1,358,371 µs\n9,194,250 µs\n\n\n\n\n\n\nLesson: You should always initialize your object as the size you want it to be.\n\n\n\n\n\n\nCheck-inCheck In\n\n\n\n\nWrite a for()-loop that prints the even numbers from 1:20.\nCan you produce the same output with the seq() function?\n\n\nWrite a for()-loop that iterates over the month.name vector (built-in to base R) and stores a character vector of output containing strings like “Month 1: January”, “Month 2: February”.\nCan you produce the same output with str_c() only?\n\n\nWrite a for()-loop that store the class() (type) of every column in the mpg data frame.",
     "crumbs": [
       "Unit 1 - Complex Analyses",
       "Iterating Over Functions"
@@ -455,7 +433,7 @@
     "href": "unit-1/efficient-code.html#avoid-for-loops",
     "title": "Writing More Efficient Code",
     "section": "Avoid for-loops",
-    "text": "Avoid for-loops\nfor()-loops are deathly slow in R. If you absolutely must iterate over a process, rely on the map() or apply() function families. These functions offer the same versatility of a for()-loop but are (1) more human readable, and (2) much faster because they are written in C.\n\n\n\n\n\n\nNoteWhy choose map() instead of apply()?\n\n\n\nThe map() and apply() functions will typically be close to the same speed, so the largest argument in favor of the map() family of functions are their consistent syntax, and their consistent object output.\nThe map() function always returns a list and the map_XXX() variants always return a vector of a specified data type. Whereas, apply() returns a vector or a list, lapply() returns a list, and sapply() returns a vector or a matrix.\n\n\nHere is a motivating example demonstrating the difference in run time between two functions:\n\na function which loops over every column in a data frame to extract the data type of that column\na function which uses map_chr() to apply the class() function to every column of a data frame\n\n\nloop_func &lt;- function(df){\n  \n  # initialize the type object\n  type &lt;- rep(NA, ncol(df))\n  \n  for(i in seq_len(ncol(df))) {\n    \n    # store the class of the ith column of df into the ith entry of type \n    type[i] &lt;- class(df[,i])\n  }\n  \n  return(type)\n}\n\nmap_func &lt;- function(df){\n  \n  type &lt;- map_chr(df, class)\n  \n  return(type)\n\n  }\n\nOkay, now that we’ve made these two functions, let’s see how they compare in their run time. Below, we’ve made a simple albeit large dataframe. The dataframe has five rows and 100,000 columns and the element of every column is a vector of 1s.\n\ndat &lt;- as.data.frame(\n  matrix(1,\n         nrow = 5,\n         ncol = 100000)\n  )\n\nLet’s use tic() and toc() again to compare the run time for these two functions:\n\n\n\ntic()\nloop_func(dat)\n\n\ntoc()\n\n3.815 sec elapsed\n\n\n\n\n\n\ntic()\nmap_func(dat)\n\n\ntoc()\n\n0.392 sec elapsed\n\n\n\n\nLooking at the output, we see substantial differences in the run time of these two functions. The loop function took about 3.5 seconds whereas the map function took less than half a second.\n\n\n\n\n\n\nCheck-inCheck In\n\n\n\n\nWhy might we prefer using map() functions instead of writing a for() loop?\n\n\n\nmap() automatically makes the code run faster in all cases.\n\nmap() makes code more readable, concise, and often faster.\n\nmap() can only be used with numeric data, unlike loops.\n\nmap() replaces all possible uses of loops in programming.\n\n\nWhich map() function should be used in place of this for() loop?\n\n\nnumbers &lt;- c(4, 9, 16, 25)\n\nresults &lt;- vector(\"numeric\", length(numbers))\n\nfor (i in seq_along(numbers)) {\n  results[i] &lt;- sqrt(numbers[i])\n}\n\n\nmap()\nmap_dbl()\nmap_chr()\nwalk()",
+    "text": "Avoid for-loops\nfor()-loops are deathly slow in R. If you absolutely must iterate over a process, rely on the map() or apply() function families. These functions offer the same versatility of a for()-loop but are (1) more human readable, and (2) much faster because they are written in C.\n\n\n\n\n\n\nNoteWhy choose map() instead of apply()?\n\n\n\nThe map() and apply() functions will typically be close to the same speed, so the largest argument in favor of the map() family of functions are their consistent syntax, and their consistent object output.\nThe map() function always returns a list and the map_XXX() variants always return a vector of a specified data type. Whereas, apply() returns a vector or a list, lapply() returns a list, and sapply() returns a vector or a matrix.\n\n\nHere is a motivating example demonstrating the difference in run time between two functions:\n\na function which loops over every column in a data frame to extract the data type of that column\na function which uses map_chr() to apply the class() function to every column of a data frame\n\n\nloop_func &lt;- function(df){\n  \n  # initialize the type object\n  type &lt;- rep(NA, ncol(df))\n  \n  for(i in seq_len(ncol(df))) {\n    \n    # store the class of the ith column of df into the ith entry of type \n    type[i] &lt;- class(df[,i])\n  }\n  \n  return(type)\n}\n\nmap_func &lt;- function(df){\n  \n  type &lt;- map_chr(df, class)\n  \n  return(type)\n\n  }\n\nOkay, now that we’ve made these two functions, let’s see how they compare in their run time. Below, we’ve made a simple albeit large dataframe. The dataframe has five rows and 100,000 columns and the element of every column is a vector of 1s.\n\ndat &lt;- as.data.frame(\n  matrix(1,\n         nrow = 5,\n         ncol = 100000)\n  )\n\nLet’s use tic() and toc() again to compare the run time for these two functions:\n\n\n\ntic()\nloop_func(dat)\n\n\ntoc()\n\n3.923 sec elapsed\n\n\n\n\n\n\ntic()\nmap_func(dat)\n\n\ntoc()\n\n0.404 sec elapsed\n\n\n\n\nLooking at the output, we see substantial differences in the run time of these two functions. The loop function took about 3.5 seconds whereas the map function took less than half a second.\n\n\n\n\n\n\nCheck-inCheck In\n\n\n\n\nWhy might we prefer using map() functions instead of writing a for() loop?\n\n\n\nmap() automatically makes the code run faster in all cases.\n\nmap() makes code more readable, concise, and often faster.\n\nmap() can only be used with numeric data, unlike loops.\n\nmap() replaces all possible uses of loops in programming.\n\n\nWhich map() function should be used in place of this for() loop?\n\n\nnumbers &lt;- c(4, 9, 16, 25)\n\nresults &lt;- vector(\"numeric\", length(numbers))\n\nfor (i in seq_along(numbers)) {\n  results[i] &lt;- sqrt(numbers[i])\n}\n\n\nmap()\nmap_dbl()\nmap_chr()\nwalk()",
     "crumbs": [
       "Unit 1 - Complex Analyses",
       "Writing More Efficient Code"
@@ -905,7 +883,7 @@
     "href": "project/example-project-olympics/week-1.html#introduction",
     "title": "Project Checkpoint 1 - Example",
     "section": "Introduction",
-    "text": "Introduction\nMy dataset is the Olympics data from TidyTuesday. This dataset shows all the Olympic athletes ever, and gives information about their sport, the country they are from, whether they won a medal, etc.\nThe data comes from a Kaggle dataset created by user RGriffin, who scraped the data from www.sports-reference.com in May 2018.\nHere are a few rows of the dataset:\n\ntuesdata &lt;- tidytuesdayR::tt_load('2024-08-06')\n\ntuesdata$olympics |&gt; \n  dplyr::sample_n(6)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nid\nname\nsex\nage\nheight\nweight\nteam\nnoc\ngames\nyear\nseason\ncity\nsport\nevent\nmedal\n\n\n\n134219\nRichard Zednk\nM\n34\n186\n87\nSlovakia\nSVK\n2010 Winter\n2010\nWinter\nVancouver\nIce Hockey\nIce Hockey Men’s Ice Hockey\nNA\n\n\n83133\nPaul Mller\nM\n22\n166\n54\nSwitzerland\nSUI\n1968 Summer\n1968\nSummer\nMexico City\nGymnastics\nGymnastics Men’s Floor Exercise\nNA\n\n\n128198\nManfred Christopher “Chris” Waller\nM\n23\n167\n66\nUnited States\nUSA\n1992 Summer\n1992\nSummer\nBarcelona\nGymnastics\nGymnastics Men’s Team All-Around\nNA\n\n\n44291\nLilja Gumundsdttir\nF\n21\nNA\nNA\nIceland\nISL\n1976 Summer\n1976\nSummer\nMontreal\nAthletics\nAthletics Women’s 1,500 metres\nNA\n\n\n28470\nNorbert Dietrich\nM\n21\nNA\nNA\nSaar\nSAA\n1952 Summer\n1952\nSummer\nHelsinki\nGymnastics\nGymnastics Men’s Individual All-Around\nNA\n\n\n48734\nGabriele Hinzmann (Trepscheck-)\nF\n25\n178\n80\nEast Germany\nGDR\n1972 Summer\n1972\nSummer\nMunich\nAthletics\nAthletics Women’s Discus Throw\nNA\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nGood:\n\nThis description explains who created the data, from where, and when. It provides links to the sources so the reader can find them.\nIt somewhat explains what information is in the dataset; i.e., information about athletes, as opposed to scheduling information or other details.\nShowing a random small snippet of the dataset is typically useful, to get a feel for what it looks like.\n\nBad:\n\nThis is lacking in the “why” and “how” of the data creation. It is important to know what motivated the creation and sharing of a dataset, as well as the specific process that the creator used to assemble it.\nThis description is unclear about the observational units, i.e., what each row represents. (It is not true that each row is a unique athlete!)\nThis description could give much more detail on the observed variables present, such as how they were measured and what a typical value looks like.\n\n\n\nData Cleaning\nThis data was cleaned by using janitor to reformat column names.\nThe user RGriffin who scraped the data also checked for misentered data in the columns Name, Gender, Height, and Weight.\n\n\n\n\n\n\nNote\n\n\n\nGood:\n\nWe did not just look at the Tidy Tuesday cleaning and call it a day! We followed the path of the data creation to figure out what other cleaning and wrangling took place.\n\nBad:\n\nWe were not specific enough about the cleaning done by RGriffin. What did they alter in those columns and why? What other anomalies did they look for?",
+    "text": "Introduction\nMy dataset is the Olympics data from TidyTuesday. This dataset shows all the Olympic athletes ever, and gives information about their sport, the country they are from, whether they won a medal, etc.\nThe data comes from a Kaggle dataset created by user RGriffin, who scraped the data from www.sports-reference.com in May 2018.\nHere are a few rows of the dataset:\n\ntuesdata &lt;- tidytuesdayR::tt_load('2024-08-06')\n\ntuesdata$olympics |&gt; \n  dplyr::sample_n(6)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nid\nname\nsex\nage\nheight\nweight\nteam\nnoc\ngames\nyear\nseason\ncity\nsport\nevent\nmedal\n\n\n\n121595\nColomn Trabado Prez\nM\n22\n182\n71\nSpain\nESP\n1980 Summer\n1980\nSummer\nMoskva\nAthletics\nAthletics Men’s 800 metres\nNA\n\n\n96218\nValentina Popovov\nF\n31\n170\n61\nUnified Team\nEUN\n1992 Summer\n1992\nSummer\nBarcelona\nTable Tennis\nTable Tennis Women’s Singles\nNA\n\n\n45571\nHalvard Hanevold\nM\n36\n181\n75\nNorway\nNOR\n2006 Winter\n2006\nWinter\nTorino\nBiathlon\nBiathlon Men’s 12.5 kilometres Pursuit\nNA\n\n\n63725\nYep Gerardus Kramer\nM\n22\n178\n72\nNetherlands\nNED\n1980 Winter\n1980\nWinter\nLake Placid\nSpeed Skating\nSpeed Skating Men’s 10,000 metres\nNA\n\n\n129374\nHermann Weinbuch\nM\n19\n178\n69\nWest Germany\nFRG\n1980 Winter\n1980\nWinter\nLake Placid\nSki Jumping\nSki Jumping Men’s Large Hill, Individual\nNA\n\n\n34452\nNorbert Fehr\nM\n27\n174\n90\nGermany\nGER\n1964 Summer\n1964\nSummer\nTokyo\nWeightlifting\nWeightlifting Men’s Middle-Heavyweight\nNA\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nGood:\n\nThis description explains who created the data, from where, and when. It provides links to the sources so the reader can find them.\nIt somewhat explains what information is in the dataset; i.e., information about athletes, as opposed to scheduling information or other details.\nShowing a random small snippet of the dataset is typically useful, to get a feel for what it looks like.\n\nBad:\n\nThis is lacking in the “why” and “how” of the data creation. It is important to know what motivated the creation and sharing of a dataset, as well as the specific process that the creator used to assemble it.\nThis description is unclear about the observational units, i.e., what each row represents. (It is not true that each row is a unique athlete!)\nThis description could give much more detail on the observed variables present, such as how they were measured and what a typical value looks like.\n\n\n\nData Cleaning\nThis data was cleaned by using janitor to reformat column names.\nThe user RGriffin who scraped the data also checked for misentered data in the columns Name, Gender, Height, and Weight.\n\n\n\n\n\n\nNote\n\n\n\nGood:\n\nWe did not just look at the Tidy Tuesday cleaning and call it a day! We followed the path of the data creation to figure out what other cleaning and wrangling took place.\n\nBad:\n\nWe were not specific enough about the cleaning done by RGriffin. What did they alter in those columns and why? What other anomalies did they look for?",
     "crumbs": [
       "Projects",
       "*Week 1: Example Project*"
@@ -1176,98 +1154,368 @@
     ]
   },
   {
-    "objectID": "practice-activities/week-1.html",
-    "href": "practice-activities/week-1.html",
-    "title": "Practice Activity Week 1",
+    "objectID": "practice-activities/week-10.html",
+    "href": "practice-activities/week-10.html",
+    "title": "Practice Activity 10: Speed it up!",
     "section": "",
-    "text": "Download the template Practice Activity Quarto file here: pa-1.qmd\n\n\n\n\n\n\nImportant\n\n\n\nBe sure to save the file inside your Week 2 folder of your STAT 431 (or 541) folder!\n\n\n\nlibrary(tidyverse)",
+    "text": "This week’s practice activity is a code speed challenge! It is optional and provides a chance for extra credit. You may work with one partner from outside your project group if you wish.",
     "crumbs": [
-      "STAT 331 Review",
-      "Week 1 In-Class Activity"
+      "Unit 3 - Package Development",
+      "Week 10: In-Class Activity"
     ]
   },
   {
-    "objectID": "practice-activities/week-1.html#accessing-the-practice-activity",
-    "href": "practice-activities/week-1.html#accessing-the-practice-activity",
-    "title": "Practice Activity Week 1",
+    "objectID": "practice-activities/week-10.html#instructions",
+    "href": "practice-activities/week-10.html#instructions",
+    "title": "Practice Activity 10: Speed it up!",
+    "section": "Instructions",
+    "text": "Instructions\nThe R package slowpoke, located at Cal-Poly-Advanced-R/slowpoke is designed to analyze a dataset of information about pokemon cards, taken from this Kaggle page.\nAlas, some of the functions are slower than they need to be!\nFork the package repository, then make any edits you choose to the package. There are not any intentional hidden bugs in the code; only slow implementation choices.",
+    "crumbs": [
+      "Unit 3 - Package Development",
+      "Week 10: In-Class Activity"
+    ]
+  },
+  {
+    "objectID": "practice-activities/week-10.html#scoring",
+    "href": "practice-activities/week-10.html#scoring",
+    "title": "Practice Activity 10: Speed it up!",
+    "section": "Scoring",
+    "text": "Scoring\nTurn in a link to your repository. I will install your package and speed test the following code:\nI do not recommend running this code until you’ve made some speed-up changes to the package!\n\nmy_favorite_pokes &lt;- c(\"Slowpoke\", \"Bulbasaur\", \"Oddish\", \"wooper\", \"Zapdos\", \"Mimikyu\", \"Togepi\", \"Weepinbell\", \"slowpoke\")\n\nfind_many_pokes(my_favorite_pokes)\n\nrarity_by_release(series)\nrarity_by_release(artist)\n\n5 extra credit points for: Any submissions that are (a) installable packages and (b) faster than the original, even by a little bit.\n5 additional extra credit points for: The top three fastest submissions in each class, as tested by the professor.",
+    "crumbs": [
+      "Unit 3 - Package Development",
+      "Week 10: In-Class Activity"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Welcome",
     "section": "",
-    "text": "Download the template Practice Activity Quarto file here: pa-1.qmd\n\n\n\n\n\n\nImportant\n\n\n\nBe sure to save the file inside your Week 2 folder of your STAT 431 (or 541) folder!\n\n\n\nlibrary(tidyverse)",
-    "crumbs": [
-      "STAT 331 Review",
-      "Week 1 In-Class Activity"
-    ]
+    "text": "Advanced R takes a deeper dive into statistical computing in R, building your communication and iteration skills. We will explore different modalities for communicating statistical ideas—dynamic visualizations and dashboards, while also exploring ways to integrate R code into these environments. We will also continue to expand your skills as a developer—writing functions and iterating over those functions to query data from APIs and scrape the web. We’re going to have a lot of fun!"
   },
   {
-    "objectID": "practice-activities/week-1.html#quarto",
-    "href": "practice-activities/week-1.html#quarto",
-    "title": "Practice Activity Week 1",
-    "section": "Quarto",
-    "text": "Quarto\nFirst, let’s make sure you know how to use Markdown formatting to style a Quarto document.\n\nMake this text bold.\nMake this text italicized.\nMake these items into a bullet point list:\n\nApples Bananas Potatoes\n\nEdit the YAML to remove warning messages from being output in the rendered HTML file\nUsing code chunk options, make it so this chunk shows the code but not the output:\n\n\n2 + 2\n\n[1] 4\n\n\n\nUsing code chunk options, make it so the file can still render even though this chunk has an error\n\n\n2 + a\n\nError:\n! object 'a' not found",
-    "crumbs": [
-      "STAT 331 Review",
-      "Week 1 In-Class Activity"
-    ]
+    "objectID": "index.html#how-to-use-this-text",
+    "href": "index.html#how-to-use-this-text",
+    "title": "Welcome",
+    "section": "How to Use This Text",
+    "text": "How to Use This Text\n\n\n\n\n\n\nWarning\n\n\n\nWatch out sections contain things you may want to look out for - common errors, etc.\n\n\n\n\n\n\n\n\nExampleExample\n\n\n\nExample sections contain code and other information. Don’t skip them!\n\n\n\n\n\n\n\n\nNote\n\n\n\nNote sections contain clarification points (anywhere I would normally say “note that ….). Make sure to read them to avoid any common pitfalls or misconceptions.\n\n\n\n\n\n\n\n\nRequired-readingRequired Reading\n\n\n\nConsider these sections to be required readings. This is where we will direct you to existing materials to explain or introduce a concept.\n\n\n\n\n\n\n\n\nRequired-videoRequired Video\n\n\n\nSimilarly, consider these sections to be required viewing for the course material.\n\n\n\n\n\n\n\n\nCheck-inCheck In\n\n\n\nCheck-in sections contain small tasks that you need to do throughout the reading, to practice or prepare. Although they are not graded, please treat them as required!\n\n\n\n\n\n\n\n\nPractice-exercisePractice Exercise\n\n\n\nEach chapter will have a longer practice exercise to complete and turn in. These are intended to be done with help from instructors and peers.\n\n\n\n\n\n\n\n\nLearn-moreLearn More\n\n\n\nConsider these to be optional readings / viewings. The world of R programming has so many interesting tidbits, we can’t possibly teach them all - but we want to share them with you nonetheless!\nWe will usually make these “click to expand” so that they don’t distract from your reading.\n\n\n\n\n\n\n\n\nOpinionJust our opinion...\n\n\n\nThese are personal opinion comments from the authors. Take them with a grain of salt; we aren’t the only R programmers worth listening to, we are just sharing what has worked for us.\nWe will usually make these “click to expand” so that they don’t distract from your reading."
   },
   {
-    "objectID": "practice-activities/week-1.html#data-visualization-review",
-    "href": "practice-activities/week-1.html#data-visualization-review",
-    "title": "Practice Activity Week 1",
-    "section": "Data Visualization Review",
-    "text": "Data Visualization Review\nIn this class, we will exclusively make visualizations using ggplot2 and packages developed to be compatible with ggplot2. If you are less familiar with plotting in ggplot2 or it’s been some time since you used this package, I would strongly recommend referencing resources from the data visualization section of this week’s coursework!\nThe questions below (Questions 7-11) utilize the mpg data from the tidyverse package.\n\nUse side-by-side boxplots to visualize the distribution of hwy miles per gallon for each manufacturer. The names of the manufacturers should be easily readable, and your axes should include any necessary information regarding the variables and their units!\n\n\n\nUse faceted scatterplots to visualize how the relationship between hwy mileage and cty mileage has changed over time. Your axes should include any necessary information regarding the variables and their units!",
-    "crumbs": [
-      "STAT 331 Review",
-      "Week 1 In-Class Activity"
-    ]
+    "objectID": "index.html#acknowledements",
+    "href": "index.html#acknowledements",
+    "title": "Welcome",
+    "section": "Acknowledements",
+    "text": "Acknowledements\nThe design (and redesign) of this course was generously supported by the Noyce School of Applied Computing at Cal Poly through a teaching innovation grant. We thank both our collaboration team at Cal Poly—Charlotte Mann, Emily Robinson, Zoe Rehnberg, Julia Schedler—and our external collaborator—Tyson Barrett. This class wouldn’t have been possible without the generous support we received!\nA huge shout out goes the the amazing women at Macalester College—Leslie Myint, Brianna Heggeseth, and Alicia Johnson—for making their Intermediate Data Science course materials public. And finally, a massive thank you to Sam Shanny-Csik for their incredible resources for making and styling Quarto websites!\nThis website is built with Quarto, the lovely icons are all by Allison Horst, and none of this would be possible without the tidyverse."
   },
   {
-    "objectID": "practice-activities/week-1.html#data-wrangling-review",
-    "href": "practice-activities/week-1.html#data-wrangling-review",
-    "title": "Practice Activity Week 1",
-    "section": "Data Wrangling Review",
-    "text": "Data Wrangling Review\nIn this class, we will exclusively make use of tools from the tidyverse suite of packages to perform our data cleaning and wrangling operations. If you are less familiar with these packages or it’s been some time since you used them, I would strongly recommend referencing the function documentation!\nFor these problems, we will continue to work with the mpg data frame, making various changes to the data to clean it up.\n\nThe fl variable describes the type of fuel for each car, with levels: p, r, e, d, and c. Do some research into what each of these labels mean! Then, use the mutate() and if_else() functions to create a new variable (fuel_type) with two levels: petrol (any car using petrolium-based gas) and alternative energy (any car not using petrolium-based gas).\n\n\nThe drv variable describes if the car has front drive (f), rear drive (r), or four wheel drive (4). Let’s make better labels for these values! Specifically, use the mutate() and recode_values() to change the drv variable to have the following descriptive levels: front, rear, four wheel.\n\nHint: The recode_values() function was added to dplyr version 1.2.0. If you don’t see this function you need to update your version of dplyr!\n\nThe trans variable contains two pieces of information, (1) the transmission style (auto or manual) and the specific type of transmission (e.g., l5, m5, av). Using the separate_wider_delim() function, create two new variables from trans, (1) trans_type containing the specific type of transmission of each car (e.g., l5), and (2) trans_style the style of the transmission (e.g., auto). Hint: You will need to deal with the stray parenthesis!",
-    "crumbs": [
-      "STAT 331 Review",
-      "Week 1 In-Class Activity"
-    ]
+    "objectID": "index.html#license",
+    "href": "index.html#license",
+    "title": "Welcome",
+    "section": "License",
+    "text": "License\nThis online work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International. Visit here for more information about the license."
   },
   {
-    "objectID": "practice-activities/week-1.html#getting-to-know-your-classmates",
-    "href": "practice-activities/week-1.html#getting-to-know-your-classmates",
-    "title": "Practice Activity Week 1",
-    "section": "Getting to know your classmates",
-    "text": "Getting to know your classmates\n\nFind someone who took Stat 331 from a different professor than you. Compare your experiences. Tell me their name and professor. List one or two things that you think you learned more about, and one or two things that they learned more about.\nFind someone in the class who does not share your birth month. Tell me their name and birthday, and use R to find out how many days apart your birthdays are.",
-    "crumbs": [
-      "STAT 331 Review",
-      "Week 1 In-Class Activity"
-    ]
-  },
-  {
-    "objectID": "group-stuff/instructor-action.html",
-    "href": "group-stuff/instructor-action.html",
-    "title": "Instructor Intervention Plan",
+    "objectID": "group-stuff/contract.html",
+    "href": "group-stuff/contract.html",
+    "title": "Group Contract",
     "section": "",
-    "text": "Trigger examples:\n\nA group reports “2 – Somewhat uneven” for two consecutive weeks\nOne student consistently reports vague or minimal contributions\n\nWhat I will do:\n\nSend a brief email to the group\nSummarize the pattern neutrally\nAsk your group to clarify how tasks are being assigned\nEncourage more explicit ownership rotation\n\nNo grade impact at this stage"
+    "text": "Throughout this course you will collaborate with your peers to complete various projects. You will be placed in a group with students who are also interested in working with the same dataset. You will work with this group for the entire term.",
+    "crumbs": [
+      "Projects",
+      "Group Collaboration Expectations"
+    ]
   },
   {
-    "objectID": "group-stuff/instructor-action.html#level-1-light-touch-check-in-early-signal",
-    "href": "group-stuff/instructor-action.html#level-1-light-touch-check-in-early-signal",
-    "title": "Instructor Intervention Plan",
+    "objectID": "group-stuff/contract.html#how-good-collaboration-looks",
+    "href": "group-stuff/contract.html#how-good-collaboration-looks",
+    "title": "Group Contract",
+    "section": "How “Good” Collaboration Looks",
+    "text": "How “Good” Collaboration Looks\n\n\nStrong groups tend to:\n\nMake decisions explicitly (not implicitly)\nDocument analytic choices\nAsk “Why are we doing this?” regularly\nTreat feedback as collaborative improvement, not criticism\nRaise concerns early\n\n\n\n\nWeak groups tend to:\n\nAssume alignment without discussion\nAvoid difficult conversations\nLeave integration until the last minute\nConfuse “splitting the work” with “collaborating”",
+    "crumbs": [
+      "Projects",
+      "Group Collaboration Expectations"
+    ]
+  },
+  {
+    "objectID": "group-stuff/contract.html#weekly-contribution-reporting",
+    "href": "group-stuff/contract.html#weekly-contribution-reporting",
+    "title": "Group Contract",
+    "section": "Weekly Contribution Reporting",
+    "text": "Weekly Contribution Reporting\nEach week, alongside your group submission, every member must complete a brief Contribution Report describing task ownership and individual contributions.\nThis is not meant to “police” groups. It is intended to:\n\nEncourage clear task ownership\nPromote balanced participation\nPrevent last-minute misunderstandings\nSupport early intervention if problems arise\n\n\nUneven weeks happen. Patterns matter more than single reports. If contribution concerns arise, I will intervene early to help recalibrate expectations. Persistent under-contribution may affect individual grades.",
+    "crumbs": [
+      "Projects",
+      "Group Collaboration Expectations"
+    ]
+  },
+  {
+    "objectID": "group-stuff/contract.html#weekly-integrator",
+    "href": "group-stuff/contract.html#weekly-integrator",
+    "title": "Group Contract",
+    "section": "Weekly Integrator",
+    "text": "Weekly Integrator\nEach week, one group member serves as the Integrator. This role rotates throughout the project.\nThe Integrator is responsible for:\n\nCompiling all group members’ completed work into a single repository\nEnsuring the project runs end-to-end without errors\nChecking that files are correctly named, organized, and up to date\n\nThe Integrator is not responsible for completing other members’ unfinished work. Each member remains responsible for delivering their assigned contributions on time.\nServing as Integrator is a technical and organizational leadership role. Because it rotates, every group member will practice maintaining project coherence and completeness.",
+    "crumbs": [
+      "Projects",
+      "Group Collaboration Expectations"
+    ]
+  },
+  {
+    "objectID": "group-stuff/contract.html#weekly-workflow",
+    "href": "group-stuff/contract.html#weekly-workflow",
+    "title": "Group Contract",
+    "section": "Weekly Workflow",
+    "text": "Weekly Workflow\nTo keep everyone’s repositories up to date, your group is expected to adhere to the following workflow.\n1. Start of Week: Sync\nBefore beginning any new work, all group members must sync their repository to the previous week’s Integrator version. This ensures everyone is working from the same, most up-to-date project state. Work completed on outdated versions may be lost or overwritten.\n2. During the Week: Individual Development\nEach member works in their own repository and takes ownership of clearly defined files or sections. Members should not edit the same file simultaneously unless coordinating sequentially. Clear task ownership prevents integration conflicts.\n3. End of Week: Integration\nThe designated Integrator compiles all completed work into their repository, verifies that the project runs end-to-end, and submits the official repository link. This version becomes the project snapshot for the week.\n4. Rotation\nThe Integrator role rotates weekly so that all members share responsibility for maintaining project coherence and technical completeness.\n\nWhy not have everyone work in the same repo?\nTrue collaborative version control involves branching strategies, pull requests, code review workflows, and conflict resolution. Teaching that well would require meaningful instructional time and practice. Given the scope of this course, we’ve chosen to prioritize analytical skills and structured collaboration over advanced software engineering workflows.\nThe rotating Integrator model gives you exposure to modular design, synchronization discipline, and project integration—transferable collaboration skills that do not require mastery of Git internals.",
+    "crumbs": [
+      "Projects",
+      "Group Collaboration Expectations"
+    ]
+  },
+  {
+    "objectID": "course-materials/calendar.html",
+    "href": "course-materials/calendar.html",
+    "title": "\n Schedule",
     "section": "",
-    "text": "Trigger examples:\n\nA group reports “2 – Somewhat uneven” for two consecutive weeks\nOne student consistently reports vague or minimal contributions\n\nWhat I will do:\n\nSend a brief email to the group\nSummarize the pattern neutrally\nAsk your group to clarify how tasks are being assigned\nEncourage more explicit ownership rotation\n\nNo grade impact at this stage"
+    "text": "This page contains an outline of the topics, content, and assignments for the quarter. Note that this schedule will be updated as the quarter progresses, with all changes documented here.\n Prepare – readings or tutorials completed before class\n Activity – activities done during class\n Project – deliverables or milestones\n\n\n\n\n\n\n\n\n\n\nPrepare\n\n\nActivity\n\n\nProject\n\n\n\n\n\nUnit 0 - Intro R Review\n\n\n\n\nWeek 0\n\n\n\n\n\nCourse Setup\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 1\n\n\nMon, Mar 30\n\n\nSTAT 331 Review\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed, Apr 1\n\n\nWeek 1 Activity & Project 1, Part 1\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSat, Apr 4\n\n\nProject 1 Checkpoint #1 Due\n\n\n\n\n\n\n\n\n\n\n\n\n\nUnit 1 - Messy Data\n\n\n\n\nWeek 2\n\n\nSun, Apr 5\n\n\nWriting Funtions\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIterating Functions with purrr\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWriting Efficient Code\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon, Apr 6\n\n\nWeek 2 Activity\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed, Apr 8\n\n\nProject 1, Part 2\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSat, Apr 11\n\n\nProject 1 Checkpoint #2 Due\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 3\n\n\nSun, Apr 12\n\n\nJSON Data with tidyjson and jsonlite\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWebscraping with rvest\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon, Apr 13\n\n\nWeek 3 Activity\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed, Apr 15\n\n\nProject 1, Part 3\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSat, Apr 18\n\n\nProject 1 Checkpoint #3 Due\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 4\n\n\nSun, Apr 19\n\n\nProfessionally Styled Tables with gt\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNon-Standard Geometries\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nProfessionally Styled Visualizations\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon, Apr 20\n\n\nWeek 4 Activity\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed, Apr 22\n\n\nProject 1, Part 4\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSat, Apr 25\n\n\nProject 1 Checkpoint #4 Due\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSat, May 2\n\n\nProject 1 Due\n\n\n\n\n\n\n\n\n\n\n\n\n\nUnit 2 - Professional Deliverables\n\n\n\n\nWeek 5\n\n\nSun, Apr 26\n\n\nStatic Quarto Dashboards\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon, Apr 27\n\n\nWeek 5 Activity\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed, Apr 29\n\n\nUnit 1 Exam; Project 2, Part 1\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSat, May 2\n\n\nProject 2 Checkpoint #1 Due\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 6\n\n\nSun, May 3\n\n\nMaking Maps with leaflet\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOther ggplot2 Extensions\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon, May 4\n\n\nWeek 6 Activity\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed, May 6\n\n\nProject 2, Part 2\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSat, May 9\n\n\nProject 2 Checkpoint #2 Due\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 7\n\n\nSun, May 10\n\n\nInteractive Quarto Dashboards\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon, May 11\n\n\nWeek 7 Activity\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed, May 13\n\n\nProject 2, Part 3\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSat, May 16\n\n\nProject 2 Checkpoint #3 Due\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSat, May 23\n\n\nProject 2 Due\n\n\n\n\n\n\n\n\n\n\n\n\n\nUnit 3 - R Packages\n\n\n\n\nWeek 8\n\n\nSun, May 17\n\n\nNo readings!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon, May 18\n\n\nWeek 8 Activity; Dashboard Peer Review\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed, May 20\n\n\nUnit 2 Exam\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSat, May 23\n\n\nProject 3 Checkpoint #1 Due\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 9\n\n\nMon, May 25\n\n\nNo Class - Holiday\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTue, May 26\n\n\nPackage Structure\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nUnit Testing and Debugging\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed, May 27\n\n\nWeek 9 Activity\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSat, May 30\n\n\nProject 3 Checkpoint #2 Due\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 10\n\n\nSun, May 31\n\n\nSpeed and Memory\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon, Jun 1\n\n\nWeek 10 Activity\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed, Jun 3\n\n\nProject Work Session with Peer Review\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSat, Jun 6\n\n\nProject 3 Final Deliverable\n\n\n\n\n\n\n\n\n\n\n\n\n\nFinals Week\n\n\nMon, Jun 8\n\n\nUnit 3 Exam (Stat 541-01 and 431-01)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFri, Jun 12\n\n\nUnit 3 Exam (Stat 431-02)"
   },
   {
-    "objectID": "group-stuff/instructor-action.html#level-2-structured-reset-conversation",
-    "href": "group-stuff/instructor-action.html#level-2-structured-reset-conversation",
-    "title": "Instructor Intervention Plan",
-    "section": "Level 2: Structured Reset Conversation",
-    "text": "Level 2: Structured Reset Conversation\nTrigger examples:\n\nRepeated uneven workload ratings (3+ weeks)\nConsistent reports of unequal contribution\nCommunication concerns appearing in multiple surveys\n\nWhat I will do:\n\nRequire a short meeting (10–15 minutes) where I ask your group to:\n\nExplain how they divide tasks\nDescribe how decisions are made\nPropose a revised division plan for the next two weeks\n\nPossibly require a written task allocation plan\n\nIndividual grades may be modified at this stage."
+    "objectID": "1810-review/setup-workflow.html",
+    "href": "1810-review/setup-workflow.html",
+    "title": "Installing / Updating R & RStudio",
+    "section": "",
+    "text": "ImportantNot Optional Content\n\n\n\nAs opposed to the latter sections, this section is not optional. Every student is required to have completed each of the steps below to ensure you have the most up to date versions of R and RStudio.\nYour workflow refers to the series of good habits you get into in your coding process, that help save you time and headache down the road.\nThis document outlines our suggestions for getting going with your workflow. None of these items is required for the course; they will simply make your life easier down the road.",
+    "crumbs": [
+      "STAT 331 Review",
+      "Installing / Updating R & RStudio"
+    ]
   },
   {
-    "objectID": "group-stuff/instructor-action.html#level-3-individual-accountability-adjustment",
-    "href": "group-stuff/instructor-action.html#level-3-individual-accountability-adjustment",
-    "title": "Instructor Intervention Plan",
-    "section": "Level 3: Individual Accountability Adjustment",
-    "text": "Level 3: Individual Accountability Adjustment\nTrigger examples:\n\nClear, documented pattern of under-contribution\nPeer reports align across multiple weeks\nIf you do not respond to my communication(s)\n\nWhat I will do:\n\nMeet with you individually\nClarify expectations\nDocument performance concerns\n\nIndividual grades will be modified at this stage."
+    "objectID": "1810-review/setup-workflow.html#updating-r",
+    "href": "1810-review/setup-workflow.html#updating-r",
+    "title": "Installing / Updating R & RStudio",
+    "section": "\n1 Updating R",
+    "text": "1 Updating R\nEach of you should have R already installed on your computer, but you might not have the most up to date version of R! Do not ignore these instructions. If you neglect to update your version of R, you may find that updating a package will make it so your code will not run.\n\nStep 1: Open RStudio\nStep 2: At the top of the the Console it will say what version of R you are using\n\n\nIf the version is not 4.5.2 (like the image above), you need to update your version of R! The simplest way to do this is to follow the instructions below to install R.",
+    "crumbs": [
+      "STAT 331 Review",
+      "Installing / Updating R & RStudio"
+    ]
+  },
+  {
+    "objectID": "1810-review/setup-workflow.html#installing-r",
+    "href": "1810-review/setup-workflow.html#installing-r",
+    "title": "Installing / Updating R & RStudio",
+    "section": "\n2 Installing R",
+    "text": "2 Installing R\nDownload and install R by going to https://cloud.r-project.org/. Here, you will find three options for installing R—click on the option for your computer’s operating system.\n\n\n\n\n\n\nRequired-videoRequired Video\n\n\n\n\n\n\n\n\nIf you are a Windows user:\n\nClick on “Download R for Windows”\nClick on “base”\nClick on the Download link.\nWhen you open the execution file (.exe) you will be prompted with a variety of questions about installing R. Feel free to use the default features / settings that come with R (continue to click “Ok” until the download starts).\n\n\n\n\n\n\n\nWarningMultiple Versions of R\n\n\n\nBeware that if you had a previous version of R downloaded on your PC, that old version will not be deleted when you download the most recent version of R. We do not want to have two versions of R installed, as your computer can get confused what version of R to use. So, you need to remove the old version of R.\nTo do this you need to:\n\nNavigate to your computer’s settings\nClick on the “Apps” option on the left-hand panel\nSearch for or scroll down to R\nFind the older version of R\n\n\n\nClick on the ... on the right side\nSelect “Uninstall”\n\n\n\n\nIf you are macOS user:\n\nClick on “Download R for (Mac) OS X”\nUnder “Latest release:” click on R-X.X.X.pkg, where R-X.X.X is the version number. For example, the latest version of R as of July 1, 2024 was R-4.4.1 (Race for Your Life).\nWhen installing, use the default features / settings that come with R (click Ok until the download starts).",
+    "crumbs": [
+      "STAT 331 Review",
+      "Installing / Updating R & RStudio"
+    ]
+  },
+  {
+    "objectID": "1810-review/setup-workflow.html#updating-rstudio",
+    "href": "1810-review/setup-workflow.html#updating-rstudio",
+    "title": "Installing / Updating R & RStudio",
+    "section": "\n3 Updating RStudio",
+    "text": "3 Updating RStudio\nRStudio can be downloaded here\nThe most recent version of RStudio is 2024.12.1+563. You can check if you are using the most recent version of RStudio by:\n\nOpening RStudio\nClicking on “Help”\nSelecting “Check for Updates”\nChoosing “Quit and Download” if there is an update available",
+    "crumbs": [
+      "STAT 331 Review",
+      "Installing / Updating R & RStudio"
+    ]
+  },
+  {
+    "objectID": "1810-review/setup-workflow.html#installing-updating-the-tidyverse",
+    "href": "1810-review/setup-workflow.html#installing-updating-the-tidyverse",
+    "title": "Installing / Updating R & RStudio",
+    "section": "\n4 Installing / Updating the tidyverse\n",
+    "text": "4 Installing / Updating the tidyverse\n\nIn this class, we will make heavy use of the tidyverse packages.\nIf you have not used the tidyverse before, type the following into your console:\n\ninstall.packages(\"tidyverse\")\n\nIf you have used the tidyverse before, you only need to update packages. Type the following into your console:\n\nlibrary(tidyverse)\ntidyverse_update()\n\nThen follow the instructions that print out to update a few of your tidyverse packages.",
+    "crumbs": [
+      "STAT 331 Review",
+      "Installing / Updating R & RStudio"
+    ]
+  },
+  {
+    "objectID": "1810-review/setup-workflow.html#configure-your-options",
+    "href": "1810-review/setup-workflow.html#configure-your-options",
+    "title": "Installing / Updating R & RStudio",
+    "section": "\n5 Configure your options",
+    "text": "5 Configure your options\nThere are a few settings we recommend that you change right away in RStudio. These can be accessed by opening RStudio and clicking on the “Tools” option from the top of the RStudio menu and selecting “Global Options…” from the dropdown menu:\n\nR Workspace\nFirst, in the “General” pane (that first shows up), you should not save your environment when you close RStudio. Meaning, you should uncheck the box that says “Restore .RData into workspace at startup” and you should select “Never” from the dropdown menu that says “Save workspace to .RData on exit”:\n\nCode Chunk Output\nNext, click on the R Markdown pane on the left hand side. This pane allows you to choose how your Quarto documents will behave.\nFirst, let’s decide where we want the output of our code to appear in our document. If you want for the output of your code (e.g., summary statistics, visualizations) to be shown in the document immediately below the code chunk, check the box that says “Show output inline for all R Markdown documents.” If you do not check this box, your output will either be shown in the Console (for numerical summaries) or in the Plots tab (for visualizations).\nSecond, we need to decide where Quarto should look for files that we are referencing. Meaning, if you reference files, should Quarto look for them relative to the Project or relative to your Quarto Document (which might live in a subfolder or even outside the project). I would recommend choosing “Document” here!\n\n\n\n\n\n\n\nCheck-inCheck In\n\n\n\n\nOnce you have updated R, open RStudio. If you have correctly installed the most recent version of R, version 4.5.3 should appear at the top of your Console. Take a screenshot of the version of R displayed in your Console.\nIn RStudio, click on the Help menu and then select “Check for Updates.” If you have correct installed the most recent version of RStudio, the message should say “You’re using the newest version of RStudio.” Take a screenshot of the message that appears.",
+    "crumbs": [
+      "STAT 331 Review",
+      "Installing / Updating R & RStudio"
+    ]
+  },
+  {
+    "objectID": "1810-review/quarto-review.html",
+    "href": "1810-review/quarto-review.html",
+    "title": "Quarto Review",
+    "section": "",
+    "text": "CautionOptional Content\n\n\n\nThis module consists of readings reviewing material typically taught in STAT 331. It is possible you can skip over portions of this reading. It is your responsibility to decide which areas you need to review before diving into Stat 541.\nThe theme of this lesson is good management of your files and data. For this course, you need to know how to identify folders and paths, and create professional looking Quarto documents.\nAnswer the following questions to see if you can safely skip this section.\n\nWhich statement best describes the difference between an absolute file path and a relative file path?\n\n\nAn absolute path works only on Windows systems, while a relative path works on all operating systems.\nA relative path always begins with a drive letter or /, while an absolute path does not.\nAn absolute path specifies a file’s location starting from the root directory, while a relative path specifies a location based on the current directory.\nAn absolute path can only be used for folders, while a relative path can be used for files.\n\nIf you had a hard time answering these questions, I would recommend reviewing Section 1.1.\n\nWhy are R projects important?\n\n\nThey automatically install all R packages needed for a project.\nThey ensure that code always runs faster by optimizing file access.\nThey set the working directory to the project folder, making file paths consistent and reproducible.\nThey prevent users from accidentally modifying files outside the project.\n\nIf you had a hard time answering these questions, I would recommend reviewing Section 1.2.\n\nWhat are the options at the top of a Quarto document (between the --- and --- symbols) called?\n\n\nXML\nYAML\nREML\nTOML\n\n\nWhat symbols create an R code chunk?\n\n\n```\n{r}\n```{r}\n`{r}`\n\n\nWhat symbol defines a level 1 heading?\n\n\n$\n_\n*\n#\n\nIf you had a hard time answering these questions, I would recommend reviewing Section 2.",
+    "crumbs": [
+      "STAT 331 Review",
+      "Quarto Review"
+    ]
+  },
+  {
+    "objectID": "1810-review/quarto-review.html#directories-paths-and-projects",
+    "href": "1810-review/quarto-review.html#directories-paths-and-projects",
+    "title": "Quarto Review",
+    "section": "Directories, Paths, and Projects",
+    "text": "Directories, Paths, and Projects\nIn R, there are two ways to set up your file path and file system organization:\n\nSet your working directory in R (do not recommend)\nUse RProjects (preferred!)\n\nWorking Directories in R\n\nThere are a few ways to find where your working directory is in R. You can look at the top of your console (seen below) or type getwd() into your console.\n\n\ngetwd()\n\nAlthough it is not recommended, you can set your working directory in R with setwd().\n\nsetwd(\"/path/to/my/assignment/folder\")\n\nR Projects\n\n\n\n\n\n\nRequired-readingRequired Reading\n\n\n\nR4DS Chapter 8: Workflow and Projects\n\n\nSince there are often many files necessary for a project (e.g. data sources, images, etc.), R has a nice built in system for setting up your project organization with R Projects. You can either create a new folder on your computer containing an R Project (e.g., you have not yet created a folder for this class) or you can add an R Project to an existing folder on your computer (e.g., you have already created a folder for this class).\n\n\n\n\n\n\nCautionYour folder cannot synch with anything online!\n\n\n\nYour STAT 331 folder cannot be in a folder stored on OneDrive or iCloud! Storing your folder in this location will cause your code to periodically not run and I cannot help you fix it.\n\n\n\n\nCreate with a new folder\nAdd to Existing Folder\n\n\n\nTo create a R Project in a new folder (i.e., you haven’t already made a stat-541 folder), first open RStudio on your computer and click File &gt; New Project, then:\n Next, you should select the “New Project” option from the list of options. Don’t worry, we will get to make many of these other options later on in this class!\n Give your folder a name (it doesn’t have to be stat-541). However, it is good practice for this file folder name to not contain spaces. Then, browse on your computer for a location to save this folder to. For example, mine is saved in my Documents. Make sure you know how to find this; it should NOT be saved in your Downloads!\n\n\nChoose the “New Project” option from the popup wizard\n\nOnce you have completed this process, you should see a new stat-541 folder in your Documents folder (or wherever you save it to) and the folder should contain a stat-541.Rproj file. This is your new “home” base for this - whenever you refer to a file with a relative path it will begin to look for it here.\n\n\nTo add a R Project to an existing folder on your computer (e.g., you already created a folder for this class), first open RStudio on your computer and click File &gt; New Project, then:\n\n\nChoose the “Existing Directory” option from the popup wizard\n\nThen, browse on your computer to select the existing folder you wish to add your R Project to. For example, mine is saved in my Documents and called my-stat331.\n\n\nNavigate to the location of the folder you made\n\nYour existing folder, stat-541 should now contain a stat-541.Rproj file. This is your new “home” base for this class - whenever you refer to a file with a relative path it will begin to look for it here.",
+    "crumbs": [
+      "STAT 331 Review",
+      "Quarto Review"
+    ]
+  },
+  {
+    "objectID": "1810-review/quarto-review.html#sec-quarto",
+    "href": "1810-review/quarto-review.html#sec-quarto",
+    "title": "Quarto Review",
+    "section": "Reproducible Documents",
+    "text": "Reproducible Documents\nOver the last ten years, science has experienced a “reproducibility” crisis. Meaning, a substantial portion of scientific findings were unable to be recreated because people didn’t sufficiently document the processes they used. As such, a foundational aspect of scientific research is using tools which allow others to reproduce your findings.\nEnter Quarto—a dynamic document that allows us to interweave R code and written text in the same document. Gone are the days of copying and pasting the results of your R code into a Word document—breaking the connection between your analysis and your report. Quarto is here to save the day!\nDownloading Quarto\nThe software associated with Quarto is automatically downloaded with the newest versions of RStudio. So, if you are using the most up to date version of RStudio (as instructed in Part 1 of this week’s coursework), you should already have Quarto installed on your computer. But, let’s test it out.\nTo ensure you have Quarto installed, carry out the following process:\n\nOpen RStudio\nClick on “File” (in the upper navigation bar)\nSelect “New File” (in the dropdown options)\nSelect “Quarto Document…” (in the dropdown option)\n\n\nIf you have Quarto installed, you should be prompted with the following menu:\n\nIf, instead, you receive a message saying Quarto is not installed on your computer, you need to download Quarto: https://quarto.org/docs/download/",
+    "crumbs": [
+      "STAT 331 Review",
+      "Quarto Review"
+    ]
+  },
+  {
+    "objectID": "1810-review/quarto-review.html#introduction-to-quarto",
+    "href": "1810-review/quarto-review.html#introduction-to-quarto",
+    "title": "Quarto Review",
+    "section": "Introduction to Quarto",
+    "text": "Introduction to Quarto\n\n\n\n\n\n\nRequired-readingRequired Reading\n\n\n\nR4DS Chapter 28: Quarto\n\n\nHTML Documents\nWe will exclusively use HTML documents in this course.\n\n\n\n\n\n\nLearn-moreLearn More\n\n\n\nIf you are interested in learning more about formatting options for Quarto HTML documents, I would recommend checking out:\n\na discussion of the basics of formatting HTML documents in Quarto\nthe list of all HTML formatting options for Quarto documents",
+    "crumbs": [
+      "STAT 331 Review",
+      "Quarto Review"
+    ]
+  },
+  {
+    "objectID": "1810-review/dplyr-review.html",
+    "href": "1810-review/dplyr-review.html",
+    "title": "\ndplyr Review",
+    "section": "",
+    "text": "CautionOptional Content\n\n\n\nThis module consists of readings reviewing material typically taught in STAT 331. It is possible you can skip over portions of this reading. It is your responsibility to decide which areas you need to review before diving into Stat 541.\nAnswer the following questions to see if you can safely skip this section.\n\nIn essence, a data.frame is simply a special list - with a few extra restrictions on the list format.\n\nThink about the datasets you have already worked with. Which of the following restrictions on a list do you think are needed for the list to be a data.frame? (Select all that apply)\n\nThe elements of the list must all be vectors of the same length.\nThe elements of the list must all be the same data type.\nThe elements of the list must all have no missing values.\nThe elements of the list must all have names.\n\n\nTibbles are described as “opinionated” dataframes. Which of the following are true about a tibble’s behavior? (Select all that apply)\n\n\n\ntibbles only print the first 10 rows of a dataset\n\ntibbles allow for non-syntactic variable names, like :)\n\n\ntibbles never convert strings to factors\n\ntibbles create row names\n\nIf you had a hard time answering these questions, I would recommend reviewing Section 1.1.\n\nMatch each of the base R code excerpt to the associated dplyr verb.\n\n\n\n\nfilter()\nselect()\nmutate()\n\n\n\n\n\narrange()\nsummarize()\ngroup_by() + summarize()\n\n\n\n\npenguins[order(penguins$bill_length_mm) , ]\npenguins[penguins$species == \"Adelie\", ]\naggregate(bill_length_mm ~ species, data = penguins, FUN = mean)\nwith(penguins, mass_ratio = body_mass_g / flipper_length_mm)\npenguins$species\nmean(penguins[penguins$species == \"Adelie\", ], na.rm = TRUE)\n\nIf you had a hard time answering this question, I would recommend reviewing Section 1.2.\n\nSuppose we would like to study how the ratio of bill length to bill depth across the different penguin species. Arrange the following steps into an order that accomplishes this goal (assuming the steps are connected with a |&gt; or a %&gt;%).\n\n\n# a\narrange(avg_bill_ratio)\n\n# b\ngroup_by(species)\n\n# c\npenguins \n\n# d\nsummarize(\n    avg_bill_ratio = mean(bill_ratio, na.rm = TRUE)\n    )\n  \n# e\nmutate(\n    bill_ratio = bill_length_mm / bill_depth_mm\n    )\n\nIf you had a hard time answering this question, I would recommend reviewing Section 1.3.",
+    "crumbs": [
+      "STAT 331 Review",
+      "`dplyr` Review"
+    ]
+  },
+  {
+    "objectID": "1810-review/dplyr-review.html#dplyr",
+    "href": "1810-review/dplyr-review.html#dplyr",
+    "title": "\ndplyr Review",
+    "section": "dplyr",
+    "text": "dplyr\nYou should feel comfortable using:\n\n\nThe five main dplyr verbs:\n\nfilter()\narrange()\nselect()\nmutate()\nsummarize()\n\n\nIncorportaing group_by() to perform groupwise operations\nChaining together data wrangling operations with the pipe operator (|&gt; or %&gt;%)\n\nData Structures\nChoose one of these two options:\n\n\n\n\n\n\n\n\nRequired-videoRequired Video\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nRequired-readingRequired Reading\n\n\n\nR Programming for Data Science: Data Types in R\n\n\n\n\nIn addition, read the following section from the first edition of R for DS:\n\n\n\n\n\n\nRequired-readingRequired Reading\n\n\n\nR4DS Chapter 10: Tibbles\n\n\nData Wrangling with dplyr\nIf you had a hard time answering Question 3, I would recommend reviewing this content.\n\n\n\n\n\n\nRequired-readingRequired Reading\n\n\n\nR4DS Chapter 3: Data Transformation\n\n\n\n\n\n\n\n\nRequired-videoRequired Video\n\n\n\n📽 filter() – 11 minutes\n📽 select() – 6 minutes\n📽 mutate() – 9 minutes\n📽 arrange() – 7 minutes\n📽 summarize()– 8 minutes\n📽 group_by() – 6 minutes\n\n\nThe Pipe Operator\nIf you had a hard time answering Question 4, I would recommend also reviewing this content.\n\n\n\n\n\n\nRequired-videoRequired Video",
+    "crumbs": [
+      "STAT 331 Review",
+      "`dplyr` Review"
+    ]
+  },
+  {
+    "objectID": "1810-review.html",
+    "href": "1810-review.html",
+    "title": "STAT 331 Review",
+    "section": "",
+    "text": "In this first week, we will start with a review of concepts from Introduction to Statistical Computing in R—data visualizations with ggplot2, data wrangling with dplyr and tidyr. We will use reviewing creating reproducible documents with Quarto and using R projects as an opportunity to introduce you to version control with git and GitHub.\n\n\n\n\n\n\nImportant\n\n\n\nIt is possible that you might not need to review every topic from this section. To gauge your understanding, at the beginning of each section there are “check-in” questions assessing your knowledge on a particular topic. If you can easily answer these questions, you can feel free to skip this review topic. If, however, the answers to some questions are not obvious, we have provided readings and / or videos to review the necessary concepts.",
+    "crumbs": [
+      "STAT 331 Review"
+    ]
+  },
+  {
+    "objectID": "1810-review/ggplot-review.html",
+    "href": "1810-review/ggplot-review.html",
+    "title": "\nggplot Review",
+    "section": "",
+    "text": "CautionOptional Content\n\n\n\nThis module consists of readings reviewing material typically taught in STAT 331. It is possible you can skip over portions of this reading. It is your responsibility to decide which areas you need to review before diving into Stat 541.\nAnswer the following questions to see if you can safely skip this section.\n\nIdentify the elements of the following plot as\n\n\n\n\nAn aesthetic\nA geometry\nA scale\nNone of the above\n\n\n\n\n\n\n\n\nThe x-axis is age\nThe y-axis is “Urge to run up the down escalator”\nThe y-axis ranges from “Weak” to “Strong”\nThis is a line graph\nThe two lines are “What I was supposed to feel” and “What I’ve actually felt”\nThe lines are labeled with text\nOnly even ages are labelled\nStick figure people are sliding down the line\n\n\nFill in the six (6) blanks to make the plot below:\n\n\nstarwars %&gt;%\n  ____(species == \"Human\") %&gt;%\n  ggplot(mapping = aes(____ = height, y = mass, ____ = gender)) + \n  geom_[____](____ = 17, size = 3) +\n  ____(x = \"Height (cm)\", \n       y = \"Mass (kg)\", \n       color = \"Gender Expression\"\n       )\n\n\n\n\n\n\n\n\n\n\n\nThe Grammar of Graphics\nIf you had a hard time answering Question 1, I would recommend reviewing this content. You should feel comfortable with:\n\nKnowing what goes into an aesthetic (aes()) versus the geometry (geom_*())\nIdentifying these elements of existing plots\n\n\n\n\n\n\n\nRequired-readingRequired Reading\n\n\n\nR4DS Chapter 1: Data Visualisation\n\n\n\n\n\n\n\n\n\nRequired-videoRequired Video\n\n\n\n\n\n\n\n\nUsing ggplot2\nIf you had a hard time answering Question 2, I would recommend reviewing this content. You should be comfortable with:\n\nUsing the “big 5” geometries\n\ngeom_point()\n\ngeom_bar() / geom_col()\n\ngeom_line()\ngeom_histogram()\ngeom_boxplot()\n\n\nChanging optional arguments\n\nShape of points\nSize of points\nLinewidth of line\nBinwidth of histogram\n\n\nFaceting\n\n\nfacet_wrap() for one categorical variable\n\nfacet_grid() for two categorical variables\n\n\n\n\n\n\n\n\n\nRequired-readingRequired Reading\n\n\n\nR for Data Science Chapter 9 - Layers",
+    "crumbs": [
+      "STAT 331 Review",
+      "`ggplot` Review"
+    ]
+  },
+  {
+    "objectID": "1810-review/setup-version-control.html",
+    "href": "1810-review/setup-version-control.html",
+    "title": "Version Control with Git and GitHub",
+    "section": "",
+    "text": "ImportantNot Optional Content\n\n\n\nAs opposed to the previous sections, this section is not optional. Every student is required to have completed each of the steps below to ensure you are prepared to work in GitHub on Day 2 of Week 1.\nMost of this reading is either heavily inspired by Happy Git and Github for the UseR (Bryan, Hester, and The Stat 545 TAs 2021) or directly links to that book. After completing this pre-reading, you should:",
+    "crumbs": [
+      "STAT 331 Review",
+      "Version Control with Git and GitHub"
+    ]
+  },
+  {
+    "objectID": "1810-review/setup-version-control.html#footnotes",
+    "href": "1810-review/setup-version-control.html#footnotes",
+    "title": "Version Control with Git and GitHub",
+    "section": "Footnotes",
+    "text": "Footnotes\n\nYes, I’m aware that this sounds paranoid. It’s been a very rare occasion that I’ve needed to restore something from another backup. You don’t want to take chances.↩︎",
+    "crumbs": [
+      "STAT 331 Review",
+      "Version Control with Git and GitHub"
+    ]
+  },
+  {
+    "objectID": "1810-review/tidyr-review.html",
+    "href": "1810-review/tidyr-review.html",
+    "title": "Data Joins and Transformations Review",
+    "section": "",
+    "text": "CautionOptional Content\n\n\n\nThis module consists of readings reviewing material typically taught in STAT 331. It is possible you can skip over portions of this reading. It is your responsibility to decide which areas you need to review before diving into Stat 541.\nAnswer the following questions to see if you can safely skip this section.\nEach question focuses on the following data tables:\n\n\nTable 1\nTable 2\nTable 3\nTables 4a & 4b\nTable 5\n\n\n\n\n\n\nTable 1\n\ncountry\nyear\ncases\npopulation\n\n\n\nAfghanistan\n1999\n745\n19987071\n\n\nAfghanistan\n2000\n2666\n20595360\n\n\nBrazil\n1999\n37737\n172006362\n\n\nBrazil\n2000\n80488\n174504898\n\n\nChina\n1999\n212258\n1272915272\n\n\nChina\n2000\n213766\n1280428583\n\n\n\n\n\n\n\n\n\n\nTable 2\n\ncountry\nyear\ntype\ncount\n\n\n\nAfghanistan\n1999\ncases\n745\n\n\nAfghanistan\n1999\npopulation\n19987071\n\n\nAfghanistan\n2000\ncases\n2666\n\n\nAfghanistan\n2000\npopulation\n20595360\n\n\nBrazil\n1999\ncases\n37737\n\n\nBrazil\n1999\npopulation\n172006362\n\n\nBrazil\n2000\ncases\n80488\n\n\nBrazil\n2000\npopulation\n174504898\n\n\nChina\n1999\ncases\n212258\n\n\nChina\n1999\npopulation\n1272915272\n\n\nChina\n2000\ncases\n213766\n\n\nChina\n2000\npopulation\n1280428583\n\n\n\n\n\n\n\n\n\n\nTable 3\n\ncountry\nyear\nrate\n\n\n\nAfghanistan\n1999\n745/19987071\n\n\nAfghanistan\n2000\n2666/20595360\n\n\nBrazil\n1999\n37737/172006362\n\n\nBrazil\n2000\n80488/174504898\n\n\nChina\n1999\n212258/1272915272\n\n\nChina\n2000\n213766/1280428583\n\n\n\n\n\n\n\n\n\n\nTable 4a\n\ncountry\n1999\n2000\n\n\n\nAfghanistan\n745\n2666\n\n\nBrazil\n37737\n80488\n\n\nChina\n212258\n213766\n\n\n\n\n\n\nTable 4b\n\ncountry\n1999\n2000\n\n\n\nAfghanistan\n19987071\n20595360\n\n\nBrazil\n172006362\n174504898\n\n\nChina\n1272915272\n1280428583\n\n\n\n\n\n\n\n\n\n\nTable 5\n\ncountry\ncentury\nyear\nrate\n\n\n\nAfghanistan\n19\n99\n745/19987071\n\n\nAfghanistan\n20\n00\n2666/20595360\n\n\nBrazil\n19\n99\n37737/172006362\n\n\nBrazil\n20\n00\n80488/174504898\n\n\nChina\n19\n99\n212258/1272915272\n\n\nChina\n20\n00\n213766/1280428583\n\n\n\n\n\n\n\n\n\nFor each of the Tables (datasets) above, answer the following question: Which of the principles of tidy data does the table violate?\n\n\n\nVariables are spread across multiple columns\nThe same observation occupies multiple rows\nThere are multiple values in each cell\n\nIf you had a hard time answering these questions, I would recommend reviewing Section 1.1.\n\nPivot Table 2 so it instead looks like this:\n\n\n\n\n\ncountry\nyear\ncases\npopulation\n\n\n\nAfghanistan\n1999\n745\n19987071\n\n\nAfghanistan\n2000\n2666\n20595360\n\n\nBrazil\n1999\n37737\n172006362\n\n\nBrazil\n2000\n80488\n174504898\n\n\nChina\n1999\n212258\n1272915272\n\n\nChina\n2000\n213766\n1280428583\n\n\n\n\n\n\nIf you had a hard time answering this question, I would recommend reviewing Section 1.2.2.\n\nUse separate_wider_delim() to separate the rate column of Table 3 so it instead looks like this:\n\n\n\n\n\ncountry\nyear\ncases\npopulation\n\n\n\nAfghanistan\n1999\n745\n19987071\n\n\nAfghanistan\n2000\n2666\n20595360\n\n\nBrazil\n1999\n37737\n172006362\n\n\nBrazil\n2000\n80488\n174504898\n\n\nChina\n1999\n212258\n1272915272\n\n\nChina\n2000\n213766\n1280428583\n\n\n\n\n\n\nIf you had a hard time answering this question, I would recommend reviewing Section 1.3.1.\n\nUse unite() to join the century and year columns of Table 5 so it instead looks like this:\n\n\n\n\n\ncountry\nyear\nrate\n\n\n\nAfghanistan\n1999\n745/19987071\n\n\nAfghanistan\n2000\n2666/20595360\n\n\nBrazil\n1999\n37737/172006362\n\n\nBrazil\n2000\n80488/174504898\n\n\nChina\n1999\n212258/1272915272\n\n\nChina\n2000\n213766/1280428583\n\n\n\n\n\n\nIf you had a hard time answering this question, I would recommend reviewing Section 1.3.2.\n\nPivot Tables 4a and 4b to long format and then join them to obtain this dataframe:\n\n\n\n\n\ncountry\nyear\ncases\npopulation\n\n\n\nAfghanistan\n1999\n745\n19987071\n\n\nAfghanistan\n2000\n2666\n20595360\n\n\nBrazil\n1999\n37737\n172006362\n\n\nBrazil\n2000\n80488\n174504898\n\n\nChina\n1999\n212258\n1272915272\n\n\nChina\n2000\n213766\n1280428583\n\n\n\n\n\n\nIf you had a hard time answering this question, I would recommend reviewing Section 1.2.1 and Section 2.1.",
+    "crumbs": [
+      "STAT 331 Review",
+      "Data Joins and Transformations Review"
+    ]
+  },
+  {
+    "objectID": "1810-review/tidyr-review.html#sec-tidy-data",
+    "href": "1810-review/tidyr-review.html#sec-tidy-data",
+    "title": "Data Joins and Transformations Review",
+    "section": "Tidy Data",
+    "text": "Tidy Data\n\n\n\n\n\n\nRequired-readingRequired Reading\n\n\n\nR4DS Chapter 5, Section 2: Tidy data\n\n\n\n\n\n\n\n\nNoteDo we always want our data in the same layout?\n\n\n\nThe concept of tidy data is useful for mapping variables from the data set to elements in a graph, specifications of a model, or aggregating to create summaries. However, what is considered to be “tidy data” format for one task, might not be in the correct “tidy data” format for a different task. It is important for you to consider the end goal when restructuring your data.",
+    "crumbs": [
+      "STAT 331 Review",
+      "Data Joins and Transformations Review"
+    ]
+  },
+  {
+    "objectID": "1810-review/tidyr-review.html#reshaping-data",
+    "href": "1810-review/tidyr-review.html#reshaping-data",
+    "title": "Data Joins and Transformations Review",
+    "section": "Reshaping Data",
+    "text": "Reshaping Data\nIt’s fairly common for data to come in forms which are convenient for either human viewing or data entry. Unfortunately, these forms aren’t necessarily the most friendly for analysis. There are two main “layouts” a dataset can have:\n\n“wide” format\n“long” format\n\nThe image below shows the same dataset presented in each layout.\n\nSometimes we will be given data that is in one layout and we will need to transform it into a different layout. This animation illustrates the process of going from a wide data layout to a long data layout, and how to go from a long data layout back to a wide data layout. Here, we are using the pivot_wider() and pivot_longer() functions from the tidyr package in R.\n\n\n© Garrett Aden Buie\n\nLet’s explore each of these formats in more depth\nLonger\n\n\n\n\n\n\nRequired-readingRequired Reading\n\n\n\nR4DS Chapter 5, Section 3: Lengthening data\n\n\n\n\n\n\n\n\nRequired-videoRequired Video\n\n\n\n\n\n\n\n\nTable 4a and 4b are currently stored in a wide format, where the years are spread across multiple columns. We can use pivot_longer() to pivot these data to long format (with one column for all years).\n\npivot_longer(table4a, \n             cols = `1999`:`2000`, \n             names_to = \"year\", \n             values_to = \"cases\") \n\n# A tibble: 6 × 3\n  country     year   cases\n  &lt;chr&gt;       &lt;chr&gt;  &lt;dbl&gt;\n1 Afghanistan 1999     745\n2 Afghanistan 2000    2666\n3 Brazil      1999   37737\n4 Brazil      2000   80488\n5 China       1999  212258\n6 China       2000  213766\n\n\n\n\n\n\n\n\nTip\n\n\n\nNotice that I’m surrounding 1999 and 2000 in back ticks (` `). I need to do this because a number is not a syntactically correct variable name, so using cols = 1999:2000 would not work!\nAlso note that the year column is currently considered to be a character data type, so we would likely need to mutate() it before we do our analysis!\n\n\nWider\n\n\n\n\n\n\nRequired-readingRequired Reading\n\n\n\nR4DS Chapter 5, Section 3: Widening data\n\n\n\n\n\n\n\n\nRequired-videoRequired Video\n\n\n\n\n\n\n\n\nTable 2 is currently stored in a long format, where the case and population information is stored in a single column named type. We can use pivot_wider() to pivot these data to wide format (with one column for each statistic).\n\npivot_wider(table2, \n            names_from = type, \n            values_from = count)\n\n# A tibble: 6 × 4\n  country      year  cases population\n  &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt;      &lt;dbl&gt;\n1 Afghanistan  1999    745   19987071\n2 Afghanistan  2000   2666   20595360\n3 Brazil       1999  37737  172006362\n4 Brazil       2000  80488  174504898\n5 China        1999 212258 1272915272\n6 China        2000 213766 1280428583\n\n\n\n\n\n\n\n\nTip\n\n\n\nNotice that I’m not using a cols argument for pivot_wider()! This is because pivot_wider() only modifies the columns specified in the names_from and values_from arguments.",
+    "crumbs": [
+      "STAT 331 Review",
+      "Data Joins and Transformations Review"
+    ]
+  },
+  {
+    "objectID": "1810-review/tidyr-review.html#separating-and-uniting",
+    "href": "1810-review/tidyr-review.html#separating-and-uniting",
+    "title": "Data Joins and Transformations Review",
+    "section": "Separating and Uniting",
+    "text": "Separating and Uniting\nIn addition to pivoting, tidyr provides tools to accomplish two additional tasks: separating variables into two different columns using separate(), and uniting (combining) two variables into one column using unite().\nseparate_wider_delim()\nTable 3 (and Table 5) has a rate column that includes information about both the cases and the population, separated with a / symbol. We can use separate_wider_delim() to create two separate columns for these variables.\n\nseparate_wider_delim(table3, \n                     cols = rate, \n                     delim = \"/\", \n                     names = c(\"cases\", \"population\"), \n                     cols_remove = TRUE\n                     ) \n\n# A tibble: 6 × 4\n  country      year cases  population\n  &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;     \n1 Afghanistan  1999 745    19987071  \n2 Afghanistan  2000 2666   20595360  \n3 Brazil       1999 37737  172006362 \n4 Brazil       2000 80488  174504898 \n5 China        1999 212258 1272915272\n6 China        2000 213766 1280428583\n\n\n\n\n\n\n\n\nTip\n\n\n\nNote that we could have also used separate_wider_regex() here to split on the / symbol. The patterns argument of separate_wider_regex() is a bit funky:\n\nseparate_wider_regex(table3, \n                     rate, \n                     patterns = c(cases = \"\\\\d+\", \"/\", population = \"\\\\d+\")\n                     ) \n\npatterns needs to be a named character vector where the names become column names and the values are regular expressions that match the contents of the vector. cases comes from the first one or more (+) digits \\\\d, then the split is made on the \\, and then population comes from the following one or more digits.\nPersonally, we think the delim option is a bit easier, but this is how it would work with regular expressions.\n\n\nunite()\nIn addition to having variables that need separating, Table 5 also has two variables (century and year) that need to be united (i.e., joined together). We can perform this action using the unite() function.\n\ntable5 |&gt;\n  unite(col = \"year\",\n        c(century, year),\n        sep = \"\"\n        ) |&gt; \n  separate_wider_delim(cols = rate, \n                       delim = \"/\", \n                       names = c(\"cases\", \"population\"), \n                       cols_remove = TRUE) \n\n# A tibble: 6 × 4\n  country     year  cases  population\n  &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;     \n1 Afghanistan 1999  745    19987071  \n2 Afghanistan 2000  2666   20595360  \n3 Brazil      1999  37737  172006362 \n4 Brazil      2000  80488  174504898 \n5 China       1999  212258 1272915272\n6 China       2000  213766 1280428583\n\n\n\n\n\n\n\n\nTip\n\n\n\nNotice that I’m using the pipe operator (|&gt;) to chain these operations together. First, the century and year variables are united and then the resulting dataframe is fed into the separate_wider_delim() function to separate the rate column.\nThe pipe operator saves us from having to save intermediate objects and makes the process easier to read!",
+    "crumbs": [
+      "STAT 331 Review",
+      "Data Joins and Transformations Review"
+    ]
+  },
+  {
+    "objectID": "1810-review/tidyr-review.html#sec-mutating-joins",
+    "href": "1810-review/tidyr-review.html#sec-mutating-joins",
+    "title": "Data Joins and Transformations Review",
+    "section": "Mutating Joins",
+    "text": "Mutating Joins\nWe’re primarily going to focus on mutating joins, as filtering joins can be accomplished by…filtering…rather than by table joins.\n\n\nInner Join\nLeft Join\nRight Join\nFull Join\n\n\n\nAn inner_join() only keeps any rows that are included in both tables, but keeps every column.\n\n\n© Garrick Aden-Buie\n\n\n\nBut what if we want to keep all of the rows in x? We would do a left_join() (since x is on the left).\n\n\n© Garrick Aden-Buie\n\nIf there are multiple matches in the y table, though, we might have to duplicate rows in x. This is still a left join, just a more complicated one.\n\n\n© Garrick Aden-Buie\n\n\n\nIf we wanted to keep all of the rows in y, we would do a right_join() (since y is on the right):\n\n\n© Garrick Aden-Buie\n\nWe can always change a left join to a right join or visa versa. People seem to have a preference for left joins, but if you like right joins more go for it!\n\n\nAnd finally, if we want to keep all of the rows of both x and y, we’d do a full_join():\n\n\n© Garrick Aden-Buie\n\n\n\n\nEvery join has a “left side” and a “right side” - so in XXXX_join(A, B), A is the left side, and B is the right side.\nJoins are differentiated based on how they treat the rows and columns of each side. In mutating joins, the columns from both sides are always kept. The table below summarizes which rows are kept from each side of the join, for different mutating joins.\n\n\n\n\n\n\n\n\n\n\n\n\nRows Selected\n\n\n\nJoin Type\nLeft Side\nRight Side\n\n\n\n\ninner\nmatching\nmatching\n\n\nleft\nall\nmatching\n\n\nright\nmatching\nall\n\n\nouter\nall\nall",
+    "crumbs": [
+      "STAT 331 Review",
+      "Data Joins and Transformations Review"
+    ]
+  },
+  {
+    "objectID": "1810-review/tidyr-review.html#filtering-joins",
+    "href": "1810-review/tidyr-review.html#filtering-joins",
+    "title": "Data Joins and Transformations Review",
+    "section": "Filtering Joins",
+    "text": "Filtering Joins\nThese joins do not merge two datasets together! Instead, they filter the values of one dataset based on the values of another dataset.\n\n\nSemi Join\nAnti Join\n\n\n\nA semi_join() keeps rows in x that have a match in y. Notice that the resulting dataset is a modification of the original x dataset—nothing from y has been added to x!\n\n\n\n\n\n\nTip\n\n\n\nYou can think of this as a relative of using the inclusion operator (%in%) inside of a filter() statement (e.g., filter(day %in% c(\"Mon\", \"Tues\", \"Wed\"))).\n\n\n\n\n© Garrick Aden-Buie\n\nSuppose we wanted to only keep countries in Table 2 that were also present in Table 1. We could do this using a semi-join:\n\nsemi_join(x = table2, \n          y = table1, \n          by = \"country\")\n\n# A tibble: 12 × 4\n   country      year type            count\n   &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;           &lt;dbl&gt;\n 1 Afghanistan  1999 cases             745\n 2 Afghanistan  1999 population   19987071\n 3 Afghanistan  2000 cases            2666\n 4 Afghanistan  2000 population   20595360\n 5 Brazil       1999 cases           37737\n 6 Brazil       1999 population  172006362\n 7 Brazil       2000 cases           80488\n 8 Brazil       2000 population  174504898\n 9 China        1999 cases          212258\n10 China        1999 population 1272915272\n11 China        2000 cases          213766\n12 China        2000 population 1280428583\n\n\nNotice that since Table 2 and Table 1 both contain the same countries the resulting dataset (where the matches were kept) is the same as the original Table 2.\n\n\nA anti_join() keeps rows in x that do not have a match in y. Notice that the resulting dataset is a modification of the original x dataset—nothing from y has been added to x!\n\n\n\n\n\n\nTip\n\n\n\nYou can think of this as a relative of the filter_out() function, which is a better tool for negating a filter statement (e.g., filter(! day %in% c(\"Mon\", \"Tues\", \"Wed\"))).\n\n\n\n\n© Garrick Aden-Buie\n\nSuppose we wanted to filter out countries in Table 2 that were also present in Table 1. We could do this using an anti-join:\n\nanti_join(x = table2, \n          y = table1, \n          by = \"country\")\n\n# A tibble: 0 × 4\n# ℹ 4 variables: country &lt;chr&gt;, year &lt;dbl&gt;, type &lt;chr&gt;, count &lt;dbl&gt;\n\n\nNotice that since Table 2 and Table 1 both contain the same countries the resulting dataset (where the matches were filtered out) is empty.",
+    "crumbs": [
+      "STAT 331 Review",
+      "Data Joins and Transformations Review"
+    ]
   },
   {
     "objectID": "course-materials/syllabus.html",
@@ -1452,335 +1700,98 @@
     "text": "Footnotes\n\nSee Section 5.2 for information on what you can expect when you email me.↩︎\nSee Section 5.2 for information on what you can expect when you email me.↩︎"
   },
   {
-    "objectID": "1810-review/tidyr-review.html",
-    "href": "1810-review/tidyr-review.html",
-    "title": "Data Joins and Transformations Review",
+    "objectID": "group-stuff/instructor-action.html",
+    "href": "group-stuff/instructor-action.html",
+    "title": "Instructor Intervention Plan",
     "section": "",
-    "text": "CautionOptional Content\n\n\n\nThis module consists of readings reviewing material typically taught in STAT 331. It is possible you can skip over portions of this reading. It is your responsibility to decide which areas you need to review before diving into Stat 541.\nAnswer the following questions to see if you can safely skip this section.\nEach question focuses on the following data tables:\n\n\nTable 1\nTable 2\nTable 3\nTables 4a & 4b\nTable 5\n\n\n\n\n\n\nTable 1\n\ncountry\nyear\ncases\npopulation\n\n\n\nAfghanistan\n1999\n745\n19987071\n\n\nAfghanistan\n2000\n2666\n20595360\n\n\nBrazil\n1999\n37737\n172006362\n\n\nBrazil\n2000\n80488\n174504898\n\n\nChina\n1999\n212258\n1272915272\n\n\nChina\n2000\n213766\n1280428583\n\n\n\n\n\n\n\n\n\n\nTable 2\n\ncountry\nyear\ntype\ncount\n\n\n\nAfghanistan\n1999\ncases\n745\n\n\nAfghanistan\n1999\npopulation\n19987071\n\n\nAfghanistan\n2000\ncases\n2666\n\n\nAfghanistan\n2000\npopulation\n20595360\n\n\nBrazil\n1999\ncases\n37737\n\n\nBrazil\n1999\npopulation\n172006362\n\n\nBrazil\n2000\ncases\n80488\n\n\nBrazil\n2000\npopulation\n174504898\n\n\nChina\n1999\ncases\n212258\n\n\nChina\n1999\npopulation\n1272915272\n\n\nChina\n2000\ncases\n213766\n\n\nChina\n2000\npopulation\n1280428583\n\n\n\n\n\n\n\n\n\n\nTable 3\n\ncountry\nyear\nrate\n\n\n\nAfghanistan\n1999\n745/19987071\n\n\nAfghanistan\n2000\n2666/20595360\n\n\nBrazil\n1999\n37737/172006362\n\n\nBrazil\n2000\n80488/174504898\n\n\nChina\n1999\n212258/1272915272\n\n\nChina\n2000\n213766/1280428583\n\n\n\n\n\n\n\n\n\n\nTable 4a\n\ncountry\n1999\n2000\n\n\n\nAfghanistan\n745\n2666\n\n\nBrazil\n37737\n80488\n\n\nChina\n212258\n213766\n\n\n\n\n\n\nTable 4b\n\ncountry\n1999\n2000\n\n\n\nAfghanistan\n19987071\n20595360\n\n\nBrazil\n172006362\n174504898\n\n\nChina\n1272915272\n1280428583\n\n\n\n\n\n\n\n\n\n\nTable 5\n\ncountry\ncentury\nyear\nrate\n\n\n\nAfghanistan\n19\n99\n745/19987071\n\n\nAfghanistan\n20\n00\n2666/20595360\n\n\nBrazil\n19\n99\n37737/172006362\n\n\nBrazil\n20\n00\n80488/174504898\n\n\nChina\n19\n99\n212258/1272915272\n\n\nChina\n20\n00\n213766/1280428583\n\n\n\n\n\n\n\n\n\nFor each of the Tables (datasets) above, answer the following question: Which of the principles of tidy data does the table violate?\n\n\n\nVariables are spread across multiple columns\nThe same observation occupies multiple rows\nThere are multiple values in each cell\n\nIf you had a hard time answering these questions, I would recommend reviewing Section 1.1.\n\nPivot Table 2 so it instead looks like this:\n\n\n\n\n\ncountry\nyear\ncases\npopulation\n\n\n\nAfghanistan\n1999\n745\n19987071\n\n\nAfghanistan\n2000\n2666\n20595360\n\n\nBrazil\n1999\n37737\n172006362\n\n\nBrazil\n2000\n80488\n174504898\n\n\nChina\n1999\n212258\n1272915272\n\n\nChina\n2000\n213766\n1280428583\n\n\n\n\n\n\nIf you had a hard time answering this question, I would recommend reviewing Section 1.2.2.\n\nUse separate_wider_delim() to separate the rate column of Table 3 so it instead looks like this:\n\n\n\n\n\ncountry\nyear\ncases\npopulation\n\n\n\nAfghanistan\n1999\n745\n19987071\n\n\nAfghanistan\n2000\n2666\n20595360\n\n\nBrazil\n1999\n37737\n172006362\n\n\nBrazil\n2000\n80488\n174504898\n\n\nChina\n1999\n212258\n1272915272\n\n\nChina\n2000\n213766\n1280428583\n\n\n\n\n\n\nIf you had a hard time answering this question, I would recommend reviewing Section 1.3.1.\n\nUse unite() to join the century and year columns of Table 5 so it instead looks like this:\n\n\n\n\n\ncountry\nyear\nrate\n\n\n\nAfghanistan\n1999\n745/19987071\n\n\nAfghanistan\n2000\n2666/20595360\n\n\nBrazil\n1999\n37737/172006362\n\n\nBrazil\n2000\n80488/174504898\n\n\nChina\n1999\n212258/1272915272\n\n\nChina\n2000\n213766/1280428583\n\n\n\n\n\n\nIf you had a hard time answering this question, I would recommend reviewing Section 1.3.2.\n\nPivot Tables 4a and 4b to long format and then join them to obtain this dataframe:\n\n\n\n\n\ncountry\nyear\ncases\npopulation\n\n\n\nAfghanistan\n1999\n745\n19987071\n\n\nAfghanistan\n2000\n2666\n20595360\n\n\nBrazil\n1999\n37737\n172006362\n\n\nBrazil\n2000\n80488\n174504898\n\n\nChina\n1999\n212258\n1272915272\n\n\nChina\n2000\n213766\n1280428583\n\n\n\n\n\n\nIf you had a hard time answering this question, I would recommend reviewing Section 1.2.1 and Section 2.1.",
-    "crumbs": [
-      "STAT 331 Review",
-      "Data Joins and Transformations Review"
-    ]
+    "text": "Trigger examples:\n\nA group reports “2 – Somewhat uneven” for two consecutive weeks\nOne student consistently reports vague or minimal contributions\n\nWhat I will do:\n\nSend a brief email to the group\nSummarize the pattern neutrally\nAsk your group to clarify how tasks are being assigned\nEncourage more explicit ownership rotation\n\nNo grade impact at this stage"
   },
   {
-    "objectID": "1810-review/tidyr-review.html#sec-tidy-data",
-    "href": "1810-review/tidyr-review.html#sec-tidy-data",
-    "title": "Data Joins and Transformations Review",
-    "section": "Tidy Data",
-    "text": "Tidy Data\n\n\n\n\n\n\nRequired-readingRequired Reading\n\n\n\nR4DS Chapter 5, Section 2: Tidy data\n\n\n\n\n\n\n\n\nNoteDo we always want our data in the same layout?\n\n\n\nThe concept of tidy data is useful for mapping variables from the data set to elements in a graph, specifications of a model, or aggregating to create summaries. However, what is considered to be “tidy data” format for one task, might not be in the correct “tidy data” format for a different task. It is important for you to consider the end goal when restructuring your data.",
-    "crumbs": [
-      "STAT 331 Review",
-      "Data Joins and Transformations Review"
-    ]
-  },
-  {
-    "objectID": "1810-review/tidyr-review.html#reshaping-data",
-    "href": "1810-review/tidyr-review.html#reshaping-data",
-    "title": "Data Joins and Transformations Review",
-    "section": "Reshaping Data",
-    "text": "Reshaping Data\nIt’s fairly common for data to come in forms which are convenient for either human viewing or data entry. Unfortunately, these forms aren’t necessarily the most friendly for analysis. There are two main “layouts” a dataset can have:\n\n“wide” format\n“long” format\n\nThe image below shows the same dataset presented in each layout.\n\nSometimes we will be given data that is in one layout and we will need to transform it into a different layout. This animation illustrates the process of going from a wide data layout to a long data layout, and how to go from a long data layout back to a wide data layout. Here, we are using the pivot_wider() and pivot_longer() functions from the tidyr package in R.\n\n\n© Garrett Aden Buie\n\nLet’s explore each of these formats in more depth\nLonger\n\n\n\n\n\n\nRequired-readingRequired Reading\n\n\n\nR4DS Chapter 5, Section 3: Lengthening data\n\n\n\n\n\n\n\n\nRequired-videoRequired Video\n\n\n\n\n\n\n\n\nTable 4a and 4b are currently stored in a wide format, where the years are spread across multiple columns. We can use pivot_longer() to pivot these data to long format (with one column for all years).\n\npivot_longer(table4a, \n             cols = `1999`:`2000`, \n             names_to = \"year\", \n             values_to = \"cases\") \n\n# A tibble: 6 × 3\n  country     year   cases\n  &lt;chr&gt;       &lt;chr&gt;  &lt;dbl&gt;\n1 Afghanistan 1999     745\n2 Afghanistan 2000    2666\n3 Brazil      1999   37737\n4 Brazil      2000   80488\n5 China       1999  212258\n6 China       2000  213766\n\n\n\n\n\n\n\n\nTip\n\n\n\nNotice that I’m surrounding 1999 and 2000 in back ticks (` `). I need to do this because a number is not a syntactically correct variable name, so using cols = 1999:2000 would not work!\nAlso note that the year column is currently considered to be a character data type, so we would likely need to mutate() it before we do our analysis!\n\n\nWider\n\n\n\n\n\n\nRequired-readingRequired Reading\n\n\n\nR4DS Chapter 5, Section 3: Widening data\n\n\n\n\n\n\n\n\nRequired-videoRequired Video\n\n\n\n\n\n\n\n\nTable 2 is currently stored in a long format, where the case and population information is stored in a single column named type. We can use pivot_wider() to pivot these data to wide format (with one column for each statistic).\n\npivot_wider(table2, \n            names_from = type, \n            values_from = count)\n\n# A tibble: 6 × 4\n  country      year  cases population\n  &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt;      &lt;dbl&gt;\n1 Afghanistan  1999    745   19987071\n2 Afghanistan  2000   2666   20595360\n3 Brazil       1999  37737  172006362\n4 Brazil       2000  80488  174504898\n5 China        1999 212258 1272915272\n6 China        2000 213766 1280428583\n\n\n\n\n\n\n\n\nTip\n\n\n\nNotice that I’m not using a cols argument for pivot_wider()! This is because pivot_wider() only modifies the columns specified in the names_from and values_from arguments.",
-    "crumbs": [
-      "STAT 331 Review",
-      "Data Joins and Transformations Review"
-    ]
-  },
-  {
-    "objectID": "1810-review/tidyr-review.html#separating-and-uniting",
-    "href": "1810-review/tidyr-review.html#separating-and-uniting",
-    "title": "Data Joins and Transformations Review",
-    "section": "Separating and Uniting",
-    "text": "Separating and Uniting\nIn addition to pivoting, tidyr provides tools to accomplish two additional tasks: separating variables into two different columns using separate(), and uniting (combining) two variables into one column using unite().\nseparate_wider_delim()\nTable 3 (and Table 5) has a rate column that includes information about both the cases and the population, separated with a / symbol. We can use separate_wider_delim() to create two separate columns for these variables.\n\nseparate_wider_delim(table3, \n                     cols = rate, \n                     delim = \"/\", \n                     names = c(\"cases\", \"population\"), \n                     cols_remove = TRUE\n                     ) \n\n# A tibble: 6 × 4\n  country      year cases  population\n  &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;     \n1 Afghanistan  1999 745    19987071  \n2 Afghanistan  2000 2666   20595360  \n3 Brazil       1999 37737  172006362 \n4 Brazil       2000 80488  174504898 \n5 China        1999 212258 1272915272\n6 China        2000 213766 1280428583\n\n\n\n\n\n\n\n\nTip\n\n\n\nNote that we could have also used separate_wider_regex() here to split on the / symbol. The patterns argument of separate_wider_regex() is a bit funky:\n\nseparate_wider_regex(table3, \n                     rate, \n                     patterns = c(cases = \"\\\\d+\", \"/\", population = \"\\\\d+\")\n                     ) \n\npatterns needs to be a named character vector where the names become column names and the values are regular expressions that match the contents of the vector. cases comes from the first one or more (+) digits \\\\d, then the split is made on the \\, and then population comes from the following one or more digits.\nPersonally, we think the delim option is a bit easier, but this is how it would work with regular expressions.\n\n\nunite()\nIn addition to having variables that need separating, Table 5 also has two variables (century and year) that need to be united (i.e., joined together). We can perform this action using the unite() function.\n\ntable5 |&gt;\n  unite(col = \"year\",\n        c(century, year),\n        sep = \"\"\n        ) |&gt; \n  separate_wider_delim(cols = rate, \n                       delim = \"/\", \n                       names = c(\"cases\", \"population\"), \n                       cols_remove = TRUE) \n\n# A tibble: 6 × 4\n  country     year  cases  population\n  &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;     \n1 Afghanistan 1999  745    19987071  \n2 Afghanistan 2000  2666   20595360  \n3 Brazil      1999  37737  172006362 \n4 Brazil      2000  80488  174504898 \n5 China       1999  212258 1272915272\n6 China       2000  213766 1280428583\n\n\n\n\n\n\n\n\nTip\n\n\n\nNotice that I’m using the pipe operator (|&gt;) to chain these operations together. First, the century and year variables are united and then the resulting dataframe is fed into the separate_wider_delim() function to separate the rate column.\nThe pipe operator saves us from having to save intermediate objects and makes the process easier to read!",
-    "crumbs": [
-      "STAT 331 Review",
-      "Data Joins and Transformations Review"
-    ]
-  },
-  {
-    "objectID": "1810-review/tidyr-review.html#sec-mutating-joins",
-    "href": "1810-review/tidyr-review.html#sec-mutating-joins",
-    "title": "Data Joins and Transformations Review",
-    "section": "Mutating Joins",
-    "text": "Mutating Joins\nWe’re primarily going to focus on mutating joins, as filtering joins can be accomplished by…filtering…rather than by table joins.\n\n\nInner Join\nLeft Join\nRight Join\nFull Join\n\n\n\nAn inner_join() only keeps any rows that are included in both tables, but keeps every column.\n\n\n© Garrick Aden-Buie\n\n\n\nBut what if we want to keep all of the rows in x? We would do a left_join() (since x is on the left).\n\n\n© Garrick Aden-Buie\n\nIf there are multiple matches in the y table, though, we might have to duplicate rows in x. This is still a left join, just a more complicated one.\n\n\n© Garrick Aden-Buie\n\n\n\nIf we wanted to keep all of the rows in y, we would do a right_join() (since y is on the right):\n\n\n© Garrick Aden-Buie\n\nWe can always change a left join to a right join or visa versa. People seem to have a preference for left joins, but if you like right joins more go for it!\n\n\nAnd finally, if we want to keep all of the rows of both x and y, we’d do a full_join():\n\n\n© Garrick Aden-Buie\n\n\n\n\nEvery join has a “left side” and a “right side” - so in XXXX_join(A, B), A is the left side, and B is the right side.\nJoins are differentiated based on how they treat the rows and columns of each side. In mutating joins, the columns from both sides are always kept. The table below summarizes which rows are kept from each side of the join, for different mutating joins.\n\n\n\n\n\n\n\n\n\n\n\n\nRows Selected\n\n\n\nJoin Type\nLeft Side\nRight Side\n\n\n\n\ninner\nmatching\nmatching\n\n\nleft\nall\nmatching\n\n\nright\nmatching\nall\n\n\nouter\nall\nall",
-    "crumbs": [
-      "STAT 331 Review",
-      "Data Joins and Transformations Review"
-    ]
-  },
-  {
-    "objectID": "1810-review/tidyr-review.html#filtering-joins",
-    "href": "1810-review/tidyr-review.html#filtering-joins",
-    "title": "Data Joins and Transformations Review",
-    "section": "Filtering Joins",
-    "text": "Filtering Joins\nThese joins do not merge two datasets together! Instead, they filter the values of one dataset based on the values of another dataset.\n\n\nSemi Join\nAnti Join\n\n\n\nA semi_join() keeps rows in x that have a match in y. Notice that the resulting dataset is a modification of the original x dataset—nothing from y has been added to x!\n\n\n\n\n\n\nTip\n\n\n\nYou can think of this as a relative of using the inclusion operator (%in%) inside of a filter() statement (e.g., filter(day %in% c(\"Mon\", \"Tues\", \"Wed\"))).\n\n\n\n\n© Garrick Aden-Buie\n\nSuppose we wanted to only keep countries in Table 2 that were also present in Table 1. We could do this using a semi-join:\n\nsemi_join(x = table2, \n          y = table1, \n          by = \"country\")\n\n# A tibble: 12 × 4\n   country      year type            count\n   &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;           &lt;dbl&gt;\n 1 Afghanistan  1999 cases             745\n 2 Afghanistan  1999 population   19987071\n 3 Afghanistan  2000 cases            2666\n 4 Afghanistan  2000 population   20595360\n 5 Brazil       1999 cases           37737\n 6 Brazil       1999 population  172006362\n 7 Brazil       2000 cases           80488\n 8 Brazil       2000 population  174504898\n 9 China        1999 cases          212258\n10 China        1999 population 1272915272\n11 China        2000 cases          213766\n12 China        2000 population 1280428583\n\n\nNotice that since Table 2 and Table 1 both contain the same countries the resulting dataset (where the matches were kept) is the same as the original Table 2.\n\n\nA anti_join() keeps rows in x that do not have a match in y. Notice that the resulting dataset is a modification of the original x dataset—nothing from y has been added to x!\n\n\n\n\n\n\nTip\n\n\n\nYou can think of this as a relative of the filter_out() function, which is a better tool for negating a filter statement (e.g., filter(! day %in% c(\"Mon\", \"Tues\", \"Wed\"))).\n\n\n\n\n© Garrick Aden-Buie\n\nSuppose we wanted to filter out countries in Table 2 that were also present in Table 1. We could do this using an anti-join:\n\nanti_join(x = table2, \n          y = table1, \n          by = \"country\")\n\n# A tibble: 0 × 4\n# ℹ 4 variables: country &lt;chr&gt;, year &lt;dbl&gt;, type &lt;chr&gt;, count &lt;dbl&gt;\n\n\nNotice that since Table 2 and Table 1 both contain the same countries the resulting dataset (where the matches were filtered out) is empty.",
-    "crumbs": [
-      "STAT 331 Review",
-      "Data Joins and Transformations Review"
-    ]
-  },
-  {
-    "objectID": "1810-review/setup-version-control.html",
-    "href": "1810-review/setup-version-control.html",
-    "title": "Version Control with Git and GitHub",
+    "objectID": "group-stuff/instructor-action.html#level-1-light-touch-check-in-early-signal",
+    "href": "group-stuff/instructor-action.html#level-1-light-touch-check-in-early-signal",
+    "title": "Instructor Intervention Plan",
     "section": "",
-    "text": "ImportantNot Optional Content\n\n\n\nAs opposed to the previous sections, this section is not optional. Every student is required to have completed each of the steps below to ensure you are prepared to work in GitHub on Day 2 of Week 1.\nMost of this reading is either heavily inspired by Happy Git and Github for the UseR (Bryan, Hester, and The Stat 545 TAs 2021) or directly links to that book. After completing this pre-reading, you should:",
-    "crumbs": [
-      "STAT 331 Review",
-      "Version Control with Git and GitHub"
-    ]
+    "text": "Trigger examples:\n\nA group reports “2 – Somewhat uneven” for two consecutive weeks\nOne student consistently reports vague or minimal contributions\n\nWhat I will do:\n\nSend a brief email to the group\nSummarize the pattern neutrally\nAsk your group to clarify how tasks are being assigned\nEncourage more explicit ownership rotation\n\nNo grade impact at this stage"
   },
   {
-    "objectID": "1810-review/setup-version-control.html#footnotes",
-    "href": "1810-review/setup-version-control.html#footnotes",
-    "title": "Version Control with Git and GitHub",
-    "section": "Footnotes",
-    "text": "Footnotes\n\nYes, I’m aware that this sounds paranoid. It’s been a very rare occasion that I’ve needed to restore something from another backup. You don’t want to take chances.↩︎",
-    "crumbs": [
-      "STAT 331 Review",
-      "Version Control with Git and GitHub"
-    ]
+    "objectID": "group-stuff/instructor-action.html#level-2-structured-reset-conversation",
+    "href": "group-stuff/instructor-action.html#level-2-structured-reset-conversation",
+    "title": "Instructor Intervention Plan",
+    "section": "Level 2: Structured Reset Conversation",
+    "text": "Level 2: Structured Reset Conversation\nTrigger examples:\n\nRepeated uneven workload ratings (3+ weeks)\nConsistent reports of unequal contribution\nCommunication concerns appearing in multiple surveys\n\nWhat I will do:\n\nRequire a short meeting (10–15 minutes) where I ask your group to:\n\nExplain how they divide tasks\nDescribe how decisions are made\nPropose a revised division plan for the next two weeks\n\nPossibly require a written task allocation plan\n\nIndividual grades may be modified at this stage."
   },
   {
-    "objectID": "1810-review/ggplot-review.html",
-    "href": "1810-review/ggplot-review.html",
-    "title": "\nggplot Review",
+    "objectID": "group-stuff/instructor-action.html#level-3-individual-accountability-adjustment",
+    "href": "group-stuff/instructor-action.html#level-3-individual-accountability-adjustment",
+    "title": "Instructor Intervention Plan",
+    "section": "Level 3: Individual Accountability Adjustment",
+    "text": "Level 3: Individual Accountability Adjustment\nTrigger examples:\n\nClear, documented pattern of under-contribution\nPeer reports align across multiple weeks\nIf you do not respond to my communication(s)\n\nWhat I will do:\n\nMeet with you individually\nClarify expectations\nDocument performance concerns\n\nIndividual grades will be modified at this stage."
+  },
+  {
+    "objectID": "practice-activities/week-1.html",
+    "href": "practice-activities/week-1.html",
+    "title": "Practice Activity Week 1",
     "section": "",
-    "text": "CautionOptional Content\n\n\n\nThis module consists of readings reviewing material typically taught in STAT 331. It is possible you can skip over portions of this reading. It is your responsibility to decide which areas you need to review before diving into Stat 541.\nAnswer the following questions to see if you can safely skip this section.\n\nIdentify the elements of the following plot as\n\n\n\n\nAn aesthetic\nA geometry\nA scale\nNone of the above\n\n\n\n\n\n\n\n\nThe x-axis is age\nThe y-axis is “Urge to run up the down escalator”\nThe y-axis ranges from “Weak” to “Strong”\nThis is a line graph\nThe two lines are “What I was supposed to feel” and “What I’ve actually felt”\nThe lines are labeled with text\nOnly even ages are labelled\nStick figure people are sliding down the line\n\n\nFill in the six (6) blanks to make the plot below:\n\n\nstarwars %&gt;%\n  ____(species == \"Human\") %&gt;%\n  ggplot(mapping = aes(____ = height, y = mass, ____ = gender)) + \n  geom_[____](____ = 17, size = 3) +\n  ____(x = \"Height (cm)\", \n       y = \"Mass (kg)\", \n       color = \"Gender Expression\"\n       )\n\n\n\n\n\n\n\n\n\n\n\nThe Grammar of Graphics\nIf you had a hard time answering Question 1, I would recommend reviewing this content. You should feel comfortable with:\n\nKnowing what goes into an aesthetic (aes()) versus the geometry (geom_*())\nIdentifying these elements of existing plots\n\n\n\n\n\n\n\nRequired-readingRequired Reading\n\n\n\nR4DS Chapter 1: Data Visualisation\n\n\n\n\n\n\n\n\n\nRequired-videoRequired Video\n\n\n\n\n\n\n\n\nUsing ggplot2\nIf you had a hard time answering Question 2, I would recommend reviewing this content. You should be comfortable with:\n\nUsing the “big 5” geometries\n\ngeom_point()\n\ngeom_bar() / geom_col()\n\ngeom_line()\ngeom_histogram()\ngeom_boxplot()\n\n\nChanging optional arguments\n\nShape of points\nSize of points\nLinewidth of line\nBinwidth of histogram\n\n\nFaceting\n\n\nfacet_wrap() for one categorical variable\n\nfacet_grid() for two categorical variables\n\n\n\n\n\n\n\n\n\nRequired-readingRequired Reading\n\n\n\nR for Data Science Chapter 9 - Layers",
+    "text": "Download the template Practice Activity Quarto file here: pa-1.qmd\n\n\n\n\n\n\nImportant\n\n\n\nBe sure to save the file inside your Week 2 folder of your STAT 431 (or 541) folder!\n\n\n\nlibrary(tidyverse)",
     "crumbs": [
       "STAT 331 Review",
-      "`ggplot` Review"
+      "Week 1 In-Class Activity"
     ]
   },
   {
-    "objectID": "1810-review.html",
-    "href": "1810-review.html",
-    "title": "STAT 331 Review",
+    "objectID": "practice-activities/week-1.html#accessing-the-practice-activity",
+    "href": "practice-activities/week-1.html#accessing-the-practice-activity",
+    "title": "Practice Activity Week 1",
     "section": "",
-    "text": "In this first week, we will start with a review of concepts from Introduction to Statistical Computing in R—data visualizations with ggplot2, data wrangling with dplyr and tidyr. We will use reviewing creating reproducible documents with Quarto and using R projects as an opportunity to introduce you to version control with git and GitHub.\n\n\n\n\n\n\nImportant\n\n\n\nIt is possible that you might not need to review every topic from this section. To gauge your understanding, at the beginning of each section there are “check-in” questions assessing your knowledge on a particular topic. If you can easily answer these questions, you can feel free to skip this review topic. If, however, the answers to some questions are not obvious, we have provided readings and / or videos to review the necessary concepts.",
-    "crumbs": [
-      "STAT 331 Review"
-    ]
-  },
-  {
-    "objectID": "1810-review/dplyr-review.html",
-    "href": "1810-review/dplyr-review.html",
-    "title": "\ndplyr Review",
-    "section": "",
-    "text": "CautionOptional Content\n\n\n\nThis module consists of readings reviewing material typically taught in STAT 331. It is possible you can skip over portions of this reading. It is your responsibility to decide which areas you need to review before diving into Stat 541.\nAnswer the following questions to see if you can safely skip this section.\n\nIn essence, a data.frame is simply a special list - with a few extra restrictions on the list format.\n\nThink about the datasets you have already worked with. Which of the following restrictions on a list do you think are needed for the list to be a data.frame? (Select all that apply)\n\nThe elements of the list must all be vectors of the same length.\nThe elements of the list must all be the same data type.\nThe elements of the list must all have no missing values.\nThe elements of the list must all have names.\n\n\nTibbles are described as “opinionated” dataframes. Which of the following are true about a tibble’s behavior? (Select all that apply)\n\n\n\ntibbles only print the first 10 rows of a dataset\n\ntibbles allow for non-syntactic variable names, like :)\n\n\ntibbles never convert strings to factors\n\ntibbles create row names\n\nIf you had a hard time answering these questions, I would recommend reviewing Section 1.1.\n\nMatch each of the base R code excerpt to the associated dplyr verb.\n\n\n\n\nfilter()\nselect()\nmutate()\n\n\n\n\n\narrange()\nsummarize()\ngroup_by() + summarize()\n\n\n\n\npenguins[order(penguins$bill_length_mm) , ]\npenguins[penguins$species == \"Adelie\", ]\naggregate(bill_length_mm ~ species, data = penguins, FUN = mean)\nwith(penguins, mass_ratio = body_mass_g / flipper_length_mm)\npenguins$species\nmean(penguins[penguins$species == \"Adelie\", ], na.rm = TRUE)\n\nIf you had a hard time answering this question, I would recommend reviewing Section 1.2.\n\nSuppose we would like to study how the ratio of bill length to bill depth across the different penguin species. Arrange the following steps into an order that accomplishes this goal (assuming the steps are connected with a |&gt; or a %&gt;%).\n\n\n# a\narrange(avg_bill_ratio)\n\n# b\ngroup_by(species)\n\n# c\npenguins \n\n# d\nsummarize(\n    avg_bill_ratio = mean(bill_ratio, na.rm = TRUE)\n    )\n  \n# e\nmutate(\n    bill_ratio = bill_length_mm / bill_depth_mm\n    )\n\nIf you had a hard time answering this question, I would recommend reviewing Section 1.3.",
+    "text": "Download the template Practice Activity Quarto file here: pa-1.qmd\n\n\n\n\n\n\nImportant\n\n\n\nBe sure to save the file inside your Week 2 folder of your STAT 431 (or 541) folder!\n\n\n\nlibrary(tidyverse)",
     "crumbs": [
       "STAT 331 Review",
-      "`dplyr` Review"
+      "Week 1 In-Class Activity"
     ]
   },
   {
-    "objectID": "1810-review/dplyr-review.html#dplyr",
-    "href": "1810-review/dplyr-review.html#dplyr",
-    "title": "\ndplyr Review",
-    "section": "dplyr",
-    "text": "dplyr\nYou should feel comfortable using:\n\n\nThe five main dplyr verbs:\n\nfilter()\narrange()\nselect()\nmutate()\nsummarize()\n\n\nIncorportaing group_by() to perform groupwise operations\nChaining together data wrangling operations with the pipe operator (|&gt; or %&gt;%)\n\nData Structures\nChoose one of these two options:\n\n\n\n\n\n\n\n\nRequired-videoRequired Video\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nRequired-readingRequired Reading\n\n\n\nR Programming for Data Science: Data Types in R\n\n\n\n\nIn addition, read the following section from the first edition of R for DS:\n\n\n\n\n\n\nRequired-readingRequired Reading\n\n\n\nR4DS Chapter 10: Tibbles\n\n\nData Wrangling with dplyr\nIf you had a hard time answering Question 3, I would recommend reviewing this content.\n\n\n\n\n\n\nRequired-readingRequired Reading\n\n\n\nR4DS Chapter 3: Data Transformation\n\n\n\n\n\n\n\n\nRequired-videoRequired Video\n\n\n\n📽 filter() – 11 minutes\n📽 select() – 6 minutes\n📽 mutate() – 9 minutes\n📽 arrange() – 7 minutes\n📽 summarize()– 8 minutes\n📽 group_by() – 6 minutes\n\n\nThe Pipe Operator\nIf you had a hard time answering Question 4, I would recommend also reviewing this content.\n\n\n\n\n\n\nRequired-videoRequired Video",
+    "objectID": "practice-activities/week-1.html#quarto",
+    "href": "practice-activities/week-1.html#quarto",
+    "title": "Practice Activity Week 1",
+    "section": "Quarto",
+    "text": "Quarto\nFirst, let’s make sure you know how to use Markdown formatting to style a Quarto document.\n\nMake this text bold.\nMake this text italicized.\nMake these items into a bullet point list:\n\nApples Bananas Potatoes\n\nEdit the YAML to remove warning messages from being output in the rendered HTML file\nUsing code chunk options, make it so this chunk shows the code but not the output:\n\n\n2 + 2\n\n[1] 4\n\n\n\nUsing code chunk options, make it so the file can still render even though this chunk has an error\n\n\n2 + a\n\nError:\n! object 'a' not found",
     "crumbs": [
       "STAT 331 Review",
-      "`dplyr` Review"
+      "Week 1 In-Class Activity"
     ]
   },
   {
-    "objectID": "1810-review/quarto-review.html",
-    "href": "1810-review/quarto-review.html",
-    "title": "Quarto Review",
-    "section": "",
-    "text": "CautionOptional Content\n\n\n\nThis module consists of readings reviewing material typically taught in STAT 331. It is possible you can skip over portions of this reading. It is your responsibility to decide which areas you need to review before diving into Stat 541.\nThe theme of this lesson is good management of your files and data. For this course, you need to know how to identify folders and paths, and create professional looking Quarto documents.\nAnswer the following questions to see if you can safely skip this section.\n\nWhich statement best describes the difference between an absolute file path and a relative file path?\n\n\nAn absolute path works only on Windows systems, while a relative path works on all operating systems.\nA relative path always begins with a drive letter or /, while an absolute path does not.\nAn absolute path specifies a file’s location starting from the root directory, while a relative path specifies a location based on the current directory.\nAn absolute path can only be used for folders, while a relative path can be used for files.\n\nIf you had a hard time answering these questions, I would recommend reviewing Section 1.1.\n\nWhy are R projects important?\n\n\nThey automatically install all R packages needed for a project.\nThey ensure that code always runs faster by optimizing file access.\nThey set the working directory to the project folder, making file paths consistent and reproducible.\nThey prevent users from accidentally modifying files outside the project.\n\nIf you had a hard time answering these questions, I would recommend reviewing Section 1.2.\n\nWhat are the options at the top of a Quarto document (between the --- and --- symbols) called?\n\n\nXML\nYAML\nREML\nTOML\n\n\nWhat symbols create an R code chunk?\n\n\n```\n{r}\n```{r}\n`{r}`\n\n\nWhat symbol defines a level 1 heading?\n\n\n$\n_\n*\n#\n\nIf you had a hard time answering these questions, I would recommend reviewing Section 2.",
+    "objectID": "practice-activities/week-1.html#data-visualization-review",
+    "href": "practice-activities/week-1.html#data-visualization-review",
+    "title": "Practice Activity Week 1",
+    "section": "Data Visualization Review",
+    "text": "Data Visualization Review\nIn this class, we will exclusively make visualizations using ggplot2 and packages developed to be compatible with ggplot2. If you are less familiar with plotting in ggplot2 or it’s been some time since you used this package, I would strongly recommend referencing resources from the data visualization section of this week’s coursework!\nThe questions below (Questions 7-11) utilize the mpg data from the tidyverse package.\n\nUse side-by-side boxplots to visualize the distribution of hwy miles per gallon for each manufacturer. The names of the manufacturers should be easily readable, and your axes should include any necessary information regarding the variables and their units!\n\n\n\nUse faceted scatterplots to visualize how the relationship between hwy mileage and cty mileage has changed over time. Your axes should include any necessary information regarding the variables and their units!",
     "crumbs": [
       "STAT 331 Review",
-      "Quarto Review"
+      "Week 1 In-Class Activity"
     ]
   },
   {
-    "objectID": "1810-review/quarto-review.html#directories-paths-and-projects",
-    "href": "1810-review/quarto-review.html#directories-paths-and-projects",
-    "title": "Quarto Review",
-    "section": "Directories, Paths, and Projects",
-    "text": "Directories, Paths, and Projects\nIn R, there are two ways to set up your file path and file system organization:\n\nSet your working directory in R (do not recommend)\nUse RProjects (preferred!)\n\nWorking Directories in R\n\nThere are a few ways to find where your working directory is in R. You can look at the top of your console (seen below) or type getwd() into your console.\n\n\ngetwd()\n\nAlthough it is not recommended, you can set your working directory in R with setwd().\n\nsetwd(\"/path/to/my/assignment/folder\")\n\nR Projects\n\n\n\n\n\n\nRequired-readingRequired Reading\n\n\n\nR4DS Chapter 8: Workflow and Projects\n\n\nSince there are often many files necessary for a project (e.g. data sources, images, etc.), R has a nice built in system for setting up your project organization with R Projects. You can either create a new folder on your computer containing an R Project (e.g., you have not yet created a folder for this class) or you can add an R Project to an existing folder on your computer (e.g., you have already created a folder for this class).\n\n\n\n\n\n\nCautionYour folder cannot synch with anything online!\n\n\n\nYour STAT 331 folder cannot be in a folder stored on OneDrive or iCloud! Storing your folder in this location will cause your code to periodically not run and I cannot help you fix it.\n\n\n\n\nCreate with a new folder\nAdd to Existing Folder\n\n\n\nTo create a R Project in a new folder (i.e., you haven’t already made a stat-541 folder), first open RStudio on your computer and click File &gt; New Project, then:\n Next, you should select the “New Project” option from the list of options. Don’t worry, we will get to make many of these other options later on in this class!\n Give your folder a name (it doesn’t have to be stat-541). However, it is good practice for this file folder name to not contain spaces. Then, browse on your computer for a location to save this folder to. For example, mine is saved in my Documents. Make sure you know how to find this; it should NOT be saved in your Downloads!\n\n\nChoose the “New Project” option from the popup wizard\n\nOnce you have completed this process, you should see a new stat-541 folder in your Documents folder (or wherever you save it to) and the folder should contain a stat-541.Rproj file. This is your new “home” base for this - whenever you refer to a file with a relative path it will begin to look for it here.\n\n\nTo add a R Project to an existing folder on your computer (e.g., you already created a folder for this class), first open RStudio on your computer and click File &gt; New Project, then:\n\n\nChoose the “Existing Directory” option from the popup wizard\n\nThen, browse on your computer to select the existing folder you wish to add your R Project to. For example, mine is saved in my Documents and called my-stat331.\n\n\nNavigate to the location of the folder you made\n\nYour existing folder, stat-541 should now contain a stat-541.Rproj file. This is your new “home” base for this class - whenever you refer to a file with a relative path it will begin to look for it here.",
+    "objectID": "practice-activities/week-1.html#data-wrangling-review",
+    "href": "practice-activities/week-1.html#data-wrangling-review",
+    "title": "Practice Activity Week 1",
+    "section": "Data Wrangling Review",
+    "text": "Data Wrangling Review\nIn this class, we will exclusively make use of tools from the tidyverse suite of packages to perform our data cleaning and wrangling operations. If you are less familiar with these packages or it’s been some time since you used them, I would strongly recommend referencing the function documentation!\nFor these problems, we will continue to work with the mpg data frame, making various changes to the data to clean it up.\n\nThe fl variable describes the type of fuel for each car, with levels: p, r, e, d, and c. Do some research into what each of these labels mean! Then, use the mutate() and if_else() functions to create a new variable (fuel_type) with two levels: petrol (any car using petrolium-based gas) and alternative energy (any car not using petrolium-based gas).\n\n\nThe drv variable describes if the car has front drive (f), rear drive (r), or four wheel drive (4). Let’s make better labels for these values! Specifically, use the mutate() and recode_values() to change the drv variable to have the following descriptive levels: front, rear, four wheel.\n\nHint: The recode_values() function was added to dplyr version 1.2.0. If you don’t see this function you need to update your version of dplyr!\n\nThe trans variable contains two pieces of information, (1) the transmission style (auto or manual) and the specific type of transmission (e.g., l5, m5, av). Using the separate_wider_delim() function, create two new variables from trans, (1) trans_type containing the specific type of transmission of each car (e.g., l5), and (2) trans_style the style of the transmission (e.g., auto). Hint: You will need to deal with the stray parenthesis!",
     "crumbs": [
       "STAT 331 Review",
-      "Quarto Review"
+      "Week 1 In-Class Activity"
     ]
   },
   {
-    "objectID": "1810-review/quarto-review.html#sec-quarto",
-    "href": "1810-review/quarto-review.html#sec-quarto",
-    "title": "Quarto Review",
-    "section": "Reproducible Documents",
-    "text": "Reproducible Documents\nOver the last ten years, science has experienced a “reproducibility” crisis. Meaning, a substantial portion of scientific findings were unable to be recreated because people didn’t sufficiently document the processes they used. As such, a foundational aspect of scientific research is using tools which allow others to reproduce your findings.\nEnter Quarto—a dynamic document that allows us to interweave R code and written text in the same document. Gone are the days of copying and pasting the results of your R code into a Word document—breaking the connection between your analysis and your report. Quarto is here to save the day!\nDownloading Quarto\nThe software associated with Quarto is automatically downloaded with the newest versions of RStudio. So, if you are using the most up to date version of RStudio (as instructed in Part 1 of this week’s coursework), you should already have Quarto installed on your computer. But, let’s test it out.\nTo ensure you have Quarto installed, carry out the following process:\n\nOpen RStudio\nClick on “File” (in the upper navigation bar)\nSelect “New File” (in the dropdown options)\nSelect “Quarto Document…” (in the dropdown option)\n\n\nIf you have Quarto installed, you should be prompted with the following menu:\n\nIf, instead, you receive a message saying Quarto is not installed on your computer, you need to download Quarto: https://quarto.org/docs/download/",
+    "objectID": "practice-activities/week-1.html#getting-to-know-your-classmates",
+    "href": "practice-activities/week-1.html#getting-to-know-your-classmates",
+    "title": "Practice Activity Week 1",
+    "section": "Getting to know your classmates",
+    "text": "Getting to know your classmates\n\nFind someone who took Stat 331 from a different professor than you. Compare your experiences. Tell me their name and professor. List one or two things that you think you learned more about, and one or two things that they learned more about.\nFind someone in the class who does not share your birth month. Tell me their name and birthday, and use R to find out how many days apart your birthdays are.",
     "crumbs": [
       "STAT 331 Review",
-      "Quarto Review"
+      "Week 1 In-Class Activity"
     ]
-  },
-  {
-    "objectID": "1810-review/quarto-review.html#introduction-to-quarto",
-    "href": "1810-review/quarto-review.html#introduction-to-quarto",
-    "title": "Quarto Review",
-    "section": "Introduction to Quarto",
-    "text": "Introduction to Quarto\n\n\n\n\n\n\nRequired-readingRequired Reading\n\n\n\nR4DS Chapter 28: Quarto\n\n\nHTML Documents\nWe will exclusively use HTML documents in this course.\n\n\n\n\n\n\nLearn-moreLearn More\n\n\n\nIf you are interested in learning more about formatting options for Quarto HTML documents, I would recommend checking out:\n\na discussion of the basics of formatting HTML documents in Quarto\nthe list of all HTML formatting options for Quarto documents",
-    "crumbs": [
-      "STAT 331 Review",
-      "Quarto Review"
-    ]
-  },
-  {
-    "objectID": "1810-review/setup-workflow.html",
-    "href": "1810-review/setup-workflow.html",
-    "title": "Installing / Updating R & RStudio",
-    "section": "",
-    "text": "ImportantNot Optional Content\n\n\n\nAs opposed to the latter sections, this section is not optional. Every student is required to have completed each of the steps below to ensure you have the most up to date versions of R and RStudio.\nYour workflow refers to the series of good habits you get into in your coding process, that help save you time and headache down the road.\nThis document outlines our suggestions for getting going with your workflow. None of these items is required for the course; they will simply make your life easier down the road.",
-    "crumbs": [
-      "STAT 331 Review",
-      "Installing / Updating R & RStudio"
-    ]
-  },
-  {
-    "objectID": "1810-review/setup-workflow.html#updating-r",
-    "href": "1810-review/setup-workflow.html#updating-r",
-    "title": "Installing / Updating R & RStudio",
-    "section": "\n1 Updating R",
-    "text": "1 Updating R\nEach of you should have R already installed on your computer, but you might not have the most up to date version of R! Do not ignore these instructions. If you neglect to update your version of R, you may find that updating a package will make it so your code will not run.\n\nStep 1: Open RStudio\nStep 2: At the top of the the Console it will say what version of R you are using\n\n\nIf the version is not 4.5.2 (like the image above), you need to update your version of R! The simplest way to do this is to follow the instructions below to install R.",
-    "crumbs": [
-      "STAT 331 Review",
-      "Installing / Updating R & RStudio"
-    ]
-  },
-  {
-    "objectID": "1810-review/setup-workflow.html#installing-r",
-    "href": "1810-review/setup-workflow.html#installing-r",
-    "title": "Installing / Updating R & RStudio",
-    "section": "\n2 Installing R",
-    "text": "2 Installing R\nDownload and install R by going to https://cloud.r-project.org/. Here, you will find three options for installing R—click on the option for your computer’s operating system.\n\n\n\n\n\n\nRequired-videoRequired Video\n\n\n\n\n\n\n\n\nIf you are a Windows user:\n\nClick on “Download R for Windows”\nClick on “base”\nClick on the Download link.\nWhen you open the execution file (.exe) you will be prompted with a variety of questions about installing R. Feel free to use the default features / settings that come with R (continue to click “Ok” until the download starts).\n\n\n\n\n\n\n\nWarningMultiple Versions of R\n\n\n\nBeware that if you had a previous version of R downloaded on your PC, that old version will not be deleted when you download the most recent version of R. We do not want to have two versions of R installed, as your computer can get confused what version of R to use. So, you need to remove the old version of R.\nTo do this you need to:\n\nNavigate to your computer’s settings\nClick on the “Apps” option on the left-hand panel\nSearch for or scroll down to R\nFind the older version of R\n\n\n\nClick on the ... on the right side\nSelect “Uninstall”\n\n\n\n\nIf you are macOS user:\n\nClick on “Download R for (Mac) OS X”\nUnder “Latest release:” click on R-X.X.X.pkg, where R-X.X.X is the version number. For example, the latest version of R as of July 1, 2024 was R-4.4.1 (Race for Your Life).\nWhen installing, use the default features / settings that come with R (click Ok until the download starts).",
-    "crumbs": [
-      "STAT 331 Review",
-      "Installing / Updating R & RStudio"
-    ]
-  },
-  {
-    "objectID": "1810-review/setup-workflow.html#updating-rstudio",
-    "href": "1810-review/setup-workflow.html#updating-rstudio",
-    "title": "Installing / Updating R & RStudio",
-    "section": "\n3 Updating RStudio",
-    "text": "3 Updating RStudio\nRStudio can be downloaded here\nThe most recent version of RStudio is 2024.12.1+563. You can check if you are using the most recent version of RStudio by:\n\nOpening RStudio\nClicking on “Help”\nSelecting “Check for Updates”\nChoosing “Quit and Download” if there is an update available",
-    "crumbs": [
-      "STAT 331 Review",
-      "Installing / Updating R & RStudio"
-    ]
-  },
-  {
-    "objectID": "1810-review/setup-workflow.html#installing-updating-the-tidyverse",
-    "href": "1810-review/setup-workflow.html#installing-updating-the-tidyverse",
-    "title": "Installing / Updating R & RStudio",
-    "section": "\n4 Installing / Updating the tidyverse\n",
-    "text": "4 Installing / Updating the tidyverse\n\nIn this class, we will make heavy use of the tidyverse packages.\nIf you have not used the tidyverse before, type the following into your console:\n\ninstall.packages(\"tidyverse\")\n\nIf you have used the tidyverse before, you only need to update packages. Type the following into your console:\n\nlibrary(tidyverse)\ntidyverse_update()\n\nThen follow the instructions that print out to update a few of your tidyverse packages.",
-    "crumbs": [
-      "STAT 331 Review",
-      "Installing / Updating R & RStudio"
-    ]
-  },
-  {
-    "objectID": "1810-review/setup-workflow.html#configure-your-options",
-    "href": "1810-review/setup-workflow.html#configure-your-options",
-    "title": "Installing / Updating R & RStudio",
-    "section": "\n5 Configure your options",
-    "text": "5 Configure your options\nThere are a few settings we recommend that you change right away in RStudio. These can be accessed by opening RStudio and clicking on the “Tools” option from the top of the RStudio menu and selecting “Global Options…” from the dropdown menu:\n\nR Workspace\nFirst, in the “General” pane (that first shows up), you should not save your environment when you close RStudio. Meaning, you should uncheck the box that says “Restore .RData into workspace at startup” and you should select “Never” from the dropdown menu that says “Save workspace to .RData on exit”:\n\nCode Chunk Output\nNext, click on the R Markdown pane on the left hand side. This pane allows you to choose how your Quarto documents will behave.\nFirst, let’s decide where we want the output of our code to appear in our document. If you want for the output of your code (e.g., summary statistics, visualizations) to be shown in the document immediately below the code chunk, check the box that says “Show output inline for all R Markdown documents.” If you do not check this box, your output will either be shown in the Console (for numerical summaries) or in the Plots tab (for visualizations).\nSecond, we need to decide where Quarto should look for files that we are referencing. Meaning, if you reference files, should Quarto look for them relative to the Project or relative to your Quarto Document (which might live in a subfolder or even outside the project). I would recommend choosing “Document” here!\n\n\n\n\n\n\n\nCheck-inCheck In\n\n\n\n\nOnce you have updated R, open RStudio. If you have correctly installed the most recent version of R, version 4.5.3 should appear at the top of your Console. Take a screenshot of the version of R displayed in your Console.\nIn RStudio, click on the Help menu and then select “Check for Updates.” If you have correct installed the most recent version of RStudio, the message should say “You’re using the newest version of RStudio.” Take a screenshot of the message that appears.",
-    "crumbs": [
-      "STAT 331 Review",
-      "Installing / Updating R & RStudio"
-    ]
-  },
-  {
-    "objectID": "course-materials/calendar.html",
-    "href": "course-materials/calendar.html",
-    "title": "\n Schedule",
-    "section": "",
-    "text": "This page contains an outline of the topics, content, and assignments for the quarter. Note that this schedule will be updated as the quarter progresses, with all changes documented here.\n Prepare – readings or tutorials completed before class\n Activity – activities done during class\n Project – deliverables or milestones\n\n\n\n\n\n\n\n\n\n\nPrepare\n\n\nActivity\n\n\nProject\n\n\n\n\n\nUnit 0 - Intro R Review\n\n\n\n\nWeek 0\n\n\n\n\n\nCourse Setup\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 1\n\n\nMon, Mar 30\n\n\nSTAT 331 Review\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed, Apr 1\n\n\nWeek 1 Activity & Project 1, Part 1\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSat, Apr 4\n\n\nProject 1 Checkpoint #1 Due\n\n\n\n\n\n\n\n\n\n\n\n\n\nUnit 1 - Messy Data\n\n\n\n\nWeek 2\n\n\nSun, Apr 5\n\n\nWriting Funtions\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIterating Functions with purrr\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWriting Efficient Code\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon, Apr 6\n\n\nWeek 2 Activity\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed, Apr 8\n\n\nProject 1, Part 2\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSat, Apr 11\n\n\nProject 1 Checkpoint #2 Due\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 3\n\n\nSun, Apr 12\n\n\nJSON Data with tidyjson and jsonlite\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWebscraping with rvest\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon, Apr 13\n\n\nWeek 3 Activity\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed, Apr 15\n\n\nProject 1, Part 3\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSat, Apr 18\n\n\nProject 1 Checkpoint #3 Due\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 4\n\n\nSun, Apr 19\n\n\nProfessionally Styled Tables with gt\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNon-Standard Geometries\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nProfessionally Styled Visualizations\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon, Apr 20\n\n\nWeek 4 Activity\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed, Apr 22\n\n\nProject 1, Part 4\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSat, Apr 25\n\n\nProject 1 Checkpoint #4 Due\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSat, May 2\n\n\nProject 1 Due\n\n\n\n\n\n\n\n\n\n\n\n\n\nUnit 2 - Professional Deliverables\n\n\n\n\nWeek 5\n\n\nSun, Apr 26\n\n\nStatic Quarto Dashboards\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon, Apr 27\n\n\nWeek 5 Activity\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed, Apr 29\n\n\nUnit 1 Exam; Project 2, Part 1\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSat, May 2\n\n\nProject 2 Checkpoint #1 Due\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 6\n\n\nSun, May 3\n\n\nMaking Maps with leaflet\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOther ggplot2 Extensions\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon, May 4\n\n\nWeek 6 Activity\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed, May 6\n\n\nProject 2, Part 2\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSat, May 9\n\n\nProject 2 Checkpoint #2 Due\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 7\n\n\nSun, May 10\n\n\nInteractive Quarto Dashboards\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon, May 11\n\n\nWeek 7 Activity\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed, May 13\n\n\nProject 2, Part 3\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSat, May 16\n\n\nProject 2 Checkpoint #3 Due\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSat, May 23\n\n\nProject 2 Due\n\n\n\n\n\n\n\n\n\n\n\n\n\nUnit 3 - R Packages\n\n\n\n\nWeek 8\n\n\nSun, May 17\n\n\nNo readings!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon, May 18\n\n\nWeek 8 Activity\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed, May 20\n\n\nUnit 2 Exam\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSat, May 23\n\n\nProject 3 Checkpoint #1 Due\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 9\n\n\nMon, May 25\n\n\nNo Class - Holiday\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTue, May 26\n\n\nPackage Structure\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nUnit Testing and Debugging\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed, May 27\n\n\nWeek 9 Activity\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSat, May 30\n\n\nProject 3 Checkpoint #2 Due\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 10\n\n\nSun, May 31\n\n\nSpeed and Memory\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon, Jun 1\n\n\nWeek 10 Activity\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed, Jun 3\n\n\nProject Work Session with Peer Review\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSat, Jun 6\n\n\nProject 3 Final Deliverable\n\n\n\n\n\n\n\n\n\n\n\n\n\nFinals Week\n\n\nTue, Jun 9\n\n\nUnit 3 Exam (Stat 541-01 and 431-01)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFri, Jun 12\n\n\nUnit 3 Exam (Stat 431-02)"
-  },
-  {
-    "objectID": "group-stuff/contract.html",
-    "href": "group-stuff/contract.html",
-    "title": "Group Contract",
-    "section": "",
-    "text": "Throughout this course you will collaborate with your peers to complete various projects. You will be placed in a group with students who are also interested in working with the same dataset. You will work with this group for the entire term.",
-    "crumbs": [
-      "Projects",
-      "Group Collaboration Expectations"
-    ]
-  },
-  {
-    "objectID": "group-stuff/contract.html#how-good-collaboration-looks",
-    "href": "group-stuff/contract.html#how-good-collaboration-looks",
-    "title": "Group Contract",
-    "section": "How “Good” Collaboration Looks",
-    "text": "How “Good” Collaboration Looks\n\n\nStrong groups tend to:\n\nMake decisions explicitly (not implicitly)\nDocument analytic choices\nAsk “Why are we doing this?” regularly\nTreat feedback as collaborative improvement, not criticism\nRaise concerns early\n\n\n\n\nWeak groups tend to:\n\nAssume alignment without discussion\nAvoid difficult conversations\nLeave integration until the last minute\nConfuse “splitting the work” with “collaborating”",
-    "crumbs": [
-      "Projects",
-      "Group Collaboration Expectations"
-    ]
-  },
-  {
-    "objectID": "group-stuff/contract.html#weekly-contribution-reporting",
-    "href": "group-stuff/contract.html#weekly-contribution-reporting",
-    "title": "Group Contract",
-    "section": "Weekly Contribution Reporting",
-    "text": "Weekly Contribution Reporting\nEach week, alongside your group submission, every member must complete a brief Contribution Report describing task ownership and individual contributions.\nThis is not meant to “police” groups. It is intended to:\n\nEncourage clear task ownership\nPromote balanced participation\nPrevent last-minute misunderstandings\nSupport early intervention if problems arise\n\n\nUneven weeks happen. Patterns matter more than single reports. If contribution concerns arise, I will intervene early to help recalibrate expectations. Persistent under-contribution may affect individual grades.",
-    "crumbs": [
-      "Projects",
-      "Group Collaboration Expectations"
-    ]
-  },
-  {
-    "objectID": "group-stuff/contract.html#weekly-integrator",
-    "href": "group-stuff/contract.html#weekly-integrator",
-    "title": "Group Contract",
-    "section": "Weekly Integrator",
-    "text": "Weekly Integrator\nEach week, one group member serves as the Integrator. This role rotates throughout the project.\nThe Integrator is responsible for:\n\nCompiling all group members’ completed work into a single repository\nEnsuring the project runs end-to-end without errors\nChecking that files are correctly named, organized, and up to date\n\nThe Integrator is not responsible for completing other members’ unfinished work. Each member remains responsible for delivering their assigned contributions on time.\nServing as Integrator is a technical and organizational leadership role. Because it rotates, every group member will practice maintaining project coherence and completeness.",
-    "crumbs": [
-      "Projects",
-      "Group Collaboration Expectations"
-    ]
-  },
-  {
-    "objectID": "group-stuff/contract.html#weekly-workflow",
-    "href": "group-stuff/contract.html#weekly-workflow",
-    "title": "Group Contract",
-    "section": "Weekly Workflow",
-    "text": "Weekly Workflow\nTo keep everyone’s repositories up to date, your group is expected to adhere to the following workflow.\n1. Start of Week: Sync\nBefore beginning any new work, all group members must sync their repository to the previous week’s Integrator version. This ensures everyone is working from the same, most up-to-date project state. Work completed on outdated versions may be lost or overwritten.\n2. During the Week: Individual Development\nEach member works in their own repository and takes ownership of clearly defined files or sections. Members should not edit the same file simultaneously unless coordinating sequentially. Clear task ownership prevents integration conflicts.\n3. End of Week: Integration\nThe designated Integrator compiles all completed work into their repository, verifies that the project runs end-to-end, and submits the official repository link. This version becomes the project snapshot for the week.\n4. Rotation\nThe Integrator role rotates weekly so that all members share responsibility for maintaining project coherence and technical completeness.\n\nWhy not have everyone work in the same repo?\nTrue collaborative version control involves branching strategies, pull requests, code review workflows, and conflict resolution. Teaching that well would require meaningful instructional time and practice. Given the scope of this course, we’ve chosen to prioritize analytical skills and structured collaboration over advanced software engineering workflows.\nThe rotating Integrator model gives you exposure to modular design, synchronization discipline, and project integration—transferable collaboration skills that do not require mastery of Git internals.",
-    "crumbs": [
-      "Projects",
-      "Group Collaboration Expectations"
-    ]
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Welcome",
-    "section": "",
-    "text": "Advanced R takes a deeper dive into statistical computing in R, building your communication and iteration skills. We will explore different modalities for communicating statistical ideas—dynamic visualizations and dashboards, while also exploring ways to integrate R code into these environments. We will also continue to expand your skills as a developer—writing functions and iterating over those functions to query data from APIs and scrape the web. We’re going to have a lot of fun!"
-  },
-  {
-    "objectID": "index.html#how-to-use-this-text",
-    "href": "index.html#how-to-use-this-text",
-    "title": "Welcome",
-    "section": "How to Use This Text",
-    "text": "How to Use This Text\n\n\n\n\n\n\nWarning\n\n\n\nWatch out sections contain things you may want to look out for - common errors, etc.\n\n\n\n\n\n\n\n\nExampleExample\n\n\n\nExample sections contain code and other information. Don’t skip them!\n\n\n\n\n\n\n\n\nNote\n\n\n\nNote sections contain clarification points (anywhere I would normally say “note that ….). Make sure to read them to avoid any common pitfalls or misconceptions.\n\n\n\n\n\n\n\n\nRequired-readingRequired Reading\n\n\n\nConsider these sections to be required readings. This is where we will direct you to existing materials to explain or introduce a concept.\n\n\n\n\n\n\n\n\nRequired-videoRequired Video\n\n\n\nSimilarly, consider these sections to be required viewing for the course material.\n\n\n\n\n\n\n\n\nCheck-inCheck In\n\n\n\nCheck-in sections contain small tasks that you need to do throughout the reading, to practice or prepare. Although they are not graded, please treat them as required!\n\n\n\n\n\n\n\n\nPractice-exercisePractice Exercise\n\n\n\nEach chapter will have a longer practice exercise to complete and turn in. These are intended to be done with help from instructors and peers.\n\n\n\n\n\n\n\n\nLearn-moreLearn More\n\n\n\nConsider these to be optional readings / viewings. The world of R programming has so many interesting tidbits, we can’t possibly teach them all - but we want to share them with you nonetheless!\nWe will usually make these “click to expand” so that they don’t distract from your reading.\n\n\n\n\n\n\n\n\nOpinionJust our opinion...\n\n\n\nThese are personal opinion comments from the authors. Take them with a grain of salt; we aren’t the only R programmers worth listening to, we are just sharing what has worked for us.\nWe will usually make these “click to expand” so that they don’t distract from your reading."
-  },
-  {
-    "objectID": "index.html#acknowledements",
-    "href": "index.html#acknowledements",
-    "title": "Welcome",
-    "section": "Acknowledements",
-    "text": "Acknowledements\nThe design (and redesign) of this course was generously supported by the Noyce School of Applied Computing at Cal Poly through a teaching innovation grant. We thank both our collaboration team at Cal Poly—Charlotte Mann, Emily Robinson, Zoe Rehnberg, Julia Schedler—and our external collaborator—Tyson Barrett. This class wouldn’t have been possible without the generous support we received!\nA huge shout out goes the the amazing women at Macalester College—Leslie Myint, Brianna Heggeseth, and Alicia Johnson—for making their Intermediate Data Science course materials public. And finally, a massive thank you to Sam Shanny-Csik for their incredible resources for making and styling Quarto websites!\nThis website is built with Quarto, the lovely icons are all by Allison Horst, and none of this would be possible without the tidyverse."
-  },
-  {
-    "objectID": "index.html#license",
-    "href": "index.html#license",
-    "title": "Welcome",
-    "section": "License",
-    "text": "License\nThis online work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International. Visit here for more information about the license."
   },
   {
     "objectID": "practice-activities/week-2.html",
@@ -2202,11 +2213,32 @@
     ]
   },
   {
+    "objectID": "project/week-10.html",
+    "href": "project/week-10.html",
+    "title": "Project 3, Checkpoint 3",
+    "section": "",
+    "text": "In Unit 1, you gathered new data from an external source via an API or webscraping.\nIncluding this data in your package presents two challenges that you must address:\n\n\nThis data might be so large that it cannot be stored on GitHub or submitted to CRAN. To solve this, rewrite your load_data function so that instead of loading the original dataset from the TidyTuesday package, it loads your full merged dataset from a parquet file that you place in the inst/ folder of your package.\n\n\n\nUsers may want to re-gather the external data themselves, to update it to the current time period.\nWrite a function called gather_data that runs your API pull or webscraping. If you are doing an API pull, the API key should be provided as an input to the function - your personal API key should never appear!"
+  },
+  {
+    "objectID": "project/week-10.html#data-management",
+    "href": "project/week-10.html#data-management",
+    "title": "Project 3, Checkpoint 3",
+    "section": "",
+    "text": "In Unit 1, you gathered new data from an external source via an API or webscraping.\nIncluding this data in your package presents two challenges that you must address:\n\n\nThis data might be so large that it cannot be stored on GitHub or submitted to CRAN. To solve this, rewrite your load_data function so that instead of loading the original dataset from the TidyTuesday package, it loads your full merged dataset from a parquet file that you place in the inst/ folder of your package.\n\n\n\nUsers may want to re-gather the external data themselves, to update it to the current time period.\nWrite a function called gather_data that runs your API pull or webscraping. If you are doing an API pull, the API key should be provided as an input to the function - your personal API key should never appear!"
+  },
+  {
     "objectID": "project/week-10.html#speedier-functions",
     "href": "project/week-10.html#speedier-functions",
     "title": "Project 3, Checkpoint 3",
     "section": "Speedier functions",
     "text": "Speedier functions\nRealistically, it’s likely that most of your functions in this package are so fast that there isn’t much need to speed them up. However, for the sake of completeness, you need to make sure your package is optimized.\n\n1. Speed testing\nUse tictoc() or bench::mark() to speed test all the functions in your package, except for the data loading and gathering ones. Identify where the slowest ones are.\n\n\n2. Faster code\nChoose one of your slower functions. Make a copy of it named [name]_fast. Then, alter the code to speed it up in one of the following ways:\n\nReplace a piece of your dplyr or Base R style data wrangling with data.table code.\nInclude parallelization with furrr.\nCome up with an algorithmic improvement to your code that makes it faster."
+  },
+  {
+    "objectID": "project/week-10.html#submission",
+    "href": "project/week-10.html#submission",
+    "title": "Project 3, Checkpoint 3",
+    "section": "Submission",
+    "text": "Submission\nTurn in an html file that contains:\n\nSpeed tests on at least three of your functions.\nA very brief overview of what you changed in a slow function.\nSpeed tests on the new _fast version of the function."
   },
   {
     "objectID": "project/week-3.html",
@@ -2782,11 +2814,48 @@
     ]
   },
   {
-    "objectID": "unit-3/debugging.html#common-types-of-bugs",
-    "href": "unit-3/debugging.html#common-types-of-bugs",
+    "objectID": "unit-3/debugging.html",
+    "href": "unit-3/debugging.html",
     "title": "Debugging Package Code",
-    "section": "Common types of bugs",
-    "text": "Common types of bugs\n\nTypos and Misspellings\nSyntax Errors\nProblems with package dependencies\nMismatched data types or structures\nIncorrect computations\nMisunderstanding of data meaning"
+    "section": "",
+    "text": "Now that you are writing your code into a package, you have a lot of custom functions to keep track of! You’ve probably developed some good strategies and habits for fixing bugs in your code, but now it’s time to get a bit more structured with your troubleshooting.\nIf something in your code isn’t working as expected, your job is to figure out the following, in order:\nLet’s go over some strategies and tools for the three steps.",
+    "crumbs": [
+      "Unit 3 - Package Development",
+      "Debugging Package Code"
+    ]
+  },
+  {
+    "objectID": "unit-3/debugging.html#what-went-wrong",
+    "href": "unit-3/debugging.html#what-went-wrong",
+    "title": "Debugging Package Code",
+    "section": "What went wrong?",
+    "text": "What went wrong?\nIf you’ve made it to this point, you already know something is wrong! This is why unit tests are so critical: they can help you spot moments where your output was not what you expected.\nBefore you begin debugging, figure out exactly what flagged the problem: what output did you expect and what output did you see?\nNext, try to reproduce the error. Find or create a small, self-contained piece of code that shows the problem happening. This is called a reproducible example.\nThe reprex package\n\n\n\nReproducible examples are so important to open-source collaboration, the tidyverse contains a package specifically to help people create and share them.\nRead this vignette: https://reprex.tidyverse.org/articles/learn-reprex.html",
+    "crumbs": [
+      "Unit 3 - Package Development",
+      "Debugging Package Code"
+    ]
+  },
+  {
+    "objectID": "unit-3/debugging.html#where-is-the-problem",
+    "href": "unit-3/debugging.html#where-is-the-problem",
+    "title": "Debugging Package Code",
+    "section": "Where is the problem?",
+    "text": "Where is the problem?\nNow that you found something going wrong, we need to track down the exact line of code that’s causing the problem.\nSometimes, you need to go no further than actually reading the error message!\nAlthough error messages can be unclear at times, they are still your best first line of defense. If the error message provides a snippet of code after the words Error in, this is of course where you should look!\nInteractive debugging\nIf you can’t find the error from the message alone, your best bet is interactive debugging, where you run your code step by step until you find the problem.\nFor code outside a function, it is easy to run step by step. Inside a function, though, you need additional tools. We recommend starting with debugonce().\nWhen you call debugonce([function_name]), it prepares to start debugging the next time you trigger that function. When you do call the prepared function, you will be taken into the environment of that function, where you can examine object values and run code line-by-line.\nTry running the following to practice interacting with the debugger.\n\nmy_vec &lt;- c(\"a\", \"b\", \"c\")\n\ndebugonce(mean)\n\nmean(my_vec)\n\nIn your console you can hit “Enter” to step through the function until the moment it breaks. In your environment you can see the value of the argument x that was received when we passed in my_vec.\n\n\n\n\n\n\nCheck-inCheck In\n\n\n\nThe following code triggers an error. Oh no!\n\nx &lt;- list(1,2,3)\n\nsd(x)\n\nError in `var()`:\n! is.atomic(x) is not TRUE\n\n\n\nUse the error message to identify the function inside of the sd() function where the error actually occurs.\nUse debugonce(var) to find the exact line of code in the var function where the error is triggered.",
+    "crumbs": [
+      "Unit 3 - Package Development",
+      "Debugging Package Code"
+    ]
+  },
+  {
+    "objectID": "unit-3/debugging.html#why-isnt-it-working",
+    "href": "unit-3/debugging.html#why-isnt-it-working",
+    "title": "Debugging Package Code",
+    "section": "Why isn’t it working?",
+    "text": "Why isn’t it working?\nOnce you find where the problem is, your last task is to figure out how to fix it!\nHave you ever spent way too long looking for complicated solutions to a coding problem, only to realize you’d spelled one word wrong? If so, you aren’t alone!\n\nLet’s think through some common types of bugs you can look for, before you get in the weeds on more complicated solutions.\nTypos and Misspellings\nR, unfortunately, doesn’t speak English. It has no ability to realize that when you wrote fitler, you of course meant filter; or that your dataset Dat is the same as dat.\nThe most common error you’ll get when you’ve simply mistyped something is object not found.\n\n# find the mean of the numbers 1 to 10\nMean(1:10)\n\nError in `Mean()`:\n! could not find function \"Mean\"\n\n\nTypically, these kind of bugs are easy to fix; simply find the not found part in your code and figure out the correct spelling. Where this can get hairy is if a different function does exist under the incorrect name.\nConsider, for example, the functions sqrt() (“square root”) and sort() (“sort in order”). These will both run without error, but if you meant to use one and accidentally wrote the other, it’ll be hard to track down. For these types of bugs, you’ll probably need some of the deeper techniques later in this chapter.\nProblems with package dependencies\nAnother reason that a function might be not found is that you have not loaded the library that provides it.\n\ninv.logit(1:10)\n\nError in `inv.logit()`:\n! could not find function \"inv.logit\"\n\n\n\nlibrary(boot)\ninv.logit(1:10)\n\n [1] 0.7310586 0.8807971 0.9525741 0.9820138 0.9933071 0.9975274 0.9990889\n [8] 0.9996646 0.9998766 0.9999546\n\n\n\n\n\n\n\n\nWarning\n\n\n\nIn a Quarto document, you need to use library() to declare all your packages at the start of the document. You may have a library loaded in your RStudio environment, so everything appears to work, but when you render your notebook the function is no longer found.\nSimilarly, in an R package, your functions need to import anything you use from other packages. This can be done in roxygen2 style documentation with\n#' @importFrom boot inv.logit\n\n\nSyntax Errors\nIn addition to typos in the words of your code, you might accidentally leave out important punctuation. This is called a syntax error.\nOne common R error message for syntax errors is unexpected symbol - this tells you that the code parser got confused when it didn’t see the comma, pipe, or other symbol it expected.\nIn the below example, the code expected a , but found na.rm instead.\n\nmean(1:10 na.rm = TRUE)\n\nError in parse(text = input): &lt;text&gt;:1:11: unexpected symbol\n1: mean(1:10 na.rm\n              ^\n\n\nAnother common error message is incomplete expression, which typically tells you that you left your code unfinished - perhaps a missing parenthesis or a pipe with no next step.\n\nmean(1:10\n\nError in parse(text = input): &lt;text&gt;:2:0: unexpected end of input\n1: mean(1:10\n   ^\n\n\n\npenguins |&gt;\n\nError in parse(text = input): &lt;text&gt;:2:0: unexpected end of input\n1: penguins |&gt;\n   ^\n\n\nMuch like misspellings, syntax errors are usually easy to find and fix. Simply find the code piece that the error message points out, and look for misformatted punctuation.\nMismatched data types or structures\nAs a human, the following objects might seem to contain the exact same information:\n\nobj1 &lt;- c(3, 4, 5)\nobj2 &lt;- list(3.0, 4.0, 5.0)\nobj3 &lt;- factor(c(3, 4, 5))\n\nTo a computer, though, they are three different object types and three different object structures. Watch what happens when we try to take the mean of the numbers (3,4,5) using these objects:\n\nmean(obj1)\n\n[1] 4\n\nmean(obj2)\n\nWarning in mean.default(obj2): argument is not numeric or logical: returning NA\n\n\n[1] NA\n\nmean(obj3)\n\nWarning in mean.default(obj3): argument is not numeric or logical: returning NA\n\n\n[1] NA\n\n\nobj1 succeeds, because it has the type (numeric) and structure (vector) that the function mean() is designed to accept.\nobj2 fails - even though the data is numeric, the structure is a list and mean() is not designed for that.\nobj3 fails - even though the structure is a vector, the data type is a factor rather than numeric.\nWhen debugging, keep an eye out for moments where you may have given a function an input object of the wrong type or structure. This can sometimes come about because you misunderstand the type or structure that is returned by another function, and you pass it along.\n\n\n\n\n\n\nWarning\n\n\n\nSometimes you can coerce an object into the right type or structure, by telling R to “force” the change. For example, we can use unlist() to turn our obj2 into a vector:\n\nmean(unlist(obj2))\n\n[1] 4\n\n\nHowever, this is not always a magic fix. Consider using as.numeric() to convert our obj3 from a factor to a number:\n\nmean(as.numeric(obj3))\n\n[1] 2\n\n\nYikes! This is the wrong answer! What happened here is that R stores factors as integers - a 1 stands in for the first category, a 2 for the second. It doesn’t matter if those categories are “3,4,5” or “a,b,c”; they will still be stored as numbers 1,2,3. So, forcing this object to be numeric doesn’t “read” the category names of \"3\", \"4\", and \"5\" - it pulls out the index numbers 1, 2 and 3!\n\n\nIncorrect computations\nOnce we start getting into bugs that don’t throw an error message, it gets much harder to do quick checks. It’s always possible that you’ve accidentally written your function to do something different than you intended, but the output still looks plausible.\n\nadd_two &lt;- function(x) {\n  x + 3\n}\n\nadd_two(5)\n\n[1] 8\n\n\nThis is why writing unit tests is so important!\nMisunderstanding of data meaning\nA final category of bug to look for, especially in programming for Data Science, is a procedure being applied that doesn’t make sense for the data context.\nFor example, suppose you are studying the three penguin species in the palmerpenguins dataset, and you write this data cleaning code:\n\npenguins &lt;- penguins |&gt;\n  mutate(\n    species_numeric = case_when(\n      species == \"Adelie\" ~ 1,\n      species == \"Chinstrap\" ~ 2,\n      species == \"Gentoo\" ~ 3\n    )\n  )\n\nAlthough this code is correctly written and does what you intended, it is not at all appropriate to change a categorical variable to arbitrary numbers! If you were to fit models, perform statistical tests, or visualize data using this new numeric variable, you would be in danger of false data conclusions.\nRemember that you, as the R programmer, are responsible for making good data choices in your code.\n\n\n\n\n\n\nCheck-inCheck In\n\n\n\nFor each of the following errors (using nonsense function names), state what kind of bug you would look for first.\n\n\n\n\nto_divide &lt;- list(15, 5)\ndivide(to_divide)\n\nError in `x[1] / x[2]`:\n! non-numeric argument to binary operator\n\n\n\n\n\n\nmultiplie(3, 5)\n\nError in `multiplie()`:\n! could not find function \"multiplie\"\n\n\n\n\n\n\nsquare_root(49)\n\nError in `square_root()`:\n! could not find function \"square_root\"\n\n\n\n\n\n\n\n\n\n\nNoteAdditional helpful reading\n\n\n\nhttps://r-statistics.co/R-Debugging.html\nhttps://srvanderplas.github.io/stat-computing-r-python/part-gen-prog/06-debugging.html",
+    "crumbs": [
+      "Unit 3 - Package Development",
+      "Debugging Package Code"
+    ]
   },
   {
     "objectID": "unit-3/speed.html",
@@ -2798,77 +2867,6 @@
       "Unit 3 - Package Development",
       "Code Speed"
     ]
-  },
-  {
-    "objectID": "unit-3/speed.html#data.table",
-    "href": "unit-3/speed.html#data.table",
-    "title": "Code Speed",
-    "section": "data.table",
-    "text": "data.table\nFor speeding up work with data frames, no package is better than data.table!\n\n\n\n\n\n\n\nRequired-readingRequired Reading\n\n\n\ndata.table cheatsheet\n\n\n\n\n\n\n\n\nImportantCheck-in: Efficiency\n\n\n\n\nHere is some dplyr code. Re-write it in data.table syntax.\n\n\ncongress_age %&gt;%\n  group_by(state) %&gt;%\n  summarize(mean_age = mean(age))\n\n\nUsing either the tictoc or microbenchmark packages perform a speed test to see which code is faster, and by how much.",
-    "crumbs": [
-      "Unit 3 - Package Development",
-      "Code Speed"
-    ]
-  },
-  {
-    "objectID": "unit-3/speed.html#optional-super-advanced-mode",
-    "href": "unit-3/speed.html#optional-super-advanced-mode",
-    "title": "Code Speed",
-    "section": "Optional: Super advanced mode",
-    "text": "Optional: Super advanced mode\nThe following are some suggestions of ways you can level-up your code speed. These are outside the scope of this class, but you are welcome to explore them!\n\nCreate SQL-style databases with duckdb\nDive deep into the R efficiency rabbit hole…\nMake your code run in C++ with Rcpp\nLearn to use recursion\n\nLearn more about memory allocation and garbage collecting in R.",
-    "crumbs": [
-      "Unit 3 - Package Development",
-      "Code Speed"
-    ]
-  },
-  {
-    "objectID": "unit-3/debugging.html",
-    "href": "unit-3/debugging.html",
-    "title": "Debugging Package Code",
-    "section": "",
-    "text": "Now that you are writing your code into a package, you have a lot of custom functions to keep track of! You’ve probably developed some good strategies and habits for fixing bugs in your code, but now it’s time to get a bit more structured with your troubleshooting.\nIf something in your code isn’t working as expected, your job is to figure out the following, in order:\nLet’s go over some strategies and tools for the three steps."
-  },
-  {
-    "objectID": "unit-3/debugging.html#what-went-wrong",
-    "href": "unit-3/debugging.html#what-went-wrong",
-    "title": "Debugging Package Code",
-    "section": "What went wrong?",
-    "text": "What went wrong?\nIf you’ve made it to this point, you already know something is wrong! This is why unit tests are so critical: they can help you spot moments where your output was not what you expected.\nBefore you begin debugging, figure out exactly what flagged the problem: what output did you expect and what output did you see?\nNext, try to reproduce the error. Find or create a small, self-contained piece of code that shows the problem happening. This is called a reproducible example.\nThe reprex package\n\n\n\nReproducible examples are so important to open-source collaboration, the tidyverse contains a package specifically to help people create and share them.\nRead this vignette: https://reprex.tidyverse.org/articles/learn-reprex.html"
-  },
-  {
-    "objectID": "unit-3/debugging.html#where-is-the-problem",
-    "href": "unit-3/debugging.html#where-is-the-problem",
-    "title": "Debugging Package Code",
-    "section": "Where is the problem?",
-    "text": "Where is the problem?\nNow that you found something going wrong, we need to track down the exact line of code that’s causing the problem.\nSometimes, you need to go no further than actually reading the error message!\nAlthough error messages can be unclear at times, they are still your best first line of defense. If the error message provides a snippet of code after the words Error in, this is of course where you should look!\nInteractive debugging\nIf you can’t find the error from the message alone, your best bet is interactive debugging, where you run your code step by step until you find the problem.\nFor code outside a function, it is easy to run step by step. Inside a function, though, you need additional tools. We recommend starting with debugonce().\nWhen you call debugonce([function_name]), it prepares to start debugging the next time you trigger that function. When you do call the prepared function, you will be taken into the environment of that function, where you can examine object values and run code line-by-line.\nTry running the following to practice interacting with the debugger.\n\nmy_vec &lt;- c(\"a\", \"b\", \"c\")\n\ndebugonce(mean)\n\nmean(my_vec)\n\nIn your console you can hit “Enter” to step through the function until the moment it breaks. In your environment you can see the value of the argument x that was received when we passed in my_vec.\n\n\n\n\n\n\nCheck-inCheck In\n\n\n\nThe following code triggers an error. Oh no!\n\nx &lt;- list(1,2,3)\n\nsd(x)\n\nError in `var()`:\n! is.atomic(x) is not TRUE\n\n\n\nUse the error message to identify the function inside of the sd() function where the error actually occurs.\nUse debugonce(var) to find the exact line of code in the var function where the error is triggered."
-  },
-  {
-    "objectID": "unit-3/debugging.html#why-isnt-it-working",
-    "href": "unit-3/debugging.html#why-isnt-it-working",
-    "title": "Debugging Package Code",
-    "section": "Why isn’t it working?",
-    "text": "Why isn’t it working?\nOnce you find where the problem is, your last task is to figure out how to fix it!\nHave you ever spent way too long looking for complicated solutions to a coding problem, only to realize you’d spelled one word wrong? If so, you aren’t alone!\n\nLet’s think through some common types of bugs you can look for, before you get in the weeds on more complicated solutions.\nTypos and Misspellings\nR, unfortunately, doesn’t speak English. It has no ability to realize that when you wrote fitler, you of course meant filter; or that your dataset Dat is the same as dat.\nThe most common error you’ll get when you’ve simply mistyped something is object not found.\n\n# find the mean of the numbers 1 to 10\nMean(1:10)\n\nError in `Mean()`:\n! could not find function \"Mean\"\n\n\nTypically, these kind of bugs are easy to fix; simply find the not found part in your code and figure out the correct spelling. Where this can get hairy is if a different function does exist under the incorrect name.\nConsider, for example, the functions sqrt() (“square root”) and sort() (“sort in order”). These will both run without error, but if you meant to use one and accidentally wrote the other, it’ll be hard to track down. For these types of bugs, you’ll probably need some of the deeper techniques later in this chapter.\nProblems with package dependencies\nAnother reason that a function might be not found is that you have not loaded the library that provides it.\n\ninv.logit(1:10)\n\nError in `inv.logit()`:\n! could not find function \"inv.logit\"\n\n\n\nlibrary(boot)\ninv.logit(1:10)\n\n [1] 0.7310586 0.8807971 0.9525741 0.9820138 0.9933071 0.9975274 0.9990889\n [8] 0.9996646 0.9998766 0.9999546\n\n\n\n\n\n\n\n\nWarning\n\n\n\nIn a Quarto document, you need to use library() to declare all your packages at the start of the document. You may have a library loaded in your RStudio environment, so everything appears to work, but when you render your notebook the function is no longer found.\nSimilarly, in an R package, your functions need to import anything you use from other packages. This can be done in roxygen2 style documentation with\n#' @importFrom boot inv.logit\n\n\nSyntax Errors\nIn addition to typos in the words of your code, you might accidentally leave out important punctuation. This is called a syntax error.\nOne common R error message for syntax errors is unexpected symbol - this tells you that the code parser got confused when it didn’t see the comma, pipe, or other symbol it expected.\nIn the below example, the code expected a , but found na.rm instead.\n\nmean(1:10 na.rm = TRUE)\n\nError in parse(text = input): &lt;text&gt;:1:11: unexpected symbol\n1: mean(1:10 na.rm\n              ^\n\n\nAnother common error message is incomplete expression, which typically tells you that you left your code unfinished - perhaps a missing parenthesis or a pipe with no next step.\n\nmean(1:10\n\nError in parse(text = input): &lt;text&gt;:2:0: unexpected end of input\n1: mean(1:10\n   ^\n\n\n\npenguins |&gt;\n\nError in parse(text = input): &lt;text&gt;:2:0: unexpected end of input\n1: penguins |&gt;\n   ^\n\n\nMuch like misspellings, syntax errors are usually easy to find and fix. Simply find the code piece that the error message points out, and look for misformatted punctuation.\nMismatched data types or structures\nAs a human, the following objects might seem to contain the exact same information:\n\nobj1 &lt;- c(3, 4, 5)\nobj2 &lt;- list(3.0, 4.0, 5.0)\nobj3 &lt;- factor(c(3, 4, 5))\n\nTo a computer, though, they are three different object types and three different object structures. Watch what happens when we try to take the mean of the numbers (3,4,5) using these objects:\n\nmean(obj1)\n\n[1] 4\n\nmean(obj2)\n\nWarning in mean.default(obj2): argument is not numeric or logical: returning NA\n\n\n[1] NA\n\nmean(obj3)\n\nWarning in mean.default(obj3): argument is not numeric or logical: returning NA\n\n\n[1] NA\n\n\nobj1 succeeds, because it has the type (numeric) and structure (vector) that the function mean() is designed to accept.\nobj2 fails - even though the data is numeric, the structure is a list and mean() is not designed for that.\nobj3 fails - even though the structure is a vector, the data type is a factor rather than numeric.\nWhen debugging, keep an eye out for moments where you may have given a function an input object of the wrong type or structure. This can sometimes come about because you misunderstand the type or structure that is returned by another function, and you pass it along.\n\n\n\n\n\n\nWarning\n\n\n\nSometimes you can coerce an object into the right type or structure, by telling R to “force” the change. For example, we can use unlist() to turn our obj2 into a vector:\n\nmean(unlist(obj2))\n\n[1] 4\n\n\nHowever, this is not always a magic fix. Consider using as.numeric() to convert our obj3 from a factor to a number:\n\nmean(as.numeric(obj3))\n\n[1] 2\n\n\nYikes! This is the wrong answer! What happened here is that R stores factors as integers - a 1 stands in for the first category, a 2 for the second. It doesn’t matter if those categories are “3,4,5” or “a,b,c”; they will still be stored as numbers 1,2,3. So, forcing this object to be numeric doesn’t “read” the category names of \"3\", \"4\", and \"5\" - it pulls out the index numbers 1, 2 and 3!\n\n\nIncorrect computations\nOnce we start getting into bugs that don’t throw an error message, it gets much harder to do quick checks. It’s always possible that you’ve accidentally written your function to do something different than you intended, but the output still looks plausible.\n\nadd_two &lt;- function(x) {\n  x + 3\n}\n\nadd_two(5)\n\n[1] 8\n\n\nThis is why writing unit tests is so important!\nMisunderstanding of data meaning\nA final category of bug to look for, especially in programming for Data Science, is a procedure being applied that doesn’t make sense for the data context.\nFor example, suppose you are studying the three penguin species in the palmerpenguins dataset, and you write this data cleaning code:\n\npenguins &lt;- penguins |&gt;\n  mutate(\n    species_numeric = case_when(\n      species == \"Adelie\" ~ 1,\n      species == \"Chinstrap\" ~ 2,\n      species == \"Gentoo\" ~ 3\n    )\n  )\n\nAlthough this code is correctly written and does what you intended, it is not at all appropriate to change a categorical variable to arbitrary numbers! If you were to fit models, perform statistical tests, or visualize data using this new numeric variable, you would be in danger of false data conclusions.\nRemember that you, as the R programmer, are responsible for making good data choices in your code.\n\n\n\n\n\n\nCheck-inCheck In\n\n\n\nFor each of the following errors (using nonsense function names), state what kind of bug you would look for first.\n\n\n\n\nto_divide &lt;- list(15, 5)\ndivide(to_divide)\n\nError in `x[1] / x[2]`:\n! non-numeric argument to binary operator\n\n\n\n\n\n\nmultiplie(3, 5)\n\nError in `multiplie()`:\n! could not find function \"multiplie\"\n\n\n\n\n\n\nsquare_root(49)\n\nError in `square_root()`:\n! could not find function \"square_root\"\n\n\n\n\n\n\n\n\n\n\nNoteAdditional helpful reading\n\n\n\nhttps://r-statistics.co/R-Debugging.html\nhttps://srvanderplas.github.io/stat-computing-r-python/part-gen-prog/06-debugging.html"
-  },
-  {
-    "objectID": "project/week-10.html",
-    "href": "project/week-10.html",
-    "title": "Project 3, Checkpoint 3",
-    "section": "",
-    "text": "In Unit 1, you gathered new data from an external source via an API or webscraping.\nIncluding this data in your package presents two challenges that you must address:\n\n\nThis data might be so large that it cannot be stored on GitHub or submitted to CRAN. To solve this, rewrite your load_data function so that instead of loading the original dataset from the TidyTuesday package, it loads your full merged dataset from a parquet file that you place in the inst/ folder of your package.\n\n\n\nUsers may want to re-gather the external data themselves, to update it to the current time period.\nWrite a function called gather_data that runs your API pull or webscraping. If you are doing an API pull, the API key should be provided as an input to the function - your personal API key should never appear!"
-  },
-  {
-    "objectID": "project/week-10.html#data-management",
-    "href": "project/week-10.html#data-management",
-    "title": "Project 3, Checkpoint 3",
-    "section": "",
-    "text": "In Unit 1, you gathered new data from an external source via an API or webscraping.\nIncluding this data in your package presents two challenges that you must address:\n\n\nThis data might be so large that it cannot be stored on GitHub or submitted to CRAN. To solve this, rewrite your load_data function so that instead of loading the original dataset from the TidyTuesday package, it loads your full merged dataset from a parquet file that you place in the inst/ folder of your package.\n\n\n\nUsers may want to re-gather the external data themselves, to update it to the current time period.\nWrite a function called gather_data that runs your API pull or webscraping. If you are doing an API pull, the API key should be provided as an input to the function - your personal API key should never appear!"
-  },
-  {
-    "objectID": "project/week-10.html#submission",
-    "href": "project/week-10.html#submission",
-    "title": "Project 3, Checkpoint 3",
-    "section": "Submission",
-    "text": "Submission\nTurn in an html file that contains:\n\nSpeed tests on at least three of your functions.\nA very brief overview of what you changed in a slow function.\nSpeed tests on the new _fast version of the function."
   },
   {
     "objectID": "unit-3/speed.html#tip-only-improve-what-needs-improving",
@@ -2909,6 +2907,17 @@
     "title": "Code Speed",
     "section": "Efficient data storage with arrow and parquet\n",
     "text": "Efficient data storage with arrow and parquet\n\nIn some data settings, the slowdown is not an analysis at all - it’s loading the dataset into R. When a .csv file is very large, the read_csv() function can take an extremely long time to run.\nEnter parquet files, one of the most magical advancements in data science in recent years. This file type stores data in extremely clever ways, going far beyond simple comma-separated text like in a .csv.\nEven for a small dataset like palmerpenguins, the .parquet file containing the exact same information is less than half the size!\n\nwrite_csv(penguins, \"penguins.csv\")\narrow::write_parquet(penguins, \"penguins.parquet\")\n\n\nThe arrow package is designed to help read and write parquet files. (It also provides a number of other helpful speed-ups, but we’ll focus just on the parquet elements for now.)\n\n\n\n\n\n\nRequired-readingRequired Reading\n\n\n\narrow cheatsheet\n\n\n\n\n\n\n\n\nCheck-inCheck In\n\n\n\n\nRun the following code to download a medium sized dataset from the nycflights13 package as both a csv and parquet.\n\n\nlibrary(nycflights13)\nlibrary(arrow)\n\nwrite_csv(flights, \"flights.csv\")\nwrite_parquet(flights, \"flights.parquet\")\n\nHow much smaller was the parquet file compared to the csv?\n\nUse profiling to test the speed of reading the csv with read_csv, reading the csv with the data.table function fread, and reading the parquet file with arrow.\n\n\n\nData storage in packages\nWhen you are working with data files on your computer, you can simply read and write them in parquet format as above.\nWhen you want to include data with an R package, your process depends on the size. For very small data, you can include a .Rdata file that loads automatically with the package.\n\nusethis::use_data(penguins)\n\nHowever, when the data is large, this approach is not recommended - the resulting file will be require a lot of storage space, which might prevent it from being accepted on GitHub.\nInstead, another option is to create an inst folder in your package repository. This folder is meant to contain any and all items that you want to be downloaded when users download your package. Inside the inst folder, you can make a folder called extdata (“external data”). Put any parquet or csv data files in there.\nThen, users (or, your functions) can read the data from the package source with:\n\npath &lt;- system.file(\"extdata\", \"my_data.csv\", package = \"myPackage\")\ndata &lt;- read.csv(path)\n\nCombining this structure with parquet files is a good way to add smaller data objects to a package!",
+    "crumbs": [
+      "Unit 3 - Package Development",
+      "Code Speed"
+    ]
+  },
+  {
+    "objectID": "unit-3/speed.html#optional-super-advanced-mode",
+    "href": "unit-3/speed.html#optional-super-advanced-mode",
+    "title": "Code Speed",
+    "section": "Optional: Super advanced mode",
+    "text": "Optional: Super advanced mode\nThe following are some suggestions of ways you can level-up your code speed. These are outside the scope of this class, but you are welcome to explore them!\n\nCreate SQL-style databases with duckdb\nDive deep into the R efficiency rabbit hole…\nMake your code run in C++ with Rcpp\nLearn to use recursion\n\nLearn more about memory allocation and garbage collecting in R.",
     "crumbs": [
       "Unit 3 - Package Development",
       "Code Speed"
