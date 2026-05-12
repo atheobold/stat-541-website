@@ -182,35 +182,35 @@ Edit the file that pops up, to create a unit test for your new `give_many_candyg
 
 ![](images/passed_tests.png)
 
-::: callout-important
-# Check-In: Contributing to a Package
+<!-- ::: callout-important -->
+<!-- # Check-In: Contributing to a Package -->
 
-1.  Which line would NOT be correct in the documentation for `give_many_candygrams`?
+<!-- 1.  Which line would NOT be correct in the documentation for `give_many_candygrams`? -->
 
-<!-- -->
+<!-- <!-- --> -->
 
-a.  `@param person The candygram recipient.`
-b.  `@param number How many grams they got.`
-c.  `@param extra_message A string giving extra commentary.`
-d.  `@param Value A candy gram announcement.`
+<!-- a.  `@param person The candygram recipient.` -->
+<!-- b.  `@param number How many grams they got.` -->
+<!-- c.  `@param extra_message A string giving extra commentary.` -->
+<!-- d.  `@param Value A candy gram announcement.` -->
 
-<!-- -->
+<!-- <!-- --> -->
 
-2.  Consider the following unit test for `give_many_candygrams`:
+<!-- 2.  Consider the following unit test for `give_many_candygrams`: -->
 
-```{r}
-#| eval: false
+<!-- ```{r} -->
+<!-- #| eval: false -->
 
 
-```
+<!-- ``` -->
 
-What would you expect to happen for this test?
+<!-- What would you expect to happen for this test? -->
 
-a.  It would pass because
-b.  It would pass because
-c.  It would fail because
-d.  It would fail because
-:::
+<!-- a.  It would pass because -->
+<!-- b.  It would pass because -->
+<!-- c.  It would fail because -->
+<!-- d.  It would fail because -->
+<!-- ::: -->
 
 ## Package Creation From Scratch
 
