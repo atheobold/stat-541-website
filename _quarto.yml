@@ -150,6 +150,8 @@ website:
         - href: unit-2/quarto-dashboard-dynamic.qmd
         - text: "Week 7: In-Class Activity"
           href: practice-activities/week-7.qmd
+        - text: "Unit 2 Practice Exam"
+          href: unit-2/practice_exam_instructions-Unit_2.qmd
 
     - id: unit-3
       title: "Unit 3"
