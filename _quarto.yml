@@ -89,7 +89,7 @@ website:
         - text: "Week 4: In-Class Activity"
           href: practice-activities/week-4.qmd
         - text: "Unit 1 Practice Exam"
-          href: /practice-exams/unit-1-example-questions.qmd
+          href: practice-exams/unit-1-example-questions.qmd
 
     - id: project
       title: "Project"

@@ -1985,56 +1985,88 @@
     "href": "practice-exams/unit-1-example-questions.html",
     "title": "Unit 1 Exam - Sample Questions",
     "section": "",
-    "text": "In this exam, you will be asked to answer questions about pre-written code; to fill in small blanks in code; or to sketch the output of a process or analysis. Your fill-in-the-blank answers need to be conceptually correct, not perfect. For example, if you fill in a blank with mutates instead of mutate, you will still get full credit.\nYou may assume throughout the exam that there are no syntax errors in the code - for example, you will not be asked to spot a missing comma, an unclosed parentheses, or a typo in an object name. There are also no “trick” questions - the code you are shown can be expected to run without error, unless specifically stated in the question."
+    "text": "In this exam, you will be asked to answer questions about pre-written code; to fill in small blanks in code; or to sketch the output of a process or analysis. Your fill-in-the-blank answers need to be conceptually correct, not perfect. For example, if you fill in a blank with mutates instead of mutate, you will still get full credit.\nYou may assume throughout the exam that there are no syntax errors in the code - for example, you will not be asked to spot a missing comma, an unclosed parentheses, or a typo in an object name. There are also no “trick” questions - the code you are shown can be expected to run without error, unless specifically stated in the question.",
+    "crumbs": [
+      "Unit 1 - Complex Analyses",
+      "Unit 1 Practice Exam"
+    ]
   },
   {
     "objectID": "practice-exams/unit-1-example-questions.html#question-1",
     "href": "practice-exams/unit-1-example-questions.html#question-1",
     "title": "Unit 1 Exam - Sample Questions",
     "section": "Question 1",
-    "text": "Question 1\nFirst, we want to add the ratings data from the imdb dataset to the Pixar movie list.\nFill in the blank to make this work.\n\npixar_new &lt;- pixar_films |&gt;\n  left_join(public_response,\n            by = join_by(title == film))"
+    "text": "Question 1\nFirst, we want to add the ratings data from the imdb dataset to the Pixar movie list.\nFill in the blank to make this work.\n\npixar_new &lt;- pixar_films |&gt;\n  left_join(public_response,\n            by = join_by(title == film))",
+    "crumbs": [
+      "Unit 1 - Complex Analyses",
+      "Unit 1 Practice Exam"
+    ]
   },
   {
     "objectID": "practice-exams/unit-1-example-questions.html#question-2",
     "href": "practice-exams/unit-1-example-questions.html#question-2",
     "title": "Unit 1 Exam - Sample Questions",
     "section": "Question 2",
-    "text": "Question 2\nNotice that the original pixar dataset has the same number of rows as the new, joined dataset:\n\n\n\nnrow(pixar_films)\n\n[1] 27\n\n\n\n\n\n\nnrow(pixar_new)\n\n[1] 27\n\n\n\n\nDoes this mean that all 27 of Pixar’s movies were present in the public_response dataset?\nWhy or why not?"
+    "text": "Question 2\nNotice that the original pixar dataset has the same number of rows as the new, joined dataset:\n\n\n\nnrow(pixar_films)\n\n[1] 27\n\n\n\n\n\n\nnrow(pixar_new)\n\n[1] 27\n\n\n\n\nDoes this mean that all 27 of Pixar’s movies were present in the public_response dataset?\nWhy or why not?",
+    "crumbs": [
+      "Unit 1 - Complex Analyses",
+      "Unit 1 Practice Exam"
+    ]
   },
   {
     "objectID": "practice-exams/unit-1-example-questions.html#question-3",
     "href": "practice-exams/unit-1-example-questions.html#question-3",
     "title": "Unit 1 Exam - Sample Questions",
     "section": "Question 3",
-    "text": "Question 3\nFill in the blanks in the following pipeline, which computes the number of Pixar movies released each decade receiving particular cinema scores.\n\npixar_new |&gt;\n  mutate(\n    year = lubridate::year(release_date),\n    decade = floor(year/10),\n    decade = glue::glue(\"{decade}0s\")\n  ) |&gt;\n  count(decade, cinema_score) |&gt;\n  pivot_wider(\n    names_from = cinema_score,\n    values_from = n       \n  )\n\n# A tibble: 4 × 5\n  decade     A  `A+`  `A-`  `NA`\n  &lt;glue&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;\n1 1990s      2     1    NA    NA\n2 2000s      3     4    NA    NA\n3 2010s      8     2     1    NA\n4 2020s     NA    NA     1     5"
+    "text": "Question 3\nFill in the blanks in the following pipeline, which computes the number of Pixar movies released each decade receiving particular cinema scores.\n\npixar_new |&gt;\n  mutate(\n    year = lubridate::year(release_date),\n    decade = floor(year/10),\n    decade = glue::glue(\"{decade}0s\")\n  ) |&gt;\n  count(decade, cinema_score) |&gt;\n  pivot_wider(\n    names_from = cinema_score,\n    values_from = n       \n  )\n\n# A tibble: 4 × 5\n  decade     A  `A+`  `A-`  `NA`\n  &lt;glue&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;\n1 1990s      2     1    NA    NA\n2 2000s      3     4    NA    NA\n3 2010s      8     2     1    NA\n4 2020s     NA    NA     1     5",
+    "crumbs": [
+      "Unit 1 - Complex Analyses",
+      "Unit 1 Practice Exam"
+    ]
   },
   {
     "objectID": "practice-exams/unit-1-example-questions.html#question-4",
     "href": "practice-exams/unit-1-example-questions.html#question-4",
     "title": "Unit 1 Exam - Sample Questions",
     "section": "Question 4",
-    "text": "Question 4\nYou notice that Dr. Bodwin is not famous enough for a Wikipedia entry, so this code breaks:\n\nget_age(\"https://en.wikipedia.org/wiki/Kelly_Bodwin\")\n\nError in `open.connection()`:\n! cannot open the connection\n\n\nYou’ll also notice that some famous people share a name, such as Robert Gentleman, one of the creators of R. This also breaks your function.\n\nget_age(\"https://en.wikipedia.org/wiki/Robert_Gentleman\")\n\nnumeric(0)\n\n\nWhat would you change in the function to deal with these types of issues?"
+    "text": "Question 4\nYou notice that Dr. Bodwin is not famous enough for a Wikipedia entry, so this code breaks:\n\nget_age(\"https://en.wikipedia.org/wiki/Kelly_Bodwin\")\n\nError in `open.connection()`:\n! cannot open the connection\n\n\nYou’ll also notice that some famous people share a name, such as Robert Gentleman, one of the creators of R. This also breaks your function.\n\nget_age(\"https://en.wikipedia.org/wiki/Robert_Gentleman\")\n\nnumeric(0)\n\n\nWhat would you change in the function to deal with these types of issues?",
+    "crumbs": [
+      "Unit 1 - Complex Analyses",
+      "Unit 1 Practice Exam"
+    ]
   },
   {
     "objectID": "practice-exams/unit-1-example-questions.html#question-5",
     "href": "practice-exams/unit-1-example-questions.html#question-5",
     "title": "Unit 1 Exam - Sample Questions",
     "section": "Question 5",
-    "text": "Question 5\nHow would you make use of this function to add a column named age to the following dataset, named r_people? Specifically, what functions would you use and how would you use them?\n\n\n# A tibble: 6 × 2\n  name             position      \n  &lt;chr&gt;            &lt;chr&gt;         \n1 Robert Gentleman R Creator     \n2 Ross Ihaka       R Creator     \n3 Hadley Wickham   Posit Employee\n4 Jenny Bryan      Posit Employee\n5 Allison Theobold Cal Poly Prof \n6 Kelly Bodwin     Cal Poly Prof"
+    "text": "Question 5\nHow would you make use of this function to add a column named age to the following dataset, named r_people? Specifically, what functions would you use and how would you use them?\n\n\n# A tibble: 6 × 2\n  name             position      \n  &lt;chr&gt;            &lt;chr&gt;         \n1 Robert Gentleman R Creator     \n2 Ross Ihaka       R Creator     \n3 Hadley Wickham   Posit Employee\n4 Jenny Bryan      Posit Employee\n5 Allison Theobold Cal Poly Prof \n6 Kelly Bodwin     Cal Poly Prof",
+    "crumbs": [
+      "Unit 1 - Complex Analyses",
+      "Unit 1 Practice Exam"
+    ]
   },
   {
     "objectID": "practice-exams/unit-1-example-questions.html#question-6",
     "href": "practice-exams/unit-1-example-questions.html#question-6",
     "title": "Unit 1 Exam - Sample Questions",
     "section": "Question 6",
-    "text": "Question 6\n\n\n\n\n\n\n\n\n\nData Wrangling:\nAesthetic(s):\nMajor Improvement:"
+    "text": "Question 6\n\n\n\n\n\n\n\n\n\nData Wrangling:\nAesthetic(s):\nMajor Improvement:",
+    "crumbs": [
+      "Unit 1 - Complex Analyses",
+      "Unit 1 Practice Exam"
+    ]
   },
   {
     "objectID": "practice-exams/unit-1-example-questions.html#question-7",
     "href": "practice-exams/unit-1-example-questions.html#question-7",
     "title": "Unit 1 Exam - Sample Questions",
     "section": "Question 7",
-    "text": "Question 7\n\n\n\n\n\n\n\n\n\n\n\n\nOriginal Movies and Their Spinoffs\n\n\nAre the spinoff ratings always worse?\n\n\nMovie\n\nFilm Score\n\n\n\nRotten Tomatoes\nMetacritic\n\n\n\n\nCars\n74\n73\n\n\nCars 2\n40\n57\n\n\nCars 3\n69\n59\n\n\nToy Story\n100\n95\n\n\nToy Story 2\n100\n88\n\n\nToy Story 3\n98\n92\n\n\nToy Story 4\n97\n84\n\n\n\n\n\n\n\nData Wrangling:\nAesthetic(s):\nMajor Improvement:"
+    "text": "Question 7\n\n\n\n\n\n\n\n\n\n\n\n\nOriginal Movies and Their Spinoffs\n\n\nAre the spinoff ratings always worse?\n\n\nMovie\n\nFilm Score\n\n\n\nRotten Tomatoes\nMetacritic\n\n\n\n\nCars\n74\n73\n\n\nCars 2\n40\n57\n\n\nCars 3\n69\n59\n\n\nToy Story\n100\n95\n\n\nToy Story 2\n100\n88\n\n\nToy Story 3\n98\n92\n\n\nToy Story 4\n97\n84\n\n\n\n\n\n\n\nData Wrangling:\nAesthetic(s):\nMajor Improvement:",
+    "crumbs": [
+      "Unit 1 - Complex Analyses",
+      "Unit 1 Practice Exam"
+    ]
   },
   {
     "objectID": "project.html",
