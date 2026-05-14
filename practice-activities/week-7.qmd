@@ -57,7 +57,7 @@ the buttons for "Select Transformation"?
 
 7. What values do the radio buttons take on? 
 
-8. Are are the plotting data adjusted based on the radio button that is 
+8. How are the plotting data adjusted based on the radio button that is 
 selected?
 
 ## Phytoplankton 
