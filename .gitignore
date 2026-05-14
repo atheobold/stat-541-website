@@ -13,6 +13,4 @@ _site
 *.Rproj
 *_cache
 **/*.quarto_ipynb
-*solutions
-*exams
 .positai

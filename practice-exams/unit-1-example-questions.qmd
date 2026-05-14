@@ -1,0 +1,282 @@
+---
+title: "Unit 1 Exam - Sample Questions"
+format: html
+filters: 
+- flourish
+---
+
+```{r}
+#| include: false
+
+library(tidyverse)
+library(rvest)
+library(gt)
+```
+
+# Details
+
+In this exam, you will be asked to answer questions about pre-written code; to fill in small blanks in code; or to sketch the output of a process or analysis. Your fill-in-the-blank answers need to be conceptually correct, not perfect. For example, if you fill in a blank with `mutates` instead of `mutate`, you will still get full credit.
+
+You may assume throughout the exam that there are no syntax errors in the code - for example, you will not be asked to spot a missing comma, an unclosed parentheses, or a typo in an object name. There are also no "trick" questions - the code you are shown can be expected to run without error, unless specifically stated in the question.
+
+# Part A - Complex Data Pipelines Sample Question
+
+Consider the following two datasets:
+
+```{r}
+#| include: false
+
+pixar_films <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2025/2025-03-11/pixar_films.csv') |>
+  rename(title = "film")
+public_response <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2025/2025-03-11/public_response.csv')
+```
+
+A list of all Pixar films, with some information about them:
+
+```{r}
+pixar_films |> head()
+```
+
+Ratings from various film rating sources for Pixar movies:
+
+```{r}
+public_response |> head()
+```
+
+## Question 1
+
+First, we want to add the ratings data from the `imdb` dataset to the Pixar movie list.
+
+Fill in the blank to make this work.
+
+```{r}
+#| flourish:
+#| - target: 
+#|     - 'join_by\\(title == film\\)'
+#|     - mask: true
+#|     - style: "text-decoration: underline;"
+
+pixar_new <- pixar_films |>
+  left_join(public_response,
+            by = join_by(title == film))
+```
+
+## Question 2
+
+Notice that the original `pixar` dataset has the same number of rows as the new, joined dataset:
+
+:::::: columns
+::: {.column width="48%"}
+```{r}
+nrow(pixar_films)
+```
+:::
+
+::: {.column width="4%"}
+:::
+
+::: {.column width="48%"}
+```{r}
+nrow(pixar_new)
+```
+:::
+::::::
+
+Does this mean that all 27 of Pixar's movies were present in the `public_response` dataset?
+
+Why or why not?
+
+## Question 3
+
+Fill in the blanks in the following pipeline, which computes the number of Pixar movies released each decade receiving particular cinema scores.
+
+```{r}
+#| flourish:
+#| - target: 
+#|     - 'release_date'
+#|     - mask: true
+#|     - style: "text-decoration: underline;"
+#| - target: 
+#|     - 'glue::glue'
+#|     - mask: true
+#|     - style: "text-decoration: underline;"
+#| - target: 
+#|     - 'count'
+#|     - mask: true
+#|     - style: "text-decoration: underline;"
+#| - target: 
+#|     - 'pivot_wider'
+#|     - mask: true
+#|     - style: "text-decoration: underline;"
+#| - target: 
+#|     - 'cinema_score'
+#|     - mask: true
+#|     - style: "text-decoration: underline;"
+#| - target: 
+#|     - 'n      '
+#|     - mask: true
+#|     - style: "text-decoration: underline;"
+
+pixar_new |>
+  mutate(
+    year = lubridate::year(release_date),
+    decade = floor(year/10),
+    decade = glue::glue("{decade}0s")
+  ) |>
+  count(decade, cinema_score) |>
+  pivot_wider(
+    names_from = cinema_score,
+    values_from = n       
+  )
+  
+```
+
+# Part B - Webscraping Sample Question
+
+Wikipedia sites tend to contain consistent information across similar articles, usually in a box on the right. Entries about people typically include a picture of the person and their date of birth at the top. For example, here is Hadley Wickham's Wikipedia page:
+
+![](images/hadley_wiki.png){width="70%" border="1" fig-alt="A screenshot of the Wikipedia page for Hadley Wickham. On the right side of the page, there is a gray box with a photo of Hadley, followed by a list of information about Hadley (e.g., birthday, alma matter, what he is known for, what awards he has won)."}
+
+Consider the following function, designed to scrape the birthdate of a Wikipedia entry:
+
+```{r}
+get_age <- function(url) {
+  
+  my_html <- read_html(url)
+  
+  my_html |>
+    html_element("table") |>
+    html_elements("span.noprint.ForceAgeToShow") |>
+    html_text() |>
+    parse_number()
+  
+}
+```
+
+```{r}
+get_age("https://en.wikipedia.org/wiki/Hadley_Wickham")
+```
+
+## Question 4
+
+You notice that Dr. Bodwin is not famous enough for a Wikipedia entry, so this code breaks:
+
+```{r}
+#| error: true
+get_age("https://en.wikipedia.org/wiki/Kelly_Bodwin")
+```
+
+You'll also notice that some famous people share a name, such as Robert Gentleman, one of the creators of R. This also breaks your function.
+
+```{r}
+#| error: true
+get_age("https://en.wikipedia.org/wiki/Robert_Gentleman")
+```
+
+What would you change in the function to deal with these types of issues?
+
+## Question 5
+
+How would you make use of this function to add a column named `age` to the following dataset, named `r_people`? Specifically, what functions would you use and how would you use them?
+
+```{r}
+#| echo: false
+tibble(
+  name = c("Robert Gentleman", "Ross Ihaka", "Hadley Wickham", "Jenny Bryan", "Allison Theobold", "Kelly Bodwin"),
+  position = c("R Creator", "R Creator", "Posit Employee", "Posit Employee", "Cal Poly Prof", "Cal Poly Prof")
+)
+```
+
+# Part C - More Advanced Visualizations Sample Question
+
+The following outputs show a summary table or visualization from the dataset `pixar_new`. For each, provide:
+
+(i) what (if any) data wrangling steps are needed to prepare the data for this visualization,
+
+(ii) the aesthetic(s) of the visualization *or* the `gt` formatting used, and
+
+(iii) one *major* improvement you would make to the analysis.
+
+*Note that a **major** improvement is something that changes the structure of the output, not just a different color, label, or stylistic choice.* At least one of your (iii) answers must suggest a different *geometry* for the plot.
+
+For these answers, you may respond in either words or code. For example, these two answers would both be acceptable:
+
+- `mutate(z = x + y)`
+- "Add a new column named `z` that is the sum of `x` and `y`."
+
+## Question 6
+
+```{r}
+#| echo: false
+
+pixar_new |>
+  filter(
+    str_detect(title, "Toy Story")
+  ) |>
+  pivot_longer(rotten_tomatoes:metacritic,
+    names_to = "Rating Source",
+    values_to = "Score"
+  ) |>
+  ggplot() +
+  aes(x = title,
+      y = Score,
+      fill = `Rating Source`) +
+  geom_col(position = "dodge") +
+  labs(
+    title = "Ratings of Toy Story Movies",
+    subtitle = "from Rotten Tomatoes and Metacritic",
+    x = "",
+    y = ""
+  )
+```
+
+- Data Wrangling:
+
+- Aesthetic(s):
+
+- Major Improvement:
+
+## Question 7
+
+```{r}
+#| echo: false
+
+repeats <- pixar_new |> 
+  separate_wider_regex(
+    title,
+    patterns = c(name = ".*?", "\\s*", repeat_num = "\\d*$"),
+    cols_remove = FALSE
+  ) |> 
+  count(name) |> 
+  filter(n > 1) |> 
+  pull(name)
+
+pixar_new |> 
+  separate_wider_regex(
+    title,
+    patterns = c(name = ".*?", "\\s*", repeat_num = "\\d*$"),
+    cols_remove = FALSE
+  ) |> 
+  filter(name %in% repeats) |> 
+  select(title, rotten_tomatoes, metacritic) |> 
+  arrange(title) |> 
+  rename(Movie = title, 
+         `Rotten Tomatoes` = rotten_tomatoes, 
+         Metacritic = metacritic) |> 
+  gt() |> 
+  tab_spanner(
+    label = "Film Score",
+    columns = c(`Rotten Tomatoes`, Metacritic)
+  ) |> 
+  tab_header(
+    title = "Original Movies and Their Spinoffs",
+    subtitle = "Are the spinoff ratings always worse?"
+  ) 
+
+```
+
+- Data Wrangling:
+
+- Aesthetic(s):
+
+- Major Improvement:
