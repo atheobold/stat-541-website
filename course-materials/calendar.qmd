@@ -23,6 +23,8 @@ library(tidyverse)
 
 {{< fa file-alt >}} **Project** – deliverables or milestones
 
+{{< fa pencil >}} **Exams** – end of unit practice exams
+
 ```{r}
 #| label: google-sheets-calendar
 #| echo: false
@@ -74,7 +76,7 @@ t <- d |>
                      "Unit 3"
                      )
   ) %>%
-  select(unit, week_label, date_label, topic, prepare, activity, project) |> 
+  select(unit, week_label, date_label, topic, prepare, activity, project, exams) |> 
   gt() |>
   text_transform(cells_body(columns = c(prepare)),
                  fn = function(x){
@@ -91,11 +93,11 @@ t <- d |>
                    ifelse(is.na(x), fontawesome::fa('users', fill_opacity = 0.1),
                           glue::glue('<a href="{x}"><i class="fa fa-users" style="color: purple;"></i></a>'))
                   }) %>%
-  # text_transform(cells_body(columns = c(lab)),
-  #                fn = function(x){
-  #                  ifelse(is.na(x), fontawesome::fa('pencil', fill_opacity = 0.1), 
-  #                         glue::glue('<a href="{x}"><i class="fa fa-pencil" style="color: purple;"></i></a>'))
-  #                }) %>%
+  text_transform(cells_body(columns = c(exams)),
+                 fn = function(x){
+                   ifelse(is.na(x), fontawesome::fa('pencil', fill_opacity = 0.1),
+                          glue::glue('<a href="{x}"><i class="fa fa-pencil" style="color: purple;"></i></a>'))
+                 }) %>%
   text_transform(cells_body(columns = c(project)),
                  fn = function(x){
                    ifelse(is.na(x), fontawesome::fa('file-alt', fill_opacity = 0.1), 
@@ -162,7 +164,8 @@ t <- d |>
     topic = "",
     prepare = md("**Prepare**"),
     activity = md("**Activity**"),
-    project = md("**Project**")
+    project = md("**Project**"), 
+    exams = md("**Exams**")
     ) |> 
   as_raw_html() 
 ```
