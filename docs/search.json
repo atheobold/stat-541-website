@@ -2139,7 +2139,7 @@
     "href": "project/project-2.html#static-content",
     "title": "Project 2 Final Deliverable",
     "section": "Static Content",
-    "text": "Static Content\n\nat least two cards with quick information (e.g., % of people across the world who have faith in vaccines)\none plot made with leaflet\none additional interactive plot or table\nnon-default plot colors\na summary table displaying the results of a statistical model or summary statistics\n\n\n\n\n\n\n\n\n\nWarningCoordinated Colors\n\n\n\nThe colors in your styled dashboard should match the colors in your plots!",
+    "text": "Static Content\n\nat least two cards with quick information (e.g., % of people across the world who have faith in vaccines)\none plot made with leaflet\none additional interactive plot or table\nnon-default plot colors\na summary table displaying summary statistics or the results of a statistical model\n\n\n\n\n\n\n\n\n\nWarningCoordinated Colors\n\n\n\nThe colors in your styled dashboard should match the colors in your plots!",
     "crumbs": [
       "Projects",
       "Project 2 Final Deliverable"
@@ -2150,7 +2150,7 @@
     "href": "project/project-2.html#interactive-shiny-content",
     "title": "Project 2 Final Deliverable",
     "section": "Interactive (Shiny) Content",
-    "text": "Interactive (Shiny) Content\n\nat least one opportunity for user input via a slide bar\nat least one opportunity for user input via check boxes\n\nThese interactive features are expected to be used to update at least one table or visualization.",
+    "text": "Interactive (Shiny) Content\nAt least one opportunity for user input. This can be via a slide bar, a drop down menu, or check boxes.\nThese interactive features are expected to be used to update at least one table or visualization.",
     "crumbs": [
       "Projects",
       "Project 2 Final Deliverable"
@@ -2183,7 +2183,7 @@
     "href": "project/project-2.html#stat-541",
     "title": "Project 2 Final Deliverable",
     "section": "STAT 541",
-    "text": "STAT 541\nYou are required to submit both the link to your GitHub repository containing your source code and a link to your published dashboard.",
+    "text": "STAT 541\nYou are required to submit both the link to your GitHub repository containing your source code and a link to your published dashboard.\nBecause these dashboards are interactive, we cannot publish them with GitHub Pages. Instead, we will need to use either shinyapps.io or Posit Connect Cloud.",
     "crumbs": [
       "Projects",
       "Project 2 Final Deliverable"

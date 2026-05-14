@@ -6,20 +6,8 @@ In this checkpoint, you will extend your dashboard by incorporating reactive fun
 
 ## For this checkpoint, your dashboard must include:
 
--   **At least one** Shiny input control (e.g., slider, checkbox group, dropdown menu).
+- **At least one** Shiny input control (e.g., slider, checkbox group, dropdown menu).
 
--   At least one reactive output (a table or visualization) that updates in response to the input.
+- At least one reactive output (a table or visualization) that updates in response to the input.
 
 Your reactive element should meaningfully affect the displayed data (e.g., filtering by year, selecting categories, adjusting a threshold).
-
-## Looking Ahead
-
-This checkpoint focuses on establishing a working reactive structure. In the final submission, you will expand this to include:
-
--   At least one slider input
-
--   At least one checkbox input
-
--   Reactive updates affecting at least one table or visualization
-
-Think of this checkpoint as building the framework for interactivity. The final submission will expand and refine what you build this week.

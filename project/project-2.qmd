@@ -34,8 +34,8 @@ world who have faith in vaccines)
 -   one plot made with `leaflet`
 -   one additional interactive plot or table
 -   non-default plot colors
--   a summary table displaying the results of a statistical model or summary 
-statistics
+-   a summary table displaying summary statistics or the results of a
+statistical model
 
 ::: {.column-margin}
 ::: callout-warning
@@ -47,8 +47,8 @@ The colors in your styled dashboard should match the colors in your plots!
 
 ## Interactive (Shiny) Content
 
--   at least one opportunity for user input via a slide bar
--   at least one opportunity for user input via check boxes
+At least one opportunity for user input. This can be via a slide bar, a drop
+down menu, or check boxes. 
 
 These interactive features are expected to be used to update **at least one** 
 table or visualization.
@@ -84,13 +84,7 @@ You are required to submit **both** the link to your GitHub repository
 containing your source code **and** a link to your [published]{.underline}
 dashboard.
 
-<!-- Need to change to Connect Cloud (https://connect.posit.cloud/) instead of  -->
-
-<!-- Shinyapps.io -->
-
-<!-- You are required to submit **both** the link to your GitHub repository  -->
-
-<!-- containing your source code **and** a link to your [published]{.underline} -->
-
-<!-- dashboard. You will need to publish your dashboard through [shinyapps.io](https://www.shinyapps.io/), a free publishing service for content -->
-
+Because these dashboards are interactive, we cannot publish them with GitHub
+Pages. Instead, we will need to use either 
+[`shinyapps.io`](https://www.shinyapps.io/) or 
+[Posit Connect Cloud](https://connect.posit.cloud/). 
