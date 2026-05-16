@@ -1,10 +1,11 @@
 ---
 title: "R Packages"
+editor: source
 ---
 
 ## Basics of Packages
 
-In principle, an R Package is nothing more than a folder with a very specific structure, which allows R to recognize it as a "Package". Minimally, to be a package, a folder must contain:
+In principle, an R Package is nothing more than a folder with a very specific structure, which allows R to recognize it as a "Package." Minimally, to be a package, a folder must contain:
 
 1.  A subfolder named `/R/`, containing `.R` code files.
 2.  A text file named `DESCRIPTION`, which contains information about the package in a *very* specifically formatted way.
@@ -65,7 +66,10 @@ Now, we could go through the tedious process of *forking* the repository, then a
 
 Instead, let's do all these steps in one with `usethis`. Open up a new RStudio session, load the `usethis` package, and then run:
 
-```{r, eval = FALSE}
+```{r}
+#| eval: false
+#| label: create-from-github
+
 usethis::create_from_github("Cal-Poly-Advanced-R/meangirls")
 ```
 
@@ -73,17 +77,20 @@ A lot of output will print out.
 
 Here's what this does:
 
--   Forks the `meangirls` repo, owned by `Cal-Poly-Advanced-R` on GitHub, into your GitHub account.
+- Forks the `meangirls` repo, owned by `Cal-Poly-Advanced-R` on GitHub, into your GitHub account.
 
--   Clones your forked repo into a folder named "meangirls" on your desktop (or similar).
+- Clones your forked repo into a folder named "meangirls" on your desktop (or similar).
 
--   Does additional git/GitHub setup:
+- Does additional git/GitHub setup:
 
-    -   Sets your *origin remote* (the repo you can push directly to) to be your own forked copy of the "meangirls" repo.
-    -   Sets your *upstream remote* (the original version that you will later Pull Request) to be the "meangirls" repo owned by `Cal-Poly-Advanced-R`
-    -   Sets the *main branch* to be the original repo's main branch, so you can pull future edits that Regina makes ("upstream changes") in the future.
+  - Sets your *origin remote* (the repo you can push directly to) to be your own forked copy of the "meangirls" repo.
+  - Sets your *upstream remote* (the original version that you will later Pull Request) to be the "meangirls" repo owned by `Cal-Poly-Advanced-R`
+  - Sets the *main branch* to be the original repo's main branch, so you can pull future edits that Regina makes ("upstream changes") in the future.
 
--   Opens a new instance of RStudio in the `meangirls` R project.
+- Opens a new instance of RStudio in the `meangirls` R project.
+
+::: {.callout-note collapse=TRUE}
+# Would you rather do this manually? 
 
 It is also possible to do this steps without `usethis::create_from_github`, if you prefer.
 
@@ -92,14 +99,18 @@ It is also possible to do this steps without `usethis::create_from_github`, if y
 2.  Using GitHub Desktop (or your preferred method), clone your new forked package to your local machine.
 
 3.  Navigate to the folder where you cloned the package, and open the `.Rproj`.
+:::
 
 ### Make some simple changes
 
 We are now ready to get our hands dirty with this package.
 
-First, **build the package**. You can do this by typing `Cmd/Ctrl-Shift-B`, or by clicking in the "Build" pane:
+First, install the `roxygen2` and `english` packages. These packages are needed
+to successfully build the package. 
 
-![](images/build_package.gif)
+Next, **build the package**. You can do this by typing `Cmd/Ctrl-Shift-B`, or by clicking in the "Build" pane:
+
+![](images/build_package.gif){fig-alt="RStudio with the Build pane open in the upper right corner. The Build tab is selected, showing options including 'Install and Restart', 'Check', and 'More'. The gif shows the process of clicking on the 'Install and Restart' button and the build messages that appear in the pane (below the button)."}
 
 Open up **README.Rmd** and knit it. Scroll to the very bottom. Do you see a problem with the output?
 
@@ -107,25 +118,31 @@ It's time to fix the `give_candygrams()` function so that it includes extra mess
 
 In your console, type:
 
-```{r, eval = FALSE}
+```{r}
+#| eval: false
+#| label: pr-init-ex
+
 usethis::pr_init("fix-candygrams")
 ```
 
 This will switch you to a new branch.
 
-![](images/see_branch.png)
+![](images/see_branch.png){fig-alt="A screenshot of the Git tab in the upper right corner of RStudio. There is an orange box surrounding the area indicating what branch is currently being used (within the GitHub repository). The box has text saying 'New Branch' indicating a new branch has been made, and 'fix-candygrams' which is the name of the new branch. There is also a dropdown displayed which is the result of clicking on the name of the current branch. The dropdown says 'master' with and arrow indicating that this is the default main branch for the repository. And below 'master' there is a line for 'fix-candygrams' which is the current working branch (that was just made)."}
 
 Now, we can finally edit the source code.
 
 Fix the code in `give_candygrams.R` so that the extra messages print out properly. *(Hint: This is a small change in only one line of the code!)*
 
-Check that the code is fixed by re-building the package, re-knitting the `README.Rmd` file, and looking at the output at the bottom.
+Check that the code is fixed by first re-building the package, then re-knitting the `README.Rmd` file, and finally looking at the output at the bottom.
 
 When you are satisfied with your change, **commit your changes** to Git.
 
 Then run in the console:
 
-```{r, eval = FALSE}
+```{r}
+#| eval: false
+#| label: pr-push-ex
+
 usethis::pr_push()
 ```
 
@@ -137,15 +154,29 @@ Last, let's check out the **unit tests** in Regina's package.
 
 In any package, it's very important to write automatic tests to check that your functions work the way you hope. As the package gets more complex, you can then keep running your tests to make sure nothing broke along the way.
 
-Run the tests that Regina has written for her package by typing `Ctrl/Cmd-Shift-T`; or from the drop-down menu in the Build pane:
+In order to run the tests that Regina has written for her package we need to 
+first install the `testthat` package. Once you have installed the package, 
+run the tests for Regina's package by typing `Ctrl/Cmd-Shift-T` or from the
+drop-down menu in the Build pane:
 
-![](images/run_tests.gif)
+![](images/run_tests.gif){fig-alt="RStudio with the Build pane open, showing the output of installing the meangirls package (from the previous step). The cursor clicks on the 'More' button with a gear icon next to it. From the dropdown menu that appears, the cursor selects 'Test Package.' The output shown in pane displays the results of the tests built into the meangirls package, indicating 5 tests were 'ok' and 1 test 'failed.'"}
 
-Oh no! One of the unit tests failed.
+Oh no! You should see that one of the unit tests failed. 
 
-In the folder `tests/testthat`, find the appropriate test file. Figure out how the actual output was different from the expected output.
+::: {.callout-important collapse=TRUE}
+# Did more than one test fail?
 
-Start a new pull request branch using `usethis::pr_init()`, as you did above. Track down the error, and make changes to the function. Keep trying until alltests succeed.
+You might need to revise the changes you made to the `give_candygrams()`
+function!
+:::
+
+Start a new pull request branch using `usethis::pr_init()`, as you did above. 
+In the folder `tests/testthat`, find the appropriate test file. Figure out how
+the actual output was different from the expected output. Make changes to the
+function. Keep trying until all the tests succeed.
+
+**Once you have figured out how to fix the function, make a pull request 
+with your changes (`usethis::pr_push()`)!**
 
 ### Make a major contribution
 
@@ -153,7 +184,9 @@ When handing out candygrams, [Santa has a whole classroom of students to announc
 
 It would be tedious to have to call the `give_candygrams()` function once for each student. Instead, it would be convenient to have a vector of student names and a vector of candygram counts, and run a single function like so:
 
-```{r, eval = FALSE}
+```{r}
+#| eval: false
+#| label: example-inputs-for-new-function
 
 students <- c("Taylor Zimmerman", "Glen Coco", "Cady Heron", "Gretchen Weiners")
 counts <- c(2, 4, 1, 0)
@@ -164,53 +197,45 @@ give_many_candygrams(students, counts)
 
 1.  Write the function `give_many_candygrams()` into the `meangirls` package.
 
-2.  Do your best to copy the documentation style of the `give_candygrams()` function. Type `Ctrl-Shift-D`, or use the Build pane drop-down menu, to automatically write a documentation file for your function.
+2.  Do your best to copy the documentation style of the `give_candygrams()`
+function for the body of your function and the documentation (`@param`, 
+`@return`, and `@importFrom`). 
 
-3.  Re-build the package. Then type `?give_many_candygrams` in your console.
+3.  Now, let's build the documentation for `give_many_candygrams()`. Either type
+`Ctrl-Shift-D`, or use the Build pane drop-down menu (More -> Document), to
+automatically write a documentation file for your function.
 
-4.  Look at the "Help" pane that pops up. It should look like this, except with the documentation for your new `give_many_candygrams` function:
+4.  Re-build (install) the package. Then type `?give_many_candygrams` in your
+console.
 
-![](images/help_pane.png)
+4.  Look at the "Help" pane that pops up. It should look like this, except with
+the documentation for your new `give_many_candygrams()` function:
+
+![](images/help_pane.png){fig-alt="Screenshot of the RStudio Help pane showing R documentation for the give_candygrams() function from the meangirls package. The page is titled 'Announces the number of candygrams for a person.' and includes four sections: Description ('Announces the number of candygrams for a person.'), Usage (give_candygrams(person, number, extra_message = NULL)), Arguments (listing person as 'The candygram recipient', number as 'How many grams they got', and extra_message as 'A string giving extra commentary.'), and Value ('A candy gram announcement'). The footer reads 'Package meangirls version 0.0.0.9000'."}
 
 Type in your console:
 
-```{r, eval = FALSE}
-use_test("give_many_candygrams")
+```{r}
+#| eval: false
+#| label: test-give-many-candygrams
+
+usethis::use_test("give_many_candygrams")
 ```
 
-Edit the file that pops up, to create a unit test for your new `give_many_candygrams` function. Re-run the tests for the package. It should look like this, but with a total of 7 tests:
+Edit the file that pops up, to create a unit test for your new 
+`give_many_candygrams()` function. Feel free to borrow the style of test used 
+for the original `give_candygrams()` function!
 
-![](images/passed_tests.png)
+Once you've written the test, re-run the tests for the package. It should look
+like this, but with a total of 7 tests:
 
-<!-- ::: callout-important -->
-<!-- # Check-In: Contributing to a Package -->
+```
+==> Sourcing R files in 'tests' directory
 
-<!-- 1.  Which line would NOT be correct in the documentation for `give_many_candygrams`? -->
+[ FAIL 0 | WARN 0 | SKIP 0 | PASS 7 ]
 
-<!-- <!-- --> -->
-
-<!-- a.  `@param person The candygram recipient.` -->
-<!-- b.  `@param number How many grams they got.` -->
-<!-- c.  `@param extra_message A string giving extra commentary.` -->
-<!-- d.  `@param Value A candy gram announcement.` -->
-
-<!-- <!-- --> -->
-
-<!-- 2.  Consider the following unit test for `give_many_candygrams`: -->
-
-<!-- ```{r} -->
-<!-- #| eval: false -->
-
-
-<!-- ``` -->
-
-<!-- What would you expect to happen for this test? -->
-
-<!-- a.  It would pass because -->
-<!-- b.  It would pass because -->
-<!-- c.  It would fail because -->
-<!-- d.  It would fail because -->
-<!-- ::: -->
+Tests complete
+```
 
 ## Package Creation From Scratch
 
@@ -227,34 +252,34 @@ Edit the file that pops up, to create a unit test for your new `give_many_candyg
 
 :::::: columns
 ::: {.column width="20%"}
--   `roxygen2`
+- `roxygen2`
 
--   `testthat`
+- `testthat`
 
--   `devtools`
+- `devtools`
 
--   `usethis`
+- `usethis`
 :::
 
 ::: {.column width="10%"}
 :::
 
 ::: {.column width="70%"}
--   Automatically creating and editing package files in the proper format.
+- Automatically creating and editing package files in the proper format.
 
--   Loading, documenting, and running checks for the package after you make edits.
+- Loading, documenting, and running checks for the package after you make edits.
 
--   Creating small *unit tests* for the functions in the package.
+- Creating small *unit tests* for the functions in the package.
 
--   Creating function documentation pages from comments in `.R` files.
+- Creating function documentation pages from comments in `.R` files.
 :::
 ::::::
 
 2.  In a `test_that` function, what is the difference between `expect_equal` and `expect_error`?
 
-3.  Which of the following files should you **never** open and edit by hand, instead of generating changes automatically during documentation or with a `usethis` function? *(Select all that apply.)*
-
-<!-- -->
+3.  Which of the following files should you **never** open and edit by hand, 
+instead of generating changes automatically during documentation or with a 
+`usethis` function? *(Select all that apply.)*
 
 a.  `DESCRIPTION`
 b.  `NAMESPACE`
