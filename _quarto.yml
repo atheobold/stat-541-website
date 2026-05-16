@@ -5,6 +5,7 @@ project:
     - "*.qmd"
     - "!/extensions"
     - "!/practice-activities/student"
+    - "!/practice-exams/team-dashboard.qmd"
 
 website:
   page-navigation: true
