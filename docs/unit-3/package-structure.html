@@ -427,7 +427,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 </header><section id="basics-of-packages" class="level2"><h2 class="anchored" data-anchor-id="basics-of-packages">Basics of Packages</h2>
-<p>In principle, an R Package is nothing more than a folder with a very specific structure, which allows R to recognize it as a “Package”. Minimally, to be a package, a folder must contain:</p>
+<p>In principle, an R Package is nothing more than a folder with a very specific structure, which allows R to recognize it as a “Package.” Minimally, to be a package, a folder must contain:</p>
 <ol type="1">
 <li>A subfolder named <code>/R/</code>, containing <code>.R</code> code files.</li>
 <li>A text file named <code>DESCRIPTION</code>, which contains information about the package in a <em>very</em> specifically formatted way.</li>
@@ -479,7 +479,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Now, we could go through the tedious process of <em>forking</em> the repository, then all the steps after that to get it open in your local computer’s RStudio.</p>
 <p>Instead, let’s do all these steps in one with <code>usethis</code>. Open up a new RStudio session, load the <code>usethis</code> package, and then run:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">usethis</span><span class="fu">::</span><span class="fu">create_from_github</span><span class="op">(</span><span class="st">"Cal-Poly-Advanced-R/meangirls"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/create_from_github.html">create_from_github</a></span><span class="op">(</span><span class="st">"Cal-Poly-Advanced-R/meangirls"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>A lot of output will print out.</p>
 <p>Here’s what this does:</p>
@@ -497,40 +497,73 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
 <li><p>Opens a new instance of RStudio in the <code>meangirls</code> R project.</p></li>
 </ul>
-<p>It is also possible to do this steps without <code>usethis::create_from_github</code>, if you prefer.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Would you rather do this manually?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>It is also possible to do this steps without <code><a href="https://usethis.r-lib.org/reference/create_from_github.html">usethis::create_from_github</a></code>, if you prefer.</p>
 <ol type="1">
 <li><p>On GitHub, navigate to <a href="https://github.com/Cal-Poly-Advanced-R/meangirls">the package repo</a> and click “Fork”.</p></li>
 <li><p>Using GitHub Desktop (or your preferred method), clone your new forked package to your local machine.</p></li>
 <li><p>Navigate to the folder where you cloned the package, and open the <code>.Rproj</code>.</p></li>
-</ol></section><section id="make-some-simple-changes" class="level3"><h3 class="anchored" data-anchor-id="make-some-simple-changes">Make some simple changes</h3>
+</ol>
+</div>
+</div>
+</div>
+</section><section id="make-some-simple-changes" class="level3"><h3 class="anchored" data-anchor-id="make-some-simple-changes">Make some simple changes</h3>
 <p>We are now ready to get our hands dirty with this package.</p>
-<p>First, <strong>build the package</strong>. You can do this by typing <code>Cmd/Ctrl-Shift-B</code>, or by clicking in the “Build” pane:</p>
-<p><img src="images/build_package.gif" class="img-fluid"></p>
+<p>First, install the <code>roxygen2</code> and <code>english</code> packages. These packages are needed to successfully build the package.</p>
+<p>Next, <strong>build the package</strong>. You can do this by typing <code>Cmd/Ctrl-Shift-B</code>, or by clicking in the “Build” pane:</p>
+<p><img src="images/build_package.gif" class="img-fluid" alt="RStudio with the Build pane open in the upper right corner. The Build tab is selected, showing options including 'Install and Restart', 'Check', and 'More'. The gif shows the process of clicking on the 'Install and Restart' button and the build messages that appear in the pane (below the button)."></p>
 <p>Open up <strong>README.Rmd</strong> and knit it. Scroll to the very bottom. Do you see a problem with the output?</p>
 <p>It’s time to fix the <code>give_candygrams()</code> function so that it includes extra messages. But first, we need to make a <strong>branch</strong> of our repo, so that when we change the code, it is carefully tracked separately.</p>
 <p>In your console, type:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">usethis</span><span class="fu">::</span><span class="fu">pr_init</span><span class="op">(</span><span class="st">"fix-candygrams"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/pull-requests.html">pr_init</a></span><span class="op">(</span><span class="st">"fix-candygrams"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>This will switch you to a new branch.</p>
-<p><img src="images/see_branch.png" class="img-fluid"></p>
+<p><img src="images/see_branch.png" class="img-fluid" alt="A screenshot of the Git tab in the upper right corner of RStudio. There is an orange box surrounding the area indicating what branch is currently being used (within the GitHub repository). The box has text saying 'New Branch' indicating a new branch has been made, and 'fix-candygrams' which is the name of the new branch. There is also a dropdown displayed which is the result of clicking on the name of the current branch. The dropdown says 'master' with and arrow indicating that this is the default main branch for the repository. And below 'master' there is a line for 'fix-candygrams' which is the current working branch (that was just made)."></p>
 <p>Now, we can finally edit the source code.</p>
 <p>Fix the code in <code>give_candygrams.R</code> so that the extra messages print out properly. <em>(Hint: This is a small change in only one line of the code!)</em></p>
-<p>Check that the code is fixed by re-building the package, re-knitting the <code>README.Rmd</code> file, and looking at the output at the bottom.</p>
+<p>Check that the code is fixed by first re-building the package, then re-knitting the <code>README.Rmd</code> file, and finally looking at the output at the bottom.</p>
 <p>When you are satisfied with your change, <strong>commit your changes</strong> to Git.</p>
 <p>Then run in the console:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">usethis</span><span class="fu">::</span><span class="fu">pr_push</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/pull-requests.html">pr_push</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>This will magically pop up a Pull Request window! Complete the Pull Request if you wish.</p>
 </section><section id="testing-the-package" class="level3"><h3 class="anchored" data-anchor-id="testing-the-package">Testing the package</h3>
 <p>Last, let’s check out the <strong>unit tests</strong> in Regina’s package.</p>
 <p>In any package, it’s very important to write automatic tests to check that your functions work the way you hope. As the package gets more complex, you can then keep running your tests to make sure nothing broke along the way.</p>
-<p>Run the tests that Regina has written for her package by typing <code>Ctrl/Cmd-Shift-T</code>; or from the drop-down menu in the Build pane:</p>
-<p><img src="images/run_tests.gif" class="img-fluid"></p>
-<p>Oh no! One of the unit tests failed.</p>
-<p>In the folder <code>tests/testthat</code>, find the appropriate test file. Figure out how the actual output was different from the expected output.</p>
-<p>Start a new pull request branch using <code>usethis::pr_init()</code>, as you did above. Track down the error, and make changes to the function. Keep trying until alltests succeed.</p>
+<p>In order to run the tests that Regina has written for her package we need to first install the <code>testthat</code> package. Once you have installed the package, run the tests for Regina’s package by typing <code>Ctrl/Cmd-Shift-T</code> or from the drop-down menu in the Build pane:</p>
+<p><img src="images/run_tests.gif" class="img-fluid" alt="RStudio with the Build pane open, showing the output of installing the meangirls package (from the previous step). The cursor clicks on the 'More' button with a gear icon next to it. From the dropdown menu that appears, the cursor selects 'Test Package.' The output shown in pane displays the results of the tests built into the meangirls package, indicating 5 tests were 'ok' and 1 test 'failed.'"></p>
+<p>Oh no! You should see that one of the unit tests failed.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Did more than one test fail?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>You might need to revise the changes you made to the <code>give_candygrams()</code> function!</p>
+</div>
+</div>
+</div>
+<p>Start a new pull request branch using <code><a href="https://usethis.r-lib.org/reference/pull-requests.html">usethis::pr_init()</a></code>, as you did above. In the folder <code>tests/testthat</code>, find the appropriate test file. Figure out how the actual output was different from the expected output. Make changes to the function. Keep trying until all the tests succeed.</p>
+<p><strong>Once you have figured out how to fix the function, make a pull request with your changes (<code><a href="https://usethis.r-lib.org/reference/pull-requests.html">usethis::pr_push()</a></code>)!</strong></p>
 </section><section id="make-a-major-contribution" class="level3"><h3 class="anchored" data-anchor-id="make-a-major-contribution">Make a major contribution</h3>
 <p>When handing out candygrams, <a href="https://www.youtube.com/embed/nnjWmz4lB2U">Santa has a whole classroom of students to announce</a>.</p>
 <p>It would be tedious to have to call the <code>give_candygrams()</code> function once for each student. Instead, it would be convenient to have a vector of student names and a vector of candygram counts, and run a single function like so:</p>
@@ -543,38 +576,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <ol type="1">
 <li><p>Write the function <code>give_many_candygrams()</code> into the <code>meangirls</code> package.</p></li>
-<li><p>Do your best to copy the documentation style of the <code>give_candygrams()</code> function. Type <code>Ctrl-Shift-D</code>, or use the Build pane drop-down menu, to automatically write a documentation file for your function.</p></li>
-<li><p>Re-build the package. Then type <code>?give_many_candygrams</code> in your console.</p></li>
-<li><p>Look at the “Help” pane that pops up. It should look like this, except with the documentation for your new <code>give_many_candygrams</code> function:</p></li>
+<li><p>Do your best to copy the documentation style of the <code>give_candygrams()</code> function for the body of your function and the documentation (<code>@param</code>, <code>@return</code>, and <code>@importFrom</code>).</p></li>
+<li><p>Now, let’s build the documentation for <code>give_many_candygrams()</code>. Either type <code>Ctrl-Shift-D</code>, or use the Build pane drop-down menu (More -&gt; Document), to automatically write a documentation file for your function.</p></li>
+<li><p>Re-build (install) the package. Then type <code>?give_many_candygrams</code> in your console.</p></li>
+<li><p>Look at the “Help” pane that pops up. It should look like this, except with the documentation for your new <code>give_many_candygrams()</code> function:</p></li>
 </ol>
-<p><img src="images/help_pane.png" class="img-fluid"></p>
+<p><img src="images/help_pane.png" class="img-fluid" alt="Screenshot of the RStudio Help pane showing R documentation for the give_candygrams() function from the meangirls package. The page is titled 'Announces the number of candygrams for a person.' and includes four sections: Description ('Announces the number of candygrams for a person.'), Usage (give_candygrams(person, number, extra_message = NULL)), Arguments (listing person as 'The candygram recipient', number as 'How many grams they got', and extra_message as 'A string giving extra commentary.'), and Value ('A candy gram announcement'). The footer reads 'Package meangirls version 0.0.0.9000'."></p>
 <p>Type in your console:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">use_test</span><span class="op">(</span><span class="st">"give_many_candygrams"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/use_r.html">use_test</a></span><span class="op">(</span><span class="st">"give_many_candygrams"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Edit the file that pops up, to create a unit test for your new <code>give_many_candygrams</code> function. Re-run the tests for the package. It should look like this, but with a total of 7 tests:</p>
-<p><img src="images/passed_tests.png" class="img-fluid"></p>
-<!-- ::: callout-important -->
-<!-- # Check-In: Contributing to a Package -->
-<!-- 1.  Which line would NOT be correct in the documentation for `give_many_candygrams`? -->
-<!-- <!-- -->
-<p>–&gt;</p>
-<!-- a.  `@param person The candygram recipient.` -->
-<!-- b.  `@param number How many grams they got.` -->
-<!-- c.  `@param extra_message A string giving extra commentary.` -->
-<!-- d.  `@param Value A candy gram announcement.` -->
-<!-- <!-- -->
-<p>–&gt;</p>
-<!-- 2.  Consider the following unit test for `give_many_candygrams`: -->
-<!-- ```{r} -->
-<!-- #| eval: false -->
-<!-- ``` -->
-<!-- What would you expect to happen for this test? -->
-<!-- a.  It would pass because -->
-<!-- b.  It would pass because -->
-<!-- c.  It would fail because -->
-<!-- d.  It would fail because -->
-<!-- ::: -->
+<p>Edit the file that pops up, to create a unit test for your new <code>give_many_candygrams()</code> function. Feel free to borrow the style of test used for the original <code>give_candygrams()</code> function!</p>
+<p>Once you’ve written the test, re-run the tests for the package. It should look like this, but with a total of 7 tests:</p>
+<pre><code>==&gt; Sourcing R files in 'tests' directory
+
+[ FAIL 0 | WARN 0 | SKIP 0 | PASS 7 ]
+
+Tests complete</code></pre>
 </section></section><section id="package-creation-from-scratch" class="level2"><h2 class="anchored" data-anchor-id="package-creation-from-scratch">Package Creation From Scratch</h2>
 <div class="callout callout-style-default callout-required-reading callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -626,7 +644,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>In a <code>test_that</code> function, what is the difference between <code>expect_equal</code> and <code>expect_error</code>?</p></li>
 <li><p>Which of the following files should you <strong>never</strong> open and edit by hand, instead of generating changes automatically during documentation or with a <code>usethis</code> function? <em>(Select all that apply.)</em></p></li>
 </ol>
-<!-- --><ol type="a">
+<ol type="a">
 <li><code>DESCRIPTION</code></li>
 <li><code>NAMESPACE</code></li>
 <li><code>README.Rmd</code></li>
