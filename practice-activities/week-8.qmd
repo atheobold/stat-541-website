@@ -18,7 +18,7 @@ Return to [R Packages Chapter 1 - The Whole Game](https://r-pkgs.org/whole-game.
 
 ## Part Two: Adding to the package
 
-<a href="student/pa-8.R" download>Download this `.R` file</a> and then add it - without editing anything about it - to the `tests/testthat/` folder of the `regexcite` package.
+<a href="student/test-newfunctions.R" download>Download this `.R` file</a> and then add it - without editing anything about it - to the `tests/testthat/` folder of the `regexcite` package.
 
 Re-run the package tests. You will see that the newly added tests all failed, because they tested functions that do not exist!
 
