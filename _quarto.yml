@@ -4,6 +4,7 @@ project:
   render:
     - "*.qmd"
     - "!/extensions"
+    - "!/unit-3/instructor-resources"
     - "!/practice-activities/student"
     - "!/practice-exams/team-dashboard.qmd"
 
