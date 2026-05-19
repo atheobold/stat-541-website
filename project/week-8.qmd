@@ -22,13 +22,29 @@ You can do whatever you'd like with this - as long as the package has no special
 
 Once you have a name,
 
-1.  Follow the steps from the Week 8 Practice Activity to produce a package directory (with no functions in it yet!) and publish it on GitHub.
+1.  Run `usethis::create_package("path/to/package/packagename")` to make your new package repository. *(Of course, replace the path with your own computer location, and the packagename with your chosen name!)*
 
-2.  Update the `DESCRIPTION` file.
+2.  Open the `DESCRIPTION` file, and update the `Title`, `Authors`, and `Description` sections **only**.
 
-3.  Write a function called `load_data` to load your original dataset into the package from the Tidy Tuesday link or using the `tidytuesdayR` package.
+3.  Run `library(usethis)` in your console. Then run `use_r("load_data").`
 
-The `load_data` function must use `roxygen2` documentation; however, you do **not** have to write any `testthat` tests at this stage.
+4.  In the `load_data.R` file that opens, write a function called `load_data` to load your original dataset into the package from the Tidy Tuesday link or using the `tidytuesdayR` package. It will probably look something like:
+```{r}
+#| eval: false
+
+load_data <- function(){
+  readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2024/2024-08-06/olympics.csv')
+
+}
+```
+
+5.  Use `roxygen2` documentation to document the `load_data` function.  Don't forget to document dependencies on other packages, including for example:
+
+* Reference the package directly with `readr::read_csv` or use `@importFrom readr read_csv`
+
+* Run `use_packages("readr")` to include the package as an imported dependency.
+
+You do **not** have to write any `testthat` tests at this stage!
 
 ### Make a plan
 
@@ -52,4 +68,4 @@ At least one of these should be a **plot** and at least one should be a **summar
 
 ### Build It!
 
-Even though your package has nothing in it yet, make sure to *document* (Ctrl/Cmd-shift-D) and *build* (Ctrl/Cmd-shift-B) it before you push to GitHub.
+Even though your package has nothing in it yet, make sure to *build* (Ctrl/Cmd-shift-B) it before you push to GitHub.

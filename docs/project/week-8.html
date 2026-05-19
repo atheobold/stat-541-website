@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.26">
+<meta name="generator" content="quarto-1.8.24">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>Project Checkpoint 8 – Advanced R</title>
 <style>
@@ -71,9 +71,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b758ccaa5987ceb1b75504551e579abf.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b651517ce65839d647a86e2780455cfb.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-63767328852000e01d7c9d44355c1f36.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
@@ -285,7 +285,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
 <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
+    <a class="nav-link active" href="../index.html" aria-current="page"> 
 <span class="menu-text">Overview</span></a>
   </li>  
   <li class="nav-item">
@@ -313,7 +313,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Unit 3 - Package Development</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../project.html" aria-current="page"> 
+    <a class="nav-link" href="../project.html"> 
 <span class="menu-text">Projects</span></a>
   </li>  
 </ul>
@@ -339,7 +339,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </div>
   </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="sidebar-menu-container"> 
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="../index.html" class="sidebar-logo-link">
+      </a>
+      </div>
+    <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
@@ -492,25 +496,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section><section id="prepare-the-empty-package-structure" class="level3"><h3 class="anchored" data-anchor-id="prepare-the-empty-package-structure">Prepare the empty package structure</h3>
 <p>Once you have a name,</p>
 <ol type="1">
-<li><p>Follow the steps from the Week 8 Practice Activity to produce a package directory (with no functions in it yet!) and publish it on GitHub.</p></li>
-<li><p>Update the <code>DESCRIPTION</code> file.</p></li>
-<li><p>Write a function called <code>load_data</code> to load your original dataset into the package from the Tidy Tuesday link or using the <code>tidytuesdayR</code> package.</p></li>
+<li><p>Run <code>usethis::create_package("path/to/package/packagename")</code> to make your new package repository. <em>(Of course, replace the path with your own computer location, and the packagename with your chosen name!)</em></p></li>
+<li><p>Open the <code>DESCRIPTION</code> file, and update the <code>Title</code>, <code>Authors</code>, and <code>Description</code> sections <strong>only</strong>.</p></li>
+<li><p>Run <code><a href="https://usethis.r-lib.org">library(usethis)</a></code> in your console. Then run <code>use_r("load_data").</code></p></li>
+<li><p>In the <code>load_data.R</code> file that opens, write a function called <code>load_data</code> to load your original dataset into the package from the Tidy Tuesday link or using the <code>tidytuesdayR</code> package. It will probably look something like:</p></li>
 </ol>
-<p>The <code>load_data</code> function must use <code>roxygen2</code> documentation; however, you do <strong>not</strong> have to write any <code>testthat</code> tests at this stage.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">load_data</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span><span class="op">{</span></span>
+<span>  <span class="fu">readr</span><span class="fu">::</span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">'https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2024/2024-08-06/olympics.csv'</span><span class="op">)</span></span>
+<span></span>
+<span><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<ol start="5" type="1">
+<li>Use <code>roxygen2</code> documentation to document the <code>load_data</code> function. Don’t forget to document dependencies on other packages, including for example:</li>
+</ol>
+<ul>
+<li><p>Reference the package directly with <code><a href="https://readr.tidyverse.org/reference/read_delim.html">readr::read_csv</a></code> or use <code>@importFrom readr read_csv</code></p></li>
+<li><p>Run <code>use_packages("readr")</code> to include the package as an imported dependency.</p></li>
+</ul>
+<p>You do <strong>not</strong> have to write any <code>testthat</code> tests at this stage!</p>
 </section><section id="make-a-plan" class="level3"><h3 class="anchored" data-anchor-id="make-a-plan">Make a plan</h3>
 <p>When designing a package, it is helpful to write down “aspirational” code - lines of code that you <em>wish</em> would work, that you can build towards as you develop your functions.</p>
 <p>Think about the code in your Projects 1 and 2. Which parts do you wish you had a shortcut function for?</p>
 <p>Run <code>use_this::use_vignette("main-functions")</code>. Then, open the new folder named <em>vignette</em> in your package folder. You should see a file called <code>main-functions.Rmd</code>. Change the name to <code>main-functions.qmd</code>. Open this quarto file.</p>
 <p>In <code>main-functions.qmd</code>, write three code chunks with functions that you <em>plan</em> to make, and a brief description of what they do. For example,</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">plot_olympic_golds</span><span class="op">(</span><span class="va">olympic_data</span>, <span class="st">"United States"</span>, min_year <span class="op">=</span> <span class="fl">2000</span>, by_gender <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">plot_olympic_golds</span><span class="op">(</span><span class="va">olympic_data</span>, <span class="st">"United States"</span>, min_year <span class="op">=</span> <span class="fl">2000</span>, by_gender <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <blockquote class="blockquote">
 <p>This should make a line plot showing how many gold medals were won by the United States every year since 2000. There should be one line for the Men’s category and one for the Women’s category.</p>
 </blockquote>
 <p>At least one of these should be a <strong>plot</strong> and at least one should be a <strong>summary calculation</strong>.</p>
 </section><section id="build-it" class="level3"><h3 class="anchored" data-anchor-id="build-it">Build It!</h3>
-<p>Even though your package has nothing in it yet, make sure to <em>document</em> (Ctrl/Cmd-shift-D) and <em>build</em> (Ctrl/Cmd-shift-B) it before you push to GitHub.</p>
+<p>Even though your package has nothing in it yet, make sure to <em>build</em> (Ctrl/Cmd-shift-B) it before you push to GitHub.</p>
 
 
 </section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
