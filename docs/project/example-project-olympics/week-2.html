@@ -500,40 +500,40 @@ Note
 <p>Does <em>not</em> require iteration or custom function.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">gender_props</span> <span class="op">&lt;-</span> <span class="va">olympics</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">games</span>, <span class="va">team</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/group_by.html">group_by</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">games</span>, <span class="va">team</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/summarise.html">summarize</a></span><span class="op">(</span></span>
 <span>    count_male_athletes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">sex</span> <span class="op">==</span> <span class="st">"M"</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
 <span>    count_female_athletes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">sex</span> <span class="op">==</span> <span class="st">"F"</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
 <span>    .groups <span class="op">=</span> <span class="st">"drop"</span></span>
 <span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/mutate.html">mutate</a></span><span class="op">(</span></span>
 <span>    prop_female <span class="op">=</span> <span class="va">count_female_athletes</span><span class="op">/</span><span class="op">(</span><span class="va">count_female_athletes</span> <span class="op">+</span> <span class="va">count_male_athletes</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span>
 <span></span>
 <span><span class="va">gender_props</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">year</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/group_by.html">group_by</a></span><span class="op">(</span><span class="va">year</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/summarise.html">summarize</a></span><span class="op">(</span></span>
 <span>    avg_prop_female <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">prop_female</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span>  <span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu">gt</span><span class="fu">::</span><span class="fu"><a href="https://gt.rstudio.com/reference/gt.html">gt</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div id="urvyjhrxjn" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#urvyjhrxjn table {
+<div id="jcfbnnzvpp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#jcfbnnzvpp table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#urvyjhrxjn thead, #urvyjhrxjn tbody, #urvyjhrxjn tfoot, #urvyjhrxjn tr, #urvyjhrxjn td, #urvyjhrxjn th {
+#jcfbnnzvpp thead, #jcfbnnzvpp tbody, #jcfbnnzvpp tfoot, #jcfbnnzvpp tr, #jcfbnnzvpp td, #jcfbnnzvpp th {
   border-style: none;
 }
 
-#urvyjhrxjn p {
+#jcfbnnzvpp p {
   margin: 0;
   padding: 0;
 }
 
-#urvyjhrxjn .gt_table {
+#jcfbnnzvpp .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -559,12 +559,12 @@ Note
   border-left-color: #D3D3D3;
 }
 
-#urvyjhrxjn .gt_caption {
+#jcfbnnzvpp .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#urvyjhrxjn .gt_title {
+#jcfbnnzvpp .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -576,7 +576,7 @@ Note
   border-bottom-width: 0;
 }
 
-#urvyjhrxjn .gt_subtitle {
+#jcfbnnzvpp .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -588,7 +588,7 @@ Note
   border-top-width: 0;
 }
 
-#urvyjhrxjn .gt_heading {
+#jcfbnnzvpp .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -600,13 +600,13 @@ Note
   border-right-color: #D3D3D3;
 }
 
-#urvyjhrxjn .gt_bottom_border {
+#jcfbnnzvpp .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#urvyjhrxjn .gt_col_headings {
+#jcfbnnzvpp .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -621,7 +621,7 @@ Note
   border-right-color: #D3D3D3;
 }
 
-#urvyjhrxjn .gt_col_heading {
+#jcfbnnzvpp .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -641,7 +641,7 @@ Note
   overflow-x: hidden;
 }
 
-#urvyjhrxjn .gt_column_spanner_outer {
+#jcfbnnzvpp .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -653,15 +653,15 @@ Note
   padding-right: 4px;
 }
 
-#urvyjhrxjn .gt_column_spanner_outer:first-child {
+#jcfbnnzvpp .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#urvyjhrxjn .gt_column_spanner_outer:last-child {
+#jcfbnnzvpp .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#urvyjhrxjn .gt_column_spanner {
+#jcfbnnzvpp .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -673,11 +673,11 @@ Note
   width: 100%;
 }
 
-#urvyjhrxjn .gt_spanner_row {
+#jcfbnnzvpp .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#urvyjhrxjn .gt_group_heading {
+#jcfbnnzvpp .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -703,7 +703,7 @@ Note
   text-align: left;
 }
 
-#urvyjhrxjn .gt_empty_group_heading {
+#jcfbnnzvpp .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -718,15 +718,15 @@ Note
   vertical-align: middle;
 }
 
-#urvyjhrxjn .gt_from_md > :first-child {
+#jcfbnnzvpp .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#urvyjhrxjn .gt_from_md > :last-child {
+#jcfbnnzvpp .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#urvyjhrxjn .gt_row {
+#jcfbnnzvpp .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -745,7 +745,7 @@ Note
   overflow-x: hidden;
 }
 
-#urvyjhrxjn .gt_stub {
+#jcfbnnzvpp .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -758,7 +758,7 @@ Note
   padding-right: 5px;
 }
 
-#urvyjhrxjn .gt_stub_row_group {
+#jcfbnnzvpp .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -772,15 +772,15 @@ Note
   vertical-align: top;
 }
 
-#urvyjhrxjn .gt_row_group_first td {
+#jcfbnnzvpp .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#urvyjhrxjn .gt_row_group_first th {
+#jcfbnnzvpp .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#urvyjhrxjn .gt_summary_row {
+#jcfbnnzvpp .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -790,16 +790,16 @@ Note
   padding-right: 5px;
 }
 
-#urvyjhrxjn .gt_first_summary_row {
+#jcfbnnzvpp .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#urvyjhrxjn .gt_first_summary_row.thick {
+#jcfbnnzvpp .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#urvyjhrxjn .gt_last_summary_row {
+#jcfbnnzvpp .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -809,7 +809,7 @@ Note
   border-bottom-color: #D3D3D3;
 }
 
-#urvyjhrxjn .gt_grand_summary_row {
+#jcfbnnzvpp .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -819,7 +819,7 @@ Note
   padding-right: 5px;
 }
 
-#urvyjhrxjn .gt_first_grand_summary_row {
+#jcfbnnzvpp .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -829,7 +829,7 @@ Note
   border-top-color: #D3D3D3;
 }
 
-#urvyjhrxjn .gt_last_grand_summary_row_top {
+#jcfbnnzvpp .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -839,11 +839,11 @@ Note
   border-bottom-color: #D3D3D3;
 }
 
-#urvyjhrxjn .gt_striped {
+#jcfbnnzvpp .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#urvyjhrxjn .gt_table_body {
+#jcfbnnzvpp .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -852,7 +852,7 @@ Note
   border-bottom-color: #D3D3D3;
 }
 
-#urvyjhrxjn .gt_footnotes {
+#jcfbnnzvpp .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -866,7 +866,7 @@ Note
   border-right-color: #D3D3D3;
 }
 
-#urvyjhrxjn .gt_footnote {
+#jcfbnnzvpp .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -875,7 +875,7 @@ Note
   padding-right: 5px;
 }
 
-#urvyjhrxjn .gt_sourcenotes {
+#jcfbnnzvpp .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -889,7 +889,7 @@ Note
   border-right-color: #D3D3D3;
 }
 
-#urvyjhrxjn .gt_sourcenote {
+#jcfbnnzvpp .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -897,72 +897,72 @@ Note
   padding-right: 5px;
 }
 
-#urvyjhrxjn .gt_left {
+#jcfbnnzvpp .gt_left {
   text-align: left;
 }
 
-#urvyjhrxjn .gt_center {
+#jcfbnnzvpp .gt_center {
   text-align: center;
 }
 
-#urvyjhrxjn .gt_right {
+#jcfbnnzvpp .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#urvyjhrxjn .gt_font_normal {
+#jcfbnnzvpp .gt_font_normal {
   font-weight: normal;
 }
 
-#urvyjhrxjn .gt_font_bold {
+#jcfbnnzvpp .gt_font_bold {
   font-weight: bold;
 }
 
-#urvyjhrxjn .gt_font_italic {
+#jcfbnnzvpp .gt_font_italic {
   font-style: italic;
 }
 
-#urvyjhrxjn .gt_super {
+#jcfbnnzvpp .gt_super {
   font-size: 65%;
 }
 
-#urvyjhrxjn .gt_footnote_marks {
+#jcfbnnzvpp .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#urvyjhrxjn .gt_asterisk {
+#jcfbnnzvpp .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#urvyjhrxjn .gt_indent_1 {
+#jcfbnnzvpp .gt_indent_1 {
   text-indent: 5px;
 }
 
-#urvyjhrxjn .gt_indent_2 {
+#jcfbnnzvpp .gt_indent_2 {
   text-indent: 10px;
 }
 
-#urvyjhrxjn .gt_indent_3 {
+#jcfbnnzvpp .gt_indent_3 {
   text-indent: 15px;
 }
 
-#urvyjhrxjn .gt_indent_4 {
+#jcfbnnzvpp .gt_indent_4 {
   text-indent: 20px;
 }
 
-#urvyjhrxjn .gt_indent_5 {
+#jcfbnnzvpp .gt_indent_5 {
   text-indent: 25px;
 }
 
-#urvyjhrxjn .katex-display {
+#jcfbnnzvpp .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#urvyjhrxjn div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#jcfbnnzvpp div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1163,10 +1163,10 @@ Note
 <span><span class="va">num_female_gold</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">country</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  </span>
 <span>  <span class="va">female_medals</span> <span class="op">&lt;-</span> <span class="va">olympics</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">team</span> <span class="op">==</span> <span class="va">country</span>,</span>
+<span>    <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/filter.html">filter</a></span><span class="op">(</span><span class="va">team</span> <span class="op">==</span> <span class="va">country</span>,</span>
 <span>           <span class="va">sex</span> <span class="op">==</span> <span class="st">"F"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct</a></span><span class="op">(</span><span class="va">games</span>, <span class="va">event</span>, <span class="va">medal</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">medal</span><span class="op">)</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/distinct.html">distinct</a></span><span class="op">(</span><span class="va">games</span>, <span class="va">event</span>, <span class="va">medal</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/pull.html">pull</a></span><span class="op">(</span><span class="va">medal</span><span class="op">)</span></span>
 <span>  </span>
 <span>  </span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">female_medals</span> <span class="op">==</span> <span class="st">"Gold"</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
@@ -1175,11 +1175,11 @@ Note
 </div>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">olympics</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct</a></span><span class="op">(</span><span class="va">team</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
-<span>    n_f_gold <span class="op">=</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map_dbl</a></span><span class="op">(</span><span class="va">team</span>, <span class="va">num_female_gold</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/distinct.html">distinct</a></span><span class="op">(</span><span class="va">team</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/mutate.html">mutate</a></span><span class="op">(</span></span>
+<span>    n_f_gold <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/purrr/man/map.html">map_dbl</a></span><span class="op">(</span><span class="va">team</span>, <span class="va">num_female_gold</span><span class="op">)</span></span>
 <span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_max</a></span><span class="op">(</span><span class="va">n_f_gold</span>, n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/slice.html">slice_max</a></span><span class="op">(</span><span class="va">n_f_gold</span>, n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 10 × 2
    team          n_f_gold
