@@ -24,15 +24,6 @@ Before you begin debugging, figure out exactly what flagged the problem: what ou
 
 Next, try to **reproduce** the error. Find or create a small, self-contained piece of code that shows the problem happening. This is called a *reproducible example*.
 
-### The `reprex` package
-
-::: stat541
-:::
-
-Reproducible examples are so important to open-source collaboration, the `tidyverse` contains a package specifically to help people create and share them.
-
-**Read this vignette:** https://reprex.tidyverse.org/articles/learn-reprex.html
-
 ## Where is the problem?
 
 Now that you found something going wrong, we need to track down the exact line of code that's causing the problem.
@@ -272,6 +263,15 @@ https://r-statistics.co/R-Debugging.html
 
 https://srvanderplas.github.io/stat-computing-r-python/part-gen-prog/06-debugging.html
 :::
+
+### The `reprex` package
+
+::: stat541
+:::
+
+Reproducible examples are so important to open-source collaboration, the `tidyverse` contains a package specifically to help people create and share them.
+
+**Read this vignette:** https://reprex.tidyverse.org/articles/learn-reprex.html
 
 <!-- ::: stat541 -->
 

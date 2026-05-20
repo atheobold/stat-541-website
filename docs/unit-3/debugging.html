@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.26">
+<meta name="generator" content="quarto-1.8.24">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>Debugging Package Code – Advanced R</title>
 <style>
@@ -71,9 +71,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b758ccaa5987ceb1b75504551e579abf.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b651517ce65839d647a86e2780455cfb.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-63767328852000e01d7c9d44355c1f36.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
@@ -285,7 +285,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
 <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
+    <a class="nav-link active" href="../index.html" aria-current="page"> 
 <span class="menu-text">Overview</span></a>
   </li>  
   <li class="nav-item">
@@ -309,7 +309,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Unit 2 - Professional Deliverables</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../unit-3.html" aria-current="page"> 
+    <a class="nav-link" href="../unit-3.html"> 
 <span class="menu-text">Unit 3 - Package Development</span></a>
   </li>  
   <li class="nav-item">
@@ -339,7 +339,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </div>
   </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="sidebar-menu-container"> 
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="../index.html" class="sidebar-logo-link">
+      </a>
+      </div>
+    <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
@@ -397,17 +401,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
    
   <ul>
-<li>
-<a href="#what-went-wrong" id="toc-what-went-wrong" class="nav-link active" data-scroll-target="#what-went-wrong">What went wrong?</a>
-  <ul class="collapse">
-<li><a href="#the-reprex-package" id="toc-the-reprex-package" class="nav-link" data-scroll-target="#the-reprex-package">The <code>reprex</code> package</a></li>
-  </ul>
-</li>
+<li><a href="#what-went-wrong" id="toc-what-went-wrong" class="nav-link active" data-scroll-target="#what-went-wrong">What went wrong?</a></li>
   <li><a href="#where-is-the-problem" id="toc-where-is-the-problem" class="nav-link" data-scroll-target="#where-is-the-problem">Where is the problem?</a></li>
   <li>
 <a href="#why-isnt-it-working" id="toc-why-isnt-it-working" class="nav-link" data-scroll-target="#why-isnt-it-working">Why isn’t it working?</a>
   <ul class="collapse">
 <li><a href="#mismatched-data-types-or-structures" id="toc-mismatched-data-types-or-structures" class="nav-link" data-scroll-target="#mismatched-data-types-or-structures">Mismatched data types or structures</a></li>
+  <li><a href="#the-reprex-package" id="toc-the-reprex-package" class="nav-link" data-scroll-target="#the-reprex-package">The <code>reprex</code> package</a></li>
   </ul>
 </li>
   </ul><div class="toc-actions"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/unit-3/debugging.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></nav>
@@ -440,13 +440,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>If you’ve made it to this point, you already know something is wrong! This is why <strong>unit tests</strong> are so critical: they can help you spot moments where your output was not what you expected.</p>
 <p>Before you begin debugging, figure out exactly what flagged the problem: what output did you <em>expect</em> and what output did you <em>see</em>?</p>
 <p>Next, try to <strong>reproduce</strong> the error. Find or create a small, self-contained piece of code that shows the problem happening. This is called a <em>reproducible example</em>.</p>
-<section id="the-reprex-package" class="level3"><h3 class="anchored" data-anchor-id="the-reprex-package">The <code>reprex</code> package</h3>
-<div class="stat541">
-
-</div>
-<p>Reproducible examples are so important to open-source collaboration, the <code>tidyverse</code> contains a package specifically to help people create and share them.</p>
-<p><strong>Read this vignette:</strong> https://reprex.tidyverse.org/articles/learn-reprex.html</p>
-</section></section><section id="where-is-the-problem" class="level2"><h2 class="anchored" data-anchor-id="where-is-the-problem">Where is the problem?</h2>
+</section><section id="where-is-the-problem" class="level2"><h2 class="anchored" data-anchor-id="where-is-the-problem">Where is the problem?</h2>
 <p>Now that you found something going wrong, we need to track down the exact line of code that’s causing the problem.</p>
 <p>Sometimes, you need to go no further than <em>actually reading the error message</em>!</p>
 <p>Although error messages can be unclear at times, they are still your best first line of defense. If the error message provides a snippet of code after the words <code>Error in</code>, this is of course where you should look!</p>
@@ -714,12 +708,18 @@ Warning
 <p>https://srvanderplas.github.io/stat-computing-r-python/part-gen-prog/06-debugging.html</p>
 </div>
 </div>
+</section></section><section id="the-reprex-package" class="level3"><h3 class="anchored" data-anchor-id="the-reprex-package">The <code>reprex</code> package</h3>
+<div class="stat541">
+
+</div>
+<p>Reproducible examples are so important to open-source collaboration, the <code>tidyverse</code> contains a package specifically to help people create and share them.</p>
+<p><strong>Read this vignette:</strong> https://reprex.tidyverse.org/articles/learn-reprex.html</p>
 <!-- ::: stat541 -->
 <!-- ::: -->
 <!-- ## Scope -->
 
 
-</section></section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
     if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
