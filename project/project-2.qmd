@@ -29,8 +29,6 @@ The Quarto dashboard you create _must_ have the following elements:
 
 ## Static Content
 
--   at least two cards with quick information (e.g., % of people across the
-world who have faith in vaccines)
 -   one plot made with `leaflet`
 -   one additional interactive plot or table
 -   non-default plot colors
