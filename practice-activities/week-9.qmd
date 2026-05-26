@@ -94,7 +94,7 @@ Run some other unit tests on these functions until you discover the hidden bug.
 ### Step Five: Test small functions
 
 Now, write your own unit tests for the basic calculation and data wrangling 
-functions in `counts.R`, `correlation.R`, `angle.R`, and `filter.R`. 
+functions in `counts.R`, `correlation.R`, `centroid.R`, `angle.R`, and `filter.R`. 
 
 These unit tests should include:
 
