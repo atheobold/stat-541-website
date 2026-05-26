@@ -40,3 +40,4 @@ rarity_by_release(artist)
 **5 extra credit points for:** Any submissions that are (a) installable packages and (b) faster than the original, even by a little bit.
 
 **5 additional extra credit points for:** The top three fastest submissions in each class, as tested by the professor.
+

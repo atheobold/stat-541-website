@@ -630,13 +630,13 @@ Warning
 <ol type="1">
 <li>When data is scraped from the web, you often have repeated processes, such as scraping each of many identical pages. Why would it be a bad idea to parallelize webscraping code?</li>
 </ol>
-<ol type="a">
+<!-- --><ol type="a">
 <li><p>It is important to get the pages in order to keep track of what you’ve done.</p></li>
 <li><p>If you get an error on one page you have to start at the beginning.</p></li>
 <li><p>Simultaneous scraping is likely to violate the rate limits from <code>robots.txt</code></p></li>
 <li><p>It is impossible to access two different web pages at the same time.</p></li>
 </ol>
-<ol start="2" type="1">
+<!-- --><ol start="2" type="1">
 <li>Here is some iteration code. What would you change to make it run in parallel?</li>
 </ol>
 <div class="cell">
@@ -664,7 +664,7 @@ Warning
 <p>Even for a small dataset like <code>palmerpenguins</code>, the <code>.parquet</code> file containing the <em>exact same information</em> is less than <strong>half</strong> the size!</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">write_csv</span><span class="op">(</span><span class="va">penguins</span>, <span class="st">"penguins.csv"</span><span class="op">)</span></span>
-<span><span class="fu">arrow</span><span class="fu">::</span><span class="fu">write_parquet</span><span class="op">(</span><span class="va">penguins</span>, <span class="st">"penguins.parquet"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="fu">arrow</span><span class="fu">::</span><span class="fu"><a href="https://arrow.apache.org/docs/r/reference/write_parquet.html">write_parquet</a></span><span class="op">(</span><span class="va">penguins</span>, <span class="st">"penguins.parquet"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><img src="./images/penguins_sizes.png" class="img-fluid"></p>
 <p>The <code>arrow</code> package is designed to help read and write parquet files. (It also provides a number of other helpful speed-ups, but we’ll focus just on the parquet elements for now.)</p>
@@ -699,7 +699,7 @@ Warning
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/apache/arrow/">arrow</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">write_csv</span><span class="op">(</span><span class="va">flights</span>, <span class="st">"flights.csv"</span><span class="op">)</span></span>
-<span><span class="fu">write_parquet</span><span class="op">(</span><span class="va">flights</span>, <span class="st">"flights.parquet"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="fu"><a href="https://arrow.apache.org/docs/r/reference/write_parquet.html">write_parquet</a></span><span class="op">(</span><span class="va">flights</span>, <span class="st">"flights.parquet"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>How much smaller was the parquet file compared to the csv?</p>
 <ol start="2" type="1">

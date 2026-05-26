@@ -563,7 +563,7 @@ Important
 </ul>
 <p>Let’s give this a go!</p>
 <ol type="1">
-<li>Using the <code>base_url</code>, <code>lat</code> and <code>long</code> objects, obtain the ISS pass times for New York City. Save this object as <code>nyc</code>. <em>Hint 1: The <code>glue()</code> function from the <strong>glue</strong> package or the <code><a href="https://rdrr.io/pkg/stringr/man/str_c.html">str_c()</a></code> function from <strong>stringr</strong> will be helpful here!</em> <em>Hint 2: What function do you use to get information from an API?</em>
+<li>Using the <code>base_url</code>, <code>lat</code> and <code>long</code> objects, obtain the ISS pass times for New York City. Save this object as <code>nyc</code>. <em>Hint 1: The <code>glue()</code> function from the <strong>glue</strong> package or the <code><a href="https://stringr.tidyverse.org/reference/str_c.html">str_c()</a></code> function from <strong>stringr</strong> will be helpful here!</em> <em>Hint 2: What function do you use to get information from an API?</em>
 </li>
 </ol>
 <div class="cell">
@@ -577,16 +577,16 @@ Important
 </li>
 </ol>
 <ol start="3" type="1">
-<li>The <code>start</code> column for the passtimes is what we are interested in, but currently this is formatted as a string (e.g., <code>"2026-02-26T05:23:21.257Z"</code>). Parse this column into a data-time object using the <code><a href="https://rdrr.io/pkg/lubridate/man/ymd_hms.html">ymd_hms()</a></code> function from <strong>lubridate</strong>. <em>Hint: The pass times for the ISS are reported in UTC (Coordinated Universal Time).</em>
+<li>The <code>start</code> column for the passtimes is what we are interested in, but currently this is formatted as a string (e.g., <code>"2026-02-26T05:23:21.257Z"</code>). Parse this column into a data-time object using the <code><a href="https://lubridate.tidyverse.org/reference/ymd_hms.html">ymd_hms()</a></code> function from <strong>lubridate</strong>. <em>Hint: The pass times for the ISS are reported in UTC (Coordinated Universal Time).</em>
 </li>
 </ol>
 <ol start="4" type="1">
-<li>Our final step is to isolate the pass time for NYC. Use the <code><a href="https://rdrr.io/pkg/dplyr/man/pull.html">pull()</a></code> function to extract the parsed data-time column you made in the last question. <strong>Can you collapse <em>all</em> the steps into <em>one</em> pipeline?</strong>
+<li>Our final step is to isolate the pass time for NYC. Use the <code><a href="https://dplyr.tidyverse.org/reference/pull.html">pull()</a></code> function to extract the parsed data-time column you made in the last question. <strong>Can you collapse <em>all</em> the steps into <em>one</em> pipeline?</strong>
 </li>
 </ol></section><section id="getting-the-pass-times-for-every-city" class="level2"><h2 class="anchored" data-anchor-id="getting-the-pass-times-for-every-city">Getting the Pass Times for <em>Every</em> City</h2>
 <p>Now that we have worked out each step using <em>one</em> city, the next step is to scale this process to <strong>multiple</strong> cities. We’ve created a tibble with ten major cities across the world. Your goal is to acquire the pass time for each city.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cities</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/tibble/man/tibble.html">tibble</a></span><span class="op">(</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cities</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span></span>
 <span>  city <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
 <span>    <span class="st">"New York"</span>, <span class="st">"Mexico City"</span>, <span class="st">"Sao Paulo"</span>, <span class="st">"London"</span>,</span>
 <span>    <span class="st">"Cairo"</span>, <span class="st">"Nairobi"</span>, <span class="st">"Mumbai"</span>, <span class="st">"Bangkok"</span>,</span>
@@ -614,7 +614,7 @@ Important
 </li>
 </ol>
 <ol start="6" type="1">
-<li>Using <code><a href="https://rdrr.io/pkg/purrr/man/map2.html">map2()</a></code> iterate your function over the <code>latitude</code> and <code>longitude</code> columns of the <code>cities</code> dataframe. <em>Hint: There are three arguments to <code><a href="https://rdrr.io/pkg/purrr/man/map2.html">map2()</a></code>, <code>.x</code>, <code>.y</code>, and <code>.f</code>. You will need to specify each!</em>
+<li>Using <code><a href="https://purrr.tidyverse.org/reference/map2.html">map2()</a></code> iterate your function over the <code>latitude</code> and <code>longitude</code> columns of the <code>cities</code> dataframe. <em>Hint: There are three arguments to <code><a href="https://purrr.tidyverse.org/reference/map2.html">map2()</a></code>, <code>.x</code>, <code>.y</code>, and <code>.f</code>. You will need to specify each!</em>
 </li>
 </ol>
 <p>Crap! It seems we got an error. Let’s think through what might be happening.</p>
@@ -622,13 +622,13 @@ Important
 <li>How does your function handle cities without pass times? What can you add to the body of your function to handle this special case?</li>
 </ol>
 <ol start="8" type="1">
-<li>Alright, let’s try this again! Using <code><a href="https://rdrr.io/pkg/purrr/man/map2.html">map2()</a></code> iterate your function over the <code>latitude</code> and <code>longitude</code> columns of the <code>cities</code> dataframe.</li>
+<li>Alright, let’s try this again! Using <code><a href="https://purrr.tidyverse.org/reference/map2.html">map2()</a></code> iterate your function over the <code>latitude</code> and <code>longitude</code> columns of the <code>cities</code> dataframe.</li>
 </ol>
 <ol start="9" type="1">
-<li>Your <code><a href="https://rdrr.io/pkg/purrr/man/map.html">map()</a></code> should have been successful, but you should notice something else happening. There are cities with <strong>multiple</strong> pass times! What can you add to the body of your function to grab the <em>first</em> pass time for cities with multiple pass times?</li>
+<li>Your <code><a href="https://purrr.tidyverse.org/reference/map.html">map()</a></code> should have been successful, but you should notice something else happening. There are cities with <strong>multiple</strong> pass times! What can you add to the body of your function to grab the <em>first</em> pass time for cities with multiple pass times?</li>
 </ol>
 <ol start="10" type="1">
-<li>Alright, let’s try this one last time! Using <code><a href="https://rdrr.io/pkg/purrr/man/map2.html">map2()</a></code> iterate your function over the <code>latitude</code> and <code>longitude</code> columns of the <code>cities</code> dataframe. <strong>Save this object as <code>city_passes</code> so you don’t get an error about exceeding 10 requests per minute.</strong>
+<li>Alright, let’s try this one last time! Using <code><a href="https://purrr.tidyverse.org/reference/map2.html">map2()</a></code> iterate your function over the <code>latitude</code> and <code>longitude</code> columns of the <code>cities</code> dataframe. <strong>Save this object as <code>city_passes</code> so you don’t get an error about exceeding 10 requests per minute.</strong>
 </li>
 </ol>
 <div class="cell">
@@ -637,7 +637,7 @@ Important
 <ol start="11" type="1">
 <li>Add each city’s pass times to the original <code>cities</code> dataframe. Arrange the table based on the cities where the ISS will pass next.</li>
 </ol>
-<p><em>Hint: The <code>city_passes</code> object is a list which you will need to unpack. The <code><a href="https://rdrr.io/pkg/tidyr/man/unnest.html">unnest()</a></code> will be helpful here!</em></p>
+<p><em>Hint: The <code>city_passes</code> object is a list which you will need to unpack. The <code><a href="https://tidyr.tidyverse.org/reference/unnest.html">unnest()</a></code> will be helpful here!</em></p>
 </section><section id="rendering-your-html" class="level2"><h2 class="anchored" data-anchor-id="rendering-your-html">Rendering Your HTML</h2>
 <p>As you are likely aware, the API maxes out at 10 queries per minute. So, it will be impossible to render your HTML document without modifications (since you query the API 30 times!).</p>
 <p>To render your HTML file, set <code>#| eval: false</code> for the code chunks associated with Question 6 and Question 8.</p>
