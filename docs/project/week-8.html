@@ -507,8 +507,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Use <code>roxygen2</code> documentation to document the <code>load_data</code> function. Don’t forget to document dependencies on other packages, including for example:</li>
 </ol>
 <ul>
-<li><p>Reference the package directly with <code><a href="https://readr.tidyverse.org/reference/read_delim.html">readr::read_csv</a></code> or use <code>@importFrom readr read_csv</code></p></li>
-<li><p>Run <code>use_packages("readr")</code> to include the package as an imported dependency.</p></li>
+<li><p>Use <code>@importFrom readr read_csv</code> to specify the package and function(s) your function is dependent on</p></li>
+<li><p>Directly reference the package that the function you are using lives in: <code><a href="https://readr.tidyverse.org/reference/read_delim.html">readr::read_csv()</a></code></p></li>
 </ul>
 <p>You do <strong>not</strong> have to write any <code>testthat</code> tests at this stage!</p>
 </section><section id="make-a-plan" class="level3"><h3 class="anchored" data-anchor-id="make-a-plan">Make a plan</h3>
