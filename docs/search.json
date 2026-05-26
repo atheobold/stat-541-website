@@ -749,7 +749,7 @@
     "href": "project/project-2.html#static-content",
     "title": "Project 2 Final Deliverable",
     "section": "Static Content",
-    "text": "Static Content\n\nat least two cards with quick information (e.g., % of people across the world who have faith in vaccines)\none plot made with leaflet\none additional interactive plot or table\nnon-default plot colors\na summary table displaying summary statistics or the results of a statistical model\n\n\n\n\n\n\n\n\n\nWarningCoordinated Colors\n\n\n\nThe colors in your styled dashboard should match the colors in your plots!",
+    "text": "Static Content\n\none plot made with leaflet\none additional interactive plot or table\nnon-default plot colors\na summary table displaying summary statistics or the results of a statistical model\n\n\n\n\n\n\n\n\n\nWarningCoordinated Colors\n\n\n\nThe colors in your styled dashboard should match the colors in your plots!",
     "crumbs": [
       "Projects",
       "Project 2 Final Deliverable"
