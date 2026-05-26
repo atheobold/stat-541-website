@@ -10,7 +10,7 @@ Just like with any other technology, when you build a new package, you need to t
 
 Last week, you saw some examples of unit tests in the `testthat` package structure. For now, we'll take a step back from that formal structure and simply think about how to write quick code to check your function.
 
-Suppose you have a function called `add_two` that claims to add a two to any number.  What might you want to try before you would trust this function?
+Suppose you have a function called `add_two()` that claims to add a two to any number. What might you want to try before you would trust this function?
 
 Well, you'd probably want to try a very simple input to see if you believe it:
 
@@ -52,19 +52,16 @@ test <- tibble(a = 5, b = 6)
 add_two(test)
 ```
 
-
-
-
 ## Testing packages with `testthat`
 
-::: required-reading
+::: {.callout-required-reading}
 [R Packages Chapter 13 - Testing Basics](https://r-pkgs.org/testing-basics.html)
 :::
 
 ::: callout-important
 # Check-In: `testthat`
 
-1. When you create testing code like: 
+1.  When you create testing code like:
 
 ```{r}
 #| eval: false
@@ -73,11 +70,11 @@ test_that("the function bob works", {
 })
 ```
 
-* What file should this code go in?  
+- What file should this code go in?
 
-* What folder(s) should that file live in?
+- What folder(s) should that file live in?
 
-* What function in the blank below will create a well-named file in the correct place? 
+- What function in the blank below will create a well-named file in the correct place?
 
 ```{r}
 #| eval: false
@@ -85,53 +82,44 @@ test_that("the function bob works", {
 usethis::_____("bob")
 ```
 
+2.  Which `expect_` function should you use when...
 
-2. Which `expect_` function should you use when...
+- You want to check that values match, but not specific data types.
 
-* You want to check that values match, but not specific data types.
+- You want to check that outputs match, including the exact data type.
 
-* You want to check that outputs match, including the exact data type.
-
-* You want the code to produce an error.
-
+- You want the code to produce an error.
 :::
-
-
 
 ### Test Coverage
 
 ::: stat541
 :::
 
-In open-source development, users must rely on and trust packages made by others.  
-Unit tests provide some level of reassurance that the package works, and will continue
-to work.  A package with good `testthat` tests can be changed and updated with confidence,
-because you know that they are always making sure those original tests still pass.
+In open-source development, users must rely on and trust packages made by others.\
+Unit tests provide some level of reassurance that the package works, and will continue to work. A package with good `testthat` tests can be changed and updated with confidence, because you know that they are always making sure those original tests still pass.
 
-It's impossible to test every single thing someone might put into your function
-- this is why bugs still exist! - but the more **coverage** you include, the more
-stable your package will be.
+It's impossible to test every single thing someone might put into your function - this is why bugs still exist! - but the more **coverage** you include, the more stable your package will be.
 
-The `covr` package provides measurements of how thoroughly your package
-is covered by your unit tests.  
+The `covr` package provides measurements of how thoroughly your package is covered by your unit tests.
 
-Open up your `regexcite` package project from last week.  Then run
+Open up your `regexcite` package project from last week. Then run
 
 ```{r}
 #| eval: false
 covr::package_coverage(".")
 ```
 
-What did this return?  What is the coverage of your package?
+What did this return? What is the coverage of your package?
 
 ::: callout-important
 # Check-In: `covr`
 
-Which of the following is **not** a reason to have good test coverage in a package?
+3. Which of the following is **not** a reason to have good test coverage in a package?
 
-* It helps other people trust that your package works as intended.
+- It helps other people trust that your package works as intended.
 
-* It helps you debug if you break something.
+- It helps you debug if you break something.
 
-* It gives users some examples of how your functions should be used.
+- It gives users some examples of how your functions should be used.
 :::
