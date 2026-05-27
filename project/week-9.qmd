@@ -8,13 +8,9 @@ Now it's time to fill out the functions in your package.
 
 Choose two of the "aspirational" code chunks from Project 3, Checkpoint 1 - one plot, and one summary.
 
-Run
-`use_this::use_r("some-name")` to create a new `.R` file for each function, choosing
-a name for the file that relates to the name of the function.  Then run 
-`use_this::use_test("some-name")` with the same file name to create the corresponding test.
+Run `use_this::use_r("some-name")` to create a new `.R` file for each function, choosing a name for the file that relates to the name of the function. Then run `use_this::use_test("some-name")` with the same file name to create the corresponding test.
 
-In the files `some-name.R`, fill out the `roxygen2` style documentation according
-to how you plan for the function to work.
+In the files `some-name.R`, fill out the `roxygen2` style documentation according to how you plan for the function to work.
 
 ### Create the tests
 
@@ -24,9 +20,7 @@ You've written "aspirational" code - so you already know what you want to have h
 
 In the file `tests/testthat/test-some-name.R`, edit the code of the unit test.
 
-If your output is a plot, it's hard to check specifics of the plot, but you'll 
-still want to make sure a plot was actually created.
-Your test will probably look something like this:
+If your output is a plot, it's hard to check specifics of the plot, but you'll still want to make sure a plot was actually created. Your test will probably look something like this:
 
 ```{r}
 #| eval: false
@@ -45,9 +39,7 @@ test_that("plot gold medals works", {
 
 ```
 
-If your output is summary calculations, you'll want to also check the values themselves,
-by computing them outside the function and comparing.  Your test will probably
-look like this:
+If your output is summary calculations, you'll want to also check the values themselves, by computing them outside the function and comparing. Your test will probably look like this:
 
 ```{r}
 #| eval: false
@@ -71,10 +63,8 @@ test_that("summarize medals works", {
 
 ```
 
-::: .callout-note
-
-*How did I know the numbers to expect?  I ran 
-code on my data and looked at it!*
+::: callout-note
+*How did I know the numbers to expect? I ran code on my data and looked at it!*
 
 ```{r}
 tuesdata <- tidytuesdayR::tt_load('2024-08-06')
@@ -90,24 +80,21 @@ dat |>
     )
 ```
 
-
-
 At first this might seem silly - you're running the exact code from *inside* your function to get the **expected result** and then comparing it to what the function *actually* produces.
 
 But this approach "locks down" the correct output, so that if you make the function more complicated in the future, you'll still be checking that it works correctly.
-
 :::
 
 ### Write the functions
 
 Now it's time to fill out your actual function code!
 
-Since these functions are meant to be shortcuts for code you already wrote, you can begin by simply copying that code into the function body.  Then, you'll need to *generalize* the function for different inputs and outputs.
+Since these functions are meant to be shortcuts for code you already wrote in previous units, you can begin by simply copying that code into the function body. Then, you'll need to *generalize* the function for different inputs and outputs.
 
 Don't forget to *validate* your function inputs!
 
-::: .callout-warning
-It can be challenging to write functions with **unquoted** variable names in them.  For example,
+::: callout-warning
+It can be challenging to write functions with **unquoted** variable names in them. For example,
 
 ```{r}
 #| eval: false
@@ -128,7 +115,7 @@ will not.
 
 **Stat 541 students** should review [the Unit 1 material about non-standard evaluation](https://atheobold.github.io/advanced-R-website/unit-1/writing-functions.html#non-standard-evaluation-and-tunneling).
 
-**Stat 431 students**, you may always take variable names as *string* input.  Then use `.data[[var_name]]` wherever you used to have the name of the variable, e.g.
+**Stat 431 students**, you may always take variable names as *string* input. Then use `.data[[var_name]]` wherever you used to have the name of the variable, e.g.
 
 ```{r}
 #| eval: false
@@ -137,26 +124,20 @@ select_team <- function(dat, team) {
   dat |> select(.data[[team]])
 }
 ```
-
 :::
-
-
 
 ### Refactor your functions
 
-Look for some steps in your functions where something is repeated, or might be repeated in the future.  Some examples might include:
+Look for some steps in your functions where something is repeated, or might be repeated in the future. Some examples might include:
 
-* Loading and immediately filtering your data.
+- Loading and immediately filtering your data.
 
-* Validating function input
+- Validating function input
 
-* Computing frequently used summary statistics.
+- Computing frequently used summary statistics.
 
-Create a new helper function for at least one of these steps, and include this
-function (and its documentation and tests!) in your package.
-
+Create a new helper function for at least one of these steps, and include this function (and its documentation and tests!) in your package.
 
 ### Document, build, test!
 
-Make sure to re-document, re-build, and re-test your package before you do your
-final push to GitHub!
+Make sure to re-document, re-build, and re-test your package before you do your final push to GitHub!
