@@ -438,10 +438,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>Then open <code>pa-9.qmd</code>.</p>
 </section><section id="step-one-understand-goals" class="level2"><h2 class="anchored" data-anchor-id="step-one-understand-goals">Step One: Understand goals</h2>
-<p>The primary goal of this package is to guess the species of an unknown beetle, based on two measurements of its horns (or <em>aedeagus</em>): the width in microns, and the angle in degrees.</p>
-<p>The <code>entomology</code> package supplies a function called <code>beetle_classify_nearest</code>, which takes in a width and angle and returns the predicted species. However, this function doesn’t work, due to errors in its code and the functions it depends on.</p>
-<p>Begin by looking at the source code of <code>beetle_classify_nearest</code>, which is in the <code>classify.R</code> file. In your own words, what do the steps of this function seem to be doing?</p>
-<p>Then, notice that <code>beetle_classify_nearest</code> depends on two new functions: <code>beetle_species</code> and <code>beetle_centroid</code>. What <code>.R</code> file are these in? What do they do? What new functions to <em>they</em> depend on? What do those do? And so on.</p>
+<p>The primary goal of this package is to guess the species of an unknown beetle, based on two measurements of its horns (or <em>aedeagus</em>): the width in microns and the angle in degrees.</p>
+<p>The <code>entomology</code> package supplies a function called <code>beetle_classify_nearest()</code>, which takes in a width and angle and returns the predicted species. However, this function doesn’t work due to errors in its code and the functions it depends on.</p>
+<p>Begin by looking at the source code of <code>beetle_classify_nearest()</code>, which is in the <code>classify.R</code> file. In your own words, what do the steps of this function seem to be doing?</p>
+<p>Then, notice that <code>beetle_classify_nearest()</code> depends on two new functions: <code>beetle_species()</code> and <code>beetle_centroid()</code>. What <code>.R</code> file are these in? What do they do? What new functions to <em>they</em> depend on? What do those do? And so on.</p>
 <section id="step-two-find-syntax-errors" class="level3"><h3 class="anchored" data-anchor-id="step-two-find-syntax-errors">Step Two: Find syntax errors</h3>
 <p>If our code is poorly formed, we even won’t be able to run it to test it!</p>
 <p>In your <code>entomology</code> package project, attempt to <strong>build</strong> the package. <em>(Reminder: Ctrl/Cmd-Shift-B is a shortcut!)</em></p>
@@ -462,7 +462,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>You’ll find that the <code>validate_species</code> function is not found, even if your package is fully build and loaded. This is because it is an <strong>unexported</strong> function - it was made to help the developer simplify their design, not so that users could access it and use it. Notice that the <code>roxygen2</code> documentation comments above these functions do not include an <code>@export</code> line, and that these functions do not show up in the <code>NAMESPACE</code> file.</p>
 <p>To access and run an unexported function, use triple colons <code>:::</code>, e.g.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">entomology</span><span class="fu">:::</span><span class="fu">validate_species</span><span class="op">(</span><span class="st">"Con"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">entomology</span><span class="fu">:::</span><span class="fu"><a href="https://rdrr.io/pkg/entomology/man/validate_species.html">validate_species</a></span><span class="op">(</span><span class="st">"Con"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Run some other unit tests on these functions until you discover the hidden bug.</p>
 <p><em>Hint: Make sure to try every possible input that the function claims it can accept.</em></p>
@@ -482,8 +482,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 Use debugging techniques like <code><a href="https://rdrr.io/r/base/debug.html">debugonce()</a></code> or <code>browse()</code> to find where problems are happening.</p>
 <p><em>Hint: While there is only one bug directly in this file, there is also a problem in another file that causes this code to break, that you should track down via your debugging.</em></p>
 </section><section id="test-coverage-stat-541-only" class="level3"><h3 class="anchored" data-anchor-id="test-coverage-stat-541-only">Test Coverage (Stat 541 Only)</h3>
-<p>All your unit tests should be included formally in the package using the <code>testthat</code> structure.</p>
-<p>Run <code>covr::package_coverage(".")</code>. You should have 100% coverage!</p>
+<p>All your unit tests should be written using function from the <code>testthat</code> package. You <strong>do not</strong> need to include them in the <code>\tests</code> folder.</p>
+<!-- Run `covr::package_coverage(".")`.  You should have 100% coverage! -->
 </section><section id="hints-and-advice" class="level3"><h3 class="anchored" data-anchor-id="hints-and-advice">Hints and Advice</h3>
 <ul>
 <li><p>Most of the errors in this package are <em>not</em> computational; instead, they are related to syntax problems, inconsistent object types and structures, etc.</p></li>

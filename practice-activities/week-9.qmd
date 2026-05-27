@@ -27,23 +27,22 @@ Then open `pa-9.qmd`.
 ## Step One: Understand goals
 
 The primary goal of this package is to guess the species of an unknown beetle,
-based on two measurements of its horns (or *aedeagus*): the width in microns, 
+based on two measurements of its horns (or *aedeagus*): the width in microns 
 and the angle in degrees.
 
-The `entomology` package supplies a function called `beetle_classify_nearest`,
+The `entomology` package supplies a function called `beetle_classify_nearest()`,
 which takes in a width and angle and returns the predicted species.  However,
-this function doesn't work, due to errors in its code and the functions it
+this function doesn't work due to errors in its code and the functions it
 depends on.
 
-Begin by looking at the source code of `beetle_classify_nearest`, which is in the
-`classify.R` file.  In your own words, what do the steps of this function seem to 
-be doing?
+Begin by looking at the source code of `beetle_classify_nearest()`, which is in
+the `classify.R` file.  In your own words, what do the steps of this function 
+seem to be doing?
 
-Then, notice that `beetle_classify_nearest` depends on two new functions:
-`beetle_species` and `beetle_centroid`.  What `.R` file are these in?  What do
-they do?  What new functions to *they* depend on?  What do those do?  And so on.
-
-
+Then, notice that `beetle_classify_nearest()` depends on two new functions:
+`beetle_species()` and `beetle_centroid()`.  What `.R` file are these in?  What
+do they do?  What new functions to *they* depend on?  What do those do?  And so
+on.
 
 ### Step Two: Find syntax errors
 
@@ -128,10 +127,10 @@ your debugging.*
 
 ### Test Coverage (Stat 541 Only)
 
-All your unit tests should be included formally in the package using the `testthat`
-structure.
+All your unit tests should be written using function from the `testthat`
+package. You **do not** need to include them in the `\tests` folder. 
 
-Run `covr::package_coverage(".")`.  You should have 100% coverage!
+<!-- Run `covr::package_coverage(".")`.  You should have 100% coverage! -->
 
 ### Hints and Advice
 
