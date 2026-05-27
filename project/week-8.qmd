@@ -10,11 +10,11 @@ This week, your goal is to create a minimal working package, that we will build 
 
 The first thing you'll need is a name for your package. Get creative with this! There are a few common package styles:
 
--   "old school" R tradition is to use a capital R in the package, e.g. `RMySQL`
+- "old school" R tradition is to use a capital R in the package, e.g. `RMySQL`
 
--   In the early tidyverse days, packages were all lowercase and ended in an r, such as `dplyr` or `tidyr`.
+- In the early tidyverse days, packages were all lowercase and ended in an r, such as `dplyr` or `tidyr`.
 
--   More recently, folks often go for one-word puns that describe the package purpose, like `lubridate` or `forcats`.
+- More recently, folks often go for one-word puns that describe the package purpose, like `lubridate` or `forcats`.
 
 You can do whatever you'd like with this - as long as the package has no special characters, does not start with a number, and relates in some way to the actual functionality or data context of the package.
 
@@ -29,6 +29,7 @@ Once you have a name,
 3.  Run `library(usethis)` in your console. Then run `use_r("load_data").`
 
 4.  In the `load_data.R` file that opens, write a function called `load_data` to load your original dataset into the package from the Tidy Tuesday link or using the `tidytuesdayR` package. It will probably look something like:
+
 ```{r}
 #| eval: false
 
@@ -38,11 +39,15 @@ load_data <- function(){
 }
 ```
 
-5.  Use `roxygen2` documentation to document the `load_data` function.  Don't forget to document dependencies on other packages, including for example:
+5.  Use `roxygen2` documentation to document the `load_data` function. Don't forget to document dependencies on other packages, including for example:
 
-* Reference the package directly with `readr::read_csv` or use `@importFrom readr read_csv`
+- Use `@importFrom readr read_csv` to specify the package and function(s) your function is dependent on
 
-* Run `use_packages("readr")` to include the package as an imported dependency.
+- Directly reference the package that the function you are using lives in: `readr::read_csv()`
+
+- This will add an `importFrom(readr,read_csv)` line in the `NAMESPACE` file!
+
+6.  Run `use_packages("readr")` to include the package as an imported dependency. This will add a line (`Imports: readr`) in the `DESCRIPTION`!
 
 You do **not** have to write any `testthat` tests at this stage!
 

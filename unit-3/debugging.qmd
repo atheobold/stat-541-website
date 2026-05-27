@@ -22,7 +22,8 @@ If you've made it to this point, you already know something is wrong! This is wh
 
 Before you begin debugging, figure out exactly what flagged the problem: what output did you *expect* and what output did you *see*?
 
-Next, try to **reproduce** the error. Find or create a small, self-contained piece of code that shows the problem happening. This is called a *reproducible example*.
+Next, try to **reproduce** the error. Find or create a small, self-contained piece of code that shows the problem happening. This is called a *reproducible example* 
+(or a reprex for short).
 
 ## Where is the problem?
 
@@ -30,7 +31,7 @@ Now that you found something going wrong, we need to track down the exact line o
 
 Sometimes, you need to go no further than *actually reading the error message*!
 
-Although error messages can be unclear at times, they are still your best first line of defense. If the error message provides a snippet of code after the words `Error in`, this is of course where you should look!
+Although error messages can be unclear at times, they are still your best first line of defense. If the error message provides a snippet of code after the words `"Error in"`, this is of course where you should look!
 
 #### Interactive debugging
 
@@ -55,7 +56,7 @@ mean(my_vec)
 In your *console* you can hit "Enter" to step through the function until the moment it breaks. In your *environment* you can see the value of the argument `x` that was received when we passed in `my_vec`.
 
 ::: callout-check-in
-The following code triggers an error. Oh no!
+1. The following code triggers an error. Oh no!
 
 ```{r}
 x <- list(1,2,3)
@@ -63,9 +64,9 @@ x <- list(1,2,3)
 sd(x)
 ```
 
-a)  Use the error message to identify the function *inside of* the `sd()` function where the error actually occurs.
+<!-- a)  Use the error message to identify the function *inside of* the `sd()` function where the error actually occurs. -->
 
-b)  Use `debugonce(var)` to find the exact line of code in the *var* function where the error is triggered.
+Use `debugonce(var)` to find **the exact line of code** in the `var()` function where the error is triggered.
 :::
 
 ## Why isn't it working?
@@ -74,13 +75,13 @@ Once you find *where* the problem is, your last task is to figure out how to fix
 
 Have you ever spent way too long looking for complicated solutions to a coding problem, only to realize you'd spelled one word wrong? If so, you aren't alone!
 
-![](./images/nasser_junior-misspelled.jpeg)
+![](./images/nasser_junior-misspelled.jpeg){fig-alt="A series of four frames of a stick person debugging their code. The first frame has the person encountering an error (indicated with a red caution symbol) and gritting their teeth and saying 'I hate this job.' In the second frame, the person is still dealing with the error but is now pulling on their face and saying 'and I hate my life.' The third frame has the person visibly screaming 'Why is this happening to me,' followed by a calm and resolved person in the forth frame saying 'nevermind I misspelled a variable."}
 
 Let's think through some common types of bugs you can look for, before you get in the weeds on more complicated solutions.
 
 #### Typos and Misspellings
 
-R, unfortunately, doesn't speak English. It has no ability to realize that when you wrote `fitler`, you of course meant `filter`; or that your dataset `Dat` is the same as `dat`.
+R, unfortunately, doesn't speak English. It has no ability to realize that when you wrote `fitler`, you of course meant `filter`, or that your dataset `Dat` is the same as `dat`.
 
 The most common error you'll get when you've simply mistyped something is **object not found**.
 
@@ -186,7 +187,15 @@ However, this is not always a magic fix. Consider using `as.numeric()` to conver
 mean(as.numeric(obj3))
 ```
 
-Yikes! This is the wrong answer! What happened here is that R stores *factors* as integers - a `1` stands in for the first category, a `2` for the second. It doesn't matter if those categories are "3,4,5" or "a,b,c"; they will still be stored as numbers `1,2,3`. So, forcing this object to be numeric doesn't "read" the category names of `"3"`, `"4"`, and `"5"` - it pulls out the index numbers `1`, `2` and `3`!
+Yikes! This is the wrong answer! 
+
+What happened here is that R stores *factors* as integers:
+
+- `1` stands in for the first category,
+- `2` for the second category, and 
+- `3` stands for the third category. 
+
+It doesn't matter if those categories are "3, 4, 5" or "a, b, c", they will still be stored as numbers `1`, `2`, and `3`. So, forcing this object to be numeric doesn't "read" the category names of `"3"`, `"4"`, and `"5"` - it pulls out the index numbers `1`, `2` and `3`!
 :::
 
 #### Incorrect computations
@@ -214,12 +223,12 @@ For example, suppose you are studying the three penguin species in the `palmerpe
 
 penguins <- penguins |>
   mutate(
-    species_numeric = case_when(
-      species == "Adelie" ~ 1,
-      species == "Chinstrap" ~ 2,
-      species == "Gentoo" ~ 3
+    species_numeric = recode_values(species, 
+                                    "Adelie" ~ 1,
+                                    "Chinstrap" ~ 2,
+                                    "Gentoo" ~ 3
+                                    )
     )
-  )
 ```
 
 Although this code is correctly written and does what you intended, it is not at all appropriate to change a categorical variable to arbitrary numbers! If you were to fit models, perform statistical tests, or visualize data using this new numeric variable, you would be in danger of false data conclusions.
@@ -236,32 +245,35 @@ divide <- function(x) { x[1]/x[2] }
 
 ```
 
-a)  
+**Error 1**
 
 ```{r}
 to_divide <- list(15, 5)
 divide(to_divide)
 ```
 
-b)  
+**Error 2**
 
 ```{r}
 multiplie(3, 5)
 ```
 
-c)  
+**Error 3**
 
 ```{r}
 square_root(49)
 ```
 :::
 
-::: callout-note
-## Additional helpful reading
+::: callout-tip
+## Additional Helpful Readings
 
-https://r-statistics.co/R-Debugging.html
+If you are interested in reading more about debugging, here are a couple of 
+high quality readings!
 
-https://srvanderplas.github.io/stat-computing-r-python/part-gen-prog/06-debugging.html
+[Debugging R: The Complete Toolkit, From traceback() to RStudio Breakpoints](https://r-statistics.co/R-Debugging.html)
+
+[Statistical Computing for R and Python: Debugging](https://srvanderplas.github.io/stat-computing-r-python/part-gen-prog/06-debugging.html)
 :::
 
 ### The `reprex` package
@@ -272,9 +284,3 @@ https://srvanderplas.github.io/stat-computing-r-python/part-gen-prog/06-debuggin
 Reproducible examples are so important to open-source collaboration, the `tidyverse` contains a package specifically to help people create and share them.
 
 **Read this vignette:** https://reprex.tidyverse.org/articles/learn-reprex.html
-
-<!-- ::: stat541 -->
-
-<!-- ::: -->
-
-<!-- ## Scope -->

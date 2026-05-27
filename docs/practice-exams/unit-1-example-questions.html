@@ -538,7 +538,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell" data-flourish="[{&quot;target&quot;:[&quot;release_date&quot;,{&quot;mask&quot;:true},{&quot;style&quot;:&quot;text-decoration: underline;&quot;}]},{&quot;target&quot;:[&quot;glue::glue&quot;,{&quot;mask&quot;:true},{&quot;style&quot;:&quot;text-decoration: underline;&quot;}]},{&quot;target&quot;:[&quot;count&quot;,{&quot;mask&quot;:true},{&quot;style&quot;:&quot;text-decoration: underline;&quot;}]},{&quot;target&quot;:[&quot;pivot_wider&quot;,{&quot;mask&quot;:true},{&quot;style&quot;:&quot;text-decoration: underline;&quot;}]},{&quot;target&quot;:[&quot;cinema_score&quot;,{&quot;mask&quot;:true},{&quot;style&quot;:&quot;text-decoration: underline;&quot;}]},{&quot;target&quot;:[&quot;n      &quot;,{&quot;mask&quot;:true},{&quot;style&quot;:&quot;text-decoration: underline;&quot;}]}]">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pixar_new</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">mutate</span><span class="op">(</span></span>
-<span>    year <span class="op">=</span> <span class="fu">lubridate</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/lubridate/man/year.html">year</a></span><span class="op">(</span><span class="va">release_date</span><span class="op">)</span>,</span>
+<span>    year <span class="op">=</span> <span class="fu">lubridate</span><span class="fu">::</span><span class="fu"><a href="https://lubridate.tidyverse.org/reference/year.html">year</a></span><span class="op">(</span><span class="va">release_date</span><span class="op">)</span>,</span>
 <span>    decade <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">floor</a></span><span class="op">(</span><span class="va">year</span><span class="op">/</span><span class="fl">10</span><span class="op">)</span>,</span>
 <span>    decade <span class="op">=</span> <span class="fu">glue</span><span class="fu">::</span><span class="fu"><a href="https://glue.tidyverse.org/reference/glue.html">glue</a></span><span class="op">(</span><span class="st">"{decade}0s"</span><span class="op">)</span></span>
 <span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
@@ -641,23 +641,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul></section><section id="question-7" class="level2"><h2 class="anchored" data-anchor-id="question-7">Question 7</h2>
 <div class="cell">
 <div class="cell-output-display">
-<div id="zoxeiiqrof" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#zoxeiiqrof table {
+<div id="jliqwuryfb" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#jliqwuryfb table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#zoxeiiqrof thead, #zoxeiiqrof tbody, #zoxeiiqrof tfoot, #zoxeiiqrof tr, #zoxeiiqrof td, #zoxeiiqrof th {
+#jliqwuryfb thead, #jliqwuryfb tbody, #jliqwuryfb tfoot, #jliqwuryfb tr, #jliqwuryfb td, #jliqwuryfb th {
   border-style: none;
 }
 
-#zoxeiiqrof p {
+#jliqwuryfb p {
   margin: 0;
   padding: 0;
 }
 
-#zoxeiiqrof .gt_table {
+#jliqwuryfb .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -683,12 +683,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-left-color: #D3D3D3;
 }
 
-#zoxeiiqrof .gt_caption {
+#jliqwuryfb .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#zoxeiiqrof .gt_title {
+#jliqwuryfb .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -700,7 +700,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-width: 0;
 }
 
-#zoxeiiqrof .gt_subtitle {
+#jliqwuryfb .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -712,7 +712,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-width: 0;
 }
 
-#zoxeiiqrof .gt_heading {
+#jliqwuryfb .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -724,13 +724,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#zoxeiiqrof .gt_bottom_border {
+#jliqwuryfb .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#zoxeiiqrof .gt_col_headings {
+#jliqwuryfb .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -745,7 +745,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#zoxeiiqrof .gt_col_heading {
+#jliqwuryfb .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -765,7 +765,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#zoxeiiqrof .gt_column_spanner_outer {
+#jliqwuryfb .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -777,15 +777,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 4px;
 }
 
-#zoxeiiqrof .gt_column_spanner_outer:first-child {
+#jliqwuryfb .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#zoxeiiqrof .gt_column_spanner_outer:last-child {
+#jliqwuryfb .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#zoxeiiqrof .gt_column_spanner {
+#jliqwuryfb .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -797,11 +797,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   width: 100%;
 }
 
-#zoxeiiqrof .gt_spanner_row {
+#jliqwuryfb .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#zoxeiiqrof .gt_group_heading {
+#jliqwuryfb .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -827,7 +827,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   text-align: left;
 }
 
-#zoxeiiqrof .gt_empty_group_heading {
+#jliqwuryfb .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -842,15 +842,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: middle;
 }
 
-#zoxeiiqrof .gt_from_md > :first-child {
+#jliqwuryfb .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#zoxeiiqrof .gt_from_md > :last-child {
+#jliqwuryfb .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#zoxeiiqrof .gt_row {
+#jliqwuryfb .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -869,7 +869,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#zoxeiiqrof .gt_stub {
+#jliqwuryfb .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -882,7 +882,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#zoxeiiqrof .gt_stub_row_group {
+#jliqwuryfb .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -896,15 +896,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: top;
 }
 
-#zoxeiiqrof .gt_row_group_first td {
+#jliqwuryfb .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#zoxeiiqrof .gt_row_group_first th {
+#jliqwuryfb .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#zoxeiiqrof .gt_summary_row {
+#jliqwuryfb .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -914,16 +914,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#zoxeiiqrof .gt_first_summary_row {
+#jliqwuryfb .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#zoxeiiqrof .gt_first_summary_row.thick {
+#jliqwuryfb .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#zoxeiiqrof .gt_last_summary_row {
+#jliqwuryfb .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -933,7 +933,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#zoxeiiqrof .gt_grand_summary_row {
+#jliqwuryfb .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -943,7 +943,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#zoxeiiqrof .gt_first_grand_summary_row {
+#jliqwuryfb .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -953,7 +953,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-color: #D3D3D3;
 }
 
-#zoxeiiqrof .gt_last_grand_summary_row_top {
+#jliqwuryfb .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -963,11 +963,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#zoxeiiqrof .gt_striped {
+#jliqwuryfb .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#zoxeiiqrof .gt_table_body {
+#jliqwuryfb .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -976,7 +976,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#zoxeiiqrof .gt_footnotes {
+#jliqwuryfb .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -990,7 +990,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#zoxeiiqrof .gt_footnote {
+#jliqwuryfb .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -999,7 +999,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#zoxeiiqrof .gt_sourcenotes {
+#jliqwuryfb .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1013,7 +1013,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#zoxeiiqrof .gt_sourcenote {
+#jliqwuryfb .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1021,72 +1021,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#zoxeiiqrof .gt_left {
+#jliqwuryfb .gt_left {
   text-align: left;
 }
 
-#zoxeiiqrof .gt_center {
+#jliqwuryfb .gt_center {
   text-align: center;
 }
 
-#zoxeiiqrof .gt_right {
+#jliqwuryfb .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#zoxeiiqrof .gt_font_normal {
+#jliqwuryfb .gt_font_normal {
   font-weight: normal;
 }
 
-#zoxeiiqrof .gt_font_bold {
+#jliqwuryfb .gt_font_bold {
   font-weight: bold;
 }
 
-#zoxeiiqrof .gt_font_italic {
+#jliqwuryfb .gt_font_italic {
   font-style: italic;
 }
 
-#zoxeiiqrof .gt_super {
+#jliqwuryfb .gt_super {
   font-size: 65%;
 }
 
-#zoxeiiqrof .gt_footnote_marks {
+#jliqwuryfb .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#zoxeiiqrof .gt_asterisk {
+#jliqwuryfb .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#zoxeiiqrof .gt_indent_1 {
+#jliqwuryfb .gt_indent_1 {
   text-indent: 5px;
 }
 
-#zoxeiiqrof .gt_indent_2 {
+#jliqwuryfb .gt_indent_2 {
   text-indent: 10px;
 }
 
-#zoxeiiqrof .gt_indent_3 {
+#jliqwuryfb .gt_indent_3 {
   text-indent: 15px;
 }
 
-#zoxeiiqrof .gt_indent_4 {
+#jliqwuryfb .gt_indent_4 {
   text-indent: 20px;
 }
 
-#zoxeiiqrof .gt_indent_5 {
+#jliqwuryfb .gt_indent_5 {
   text-indent: 25px;
 }
 
-#zoxeiiqrof .katex-display {
+#jliqwuryfb .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#zoxeiiqrof div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#jliqwuryfb div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>

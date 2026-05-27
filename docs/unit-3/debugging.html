@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.24">
+<meta name="generator" content="quarto-1.8.26">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>Debugging Package Code – Advanced R</title>
 <style>
@@ -71,9 +71,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b651517ce65839d647a86e2780455cfb.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b758ccaa5987ceb1b75504551e579abf.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-63767328852000e01d7c9d44355c1f36.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
@@ -285,7 +285,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
 <li class="nav-item">
-    <a class="nav-link active" href="../index.html" aria-current="page"> 
+    <a class="nav-link" href="../index.html"> 
 <span class="menu-text">Overview</span></a>
   </li>  
   <li class="nav-item">
@@ -309,7 +309,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Unit 2 - Professional Deliverables</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../unit-3.html"> 
+    <a class="nav-link active" href="../unit-3.html" aria-current="page"> 
 <span class="menu-text">Unit 3 - Package Development</span></a>
   </li>  
   <li class="nav-item">
@@ -339,11 +339,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </div>
   </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="../index.html" class="sidebar-logo-link">
-      </a>
-      </div>
-    <div class="sidebar-menu-container"> 
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
@@ -439,11 +435,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="what-went-wrong" class="level2"><h2 class="anchored" data-anchor-id="what-went-wrong">What went wrong?</h2>
 <p>If you’ve made it to this point, you already know something is wrong! This is why <strong>unit tests</strong> are so critical: they can help you spot moments where your output was not what you expected.</p>
 <p>Before you begin debugging, figure out exactly what flagged the problem: what output did you <em>expect</em> and what output did you <em>see</em>?</p>
-<p>Next, try to <strong>reproduce</strong> the error. Find or create a small, self-contained piece of code that shows the problem happening. This is called a <em>reproducible example</em>.</p>
+<p>Next, try to <strong>reproduce</strong> the error. Find or create a small, self-contained piece of code that shows the problem happening. This is called a <em>reproducible example</em> (or a reprex for short).</p>
 </section><section id="where-is-the-problem" class="level2"><h2 class="anchored" data-anchor-id="where-is-the-problem">Where is the problem?</h2>
 <p>Now that you found something going wrong, we need to track down the exact line of code that’s causing the problem.</p>
 <p>Sometimes, you need to go no further than <em>actually reading the error message</em>!</p>
-<p>Although error messages can be unclear at times, they are still your best first line of defense. If the error message provides a snippet of code after the words <code>Error in</code>, this is of course where you should look!</p>
+<p>Although error messages can be unclear at times, they are still your best first line of defense. If the error message provides a snippet of code after the words <code>"Error in"</code>, this is of course where you should look!</p>
 <section id="interactive-debugging" class="level4"><h4 class="anchored" data-anchor-id="interactive-debugging">Interactive debugging</h4>
 <p>If you can’t find the error from the message alone, your best bet is <em>interactive debugging</em>, where you run your code step by step until you find the problem.</p>
 <p>For code outside a function, it is easy to run step by step. Inside a function, though, you need additional tools. We recommend starting with <code><a href="https://rdrr.io/r/base/debug.html">debugonce()</a></code>.</p>
@@ -467,7 +463,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The following code triggers an error. Oh no!</p>
+<ol type="1">
+<li>The following code triggers an error. Oh no!</li>
+</ol>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span><span class="op">)</span></span>
 <span></span>
@@ -477,19 +475,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 ! is.atomic(x) is not TRUE</code></pre>
 </div>
 </div>
-<ol type="a">
-<li><p>Use the error message to identify the function <em>inside of</em> the <code><a href="https://rdrr.io/r/stats/sd.html">sd()</a></code> function where the error actually occurs.</p></li>
-<li><p>Use <code>debugonce(var)</code> to find the exact line of code in the <em>var</em> function where the error is triggered.</p></li>
-</ol>
+<!-- a)  Use the error message to identify the function *inside of* the `sd()` function where the error actually occurs. -->
+<p>Use <code>debugonce(var)</code> to find <strong>the exact line of code</strong> in the <code><a href="https://rdrr.io/r/stats/cor.html">var()</a></code> function where the error is triggered.</p>
 </div>
 </div>
 </section></section><section id="why-isnt-it-working" class="level2"><h2 class="anchored" data-anchor-id="why-isnt-it-working">Why isn’t it working?</h2>
 <p>Once you find <em>where</em> the problem is, your last task is to figure out how to fix it!</p>
 <p>Have you ever spent way too long looking for complicated solutions to a coding problem, only to realize you’d spelled one word wrong? If so, you aren’t alone!</p>
-<p><img src="./images/nasser_junior-misspelled.jpeg" class="img-fluid"></p>
+<p><img src="./images/nasser_junior-misspelled.jpeg" class="img-fluid" alt="A series of four frames of a stick person debugging their code. The first frame has the person encountering an error (indicated with a red caution symbol) and gritting their teeth and saying 'I hate this job.' In the second frame, the person is still dealing with the error but is now pulling on their face and saying 'and I hate my life.' The third frame has the person visibly screaming 'Why is this happening to me,' followed by a calm and resolved person in the forth frame saying 'nevermind I misspelled a variable."></p>
 <p>Let’s think through some common types of bugs you can look for, before you get in the weeds on more complicated solutions.</p>
 <section id="typos-and-misspellings" class="level4"><h4 class="anchored" data-anchor-id="typos-and-misspellings">Typos and Misspellings</h4>
-<p>R, unfortunately, doesn’t speak English. It has no ability to realize that when you wrote <code>fitler</code>, you of course meant <code>filter</code>; or that your dataset <code>Dat</code> is the same as <code>dat</code>.</p>
+<p>R, unfortunately, doesn’t speak English. It has no ability to realize that when you wrote <code>fitler</code>, you of course meant <code>filter</code>, or that your dataset <code>Dat</code> is the same as <code>dat</code>.</p>
 <p>The most common error you’ll get when you’ve simply mistyped something is <strong>object not found</strong>.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># find the mean of the numbers 1 to 10</span></span>
@@ -619,7 +615,17 @@ Warning
 <pre><code>[1] 2</code></pre>
 </div>
 </div>
-<p>Yikes! This is the wrong answer! What happened here is that R stores <em>factors</em> as integers - a <code>1</code> stands in for the first category, a <code>2</code> for the second. It doesn’t matter if those categories are “3,4,5” or “a,b,c”; they will still be stored as numbers <code>1,2,3</code>. So, forcing this object to be numeric doesn’t “read” the category names of <code>"3"</code>, <code>"4"</code>, and <code>"5"</code> - it pulls out the index numbers <code>1</code>, <code>2</code> and <code>3</code>!</p>
+<p>Yikes! This is the wrong answer!</p>
+<p>What happened here is that R stores <em>factors</em> as integers:</p>
+<ul>
+<li>
+<code>1</code> stands in for the first category,</li>
+<li>
+<code>2</code> for the second category, and</li>
+<li>
+<code>3</code> stands for the third category.</li>
+</ul>
+<p>It doesn’t matter if those categories are “3, 4, 5” or “a, b, c”, they will still be stored as numbers <code>1</code>, <code>2</code>, and <code>3</code>. So, forcing this object to be numeric doesn’t “read” the category names of <code>"3"</code>, <code>"4"</code>, and <code>"5"</code> - it pulls out the index numbers <code>1</code>, <code>2</code> and <code>3</code>!</p>
 </div>
 </div>
 <section id="incorrect-computations" class="level4"><h4 class="anchored" data-anchor-id="incorrect-computations">Incorrect computations</h4>
@@ -641,12 +647,12 @@ Warning
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">penguins</span> <span class="op">&lt;-</span> <span class="va">penguins</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">mutate</span><span class="op">(</span></span>
-<span>    species_numeric <span class="op">=</span> <span class="fu">case_when</span><span class="op">(</span></span>
-<span>      <span class="va">species</span> <span class="op">==</span> <span class="st">"Adelie"</span> <span class="op">~</span> <span class="fl">1</span>,</span>
-<span>      <span class="va">species</span> <span class="op">==</span> <span class="st">"Chinstrap"</span> <span class="op">~</span> <span class="fl">2</span>,</span>
-<span>      <span class="va">species</span> <span class="op">==</span> <span class="st">"Gentoo"</span> <span class="op">~</span> <span class="fl">3</span></span>
-<span>    <span class="op">)</span></span>
-<span>  <span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span>    species_numeric <span class="op">=</span> <span class="fu">recode_values</span><span class="op">(</span><span class="va">species</span>, </span>
+<span>                                    <span class="st">"Adelie"</span> <span class="op">~</span> <span class="fl">1</span>,</span>
+<span>                                    <span class="st">"Chinstrap"</span> <span class="op">~</span> <span class="fl">2</span>,</span>
+<span>                                    <span class="st">"Gentoo"</span> <span class="op">~</span> <span class="fl">3</span></span>
+<span>                                    <span class="op">)</span></span>
+<span>    <span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Although this code is correctly written and does what you intended, it is not at all appropriate to change a categorical variable to arbitrary numbers! If you were to fit models, perform statistical tests, or visualize data using this new numeric variable, you would be in danger of false data conclusions.</p>
 <p>Remember that you, as the R programmer, are responsible for making good data choices in your code.</p>
@@ -661,9 +667,7 @@ Warning
 </div>
 <div class="callout-body-container callout-body">
 <p>For each of the following errors (using nonsense function names), state what kind of bug you would look for first.</p>
-<ol type="a">
-<li>
-</li></ol>
+<p><strong>Error 1</strong></p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">to_divide</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">15</span>, <span class="fl">5</span><span class="op">)</span></span>
 <span><span class="fu">divide</span><span class="op">(</span><span class="va">to_divide</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -672,9 +676,7 @@ Warning
 ! non-numeric argument to binary operator</code></pre>
 </div>
 </div>
-<ol start="2" type="a">
-<li>
-</li></ol>
+<p><strong>Error 2</strong></p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb35"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">multiplie</span><span class="op">(</span><span class="fl">3</span>, <span class="fl">5</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-error">
@@ -682,9 +684,7 @@ Warning
 ! could not find function "multiplie"</code></pre>
 </div>
 </div>
-<ol start="3" type="a">
-<li>
-</li></ol>
+<p><strong>Error 3</strong></p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb37"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">square_root</span><span class="op">(</span><span class="fl">49</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-error">
@@ -694,18 +694,19 @@ Warning
 </div>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Additional helpful reading
+<span class="screen-reader-only">Tip</span>Additional Helpful Readings
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>https://r-statistics.co/R-Debugging.html</p>
-<p>https://srvanderplas.github.io/stat-computing-r-python/part-gen-prog/06-debugging.html</p>
+<p>If you are interested in reading more about debugging, here are a couple of high quality readings!</p>
+<p><a href="https://r-statistics.co/R-Debugging.html">Debugging R: The Complete Toolkit, From traceback() to RStudio Breakpoints</a></p>
+<p><a href="https://srvanderplas.github.io/stat-computing-r-python/part-gen-prog/06-debugging.html">Statistical Computing for R and Python: Debugging</a></p>
 </div>
 </div>
 </section></section><section id="the-reprex-package" class="level3"><h3 class="anchored" data-anchor-id="the-reprex-package">The <code>reprex</code> package</h3>
@@ -714,9 +715,6 @@ Warning
 </div>
 <p>Reproducible examples are so important to open-source collaboration, the <code>tidyverse</code> contains a package specifically to help people create and share them.</p>
 <p><strong>Read this vignette:</strong> https://reprex.tidyverse.org/articles/learn-reprex.html</p>
-<!-- ::: stat541 -->
-<!-- ::: -->
-<!-- ## Scope -->
 
 
 </section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">

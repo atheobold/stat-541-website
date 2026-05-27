@@ -426,7 +426,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><em>Would you get into an airplane that nobody had ever flown before? What if it had been flown, but only under perfect conditions - blue skies, no wind - but not in bad weather? What if it had only ever been flown with no passengers or cargo inside?</em></p>
 <p>Just like with any other technology, when you build a new package, you need to test it out before you send it off to be used in real applications. The way to test out functions is by writing <strong>unit tests</strong> that make sure the function behaves how you expect - both in ideal settings, and when there is a problem!</p>
 <p>Last week, you saw some examples of unit tests in the <code>testthat</code> package structure. For now, we’ll take a step back from that formal structure and simply think about how to write quick code to check your function.</p>
-<p>Suppose you have a function called <code>add_two</code> that claims to add a two to any number. What might you want to try before you would trust this function?</p>
+<p>Suppose you have a function called <code>add_two()</code> that claims to add a two to any number. What might you want to try before you would trust this function?</p>
 <p>Well, you’d probably want to try a very simple input to see if you believe it:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Expect output of 7</span></span>
@@ -453,8 +453,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section><section id="testing-packages-with-testthat" class="level2"><h2 class="anchored" data-anchor-id="testing-packages-with-testthat">Testing packages with <code>testthat</code>
 </h2>
-<div class="required-reading">
+<div class="callout callout-style-default callout-required-reading callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Required-reading</span>Required Reading
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p><a href="https://r-pkgs.org/testing-basics.html">R Packages Chapter 13 - Testing Basics</a></p>
+</div>
 </div>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -515,7 +525,9 @@ Unit tests provide some level of reassurance that the package works, and will co
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Which of the following is <strong>not</strong> a reason to have good test coverage in a package?</p>
+<ol start="3" type="1">
+<li>Which of the following is <strong>not</strong> a reason to have good test coverage in a package?</li>
+</ol>
 <ul>
 <li><p>It helps other people trust that your package works as intended.</p></li>
 <li><p>It helps you debug if you break something.</p></li>
