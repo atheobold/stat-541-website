@@ -24,7 +24,7 @@ The package you create _must_ have the following elements.
 
 -   All functions are fully documented in the `roxygen2` style.
 
--   All functions have at least one associated unit test in the `testthat` format.
+-   All main functions have at least one associated unit test in the `testthat` format.
 
 
 ## Function Design
@@ -37,9 +37,16 @@ The package you create _must_ have the following elements.
 
 ## Content
 
-*Package must contain at least...*
 
--   one data gathering function via API or webscraping
+#### 1. Data
+
+Rewrite your `load_data` function so that instead of loading the original dataset 
+from the TidyTuesday package, it loads your full merged dataset from the `inst/` 
+folder of your package.
+
+#### 2. Main functions
+
+Populate your useful functions.  *Your package must contain at least...*
 
 -   one data cleaning/wrangling function
 
@@ -49,19 +56,22 @@ The package you create _must_ have the following elements.
 
 -   one statistical analysis function
 
--   one vignette describing package use
+**Note:** This does not require writing brand new code!  You can, and should,
+use your code from previous units in the body of your functions.
 
-## Stat 541 requirements
+#### 3. Vignette
+
+Your package must also contain a *vignette*, using the file you created in 
+Checkpoint 1.  This should show one example use of each of the 7 required 
+functions listed above.
+
+#### Stat 541 requirements
 
 *Stat 541 packages must also...*
 
 -   contain at least one function that uses tidy eval
 
--   pass all CRAN checks
-
 -   have at least 80% test coverage as measured by `covr`
-
--   include at least one speed and memory benchmarking test in a vignette
 
 
 # Peer Review

@@ -522,7 +522,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span>  <span class="fu">expect_equal</span><span class="op">(</span><span class="va">result</span><span class="op">$</span><span class="va">Bronze</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, <span class="fl">1233</span><span class="op">)</span></span>
 <span><span class="op">}</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div class=".callout-note">
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p><em>How did I know the numbers to expect? I ran code on my data and looked at it!</em></p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tuesdata</span> <span class="op">&lt;-</span> <span class="fu">tidytuesdayR</span><span class="fu">::</span><span class="fu"><a href="https://dslc-io.github.io/tidytuesdayR/reference/tt_load.html">tt_load</a></span><span class="op">(</span><span class="st">'2024-08-06'</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -554,11 +563,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>At first this might seem silly - you’re running the exact code from <em>inside</em> your function to get the <strong>expected result</strong> and then comparing it to what the function <em>actually</em> produces.</p>
 <p>But this approach “locks down” the correct output, so that if you make the function more complicated in the future, you’ll still be checking that it works correctly.</p>
 </div>
+</div>
 </section><section id="write-the-functions" class="level3"><h3 class="anchored" data-anchor-id="write-the-functions">Write the functions</h3>
 <p>Now it’s time to fill out your actual function code!</p>
-<p>Since these functions are meant to be shortcuts for code you already wrote, you can begin by simply copying that code into the function body. Then, you’ll need to <em>generalize</em> the function for different inputs and outputs.</p>
+<p>Since these functions are meant to be shortcuts for code you already wrote in previous units, you can begin by simply copying that code into the function body. Then, you’ll need to <em>generalize</em> the function for different inputs and outputs.</p>
 <p>Don’t forget to <em>validate</em> your function inputs!</p>
-<div class=".callout-warning">
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>It can be challenging to write functions with <strong>unquoted</strong> variable names in them. For example,</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dat</span> <span class="op">|&gt;</span> <span class="fu">select</span><span class="op">(</span><span class="va">team</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -576,6 +595,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">select_team</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">dat</span>, <span class="va">team</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">dat</span> <span class="op">|&gt;</span> <span class="fu">select</span><span class="op">(</span><span class="va">.data</span><span class="op">[[</span><span class="va">team</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 </div>
 </div>
 </section><section id="refactor-your-functions" class="level3"><h3 class="anchored" data-anchor-id="refactor-your-functions">Refactor your functions</h3>

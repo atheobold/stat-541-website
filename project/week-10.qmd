@@ -10,58 +10,38 @@ Including this data in your package presents two challenges that you must addres
 
 #### 1. File size
 
-This data might be so large that it cannot be stored on GitHub or submitted
-to CRAN.  To solve this, rewrite your `load_data` function so that instead of
-loading the original dataset from the TidyTuesday package, it loads your full
-merged dataset from a *parquet* file that you place in the `inst/` folder of your 
-package.
+This data might be so large that it cannot be stored on GitHub or submitted to CRAN. To solve this, rewrite your `load_data` function so that instead of loading the original dataset from the TidyTuesday package, it loads your full merged dataset from a *parquet* file that you place in the `inst/` folder of your package.
 
 #### 2. Data gathering updates
 
-Users may want to re-gather the external data themselves, to update it to the 
-current time period.
+Users may want to re-gather the external data themselves, to update it to the current time period.
 
-Write a function called `gather_data` that runs your API pull or webscraping. If
-you are doing an API pull, the API key should be provided as an input to the
-function - your personal API key should never appear!
-
-
+Write a function called `gather_data` that runs your API pull or webscraping. If you are doing an API pull, the API key should be provided as an input to the function - your personal API key should never appear!
 
 ## Speedier functions
 
-Realistically, it's likely that most of your functions in this package are so
-fast that there isn't much need to speed them up.  However, for the sake of
-completeness, you need to make sure your package is optimized.
+Realistically, it's likely that most of your functions in this package are so fast that there isn't much need to speed them up. However, for the sake of completeness, you need to make sure your package is optimized.
 
 #### 1. Speed testing
 
-Use `tictoc()` or `bench::mark()` to speed test all the functions in your package,
-except for the data loading and gathering ones.  Identify where the slowest ones
-are.
+Use `tictoc()` or `bench::mark()` to speed test all the functions in your package, except for the data loading and gathering ones. Identify where the slowest ones are.
 
 #### 2. Faster code
 
-Choose one of your slower functions.  Make a copy of it named `[name]_fast`. Then,
-alter the code to speed it up in **one** of the following ways:
+Choose one of your slower functions. Make a copy of it named `[name]_fast`. Then, alter the code to speed it up in **one** of the following ways:
 
-1. Replace a piece of your `dplyr` or Base R style data wrangling with `data.table` code.
+1.  Replace a piece of your `dplyr` or Base R style data wrangling with `data.table` code.
 
-2. Include parallelization with `furrr`.
+2.  Include parallelization with `furrr`.
 
-3. Come up with an *algorithmic* improvement to your code that makes it faster.
-
+3.  Come up with an *algorithmic* improvement to your code that makes it faster.
 
 ## Submission
 
 Turn in an html file that contains:
 
-1. Speed tests on at least three of your functions.
+1.  Speed tests on at least three of your functions.
 
-2. A very brief overview of what you changed in a slow function.
+2.  A very brief overview of what you changed in a slow function.
 
-3. Speed tests on the new `_fast` version of the function.
-
-
-
-
-
+3.  Speed tests on the new `_fast` version of the function.
