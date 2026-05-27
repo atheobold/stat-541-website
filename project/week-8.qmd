@@ -45,6 +45,10 @@ load_data <- function(){
 
 - Directly reference the package that the function you are using lives in: `readr::read_csv()`
 
+- This will add an `importFrom(readr,read_csv)` line in the `NAMESPACE` file!
+
+6.  Run `use_packages("readr")` to include the package as an imported dependency. This will add a line (`Imports: readr`) in the `DESCRIPTION`!
+
 You do **not** have to write any `testthat` tests at this stage!
 
 ### Make a plan

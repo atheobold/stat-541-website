@@ -509,7 +509,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li><p>Use <code>@importFrom readr read_csv</code> to specify the package and function(s) your function is dependent on</p></li>
 <li><p>Directly reference the package that the function you are using lives in: <code><a href="https://readr.tidyverse.org/reference/read_delim.html">readr::read_csv()</a></code></p></li>
+<li><p>This will add an <code>importFrom(readr,read_csv)</code> line in the <code>NAMESPACE</code> file!</p></li>
 </ul>
+<ol start="6" type="1">
+<li>Run <code>use_packages("readr")</code> to include the package as an imported dependency. This will add a line (<code>Imports: readr</code>) in the <code>DESCRIPTION</code>!</li>
+</ol>
 <p>You do <strong>not</strong> have to write any <code>testthat</code> tests at this stage!</p>
 </section><section id="make-a-plan" class="level3"><h3 class="anchored" data-anchor-id="make-a-plan">Make a plan</h3>
 <p>When designing a package, it is helpful to write down “aspirational” code - lines of code that you <em>wish</em> would work, that you can build towards as you develop your functions.</p>
