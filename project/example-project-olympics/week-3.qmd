@@ -1,5 +1,7 @@
 ---
 title: "Project Checkpoint 3"
+execute: 
+  eval: false
 ---
 
 ```{r}
@@ -16,7 +18,6 @@ library(glue)
 
 ## Setup
 
-
 ```{r}
 #| include: false
 #| echo: true
@@ -26,10 +27,7 @@ tuesdata <- tidytuesdayR::tt_load('2024-08-06')
 olympics <- tuesdata$olympics
 ```
 
-For simplicity here, I will study only the top 10 countries
-in terms of female medals.  This code is from last week's project step.
-
-
+For simplicity here, I will study only the top 10 countries in terms of female medals. This code is from last week's project step.
 
 ```{r}
 # Function to count medals but not overcount team sports
@@ -48,7 +46,6 @@ num_female_medals <- function(country) {
 }
 ```
 
-
 ```{r}
 top_countries <- olympics |>
   distinct(team) |>
@@ -61,16 +58,14 @@ top_countries <- olympics |>
 top_countries
 ```
 
-
 ## New data from API
 
-*I'm choosing to use the API-Ninjas API for country populations.  This API requires an account and API key.  In the code that you see below, I have replaced hidden the line that stores my API key, so that it is not publicly shared.*
+*I'm choosing to use the API-Ninjas API for country populations. This API requires an account and API key. In the code that you see below, I have replaced hidden the line that stores my API key, so that it is not publicly shared.*
 
 ```{r}
 #| echo: false
 my_key <- "1ekT3dWHWPDuwhNECaYVFxJqyiEDVZo6HJqPh9xF"
 ```
-
 
 ```{r}
 get_population <- function(country, key = my_key)
@@ -90,10 +85,7 @@ get_population("Japan")
 get_population("United States")
 ```
 
-Since "United States" has a space in it, it isn't being searched properly
-by the API URL.  After some investigation on the API site and experimentation, 
-I see that I can use country abbreviations instead.
-
+Since "United States" has a space in it, it isn't being searched properly by the API URL. After some investigation on the API site and experimentation, I see that I can use country abbreviations instead.
 
 ```{r}
 top_countries <- olympics |>
@@ -106,9 +98,6 @@ top_countries <- olympics |>
 
 top_countries
 ```
-
-
-
 
 ```{r}
 #| warning: false
@@ -165,16 +154,11 @@ olymp_top |>
   arrange(desc(n_gold_pp))
 ```
 
-
-
-
 <!-- ## New data from webscraping -->
 
 <!-- ```{r} -->
 
 <!-- ``` -->
-
-
 
 <!-- Now that you have explored your original dataset and produced data summaries addressing your primary research questions, it is time to integrate new country-level data. -->
 
@@ -197,7 +181,9 @@ olymp_top |>
 <!-- -   your **webscraped** data must come from a multi-paged source, so that iteration is used to gather all the data -->
 
 <!-- ::: callout-warning -->
+
 <!-- **Warning!** Most APIs require you to make an account to access them, to prevent too much automated data collection. *Some* APIs also charge a fee to use - you should *not* use any of these for this class. -->
+
 <!-- ::: -->
 
 <!-- ## Helpful Links -->
@@ -231,7 +217,11 @@ olymp_top |>
 <!-- -   [WorldBank Data API](https://documents.worldbank.org/en/publication/documents-reports/api) -->
 
 <!-- ::: callout-note -->
+
 <!-- Much of the data we have relied on for years - such as NOAA and BEA data listed above - are no longer being collected and made available, due to US Government cuts to these public statistics services. Other data sources that result from independent academic research at US institutions are rapidly dwindling as well, also due to cuts to this funding.\ -->
+
 <!-- \ -->
+
 <!-- Although these data sources may eventually be restored, or replaced with data from alternative agencies, we will never be able to go back and fill the gap for these lost years. -->
+
 <!-- ::: -->

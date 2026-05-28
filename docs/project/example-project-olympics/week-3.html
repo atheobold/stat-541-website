@@ -512,16 +512,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">team</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">top_countries</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1] "United States" "Germany"       "Soviet Union"  "China"        
- [5] "Russia"        "East Germany"  "Great Britain" "Australia"    
- [9] "Canada"        "Netherlands"  </code></pre>
-</div>
 </div>
 </section><section id="new-data-from-api" class="level2"><h2 class="anchored" data-anchor-id="new-data-from-api">New data from API</h2>
 <p><em>I’m choosing to use the API-Ninjas API for country populations. This API requires an account and API key. In the code that you see below, I have replaced hidden the line that stores my API key, so that it is not publicly shared.</em></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">get_population</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">country</span>, <span class="va">key</span> <span class="op">=</span> <span class="va">my_key</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">get_population</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">country</span>, <span class="va">key</span> <span class="op">=</span> <span class="va">my_key</span><span class="op">)</span></span>
 <span>  <span class="op">{</span></span>
 <span>  </span>
 <span>  <span class="va">url</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://glue.tidyverse.org/reference/glue.html">glue</a></span><span class="op">(</span><span class="st">"https://api.api-ninjas.com/v1/population?country={country};X-Api-Key={key}"</span><span class="op">)</span></span>
@@ -534,77 +529,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span>  <span class="op">}</span></span>
 <span><span class="op">}</span></span>
 <span></span>
-<span><span class="fu">get_population</span><span class="op">(</span><span class="st">"Japan"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>   year population yearly_change_percentage yearly_change migrants median_age
-1  2024  123753041                    -0.50       -617906   153357       49.4
-2  2023  124370947                    -0.50       -626631   175003       49.0
-3  2022  124997578                    -0.54       -681760   175003       48.5
-4  2020  126304543                    -0.31       -394881    42001       47.7
-5  2015  127275872                    -0.14       -181881   168896       45.8
-6  2010  128185275                     0.04         54389   131860       44.2
-7  2005  127913330                     0.14        177108   113017       42.6
-8  2000  127027789                     0.21        271025    23468       40.8
-9  1995  125672665                     0.37        454580    87714       39.0
-10 1990  123399765                     0.42        513520   124582       36.9
-11 1985  120832163                     0.41        494681  -141323       34.5
-12 1980  118358756                     0.87       1007512   -92314       31.7
-13 1975  113321196                     1.21       1321766      107       29.7
-14 1970  106712368                     1.12       1159270    33731       28.3
-15 1965  100916019                     0.92        903253   -50667       26.6
-16 1960   96399754                     0.85        794855  -150371       24.7
-17 1955   92425478                     1.35       1196440   -95975       22.7
-   fertility_rate density urban_population_pct urban_population
-1            1.22     339                 92.9        114979260
-2            1.21     341                 92.7        115292289
-3            1.26     343                 92.5        115583843
-4            1.30     346                 91.9        116099672
-5            1.42     349                 91.9        116944428
-6            1.36     352                 91.1        116741034
-7            1.25     351                 86.3        110340709
-8            1.35     348                 79.0        100303716
-9            1.41     345                 78.5         98593178
-10           1.51     338                 78.0         96298507
-11           1.74     331                 77.4         93507944
-12           1.74     325                 75.8         89755553
-13           1.92     311                 75.1         85121987
-14           2.04     293                 70.7         75417163
-15           2.09     277                 66.2         66812422
-16           1.98     264                 61.5         59269408
-17           2.35     254                 56.3         52005319
-   percentage_of_world_population rank
-1                            1.52   12
-2                            1.54   12
-3                            1.56   12
-4                            1.60   11
-5                            1.70   10
-6                            1.83   10
-7                            1.94   10
-8                            2.06    9
-9                            2.18    8
-10                           2.32    7
-11                           2.48    7
-12                           2.66    7
-13                           2.78    6
-14                           2.89    6
-15                           3.03    5
-16                           3.20    5
-17                           3.37    5</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">get_population</span><span class="op">(</span><span class="st">"United States"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in open.connection(con, "rb"): URL
-'https://api.api-ninjas.com/v1/population?country=United
-States;X-Api-Key=1ekT3dWHWPDuwhNECaYVFxJqyiEDVZo6HJqPh9xF': status was 'URL
-using bad/illegal format or missing URL'</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] NA</code></pre>
-</div>
+<span><span class="fu">get_population</span><span class="op">(</span><span class="st">"Japan"</span><span class="op">)</span></span>
+<span><span class="fu">get_population</span><span class="op">(</span><span class="st">"United States"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Since “United States” has a space in it, it isn’t being searched properly by the API URL. After some investigation on the API site and experimentation, I see that I can use country abbreviations instead.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">top_countries</span> <span class="op">&lt;-</span> <span class="va">olympics</span> <span class="op">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">top_countries</span> <span class="op">&lt;-</span> <span class="va">olympics</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct</a></span><span class="op">(</span><span class="va">team</span>, <span class="va">noc</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
 <span>    n_f_medals <span class="op">=</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map_dbl</a></span><span class="op">(</span><span class="va">team</span>, <span class="va">num_female_medals</span><span class="op">)</span></span>
@@ -613,83 +543,36 @@ using bad/illegal format or missing URL'</code></pre>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">noc</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">top_countries</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1] "USA" "GER" "URS" "CHN" "RUS" "GDR" "GBR" "AUS" "CAN" "NED"</code></pre>
-</div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data_list</span> <span class="op">&lt;-</span> <span class="va">top_countries</span> <span class="op">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data_list</span> <span class="op">&lt;-</span> <span class="va">top_countries</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map</a></span><span class="op">(</span><span class="va">get_population</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Check for ones that didn't work</span></span>
 <span><span class="va">data_list</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0</code></pre>
-</div>
 </div>
 <p>Now let’s make this a tibble so we can join it to our original data:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pop_df</span> <span class="op">&lt;-</span> <span class="va">data_list</span> <span class="op">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pop_df</span> <span class="op">&lt;-</span> <span class="va">data_list</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rlang.r-lib.org/reference/set_names.html">set_names</a></span><span class="op">(</span><span class="va">top_countries</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind_rows.html">bind_rows</a></span><span class="op">(</span></span>
 <span>    .id <span class="op">=</span> <span class="st">"noc"</span></span>
 <span>  <span class="op">)</span> </span>
 <span></span>
 <span><span class="va">pop_df</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  noc year population yearly_change_percentage yearly_change migrants
-1 USA 2024  345426571                     0.57       1949236  1286132
-2 USA 2023  343477335                     0.57       1943289  1322668
-3 USA 2022  341534046                     0.40       1372605  1319009
-4 USA 2020  339436159                     0.49       1646092   329769
-5 USA 2015  326126497                     0.95       3012741  1722127
-6 USA 2010  311062790                     1.02       3069225  1594453
-  median_age fertility_rate density urban_population_pct urban_population
-1       38.3           1.62      38                 82.4        284698234
-2       38.0           1.62      38                 82.1        281984165
-3       37.7           1.67      37                 81.8        279286931
-4       37.2           1.62      37                 80.7        273975139
-5       36.4           1.83      36                 80.1        261287811
-6       35.9           1.92      34                 80.1        249297076
-  percentage_of_world_population rank
-1                           4.23    3
-2                           4.24    3
-3                           4.26    3
-4                           4.30    3
-5                           4.37    3
-6                           4.43    3</code></pre>
-</div>
 </div>
 <p>Now, we join the datasets:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">olymp_top</span> <span class="op">&lt;-</span> <span class="va">olympics</span> <span class="op">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">olymp_top</span> <span class="op">&lt;-</span> <span class="va">olympics</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">noc</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="va">top_countries</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">pop_df</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Joining with `by = join_by(noc, year)`</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">olymp_top</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 26
-     id name      sex     age height weight team  noc   games  year season city 
-  &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;
-1     1 A Dijiang M        24    180     80 China CHN   1992…  1992 Summer Barc…
-2     2 A Lamusi  M        23    170     60 China CHN   2012…  2012 Summer Lond…
-3     5 Christin… F        21    185     82 Neth… NED   1988…  1988 Winter Calg…
-4     5 Christin… F        21    185     82 Neth… NED   1988…  1988 Winter Calg…
-5     5 Christin… F        25    185     82 Neth… NED   1992…  1992 Winter Albe…
-6     5 Christin… F        25    185     82 Neth… NED   1992…  1992 Winter Albe…
-# ℹ 14 more variables: sport &lt;chr&gt;, event &lt;chr&gt;, medal &lt;chr&gt;, population &lt;int&gt;,
-#   yearly_change_percentage &lt;dbl&gt;, yearly_change &lt;dbl&gt;, migrants &lt;dbl&gt;,
-#   median_age &lt;dbl&gt;, fertility_rate &lt;dbl&gt;, density &lt;int&gt;,
-#   urban_population_pct &lt;dbl&gt;, urban_population &lt;int&gt;,
-#   percentage_of_world_population &lt;dbl&gt;, rank &lt;int&gt;</code></pre>
-</div>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">pop_df</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">olymp_top</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Note: There are a lot of NAs because the population data doesn’t go as far back in time as the olympic data!</p>
 <p>Finally, we use our new information to produce an interesting summary:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">olymp_top</span> <span class="op">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">olymp_top</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span></span>
 <span>    n_gold <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">medal</span> <span class="op">==</span> <span class="st">"Gold"</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
 <span>    population <span class="op">=</span> <span class="va">population</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>,</span>
@@ -704,21 +587,6 @@ using bad/illegal format or missing URL'</code></pre>
 <span>    n_gold_pp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">n_gold_pp</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">n_gold_pp</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 10 × 2
-   noc   n_gold_pp
-   &lt;chr&gt;     &lt;dbl&gt;
- 1 URS     2.69e-5
- 2 GER     1.48e-7
- 3 NED     1.34e-7
- 4 AUS     9.38e-8
- 5 USA     7.26e-8
- 6 CAN     5.59e-8
- 7 GBR     1.75e-8
- 8 CHN     5.92e-9
- 9 GDR    NA      
-10 RUS    NA      </code></pre>
-</div>
 </div>
 <!-- ## New data from webscraping -->
 <!-- ```{r} -->
