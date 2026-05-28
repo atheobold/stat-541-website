@@ -27,7 +27,11 @@ In your work, you will most likely "profile" manually, by `tictoc`-ing bits of y
 
 However, you should have an awareness of the major tools for more formally measuring coded performance. Skim the following readings - don't get too deep in the weeds! - to see how this process works for full-time developers.
 
-[`lobstr::obj_size()`](https://lobstr.r-lib.org/reference/obj_size.html) [Profiling](http://adv-r.had.co.nz/Profiling.html#profiling) [Measuring Performance](https://adv-r.hadley.nz/perf-measure.html)
+- [`lobstr::obj_size()`](https://lobstr.r-lib.org/reference/obj_size.html)
+
+- [Profiling](http://adv-r.had.co.nz/Profiling.html#profiling) 
+
+- [Measuring Performance](https://adv-r.hadley.nz/perf-measure.html)
 :::
 
 ## Tip: Only improve what needs improving
@@ -81,11 +85,13 @@ Once we've found some places our code moves slowly, it's time to look for ways t
 
 For speeding up work with data frames, while still running your code entirely within R, no package is better than `data.table`! This package was created in 2006 by Matt Dowle, for the sole purpose of performing common data wrangling tasks with the absolute most optimal algorithms.
 
-Because the design is meant to mimic Base R style, `data.table` uses *very* different syntax from `dplyr`. Watch the following video for a quick introduction.
+Because the design is meant to mimic Base R style, `data.table` uses ***very*** different syntax from `dplyr`. Watch the following video for a quick introduction.
 
 {{< video https://www.youtube.com/embed/uueVddWwbkk >}}
 
 ::: callout-important
+# Extra Resources 
+
 [Blog post with many side-by-side examples of `data.table` and `dplyr` code](https://rdatatable-community.github.io/The-Raft/posts/2025-07-06-common_operations_datatable_and_dplyr-albert_rapp/)
 
 [data.table cheatsheet](https://pbs.twimg.com/media/Dwoq0ZQXQAE5lJt.jpg)
@@ -96,7 +102,7 @@ Luckily, because `dplyr` is so well-known, we have a nice trick for writing `dpl
 For many data scientists, the functionality of `dtplyr` is sufficient. However, as an R programmer it is worth knowing the basics of `data.table` syntax, both to be able to read code written by others, and because many of the speedy algorithms of `data.table` do not have a `dplyr` equivalent.
 
 ::: callout-check-in
-1.  Here is some `dplyr` code. Re-write it in `data.table` syntax.
+3.  Here is some `dplyr` code. Re-write it in `data.table` syntax.
 
 ```{r}
 #| echo: true
@@ -108,7 +114,8 @@ penguins %>%
 
 ```
 
-2.  Using either the `tictoc` or `microbenchmark` packages, perform a speed test to see which code is faster and by how much.
+4.  Using either the `tictoc` or `microbenchmark` packages, perform a speed test
+to see which code is faster and by how much.
 :::
 
 ## Parallelizing
@@ -128,9 +135,7 @@ There are many tools for parallelizing in R, of different levels of complexity. 
 :::
 
 ::: callout-check-in
-1.  When data is scraped from the web, you often have repeated processes, such as scraping each of many identical pages. Why would it be a bad idea to parallelize webscraping code?
-
-<!-- -->
+5.  When data are scraped from the web, you often have repeated processes, such as scraping each of many identical pages. Why would it be a bad idea to parallelize webscraping code?
 
 a.  It is important to get the pages in order to keep track of what you've done.
 
@@ -140,9 +145,8 @@ c.  Simultaneous scraping is likely to violate the rate limits from `robots.txt`
 
 d.  It is impossible to access two different web pages at the same time.
 
-<!-- -->
-
-2.  Here is some iteration code. What would you change to make it run in parallel?
+6.  What would you put instead of `map()` in the code below to make the
+iteration run in parallel?
 
 ```{r}
 #| eval: false
@@ -153,7 +157,6 @@ summ_stats <- function(column) {
     median = median(column, na.rm = TRUE),
     sd = sd(column, na.rm = TRUE)
   )
-  
 }
 
 penguins |> 
@@ -178,7 +181,7 @@ arrow::write_parquet(penguins, "penguins.parquet")
 
 ```
 
-![](./images/penguins_sizes.png)
+![](./images/penguins_sizes.png){fig-alt="A screenshot of the size of the same dataset (penguins) stored two different ways. The penguins.csv file is shown to be 14.9 KB and the penguins.parquet file is shown to be 6.3 KB."}
 
 The `arrow` package is designed to help read and write parquet files. (It also provides a number of other helpful speed-ups, but we'll focus just on the parquet elements for now.)
 
@@ -187,7 +190,7 @@ The `arrow` package is designed to help read and write parquet files. (It also p
 :::
 
 ::: callout-check-in
-1.  Run the following code to download a medium sized dataset from the `nycflights13` package as both a csv and parquet.
+7.  Run the following code to download a medium sized dataset from the `nycflights13` package as both a csv and parquet.
 
 ```{r}
 #| eval: false
@@ -201,7 +204,52 @@ write_parquet(flights, "flights.parquet")
 
 How much smaller was the parquet file compared to the csv?
 
-2.  Use profiling to test the speed of reading the csv with `read_csv`, reading the csv with the `data.table` function `fread`, and reading the parquet file with `arrow`.
+8.  Use profiling to compare three different methods of reading in
+`flights.csv`:
+
+- with `readr::read_csv()`, 
+- with the `data.table::fread()`, and
+<!-- 3.27 sec elapsed -->
+- with `arrow::read_csv_arrow()`.
+
+```{r}
+#| label: readr
+#| echo: false
+#| eval: false
+#| include: false
+
+tic()
+readr::read_csv(here::here("flights.csv"))
+toc()
+
+# 0.441 sec elapsed
+```
+
+```{r}
+#| label: data-table
+#| echo: false
+#| eval: false
+#| include: false
+
+tic()
+data.table::fread(here::here("flights.csv"))
+toc()
+
+# 0.211 sec elapsed
+```
+
+```{r}
+#| label: arrow
+#| echo: false
+#| eval: false
+#| include: false
+
+tic()
+arrow::read_csv_arrow(here::here("flights.csv"))
+toc()
+
+# 0.172 sec elapsed
+```
 :::
 
 ### Data storage in packages
@@ -215,9 +263,9 @@ When you want to include data with an R package, your process depends on the siz
 usethis::use_data(penguins)
 ```
 
-However, when the data is large, this approach is not recommended - the resulting file will be require a lot of storage space, which might prevent it from being accepted on GitHub.
+However, when the data are large, this approach is not recommended. The resulting file will be require a lot of storage space, which might prevent it from being accepted on GitHub.
 
-Instead, another option is to create an `inst` folder in your package repository. This folder is meant to contain any and all items that you want to be downloaded when users download your package. Inside the `inst` folder, you can make a folder called `extdata` ("external data"). Put any parquet or csv data files in there.
+Instead, another option is to create an `inst` folder in your package repository. This folder is meant to contain any and all items that you want to be downloaded when users download your package. Inside the `inst` folder, you can make a folder called `extdata` ("external data"). You should put any `.parquet` or `.csv` data files in this folder.
 
 Then, users (or, your functions) can read the data from the package source with:
 

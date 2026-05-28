@@ -479,7 +479,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Stat 541 Only</strong></p>
 <p>In your work, you will most likely “profile” manually, by <code>tictoc</code>-ing bits of your code and so forth, not by the fancier methods used by professional programmers.</p>
 <p>However, you should have an awareness of the major tools for more formally measuring coded performance. Skim the following readings - don’t get too deep in the weeds! - to see how this process works for full-time developers.</p>
-<p><a href="https://lobstr.r-lib.org/reference/obj_size.html"><code>lobstr::obj_size()</code></a> <a href="http://adv-r.had.co.nz/Profiling.html#profiling">Profiling</a> <a href="https://adv-r.hadley.nz/perf-measure.html">Measuring Performance</a></p>
+<ul>
+<li><p><a href="https://lobstr.r-lib.org/reference/obj_size.html"><code>lobstr::obj_size()</code></a></p></li>
+<li><p><a href="http://adv-r.had.co.nz/Profiling.html#profiling">Profiling</a></p></li>
+<li><p><a href="https://adv-r.hadley.nz/perf-measure.html">Measuring Performance</a></p></li>
+</ul>
 </div>
 </div>
 <section id="tip-only-improve-what-needs-improving" class="level2"><h2 class="anchored" data-anchor-id="tip-only-improve-what-needs-improving">Tip: Only improve what needs improving</h2>
@@ -546,7 +550,7 @@ Warning
 <section id="optimal-data-wrangling-with-data.table" class="level2"><h2 class="anchored" data-anchor-id="optimal-data-wrangling-with-data.table">Optimal data wrangling with <code>data.table</code>
 </h2>
 <p>For speeding up work with data frames, while still running your code entirely within R, no package is better than <code>data.table</code>! This package was created in 2006 by Matt Dowle, for the sole purpose of performing common data wrangling tasks with the absolute most optimal algorithms.</p>
-<p>Because the design is meant to mimic Base R style, <code>data.table</code> uses <em>very</em> different syntax from <code>dplyr</code>. Watch the following video for a quick introduction.</p>
+<p>Because the design is meant to mimic Base R style, <code>data.table</code> uses <strong><em>very</em></strong> different syntax from <code>dplyr</code>. Watch the following video for a quick introduction.</p>
 <div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/uueVddWwbkk" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -554,7 +558,7 @@ Warning
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Important
+<span class="screen-reader-only">Important</span>Extra Resources
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -574,7 +578,7 @@ Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<ol type="1">
+<ol start="3" type="1">
 <li>Here is some <code>dplyr</code> code. Re-write it in <code>data.table</code> syntax.</li>
 </ol>
 <div class="cell">
@@ -582,7 +586,7 @@ Important
 <span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">species</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
 <span>  <span class="fu">summarize</span><span class="op">(</span>mean_bill <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">bill_length_mm</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<ol start="2" type="1">
+<ol start="4" type="1">
 <li>Using either the <code>tictoc</code> or <code>microbenchmark</code> packages, perform a speed test to see which code is faster and by how much.</li>
 </ol>
 </div>
@@ -627,17 +631,17 @@ Warning
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<ol type="1">
-<li>When data is scraped from the web, you often have repeated processes, such as scraping each of many identical pages. Why would it be a bad idea to parallelize webscraping code?</li>
+<ol start="5" type="1">
+<li>When data are scraped from the web, you often have repeated processes, such as scraping each of many identical pages. Why would it be a bad idea to parallelize webscraping code?</li>
 </ol>
-<!-- --><ol type="a">
+<ol type="a">
 <li><p>It is important to get the pages in order to keep track of what you’ve done.</p></li>
 <li><p>If you get an error on one page you have to start at the beginning.</p></li>
 <li><p>Simultaneous scraping is likely to violate the rate limits from <code>robots.txt</code></p></li>
 <li><p>It is impossible to access two different web pages at the same time.</p></li>
 </ol>
-<!-- --><ol start="2" type="1">
-<li>Here is some iteration code. What would you change to make it run in parallel?</li>
+<ol start="6" type="1">
+<li>What would you put instead of <code>map()</code> in the code below to make the iteration run in parallel?</li>
 </ol>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">summ_stats</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">column</span><span class="op">)</span> <span class="op">{</span></span>
@@ -647,7 +651,6 @@ Warning
 <span>    median <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">column</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
 <span>    sd <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">column</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span>
-<span>  </span>
 <span><span class="op">}</span></span>
 <span></span>
 <span><span class="va">penguins</span> <span class="op">|&gt;</span> </span>
@@ -666,7 +669,7 @@ Warning
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">write_csv</span><span class="op">(</span><span class="va">penguins</span>, <span class="st">"penguins.csv"</span><span class="op">)</span></span>
 <span><span class="fu">arrow</span><span class="fu">::</span><span class="fu"><a href="https://arrow.apache.org/docs/r/reference/write_parquet.html">write_parquet</a></span><span class="op">(</span><span class="va">penguins</span>, <span class="st">"penguins.parquet"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p><img src="./images/penguins_sizes.png" class="img-fluid"></p>
+<p><img src="./images/penguins_sizes.png" class="img-fluid" alt="A screenshot of the size of the same dataset (penguins) stored two different ways. The penguins.csv file is shown to be 14.9 KB and the penguins.parquet file is shown to be 6.3 KB."></p>
 <p>The <code>arrow</code> package is designed to help read and write parquet files. (It also provides a number of other helpful speed-ups, but we’ll focus just on the parquet elements for now.)</p>
 <div class="callout callout-style-default callout-required-reading callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -691,7 +694,7 @@ Warning
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<ol type="1">
+<ol start="7" type="1">
 <li>Run the following code to download a medium sized dataset from the <code>nycflights13</code> package as both a csv and parquet.</li>
 </ol>
 <div class="cell">
@@ -702,9 +705,15 @@ Warning
 <span><span class="fu"><a href="https://arrow.apache.org/docs/r/reference/write_parquet.html">write_parquet</a></span><span class="op">(</span><span class="va">flights</span>, <span class="st">"flights.parquet"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>How much smaller was the parquet file compared to the csv?</p>
-<ol start="2" type="1">
-<li>Use profiling to test the speed of reading the csv with <code>read_csv</code>, reading the csv with the <code>data.table</code> function <code>fread</code>, and reading the parquet file with <code>arrow</code>.</li>
+<ol start="8" type="1">
+<li>Use profiling to compare three different methods of reading in <code>flights.csv</code>:</li>
 </ol>
+<ul>
+<li>with <code><a href="https://readr.tidyverse.org/reference/read_delim.html">readr::read_csv()</a></code>,</li>
+<li>with the <code><a href="https://rdrr.io/pkg/data.table/man/fread.html">data.table::fread()</a></code>, and <!-- 3.27 sec elapsed -->
+</li>
+<li>with <code><a href="https://arrow.apache.org/docs/r/reference/read_delim_arrow.html">arrow::read_csv_arrow()</a></code>.</li>
+</ul>
 </div>
 </div>
 <section id="data-storage-in-packages" class="level3"><h3 class="anchored" data-anchor-id="data-storage-in-packages">Data storage in packages</h3>
@@ -713,8 +722,8 @@ Warning
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/use_data.html">use_data</a></span><span class="op">(</span><span class="va">penguins</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>However, when the data is large, this approach is not recommended - the resulting file will be require a lot of storage space, which might prevent it from being accepted on GitHub.</p>
-<p>Instead, another option is to create an <code>inst</code> folder in your package repository. This folder is meant to contain any and all items that you want to be downloaded when users download your package. Inside the <code>inst</code> folder, you can make a folder called <code>extdata</code> (“external data”). Put any parquet or csv data files in there.</p>
+<p>However, when the data are large, this approach is not recommended. The resulting file will be require a lot of storage space, which might prevent it from being accepted on GitHub.</p>
+<p>Instead, another option is to create an <code>inst</code> folder in your package repository. This folder is meant to contain any and all items that you want to be downloaded when users download your package. Inside the <code>inst</code> folder, you can make a folder called <code>extdata</code> (“external data”). You should put any <code>.parquet</code> or <code>.csv</code> data files in this folder.</p>
 <p>Then, users (or, your functions) can read the data from the package source with:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">path</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"my_data.csv"</span>, package <span class="op">=</span> <span class="st">"myPackage"</span><span class="op">)</span></span>
