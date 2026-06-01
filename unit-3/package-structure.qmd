@@ -38,6 +38,9 @@ We won't worry about installing from sources for this class.
 ::: callout-important
 # Check-In: Package Structure
 
+<!-- This package should be migrated to the Intermediate R organization so everything -->
+<!-- is all in the same place.  -->
+
 Visit [this GitHub repository](https://github.com/Cal-Poly-Advanced-R/meangirls), where our good friend Regina George has made a package.
 
 Answer the following questions about Regina's package by clicking around in her files.

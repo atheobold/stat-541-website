@@ -6,6 +6,9 @@ format: html
 
 ## Overview
 
+<!-- This package should be migrated to the Intermediate R organization so everything -->
+<!-- is all in the same place.  -->
+
 The repository `Cal-Poly-Advanced-R/entomology` contains a package that is mostly complete and mostly correctly structured, that performs some simple analyses and summaries on a dataset concerning a few species of beetle.[^1]
 
 [^1]: Lubischew, A.A. (1962) On the use of discriminant functions in taxonomy. Biometrics, 18, 455-477.
