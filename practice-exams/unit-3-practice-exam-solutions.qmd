@@ -35,6 +35,8 @@ For each package creation step below, describe what it does and why it is necess
 12. `Ctrl/Cmd-Shift-T` or `devtools::test()` or click the `Test` button in RStudio.
 
 ::: callout-note
+# Solution
+
 1.  Creates the "baRca" folder, the DESCRIPTION and NAMESPACE files, and the R/folder.
 2.  Adds credit for authorship and descriptions of the package.
 3.  Creates the `roster.R` file.
@@ -56,6 +58,8 @@ For the function `get_player_stats()`, describe:
 1.  Two unit tests you would write using `expect_equal()`.
 
 ::: callout-note
+# Solution
+
 *Some possibilities include...*
 
 ```{r}
@@ -80,6 +84,8 @@ expect_equal(goals_in_2017, 50)
 2.  Two unit tests you would write using `expect_error()`.
 
 ::: callout-note
+# Solution
+
 *This answer should test two different kinds of bad input, such as:*
 
 ```{r}
@@ -106,6 +112,8 @@ Describe three *different* ways the programmer could design their package, their
 State which option (of the three) you would recommend they use and why.
 
 ::: callout-note
+# Solution
+
 1.  Write the function to **webscrape** from espn.com.
 
 2.  Collect the data ahead of time from espn.com, and save it on GitHub or Dropbox. Then, write the function to read the `.csv` from a URL.
@@ -144,6 +152,8 @@ best_player <- function(year) {
 Write a complete `roxygen2` style documentation for this function.
 
 ::: callout-note
+# Solution
+
 ```{r}
 #' Find the best player (in points per minute) from a given year
 #' 
@@ -177,6 +187,8 @@ Unfortunately, the programmer finds this code to be a bit slow.
 Describe, in words or by sketching approximate code, three ways you would modify this code **or** one of the functions it uses to speed it up.
 
 ::: callout-note
+# Solution
+
 *Some possibilities include...*
 
 - In the code above, change `map` to `furrr::future_map()`.
@@ -213,6 +225,8 @@ Suggest two more functions for this package. For each, provide:
 > Example: "Someone might use this function to find out which players played the most seasons with the team."
 
 ::: callout-note
+# Solution
+
 *Answers will vary here, but we are looking for...*
 
 1.  Functions that are feasible with the described package.
