@@ -1,0 +1,225 @@
+---
+title: "Unit 3 Exam - Practice"
+format: html
+execute:
+  eval: false
+---
+
+A programmer is making a package called `baRca` to help them analyze information about songs from their favorite soccer team, *FC Barcelona*.
+
+The first four functions they create in the package are:
+
+- `roster()` which takes a year, and returns a vector of names of all the players on the team in that year.
+
+- `get_player_stats()`, which takes the name of a player as input and returns a tibble of statistics for that player (goals, assists, and minutes played) for each season they played for Barcelona.
+
+- `team_results()`, which takes a year as input and returns a tibble of all the team's games in that year and the score.
+
+- `best_player()`, which takes a year as input and returns the name of the player with the best points per minute (`(goals + assists)/minutes_played`) in that year.
+
+### 1. Workflow
+
+For each package creation step below, describe what it does and why it is necessary.
+
+1.  `usethis::create_package("baRca")`.
+2.  Edit the DESCRIPTION file
+3.  `usethis::use_r("roster")`.
+4.  Edit the \`roster.R\`\` file.
+5.  Click `Code > Insert roxygen skeleton` in RStudio.
+6.  Edit the `roster.R` file.
+7.  `usethis::use_package("readr")`.
+8.  `usethis::use_test("roster")`.
+9.  Edit the `test-roster.R` file.
+10. `Ctrl/Cmd-Shift-D` or `devtools::document()` or click the `Document` button in RStudio.
+11. `Ctrl/Cmd-Shift-B` or `devtools::build()` or click the `Build` button in RStudio.
+12. `Ctrl/Cmd-Shift-T` or `devtools::test()` or click the `Test` button in RStudio.
+
+::: callout-note
+1.  Creates the "baRca" folder, the DESCRIPTION and NAMESPACE files, and the R/folder.
+2.  Adds credit for authorship and descriptions of the package.
+3.  Creates the `roster.R` file.
+4.  The actual function code is written.
+5.  Puts some placeholder roxygen-style comments in `roster.R`.
+6.  Documents the inputs, outputs, and dependencies.
+7.  Makes sure the `baRca` function installs `readr` too. Specifically, this adds a line in the DESCRIPTION that says `baRca` depends on `readr`.
+8.  Creates the `testthat` folder setup and unit test file `test-roster.R`.
+9.  Write some unit tests!
+10. Uses the roxygen comments to automatically write `roster.md` in the `man/` folder.
+11. Builds and installs the package.
+12. Runs all the `testthat` unit tests.
+:::
+
+### 2. Unit testing
+
+For the function `get_player_stats()`, describe:
+
+1.  Two unit tests you would write using `expect_equal()`.
+
+::: callout-note
+*Some possibilities include...*
+
+```{r}
+dat <- get_player_stats("Lionel Messi")
+
+expect_equal(names(dat), c("player_name", "season", "goals", "assists", "minutes_played"))
+
+expect_equal(class(dat), "data.frame")
+
+# using information you'd have to look up, you could also do:
+
+expect_equal(nrow(dat), 17)
+
+goals_in_2017 <- dat |> 
+  filter(year == 2017) |> 
+  pull(goals)
+
+expect_equal(goals_in_2017, 50)
+```
+:::
+
+2.  Two unit tests you would write using `expect_error()`.
+
+::: callout-note
+*This answer should test two different kinds of bad input, such as:*
+
+```{r}
+# no input
+expect_error(get_player_stats())
+
+# wrong input type
+expect_error(get_player_stats(2017))
+
+# wrong input structure
+expect_error(get_player_stats(c("Lionel Messi", "Robert Lewandowski")))
+
+# an input that is correct structure, but not correct for the data
+expect_error(get_player_stats("Justin Bieber"))
+```
+:::
+
+### 3. Data Management
+
+The programmer is designing their `team_results()` function and has discovered that all the results of FC Barcelona's games can be found in the pages of [espn.com](espn.com). They are debating how they should use to access these data for their `team_results()` function.
+
+Describe three *different* ways the programmer could design their package, their data storage, and/or their `team_results()` function to load the data from a particular year.
+
+State which option (of the three) you would recommend they use and why.
+
+::: callout-note
+1.  Write the function to **webscrape** from espn.com.
+
+2.  Collect the data ahead of time from espn.com, and save it on GitHub or Dropbox. Then, write the function to read the `.csv` from a URL.
+
+3.  Collect the data ahead of time from espn.com, and save it in the `inst/exdata` folder of the package. Then, in the function, use `system.file` and `read_csv()` to read the data from the package file.
+
+The third option is probably best here, because it guarantees the data that is needed will always be available in the package.
+:::
+
+### 4. Documentation
+
+The programmer's source code for the `get_player_stats()` function is below:
+
+```{r}
+#| eval: false
+
+
+best_player <- function(year) {
+  
+  all_players <- roster(year) 
+  
+  all_stats <- map(.x = all_players, .f = get_player_stats) |> 
+    bind_rows()
+  
+  all_stats |> 
+    filter(season == year) |>
+    mutate(
+      ppm = (goals + assists)/minutes_played
+    ) |>
+    slice_max(ppm, with_ties = FALSE) |>
+    pull(player_name)
+  
+}
+```
+
+Write a complete `roxygen2` style documentation for this function.
+
+::: callout-note
+```{r}
+#' Find the best player (in points per minute) from a given year
+#' 
+#' @param year A numeric value for the desired year
+#' 
+#' @return A single string with the name of the top player
+#' 
+#' @importFrom dplyr filter mutate slice_max pull bind_rows
+#' @importFrom purrr map
+#' 
+#' @examples
+#' 
+#' best_player(2017)
+#' 
+#' @export
+```
+:::
+
+### 5. Speed
+
+Assume all functions are working as expected and are properly documented.
+
+The programmer now uses their package to find the best player in each of the last 75 years, by running:
+
+```{r}
+map(.x = 1950:2025, .f = best_player)
+```
+
+Unfortunately, the programmer finds this code to be a bit slow.
+
+Describe, in words or by sketching approximate code, three ways you would modify this code **or** one of the functions it uses to speed it up.
+
+::: callout-note
+*Some possibilities include...*
+
+- In the code above, change `map` to `furrr::future_map()`.
+
+- In the `best_player()` function, change `map` to `furrr::future_map()`.
+
+- Store the datasets of player statistics as `.parquet` files rather than `.csv`. Then, in the `get_player_stats()` function, use `arrow::read_parquet()` instead of `dplyr::read_csv()`.
+
+- Replace the data wrangling code in the `best_player()` function with `data.table` syntax:
+
+```{r}
+all_stats <- data.table(all_stats)
+
+all_stats[season == year, ppm := (goals + assists) / minutes_played]
+
+all_stats[which.max(ppm), player_name]
+```
+:::
+
+### 6. Package Design
+
+Suggest two more functions for this package. For each, provide:
+
+- The name and a brief description of what the function does.
+
+> Example: "`roster` gets FC Barcelona roster for a given year."
+
+- The argument(s) it expects as input and what it returns as output.
+
+> Example: "Input is the year as a number, output is a vector of strings containing player names."
+
+- An example of how and why someone might use the function.
+
+> Example: "Someone might use this function to find out which players played the most seasons with the team."
+
+::: callout-note
+*Answers will vary here, but we are looking for...*
+
+1.  Functions that are feasible with the described package.
+
+2.  A reasonable descriptive function name.
+
+3.  A convincing use case to motivate the need for the function.
+
+4.  Clearly defined object types and structures for the input and output.
+:::

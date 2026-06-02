@@ -1,0 +1,114 @@
+---
+title: "Unit 3 Exam - Practice"
+format: html
+execute:
+  eval: false
+---
+
+A programmer is making a package called `baRca` to help them analyze information about songs from their favorite soccer team, *FC Barcelona*.
+
+The first four functions they create in the package are:
+
+- `roster()` which takes a year, and returns a vector of names of all the players on the team in that year.
+
+- `get_player_stats()`, which takes the name of a player as input and returns a tibble of statistics for that player (goals, assists, and minutes played) for each year they played for Barcelona.
+
+- `team_results()`, which takes a year as input and returns a tibble of all the team's games in that year and the score.
+
+- `best_player()`, which takes a year as input and returns the name of the player with the best points per minute (`(goals + assists)/minutes_played`) in that year.
+
+### 1. Workflow
+
+For each package creation step below, describe what it does and why it is necessary.
+
+1.  `usethis::create_package("baRca")`.
+2.  Edit the DESCRIPTION file
+3.  `usethis::use_r("roster")`.
+4.  Edit the `roster.R` file.
+5.  Click `Code > Insert roxygen skeleton` in RStudio.
+6.  Edit the `roster.R` file.
+7.  `usethis::use_package("readr")`.
+8.  `usethis::use_test("roster")`.
+9.  Edit the `test-roster.R` file.
+10. `Ctrl/Cmd-Shift-D` or `devtools::document()` or click the `Document` button in RStudio.
+11. `Ctrl/Cmd-Shift-B` or `devtools::build()` or click the `Build` button in RStudio.
+12. `Ctrl/Cmd-Shift-T` or `devtools::test()` or click the `Test` button in RStudio.
+
+### 2. Unit testing
+
+For the function `get_player_stats()`, describe:
+
+1.  Two unit tests you would write using `expect_equal()`.
+
+2.  Two unit tests you would write using `expect_error()`.
+
+### 3. Data Management
+
+The programmer is designing their `team_results()` function and has discovered that all the results of FC Barcelona's games can be found in the pages of [espn.com](espn.com). They are debating how they should use to access these data for their `team_results()` function.
+
+Describe three *different* ways the programmer could design their package, their data storage, and/or their `team_results()` function to load the data from a particular year.
+
+State which option (of the three) you would recommend they use and why.
+
+### 4. Documentation
+
+The programmer's source code for the `get_player_stats()` function is below:
+
+```{r}
+#| eval: false
+
+best_player <- function(year) {
+  
+  all_players <- roster(year) 
+  
+  all_stats <- map(.x = all_players, .f = get_player_stats) |> 
+    bind_rows()
+  
+  all_stats |> 
+    filter(year == year) |>
+    mutate(
+      ppm = (goals + assists)/minutes_played
+    ) |>
+    slice_max(ppm) |>
+    pull(player_name)
+  
+}
+```
+
+Write a complete `roxygen2` style documentation for this function.
+
+### 5. Speed
+
+Assume all functions are working as expected and are properly documented.
+
+The programmer now uses their package to find the best player in each of the last 75 years, by running:
+
+```{r}
+map(.x = 1950:2025, .f = best_player)
+```
+
+Unfortunately, the programmer finds this code to be a bit slow.
+
+Describe, in words or by sketching approximate code, three ways you would modify this code **or** one of the functions it uses to speed it up.
+
+### 6. Package Design
+
+Suggest two more functions for this package. For each, provide:
+
+- A brief description of what the function does.
+
+> Example: "Gets FC Barcelona roster for a given year."
+
+- The argument(s) it expects as input and what it returns as output.
+
+> Example: "Input is the year as a number, output is a vector of strings containing player names."
+
+- An example of how and why someone might use the function.
+
+> Example: "Someone might use this function to find out which players played the most seasons with the team."
+
+::: callout-important
+# Solutions
+
+You can access the practice exam "solutions" here: [Unit 3 Practice Exam Solutions](unit-3-practice-exam-solutions.qmd)
+:::

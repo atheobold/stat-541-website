@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.8.26">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>Practice Activity 9: Find the bugs – Advanced R</title>
+<title>Unit 3 Exam - Practice – Advanced R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -61,8 +61,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../unit-3/speed.html" rel="next">
-<link href="../unit-3/debugging.html" rel="prev">
 <link href="../images/cat-monsters-horst.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -108,7 +106,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 </head>
-<body class="nav-sidebar floating nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -309,7 +307,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Unit 2 - Professional Deliverables</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../unit-3.html" aria-current="page"> 
+    <a class="nav-link" href="../unit-3.html"> 
 <span class="menu-text">Unit 3 - Package Development</span></a>
   </li>  
   <li class="nav-item">
@@ -329,92 +327,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
       </div> <!-- /container-fluid -->
-    </nav><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../practice-activities/week-9.html">Week 9: In-Class Activity</a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
-    </div>
-  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+    </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-<li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../unit-3.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Unit 3</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../unit-3/package-structure.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">R Packages</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../practice-activities/week-8.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 8: In-Class Activity</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../unit-3/unit-testing.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Testing Package Code</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../unit-3/debugging.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Debugging Package Code</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../practice-activities/week-9.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Week 9: In-Class Activity</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../unit-3/speed.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Code Speed</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../practice-activities/week-10.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 10: In-Class Activity</span></a>
-  </div>
-</li>
-    </ul>
-</div>
-</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
    
   <ul>
-<li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
-  <li>
-<a href="#step-one-understand-goals" id="toc-step-one-understand-goals" class="nav-link" data-scroll-target="#step-one-understand-goals">Step One: Understand goals</a>
-  <ul class="collapse">
-<li><a href="#step-two-find-syntax-errors" id="toc-step-two-find-syntax-errors" class="nav-link" data-scroll-target="#step-two-find-syntax-errors">Step Two: Find syntax errors</a></li>
-  <li><a href="#step-three-test-basic-functions." id="toc-step-three-test-basic-functions." class="nav-link" data-scroll-target="#step-three-test-basic-functions.">Step Three: Test basic functions.</a></li>
-  <li><a href="#step-four-test-validation-functions" id="toc-step-four-test-validation-functions" class="nav-link" data-scroll-target="#step-four-test-validation-functions">Step Four: Test validation functions</a></li>
-  <li><a href="#step-five-test-small-functions" id="toc-step-five-test-small-functions" class="nav-link" data-scroll-target="#step-five-test-small-functions">Step Five: Test small functions</a></li>
-  <li><a href="#step-six-test-complicated-functions." id="toc-step-six-test-complicated-functions." class="nav-link" data-scroll-target="#step-six-test-complicated-functions.">Step Six: Test complicated functions.</a></li>
-  <li><a href="#test-coverage-stat-541-only" id="toc-test-coverage-stat-541-only" class="nav-link" data-scroll-target="#test-coverage-stat-541-only">Test Coverage (Stat 541 Only)</a></li>
-  <li><a href="#hints-and-advice" id="toc-hints-and-advice" class="nav-link" data-scroll-target="#hints-and-advice">Hints and Advice</a></li>
-  </ul>
-</li>
-  </ul><div class="toc-actions"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/practice-activities/week-9.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></nav>
+<li><a href="#workflow" id="toc-workflow" class="nav-link active" data-scroll-target="#workflow">1. Workflow</a></li>
+  <li><a href="#unit-testing" id="toc-unit-testing" class="nav-link" data-scroll-target="#unit-testing">2. Unit testing</a></li>
+  <li><a href="#data-management" id="toc-data-management" class="nav-link" data-scroll-target="#data-management">3. Data Management</a></li>
+  <li><a href="#documentation" id="toc-documentation" class="nav-link" data-scroll-target="#documentation">4. Documentation</a></li>
+  <li><a href="#speed" id="toc-speed" class="nav-link" data-scroll-target="#speed">5. Speed</a></li>
+  <li><a href="#package-design" id="toc-package-design" class="nav-link" data-scroll-target="#package-design">6. Package Design</a></li>
+  </ul><div class="toc-actions"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/practice-exams/unit-3-practice-exam.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
-<h1 class="title">Practice Activity 9: Find the bugs</h1>
+<h1 class="title">Unit 3 Exam - Practice</h1>
 </div>
 
 
@@ -428,77 +358,110 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 
-</header><section id="overview" class="level2"><h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<!-- This package should be migrated to the Intermediate R organization so everything -->
-<!-- is all in the same place.  -->
-<p>The repository <code>Cal-Poly-Advanced-R/entomology</code> contains a package that is mostly complete and mostly correctly structured, that performs some simple analyses and summaries on a dataset concerning a few species of beetle.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
-<p>Unfortunately, this package contain <strong>many bugs</strong>, and your job is to track them down! It also is missing any <code>@example</code> documentation or <code>testthat</code> tests to help identify the issues.</p>
-<p>To make things a little easier, there is exactly one problem in each of the nine different <code>.R</code> files (not counting <code>package.R</code>, which is just a formality). There is also one extra bonus problem in the <code>summary.R</code> file.</p>
-<p>Run the following to download the package source code:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/usethis/man/zip-utils.html">use_course</a></span><span class="op">(</span><span class="st">"Cal-Poly-Advanced-R/entomology"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>Then open <code>pa-9.qmd</code>.</p>
-</section><section id="step-one-understand-goals" class="level2"><h2 class="anchored" data-anchor-id="step-one-understand-goals">Step One: Understand goals</h2>
-<p>The primary goal of this package is to guess the species of an unknown beetle, based on two measurements of its horns (or <em>aedeagus</em>): the width in microns and the angle in degrees.</p>
-<p>The <code>entomology</code> package supplies a function called <code>beetle_classify_nearest()</code>, which takes in a width and angle and returns the predicted species. However, this function doesn’t work due to errors in its code and the functions it depends on.</p>
-<p>Begin by looking at the source code of <code>beetle_classify_nearest()</code>, which is in the <code>classify.R</code> file. In your own words, what do the steps of this function seem to be doing?</p>
-<p>Then, notice that <code>beetle_classify_nearest()</code> depends on two new functions: <code>beetle_species()</code> and <code>beetle_centroid()</code>. What <code>.R</code> file are these in? What do they do? What new functions to <em>they</em> depend on? What do those do? And so on.</p>
-<section id="step-two-find-syntax-errors" class="level3"><h3 class="anchored" data-anchor-id="step-two-find-syntax-errors">Step Two: Find syntax errors</h3>
-<p>If our code is poorly formed, we even won’t be able to run it to test it!</p>
-<p>In your <code>entomology</code> package project, attempt to <strong>build</strong> the package. <em>(Reminder: Ctrl/Cmd-Shift-B is a shortcut!)</em></p>
-<p>What error does this build encounter? Fix it, then build your package!</p>
-</section><section id="step-three-test-basic-functions." class="level3"><h3 class="anchored" data-anchor-id="step-three-test-basic-functions.">Step Three: Test basic functions.</h3>
+</header><p>A programmer is making a package called <code>baRca</code> to help them analyze information about songs from their favorite soccer team, <em>FC Barcelona</em>.</p>
+<p>The first four functions they create in the package are:</p>
 <ul>
-<li><p>Run <code>beetle_data()</code>. Does this seem to work as expected? If not, fix it.</p></li>
-<li><p>Run <code>beetle_species()</code>. Does this seem to work as expected? If not, fix it.</p></li>
+<li><p><code>roster()</code> which takes a year, and returns a vector of names of all the players on the team in that year.</p></li>
+<li><p><code>get_player_stats()</code>, which takes the name of a player as input and returns a tibble of statistics for that player (goals, assists, and minutes played) for each year they played for Barcelona.</p></li>
+<li><p><code>team_results()</code>, which takes a year as input and returns a tibble of all the team’s games in that year and the score.</p></li>
+<li><p><code>best_player()</code>, which takes a year as input and returns the name of the player with the best points per minute (<code>(goals + assists)/minutes_played</code>) in that year.</p></li>
 </ul>
-<p>Rebuild your package once you have fixed <code>data.R</code>.</p>
-<p><em>Remember, there is exactly <strong>one</strong> bug in each file, except <code>summary.R</code> which has two</em></p>
-</section><section id="step-four-test-validation-functions" class="level3"><h3 class="anchored" data-anchor-id="step-four-test-validation-functions">Step Four: Test validation functions</h3>
-<p>Notice that the package provides two helper functions to make sure that users input appropriate values to the main functions. These are in <code>validation.R</code>.</p>
-<p>Try to run the following unit test:</p>
+<section id="workflow" class="level3"><h3 class="anchored" data-anchor-id="workflow">1. Workflow</h3>
+<p>For each package creation step below, describe what it does and why it is necessary.</p>
+<ol type="1">
+<li>
+<code>usethis::create_package("baRca")</code>.</li>
+<li>Edit the DESCRIPTION file</li>
+<li>
+<code>usethis::use_r("roster")</code>.</li>
+<li>Edit the <code>roster.R</code> file.</li>
+<li>Click <code>Code &gt; Insert roxygen skeleton</code> in RStudio.</li>
+<li>Edit the <code>roster.R</code> file.</li>
+<li>
+<code>usethis::use_package("readr")</code>.</li>
+<li>
+<code>usethis::use_test("roster")</code>.</li>
+<li>Edit the <code>test-roster.R</code> file.</li>
+<li>
+<code>Ctrl/Cmd-Shift-D</code> or <code><a href="https://rdrr.io/pkg/devtools/man/document.html">devtools::document()</a></code> or click the <code>Document</code> button in RStudio.</li>
+<li>
+<code>Ctrl/Cmd-Shift-B</code> or <code><a href="https://rdrr.io/pkg/devtools/man/build.html">devtools::build()</a></code> or click the <code>Build</code> button in RStudio.</li>
+<li>
+<code>Ctrl/Cmd-Shift-T</code> or <code><a href="https://rdrr.io/pkg/devtools/man/test.html">devtools::test()</a></code> or click the <code>Test</code> button in RStudio.</li>
+</ol></section><section id="unit-testing" class="level3"><h3 class="anchored" data-anchor-id="unit-testing">2. Unit testing</h3>
+<p>For the function <code>get_player_stats()</code>, describe:</p>
+<ol type="1">
+<li><p>Two unit tests you would write using <code>expect_equal()</code>.</p></li>
+<li><p>Two unit tests you would write using <code>expect_error()</code>.</p></li>
+</ol></section><section id="data-management" class="level3"><h3 class="anchored" data-anchor-id="data-management">3. Data Management</h3>
+<p>The programmer is designing their <code>team_results()</code> function and has discovered that all the results of FC Barcelona’s games can be found in the pages of <a href="espn.com">espn.com</a>. They are debating how they should use to access these data for their <code>team_results()</code> function.</p>
+<p>Describe three <em>different</em> ways the programmer could design their package, their data storage, and/or their <code>team_results()</code> function to load the data from a particular year.</p>
+<p>State which option (of the three) you would recommend they use and why.</p>
+</section><section id="documentation" class="level3"><h3 class="anchored" data-anchor-id="documentation">4. Documentation</h3>
+<p>The programmer’s source code for the <code>get_player_stats()</code> function is below:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">validate_species</span><span class="op">(</span><span class="st">"Con"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">best_player</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">year</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  </span>
+<span>  <span class="va">all_players</span> <span class="op">&lt;-</span> <span class="fu">roster</span><span class="op">(</span><span class="va">year</span><span class="op">)</span> </span>
+<span>  </span>
+<span>  <span class="va">all_stats</span> <span class="op">&lt;-</span> <span class="fu">map</span><span class="op">(</span>.x <span class="op">=</span> <span class="va">all_players</span>, .f <span class="op">=</span> <span class="va">get_player_stats</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>    <span class="fu">bind_rows</span><span class="op">(</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="va">all_stats</span> <span class="op">|&gt;</span> </span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op">==</span> <span class="va">year</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">mutate</span><span class="op">(</span></span>
+<span>      ppm <span class="op">=</span> <span class="op">(</span><span class="va">goals</span> <span class="op">+</span> <span class="va">assists</span><span class="op">)</span><span class="op">/</span><span class="va">minutes_played</span></span>
+<span>    <span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">slice_max</span><span class="op">(</span><span class="va">ppm</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">pull</span><span class="op">(</span><span class="va">player_name</span><span class="op">)</span></span>
+<span>  </span>
+<span><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>You’ll find that the <code>validate_species</code> function is not found, even if your package is fully build and loaded. This is because it is an <strong>unexported</strong> function - it was made to help the developer simplify their design, not so that users could access it and use it. Notice that the <code>roxygen2</code> documentation comments above these functions do not include an <code>@export</code> line, and that these functions do not show up in the <code>NAMESPACE</code> file.</p>
-<p>To access and run an unexported function, use triple colons <code>:::</code>, e.g.</p>
+<p>Write a complete <code>roxygen2</code> style documentation for this function.</p>
+</section><section id="speed" class="level3"><h3 class="anchored" data-anchor-id="speed">5. Speed</h3>
+<p>Assume all functions are working as expected and are properly documented.</p>
+<p>The programmer now uses their package to find the best player in each of the last 75 years, by running:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">entomology</span><span class="fu">:::</span><span class="fu"><a href="https://rdrr.io/pkg/entomology/man/validate_species.html">validate_species</a></span><span class="op">(</span><span class="st">"Con"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">map</span><span class="op">(</span>.x <span class="op">=</span> <span class="fl">1950</span><span class="op">:</span><span class="fl">2025</span>, .f <span class="op">=</span> <span class="va">best_player</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Run some other unit tests on these functions until you discover the hidden bug.</p>
-<p><em>Hint: Make sure to try every possible input that the function claims it can accept.</em></p>
-</section><section id="step-five-test-small-functions" class="level3"><h3 class="anchored" data-anchor-id="step-five-test-small-functions">Step Five: Test small functions</h3>
-<p>Now, write your own unit tests for the basic calculation and data wrangling functions in <code>counts.R</code>, <code>correlation.R</code>, <code>centroid.R</code>, <code>angle.R</code>, and <code>filter.R</code>.</p>
-<p>These unit tests should include:</p>
+<p>Unfortunately, the programmer finds this code to be a bit slow.</p>
+<p>Describe, in words or by sketching approximate code, three ways you would modify this code <strong>or</strong> one of the functions it uses to speed it up.</p>
+</section><section id="package-design" class="level3"><h3 class="anchored" data-anchor-id="package-design">6. Package Design</h3>
+<p>Suggest two more functions for this package. For each, provide:</p>
 <ul>
-<li><p>The simplest possible function calls that you expect to <em>work correctly</em>.</p></li>
-<li><p>A more complicated function call that you still expect to <em>work correctly</em>.</p></li>
-<li><p>One or more function calls that you expect to <em>cause an error</em>.</p></li>
+<li>A brief description of what the function does.</li>
 </ul>
-<p>Make sure to state what you <em>expect</em> the output to be <strong>before you run the function</strong>; and be sure to consider the <em>object types and structures</em> you expect, not just the values.</p>
-<p>Continue developing and running unit tests until you find the bug in each of these files. Once you have fixed all of them, re-build and re-load your package, and then try the tests again to make sure they behave as desired.</p>
-</section><section id="step-six-test-complicated-functions." class="level3"><h3 class="anchored" data-anchor-id="step-six-test-complicated-functions.">Step Six: Test complicated functions.</h3>
-<p>Now that you’ve fixed problems in the helper functions, we can revisit the main ones.</p>
-<p>Create unit tests as above for the functions in <code>classify.R</code> and <code>summary.R</code>.<br>
-Use debugging techniques like <code><a href="https://rdrr.io/r/base/debug.html">debugonce()</a></code> or <code>browse()</code> to find where problems are happening.</p>
-<p><em>Hint: While there is only one bug directly in this file, there is also a problem in another file that causes this code to break, that you should track down via your debugging.</em></p>
-</section><section id="test-coverage-stat-541-only" class="level3"><h3 class="anchored" data-anchor-id="test-coverage-stat-541-only">Test Coverage (Stat 541 Only)</h3>
-<p>All your unit tests should be written using function from the <code>testthat</code> package. You <strong>do not</strong> need to include them in the <code>\tests</code> folder.</p>
-<!-- Run `covr::package_coverage(".")`.  You should have 100% coverage! -->
-</section><section id="hints-and-advice" class="level3"><h3 class="anchored" data-anchor-id="hints-and-advice">Hints and Advice</h3>
+<blockquote class="blockquote">
+<p>Example: “Gets FC Barcelona roster for a given year.”</p>
+</blockquote>
 <ul>
-<li><p>Most of the errors in this package are <em>not</em> computational; instead, they are related to syntax problems, inconsistent object types and structures, etc.</p></li>
-<li><p>The bugs are all in the code itself, not in the descriptions or documentation of the functions; you can trust that the documentation describes what the functions <em>should</em> do.</p></li>
-<li><p>Don’t overlook the power of “rubber duck debugging” - describe what the function does, step by step, to a partner and see if you notice anything amiss as you say it out loud.</p></li>
-<li><p>Debugging is hard! If you find yourself stumped and frustrated, take a break and come back later with fresh eyes. And don’t forget to work together with you peers - don’t just split the list in half, discuss <em>each</em> bug together to track them down faster.</p></li>
+<li>The argument(s) it expects as input and what it returns as output.</li>
 </ul>
+<blockquote class="blockquote">
+<p>Example: “Input is the year as a number, output is a vector of strings containing player names.”</p>
+</blockquote>
+<ul>
+<li>An example of how and why someone might use the function.</li>
+</ul>
+<blockquote class="blockquote">
+<p>Example: “Someone might use this function to find out which players played the most seasons with the team.”</p>
+</blockquote>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Solutions
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You can access the practice exam “solutions” here: <a href="../practice-exams/unit-3-practice-exam-solutions.html">Unit 3 Practice Exam Solutions</a></p>
+</div>
+</div>
 
 
-</section></section><div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
-<ol>
-<li id="fn1"><p>Lubischew, A.A. (1962) On the use of discriminant functions in taxonomy. Biometrics, 18, 455-477.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol></section></div></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
     if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -910,17 +873,7 @@ Use debugging techniques like <code><a href="https://rdrr.io/r/base/debug.html">
       }
     }
   });
-  </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="../unit-3/debugging.html" class="pagination-link" aria-label="Debugging Package Code">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Debugging Package Code</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="../unit-3/speed.html" class="pagination-link" aria-label="Code Speed">
-        <span class="nav-page-text">Code Speed</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
+  </script>
 </div> <!-- /content -->
 <footer class="footer"><div class="nav-footer">
     <div class="nav-footer-left">
@@ -928,7 +881,7 @@ Use debugging techniques like <code><a href="https://rdrr.io/r/base/debug.html">
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/practice-activities/week-9.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/atheobold/stat-541-website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/atheobold/stat-541-website/edit/main/practice-exams/unit-3-practice-exam.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
 <li class="nav-item">
